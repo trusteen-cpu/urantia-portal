@@ -86,6 +86,7 @@ a{color:inherit;text-decoration:none}
 .tag.mem{background:#eaf0f8;color:#41618f}
 .tag.sub{background:#f3eee4;color:#8a6b2e}
 .tag.todo{background:transparent;color:#c2b9a4;font-size:9px;border:1px solid #eae3d4}
+.tag.doc{background:#eef3ee;color:#3f6b4a}
 .nourl{color:#a9a49a;cursor:default}
 .more{display:block;margin:1px 6px 8px;padding:6px;text-align:center;font-size:12px;
   border-radius:7px;border:1px dashed var(--line);color:var(--dim);background:var(--paper)}
@@ -155,6 +156,48 @@ footer a{color:var(--teal)}
 .orn .oq{padding:10px 13px 12px;font-size:12.5px;color:var(--navy);line-height:1.65;
   border-top:1px solid var(--line);font-weight:600}
 .orn .oq span{display:block;margin-top:3px;font-size:10.5px;color:var(--dim);font-weight:400;letter-spacing:.05em}
+
+/* ── 글 페이지 ──────────────────────────── */
+.article{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--line);
+  border-radius:12px;padding:30px 34px 34px;box-shadow:var(--shadow);
+  font-size:15.5px;line-height:1.95;color:#2a2e39}
+.article p{margin:0 0 1.05em}
+.article h2{font-size:19px;color:var(--navy);margin:1.8em 0 .5em;padding-bottom:.3em;
+  border-bottom:1px solid var(--line)}
+.article h3{font-size:16px;color:var(--teal);margin:1.5em 0 .4em}
+.article ul{margin:0 0 1.05em;padding-left:1.25em}
+.article li{margin:.25em 0}
+.article b{color:var(--crimson)}
+.article a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+.article blockquote{margin:1.1em 0;padding:12px 16px;background:var(--paper);
+  border-left:3px solid var(--gold);border-radius:0 8px 8px 0;color:var(--navy);font-size:15px}
+.article hr{border:none;height:1px;background:var(--line);margin:1.8em 0}
+.article .empty{padding:0;color:var(--dim)}
+.pagenote{flex:1;font-size:12px;color:var(--dim)}
+.back.go{border-color:var(--gold);color:var(--gold);font-weight:600}
+@media(max-width:640px){ .article{padding:20px 18px 24px;font-size:15px} }
+
+/* ── 사진 · 첨부 파일 ───────────────────── */
+.article figure{margin:0 0 1.2em}
+.article figure.lead{margin:-6px 0 1.4em}
+.article figure.lead img{width:100%;border-radius:9px;display:block}
+.figs{display:flex;flex-wrap:wrap;gap:10px;margin:1.2em 0}
+.figs figure{flex:1 1 200px;margin:0}
+.figs img{width:100%;height:170px;object-fit:cover;border-radius:9px;display:block;
+  border:1px solid var(--line);transition:.18s}
+.figs a:hover img{border-color:var(--gold);transform:translateY(-1px)}
+.figs figcaption{font-size:12px;color:var(--dim);margin-top:5px;text-align:center}
+.filebox{margin:1.6em 0 0;padding-top:1.1em;border-top:1px solid var(--line)}
+.filebox>b{display:block;font-size:12px;letter-spacing:.14em;color:var(--gold);margin-bottom:9px}
+.filelist{display:flex;flex-direction:column;gap:7px}
+.fileitem{display:flex;align-items:center;background:var(--paper);border:1px solid var(--line);
+  border-radius:9px;padding:10px 13px;font-size:13.5px;text-decoration:none;color:var(--ink)}
+.fileitem:hover{border-color:var(--gold);background:#fffdf6}
+.fileitem .fi{font-size:16px;margin-right:9px;flex:0 0 auto}
+.fileitem .fn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  text-decoration:none;margin-right:9px}
+.fileitem .fd{font-size:11.5px;color:var(--teal);flex:0 0 auto;border:1px solid var(--line);
+  border-radius:999px;padding:3px 9px;background:#fff}
 
 /* ── 되돌아가기 ─────────────────────────── */
 .backrow{display:flex;gap:8px;flex-wrap:wrap;padding:8px 0 4px}

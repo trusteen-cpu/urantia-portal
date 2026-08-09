@@ -17,21 +17,42 @@ function href(gid, i, k){
   return u;
 }
 
+/* 항목 하나가 어디로 가는지 정한다
+   ① 하위가 있으면 → 하위 목록 페이지
+   ② 글이 있으면   → 글 페이지
+   ③ 그 밖에는     → 주소(없으면 카페 대문)                     */
+function hasPage(o){
+  return !!((o.text||'').trim() || o.image
+         || (o.gallery||[]).length || (o.files||[]).length);
+}
+function targetOf(o, cafe, gid, i, k){
+  if((o.children||[]).length) return {href: href(gid,i,k), ext:false, kind:'list'};
+  if(hasPage(o))              return {href: page(gid,i,k),  ext:false, kind:'text'};
+  return {href: o.url||cafe, ext:true, kind:'url'};
+}
+
+function page(gid, i, k, j){
+  let u='page.html?g='+encodeURIComponent(gid);
+  if(i!==undefined && i!==null) u+='&i='+i;
+  if(k!==undefined && k!==null) u+='&k='+k;
+  if(j!==undefined && j!==null) u+='&j='+j;
+  return u;
+}
+
 /* 검색용 평면화 — 세 층 전부 */
 function flatten(D){
   const out=[], cafe=(D.site||{}).cafeUrl||'#';
   (D.groups||[]).forEach(g=>{
     (g.items||[]).forEach((it,ii)=>{
-      const kids=it.children||[];
-      out.push({n:it.name, path:g.title,
-        href: kids.length? href(g.id,ii) : (it.url||cafe), ext: !kids.length});
-      kids.forEach((k,ki)=>{
-        const gks=k.children||[];
-        out.push({n:k.name, path:g.title+' › '+it.name,
-          href: gks.length? href(g.id,ii,ki) : (k.url||cafe), ext: !gks.length});
-        gks.forEach(j=>{
+      let t=targetOf(it,cafe,g.id,ii);
+      out.push({n:it.name, path:g.title, href:t.href, ext:t.ext});
+      (it.children||[]).forEach((k,ki)=>{
+        t=targetOf(k,cafe,g.id,ii,ki);
+        out.push({n:k.name, path:g.title+' › '+it.name, href:t.href, ext:t.ext});
+        (k.children||[]).forEach((j,ji)=>{
+          const has=hasPage(j);
           out.push({n:j.name, path:g.title+' › '+it.name+' › '+k.name,
-            href: j.url||cafe, ext:true});
+            href: has? page(g.id,ii,ki,ji) : (j.url||cafe), ext: !has});
         });
       });
     });
@@ -85,4 +106,34 @@ function ornamentTile(n, color, quote){
     + '<div class="art">'+svg+'</div>'
     + (quote ? '<div class="oq">“'+esc(quote.t)+'”<span>'+esc(quote.r)+'</span></div>' : '')
     + '</div>';
+}
+
+
+/* ── 아주 작은 마크다운 변환기 ──────────────────────────
+   # 제목 / ## 작은제목 / - 목록 / > 인용 / --- 줄 /
+   **굵게** / *기울임* / [글자](주소) / 빈 줄로 문단 나눔   */
+function mdToHtml(src){
+  const lines=(src||'').replace(/\r/g,'').split('\n');
+  let html='', mode=null;
+  const close=()=>{ if(mode==='ul'){html+='</ul>';} if(mode==='p'){html+='</p>';} mode=null; };
+  const inline=t=>esc(t)
+    .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+    .replace(/(^|[^*])\*([^*]+)\*/g,'$1<i>$2</i>')
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  lines.forEach(raw=>{
+    const t=raw.trim();
+    if(!t){ close(); return; }
+    if(/^---+$/.test(t)){ close(); html+='<hr>'; return; }
+    if(/^#\s+/.test(t)){ close(); html+='<h2>'+inline(t.replace(/^#\s+/,''))+'</h2>'; return; }
+    if(/^##\s+/.test(t)){ close(); html+='<h3>'+inline(t.replace(/^##\s+/,''))+'</h3>'; return; }
+    if(/^>\s?/.test(t)){ close(); html+='<blockquote>'+inline(t.replace(/^>\s?/,''))+'</blockquote>'; return; }
+    if(/^[-*]\s+/.test(t)){
+      if(mode!=='ul'){ close(); html+='<ul>'; mode='ul'; }
+      html+='<li>'+inline(t.replace(/^[-*]\s+/,''))+'</li>'; return;
+    }
+    if(mode!=='p'){ close(); html+='<p>'; mode='p'; } else { html+='<br>'; }
+    html+=inline(t);
+  });
+  close();
+  return html;
 }

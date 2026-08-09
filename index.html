@@ -99,14 +99,15 @@ function render(){
 }
 
 function topLine(it,g,ii){
+  const t = targetOf(it, (DATA.site||{}).cafeUrl||'#', g.id, ii);
   const kids=(it.children||[]).length;
-  const to = kids ? href(g.id,ii) : (it.url || (DATA.site||{}).cafeUrl || '#');
-  const ext = !kids;
-  const tag = kids ? '<span class="tag sub">'+kids+'</span>'
-            : it.member ? '<span class="tag mem">회원</span>'
+  const tag = kids            ? '<span class="tag sub">'+kids+'</span>'
+            : t.kind==='text' ? '<span class="tag doc">글</span>'
+            : it.member       ? '<span class="tag mem">회원</span>'
             : (it.url?'':'<span class="tag todo">주소</span>');
-  return '<li><a href="'+esc(to)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'
-      +'<span class="dot">'+(kids?'▸':'·')+'</span><span class="nm">'+esc(it.name)+'</span>'+tag+'</a></li>';
+  const dot = kids ? '▸' : t.kind==='text' ? '▪' : '·';
+  return '<li><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')+'>'
+      +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+tag+'</a></li>';
 }
 
 /* 검색 */

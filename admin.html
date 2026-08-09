@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>관리자 · 링크 편집</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body{background:#f4f2ec}
+  .top{background:var(--navy);color:#f2efe6;padding:14px 0}
+  .top h1{margin:0;font-size:19px}
+  .top .sub{font-size:12px;color:#b9c6dd;margin-top:3px}
+  .toolbar{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line);
+    padding:9px 0;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+  .toolbar .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  button{font-family:inherit;font-size:13px;border:1px solid var(--line);background:#fff;
+    color:var(--ink);padding:7px 12px;border-radius:7px;cursor:pointer}
+  button:hover{border-color:var(--gold)}
+  button.pri{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:600}
+  button.pri:hover{filter:brightness(1.08)}
+  button.mini{padding:3px 7px;font-size:11.5px;border-radius:5px;color:var(--dim)}
+  .stat{font-size:12px;color:var(--dim);margin-left:auto}
+  .stat b{color:var(--crimson)}
+  .gcard{background:#fff;border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden}
+  .ghd{display:flex;gap:8px;align-items:center;padding:9px 12px;background:var(--paper);
+    border-bottom:1px solid var(--line);flex-wrap:wrap}
+  .ghd .fold{width:26px;height:26px;padding:0;font-size:11px;color:var(--gold);flex:0 0 auto}
+  .ghd input.gt{font-weight:700;font-size:14px;border:none;background:transparent;flex:1;min-width:120px;
+    font-family:inherit;color:var(--navy);padding:4px}
+  .ghd input.gt:focus{outline:1px solid var(--gold);border-radius:4px;background:#fff}
+  .ghd .n{font-size:11.5px;color:var(--dim);flex:0 0 auto}
+  .ghd .n b{color:var(--crimson)}
+  select,input.ic{font-family:inherit;font-size:12px;padding:4px 6px;border:1px solid var(--line);
+    border-radius:6px;background:#fff}
+  input.ic{width:44px;text-align:center}
+  .rows{padding:4px 8px 10px}
+  .r{display:flex;gap:6px;align-items:center;padding:3px 0;flex-wrap:wrap}
+  .r.kid{padding-left:26px}
+  .r.kid2{padding-left:52px}
+  .r input.nm{flex:0 0 30%;min-width:130px}
+  .r input.ur{flex:1;min-width:150px}
+  .r input{font-family:inherit;font-size:12.5px;padding:6px 8px;border:1px solid var(--line);
+    border-radius:6px;background:#fff;color:var(--ink)}
+  .r input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(183,121,31,.12)}
+  .r input.ur.no{background:#fdf3f2;border-color:#e9c9c5}
+  .r label{font-size:11px;color:var(--dim);white-space:nowrap;display:flex;align-items:center;gap:3px}
+  .addrow{padding:2px 8px 10px;display:flex;gap:6px;flex-wrap:wrap}
+  .page{padding:4px 8px 10px;display:flex;gap:8px;align-items:center;font-size:12px;color:var(--dim)}
+  .hint{background:#fff7e6;border:1px solid #e4c77a;border-radius:9px;padding:11px 14px;
+    font-size:12.5px;color:#6b5320;line-height:1.75;margin:14px 0}
+  .hint b{color:var(--gold)}
+  .filterbar{padding:8px 0 0;font-size:12px;color:var(--dim);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .filterbar input[type=search]{border:1px solid var(--line);border-radius:7px;padding:6px 10px;
+    font-family:inherit;font-size:12.5px;min-width:180px}
+  /* 모달 */
+  #modal{position:fixed;inset:0;background:rgba(16,20,34,.55);z-index:60;display:none;
+    align-items:center;justify-content:center;padding:18px}
+  #modal.on{display:flex}
+  .mbox{background:#fff;border-radius:12px;max-width:820px;width:100%;max-height:90vh;
+    display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .mbox h3{margin:0;padding:13px 16px;background:var(--navy);color:#f2efe6;font-size:15px}
+  .mbox .body{padding:12px 16px;overflow:auto}
+  .mbox textarea{width:100%;height:52vh;font-family:ui-monospace,Consolas,"D2Coding",monospace;
+    font-size:12.5px;line-height:1.7;border:1px solid var(--line);border-radius:8px;padding:10px;
+    resize:vertical;color:var(--ink)}
+  .mbox .guide{font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:8px}
+  .mbox .guide code{background:#f3efe6;padding:1px 5px;border-radius:4px;color:#7a5c1f}
+  .mbox .foot{padding:11px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><h1>관리자 · 링크 편집</h1>
+  <div class="sub">고친 뒤 [links.json 저장]을 누르고, 내려받은 파일을 홈페이지 폴더의 links.json 자리에 덮어쓰세요.</div></div></div>
+
+<div class="toolbar"><div class="wrap row">
+  <button class="pri" onclick="save()">💾 links.json 저장</button>
+  <button onclick="addGroup()">+ 그룹 추가</button>
+  <button onclick="foldAll(true)">모두 접기</button>
+  <button onclick="foldAll(false)">모두 펼치기</button>
+  <button onclick="document.getElementById('file').click()">📂 파일 불러오기</button>
+  <input type="file" id="file" accept=".json" hidden onchange="openFile(this)">
+  <button onclick="siteEdit()">⚙ 제목·인용구</button>
+  <button onclick="sheetEdit()">📅 구글시트 일정</button>
+  <span class="stat" id="stat"></span>
+</div></div>
+
+<main class="wrap">
+  <div class="filterbar">
+    <input type="search" id="find" placeholder="이름으로 찾기" oninput="paint()">
+    <label><input type="checkbox" id="onlyEmpty" onchange="paint()"> 주소가 비어 있는 것만</label>
+    <span id="tip"></span>
+  </div>
+  <div id="groups"></div>
+
+  <div class="hint">
+    <b>많은 항목을 한꺼번에 넣으려면</b> 그룹의 <b>[📝 목록 한꺼번에 편집]</b>을 쓰세요.
+    엑셀·메모장에서 만든 목록을 통째로 붙여넣으면 196줄도 한 번에 들어갑니다.<br><br>
+    <b>기본 사용법</b><br>
+    · 주소 = 카페에서 그 게시판을 열었을 때 <b>주소창의 주소를 복사</b>해 붙여넣기<br>
+    · 주소를 비워 두면 첫 화면에 회색 <b>주소</b> 표시가 붙고, 눌렀을 때 카페 대문으로 갑니다<br>
+    · <b>[+하위]</b> = 그 항목 밑에 하위 목록을 답니다. <b>하위의 하위까지</b> 됩니다<br>
+    · <b>[옮기기]</b> = 다른 그룹으로 이동 (하위도 함께 따라감)<br>
+    · <b>▲▼</b> 순서 변경 · <b>✕</b> 삭제 · 다 고쳤으면 위의 <b>저장</b>
+  </div>
+</main>
+
+<div id="modal"><div class="mbox">
+  <h3 id="mTitle">목록 한꺼번에 편집</h3>
+  <div class="body">
+    <div class="guide" id="mGuide">
+      한 줄에 하나씩. <code>이름 | 주소</code> 형태로 적습니다. 주소는 없어도 됩니다.<br>
+      줄 앞에 <b>공백 3칸(또는 탭 1번)</b> = 하위, <b>공백 6칸(탭 2번)</b> = 하위의 하위입니다.<br>
+      맨 뒤에 <code>| 회원</code>을 붙이면 회원 전용 표시가 붙습니다.<br>
+      <br>
+      <code>제1편 우주 아버지 | https://cafe.naver.com/…/1</code><br>
+      <code>제2편 하나님의 본성 | https://cafe.naver.com/…/2</code><br>
+      <code>&nbsp;&nbsp;&nbsp;오디오북 | https://youtu.be/…</code><br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1부 낭독 | https://youtu.be/…</code>
+    </div>
+    <textarea id="mText" spellcheck="false"></textarea>
+  </div>
+  <div class="foot">
+    <button onclick="closeModal()">취소</button>
+    <button class="pri" onclick="applyText()">이 내용으로 바꾸기</button>
+  </div>
+</div></div>
+
+<script>
+const COLORS=['navy','teal','gold','crimson','purple'];
+const GUIDE_LIST="한 줄에 하나씩. <code>이름 | 주소</code> 형태로 적습니다. 주소는 없어도 됩니다.<br>줄 앞에 <b>공백 3칸(또는 탭 1번)</b> = 하위, <b>공백 6칸(탭 2번)</b> = 하위의 하위입니다.<br>맨 뒤에 <code>| 회원</code>을 붙이면 회원 전용 표시가 붙습니다.<br><br><code>제1편 우주 아버지 | https://cafe.naver.com/…/1</code><br><code>&nbsp;&nbsp;&nbsp;오디오북 | https://youtu.be/…</code><br><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1부 낭독 | https://youtu.be/…</code>";
+const PAGE=30;            /* 한 그룹에서 한 번에 보여 줄 줄 수 */
+let D=null, OPEN=null, SHOWN={}, MG=-1, MODE='list', MP=null;
+
+fetch('links.json?v='+Date.now()).then(r=>r.json()).then(d=>{init(d);})
+  .catch(()=>{document.getElementById('groups').innerHTML=
+    '<div class="hint">links.json 을 자동으로 읽지 못했습니다. 위의 <b>📂 파일 불러오기</b>로 links.json 을 열어 주세요.</div>';});
+
+function init(d){
+  D=d; OPEN=new Set(); SHOWN={};
+  D.groups.forEach(g=>{ if((g.items||[]).length<=12) OPEN.add(g.id); });
+  paint();
+}
+function openFile(el){
+  const f=el.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=e=>{ try{ init(JSON.parse(e.target.result)); }catch(err){ alert('JSON 형식이 아닙니다.'); } };
+  r.readAsText(f,'utf-8');
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+
+/* ── 그리기 ─────────────────────────────── */
+function paint(){
+  if(!D) return;
+  const only=document.getElementById('onlyEmpty').checked;
+  const find=(document.getElementById('find').value||'').trim().toLowerCase();
+  const forced = only || !!find;
+  const hit=o=>(!find||o.name.toLowerCase().includes(find))&&(!only||!o.url);
+  let total=0, empty=0, html='';
+
+  D.groups.forEach((g,gi)=>{
+    const items=g.items||[];
+    let gTotal=0, gEmpty=0;
+    const rowsArr=[];
+    items.forEach((it,ii)=>{
+      gTotal++; if(!it.url) gEmpty++;
+      const kidRows=[];
+      (it.children||[]).forEach((k,ki)=>{
+        gTotal++; if(!k.url) gEmpty++;
+        const gkRows=[];
+        (k.children||[]).forEach((j,ji)=>{
+          gTotal++; if(!j.url) gEmpty++;
+          if(hit(j)) gkRows.push({o:j,ii:ii,ki:ki,ji:ji,d:2});
+        });
+        if(hit(k)||gkRows.length){ kidRows.push({o:k,ii:ii,ki:ki,ji:-1,d:1}); gkRows.forEach(x=>kidRows.push(x)); }
+      });
+      if(hit(it)||kidRows.length){ rowsArr.push({o:it,ii:ii,ki:-1,ji:-1,d:0}); kidRows.forEach(x=>rowsArr.push(x)); }
+    });
+    total+=gTotal; empty+=gEmpty;
+
+    const isOpen = forced ? rowsArr.length>0 : OPEN.has(g.id);
+    const shown = SHOWN[g.id]||PAGE;
+    const view = isOpen ? rowsArr.slice(0,shown) : [];
+    let rows=''; view.forEach(x=>{ rows+=row(gi,x.ii,x.ki,x.ji,x.o,x.d); });
+
+    html+='<div class="gcard"><div class="ghd">'
+     + '<button class="fold" onclick="fold(\''+g.id+'\')">'+(isOpen?'▼':'▶')+'</button>'
+     + '<input class="ic" value="'+esc(g.icon||'')+'" onchange="setG('+gi+',\'icon\',this.value)">'
+     + '<input class="gt" value="'+esc(g.title)+'" onchange="setG('+gi+',\'title\',this.value)">'
+     + '<span class="n">'+gTotal+'개'+(gEmpty?' · 주소없음 <b>'+gEmpty+'</b>':'')+'</span>'
+     + '<select onchange="setG('+gi+',\'color\',this.value)">'
+     + COLORS.map(c=>'<option value="'+c+'"'+(g.color===c?' selected':'')+'>'+c+'</option>').join('')
+     + '</select>'
+     + '<label style="font-size:11px;color:#6b6f7d">최대표시 <input class="ic" value="'+(g.preview||40)+'" onchange="setG('+gi+',\'preview\',+this.value||40)"></label>'
+     + '<button class="mini" onclick="textEdit('+gi+')">📝 목록 한꺼번에 편집</button>'
+     + '<button class="mini" onclick="moveG('+gi+',-1)">▲</button>'
+     + '<button class="mini" onclick="moveG('+gi+',1)">▼</button>'
+     + '<button class="mini" onclick="delG('+gi+')">삭제</button>'
+     + '</div>';
+
+    if(isOpen){
+      html+='<div class="rows">'+(rows||'<div style="padding:8px;color:#9b968c;font-size:12px">해당하는 항목이 없습니다.</div>')+'</div>';
+      if(rowsArr.length>view.length)
+        html+='<div class="page"><button class="mini" onclick="more(\''+g.id+'\')">아래로 '+PAGE+'개 더 보기</button>'
+            + '<span>'+view.length+' / '+rowsArr.length+'줄 보는 중</span>'
+            + '<button class="mini" onclick="more(\''+g.id+'\',true)">전부 펼치기</button></div>';
+      html+='<div class="addrow"><button onclick="addItem('+gi+')">+ 게시판 추가</button></div>';
+    }
+    html+='</div>';
+  });
+
+  document.getElementById('groups').innerHTML=html;
+  document.getElementById('stat').innerHTML='전체 '+total+'개 · 주소 비어 있음 <b>'+empty+'</b>개';
+  document.getElementById('tip').textContent = forced ? '(찾는 중에는 모든 그룹이 펼쳐집니다)' : '';
+}
+
+function row(gi,ii,ki,ji,o,d){
+  const p=gi+','+ii+','+ki+','+ji;
+  const pad = d===1 ? ' kid' : d===2 ? ' kid2' : '';
+  return '<div class="r'+pad+'">'
+   + (d?'<span style="color:#c9c3b6">└</span>':'')
+   + '<input class="nm" value="'+esc(o.name)+'" placeholder="이름" onchange="setI('+p+',\'name\',this.value)">'
+   + '<input class="ur'+(o.url?'':' no')+'" value="'+esc(o.url||'')+'" placeholder="주소 붙여넣기 (비우면 카페 대문)" onchange="setI('+p+',\'url\',this.value);paint()">'
+   + '<label><input type="checkbox" '+(o.member?'checked':'')+' onchange="setI('+p+',\'member\',this.checked)">회원</label>'
+   + '<button class="mini'+(((o.text||'').trim())?' on':'')+'" onclick="textOf('+p+')">'
+     + (((o.text||'').trim())?'📄글':'글')+'</button>'
+   + (d<2?'<button class="mini" onclick="addKid('+gi+','+ii+','+ki+')">+하위</button>':'')
+   + (d===0?'<button class="mini" onclick="moveTo('+gi+','+ii+')">옮기기</button>':'')
+   + '<button class="mini" onclick="moveI('+p+',-1)">▲</button>'
+   + '<button class="mini" onclick="moveI('+p+',1)">▼</button>'
+   + '<button class="mini" onclick="delI('+p+')">✕</button></div>';
+}
+
+/* ── 접기·더보기 ────────────────────────── */
+function fold(id){ OPEN.has(id)?OPEN.delete(id):OPEN.add(id); paint(); }
+function foldAll(close){ OPEN=new Set(close?[]:D.groups.map(g=>g.id)); paint(); }
+function more(id,all){ SHOWN[id]=all?99999:(SHOWN[id]||PAGE)+PAGE; paint(); }
+
+/* ── 편집 ───────────────────────────────── */
+function node(gi,ii,ki,ji){const it=D.groups[+gi].items[+ii];
+  if(+ki<0) return it; const k=it.children[+ki];
+  return (+ji>=0)? k.children[+ji] : k;}
+function arrOf(gi,ii,ki,ji){
+  if(+ki<0) return D.groups[+gi].items;
+  if(+ji<0) return D.groups[+gi].items[+ii].children;
+  return D.groups[+gi].items[+ii].children[+ki].children;}
+function setG(gi,k,v){D.groups[gi][k]=v; if(k!=='title'&&k!=='icon') paint();}
+function setI(gi,ii,ki,ji,k,v){const n=node(gi,ii,ki,ji); if(k==='member'&&!v) delete n.member; else n[k]=v;}
+function addItem(gi){D.groups[gi].items.push({name:'새 게시판',url:''});OPEN.add(D.groups[gi].id);paint();}
+function addKid(gi,ii,ki){
+  const t=(+ki<0)? D.groups[gi].items[ii] : D.groups[gi].items[ii].children[+ki];
+  (t.children=t.children||[]).push({name:'새 하위 항목',url:''});paint();}
+function delI(gi,ii,ki,ji){ if(!confirm('삭제할까요? (딸린 하위 항목도 함께 지워집니다)'))return;
+  const arr=arrOf(gi,ii,ki,ji);
+  arr.splice((+ji>=0)?+ji:((+ki>=0)?+ki:+ii),1); paint();}
+function moveI(gi,ii,ki,ji,d){
+  const arr=arrOf(gi,ii,ki,ji);
+  const i=(+ji>=0)?+ji:((+ki>=0)?+ki:+ii), j=i+d; if(j<0||j>=arr.length)return;
+  const t=arr[i]; arr[i]=arr[j]; arr[j]=t; paint();}
+function moveTo(gi,ii){
+  const names=D.groups.map((g,i)=>i+'. '+g.title).join('\n');
+  const t=prompt('어느 그룹으로 옮길까요? 번호를 넣으세요.\n\n'+names,'');
+  if(t===null) return;
+  const j=parseInt(t,10);
+  if(isNaN(j)||j<0||j>=D.groups.length||j===gi){ alert('번호를 다시 확인해 주세요.'); return; }
+  const it=D.groups[gi].items.splice(ii,1)[0];
+  D.groups[j].items.push(it); OPEN.add(D.groups[j].id); paint();
+}
+function addGroup(){const g={id:'g'+Date.now().toString(36),title:'새 그룹',color:'teal',icon:'📁',preview:6,items:[]};
+  D.groups.push(g);OPEN.add(g.id);paint();}
+function delG(gi){if(!confirm('그룹 전체를 삭제할까요?'))return;D.groups.splice(gi,1);paint();}
+function moveG(gi,d){const j=gi+d;if(j<0||j>=D.groups.length)return;
+  const t=D.groups[gi];D.groups[gi]=D.groups[j];D.groups[j]=t;paint();}
+
+/* ── 목록 한꺼번에 편집 ──────────────────── */
+function textEdit(gi){
+  MODE='list'; MG=gi;
+  document.getElementById('mGuide').innerHTML=GUIDE_LIST;
+  const g=D.groups[gi];
+  let t='';
+  const ln=(o,ind)=>ind + o.name + (o.url?' | '+o.url:'') + (o.member?' | 회원':'') + '\n';
+  (g.items||[]).forEach(it=>{
+    t += ln(it,'');
+    (it.children||[]).forEach(k=>{
+      t += ln(k,'   ');
+      (k.children||[]).forEach(j=>{ t += ln(j,'      '); });
+    });
+  });
+  document.getElementById('mTitle').textContent = '📝 ' + g.title + ' — 목록 한꺼번에 편집';
+  document.getElementById('mText').value = t;
+  document.getElementById('modal').classList.add('on');
+}
+function textOf(gi,ii,ki,ji){
+  MODE='text'; MP=[gi,ii,ki,ji];
+  const n=node(gi,ii,ki,ji);
+  document.getElementById('mTitle').textContent='📄 '+n.name+' — 글 쓰기';
+  document.getElementById('mGuide').innerHTML=
+    '여기에 글을 쓰면 <b>주소 대신 이 글이 열립니다</b>. 글을 지우면 다시 주소로 돌아갑니다.<br>'
+   +'<code># 제목</code> · <code>## 작은 제목</code> · <code>- 목록</code> · <code>&gt; 인용</code> · '
+   +'<code>**굵게**</code> · <code>[글자](주소)</code> · 빈 줄로 문단을 나눕니다.';
+  document.getElementById('mText').value=n.text||'';
+  document.getElementById('modal').classList.add('on');
+}
+function closeModal(){ document.getElementById('modal').classList.remove('on'); MG=-1; MODE='list'; MP=null; }
+function applyText(){
+  if(MODE==='text'){
+    const n=node(MP[0],MP[1],MP[2],MP[3]);
+    const v=document.getElementById('mText').value.trim();
+    if(v) n.text=v; else delete n.text;
+    closeModal(); paint(); return;
+  }
+  if(MG<0) return;
+  const lines=document.getElementById('mText').value.split(/\r?\n/);
+  const items=[]; let lastItem=null, lastKid=null;
+  lines.forEach(raw=>{
+    if(!raw.trim()) return;
+    const lead=(raw.match(/^[ \t]*/)||[''])[0].replace(/\t/g,'   ').length;
+    const depth = lead>=5 ? 2 : lead>=1 ? 1 : 0;
+    const parts=raw.trim().split('|').map(s=>s.trim());
+    const o={name:parts[0]||'(이름 없음)', url:parts[1]||''};
+    if(parts.some(s=>s==='회원')) o.member=true;
+    if(depth===2 && lastKid){ (lastKid.children=lastKid.children||[]).push(o); }
+    else if(depth>=1 && lastItem){ (lastItem.children=lastItem.children||[]).push(o); lastKid=o; }
+    else { items.push(o); lastItem=o; lastKid=null; }
+  });
+  if(!items.length && !confirm('내용이 비어 있습니다. 이 그룹의 항목을 모두 없앨까요?')) return;
+  D.groups[MG].items=items;
+  OPEN.add(D.groups[MG].id); SHOWN[D.groups[MG].id]=PAGE;
+  closeModal(); paint();
+}
+
+/* ── 기타 ───────────────────────────────── */
+function siteEdit(){
+  const s=D.site;
+  const t=prompt('사이트 제목',s.title); if(t===null)return; s.title=t;
+  const b=prompt('부제',s.subtitle); if(b!==null)s.subtitle=b;
+  const q=prompt('인용구 (따옴표 없이)',s.quote); if(q!==null)s.quote=q;
+  const r=prompt('인용구 출처',s.quoteRef); if(r!==null)s.quoteRef=r;
+  const m=prompt('한 문장 요약',s.summary); if(m!==null)s.summary=m;
+  alert('바꿨습니다. 저장을 눌러 주세요.');
+}
+function sheetEdit(){
+  D.sheet=D.sheet||{};
+  const u=prompt('구글시트 CSV 주소\n\n시트 → 파일 → 공유 → 웹에 게시 → 쉼표로 구분된 값(.csv)\n주소를 여기 붙여넣으세요. 비우면 사용 안 함.',D.sheet.csvUrl||'');
+  if(u===null)return;
+  D.sheet.csvUrl=u.trim(); D.sheet.enabled=!!u.trim();
+  const t=prompt('일정 제목',D.sheet.title||'일요 스터디 일정'); if(t!==null)D.sheet.title=t;
+  const n=prompt('안내 문구',D.sheet.note||''); if(n!==null)D.sheet.note=n;
+  alert(D.sheet.enabled?'연결했습니다. 저장을 눌러 주세요.':'사용 안 함으로 두었습니다.');
+}
+function save(){
+  const blob=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='links.json'; a.click();
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+</script>
+</body>
+</html>

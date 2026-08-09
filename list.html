@@ -65,21 +65,24 @@ loadData().then(d=>{
       KID=ITEM.children[+K];
       crumbs+=' › <a href="'+href(G.id,+I)+'">'+esc(ITEM.name)+'</a> › <b>'+esc(KID.name)+'</b>';
       title=KID.name; sub=G.title+' › '+ITEM.name;
-      LIST=(KID.children||[]).map(o=>({o:o,to:o.url||CAFE,ext:true}));
+      LIST=(KID.children||[]).map((o,ji)=>{
+        const has=hasPage(o);
+        return {o:o, to: has? page(G.id,+I,+K,ji) : (o.url||CAFE), ext:!has, kind: has?'text':'url'};
+      });
     }else{
       crumbs+=' › <b>'+esc(ITEM.name)+'</b>';
       title=ITEM.name; sub=G.title;
       LIST=(ITEM.children||[]).map((o,ki)=>{
-        const has=(o.children||[]).length;
-        return {o:o, to: has?href(G.id,+I,ki):(o.url||CAFE), ext:!has, kids:has};
+        const t=targetOf(o,CAFE,G.id,+I,ki);
+        return {o:o, to:t.href, ext:t.ext, kids:(o.children||[]).length, kind:t.kind};
       });
     }
   }else{
     crumbs+=' › <b>'+esc(G.title)+'</b>';
     sub=(G.items||[]).length+'개';
     LIST=(G.items||[]).map((o,ii)=>{
-      const has=(o.children||[]).length;
-      return {o:o, to: has?href(G.id,ii):(o.url||CAFE), ext:!has, kids:has};
+      const t=targetOf(o,CAFE,G.id,ii);
+      return {o:o, to:t.href, ext:t.ext, kids:(o.children||[]).length, kind:t.kind};
     });
   }
   document.title=title;
@@ -107,14 +110,15 @@ function paint(f){
       html+=ornamentTile(on, COLOR, qs[on%Math.max(qs.length,1)]); on++;
     }
     const o=x.o;
-    const tag = x.kids ? '<span class="tag sub">'+x.kids+'</span>'
-              : o.member ? '<span class="tag mem">회원</span>'
+    const tag = x.kids          ? '<span class="tag sub">'+x.kids+'</span>'
+              : x.kind==='text' ? '<span class="tag doc">글</span>'
+              : o.member        ? '<span class="tag mem">회원</span>'
               : (o.url?'':'<span class="tag todo">주소</span>');
     html+='<a class="tile'+(x.kids?' has':'')+'" href="'+esc(x.to)+'"'
         + (x.ext?' target="_blank" rel="noopener"':'')+' style="--tc:'+COLOR+'">'
         + '<span class="no">'+String(n+1).padStart(2,'0')+'</span>'
         + '<span class="tn">'+esc(o.name)+'</span>'
-        + tag + (x.kids?'<span class="go">›</span>':'')
+        + tag + ((x.kids||x.kind==='text')?'<span class="go">›</span>':'')
         + '</a>';
   });
   tiles.innerHTML=html;

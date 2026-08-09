@@ -5,7 +5,7 @@
 # ─────────────────────────────────────────────────────────────
 backend:
   name: github
-  repo: trusteen-cpu/urantia-portal
+  repo: 깃허브아이디/저장소이름
   branch: main
 
 # 사진을 올릴 폴더 (지금은 쓰지 않지만 비워 두면 안 됩니다)
@@ -93,7 +93,27 @@ collections:
                 collapsed: true
                 fields:
                   - {name: name,   label: "이름", widget: string}
-                  - {name: url,    label: "주소 (비우면 카페 대문으로 갑니다)", widget: string, required: false}
+                  - {name: url,    label: "주소 (글을 쓰면 비워 두어도 됩니다)", widget: string, required: false}
+                  - {name: text,   label: "글 (여기에 글을 쓰면 주소 대신 이 글이 열립니다)", widget: markdown, required: false}
+
+                  - {name: image,  label: "대표 사진", widget: image, required: false}
+                  - name: gallery
+                    label: "사진첩 (여러 장)"
+                    widget: list
+                    required: false
+                    label_singular: "사진"
+                    fields:
+                      - {name: image,   label: "사진", widget: image}
+                      - {name: caption, label: "설명", widget: string, required: false}
+                  - name: files
+                    label: "첨부 파일"
+                    widget: list
+                    required: false
+                    label_singular: "파일"
+                    summary: "{{fields.name}}"
+                    fields:
+                      - {name: name, label: "보일 이름", widget: string}
+                      - {name: file, label: "파일", widget: file, media_folder: "/files", public_folder: "/files"}
                   - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}
 
                   - name: children
@@ -106,6 +126,17 @@ collections:
                     fields:
                       - {name: name,   label: "이름", widget: string}
                       - {name: url,    label: "주소", widget: string, required: false}
+                      - {name: text,   label: "글", widget: markdown, required: false}
+                      - {name: image,  label: "대표 사진", widget: image, required: false}
+                      - name: files
+                        label: "첨부 파일"
+                        widget: list
+                        required: false
+                        label_singular: "파일"
+                        summary: "{{fields.name}}"
+                        fields:
+                          - {name: name, label: "보일 이름", widget: string}
+                          - {name: file, label: "파일", widget: file, media_folder: "/files", public_folder: "/files"}
                       - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}
 
                       - name: children
@@ -118,4 +149,15 @@ collections:
                         fields:
                           - {name: name,   label: "이름", widget: string}
                           - {name: url,    label: "주소", widget: string, required: false}
+                          - {name: text,   label: "글", widget: markdown, required: false}
+                          - {name: image,  label: "대표 사진", widget: image, required: false}
+                          - name: files
+                            label: "첨부 파일"
+                            widget: list
+                            required: false
+                            label_singular: "파일"
+                            summary: "{{fields.name}}"
+                            fields:
+                              - {name: name, label: "보일 이름", widget: string}
+                              - {name: file, label: "파일", widget: file, media_folder: "/files", public_folder: "/files"}
                           - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}
