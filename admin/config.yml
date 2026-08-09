@@ -1,0 +1,121 @@
+# ─────────────────────────────────────────────────────────────
+#  ★★★ 딱 한 줄만 고치세요 ★★★
+#  아래 repo: 를 본인의 "깃허브아이디/저장소이름" 으로 바꾸면 끝입니다.
+#  예)  repo: trusteen/urantia-portal
+# ─────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: 깃허브아이디/저장소이름
+  branch: main
+
+# 사진을 올릴 폴더 (지금은 쓰지 않지만 비워 두면 안 됩니다)
+media_folder: "images"
+public_folder: "/images"
+
+# 저장하면 곧바로 게시 (검토 단계 없음)
+publish_mode: simple
+
+collections:
+  - name: "site"
+    label: "홈페이지"
+    files:
+      - name: "links"
+        label: "링크 목록"
+        file: "links.json"
+        description: "게시판 이름과 주소를 여기서 고칩니다. 저장하면 몇 십 초 뒤 홈페이지에 반영됩니다."
+        fields:
+
+          # ── 사이트 기본 정보 ──────────────────────────
+          - name: site
+            label: "① 사이트 기본 정보"
+            widget: object
+            collapsed: true
+            fields:
+              - {name: badge,      label: "위쪽 작은 글씨", widget: string, required: false}
+              - {name: title,      label: "사이트 제목",    widget: string}
+              - {name: subtitle,   label: "부제",          widget: string, required: false}
+              - {name: quote,      label: "인용구",         widget: string, required: false}
+              - {name: quoteRef,   label: "인용구 출처",     widget: string, required: false}
+              - {name: cafeUrl,    label: "카페 주소",       widget: string, required: false}
+              - {name: summary,    label: "맨 아래 한 문장 요약", widget: text, required: false}
+              - {name: footerNote, label: "꼬리말",         widget: string, required: false}
+              - {name: email,      label: "문의 이메일",      widget: string, required: false}
+              - name: quotes
+                label: "하위 페이지 그림 판에 넣을 인용구"
+                widget: list
+                required: false
+                label_singular: "인용구"
+                summary: "{{fields.t}}"
+                fields:
+                  - {name: t, label: "문장", widget: string}
+                  - {name: r, label: "출처", widget: string, required: false}
+
+          # ── 구글시트 일정 ────────────────────────────
+          - name: sheet
+            label: "② 구글시트 일정 (선택)"
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - {name: enabled, label: "사용함",   widget: boolean, default: false, required: false}
+              - {name: title,   label: "일정 제목", widget: string,  required: false}
+              - {name: note,    label: "안내 문구", widget: string,  required: false}
+              - {name: csvUrl,  label: "시트 CSV 주소", widget: string, required: false}
+
+          # ── 그룹 → 게시판 → 하위 → 하위의 하위 ─────────
+          - name: groups
+            label: "③ 그룹"
+            label_singular: "그룹"
+            widget: list
+            summary: "{{fields.icon}} {{fields.title}}"
+            collapsed: true
+            fields:
+              - {name: id,      label: "아이디 (영문·숫자, 겹치지 않게)", widget: string}
+              - {name: title,   label: "그룹 이름", widget: string}
+              - {name: icon,    label: "아이콘 (이모지 한 글자)", widget: string, required: false}
+              - name: color
+                label: "색"
+                widget: select
+                default: teal
+                options:
+                  - {label: "남색", value: "navy"}
+                  - {label: "청록", value: "teal"}
+                  - {label: "금색", value: "gold"}
+                  - {label: "진홍", value: "crimson"}
+                  - {label: "보라", value: "purple"}
+              - {name: preview, label: "첫 화면 최대 표시 개수", widget: number, default: 40, required: false, value_type: int}
+
+              - name: items
+                label: "게시판"
+                label_singular: "게시판"
+                widget: list
+                summary: "{{fields.name}}"
+                collapsed: true
+                fields:
+                  - {name: name,   label: "이름", widget: string}
+                  - {name: url,    label: "주소 (비우면 카페 대문으로 갑니다)", widget: string, required: false}
+                  - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}
+
+                  - name: children
+                    label: "하위"
+                    label_singular: "하위 항목"
+                    widget: list
+                    required: false
+                    summary: "{{fields.name}}"
+                    collapsed: true
+                    fields:
+                      - {name: name,   label: "이름", widget: string}
+                      - {name: url,    label: "주소", widget: string, required: false}
+                      - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}
+
+                      - name: children
+                        label: "하위의 하위"
+                        label_singular: "하위의 하위 항목"
+                        widget: list
+                        required: false
+                        summary: "{{fields.name}}"
+                        collapsed: true
+                        fields:
+                          - {name: name,   label: "이름", widget: string}
+                          - {name: url,    label: "주소", widget: string, required: false}
+                          - {name: member, label: "회원 전용", widget: boolean, default: false, required: false}

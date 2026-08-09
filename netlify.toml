@@ -1,0 +1,9 @@
+# 넷리파이 설정 — 빌드 없이 폴더를 그대로 배포합니다
+[build]
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한국 유란시아서 독자 모임</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="stars"></canvas>
+  <div class="glow"></div>
+  <div class="inner">
+    <span class="ribbon" id="hBadge"></span>
+    <h1 id="hTitle"></h1>
+    <div class="sub" id="hSub"></div>
+    <div class="quote" id="hQuote"></div>
+    <div class="qref" id="hQref"></div>
+    <div class="rule"></div>
+  </div>
+</header>
+
+<div class="searchbar">
+  <div class="wrap row">
+    <input id="q" type="search" placeholder="게시판·자료 이름으로 찾기  (예: 명상, 강의, 도표)" autocomplete="off">
+    <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
+  </div>
+  <div class="wrap"><div class="chips" id="chips"></div></div>
+</div>
+
+<main class="wrap">
+  <section id="results"><div class="rescount"></div><div class="resgrid"></div></section>
+  <div id="sheetBox"></div>
+  <section class="grid" id="grid"></section>
+  <div class="summary" id="summary" style="display:none">
+    <div class="em">📖</div>
+    <div><b>한 문장 요약</b><p id="sumText"></p></div>
+  </div>
+</main>
+
+<footer>
+  <div id="fNote"></div>
+  <div id="fMail" style="margin-top:4px"></div>
+</footer>
+<a href="#" class="totop" id="totop" title="맨 위로">▲</a>
+
+<script src="app.js"></script>
+<script>
+(function(){
+  const c=document.getElementById('stars'), x=c.getContext('2d');
+  function draw(){const w=c.width=c.offsetWidth,h=c.height=c.offsetHeight;x.clearRect(0,0,w,h);
+    for(let i=0;i<130;i++){const px=Math.random()*w,py=Math.random()*h*.95,r=Math.random()*1.3+.25,
+      a=(1-py/h)*(Math.random()*.6+.15);x.fillStyle='rgba(255,253,244,'+a.toFixed(2)+')';
+      x.beginPath();x.arc(px,py,r,0,6.284);x.fill();}}
+  draw();window.addEventListener('resize',draw);
+})();
+
+let DATA=null, FLAT=[];
+
+loadData().then(d=>{DATA=d;render();}).catch(()=>{
+  document.getElementById('grid').innerHTML =
+    '<div class="empty">links.json 을 읽지 못했습니다.<br>파일을 더블클릭하지 마시고 넷리파이에 올린 주소로 열어 주세요.</div>';
+});
+
+function render(){
+  const s=DATA.site||{};
+  document.title=s.title||'유란시아';
+  hBadge.textContent=s.badge||''; hTitle.textContent=s.title||'';
+  hSub.textContent=s.subtitle||'';
+  hQuote.textContent=s.quote?('“'+s.quote+'”'):''; hQref.textContent=s.quoteRef||'';
+  cafeLink.href=s.cafeUrl||'#';
+  fNote.textContent=s.footerNote||'';
+  if(s.email) fMail.innerHTML='문의 <a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a>';
+  if(s.summary){summary.style.display='flex'; sumText.textContent=s.summary;}
+
+  /* 그룹 바로가기 칩 — 그룹이 몇 개로 늘어도 첫 화면에서 길을 잃지 않게 */
+  chips.innerHTML=(DATA.groups||[]).map(g=>
+    '<a class="chip" href="#g-'+esc(g.id)+'"><i style="background:'+colorOf(g)+'"></i>'
+    +esc(g.title)+'<b>'+(g.items||[]).length+'</b></a>').join('');
+
+  /* 카드 — 1단(게시판 이름)만 */
+  let html='';
+  (DATA.groups||[]).forEach((g,gi)=>{
+    const col=colorOf(g), items=g.items||[], max=g.preview||40, over=items.length>max;
+    const shown=over?items.slice(0,max):items;
+    html+='<article class="card" id="g-'+esc(g.id)+'"><div class="bar" style="background:'+col+'"></div>'
+        + '<div class="hd"><span class="badge" style="background:'+col+'">'+(gi+1)+'</span>'
+        + '<span class="ico">'+(g.icon||'')+'</span>'
+        + '<h2>'+esc(g.title)+'</h2><span class="cnt">'+items.length+'</span></div><ul class="list">';
+    shown.forEach((it,ii)=>{ html+=topLine(it,g,ii); });
+    html+='</ul>';
+    if(over) html+='<a class="more" href="'+href(g.id)+'">전체 '+items.length+'개 보기 →</a>';
+    html+='</article>';
+  });
+  grid.innerHTML=html;
+
+  FLAT=flatten(DATA);
+}
+
+function topLine(it,g,ii){
+  const kids=(it.children||[]).length;
+  const to = kids ? href(g.id,ii) : (it.url || (DATA.site||{}).cafeUrl || '#');
+  const ext = !kids;
+  const tag = kids ? '<span class="tag sub">'+kids+'</span>'
+            : it.member ? '<span class="tag mem">회원</span>'
+            : (it.url?'':'<span class="tag todo">주소</span>');
+  return '<li><a href="'+esc(to)+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'
+      +'<span class="dot">'+(kids?'▸':'·')+'</span><span class="nm">'+esc(it.name)+'</span>'+tag+'</a></li>';
+}
+
+/* 검색 */
+q.addEventListener('input',()=>{
+  const v=q.value.trim().toLowerCase();
+  if(!v){results.classList.remove('on');grid.style.display='';chips.style.display='';return;}
+  const hit=FLAT.filter(o=>o.n.toLowerCase().includes(v)||o.path.toLowerCase().includes(v));
+  results.classList.add('on'); grid.style.display='none'; chips.style.display='none';
+  results.querySelector('.rescount').textContent='“'+q.value+'” 검색 결과 '+hit.length+'개';
+  results.querySelector('.resgrid').innerHTML = hit.length
+    ? hit.map(o=>'<a class="resitem" href="'+esc(o.href)+'"'+(o.ext?' target="_blank" rel="noopener"':'')+'>'
+        + esc(o.n)+'<small>'+esc(o.path)+'</small></a>').join('')
+    : '<div class="empty">찾는 이름이 없습니다.</div>';
+});
+
+/* 맨 위로 */
+window.addEventListener('scroll',()=>{
+  document.getElementById('totop').classList.toggle('on', window.scrollY>500);
+});
+</script>
+</body>
+</html>

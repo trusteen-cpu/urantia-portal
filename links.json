@@ -1,0 +1,584 @@
+{
+  "site": {
+    "badge": "URANTIA BOOK KOREA",
+    "title": "한국 유란시아서 독자 모임",
+    "subtitle": "유란시아서 연구 · 강의 · 묵상 · 자료실",
+    "quote": "내가 완전한 것 같이 너희도 완전하라",
+    "quoteRef": "유란시아서 1:0.3",
+    "cafeUrl": "https://cafe.naver.com/urantiastudykorea",
+    "footerNote": "이 사이트는 유란시아서 독자들을 위하여 무료로 제공됩니다.",
+    "email": "ahn931016@hanmail.net",
+    "summary": "유란시아서는 하나님이 멀리 계신 힘이 아니라 나를 개인적으로 아시는 아버지이심을 밝히고, 모든 사람이 그분을 알고 사랑하며 그분처럼 완전해지도록 인도합니다.",
+    "quotes": [
+      {
+        "t": "내가 완전한 것 같이 너희도 완전하라",
+        "r": "1:0.3"
+      },
+      {
+        "t": "하나님은 사랑이시다",
+        "r": "2:5.1"
+      },
+      {
+        "t": "하나님은 무시당한다고 해서 물러나지 않으신다",
+        "r": "3:1.12"
+      },
+      {
+        "t": "우주의 표어는 진보이다",
+        "r": "4:0.1"
+      },
+      {
+        "t": "아버지는 우주 통치에서 결코 물러나신 적이 없다",
+        "r": "4:1.5"
+      },
+      {
+        "t": "파라다이스 아들을 본 자는 영원 아들을 본 것이다",
+        "r": "7:5.11"
+      }
+    ]
+  },
+  "sheet": {
+    "enabled": false,
+    "title": "일요 스터디 일정",
+    "note": "매주 일요일 오전 8시",
+    "csvUrl": ""
+  },
+  "groups": [
+    {
+      "id": "ch",
+      "title": "우리 채널",
+      "color": "navy",
+      "icon": "🏠",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아 스터디 코리아 (카페)",
+          "url": "https://cafe.naver.com/urantiastudykorea"
+        },
+        {
+          "name": "유란시아 용산 (카페)",
+          "url": "https://cafe.naver.com/urantiayongsan"
+        },
+        {
+          "name": "더 유란시아 (카페)",
+          "url": "https://cafe.naver.com/theurantia"
+        },
+        {
+          "name": "유튜브 · 믿음의 능력",
+          "url": "https://www.youtube.com/@powerofbelief7977"
+        },
+        {
+          "name": "유튜브 · trusteen",
+          "url": "https://www.youtube.com/@trusteen1"
+        },
+        {
+          "name": "네이버 블로그",
+          "url": "https://blog.naver.com/trusteen"
+        }
+      ]
+    },
+    {
+      "id": "join",
+      "title": "참여 게시판",
+      "color": "teal",
+      "icon": "💬",
+      "preview": 40,
+      "items": [
+        {
+          "name": "가입인사",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "자유게시판",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "오늘의 강론",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "아침 기도 및 명상",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "유란시아서 심층주제연구",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "명상록",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "쇼츠명상록",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "유란시아서 Q & A",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "공지 사항",
+          "url": "",
+          "member": true
+        }
+      ]
+    },
+    {
+      "id": "member",
+      "title": "회원 글 게시판",
+      "color": "purple",
+      "icon": "✍️",
+      "preview": 40,
+      "items": [
+        {
+          "name": "외국 독자 글",
+          "url": "",
+          "member": true
+        },
+        {
+          "name": "독자 게시판",
+          "url": "",
+          "member": true
+        }
+      ]
+    },
+    {
+      "id": "study",
+      "title": "유란시아서 연구",
+      "color": "gold",
+      "icon": "📖",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아서 수정판",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 본문",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 각편 간추린 가이드",
+          "url": ""
+        },
+        {
+          "name": "각편 쉬운말 버전",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 전편 마인드맵",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 인용구",
+          "url": ""
+        },
+        {
+          "name": "주제별 유란시아서 인용",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 소개",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 강의",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 개념, 교훈",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 교의",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 요약",
+          "url": ""
+        },
+        {
+          "name": "예수의 가르침",
+          "url": ""
+        },
+        {
+          "name": "모든 것의 이야기",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 강해",
+          "url": ""
+        },
+        {
+          "name": "예수의 삶과 가르침",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 도표",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 연대기",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 용어 관계",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 번역본들",
+          "url": ""
+        },
+        {
+          "name": "외국독자원본글들",
+          "url": ""
+        },
+        {
+          "name": "영어 자료실",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "topic",
+      "title": "주제별 연구",
+      "color": "crimson",
+      "icon": "🔎",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아서 머리말",
+          "url": ""
+        },
+        {
+          "name": "천문 천답",
+          "url": ""
+        },
+        {
+          "name": "신들의 관계",
+          "url": ""
+        },
+        {
+          "name": "윤회",
+          "url": ""
+        },
+        {
+          "name": "다수 구원론",
+          "url": ""
+        },
+        {
+          "name": "인격",
+          "url": ""
+        },
+        {
+          "name": "하나님의 형상",
+          "url": ""
+        },
+        {
+          "name": "성경 바로 잡기",
+          "url": ""
+        },
+        {
+          "name": "예수의 삶과 가르침",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "bible",
+      "title": "성경과 유란시아서",
+      "color": "teal",
+      "icon": "📜",
+      "preview": 40,
+      "items": [
+        {
+          "name": "성경 보정",
+          "url": ""
+        },
+        {
+          "name": "Bible Study",
+          "url": ""
+        },
+        {
+          "name": "성경 vs 유란시아서",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "title": "멀티미디어 자료실",
+      "color": "purple",
+      "icon": "🎬",
+      "preview": 40,
+      "items": [
+        {
+          "name": "진행 작업 동영상",
+          "url": ""
+        },
+        {
+          "name": "주제별 연구",
+          "url": ""
+        },
+        {
+          "name": "음악, 예술",
+          "url": ""
+        },
+        {
+          "name": "유란시아 관련 동영상",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 요약 동영상",
+          "url": ""
+        },
+        {
+          "name": "4부 예수의 삶과 가르침 낭독",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "class",
+      "title": "유란시아서 강의실",
+      "color": "gold",
+      "icon": "🎓",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아서 핵심 개념 50",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 영어 강의",
+          "url": ""
+        },
+        {
+          "name": "주제별 강의 동영상 (20주)",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 도표 강의 (20주)",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 영어 도표 강의",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 핵심 비디오 강의 52강",
+          "url": ""
+        },
+        {
+          "name": "신규 독자 강의 (10주)",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 통합 강의 (80강)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "school",
+      "title": "유란시아 스쿨 자료",
+      "color": "navy",
+      "icon": "🏫",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아서 핵심 (52주)",
+          "url": ""
+        },
+        {
+          "name": "UUI 교사 훈련 프로그램",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "title": "유란시아서 외국 사이트",
+      "color": "crimson",
+      "icon": "🌍",
+      "preview": 40,
+      "items": [
+        {
+          "name": "전체 사이트 주소",
+          "url": ""
+        },
+        {
+          "name": "유란시아 재단",
+          "url": "https://www.urantia.org/ko"
+        },
+        {
+          "name": "유란시아 펠로우쉽",
+          "url": "https://urantiabook.org"
+        },
+        {
+          "name": "UB Credibility",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "workbook",
+      "title": "분야별 워크북",
+      "color": "teal",
+      "icon": "📓",
+      "preview": 40,
+      "items": [
+        {
+          "name": "foreword & Part 1",
+          "url": ""
+        },
+        {
+          "name": "Theology",
+          "url": ""
+        },
+        {
+          "name": "Bible Study",
+          "url": ""
+        },
+        {
+          "name": "Science",
+          "url": ""
+        },
+        {
+          "name": "Topical Doctrinal",
+          "url": ""
+        },
+        {
+          "name": "Jesus",
+          "url": ""
+        },
+        {
+          "name": "Terminology",
+          "url": ""
+        },
+        {
+          "name": "Worship, Wisdom",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "title": "책쓰기",
+      "color": "gold",
+      "icon": "🖋️",
+      "preview": 40,
+      "items": [
+        {
+          "name": "유란시아서 핵심",
+          "url": ""
+        },
+        {
+          "name": "청소년을 위한 유란시아서",
+          "url": ""
+        },
+        {
+          "name": "모든 것의 이야기",
+          "url": "",
+          "children": [
+            {
+              "name": "유란시아서 500 소주제",
+              "url": ""
+            },
+            {
+              "name": "유란시아서 용어 해설",
+              "url": ""
+            },
+            {
+              "name": "유란시아서 개념적 개관",
+              "url": ""
+            },
+            {
+              "name": "유란시아서의 과학",
+              "url": ""
+            },
+            {
+              "name": "유란시아서 인류학",
+              "url": ""
+            },
+            {
+              "name": "혼의 기원과 발전 그리고 운명",
+              "url": ""
+            },
+            {
+              "name": "성경 업데이트",
+              "url": ""
+            },
+            {
+              "name": "우주의 구성과 행정",
+              "url": ""
+            },
+            {
+              "name": "예수의 종교",
+              "url": ""
+            }
+          ]
+        },
+        {
+          "name": "철학과의 대화",
+          "url": "",
+          "children": [
+            {
+              "name": "켄 윌버의 에덴을 넘어서",
+              "url": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trans",
+      "title": "유란시아서 관련 번역",
+      "color": "purple",
+      "icon": "📚",
+      "preview": 40,
+      "items": [
+        {
+          "name": "번역 서적 구매",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 POD 구매",
+          "url": ""
+        },
+        {
+          "name": "유란시아서 전자책 구매",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "title": "영어 듣기 말하기 쓰기 공부",
+      "color": "navy",
+      "icon": "🎧",
+      "preview": 40,
+      "items": [
+        {
+          "name": "CNN 듣기 연습",
+          "url": ""
+        },
+        {
+          "name": "TED talk 듣기 연습",
+          "url": ""
+        },
+        {
+          "name": "영어 드라마 영어",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}
