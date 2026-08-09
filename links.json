@@ -1,14 +1,10 @@
 {
   "site": {
     "badge": "URANTIA BOOK KOREA",
-    "title": "한국 유란시아서 독자 모임",
-    "subtitle": "유란시아서 연구 · 강의 · 묵상 · 자료실",
-    "quote": "내가 완전한 것 같이 너희도 완전하라",
-    "quoteRef": "유란시아서 1:0.3",
-    "cafeUrl": "https://cafe.naver.com/urantiastudykorea",
-    "footerNote": "이 사이트는 유란시아서 독자들을 위하여 무료로 제공됩니다.",
-    "email": "ahn931016@hanmail.net",
     "summary": "유란시아서는 하나님이 멀리 계신 힘이 아니라 나를 개인적으로 아시는 아버지이심을 밝히고, 모든 사람이 그분을 알고 사랑하며 그분처럼 완전해지도록 인도합니다.",
+    "footerNote": "이 사이트는 유란시아서 독자들을 위하여 무료로 제공됩니다.",
+    "cafeUrl": "https://cafe.naver.com/urantiastudykorea",
+    "quoteRef": "유란시아서 1:0.3",
     "quotes": [
       {
         "t": "내가 완전한 것 같이 너희도 완전하라",
@@ -34,7 +30,11 @@
         "t": "파라다이스 아들을 본 자는 영원 아들을 본 것이다",
         "r": "7:5.11"
       }
-    ]
+    ],
+    "subtitle": "유란시아서 연구 · 강의 · 묵상 · 자료실",
+    "title": "한국 유란시아서 독자 모임",
+    "quote": "내가 완전한 것 같이 너희도 완전하라",
+    "email": "ahn931016@hanmail.net"
   },
   "sheet": {
     "enabled": false,
@@ -300,7 +300,7 @@
       "items": [
         {
           "name": "성경 보정",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/articles/118?boardtype=L&menuid=57&referrerAllArticles=false"
         },
         {
           "name": "Bible Study",
