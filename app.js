@@ -1,4 +1,5 @@
-/* 공통 도우미 — index.html 과 list.html 이 함께 씁니다 */
+/* 공통 도우미 — index.html · list.html · page.html 이 함께 씁니다
+   2026-08-10 판: 주소 청소기(cleanUrl)와 맨주소 자동 링크(autoLink)가 들어 있습니다 */
 
 const COLORS = {navy:'#17365D', teal:'#1F6D73', gold:'#B7791F', crimson:'#9E3D35', purple:'#60497A'};
 
@@ -7,6 +8,25 @@ function colorOf(g){return COLORS[g && g.color] || COLORS.navy;}
 
 function loadData(){
   return fetch('links.json?v='+Date.now()).then(r=>{ if(!r.ok) throw 0; return r.json(); });
+}
+
+/* ── 주소 청소기 ───────────────────────────────────────────
+   주소 칸에 무엇이 딸려 들어와도 링크가 살아나게 합니다.
+     <https://a.com/>   →  https://a.com/
+     "https://a.com"    →  https://a.com
+     앞뒤 공백·줄바꿈·보이지 않는 문자 제거
+     주소 뒤에 이름이 붙어 있으면 주소 부분만 사용
+     http:// 가 빠진  abc.netlify.app  은 https:// 를 붙여 줌          */
+function cleanUrl(u){
+  if(u===undefined || u===null) return '';
+  let s=String(u).replace(/[\u200b-\u200d\ufeff\u00a0]/g,' ').replace(/\s+/g,' ').trim();
+  if(!s) return '';
+  s=s.replace(/^[<(\[{"'\u2039\u00ab\u201c\u2018]+/,'').replace(/[>)\]}"'\u203a\u00bb\u201d\u2019]+$/,'');
+  s=s.split(' ')[0].replace(/[.,;:]+$/,'');
+  if(!s) return '';
+  if(/^(https?:|mailto:|tel:|#|\/)/i.test(s)) return s;
+  if(/^[\w.-]+\.[a-z]{2,}([\/?#]|$)/i.test(s)) return 'https://'+s;
+  return s;
 }
 
 /* 주소 만들기 —  list.html?g=그룹&i=항목&k=하위  */
@@ -28,7 +48,8 @@ function hasPage(o){
 function targetOf(o, cafe, gid, i, k){
   if((o.children||[]).length) return {href: href(gid,i,k), ext:false, kind:'list'};
   if(hasPage(o))              return {href: page(gid,i,k),  ext:false, kind:'text'};
-  return {href: o.url||cafe, ext:true, kind:'url'};
+  const u=cleanUrl(o.url);
+  return {href: u||cafe, ext:true, kind:'url', empty:!u};
 }
 
 function page(gid, i, k, j){
@@ -52,7 +73,7 @@ function flatten(D){
         (k.children||[]).forEach((j,ji)=>{
           const has=hasPage(j);
           out.push({n:j.name, path:g.title+' › '+it.name+' › '+k.name,
-            href: has? page(g.id,ii,ki,ji) : (j.url||cafe), ext: !has});
+            href: has? page(g.id,ii,ki,ji) : (cleanUrl(j.url)||cafe), ext: !has});
         });
       });
     });
@@ -107,11 +128,10 @@ function ornamentTile(n, color, quote){
     + (quote ? '<div class="oq">“'+esc(quote.t)+'”<span>'+esc(quote.r)+'</span></div>' : '')
     + '</div>';
 }
-
-
 /* ── 아주 작은 마크다운 변환기 ──────────────────────────
    # 제목 / ## 작은제목 / - 목록 / > 인용 / --- 줄 /
-   **굵게** / *기울임* / [글자](주소) / 빈 줄로 문단 나눔   */
+   **굵게** / *기울임* / [글자](주소) / 빈 줄로 문단 나눔
+   맨 끝에서 autoLink 를 거치므로 주소를 그냥 붙여넣어도 눌립니다   */
 function mdToHtml(src){
   const lines=(src||'').replace(/\r/g,'').split('\n');
   let html='', mode=null;
@@ -119,7 +139,10 @@ function mdToHtml(src){
   const inline=t=>esc(t)
     .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
     .replace(/(^|[^*])\*([^*]+)\*/g,'$1<i>$2</i>')
-    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,(m,txt,u)=>{
+      const h=cleanUrl(u); if(!h) return m;
+      return '<a href="'+h+'" target="_blank" rel="noopener">'+txt+'</a>';
+    });
   lines.forEach(raw=>{
     const t=raw.trim();
     if(!t){ close(); return; }
@@ -135,5 +158,24 @@ function mdToHtml(src){
     html+=inline(t);
   });
   close();
-  return html;
+  return autoLink(html);
+}
+
+/* ── 맨주소 자동 링크 ───────────────────────────────────
+   글 칸에 http… 나 www… 를 그냥 붙여넣어도 눌리게 만듭니다.
+   [글자](주소) 로 이미 링크가 된 것은 건드리지 않습니다.       */
+function autoLink(html){
+  const keep=[];
+  html = html.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, m=>{
+    keep.push(m); return '\u0000'+(keep.length-1)+'\u0000';
+  });
+  /* 글에  <https://…>  처럼 꺾쇠를 씌워 붙여넣은 경우 꺾쇠를 벗긴다 */
+  html = html.replace(/&lt;((?:https?:\/\/|www\.)[^\s<>"']+?)&gt;/gi, '$1');
+  html = html.replace(/(^|[\s(>])((?:https?:\/\/|www\.)[^\s<>"'()]+)/gi, function(all, pre, u){
+    let tail='';
+    u = u.replace(/[.,;:!?]+$/, m=>{ tail=m; return ''; });
+    const h = /^www\./i.test(u) ? 'https://'+u : u;
+    return pre + '<a href="'+h+'" target="_blank" rel="noopener">'+u+'</a>' + tail;
+  });
+  return html.replace(/\u0000(\d+)\u0000/g, (m,i)=>keep[+i]);
 }
