@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>읽기 쉬운 유란시아서 해설판 — 전체 목록</title>
+<style>
+:root{--navy:#17365D;--gold:#B7791F;--teal:#1F6D73;--ink:#20242e;--dim:#6b6f7d;
+      --line:#e2ddd0;--cream:#faf8f3;--paper:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+     background:var(--cream);color:var(--ink);font-size:13px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:0 14px 30px}
+header{background:linear-gradient(160deg,#0d1730,#17365D 46%,#2b4a78);color:#f4f1e8;
+       padding:20px 14px 18px;text-align:center;margin-bottom:14px}
+header h1{margin:0 0 4px;font-size:24px;font-weight:800}
+header .sub{color:#c9d3e8;font-size:12.5px}
+header .rule{width:170px;height:1px;margin:12px auto 0;
+             background:linear-gradient(90deg,transparent,#e8c479,transparent)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+     padding:9px 0 11px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.bar input{flex:1;min-width:180px;border:1px solid var(--line);border-radius:8px;
+           padding:8px 11px;font-size:13px;font-family:inherit;background:var(--paper)}
+.bar input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(183,121,31,.12)}
+.bar a{font-size:12px;color:var(--dim);border:1px solid var(--line);
+       padding:7px 11px;border-radius:8px;background:var(--paper);text-decoration:none}
+.bar a:hover{color:var(--navy);border-color:var(--gold)}
+.bar .n{font-size:12px;color:var(--dim)}
+ul{list-style:none;margin:0;padding:0;column-width:250px;column-gap:16px}
+li{break-inside:avoid;display:flex;align-items:baseline;gap:5px;
+   padding:2px 0;border-bottom:1px dotted #e8e2d5}
+li a.t{flex:1;min-width:0;color:var(--ink);text-decoration:none;
+       overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+li a.t:hover{color:var(--gold);text-decoration:underline}
+li a.w{flex:0 0 auto;font-size:9px;color:#b9b1a0;border:1px solid #e8e1d2;
+       border-radius:3px;padding:0 3px;text-decoration:none;letter-spacing:.04em}
+li a.w:hover{color:#fff;background:var(--teal);border-color:var(--teal)}
+li.off{display:none}
+footer{margin-top:18px;padding-top:12px;border-top:1px solid var(--line);
+       color:var(--dim);font-size:11.5px;text-align:center}
+@media print{
+  header{background:none;color:#000;padding:0 0 8px}
+  header .sub,.bar,footer,li a.w{display:none}
+  body{background:#fff;font-size:9px}
+  ul{column-width:auto;column-count:4;column-gap:10px}
+  li{border-bottom:none;padding:0}
+  @page{size:A4 portrait;margin:12mm}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>읽기 쉬운 유란시아서 해설판</h1>
+  <div class="sub">머리말과 196편 전체 · 제목을 누르면 해설을 읽을 수 있습니다</div>
+  <div class="rule"></div>
+</header>
+
+<div class="wrap">
+  <div class="bar">
+    <input id="q" type="search" placeholder="편 이름이나 번호로 찾기  (예: 조절자, 152)" autocomplete="off">
+    <span class="n" id="cnt"></span>
+    <a href="index.html">← 첫 화면</a>
+  </div>
+
+  <ul id="list">
+    <li><a class="t" href="files/머리말.pdf" target="_blank" rel="noopener">머리말</a><a class="w" href="files/머리말.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제1편 우주 아버지.pdf" target="_blank" rel="noopener">제1편 우주 아버지</a><a class="w" href="files/제1편 우주 아버지.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제2편 하나님의 본성.pdf" target="_blank" rel="noopener">제2편 하나님의 본성</a><a class="w" href="files/제2편 하나님의 본성.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제3편 하나님의 속성.pdf" target="_blank" rel="noopener">제3편 하나님의 속성</a><a class="w" href="files/제3편 하나님의 속성.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제4편 우주에 대한 하나님의 관계.pdf" target="_blank" rel="noopener">제4편 우주에 대한 하나님의 관계</a><a class="w" href="files/제4편 우주에 대한 하나님의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제5편 하나님의 개인들과의 관계.pdf" target="_blank" rel="noopener">제5편 하나님의 개인들과의 관계</a><a class="w" href="files/제5편 하나님의 개인들과의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제6편 영원 아들.pdf" target="_blank" rel="noopener">제6편 영원 아들</a><a class="w" href="files/제6편 영원 아들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제7편 영원 아들과 우주의 관계.pdf" target="_blank" rel="noopener">제7편 영원 아들과 우주의 관계</a><a class="w" href="files/제7편 영원 아들과 우주의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제8편 무한 영.pdf" target="_blank" rel="noopener">제8편 무한 영</a><a class="w" href="files/제8편 무한 영.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제9편 무한 영과 우주와의 관계.pdf" target="_blank" rel="noopener">제9편 무한 영과 우주와의 관계</a><a class="w" href="files/제9편 무한 영과 우주와의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제10편 파라다이스 삼위 일체.pdf" target="_blank" rel="noopener">제10편 파라다이스 삼위 일체</a><a class="w" href="files/제10편 파라다이스 삼위 일체.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제11편 영원한 섬 파라다이스.pdf" target="_blank" rel="noopener">제11편 영원한 섬 파라다이스</a><a class="w" href="files/제11편 영원한 섬 파라다이스.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제12편 우주들의 우주.pdf" target="_blank" rel="noopener">제12편 우주들의 우주</a><a class="w" href="files/제12편 우주들의 우주.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제13편 파라다이스의 신성한 구체들.pdf" target="_blank" rel="noopener">제13편 파라다이스의 신성한 구체들</a><a class="w" href="files/제13편 파라다이스의 신성한 구체들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제14편 신성한 중앙 우주.pdf" target="_blank" rel="noopener">제14편 신성한 중앙 우주</a><a class="w" href="files/제14편 신성한 중앙 우주.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제15편 일곱 초우주.pdf" target="_blank" rel="noopener">제15편 일곱 초우주</a><a class="w" href="files/제15편 일곱 초우주.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제16편 일곱 주 영.pdf" target="_blank" rel="noopener">제16편 일곱 주 영</a><a class="w" href="files/제16편 일곱 주 영.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제17편 일곱 최상영 집단.pdf" target="_blank" rel="noopener">제17편 일곱 최상영 집단</a><a class="w" href="files/제17편 일곱 최상영 집단.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제18편 최상 삼위일체 인격들.pdf" target="_blank" rel="noopener">제18편 최상 삼위일체 인격들</a><a class="w" href="files/제18편 최상 삼위일체 인격들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제19편 합동 삼위일체 기원 존재.pdf" target="_blank" rel="noopener">제19편 합동 삼위일체 기원 존재</a><a class="w" href="files/제19편 합동 삼위일체 기원 존재.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제20편 하나님의 파라다이스 아들들.pdf" target="_blank" rel="noopener">제20편 하나님의 파라다이스 아들들</a><a class="w" href="files/제20편 하나님의 파라다이스 아들들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제21편 파라다이스 창조자 아들들.pdf" target="_blank" rel="noopener">제21편 파라다이스 창조자 아들들</a><a class="w" href="files/제21편 파라다이스 창조자 아들들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제22편 하나님의 삼위일체화 아들들.pdf" target="_blank" rel="noopener">제22편 하나님의 삼위일체화 아들들</a><a class="w" href="files/제22편 하나님의 삼위일체화 아들들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제23편 단독 사자.pdf" target="_blank" rel="noopener">제23편 단독 사자</a><a class="w" href="files/제23편 단독 사자.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제24편 무한 영의 상급 인격들.pdf" target="_blank" rel="noopener">제24편 무한 영의 상급 인격들</a><a class="w" href="files/제24편 무한 영의 상급 인격들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제25편 우주의 전령 무리들.pdf" target="_blank" rel="noopener">제25편 우주의 전령 무리들</a><a class="w" href="files/제25편 우주의 전령 무리들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제26편 중앙 우주의 봉사하는 영들.pdf" target="_blank" rel="noopener">제26편 중앙 우주의 봉사하는 영들</a><a class="w" href="files/제26편 중앙 우주의 봉사하는 영들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제27편 1차 슈퍼나핌의 사역.pdf" target="_blank" rel="noopener">제27편 1차 슈퍼나핌의 사역</a><a class="w" href="files/제27편 1차 슈퍼나핌의 사역.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제28편 초우주의 사역의 영들.pdf" target="_blank" rel="noopener">제28편 초우주의 사역의 영들</a><a class="w" href="files/제28편 초우주의 사역의 영들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제29편 우주 동력 감독자.pdf" target="_blank" rel="noopener">제29편 우주 동력 감독자</a><a class="w" href="files/제29편 우주 동력 감독자.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제30편 대우주의 인격들.pdf" target="_blank" rel="noopener">제30편 대우주의 인격들</a><a class="w" href="files/제30편 대우주의 인격들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제31편 최종자 군단.pdf" target="_blank" rel="noopener">제31편 최종자 군단</a><a class="w" href="files/제31편 최종자 군단.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제32편 지역 우주의 진화.pdf" target="_blank" rel="noopener">제32편 지역 우주의 진화</a><a class="w" href="files/제32편 지역 우주의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제33편 지역 우주의 관리.pdf" target="_blank" rel="noopener">제33편 지역 우주의 관리</a><a class="w" href="files/제33편 지역 우주의 관리.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제34편 지역 우주 어머니 영.pdf" target="_blank" rel="noopener">제34편 지역 우주 어머니 영</a><a class="w" href="files/제34편 지역 우주 어머니 영.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제35편 지역 우주의 하나님의 아들들.pdf" target="_blank" rel="noopener">제35편 지역 우주의 하나님의 아들들</a><a class="w" href="files/제35편 지역 우주의 하나님의 아들들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제36편 생명 운반자.pdf" target="_blank" rel="noopener">제36편 생명 운반자</a><a class="w" href="files/제36편 생명 운반자.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제37편 지역 우주의 인격들.pdf" target="_blank" rel="noopener">제37편 지역 우주의 인격들</a><a class="w" href="files/제37편 지역 우주의 인격들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제38편 지역 우주 사역의 영들.pdf" target="_blank" rel="noopener">제38편 지역 우주 사역의 영들</a><a class="w" href="files/제38편 지역 우주 사역의 영들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제39편 세라핌 무리들.pdf" target="_blank" rel="noopener">제39편 세라핌 무리들</a><a class="w" href="files/제39편 세라핌 무리들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제40편 상승하는 하나님의 아들들.pdf" target="_blank" rel="noopener">제40편 상승하는 하나님의 아들들</a><a class="w" href="files/제40편 상승하는 하나님의 아들들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제41편 지역 우주의 물리적 측면 (Physical Aspects of the Local Universe.pdf" target="_blank" rel="noopener">제41편 지역 우주의 물리적 측면 (Physical Aspects of the Local Universe</a><a class="w" href="files/제41편 지역 우주의 물리적 측면 (Physical Aspects of the Local Universe.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제42편 에너지---마음 그리고 물질.pdf" target="_blank" rel="noopener">제42편 에너지---마음 그리고 물질</a><a class="w" href="files/제42편 에너지---마음 그리고 물질.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제43편 별자리.pdf" target="_blank" rel="noopener">제43편 별자리</a><a class="w" href="files/제43편 별자리.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제44편 천상 예술가.pdf" target="_blank" rel="noopener">제44편 천상 예술가</a><a class="w" href="files/제44편 천상 예술가.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제45편 지역 우주 행정.pdf" target="_blank" rel="noopener">제45편 지역 우주 행정</a><a class="w" href="files/제45편 지역 우주 행정.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제46편 지역 체계 본부.pdf" target="_blank" rel="noopener">제46편 지역 체계 본부</a><a class="w" href="files/제46편 지역 체계 본부.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제47편 일곱 맨션 세계.pdf" target="_blank" rel="noopener">제47편 일곱 맨션 세계</a><a class="w" href="files/제47편 일곱 맨션 세계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제48편 모론시아 삶.pdf" target="_blank" rel="noopener">제48편 모론시아 삶</a><a class="w" href="files/제48편 모론시아 삶.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제49편 거주 세계들.pdf" target="_blank" rel="noopener">제49편 거주 세계들</a><a class="w" href="files/제49편 거주 세계들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제50편 행성 영주.pdf" target="_blank" rel="noopener">제50편 행성 영주</a><a class="w" href="files/제50편 행성 영주.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제51편 행성 아담.pdf" target="_blank" rel="noopener">제51편 행성 아담</a><a class="w" href="files/제51편 행성 아담.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제52편 행성 유한 생명 시대.pdf" target="_blank" rel="noopener">제52편 행성 유한 생명 시대</a><a class="w" href="files/제52편 행성 유한 생명 시대.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제53편 루시퍼 반란.pdf" target="_blank" rel="noopener">제53편 루시퍼 반란</a><a class="w" href="files/제53편 루시퍼 반란.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제54편 루시퍼 반란의 문제.pdf" target="_blank" rel="noopener">제54편 루시퍼 반란의 문제</a><a class="w" href="files/제54편 루시퍼 반란의 문제.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제55편 빛과 생명의 구체.pdf" target="_blank" rel="noopener">제55편 빛과 생명의 구체</a><a class="w" href="files/제55편 빛과 생명의 구체.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제56편 우주적 통합.pdf" target="_blank" rel="noopener">제56편 우주적 통합</a><a class="w" href="files/제56편 우주적 통합.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제57편 유란시아의 기원.pdf" target="_blank" rel="noopener">제57편 유란시아의 기원</a><a class="w" href="files/제57편 유란시아의 기원.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제58편 유란시아 생명의 시작.pdf" target="_blank" rel="noopener">제58편 유란시아 생명의 시작</a><a class="w" href="files/제58편 유란시아 생명의 시작.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제59편 해양 생명 시대.pdf" target="_blank" rel="noopener">제59편 해양 생명 시대</a><a class="w" href="files/제59편 해양 생명 시대.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제60편 초기 육지 생명 시대의 유란시아.pdf" target="_blank" rel="noopener">제60편 초기 육지 생명 시대의 유란시아</a><a class="w" href="files/제60편 초기 육지 생명 시대의 유란시아.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제61편 유란시아의 포유류 시대.pdf" target="_blank" rel="noopener">제61편 유란시아의 포유류 시대</a><a class="w" href="files/제61편 유란시아의 포유류 시대.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제62편 초기 인류의 여명.pdf" target="_blank" rel="noopener">제62편 초기 인류의 여명</a><a class="w" href="files/제62편 초기 인류의 여명.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제63편 첫 번째 인간 가족.pdf" target="_blank" rel="noopener">제63편 첫 번째 인간 가족</a><a class="w" href="files/제63편 첫 번째 인간 가족.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제64편 유색 인종의 진화.pdf" target="_blank" rel="noopener">제64편 유색 인종의 진화</a><a class="w" href="files/제64편 유색 인종의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제65편 진화의 통제.pdf" target="_blank" rel="noopener">제65편 진화의 통제</a><a class="w" href="files/제65편 진화의 통제.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제66편 유란시아의 행성 영주.pdf" target="_blank" rel="noopener">제66편 유란시아의 행성 영주</a><a class="w" href="files/제66편 유란시아의 행성 영주.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제67편 행성의 반란.pdf" target="_blank" rel="noopener">제67편 행성의 반란</a><a class="w" href="files/제67편 행성의 반란.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제68편 문명의 시작.pdf" target="_blank" rel="noopener">제68편 문명의 시작</a><a class="w" href="files/제68편 문명의 시작.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제69편 원시 인간의 제도들.pdf" target="_blank" rel="noopener">제69편 원시 인간의 제도들</a><a class="w" href="files/제69편 원시 인간의 제도들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제70편 인간 정부의 진화.pdf" target="_blank" rel="noopener">제70편 인간 정부의 진화</a><a class="w" href="files/제70편 인간 정부의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제71편 국가의 발전.pdf" target="_blank" rel="noopener">제71편 국가의 발전</a><a class="w" href="files/제71편 국가의 발전.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제72편 이웃 행성의 정부.pdf" target="_blank" rel="noopener">제72편 이웃 행성의 정부</a><a class="w" href="files/제72편 이웃 행성의 정부.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제73편 에덴 동산.pdf" target="_blank" rel="noopener">제73편 에덴 동산</a><a class="w" href="files/제73편 에덴 동산.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제74편 아담과 이브.pdf" target="_blank" rel="noopener">제74편 아담과 이브</a><a class="w" href="files/제74편 아담과 이브.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제75편 아담과 이브의 실패.pdf" target="_blank" rel="noopener">제75편 아담과 이브의 실패</a><a class="w" href="files/제75편 아담과 이브의 실패.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제76편 둘째 동산.pdf" target="_blank" rel="noopener">제76편 둘째 동산</a><a class="w" href="files/제76편 둘째 동산.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제77편 중도 창조체.pdf" target="_blank" rel="noopener">제77편 중도 창조체</a><a class="w" href="files/제77편 중도 창조체.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제78편 아담 시대 이후의 보라 인종.pdf" target="_blank" rel="noopener">제78편 아담 시대 이후의 보라 인종</a><a class="w" href="files/제78편 아담 시대 이후의 보라 인종.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제79편 동양에서의 안드족의 분산.pdf" target="_blank" rel="noopener">제79편 동양에서의 안드족의 분산</a><a class="w" href="files/제79편 동양에서의 안드족의 분산.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제80편 서양에서의 안드족의 확산.pdf" target="_blank" rel="noopener">제80편 서양에서의 안드족의 확산</a><a class="w" href="files/제80편 서양에서의 안드족의 확산.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제81편 현대 문명의 발전.pdf" target="_blank" rel="noopener">제81편 현대 문명의 발전</a><a class="w" href="files/제81편 현대 문명의 발전.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제82편 결혼의 진화.pdf" target="_blank" rel="noopener">제82편 결혼의 진화</a><a class="w" href="files/제82편 결혼의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제83편 결혼 제도.pdf" target="_blank" rel="noopener">제83편 결혼 제도</a><a class="w" href="files/제83편 결혼 제도.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제84편 결혼과 가족 생활.pdf" target="_blank" rel="noopener">제84편 결혼과 가족 생활</a><a class="w" href="files/제84편 결혼과 가족 생활.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제85편 예배의 기원.pdf" target="_blank" rel="noopener">제85편 예배의 기원</a><a class="w" href="files/제85편 예배의 기원.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제86편 종교의 초기 진화.pdf" target="_blank" rel="noopener">제86편 종교의 초기 진화</a><a class="w" href="files/제86편 종교의 초기 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제87편 귀신 숭배.pdf" target="_blank" rel="noopener">제87편 귀신 숭배</a><a class="w" href="files/제87편 귀신 숭배.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제88편 주물, 주문, 그리고 마법.pdf" target="_blank" rel="noopener">제88편 주물, 주문, 그리고 마법</a><a class="w" href="files/제88편 주물, 주문, 그리고 마법.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제89편 죄, 희생, 그리고 대속.pdf" target="_blank" rel="noopener">제89편 죄, 희생, 그리고 대속</a><a class="w" href="files/제89편 죄, 희생, 그리고 대속.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제90편 샤머니즘---의사이자 사제.pdf" target="_blank" rel="noopener">제90편 샤머니즘---의사이자 사제</a><a class="w" href="files/제90편 샤머니즘---의사이자 사제.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제91편 기도의 진화.pdf" target="_blank" rel="noopener">제91편 기도의 진화</a><a class="w" href="files/제91편 기도의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제92편 종교의 후기 진화.pdf" target="_blank" rel="noopener">제92편 종교의 후기 진화</a><a class="w" href="files/제92편 종교의 후기 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제93편 마키벤타 멜기세덱.pdf" target="_blank" rel="noopener">제93편 마키벤타 멜기세덱</a><a class="w" href="files/제93편 마키벤타 멜기세덱.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제94편 동양에서의 멜키세덱의 가르침.pdf" target="_blank" rel="noopener">제94편 동양에서의 멜키세덱의 가르침</a><a class="w" href="files/제94편 동양에서의 멜키세덱의 가르침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제95편 레반트 지역에서의 멜키세덱의 가르침.pdf" target="_blank" rel="noopener">제95편 레반트 지역에서의 멜키세덱의 가르침</a><a class="w" href="files/제95편 레반트 지역에서의 멜키세덱의 가르침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제96편 야훼 — 히브리인들의 하나님.pdf" target="_blank" rel="noopener">제96편 야훼 — 히브리인들의 하나님</a><a class="w" href="files/제96편 야훼 — 히브리인들의 하나님.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제97편 히브리인 사이에서 하나님 개념의 진화.pdf" target="_blank" rel="noopener">제97편 히브리인 사이에서 하나님 개념의 진화</a><a class="w" href="files/제97편 히브리인 사이에서 하나님 개념의 진화.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제98편 서양에서의 멜키세덱의 가르침.pdf" target="_blank" rel="noopener">제98편 서양에서의 멜키세덱의 가르침</a><a class="w" href="files/제98편 서양에서의 멜키세덱의 가르침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제99편 종교의 사회적 문제.pdf" target="_blank" rel="noopener">제99편 종교의 사회적 문제</a><a class="w" href="files/제99편 종교의 사회적 문제.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제100편 인간 체험에서의 종교.pdf" target="_blank" rel="noopener">제100편 인간 체험에서의 종교</a><a class="w" href="files/제100편 인간 체험에서의 종교.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제101편 종교의 진정한 본성.pdf" target="_blank" rel="noopener">제101편 종교의 진정한 본성</a><a class="w" href="files/제101편 종교의 진정한 본성.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제102편 종교적 믿음의 기초.pdf" target="_blank" rel="noopener">제102편 종교적 믿음의 기초</a><a class="w" href="files/제102편 종교적 믿음의 기초.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제103편 종교적 체험의 실체.pdf" target="_blank" rel="noopener">제103편 종교적 체험의 실체</a><a class="w" href="files/제103편 종교적 체험의 실체.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제104편 삼위일체 개념의 성장.pdf" target="_blank" rel="noopener">제104편 삼위일체 개념의 성장</a><a class="w" href="files/제104편 삼위일체 개념의 성장.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제105편 신과 실체.pdf" target="_blank" rel="noopener">제105편 신과 실체</a><a class="w" href="files/제105편 신과 실체.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제106편 우주의 여러 실체 수준.pdf" target="_blank" rel="noopener">제106편 우주의 여러 실체 수준</a><a class="w" href="files/제106편 우주의 여러 실체 수준.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제107편 생각 조절자의 기원과 본성.pdf" target="_blank" rel="noopener">제107편 생각 조절자의 기원과 본성</a><a class="w" href="files/제107편 생각 조절자의 기원과 본성.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제108편 생각조절자의 임무와 사역.pdf" target="_blank" rel="noopener">제108편 생각조절자의 임무와 사역</a><a class="w" href="files/제108편 생각조절자의 임무와 사역.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제109편 조절자와 우주 창조체들과의 관계.pdf" target="_blank" rel="noopener">제109편 조절자와 우주 창조체들과의 관계</a><a class="w" href="files/제109편 조절자와 우주 창조체들과의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제110편 조절자와 개인 유한 생명과의 관계.pdf" target="_blank" rel="noopener">제110편 조절자와 개인 유한 생명과의 관계</a><a class="w" href="files/제110편 조절자와 개인 유한 생명과의 관계.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제111편 조절자와 혼.pdf" target="_blank" rel="noopener">제111편 조절자와 혼</a><a class="w" href="files/제111편 조절자와 혼.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제112편 인격의 생존.pdf" target="_blank" rel="noopener">제112편 인격의 생존</a><a class="w" href="files/제112편 인격의 생존.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제113편 운명 수호 세라핌.pdf" target="_blank" rel="noopener">제113편 운명 수호 세라핌</a><a class="w" href="files/제113편 운명 수호 세라핌.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제114편 세라핌 행성 정부.pdf" target="_blank" rel="noopener">제114편 세라핌 행성 정부</a><a class="w" href="files/제114편 세라핌 행성 정부.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제115편 최상 존재.pdf" target="_blank" rel="noopener">제115편 최상 존재</a><a class="w" href="files/제115편 최상 존재.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제116편 전능 최상위.pdf" target="_blank" rel="noopener">제116편 전능 최상위</a><a class="w" href="files/제116편 전능 최상위.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제117편 최상 하나님.pdf" target="_blank" rel="noopener">제117편 최상 하나님</a><a class="w" href="files/제117편 최상 하나님.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제118편 최상위와 궁극위-시간과 공간.pdf" target="_blank" rel="noopener">제118편 최상위와 궁극위-시간과 공간</a><a class="w" href="files/제118편 최상위와 궁극위-시간과 공간.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제119편 그리스도 미가엘의 증여.pdf" target="_blank" rel="noopener">제119편 그리스도 미가엘의 증여</a><a class="w" href="files/제119편 그리스도 미가엘의 증여.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제120편 미가엘의 유란시아 증여.pdf" target="_blank" rel="noopener">제120편 미가엘의 유란시아 증여</a><a class="w" href="files/제120편 미가엘의 유란시아 증여.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제121편 미가엘 증여의 시대.pdf" target="_blank" rel="noopener">제121편 미가엘 증여의 시대</a><a class="w" href="files/제121편 미가엘 증여의 시대.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제122편 예수의 탄생과 유아기.pdf" target="_blank" rel="noopener">제122편 예수의 탄생과 유아기</a><a class="w" href="files/제122편 예수의 탄생과 유아기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제123편 예수의 초기 유년 시절.pdf" target="_blank" rel="noopener">제123편 예수의 초기 유년 시절</a><a class="w" href="files/제123편 예수의 초기 유년 시절.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제124편 예수의 유년기 후반.pdf" target="_blank" rel="noopener">제124편 예수의 유년기 후반</a><a class="w" href="files/제124편 예수의 유년기 후반.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제125편 예루살렘에서의 예수.pdf" target="_blank" rel="noopener">제125편 예루살렘에서의 예수</a><a class="w" href="files/제125편 예루살렘에서의 예수.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제126편 2년 간의 힘든 시기.pdf" target="_blank" rel="noopener">제126편 2년 간의 힘든 시기</a><a class="w" href="files/제126편 2년 간의 힘든 시기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제127편 예수의 청년기.pdf" target="_blank" rel="noopener">제127편 예수의 청년기</a><a class="w" href="files/제127편 예수의 청년기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제128편 예수의 성년기 초기.pdf" target="_blank" rel="noopener">제128편 예수의 성년기 초기</a><a class="w" href="files/제128편 예수의 성년기 초기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제129편 예수의 성년기 후기.pdf" target="_blank" rel="noopener">제129편 예수의 성년기 후기</a><a class="w" href="files/제129편 예수의 성년기 후기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제130편 로마로 가는 길.pdf" target="_blank" rel="noopener">제130편 로마로 가는 길</a><a class="w" href="files/제130편 로마로 가는 길.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제131편 세계 종교.pdf" target="_blank" rel="noopener">제131편 세계 종교</a><a class="w" href="files/제131편 세계 종교.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제132편 로마에서의 체류.pdf" target="_blank" rel="noopener">제132편 로마에서의 체류</a><a class="w" href="files/제132편 로마에서의 체류.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제133편 로마에서 돌아 옴.pdf" target="_blank" rel="noopener">제133편 로마에서 돌아 옴</a><a class="w" href="files/제133편 로마에서 돌아 옴.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제134편 과도기.pdf" target="_blank" rel="noopener">제134편 과도기</a><a class="w" href="files/제134편 과도기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제135편 세례자 요한.pdf" target="_blank" rel="noopener">제135편 세례자 요한</a><a class="w" href="files/제135편 세례자 요한.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제136편 세례와 40일.pdf" target="_blank" rel="noopener">제136편 세례와 40일</a><a class="w" href="files/제136편 세례와 40일.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제137편 갈릴리에서의 지연.pdf" target="_blank" rel="noopener">제137편 갈릴리에서의 지연</a><a class="w" href="files/제137편 갈릴리에서의 지연.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제138편 왕국 사자들의 훈련.pdf" target="_blank" rel="noopener">제138편 왕국 사자들의 훈련</a><a class="w" href="files/제138편 왕국 사자들의 훈련.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제139편 12명의 사도들.pdf" target="_blank" rel="noopener">제139편 12명의 사도들</a><a class="w" href="files/제139편 12명의 사도들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제140편 12인의 서임.pdf" target="_blank" rel="noopener">제140편 12인의 서임</a><a class="w" href="files/제140편 12인의 서임.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제141편 공생애의 시작.pdf" target="_blank" rel="noopener">제141편 공생애의 시작</a><a class="w" href="files/제141편 공생애의 시작.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제142편 예루살렘에서의 유월절.pdf" target="_blank" rel="noopener">제142편 예루살렘에서의 유월절</a><a class="w" href="files/제142편 예루살렘에서의 유월절.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제143편 사마리아를 지나서.pdf" target="_blank" rel="noopener">제143편 사마리아를 지나서</a><a class="w" href="files/제143편 사마리아를 지나서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제144편 길보아와 데카폴리스에서.pdf" target="_blank" rel="noopener">제144편 길보아와 데카폴리스에서</a><a class="w" href="files/제144편 길보아와 데카폴리스에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제145편 가버나움에서의 특별한 4일.pdf" target="_blank" rel="noopener">제145편 가버나움에서의 특별한 4일</a><a class="w" href="files/제145편 가버나움에서의 특별한 4일.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제146편 길릴리에서의 첫 번째 설교 여행.pdf" target="_blank" rel="noopener">제146편 길릴리에서의 첫 번째 설교 여행</a><a class="w" href="files/제146편 길릴리에서의 첫 번째 설교 여행.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제147편 막간의 예루살렘 방문.pdf" target="_blank" rel="noopener">제147편 막간의 예루살렘 방문</a><a class="w" href="files/제147편 막간의 예루살렘 방문.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제148편 벳세다에서의 선교사 훈련.pdf" target="_blank" rel="noopener">제148편 벳세다에서의 선교사 훈련</a><a class="w" href="files/제148편 벳세다에서의 선교사 훈련.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제149편 두 번째 설교 여행.pdf" target="_blank" rel="noopener">제149편 두 번째 설교 여행</a><a class="w" href="files/제149편 두 번째 설교 여행.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제150편 세 번째 설교 여행.pdf" target="_blank" rel="noopener">제150편 세 번째 설교 여행</a><a class="w" href="files/제150편 세 번째 설교 여행.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제151편 바닷가에서의 지연과 가르침.pdf" target="_blank" rel="noopener">제151편 바닷가에서의 지연과 가르침</a><a class="w" href="files/제151편 바닷가에서의 지연과 가르침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제152편 가버나움 위기에 이르기까지의 사건들.pdf" target="_blank" rel="noopener">제152편 가버나움 위기에 이르기까지의 사건들</a><a class="w" href="files/제152편 가버나움 위기에 이르기까지의 사건들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제153편 가버나움에서의 위기.pdf" target="_blank" rel="noopener">제153편 가버나움에서의 위기</a><a class="w" href="files/제153편 가버나움에서의 위기.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제154편 가버나움에서 마지막 날들.pdf" target="_blank" rel="noopener">제154편 가버나움에서 마지막 날들</a><a class="w" href="files/제154편 가버나움에서 마지막 날들.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제155편 북 갈릴리를 통한 피신.pdf" target="_blank" rel="noopener">제155편 북 갈릴리를 통한 피신</a><a class="w" href="files/제155편 북 갈릴리를 통한 피신.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제156편 티레와 시돈에서의 체류.pdf" target="_blank" rel="noopener">제156편 티레와 시돈에서의 체류</a><a class="w" href="files/제156편 티레와 시돈에서의 체류.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제157편 케사리아 빌립보에서.pdf" target="_blank" rel="noopener">제157편 케사리아 빌립보에서</a><a class="w" href="files/제157편 케사리아 빌립보에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제158편 변화의 산.pdf" target="_blank" rel="noopener">제158편 변화의 산</a><a class="w" href="files/제158편 변화의 산.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제159편 데카폴리스 여행.pdf" target="_blank" rel="noopener">제159편 데카폴리스 여행</a><a class="w" href="files/제159편 데카폴리스 여행.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제160편 알렉산드리아의 로단(Rodan of Alexandria)과 Paper 161 요약: 로단과의 추가적 토의.pdf" target="_blank" rel="noopener">제160편 알렉산드리아의 로단(Rodan of Alexandria)과 Paper 161 요약: 로단과의 추가적 토의</a><a class="w" href="files/제160편 알렉산드리아의 로단(Rodan of Alexandria)과 Paper 161 요약: 로단과의 추가적 토의.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제161편 로단과의 계속되는 토론.pdf" target="_blank" rel="noopener">제161편 로단과의 계속되는 토론</a><a class="w" href="files/제161편 로단과의 계속되는 토론.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제162편 장막절 축제에서.pdf" target="_blank" rel="noopener">제162편 장막절 축제에서</a><a class="w" href="files/제162편 장막절 축제에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제163편 마가단에서 70인의 서임.pdf" target="_blank" rel="noopener">제163편 마가단에서 70인의 서임</a><a class="w" href="files/제163편 마가단에서 70인의 서임.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제164편 헌신의 축제에서.pdf" target="_blank" rel="noopener">제164편 헌신의 축제에서</a><a class="w" href="files/제164편 헌신의 축제에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제165편 페레아 선교의 시작.pdf" target="_blank" rel="noopener">제165편 페레아 선교의 시작</a><a class="w" href="files/제165편 페레아 선교의 시작.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제166편 마지막 북 페레아 방문.pdf" target="_blank" rel="noopener">제166편 마지막 북 페레아 방문</a><a class="w" href="files/제166편 마지막 북 페레아 방문.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제167편 필라델피아 방문.pdf" target="_blank" rel="noopener">제167편 필라델피아 방문</a><a class="w" href="files/제167편 필라델피아 방문.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제168편 나사로의 부활.pdf" target="_blank" rel="noopener">제168편 나사로의 부활</a><a class="w" href="files/제168편 나사로의 부활.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제169편 펠라에서의 마지막 가르침.pdf" target="_blank" rel="noopener">제169편 펠라에서의 마지막 가르침</a><a class="w" href="files/제169편 펠라에서의 마지막 가르침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제170편 하늘 왕국.pdf" target="_blank" rel="noopener">제170편 하늘 왕국</a><a class="w" href="files/제170편 하늘 왕국.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제171편 예루살렘으로 가는 길.pdf" target="_blank" rel="noopener">제171편 예루살렘으로 가는 길</a><a class="w" href="files/제171편 예루살렘으로 가는 길.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제172편 예루살렘으로 들어 감.pdf" target="_blank" rel="noopener">제172편 예루살렘으로 들어 감</a><a class="w" href="files/제172편 예루살렘으로 들어 감.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제173편 예루살렘의 월요일.pdf" target="_blank" rel="noopener">제173편 예루살렘의 월요일</a><a class="w" href="files/제173편 예루살렘의 월요일.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제174편 성전에서의 화요일 아침.pdf" target="_blank" rel="noopener">제174편 성전에서의 화요일 아침</a><a class="w" href="files/제174편 성전에서의 화요일 아침.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제175편 성전에서의 마지막 강론.pdf" target="_blank" rel="noopener">제175편 성전에서의 마지막 강론</a><a class="w" href="files/제175편 성전에서의 마지막 강론.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제176편 올리브 산에서의 화요일 저녁.pdf" target="_blank" rel="noopener">제176편 올리브 산에서의 화요일 저녁</a><a class="w" href="files/제176편 올리브 산에서의 화요일 저녁.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제177편 수요일, 휴식.pdf" target="_blank" rel="noopener">제177편 수요일, 휴식</a><a class="w" href="files/제177편 수요일, 휴식.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제178편 캠프에서의 마지막 날.pdf" target="_blank" rel="noopener">제178편 캠프에서의 마지막 날</a><a class="w" href="files/제178편 캠프에서의 마지막 날.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제179편 최후의 만찬.pdf" target="_blank" rel="noopener">제179편 최후의 만찬</a><a class="w" href="files/제179편 최후의 만찬.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제180편 고별 강론.pdf" target="_blank" rel="noopener">제180편 고별 강론</a><a class="w" href="files/제180편 고별 강론.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제181편 마지막 권면과 경고.pdf" target="_blank" rel="noopener">제181편 마지막 권면과 경고</a><a class="w" href="files/제181편 마지막 권면과 경고.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제182편 겟세마네에서.pdf" target="_blank" rel="noopener">제182편 겟세마네에서</a><a class="w" href="files/제182편 겟세마네에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제183편 배반과 예수의 체포.pdf" target="_blank" rel="noopener">제183편 배반과 예수의 체포</a><a class="w" href="files/제183편 배반과 예수의 체포.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제184편 산헤드린 법정에서.pdf" target="_blank" rel="noopener">제184편 산헤드린 법정에서</a><a class="w" href="files/제184편 산헤드린 법정에서.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제185편 빌라도 앞에서의 재판.pdf" target="_blank" rel="noopener">제185편 빌라도 앞에서의 재판</a><a class="w" href="files/제185편 빌라도 앞에서의 재판.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제186편 십자가 처형 바로 전.pdf" target="_blank" rel="noopener">제186편 십자가 처형 바로 전</a><a class="w" href="files/제186편 십자가 처형 바로 전.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제187편 십자가.pdf" target="_blank" rel="noopener">제187편 십자가</a><a class="w" href="files/제187편 십자가.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제188편 무덤에서의 시간.pdf" target="_blank" rel="noopener">제188편 무덤에서의 시간</a><a class="w" href="files/제188편 무덤에서의 시간.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제189편 부활.pdf" target="_blank" rel="noopener">제189편 부활</a><a class="w" href="files/제189편 부활.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제190편 예수의 모론시아 출현.pdf" target="_blank" rel="noopener">제190편 예수의 모론시아 출현</a><a class="w" href="files/제190편 예수의 모론시아 출현.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제191편 사도들 그리고 다른 지도자들에게 나타남.pdf" target="_blank" rel="noopener">제191편 사도들 그리고 다른 지도자들에게 나타남</a><a class="w" href="files/제191편 사도들 그리고 다른 지도자들에게 나타남.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제192편 갈릴리에서의 나타남.pdf" target="_blank" rel="noopener">제192편 갈릴리에서의 나타남</a><a class="w" href="files/제192편 갈릴리에서의 나타남.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제193편 최후의 나타남과 승천.pdf" target="_blank" rel="noopener">제193편 최후의 나타남과 승천</a><a class="w" href="files/제193편 최후의 나타남과 승천.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제194편 진리의 영의 증여.pdf" target="_blank" rel="noopener">제194편 진리의 영의 증여</a><a class="w" href="files/제194편 진리의 영의 증여.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제195편 오순절 이후.pdf" target="_blank" rel="noopener">제195편 오순절 이후</a><a class="w" href="files/제195편 오순절 이후.docx" title="워드 파일 내려받기">W</a></li>
+    <li><a class="t" href="files/제196편 예수의 믿음.pdf" target="_blank" rel="noopener">제196편 예수의 믿음</a><a class="w" href="files/제196편 예수의 믿음.docx" title="워드 파일 내려받기">W</a></li>
+  </ul>
+
+  <footer>제목을 누르면 읽기 화면(PDF)이 열립니다. 오른쪽 W를 누르면 워드 파일을 내려받습니다.</footer>
+</div>
+
+<script>
+var LI = document.querySelectorAll('#list li');
+var cnt = document.getElementById('cnt');
+function paint(v){
+  v = (v||'').trim().toLowerCase();
+  var on = 0;
+  for(var i=0;i<LI.length;i++){
+    var t = LI[i].textContent.toLowerCase();
+    var hit = !v || t.indexOf(v) >= 0;
+    LI[i].className = hit ? '' : 'off';
+    if(hit) on++;
+  }
+  cnt.textContent = on + '편';
+}
+document.getElementById('q').addEventListener('input', function(){ paint(this.value); });
+paint('');
+</script>
+</body>
+</html>
