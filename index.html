@@ -26,7 +26,6 @@
     <input id="q" type="search" placeholder="게시판·자료 이름으로 찾기  (예: 명상, 강의, 도표)" autocomplete="off">
     <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
   </div>
-  <div class="wrap"><div class="chips" id="chips"></div></div>
 </div>
 
 <main class="wrap">
@@ -74,11 +73,6 @@ function render(){
   if(s.email) fMail.innerHTML='문의 <a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a>';
   if(s.summary){summary.style.display='flex'; sumText.textContent=s.summary;}
 
-  /* 그룹 바로가기 칩 — 그룹이 몇 개로 늘어도 첫 화면에서 길을 잃지 않게 */
-  chips.innerHTML=(DATA.groups||[]).map(g=>
-    '<a class="chip" href="#g-'+esc(g.id)+'"><i style="background:'+colorOf(g)+'"></i>'
-    +esc(g.title)+'<b>'+(g.items||[]).length+'</b></a>').join('');
-
   /* 카드 — 1단(게시판 이름)만 */
   let html='';
   (DATA.groups||[]).forEach((g,gi)=>{
@@ -104,7 +98,7 @@ function topLine(it,g,ii){
   const tag = kids            ? '<span class="tag sub">'+kids+'</span>'
             : t.kind==='text' ? '<span class="tag doc">글</span>'
             : it.member       ? '<span class="tag mem">회원</span>'
-            : (it.url?'':'<span class="tag todo">주소</span>');
+            : (t.empty?'<span class="tag todo">주소</span>':'');
   const dot = kids ? '▸' : t.kind==='text' ? '▪' : '·';
   return '<li><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')+'>'
       +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+tag+'</a></li>';
@@ -113,9 +107,9 @@ function topLine(it,g,ii){
 /* 검색 */
 q.addEventListener('input',()=>{
   const v=q.value.trim().toLowerCase();
-  if(!v){results.classList.remove('on');grid.style.display='';chips.style.display='';return;}
+  if(!v){results.classList.remove('on');grid.style.display='';return;}
   const hit=FLAT.filter(o=>o.n.toLowerCase().includes(v)||o.path.toLowerCase().includes(v));
-  results.classList.add('on'); grid.style.display='none'; chips.style.display='none';
+  results.classList.add('on'); grid.style.display='none';
   results.querySelector('.rescount').textContent='“'+q.value+'” 검색 결과 '+hit.length+'개';
   results.querySelector('.resgrid').innerHTML = hit.length
     ? hit.map(o=>'<a class="resitem" href="'+esc(o.href)+'"'+(o.ext?' target="_blank" rel="noopener"':'')+'>'
