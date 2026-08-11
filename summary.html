@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 요약본</title>
+<style>
+:root{--navy:#17365D;--gold:#B7791F;--cream:#FAF8F3;--line:#E4DCCB;--ink:#2b2b2b;--dim:#7a7266}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo",system-ui,sans-serif;
+ display:flex;flex-direction:column;overflow:hidden}
+a{text-decoration:none;color:inherit}
+header{background:linear-gradient(120deg,#0f2440,#17365D 60%,#1c4468);color:#fff;padding:11px 16px;
+ display:flex;align-items:center;flex:none}
+header h1{margin:0;font-size:16px;font-weight:700;letter-spacing:.02em}
+header .sub{font-size:11.5px;color:#c9dcef;margin-left:10px}
+header .sp{flex:1}
+header a.out{font-size:12px;color:#ffd98a;border:1px solid rgba(255,217,138,.45);padding:4px 10px;border-radius:14px}
+#burger{display:none;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:6px;
+ font-size:13px;padding:4px 9px;margin-right:10px;cursor:pointer}
+main{flex:1;display:flex;min-height:0}
+nav{width:290px;flex:none;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.srch{padding:9px 10px;border-bottom:1px solid var(--line);flex:none}
+#q{width:100%;padding:7px 11px;border:1px solid var(--line);border-radius:16px;font-size:13px;outline:none}
+#q:focus{border-color:var(--gold)}
+.list{overflow-y:auto;padding:6px 0 24px;flex:1}
+.grp h3{margin:12px 10px 5px;font-size:11.5px;color:var(--c);font-weight:700;
+ border-left:4px solid var(--c);padding-left:7px}
+.it{display:flex;padding:4px 10px 4px 12px;font-size:12.6px;line-height:1.4;align-items:baseline}
+.it b{color:var(--c);min-width:28px;text-align:right;margin-right:8px;font-size:11.5px}
+.it span{color:#3d3d3d}
+.it:hover{background:#f6f1e6}
+.it.on{background:#eef3fa}
+.it.on span{color:var(--navy);font-weight:700}
+.view{flex:1;min-width:0;position:relative;background:#e9e5dd}
+#pdf{width:100%;height:100%;border:0;display:block}
+.hint{position:absolute;left:0;right:0;bottom:0;background:rgba(23,54,93,.92);color:#fff;font-size:11.5px;
+ padding:7px 12px;display:none}
+.hint a{color:#ffd98a;text-decoration:underline}
+@media (max-width:760px){
+ #burger{display:block}
+ nav{position:absolute;z-index:9;top:0;bottom:0;left:0;width:80%;max-width:320px;
+  box-shadow:2px 0 14px rgba(0,0,0,.25);transform:translateX(-102%);transition:transform .2s}
+ nav.open{transform:translateX(0)}
+ header .sub{display:none}
+ .hint{display:block}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <button id="burger">☰ 목차</button>
+ <h1>유란시아서 요약본</h1>
+ <span class="sub">196편 요약 — 왼쪽에서 편을 고르십시오</span>
+ <span class="sp"></span>
+ <a class="out" id="raw" href="summary.pdf" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+</header>
+
+<main>
+ <nav id="nav">
+  <div class="srch"><input id="q" type="search" placeholder="편 번호나 제목으로 찾기" autocomplete="off"></div>
+  <div class="list" id="list">
+<div class="grp" style="--c:#17365D"><h3>제1부  중앙 우주와 초우주</h3><a class="it" data-p="1" data-n="1" href="#p1"><b>1</b><span>우주 아버지</span></a><a class="it" data-p="2" data-n="2" href="#p2"><b>2</b><span>하나님의 본성</span></a><a class="it" data-p="3" data-n="3" href="#p3"><b>3</b><span>하나님의 속성</span></a><a class="it" data-p="4" data-n="4" href="#p4"><b>4</b><span>우주에 대한 하나님의 관계</span></a><a class="it" data-p="5" data-n="5" href="#p5"><b>5</b><span>하나님과 개인의 관계</span></a><a class="it" data-p="7" data-n="6" href="#p6"><b>6</b><span>영원 아들</span></a><a class="it" data-p="8" data-n="7" href="#p7"><b>7</b><span>우주에 대한 영원 아들의 관계</span></a><a class="it" data-p="9" data-n="8" href="#p8"><b>8</b><span>무한 영</span></a><a class="it" data-p="10" data-n="9" href="#p9"><b>9</b><span>우주와 무한 영의 관계</span></a><a class="it" data-p="12" data-n="10" href="#p10"><b>10</b><span>파라다이스 삼위일체</span></a><a class="it" data-p="14" data-n="11" href="#p11"><b>11</b><span>영원한 섬 파라다이스</span></a><a class="it" data-p="16" data-n="12" href="#p12"><b>12</b><span>우주들의 우주</span></a><a class="it" data-p="17" data-n="13" href="#p13"><b>13</b><span>파라다이스의 신성한 구체들</span></a><a class="it" data-p="18" data-n="14" href="#p14"><b>14</b><span>신성한 중앙 우주</span></a><a class="it" data-p="19" data-n="15" href="#p15"><b>15</b><span>일곱 초우주</span></a><a class="it" data-p="21" data-n="16" href="#p16"><b>16</b><span>일곱 주 영</span></a><a class="it" data-p="23" data-n="17" href="#p17"><b>17</b><span>일곱 최상 영 집단</span></a><a class="it" data-p="24" data-n="18" href="#p18"><b>18</b><span>최상 삼위일체 인격</span></a><a class="it" data-p="25" data-n="19" href="#p19"><b>19</b><span>삼위일체 기원을 가진 동급의 존재들</span></a><a class="it" data-p="26" data-n="20" href="#p20"><b>20</b><span>하나님의 파라다이스 아들</span></a><a class="it" data-p="26" data-n="21" href="#p21"><b>21</b><span>파라다이스 창조자 아들</span></a><a class="it" data-p="27" data-n="22" href="#p22"><b>22</b><span>삼위일체화 하나님의 아들</span></a><a class="it" data-p="29" data-n="23" href="#p23"><b>23</b><span>단독 사자</span></a><a class="it" data-p="30" data-n="24" href="#p24"><b>24</b><span>무한 영의 고등 인격</span></a><a class="it" data-p="30" data-n="25" href="#p25"><b>25</b><span>공간의 사자 무리</span></a><a class="it" data-p="32" data-n="26" href="#p26"><b>26</b><span>중앙 우주의 봉사 영들</span></a><a class="it" data-p="34" data-n="27" href="#p27"><b>27</b><span>일차 수퍼나핌의 봉사</span></a><a class="it" data-p="35" data-n="28" href="#p28"><b>28</b><span>초우주의 봉사 영</span></a><a class="it" data-p="36" data-n="29" href="#p29"><b>29</b><span>우주 동력 감독자</span></a><a class="it" data-p="36" data-n="30" href="#p30"><b>30</b><span>대우주의 인격</span></a><a class="it" data-p="37" data-n="31" href="#p31"><b>31</b><span>최종자 군단</span></a></div>
+<div class="grp" style="--c:#1F6D73"><h3>제2부  지역 우주</h3><a class="it" data-p="38" data-n="32" href="#p32"><b>32</b><span>지역 우주의 진화</span></a><a class="it" data-p="39" data-n="33" href="#p33"><b>33</b><span>지역 우주의 행정</span></a><a class="it" data-p="40" data-n="34" href="#p34"><b>34</b><span>지역 우주 어머니 영</span></a><a class="it" data-p="42" data-n="35" href="#p35"><b>35</b><span>하나님의 지역 우주 아들</span></a><a class="it" data-p="43" data-n="36" href="#p36"><b>36</b><span>생명 운반자</span></a><a class="it" data-p="44" data-n="37" href="#p37"><b>37</b><span>지역 우주의 인격</span></a><a class="it" data-p="45" data-n="38" href="#p38"><b>38</b><span>지역 우주의 봉사하는 영</span></a><a class="it" data-p="46" data-n="39" href="#p39"><b>39</b><span>천사무리</span></a><a class="it" data-p="47" data-n="40" href="#p40"><b>40</b><span>상승하는 하나님의 아들</span></a><a class="it" data-p="48" data-n="41" href="#p41"><b>41</b><span>지역 우주의 물리적 모습</span></a><a class="it" data-p="49" data-n="42" href="#p42"><b>42</b><span>에너지-마음과 물질</span></a><a class="it" data-p="50" data-n="43" href="#p43"><b>43</b><span>별자리</span></a><a class="it" data-p="51" data-n="44" href="#p44"><b>44</b><span>천상 장인</span></a><a class="it" data-p="52" data-n="45" href="#p45"><b>45</b><span>지역 체계 행정</span></a><a class="it" data-p="53" data-n="46" href="#p46"><b>46</b><span>지역 체계 본부</span></a><a class="it" data-p="54" data-n="47" href="#p47"><b>47</b><span>일곱 맨션 세계</span></a><a class="it" data-p="55" data-n="48" href="#p48"><b>48</b><span>모론시아 삶</span></a><a class="it" data-p="57" data-n="49" href="#p49"><b>49</b><span>거주 세계들</span></a><a class="it" data-p="58" data-n="50" href="#p50"><b>50</b><span>행성 영주들</span></a><a class="it" data-p="59" data-n="51" href="#p51"><b>51</b><span>행성 아담들</span></a><a class="it" data-p="60" data-n="52" href="#p52"><b>52</b><span>행성 필사자 시대들</span></a><a class="it" data-p="62" data-n="53" href="#p53"><b>53</b><span>루시퍼 반란</span></a><a class="it" data-p="64" data-n="54" href="#p54"><b>54</b><span>루시퍼 반란의 문제점</span></a><a class="it" data-p="66" data-n="55" href="#p55"><b>55</b><span>빛과 생명의 구체</span></a><a class="it" data-p="66" data-n="56" href="#p56"><b>56</b><span>우주의 통일성</span></a></div>
+<div class="grp" style="--c:#B7791F"><h3>제3부  유란시아의 역사</h3><a class="it" data-p="68" data-n="57" href="#p57"><b>57</b><span>유란시아의 기원</span></a><a class="it" data-p="70" data-n="58" href="#p58"><b>58</b><span>유란시아에서 생명의 확립</span></a><a class="it" data-p="70" data-n="59" href="#p59"><b>59</b><span>유란시아의 해양생물 시대</span></a><a class="it" data-p="72" data-n="60" href="#p60"><b>60</b><span>초기 육상 생명 시대의 유란시아</span></a><a class="it" data-p="73" data-n="61" href="#p61"><b>61</b><span>유란시아의 포유류 시대</span></a><a class="it" data-p="74" data-n="62" href="#p62"><b>62</b><span>초기 인간의 원시 종족</span></a><a class="it" data-p="75" data-n="63" href="#p63"><b>63</b><span>최초의 인간 가족</span></a><a class="it" data-p="77" data-n="64" href="#p64"><b>64</b><span>유색인종의 진화</span></a><a class="it" data-p="79" data-n="65" href="#p65"><b>65</b><span>진화의 전반적 통제</span></a><a class="it" data-p="81" data-n="66" href="#p66"><b>66</b><span>유란시아의 행성 영주</span></a><a class="it" data-p="83" data-n="67" href="#p67"><b>67</b><span>행성의 반란</span></a><a class="it" data-p="84" data-n="68" href="#p68"><b>68</b><span>문명의 시작</span></a><a class="it" data-p="85" data-n="69" href="#p69"><b>69</b><span>원시 인간의 제도들</span></a><a class="it" data-p="86" data-n="70" href="#p70"><b>70</b><span>인간 정부의 진화</span></a><a class="it" data-p="88" data-n="71" href="#p71"><b>71</b><span>국가의 발전</span></a><a class="it" data-p="89" data-n="72" href="#p72"><b>72</b><span>이웃 행성의 정부</span></a><a class="it" data-p="91" data-n="73" href="#p73"><b>73</b><span>에덴 동산</span></a><a class="it" data-p="92" data-n="74" href="#p74"><b>74</b><span>아담과 이브</span></a><a class="it" data-p="93" data-n="75" href="#p75"><b>75</b><span>아담과 이브의 실패</span></a><a class="it" data-p="95" data-n="76" href="#p76"><b>76</b><span>둘째 동산</span></a><a class="it" data-p="96" data-n="77" href="#p77"><b>77</b><span>중도 창조체</span></a><a class="it" data-p="98" data-n="78" href="#p78"><b>78</b><span>아담 이후 보라색 인종</span></a><a class="it" data-p="99" data-n="79" href="#p79"><b>79</b><span>안드족의 동방 확장</span></a><a class="it" data-p="101" data-n="80" href="#p80"><b>80</b><span>서방에서의 안드족 확장</span></a><a class="it" data-p="103" data-n="81" href="#p81"><b>81</b><span>현대 문명의 발전</span></a><a class="it" data-p="104" data-n="82" href="#p82"><b>82</b><span>결혼의 진화</span></a><a class="it" data-p="106" data-n="83" href="#p83"><b>83</b><span>결혼 제도</span></a><a class="it" data-p="107" data-n="84" href="#p84"><b>84</b><span>결혼과 가정 생활</span></a><a class="it" data-p="108" data-n="85" href="#p85"><b>85</b><span>예배의 기원</span></a><a class="it" data-p="108" data-n="86" href="#p86"><b>86</b><span>종교의 초기 진화</span></a><a class="it" data-p="109" data-n="87" href="#p87"><b>87</b><span>귀신 숭배</span></a><a class="it" data-p="110" data-n="88" href="#p88"><b>88</b><span>주물, 부적, 마법</span></a><a class="it" data-p="111" data-n="89" href="#p89"><b>89</b><span>죄, 희생, 속죄</span></a><a class="it" data-p="112" data-n="90" href="#p90"><b>90</b><span>샤먼주의 — 의술사와 사제</span></a><a class="it" data-p="113" data-n="91" href="#p91"><b>91</b><span>기도의 진화</span></a><a class="it" data-p="114" data-n="92" href="#p92"><b>92</b><span>종교의 후대 진화</span></a><a class="it" data-p="115" data-n="93" href="#p93"><b>93</b><span>마키벤타 멜기세덱</span></a><a class="it" data-p="117" data-n="94" href="#p94"><b>94</b><span>동양에서의 멜기세덱 가르침</span></a><a class="it" data-p="118" data-n="95" href="#p95"><b>95</b><span>레반트에서의 멜기세덱 가르침</span></a><a class="it" data-p="119" data-n="96" href="#p96"><b>96</b><span>야훼</span></a><a class="it" data-p="120" data-n="97" href="#p97"><b>97</b><span>히브리인 하나님 개념의 진화</span></a><a class="it" data-p="122" data-n="98" href="#p98"><b>98</b><span>서양에서의 멜기세덱 가르침</span></a><a class="it" data-p="123" data-n="99" href="#p99"><b>99</b><span>종교의 사회적 문제들</span></a><a class="it" data-p="124" data-n="100" href="#p100"><b>100</b><span>인간 체험 안에서의 종교</span></a><a class="it" data-p="125" data-n="101" href="#p101"><b>101</b><span>종교의 참된 본질</span></a><a class="it" data-p="126" data-n="102" href="#p102"><b>102</b><span>종교적 신앙의 기초</span></a><a class="it" data-p="127" data-n="103" href="#p103"><b>103</b><span>종교적 체험의 실체</span></a><a class="it" data-p="128" data-n="104" href="#p104"><b>104</b><span>삼위일체 개념의 성장</span></a><a class="it" data-p="130" data-n="105" href="#p105"><b>105</b><span>신과 실체</span></a><a class="it" data-p="132" data-n="106" href="#p106"><b>106</b><span>실체의 우주 수준</span></a><a class="it" data-p="133" data-n="107" href="#p107"><b>107</b><span>생각 조절자의 기원과 본성</span></a><a class="it" data-p="134" data-n="108" href="#p108"><b>108</b><span>생각 조절자의 사명과 사역</span></a><a class="it" data-p="135" data-n="109" href="#p109"><b>109</b><span>생각 조절자와 우주 창조체의 관계</span></a><a class="it" data-p="136" data-n="110" href="#p110"><b>110</b><span>생각조절자와 개별 필사자의 관계</span></a><a class="it" data-p="138" data-n="111" href="#p111"><b>111</b><span>조절자와 혼</span></a><a class="it" data-p="139" data-n="112" href="#p112"><b>112</b><span>인격의 생존</span></a><a class="it" data-p="141" data-n="113" href="#p113"><b>113</b><span>운명의 세라핌 수호자</span></a><a class="it" data-p="142" data-n="114" href="#p114"><b>114</b><span>세라핌의 행성 정부</span></a><a class="it" data-p="143" data-n="115" href="#p115"><b>115</b><span>최상 존재</span></a><a class="it" data-p="145" data-n="116" href="#p116"><b>116</b><span>전능 최상위</span></a><a class="it" data-p="147" data-n="117" href="#p117"><b>117</b><span>최상 하나님</span></a><a class="it" data-p="148" data-n="118" href="#p118"><b>118</b><span>최상과 궁극</span></a><a class="it" data-p="150" data-n="119" href="#p119"><b>119</b><span>그리스도 미가엘의 증여</span></a></div>
+<div class="grp" style="--c:#9E3D35"><h3>제4부  예수의 생애와 가르침</h3><a class="it" data-p="151" data-n="120" href="#p120"><b>120</b><span>미가엘의 유란시아 증여</span></a><a class="it" data-p="152" data-n="121" href="#p121"><b>121</b><span>미가엘 증여의 시기</span></a><a class="it" data-p="154" data-n="122" href="#p122"><b>122</b><span>예수의 탄생과 유년기</span></a><a class="it" data-p="155" data-n="123" href="#p123"><b>123</b><span>예수의 어린 시절</span></a><a class="it" data-p="156" data-n="124" href="#p124"><b>124</b><span>예수의 후기 어린 시절</span></a><a class="it" data-p="158" data-n="125" href="#p125"><b>125</b><span>예루살렘에 온 예수</span></a><a class="it" data-p="160" data-n="126" href="#p126"><b>126</b><span>2년의 힘든 시기</span></a><a class="it" data-p="161" data-n="127" href="#p127"><b>127</b><span>청년기</span></a><a class="it" data-p="162" data-n="128" href="#p128"><b>128</b><span>예수의 성년 초기 시절</span></a><a class="it" data-p="163" data-n="129" href="#p129"><b>129</b><span>예수의 후기 성인 생활</span></a><a class="it" data-p="164" data-n="130" href="#p130"><b>130</b><span>로마로 가는 길에</span></a><a class="it" data-p="164" data-n="131" href="#p131"><b>131</b><span>세계의 종교</span></a><a class="it" data-p="166" data-n="132" href="#p132"><b>132</b><span>로마에서의 체류</span></a><a class="it" data-p="167" data-n="133" href="#p133"><b>133</b><span>로마에서의 귀환</span></a><a class="it" data-p="169" data-n="134" href="#p134"><b>134</b><span>과도기 시대</span></a><a class="it" data-p="170" data-n="135" href="#p135"><b>135</b><span>세례자 요한</span></a><a class="it" data-p="171" data-n="136" href="#p136"><b>136</b><span>세례와 40일</span></a><a class="it" data-p="172" data-n="137" href="#p137"><b>137</b><span>갈릴리에서 머문 시간</span></a><a class="it" data-p="174" data-n="138" href="#p138"><b>138</b><span>하늘 왕국의 메신저들을 훈련함</span></a><a class="it" data-p="176" data-n="139" href="#p139"><b>139</b><span>열두 사도</span></a><a class="it" data-p="178" data-n="140" href="#p140"><b>140</b><span>열두 사도의 임명</span></a><a class="it" data-p="179" data-n="141" href="#p141"><b>141</b><span>공적 활동의 시작</span></a><a class="it" data-p="180" data-n="142" href="#p142"><b>142</b><span>예루살렘에서의 유월절</span></a><a class="it" data-p="182" data-n="143" href="#p143"><b>143</b><span>사마리아를 지나며</span></a><a class="it" data-p="183" data-n="144" href="#p144"><b>144</b><span>길보아와 데카폴리스에서</span></a><a class="it" data-p="185" data-n="145" href="#p145"><b>145</b><span>사건이 많았던 가버나움에서의 4일</span></a><a class="it" data-p="186" data-n="146" href="#p146"><b>146</b><span>갈릴리에서의 첫 전도 여행</span></a><a class="it" data-p="187" data-n="147" href="#p147"><b>147</b><span>예루살렘으로의 막간 방문</span></a><a class="it" data-p="189" data-n="148" href="#p148"><b>148</b><span>벳세다에서의 전도사 훈련</span></a><a class="it" data-p="190" data-n="149" href="#p149"><b>149</b><span>두 번째 전도 여행</span></a><a class="it" data-p="191" data-n="150" href="#p150"><b>150</b><span>세 번째 전도 여행</span></a><a class="it" data-p="192" data-n="151" href="#p151"><b>151</b><span>바닷가에서의 머무름과 가르침</span></a><a class="it" data-p="194" data-n="152" href="#p152"><b>152</b><span>가버나움 위기로 이어지는 사건들</span></a><a class="it" data-p="196" data-n="153" href="#p153"><b>153</b><span>가버나움에서의 위기</span></a><a class="it" data-p="197" data-n="154" href="#p154"><b>154</b><span>가버나움에서의 마지막 날들</span></a><a class="it" data-p="198" data-n="155" href="#p155"><b>155</b><span>북부 갈릴리를 통해 피신</span></a><a class="it" data-p="200" data-n="156" href="#p156"><b>156</b><span>두로와 시돈에서의 체류</span></a><a class="it" data-p="201" data-n="157" href="#p157"><b>157</b><span>가이사랴 빌립보에서</span></a><a class="it" data-p="202" data-n="158" href="#p158"><b>158</b><span>변화산에서의 체험</span></a><a class="it" data-p="204" data-n="159" href="#p159"><b>159</b><span>데카폴리스 여행</span></a><a class="it" data-p="205" data-n="160" href="#p160"><b>160</b><span>알렉산드리아의 로단</span></a><a class="it" data-p="205" data-n="161" href="#p161"><b>161</b><span>로단과의 추가 토론</span></a><a class="it" data-p="207" data-n="162" href="#p162"><b>162</b><span>초막절에서</span></a><a class="it" data-p="209" data-n="163" href="#p163"><b>163</b><span>마가단에서 칠십인의 서임</span></a><a class="it" data-p="211" data-n="164" href="#p164"><b>164</b><span>봉헌절 축제에서</span></a><a class="it" data-p="213" data-n="165" href="#p165"><b>165</b><span>페레아 선교 시작</span></a><a class="it" data-p="214" data-n="166" href="#p166"><b>166</b><span>북페레아로의 마지막 방문</span></a><a class="it" data-p="216" data-n="167" href="#p167"><b>167</b><span>필라델피아 방문</span></a><a class="it" data-p="218" data-n="168" href="#p168"><b>168</b><span>나사로의 부활</span></a><a class="it" data-p="219" data-n="169" href="#p169"><b>169</b><span>펠라에서의 마지막 가르침</span></a><a class="it" data-p="220" data-n="170" href="#p170"><b>170</b><span>하늘 왕국</span></a><a class="it" data-p="222" data-n="171" href="#p171"><b>171</b><span>예루살렘으로 가는 길</span></a><a class="it" data-p="224" data-n="172" href="#p172"><b>172</b><span>예루살렘에 들어가면서</span></a><a class="it" data-p="226" data-n="173" href="#p173"><b>173</b><span>예루살렘에서의 월요일</span></a><a class="it" data-p="228" data-n="174" href="#p174"><b>174</b><span>성전에서의 화요일 아침</span></a><a class="it" data-p="229" data-n="175" href="#p175"><b>175</b><span>마지막 성전 강론</span></a><a class="it" data-p="230" data-n="176" href="#p176"><b>176</b><span>올리브 산에서의 화요일 저녁</span></a><a class="it" data-p="232" data-n="177" href="#p177"><b>177</b><span>수요일, 휴식의 날</span></a><a class="it" data-p="233" data-n="178" href="#p178"><b>178</b><span>야영지에서의 마지막 날</span></a><a class="it" data-p="235" data-n="179" href="#p179"><b>179</b><span>마지막 만찬</span></a><a class="it" data-p="237" data-n="180" href="#p180"><b>180</b><span>고별 강론</span></a><a class="it" data-p="239" data-n="181" href="#p181"><b>181</b><span>최종 권고와 경고</span></a><a class="it" data-p="241" data-n="182" href="#p182"><b>182</b><span>겟세마네에서</span></a><a class="it" data-p="244" data-n="183" href="#p183"><b>183</b><span>예수의 배반과 체포</span></a><a class="it" data-p="246" data-n="184" href="#p184"><b>184</b><span>산헤드린 법정 앞에서</span></a><a class="it" data-p="248" data-n="185" href="#p185"><b>185</b><span>빌라도 앞에서의 재판</span></a><a class="it" data-p="249" data-n="186" href="#p186"><b>186</b><span>십자가에 못 박히기 직전</span></a><a class="it" data-p="250" data-n="187" href="#p187"><b>187</b><span>십자가형</span></a><a class="it" data-p="251" data-n="188" href="#p188"><b>188</b><span>무덤에 있던 시간</span></a><a class="it" data-p="252" data-n="189" href="#p189"><b>189</b><span>부활</span></a><a class="it" data-p="254" data-n="190" href="#p190"><b>190</b><span>예수의 모론시아 출현</span></a><a class="it" data-p="255" data-n="191" href="#p191"><b>191</b><span>사도와 다른 지도자들에게 나타남</span></a><a class="it" data-p="257" data-n="192" href="#p192"><b>192</b><span>갈릴리에서의 출현</span></a><a class="it" data-p="258" data-n="193" href="#p193"><b>193</b><span>마지막 출현과 승천</span></a><a class="it" data-p="259" data-n="194" href="#p194"><b>194</b><span>진리의 영 증여</span></a><a class="it" data-p="260" data-n="195" href="#p195"><b>195</b><span>오순절 이후</span></a><a class="it" data-p="261" data-n="196" href="#p196"><b>196</b><span>예수의 신앙</span></a></div>
+  </div>
+ </nav>
+ <div class="view">
+  <iframe id="pdf" src="summary.pdf#page=1" title="유란시아서 요약본"></iframe>
+  <div class="hint">휴대폰에서는 이 칸이 비어 보일 수 있습니다. 그때는 <a href="summary.pdf" target="_blank">새 창에서 열기</a>를 누르십시오.</div>
+ </div>
+</main>
+
+<script>
+var PDF='summary.pdf';
+var items=[].slice.call(document.querySelectorAll('.it')),
+    grps=[].slice.call(document.querySelectorAll('.grp')),
+    frame=document.getElementById('pdf'),
+    q=document.getElementById('q'),
+    nav=document.getElementById('nav');
+
+function go(el){
+ items.forEach(function(i){i.classList.remove('on');});
+ el.classList.add('on');
+ frame.src=PDF+'#page='+el.getAttribute('data-p');
+ if(window.innerWidth<=760) nav.classList.remove('open');
+}
+
+items.forEach(function(el){
+ el.addEventListener('click',function(e){e.preventDefault();go(el);
+  history.replaceState(null,'','#'+el.getAttribute('data-n'));});
+});
+
+q.addEventListener('input',function(){
+ var v=q.value.trim().toLowerCase();
+ items.forEach(function(i){
+  i.style.display=(!v||i.textContent.toLowerCase().indexOf(v)>-1)?'':'none';
+ });
+ grps.forEach(function(g){
+  var any=[].slice.call(g.querySelectorAll('.it')).some(function(i){return i.style.display!=='none';});
+  g.style.display=any?'':'none';
+ });
+});
+
+document.getElementById('burger').addEventListener('click',function(){nav.classList.toggle('open');});
+
+var h=(location.hash||'').replace('#','');
+if(h){
+ var t=items.filter(function(i){return i.getAttribute('data-n')===h;})[0];
+ if(t){go(t);t.scrollIntoView({block:'center'});}
+}
+</script>
+</body>
+</html>
