@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>유란시아서 핵심 리더 — 한국 유란시아서 포털</title>
+<style>
+  :root{
+    --navy:#132a4d; --navy2:#0d1e39; --gold:#c9962c; --teal:#1f7a72;
+    --crimson:#9d2235; --ink:#22252b; --line:#dcd6c8; --paper:#f7f4ec;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+    display:flex; flex-direction:column;
+  }
+
+  /* ── 머리 띠 ── */
+  header{
+    background:linear-gradient(135deg,var(--navy2),var(--navy));
+    box-shadow:inset 0 -4px 0 var(--gold);
+    color:#fff; flex:0 0 auto;
+  }
+  .bar{
+    max-width:1400px; margin:0 auto; padding:12px 18px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .crumb{font-size:12.5px; color:#b9c6dd; letter-spacing:.02em; width:100%}
+  .crumb a{color:#b9c6dd; text-decoration:none}
+  .crumb a:hover{color:#fff; text-decoration:underline}
+  h1{
+    margin:0; font-size:19px; font-weight:700; letter-spacing:-.01em;
+    display:flex; align-items:center; gap:9px;
+  }
+  h1 .ico{font-size:21px}
+  .sub{font-size:12.5px; color:#a9b8d2; margin-left:2px}
+  .grow{flex:1}
+  .btn{
+    display:inline-block; padding:7px 14px; border-radius:999px;
+    background:var(--gold); color:#20180a; font-size:13px; font-weight:700;
+    text-decoration:none; border:none; cursor:pointer; white-space:nowrap;
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent; color:#dfe7f4; border:1px solid #4a628a; font-weight:600}
+  .btn.ghost:hover{background:#ffffff14; color:#fff}
+  .btn:focus-visible,a:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+
+  /* ── 안내 띠 ── */
+  .note{
+    flex:0 0 auto; background:#fdf6e3; border-bottom:1px solid var(--line);
+    color:#5b4a1e; font-size:12.5px; padding:7px 18px; text-align:center;
+  }
+  .note a{color:#8a6a12; font-weight:700}
+
+  /* ── 리더 화면 ── */
+  .stage{flex:1 1 auto; position:relative; min-height:320px; background:#fff}
+  iframe{width:100%; height:100%; border:0; display:block; background:#fff}
+
+  .fallback{
+    position:absolute; inset:0; display:none; place-content:center; text-align:center;
+    background:var(--paper); padding:28px;
+  }
+  .fallback.on{display:grid}
+  .fallback h2{margin:0 0 10px; font-size:17px; color:var(--navy)}
+  .fallback p{margin:0 0 16px; font-size:14px; line-height:1.8; color:#4a4f58}
+
+  @media (max-width:640px){
+    h1{font-size:17px}
+    .sub{display:none}
+    .bar{padding:10px 14px; gap:10px}
+    .stage{min-height:70dvh}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="crumb"><a href="/">홈</a> <span>›</span> 유란시아서 핵심 리더</div>
+    <h1><span class="ico">📖</span>유란시아서 핵심 리더</h1>
+    <span class="sub">Core Truth · 52개 핵심 주제</span>
+    <span class="grow"></span>
+    <a class="btn" id="open" href="https://teal-cannoli-c4a3be.netlify.app/" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+    <a class="btn ghost" href="/">포털 첫 화면</a>
+  </div>
+</header>
+
+<div class="note">
+  화면이 비어 보이거나 글씨가 작으면 <a href="https://teal-cannoli-c4a3be.netlify.app/" target="_blank" rel="noopener">새 창에서 열기</a>를 누르세요. 형광펜·개인 노트는 새 창에서 열었을 때 가장 안전하게 저장됩니다.
+</div>
+
+<div class="stage">
+  <iframe id="app"
+    src="https://teal-cannoli-c4a3be.netlify.app/"
+    title="유란시아서 핵심 리더"
+    loading="eager"
+    allow="clipboard-write; clipboard-read; fullscreen"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <div class="fallback" id="fb">
+    <div>
+      <h2>리더를 이 화면에 띄우지 못했습니다</h2>
+      <p>브라우저가 다른 사이트 화면을 겹쳐 보여 주는 것을 막고 있습니다.<br>아래 단추를 누르면 리더가 새 창에서 그대로 열립니다.</p>
+      <a class="btn" href="https://teal-cannoli-c4a3be.netlify.app/" target="_blank" rel="noopener">리더 열기 ↗</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 리더가 뜨지 않으면 8초 뒤 안내 화면으로 바꿉니다.
+  var loaded = false;
+  var f = document.getElementById('app');
+  f.addEventListener('load', function(){ loaded = true; });
+  setTimeout(function(){
+    if(!loaded) document.getElementById('fb').classList.add('on');
+  }, 8000);
+</script>
+
+</body>
+</html>
