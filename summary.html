@@ -86,7 +86,9 @@ var items=[].slice.call(document.querySelectorAll('.it')),
 function go(el){
  items.forEach(function(i){i.classList.remove('on');});
  el.classList.add('on');
- frame.src=PDF+'#page='+el.getAttribute('data-p');
+ var t=PDF+'#page='+el.getAttribute('data-p');
+ frame.src='about:blank';
+ setTimeout(function(){frame.src=t;},40);
  if(window.innerWidth<=760) nav.classList.remove('open');
 }
 
