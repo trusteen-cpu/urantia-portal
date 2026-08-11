@@ -568,21 +568,21 @@
     },
     {
       "id": "english",
-      "title": "영어 듣기 말하기 쓰기 공부",
+      "title": "유란시아서 영어 공부",
       "color": "navy",
       "icon": "🎧",
       "preview": 40,
       "items": [
         {
-          "name": "CNN 듣기 연습",
+          "name": "한영대조 본문",
           "url": ""
         },
         {
-          "name": "TED talk 듣기 연습",
+          "name": "영문 용어집",
           "url": ""
         },
         {
-          "name": "영어 드라마 영어",
+          "name": "영문 인용구",
           "url": ""
         }
       ]
