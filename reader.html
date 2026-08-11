@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>유란시아서 디지털 리더</title>
 <style>
-:root{--navy:#17365D;--gold:#B7791F;--ink:#20242e;--dim:#6b6f7d;--paper:#fffdf8}
+:root{--gold:#B7791F;--ink:#20242e;--dim:#6b6f7d;--paper:#fffdf8}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;height:100%}
 body{font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
@@ -35,18 +35,21 @@ header .btn:hover{background:rgba(232,196,121,.18);border-color:#e8c479;color:#f
 <header>
   <div class="in">
     <h1>유란시아서 디지털 리더</h1>
-    <a class="btn" href="https://prismatic-bunny-5576f6.netlify.app/"
-       target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+    <a class="btn" href="/reader/" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
     <a class="btn" href="index.html">포털 첫 화면</a>
   </div>
 </header>
 
 <div class="stage">
-  <div class="loading" id="ld">리더를 불러오는 중입니다.</div>
-  <iframe id="rd" src="https://prismatic-bunny-5576f6.netlify.app/"
-          title="유란시아서 디지털 리더"
+  <div class="loading" id="ld">리더를 불러오는 중입니다. 분량이 커서 조금 걸립니다.</div>
+  <iframe id="rd" src="/reader/" title="유란시아서 디지털 리더"
           allow="clipboard-write; clipboard-read; fullscreen"></iframe>
 </div>
 
 <script>
-document.getElementById('rd').addEventListener('load',
+document.getElementById('rd').addEventListener('load', function(){
+  document.getElementById('ld').className = 'loading off';
+});
+</script>
+</body>
+</html>
