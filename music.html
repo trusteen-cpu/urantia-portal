@@ -75,7 +75,7 @@ var PLAYLIST = "https://www.youtube.com/watch?v=4eyhJFBmBpg&list=PL_uGHPc5SUrDGX
     yt.style.display = 'none';
     return;
   }
-  var src = 'https://www.youtube-nocookie.com/embed/videoseries?list=' + id + '&rel=0';
+  var src = 'https://www.youtube-nocookie.com/embed?listType=playlist&list=' + id + '&rel=0';
   var f = document.createElement('iframe');
   f.src = src;
   f.title = '음악과 예술 재생목록';
