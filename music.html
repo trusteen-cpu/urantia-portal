@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>음악과 예술 — 한국 유란시아서 포털</title>
+<style>
+:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hd{flex:none;background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+ border-bottom:3px solid var(--gold);padding:15px 20px}
+.hd .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.hd h1{margin:0;font-size:19px;letter-spacing:-.3px}
+.hd .crumb{width:100%;font-size:12px;color:#b9cdd8}
+.hd .crumb a:hover{color:#fff;text-decoration:underline}
+.hd .sp{margin-left:auto;display:flex;gap:8px}
+.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:5px 13px;font-size:12.5px}
+.hd .sp a:hover{background:rgba(255,255,255,.24)}
+.wrap{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:22px 20px 40px}
+.note{background:#fffdf5;border:1px solid #eadfbe;border-left:4px solid var(--gold);
+ border-radius:6px;padding:11px 14px;font-size:13px;color:#5a5233;margin-bottom:18px}
+.frame{position:relative;width:100%;padding-top:56.25%;background:#000;
+ border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:10px;color:#cfe0e8;background:#16303f;text-align:center;padding:24px}
+.empty b{font-size:15px;color:#fff}
+.empty span{font-size:13px;line-height:1.7}
+.lead{font-size:14px;color:#4e5b63;margin:0 0 16px}
+.foot{flex:none;padding:0 20px 34px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+@media(max-width:600px){.hd h1{font-size:17px}.wrap{padding:16px 14px 30px}}
+</style>
+</head>
+<body>
+
+<div class="hd"><div class="in">
+  <div class="crumb"><a href="/">홈</a> › 멀티미디어 › 음악과 예술</div>
+  <h1>음악과 예술</h1>
+  <div class="sp">
+    <a id="yt" href="#" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
+    <a href="/">포털 첫 화면</a>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <p class="lead">영혼을 맑게 하는 음악과 예술 영상을 모았습니다. 오른쪽 위 목록에서 원하는 곡을 골라 들으실 수 있습니다.</p>
+  <div class="frame" id="frame"></div>
+</div>
+
+<div class="foot">
+  <a href="/">포털 첫 화면</a> · <a href="/mind.html">전편 마인드맵</a> · <a href="/chart.html">도표로 본 유란시아서</a>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────
+   재생목록을 바꾸려면 아래 따옴표 안의 주소만 바꾸세요.
+   유튜브 재생목록 주소를 통째로 붙여넣으면 됩니다.
+   예) https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxxx
+   ───────────────────────────────────────────── */
+var PLAYLIST = "https://www.youtube.com/watch?v=4eyhJFBmBpg&list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
+
+(function(){
+  var m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/) ||
+          String(PLAYLIST).match(/^([A-Za-z0-9_-]{12,})$/);
+  var id = m ? m[1] : "";
+  var frame = document.getElementById('frame'), yt = document.getElementById('yt');
+  if(!id){
+    frame.innerHTML = '<div class="empty"><b>재생목록이 아직 연결되지 않았습니다</b>'+
+      '<span>music.html 파일 아래쪽의 PLAYLIST 자리에<br>유튜브 재생목록 주소를 넣어 주세요.</span></div>';
+    yt.style.display = 'none';
+    return;
+  }
+  var src = 'https://www.youtube-nocookie.com/embed/videoseries?list=' + id + '&rel=0';
+  var f = document.createElement('iframe');
+  f.src = src;
+  f.title = '음악과 예술 재생목록';
+  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  f.allowFullscreen = true;
+  f.referrerPolicy = 'strict-origin-when-cross-origin';
+  frame.appendChild(f);
+  yt.href = 'https://www.youtube.com/playlist?list=' + id;
+})();
+</script>
+</body>
+</html>
