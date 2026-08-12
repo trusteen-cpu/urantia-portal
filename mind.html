@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아서 전편 마인드맵 — 한국 유란시아서 포털</title>
+<style>
+:root{--navy:#1f3f52;--teal:#2e7d7a;--gold:#a8801f;--crimson:#9b2f3f;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hero{position:relative;background:linear-gradient(160deg,#16303f 0%,#1f3f52 55%,#264a5c 100%);
+ color:#fff;padding:34px 20px 30px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .in{position:relative;max-width:1180px;margin:0 auto;text-align:center}
+.hero h1{margin:0 0 6px;font-size:27px;letter-spacing:-.4px}
+.hero p{margin:0;font-size:14px;color:#cfe0e8}
+.hero .rule{width:74px;height:3px;background:#d8b45a;margin:13px auto 0;border-radius:2px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,248,249,.96);
+ border-bottom:1px solid var(--line);padding:11px 20px}
+.bar .in{max-width:1180px;margin:0 auto;display:flex;align-items:center}
+#q{flex:1;min-width:0;padding:9px 13px;border:1px solid #c8d3d9;border-radius:22px;
+ font-size:14px;font-family:inherit;background:#fff}
+#q:focus{outline:none;border-color:var(--navy)}
+#cnt{margin-left:12px;font-size:12.5px;color:#5d6b73;white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
+.part{margin-bottom:26px}
+.ph{display:flex;align-items:baseline;gap:9px;padding:0 0 8px;border-bottom:2px solid currentColor;margin-bottom:13px}
+.ph b{font-size:17px}
+.ph span{font-size:13px;color:#5d6b73}
+.list{column-width:252px;column-gap:20px}
+.list.solo{column-width:auto}
+.it{break-inside:avoid;display:flex;align-items:baseline;gap:8px;
+ padding:5px 9px;margin:0 0 3px;border-radius:6px;background:#fff;border:1px solid #e7edf0}
+.it:hover{border-color:currentColor;box-shadow:0 1px 5px rgba(31,63,82,.09)}
+.it .n{flex:none;width:31px;font-size:11.5px;font-weight:700;color:currentColor;
+ text-align:right;font-variant-numeric:tabular-nums}
+.it .t{font-size:13px;color:var(--ink)}
+.it .g{flex:none;margin-left:auto;font-size:10px;color:#93a3ac}
+.foot{max-width:1180px;margin:0 auto;padding:0 20px 44px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+#top{position:fixed;right:17px;bottom:17px;display:none;width:41px;height:41px;border-radius:50%;
+ background:var(--navy);color:#fff;border:0;font-size:17px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+@media print{
+ .hero,.bar,#top,.foot{display:none}
+ body{background:#fff}
+ .wrap{padding:0;max-width:none}
+ .list{column-width:auto;column-count:4;column-gap:8px}
+ .it{border:0;padding:1px 2px;margin:0}
+ .it .t{font-size:9pt}
+ @page{size:A4 portrait;margin:12mm}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<canvas id="sky"></canvas>
+<div class="in">
+<h1>유란시아서 전편 마인드맵</h1>
+<p>머리말과 제1편부터 제196편까지, 한 편을 한 장에 담았습니다</p>
+<div class="rule"></div>
+</div>
+</div>
+
+<div class="bar"><div class="in">
+<input id="q" type="search" placeholder="편 번호나 제목으로 찾기 (예: 74, 아담)" autocomplete="off">
+<span id="cnt"></span>
+</div></div>
+
+<div class="wrap" id="wrap">
+<section class="part" style="color:#1f3f52">
+  <div class="ph"><b>머리말</b><span>머리말</span></div>
+  <div class="list solo">
+    <a class="it" href="https://gamma.app/docs/-6et6rqf7l6fv74s" target="_blank" rel="noopener" data-k="0 머리말"><span class="n">머리</span><span class="t">머리말</span><span class="g">↗</span></a>
+  </div>
+</section>
+<section class="part" style="color:#1f3f52">
+  <div class="ph"><b>제1부</b><span>중심 우주와 초우주</span></div>
+  <div class="list">
+    <a class="it" href="https://gamma.app/docs/1--onuwltgnhs7l0vr" target="_blank" rel="noopener" data-k="1 우주 아버지"><span class="n">1</span><span class="t">제1편 우주 아버지</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/2--ntdlm0kuremgk0a" target="_blank" rel="noopener" data-k="2 하나님의 본성"><span class="n">2</span><span class="t">제2편 하나님의 본성</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/3--jqtpk3r4gbexemy" target="_blank" rel="noopener" data-k="3 하나님의 속성"><span class="n">3</span><span class="t">제3편 하나님의 속성</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/4--t6orphh3xecxcus" target="_blank" rel="noopener" data-k="4 우주에 대한 하나님의 관계"><span class="n">4</span><span class="t">제4편 우주에 대한 하나님의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/5--jr8y2qbliqol7w5" target="_blank" rel="noopener" data-k="5 하나님과 개인의 관계"><span class="n">5</span><span class="t">제5편 하나님과 개인의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/6--bptm3cckrkpqb05" target="_blank" rel="noopener" data-k="6 영원 아들"><span class="n">6</span><span class="t">제6편 영원 아들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/7--8oweqa1jhm1d5lw" target="_blank" rel="noopener" data-k="7 우주에 대한 영원 아들의 관계"><span class="n">7</span><span class="t">제7편 우주에 대한 영원 아들의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/8--bkfr5e8bkfumyue" target="_blank" rel="noopener" data-k="8 무한 영"><span class="n">8</span><span class="t">제8편 무한 영</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/9--ds9iboazlg93977" target="_blank" rel="noopener" data-k="9 우주와 무한 영의 관계"><span class="n">9</span><span class="t">제9편 우주와 무한 영의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/10--b4vqll2v8thmak8" target="_blank" rel="noopener" data-k="10 파라다이스 삼위일체"><span class="n">10</span><span class="t">제10편 파라다이스 삼위일체</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/11--eqnhdyvawcpvcjj" target="_blank" rel="noopener" data-k="11 영원한 섬 파라다이스"><span class="n">11</span><span class="t">제11편 영원한 섬 파라다이스</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/12--vjyt8jl7efbixxc" target="_blank" rel="noopener" data-k="12 우주들의 우주"><span class="n">12</span><span class="t">제12편 우주들의 우주</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/13--lrxk00jowr3qfpa" target="_blank" rel="noopener" data-k="13 파라다이스의 신성한 구체들"><span class="n">13</span><span class="t">제13편 파라다이스의 신성한 구체들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/14--qgdx22k8zky684t" target="_blank" rel="noopener" data-k="14 신성한 중앙 우주 하보나"><span class="n">14</span><span class="t">제14편 신성한 중앙 우주 하보나</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/15--o4ngk2ffsh3s1dl" target="_blank" rel="noopener" data-k="15 초우주의 구조와 조직"><span class="n">15</span><span class="t">제15편 초우주의 구조와 조직</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/16--id6cs0yxj2t0r89" target="_blank" rel="noopener" data-k="16 일곱 주 영"><span class="n">16</span><span class="t">제16편 일곱 주 영</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/17--0w0w31zo8xvchih" target="_blank" rel="noopener" data-k="17 일곱 최상 영 집단"><span class="n">17</span><span class="t">제17편 일곱 최상 영 집단</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/18--2nl9xealrdzs66x" target="_blank" rel="noopener" data-k="18 최상 삼위일체 인격들"><span class="n">18</span><span class="t">제18편 최상 삼위일체 인격들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/19--8krf1g0g5unkloj" target="_blank" rel="noopener" data-k="19 삼위일체 기원을 가진 동급의 존재들"><span class="n">19</span><span class="t">제19편 삼위일체 기원을 가진 동급의 존재들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/20--khvjlbopx127hcw" target="_blank" rel="noopener" data-k="20 하나님의 파라다이스 아들들"><span class="n">20</span><span class="t">제20편 하나님의 파라다이스 아들들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/21--s8dznmxdwebwqun" target="_blank" rel="noopener" data-k="21 파라다이스 창조자 아들"><span class="n">21</span><span class="t">제21편 파라다이스 창조자 아들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/22--8ob7fuf0uuwf7k6" target="_blank" rel="noopener" data-k="22 삼위일체화 하나님의 아들"><span class="n">22</span><span class="t">제22편 삼위일체화 하나님의 아들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/23--ji4o0adg5c8dt5l" target="_blank" rel="noopener" data-k="23 단독 사자"><span class="n">23</span><span class="t">제23편 단독 사자</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/24--5zfzaezcgjl5jwb" target="_blank" rel="noopener" data-k="24 무한 영의 고등 인격"><span class="n">24</span><span class="t">제24편 무한 영의 고등 인격</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/25--3b8vjvdj5uvab5n" target="_blank" rel="noopener" data-k="25 공간의 사자 무리"><span class="n">25</span><span class="t">제25편 공간의 사자 무리</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/26--p84g30e6m885086" target="_blank" rel="noopener" data-k="26 중앙 우주의 봉사 영들"><span class="n">26</span><span class="t">제26편 중앙 우주의 봉사 영들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/27-1--hamhinvts3s3gue" target="_blank" rel="noopener" data-k="27 1차 슈퍼나핌의 봉사"><span class="n">27</span><span class="t">제27편 1차 슈퍼나핌의 봉사</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/28--33l7xgnl2fhdwg9" target="_blank" rel="noopener" data-k="28 초우주의 봉사 영"><span class="n">28</span><span class="t">제28편 초우주의 봉사 영</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/29--nzgmyqo01eobz92" target="_blank" rel="noopener" data-k="29 우주 동력 감독자"><span class="n">29</span><span class="t">제29편 우주 동력 감독자</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/30--krbqoqsw3hkfvij" target="_blank" rel="noopener" data-k="30 대우주의 인격"><span class="n">30</span><span class="t">제30편 대우주의 인격</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/31--tnau2uz5d71odpe" target="_blank" rel="noopener" data-k="31 최종자 군단"><span class="n">31</span><span class="t">제31편 최종자 군단</span><span class="g">↗</span></a>
+  </div>
+</section>
+<section class="part" style="color:#2e7d7a">
+  <div class="ph"><b>제2부</b><span>지역 우주</span></div>
+  <div class="list">
+    <a class="it" href="https://gamma.app/docs/32--0rnfe6mokxlgv6s" target="_blank" rel="noopener" data-k="32 지역 우주의 진화"><span class="n">32</span><span class="t">제32편 지역 우주의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/33--sau2b1wxprkbhz1" target="_blank" rel="noopener" data-k="33 지역 우주의 행정"><span class="n">33</span><span class="t">제33편 지역 우주의 행정</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/34--60bbb0bik3dwe48" target="_blank" rel="noopener" data-k="34 지역 우주 어머니 영"><span class="n">34</span><span class="t">제34편 지역 우주 어머니 영</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/35--m4wdqjyvlx1zm7v" target="_blank" rel="noopener" data-k="35 하나님의 지역 우주 아들"><span class="n">35</span><span class="t">제35편 하나님의 지역 우주 아들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/36--2slswf6yhbo5zc1" target="_blank" rel="noopener" data-k="36 생명 운반자"><span class="n">36</span><span class="t">제36편 생명 운반자</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/37--5n3xvvzcjy4w7r9" target="_blank" rel="noopener" data-k="37 지역 우주의 인격 체계"><span class="n">37</span><span class="t">제37편 지역 우주의 인격 체계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/38--4qznxoymj0bh512" target="_blank" rel="noopener" data-k="38 지역 우주의 봉사하는 영"><span class="n">38</span><span class="t">제38편 지역 우주의 봉사하는 영</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/39--sr97flnxed9ashm" target="_blank" rel="noopener" data-k="39 천사 무리"><span class="n">39</span><span class="t">제39편 천사 무리</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/40--xlc1luwm1l7ddnl" target="_blank" rel="noopener" data-k="40 상승하는 하나님의 아들들"><span class="n">40</span><span class="t">제40편 상승하는 하나님의 아들들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/41--xnwmbdst3ohpy9t" target="_blank" rel="noopener" data-k="41 지역 우주의 물리적 모습"><span class="n">41</span><span class="t">제41편 지역 우주의 물리적 모습</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/42--2ldnyjmxdgepm34" target="_blank" rel="noopener" data-k="42 에너지 마음과 물질"><span class="n">42</span><span class="t">제42편 에너지 마음과 물질</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/43--akcmbmfqas17ezv" target="_blank" rel="noopener" data-k="43 별자리 놀라시아덱"><span class="n">43</span><span class="t">제43편 별자리 놀라시아덱</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/44--tkt3erd8qezs6pd" target="_blank" rel="noopener" data-k="44 하늘 예술가"><span class="n">44</span><span class="t">제44편 하늘 예술가</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/45--bvlpwpl708xzjag" target="_blank" rel="noopener" data-k="45 지역 체계의 행정"><span class="n">45</span><span class="t">제45편 지역 체계의 행정</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/46--t9ylafsbf816p7q" target="_blank" rel="noopener" data-k="46 지역 체계 본부 예루셈"><span class="n">46</span><span class="t">제46편 지역 체계 본부 예루셈</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/47--d0tcd7gpt9qo9a7" target="_blank" rel="noopener" data-k="47 일곱 맨션 세계"><span class="n">47</span><span class="t">제47편 일곱 맨션 세계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/48--36fw5giikh2o7dz" target="_blank" rel="noopener" data-k="48 모론시아 삶"><span class="n">48</span><span class="t">제48편 모론시아 삶</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/49--qyo1d8idwtyt7lv" target="_blank" rel="noopener" data-k="49 거주 세계들"><span class="n">49</span><span class="t">제49편 거주 세계들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/50--84j4ry8jdcn777x" target="_blank" rel="noopener" data-k="50 행성 영주"><span class="n">50</span><span class="t">제50편 행성 영주</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/51--pgj92rted4rptzg" target="_blank" rel="noopener" data-k="51 행성의 아담들"><span class="n">51</span><span class="t">제51편 행성의 아담들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/52-7-dwbzd62oo56kzsr" target="_blank" rel="noopener" data-k="52 행성 필사자 시대들"><span class="n">52</span><span class="t">제52편 행성 필사자 시대들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/53--p8vl4ysk6exegfr" target="_blank" rel="noopener" data-k="53 루시퍼 반란"><span class="n">53</span><span class="t">제53편 루시퍼 반란</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/54--j9ncpbbtb4j17zu" target="_blank" rel="noopener" data-k="54 루시퍼 반란의 문제들"><span class="n">54</span><span class="t">제54편 루시퍼 반란의 문제들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/55--wacxr52s7pbxriy" target="_blank" rel="noopener" data-k="55 빛과 생명의 구체"><span class="n">55</span><span class="t">제55편 빛과 생명의 구체</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/56--azc0qjvy8q52bsm" target="_blank" rel="noopener" data-k="56 우주의 통일성"><span class="n">56</span><span class="t">제56편 우주의 통일성</span><span class="g">↗</span></a>
+  </div>
+</section>
+<section class="part" style="color:#a8801f">
+  <div class="ph"><b>제3부</b><span>유란시아의 역사</span></div>
+  <div class="list">
+    <a class="it" href="https://gamma.app/docs/57--18rhe8ayldl5xxk" target="_blank" rel="noopener" data-k="57 유란시아의 기원과 진화"><span class="n">57</span><span class="t">제57편 유란시아의 기원과 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/58--h6wf6jdvpbz7c8v" target="_blank" rel="noopener" data-k="58 유란시아 생명의 확립"><span class="n">58</span><span class="t">제58편 유란시아 생명의 확립</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/59--33n7w7z0xb9mjx4" target="_blank" rel="noopener" data-k="59 유란시아의 해양생물 시대"><span class="n">59</span><span class="t">제59편 유란시아의 해양생물 시대</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/60--8lsuzw9a7dc84e1" target="_blank" rel="noopener" data-k="60 초기 육상 생명 시대의 유란시아"><span class="n">60</span><span class="t">제60편 초기 육상 생명 시대의 유란시아</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/61--byfkq6f8eot6dzj" target="_blank" rel="noopener" data-k="61 유란시아의 포유류 시대"><span class="n">61</span><span class="t">제61편 유란시아의 포유류 시대</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/62--b639erbyh7qs97i" target="_blank" rel="noopener" data-k="62 초기 인간의 원시 종족 진화"><span class="n">62</span><span class="t">제62편 초기 인간의 원시 종족 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/63--3z7qa9qrymlcxp4" target="_blank" rel="noopener" data-k="63 최초의 인간 가족"><span class="n">63</span><span class="t">제63편 최초의 인간 가족</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/64--auvr6b4b8miznp2" target="_blank" rel="noopener" data-k="64 유색 인종의 진화"><span class="n">64</span><span class="t">제64편 유색 인종의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/65--c36wxpgi80yor7i" target="_blank" rel="noopener" data-k="65 진화의 전반적 통제"><span class="n">65</span><span class="t">제65편 진화의 전반적 통제</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/66--odpleuaar2a2trr" target="_blank" rel="noopener" data-k="66 유란시아의 행성 영주"><span class="n">66</span><span class="t">제66편 유란시아의 행성 영주</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/67--bl08wui4rky25ed" target="_blank" rel="noopener" data-k="67 행성 반란"><span class="n">67</span><span class="t">제67편 행성 반란</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/68--0dr6jop18y9hi3m" target="_blank" rel="noopener" data-k="68 문명의 시작"><span class="n">68</span><span class="t">제68편 문명의 시작</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/69--mvk4fh7dgkh0cdw" target="_blank" rel="noopener" data-k="69 원시 인간의 제도들"><span class="n">69</span><span class="t">제69편 원시 인간의 제도들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/70--n4nzeygemvifsr4" target="_blank" rel="noopener" data-k="70 인간 정부의 진화"><span class="n">70</span><span class="t">제70편 인간 정부의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/71--gorh8v5g25y1rif" target="_blank" rel="noopener" data-k="71 국가의 발전"><span class="n">71</span><span class="t">제71편 국가의 발전</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/72--x7fqmu7gs4bhtp8" target="_blank" rel="noopener" data-k="72 이웃 행성의 정부 체계"><span class="n">72</span><span class="t">제72편 이웃 행성의 정부 체계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/73--yv492z3vrroknjp" target="_blank" rel="noopener" data-k="73 에덴 동산"><span class="n">73</span><span class="t">제73편 에덴 동산</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/74--2rn8hiqg73xwov0" target="_blank" rel="noopener" data-k="74 아담과 이브"><span class="n">74</span><span class="t">제74편 아담과 이브</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/75--ubr4dnv5qb676ps" target="_blank" rel="noopener" data-k="75 아담과 이브의 실패"><span class="n">75</span><span class="t">제75편 아담과 이브의 실패</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/76--psl9bjofn9ldcxe" target="_blank" rel="noopener" data-k="76 둘째 동산"><span class="n">76</span><span class="t">제76편 둘째 동산</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/77--45ssym60plbddpw" target="_blank" rel="noopener" data-k="77 중도 창조체들"><span class="n">77</span><span class="t">제77편 중도 창조체들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/78--3bnancv4c9qzsvm" target="_blank" rel="noopener" data-k="78 아담 이후 보라색 인종의 역사"><span class="n">78</span><span class="t">제78편 아담 이후 보라색 인종의 역사</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/79--2ns46u3fss854em" target="_blank" rel="noopener" data-k="79 안드족의 동방 확장"><span class="n">79</span><span class="t">제79편 안드족의 동방 확장</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/80--defc3peppke806g" target="_blank" rel="noopener" data-k="80 서방에서의 안드족 확장"><span class="n">80</span><span class="t">제80편 서방에서의 안드족 확장</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/81--wjh70lz03y31jiu" target="_blank" rel="noopener" data-k="81 현대 문명의 발전"><span class="n">81</span><span class="t">제81편 현대 문명의 발전</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/82--fhtpj7b4vvl6hre" target="_blank" rel="noopener" data-k="82 결혼의 진화"><span class="n">82</span><span class="t">제82편 결혼의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/-dvcee2g6hdotcaf" target="_blank" rel="noopener" data-k="83 결혼 제도의 진화"><span class="n">83</span><span class="t">제83편 결혼 제도의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/84--vp018tntr5t8tyy" target="_blank" rel="noopener" data-k="84 결혼과 가정 생활"><span class="n">84</span><span class="t">제84편 결혼과 가정 생활</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/85--bv3m43teiz09z03" target="_blank" rel="noopener" data-k="85 예배의 기원과 진화"><span class="n">85</span><span class="t">제85편 예배의 기원과 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/86--guor0elnvozuzwz" target="_blank" rel="noopener" data-k="86 종교의 초기 진화"><span class="n">86</span><span class="t">제86편 종교의 초기 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/87--ts7bwpl4g9vitn1" target="_blank" rel="noopener" data-k="87 귀신 숭배의 진화"><span class="n">87</span><span class="t">제87편 귀신 숭배의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/88--o11dlps7rgp7y4o" target="_blank" rel="noopener" data-k="88 주물, 부적, 그리고 마법"><span class="n">88</span><span class="t">제88편 주물, 부적, 그리고 마법</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/89--q3qnhd63he2gz50" target="_blank" rel="noopener" data-k="89 죄, 희생, 그리고 속죄"><span class="n">89</span><span class="t">제89편 죄, 희생, 그리고 속죄</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/91--br8ojdmq0aboqju" target="_blank" rel="noopener" data-k="90 주술 의술사와 사제의 진화"><span class="n">90</span><span class="t">제90편 주술 의술사와 사제의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/91--l300marwed190bc" target="_blank" rel="noopener" data-k="91 기도의 진화"><span class="n">91</span><span class="t">제91편 기도의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/92--9ffrfg16kufpe1w" target="_blank" rel="noopener" data-k="92 종교의 후대 진화"><span class="n">92</span><span class="t">제92편 종교의 후대 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/93--5avrtj49k37z0q5" target="_blank" rel="noopener" data-k="93 마키벤타 멜기세덱"><span class="n">93</span><span class="t">제93편 마키벤타 멜기세덱</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/94--4hz5x6rxysm4z2q" target="_blank" rel="noopener" data-k="94 동양에서의 멜기세덱 가르침"><span class="n">94</span><span class="t">제94편 동양에서의 멜기세덱 가르침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/95--qmys6njg1euynkc" target="_blank" rel="noopener" data-k="95 레반트에서의 멜기세덱 가르침"><span class="n">95</span><span class="t">제95편 레반트에서의 멜기세덱 가르침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/96--r0rn098dv3bnm57" target="_blank" rel="noopener" data-k="96 야훼 히브리인들의 신"><span class="n">96</span><span class="t">제96편 야훼 히브리인들의 신</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/97--wlla8anj6i7ovei" target="_blank" rel="noopener" data-k="97 히브리인들 사이 하나님 개념의 진화"><span class="n">97</span><span class="t">제97편 히브리인들 사이 하나님 개념의 진화</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/98--7wy4mox4i22uiu9" target="_blank" rel="noopener" data-k="98 서양에서의 멜기세덱 가르침"><span class="n">98</span><span class="t">제98편 서양에서의 멜기세덱 가르침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/-6wkxxydi4we2yll" target="_blank" rel="noopener" data-k="99 종교의 사회적 문제들"><span class="n">99</span><span class="t">제99편 종교의 사회적 문제들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/100--2m2ra1m7cpx4gcn" target="_blank" rel="noopener" data-k="100 인간 체험 안에서의 종교"><span class="n">100</span><span class="t">제100편 인간 체험 안에서의 종교</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/101--m1b9ujvsnqgpdrf" target="_blank" rel="noopener" data-k="101 종교의 참된 본질"><span class="n">101</span><span class="t">제101편 종교의 참된 본질</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/102--9n7pmcpe9x8f67g" target="_blank" rel="noopener" data-k="102 종교적 신앙의 기초"><span class="n">102</span><span class="t">제102편 종교적 신앙의 기초</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/103--zpgnlubn2baiuot" target="_blank" rel="noopener" data-k="103 종교적 체험의 실체"><span class="n">103</span><span class="t">제103편 종교적 체험의 실체</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/104--h6jtue78b61yspd" target="_blank" rel="noopener" data-k="104 삼위일체 개념의 성장"><span class="n">104</span><span class="t">제104편 삼위일체 개념의 성장</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/105--bckbdhhlu4rv8wp" target="_blank" rel="noopener" data-k="105 신과 실체"><span class="n">105</span><span class="t">제105편 신과 실체</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/106--8gz3rq21ywz5pbb" target="_blank" rel="noopener" data-k="106 실체의 우주 수준"><span class="n">106</span><span class="t">제106편 실체의 우주 수준</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/107--4y874ihp050gl06" target="_blank" rel="noopener" data-k="107 생각 조절자의 기원과 본성"><span class="n">107</span><span class="t">제107편 생각 조절자의 기원과 본성</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/108--djtx5dlbuxr5u21" target="_blank" rel="noopener" data-k="108 생각 조절자의 사명과 사역"><span class="n">108</span><span class="t">제108편 생각 조절자의 사명과 사역</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/109--oct99ty9uzp6jrw" target="_blank" rel="noopener" data-k="109 생각 조절자와 우주 피조물의 관계"><span class="n">109</span><span class="t">제109편 생각 조절자와 우주 피조물의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/110--bqx991lsqpwz3pr" target="_blank" rel="noopener" data-k="110 생각 조절자와 필사자의 관계"><span class="n">110</span><span class="t">제110편 생각 조절자와 필사자의 관계</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/111--30cs0e9yv0rxyvq" target="_blank" rel="noopener" data-k="111 조절자와 혼"><span class="n">111</span><span class="t">제111편 조절자와 혼</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/112--bu8pmvpw33wijol" target="_blank" rel="noopener" data-k="112 인격의 생존"><span class="n">112</span><span class="t">제112편 인격의 생존</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/113--t2zrowgvckvkis3" target="_blank" rel="noopener" data-k="113 운명의 세라핌 수호자"><span class="n">113</span><span class="t">제113편 운명의 세라핌 수호자</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/114--jt8fhjc8phuw3hy" target="_blank" rel="noopener" data-k="114 세라핌의 행성 정부"><span class="n">114</span><span class="t">제114편 세라핌의 행성 정부</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/115--0bl4ocr173xoq6s" target="_blank" rel="noopener" data-k="115 최상 존재"><span class="n">115</span><span class="t">제115편 최상 존재</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/116--3mfy5l5he3rzqas" target="_blank" rel="noopener" data-k="116 전능 최상위"><span class="n">116</span><span class="t">제116편 전능 최상위</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/117--zsopu3mso6mzs5c" target="_blank" rel="noopener" data-k="117 최상 하나님"><span class="n">117</span><span class="t">제117편 최상 하나님</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/118--5pws8scg5wjqs57" target="_blank" rel="noopener" data-k="118 최상과 궁극 시간과 공간"><span class="n">118</span><span class="t">제118편 최상과 궁극 시간과 공간</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/119--mi6bq3q5qaehm7k" target="_blank" rel="noopener" data-k="119 그리스도 미가엘의 일곱 증여"><span class="n">119</span><span class="t">제119편 그리스도 미가엘의 일곱 증여</span><span class="g">↗</span></a>
+  </div>
+</section>
+<section class="part" style="color:#9b2f3f">
+  <div class="ph"><b>제4부</b><span>예수의 생애와 가르침</span></div>
+  <div class="list">
+    <a class="it" href="https://gamma.app/docs/120--sx1kmh1oa8onot6" target="_blank" rel="noopener" data-k="120 미가엘의 유란시아 증여"><span class="n">120</span><span class="t">제120편 미가엘의 유란시아 증여</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/121--juwcqfhjmuprp54" target="_blank" rel="noopener" data-k="121 미가엘 증여의 시기"><span class="n">121</span><span class="t">제121편 미가엘 증여의 시기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/122--66ehprcogubutpp" target="_blank" rel="noopener" data-k="122 예수의 탄생과 유년기"><span class="n">122</span><span class="t">제122편 예수의 탄생과 유년기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/123-0-8-ima77md6oaj3pfn" target="_blank" rel="noopener" data-k="123 예수의 어린 시절"><span class="n">123</span><span class="t">제123편 예수의 어린 시절</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/124-9-13-zhfrs90a7cncmw6" target="_blank" rel="noopener" data-k="124 예수의 후기 어린 시절"><span class="n">124</span><span class="t">제124편 예수의 후기 어린 시절</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/125--ctwfwh87pp80kv2" target="_blank" rel="noopener" data-k="125 예루살렘에 온 예수"><span class="n">125</span><span class="t">제125편 예루살렘에 온 예수</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/126-2-14-15-hbr6s8s47vj8ai7" target="_blank" rel="noopener" data-k="126 2년의 힘든 시기"><span class="n">126</span><span class="t">제126편 2년의 힘든 시기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/127-15-20-4inqnubz319nvb7" target="_blank" rel="noopener" data-k="127 청년기"><span class="n">127</span><span class="t">제127편 청년기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/128-21-26-046697hqmmng2ct" target="_blank" rel="noopener" data-k="128 예수의 성년 초기"><span class="n">128</span><span class="t">제128편 예수의 성년 초기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/129-27-29-d5oq26n83ld0rqu" target="_blank" rel="noopener" data-k="129 예수의 후기 성인 생활"><span class="n">129</span><span class="t">제129편 예수의 후기 성인 생활</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/130--a4mk7h3g0tjg4il" target="_blank" rel="noopener" data-k="130 로마로 가는 길"><span class="n">130</span><span class="t">제130편 로마로 가는 길</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/131--72uivhymi673xq8" target="_blank" rel="noopener" data-k="131 세계의 종교"><span class="n">131</span><span class="t">제131편 세계의 종교</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/132--q7lxl0le8pysaix" target="_blank" rel="noopener" data-k="132 예수의 로마 체류"><span class="n">132</span><span class="t">제132편 예수의 로마 체류</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/133--daryigtinue9axd" target="_blank" rel="noopener" data-k="133 로마에서의 귀환"><span class="n">133</span><span class="t">제133편 로마에서의 귀환</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/134--tso33b1ycvbfujo" target="_blank" rel="noopener" data-k="134 과도기 시대"><span class="n">134</span><span class="t">제134편 과도기 시대</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/135--hnipnwuyjt81m0s" target="_blank" rel="noopener" data-k="135 세례자 요한"><span class="n">135</span><span class="t">제135편 세례자 요한</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/136-40--es2801fm2t3obtf" target="_blank" rel="noopener" data-k="136 예수의 세례와 40일 은둔"><span class="n">136</span><span class="t">제136편 예수의 세례와 40일 은둔</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/137--ddlp9uzqm3g0x97" target="_blank" rel="noopener" data-k="137 갈릴리에서의 지연"><span class="n">137</span><span class="t">제137편 갈릴리에서의 지연</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/138--1x47153isvt0g9m" target="_blank" rel="noopener" data-k="138 열두 사도의 선택과 훈련"><span class="n">138</span><span class="t">제138편 열두 사도의 선택과 훈련</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/139--ydie6853sobd1pk" target="_blank" rel="noopener" data-k="139 열두 사도"><span class="n">139</span><span class="t">제139편 열두 사도</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/140--lbxnr4wb5sr3z46" target="_blank" rel="noopener" data-k="140 열두 사도 임명"><span class="n">140</span><span class="t">제140편 열두 사도 임명</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/141--o4iam71i8kcev43" target="_blank" rel="noopener" data-k="141 공적 활동의 시작"><span class="n">141</span><span class="t">제141편 공적 활동의 시작</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/142--s4wzsjop7z7prod" target="_blank" rel="noopener" data-k="142 예루살렘에서의 유월절"><span class="n">142</span><span class="t">제142편 예루살렘에서의 유월절</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/143--c092k6dunpbm6rh" target="_blank" rel="noopener" data-k="143 사마리아를 지나며"><span class="n">143</span><span class="t">제143편 사마리아를 지나며</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/144--59b0ofdbv8wsu7j" target="_blank" rel="noopener" data-k="144 길보아와 데카폴리스에서"><span class="n">144</span><span class="t">제144편 길보아와 데카폴리스에서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/145-4-eevd8i9ofgai83z" target="_blank" rel="noopener" data-k="145 가버나움에서의 4일"><span class="n">145</span><span class="t">제145편 가버나움에서의 4일</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/146-AD-28-1-3-fv1dp4mrbgwpe41" target="_blank" rel="noopener" data-k="146 갈릴리 첫 전도 여행"><span class="n">146</span><span class="t">제146편 갈릴리 첫 전도 여행</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/147--fkfqu9dokm6opc4" target="_blank" rel="noopener" data-k="147 예루살렘 방문과 갈릴리 귀환"><span class="n">147</span><span class="t">제147편 예루살렘 방문과 갈릴리 귀환</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/148--lmv4wk3lmz7prgk" target="_blank" rel="noopener" data-k="148 벳세다 전도사 훈련"><span class="n">148</span><span class="t">제148편 벳세다 전도사 훈련</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/149-AD-28-10-12-l3rqv7yyhufjsi7" target="_blank" rel="noopener" data-k="149 두 번째 전도 여행"><span class="n">149</span><span class="t">제149편 두 번째 전도 여행</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/150--cfjckksdfus9vak" target="_blank" rel="noopener" data-k="150 세 번째 전도 여행"><span class="n">150</span><span class="t">제150편 세 번째 전도 여행</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/151--a2c9je9heqgwafa" target="_blank" rel="noopener" data-k="151 바닷가 가르침"><span class="n">151</span><span class="t">제151편 바닷가 가르침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/152--q01e14jzhcds46q" target="_blank" rel="noopener" data-k="152 가버나움 위기로 이어지는 사건들"><span class="n">152</span><span class="t">제152편 가버나움 위기로 이어지는 사건들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/153--h5qm81qps19h27g" target="_blank" rel="noopener" data-k="153 가버나움 위기"><span class="n">153</span><span class="t">제153편 가버나움 위기</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/154--4uo8hcvnlhl8d31" target="_blank" rel="noopener" data-k="154 가버나움에서의 마지막 날들"><span class="n">154</span><span class="t">제154편 가버나움에서의 마지막 날들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/155--ddle0v09ja9lgyu" target="_blank" rel="noopener" data-k="155 북부 갈릴리를 통한 피신"><span class="n">155</span><span class="t">제155편 북부 갈릴리를 통한 피신</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/156-AD-29-6-8-mty7rf90ao1bfc6" target="_blank" rel="noopener" data-k="156 두로와 시돈에서의 체류"><span class="n">156</span><span class="t">제156편 두로와 시돈에서의 체류</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/157--6q56p1ysilkn3si" target="_blank" rel="noopener" data-k="157 가이사랴 빌립보에서"><span class="n">157</span><span class="t">제157편 가이사랴 빌립보에서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/158--10abhfh66xyxud4" target="_blank" rel="noopener" data-k="158 변화산에서의 체험"><span class="n">158</span><span class="t">제158편 변화산에서의 체험</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/159--gdog1mlwh3ju9z4" target="_blank" rel="noopener" data-k="159 데카폴리스 여행"><span class="n">159</span><span class="t">제159편 데카폴리스 여행</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/160--q16e7zz8cfuaozb" target="_blank" rel="noopener" data-k="160 알렉산드리아의 로단"><span class="n">160</span><span class="t">제160편 알렉산드리아의 로단</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/161--plpauj3zplsmzn4" target="_blank" rel="noopener" data-k="161 로단과의 추가 토론"><span class="n">161</span><span class="t">제161편 로단과의 추가 토론</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/162--44dv8e6zr5m2srg" target="_blank" rel="noopener" data-k="162 초막절"><span class="n">162</span><span class="t">제162편 초막절</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/163--dyrn4l1pyfehxed" target="_blank" rel="noopener" data-k="163 마가단에서의 칠십인 서임"><span class="n">163</span><span class="t">제163편 마가단에서의 칠십인 서임</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/164--b9q84m4xp5ul379" target="_blank" rel="noopener" data-k="164 봉헌절"><span class="n">164</span><span class="t">제164편 봉헌절</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/165-30-1-3-e3v42q6w6evkzij" target="_blank" rel="noopener" data-k="165 페레아 선교"><span class="n">165</span><span class="t">제165편 페레아 선교</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/166--iu6jmcs24xwo9ur" target="_blank" rel="noopener" data-k="166 북페레아 마지막 방문"><span class="n">166</span><span class="t">제166편 북페레아 마지막 방문</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/167--izwcwjz38bexpbh" target="_blank" rel="noopener" data-k="167 필라델피아 방문"><span class="n">167</span><span class="t">제167편 필라델피아 방문</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/168--06erks7bfa1ze5e" target="_blank" rel="noopener" data-k="168 나사로의 부활"><span class="n">168</span><span class="t">제168편 나사로의 부활</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/169--ih12rvcrqjryh6r" target="_blank" rel="noopener" data-k="169 펠라에서의 마지막 가르침"><span class="n">169</span><span class="t">제169편 펠라에서의 마지막 가르침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/170--mfplg5y9381p2f8" target="_blank" rel="noopener" data-k="170 하늘나라"><span class="n">170</span><span class="t">제170편 하늘나라</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/171--9h0knm98bcxty3n" target="_blank" rel="noopener" data-k="171 예루살렘으로 가는 길"><span class="n">171</span><span class="t">제171편 예루살렘으로 가는 길</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/172--76on1x7gzch65t8" target="_blank" rel="noopener" data-k="172 예루살렘으로 가면서"><span class="n">172</span><span class="t">제172편 예루살렘으로 가면서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/173--hjrwgblabg01j0q" target="_blank" rel="noopener" data-k="173 월요일의 예루살렘"><span class="n">173</span><span class="t">제173편 월요일의 예루살렘</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/174--uqzyvh2ve1ssv0m" target="_blank" rel="noopener" data-k="174 성전에서의 화요일 아침"><span class="n">174</span><span class="t">제174편 성전에서의 화요일 아침</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/175--9opde26pkjk2g3s" target="_blank" rel="noopener" data-k="175 마지막 성전 설교"><span class="n">175</span><span class="t">제175편 마지막 성전 설교</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/176--ofhsk60x7p6h0ni" target="_blank" rel="noopener" data-k="176 화요일 저녁 올리브산에서"><span class="n">176</span><span class="t">제176편 화요일 저녁 올리브산에서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/177--tn9tcv4ea95y06u" target="_blank" rel="noopener" data-k="177 수요일, 휴식의 날"><span class="n">177</span><span class="t">제177편 수요일, 휴식의 날</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/178--rh0e4snu55kb9y2" target="_blank" rel="noopener" data-k="178 캠프에서의 마지막 날"><span class="n">178</span><span class="t">제178편 캠프에서의 마지막 날</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/179--b6hvpcs5hxthyzn" target="_blank" rel="noopener" data-k="179 마지막 만찬"><span class="n">179</span><span class="t">제179편 마지막 만찬</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/180--df7fuarc1cawfcy" target="_blank" rel="noopener" data-k="180 고별 설교"><span class="n">180</span><span class="t">제180편 고별 설교</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/181--5vu9yor31yicddi" target="_blank" rel="noopener" data-k="181 최종 권고와 경고"><span class="n">181</span><span class="t">제181편 최종 권고와 경고</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/182--trr03hn6ljpc7m6" target="_blank" rel="noopener" data-k="182 겟세마네에서"><span class="n">182</span><span class="t">제182편 겟세마네에서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/183--1lxijw9984knfpn" target="_blank" rel="noopener" data-k="183 배신과 체포"><span class="n">183</span><span class="t">제183편 배신과 체포</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/184--qfpayfedfgiru6v" target="_blank" rel="noopener" data-k="184 산헤드린 법정 앞에서"><span class="n">184</span><span class="t">제184편 산헤드린 법정 앞에서</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/185--2625x2nvfhe5tg1" target="_blank" rel="noopener" data-k="185 빌라도 앞에서의 재판"><span class="n">185</span><span class="t">제185편 빌라도 앞에서의 재판</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/186--yncbixr11a8vajt" target="_blank" rel="noopener" data-k="186 십자가형 직전"><span class="n">186</span><span class="t">제186편 십자가형 직전</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/187--8i4lp6nkg2qx1c9" target="_blank" rel="noopener" data-k="187 십자가형"><span class="n">187</span><span class="t">제187편 십자가형</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/188--3efbjy0v7dle4zc" target="_blank" rel="noopener" data-k="188 무덤에 있던 시간"><span class="n">188</span><span class="t">제188편 무덤에 있던 시간</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/189--74msvj4lzw0a1h8" target="_blank" rel="noopener" data-k="189 예수의 부활과 모론시아 전환"><span class="n">189</span><span class="t">제189편 예수의 부활과 모론시아 전환</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/190--0b8nd8t9ogspldj" target="_blank" rel="noopener" data-k="190 모론시아 예수 출현"><span class="n">190</span><span class="t">제190편 모론시아 예수 출현</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/191--rm3zsxay9u459o7" target="_blank" rel="noopener" data-k="191 부활 후 예수의 출현들"><span class="n">191</span><span class="t">제191편 부활 후 예수의 출현들</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/192--ey47sctilblvl1k" target="_blank" rel="noopener" data-k="192 갈릴리에서의 출현"><span class="n">192</span><span class="t">제192편 갈릴리에서의 출현</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/193--o0v283lmvfrw2on" target="_blank" rel="noopener" data-k="193 마지막 출현과 승천"><span class="n">193</span><span class="t">제193편 마지막 출현과 승천</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/194--iztyzvkvc9mrhbr" target="_blank" rel="noopener" data-k="194 진리의 영 증여"><span class="n">194</span><span class="t">제194편 진리의 영 증여</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/195--4mtzou8mppbiloq" target="_blank" rel="noopener" data-k="195 오순절 이후"><span class="n">195</span><span class="t">제195편 오순절 이후</span><span class="g">↗</span></a>
+    <a class="it" href="https://gamma.app/docs/196--6m5jr53ycg6q6yb" target="_blank" rel="noopener" data-k="196 예수의 신앙"><span class="n">196</span><span class="t">제196편 예수의 신앙</span><span class="g">↗</span></a>
+  </div>
+</section>
+</div>
+
+<div class="foot">
+마인드맵은 감마에서 열립니다. 화면을 눌러 확대하거나 전체 화면으로 볼 수 있습니다.<br>
+<a href="/">포털 첫 화면</a> · <a href="/text.html">유란시아서 본문</a> · <a href="/papers.html">읽기 쉬운 해설판</a>
+</div>
+
+<button id="top" title="맨 위로">↑</button>
+
+<script>
+(function(){
+  var c=document.getElementById('sky'),x=c.getContext('2d');
+  function draw(){
+    var r=c.parentNode.getBoundingClientRect();
+    c.width=r.width;c.height=r.height;
+    for(var i=0;i<130;i++){
+      var a=Math.random()*.75+.12,s=Math.random()*1.5+.3;
+      x.beginPath();x.arc(Math.random()*c.width,Math.random()*c.height,s,0,6.3);
+      x.fillStyle='rgba(255,255,255,'+a+')';x.fill();
+    }
+  }
+  draw();window.addEventListener('resize',draw);
+})();
+
+(function(){
+  var q=document.getElementById('q'),cnt=document.getElementById('cnt'),
+      items=[].slice.call(document.querySelectorAll('.it')),
+      parts=[].slice.call(document.querySelectorAll('.part'));
+  function show(){
+    var v=q.value.trim().toLowerCase(),n=0;
+    items.forEach(function(el){
+      var hit=!v||el.getAttribute('data-k').toLowerCase().indexOf(v)>=0;
+      el.style.display=hit?'':'none';if(hit)n++;
+    });
+    parts.forEach(function(p){
+      var any=[].slice.call(p.querySelectorAll('.it')).some(function(e){return e.style.display!=='none';});
+      p.style.display=any?'':'none';
+    });
+    cnt.textContent=n+'개';
+  }
+  q.addEventListener('input',show);show();
+})();
+
+(function(){
+  var b=document.getElementById('top');
+  window.addEventListener('scroll',function(){
+    b.style.display=window.scrollY>500?'block':'none';
+  });
+  b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
+})();
+</script>
+</body>
+</html>
