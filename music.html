@@ -7,31 +7,43 @@
 <style>
 :root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
 *{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;
+body{margin:0;background:var(--bg);color:var(--ink);
  font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
 a{color:inherit;text-decoration:none}
-.hd{flex:none;background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+.hd{background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
  border-bottom:3px solid var(--gold);padding:15px 20px}
-.hd .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.hd .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
 .hd h1{margin:0;font-size:19px;letter-spacing:-.3px}
 .hd .crumb{width:100%;font-size:12px;color:#b9cdd8}
 .hd .crumb a:hover{color:#fff;text-decoration:underline}
 .hd .sp{margin-left:auto;display:flex;gap:8px}
 .hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:5px 13px;font-size:12.5px}
 .hd .sp a:hover{background:rgba(255,255,255,.24)}
-.wrap{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:22px 20px 40px}
-.note{background:#fffdf5;border:1px solid #eadfbe;border-left:4px solid var(--gold);
- border-radius:6px;padding:11px 14px;font-size:13px;color:#5a5233;margin-bottom:18px}
-.frame{position:relative;width:100%;padding-top:56.25%;background:#000;
+.wrap{max-width:1120px;margin:0 auto;padding:20px 20px 46px}
+.stage{position:relative;width:100%;padding-top:56.25%;background:#000;
  border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
-.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
- justify-content:center;gap:10px;color:#cfe0e8;background:#16303f;text-align:center;padding:24px}
-.empty b{font-size:15px;color:#fff}
-.empty span{font-size:13px;line-height:1.7}
-.lead{font-size:14px;color:#4e5b63;margin:0 0 16px}
-.foot{flex:none;padding:0 20px 34px;font-size:12.5px;color:#68767e;text-align:center}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy)}
+.sec{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
+ border-bottom:2px solid var(--navy);margin-bottom:14px;color:var(--navy)}
+.sec b{font-size:16px}
+.sec span{font-size:12.5px;color:#5d6b73}
+.grid{display:flex;flex-wrap:wrap;gap:14px}
+@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr))}}
+.card{margin:0;width:212px;background:#fff;border:1px solid #e4ebee;border-radius:9px;
+ overflow:hidden;cursor:pointer;transition:box-shadow .12s,border-color .12s;text-align:left}
+@supports(display:grid){.card{width:auto}}
+.card:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.15)}
+.card.on{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,90,.45)}
+.thumb{position:relative;width:100%;padding-top:56.25%;background:#0d1a22}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.thumb .no{position:absolute;left:7px;top:7px;background:rgba(31,63,82,.92);color:#fff;
+ font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px}
+.thumb .pl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+ color:#fff;font-size:26px;opacity:0;transition:.12s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.card:hover .thumb .pl{opacity:.95}
+.cap{padding:8px 10px 10px;font-size:13px;line-height:1.45;color:var(--ink)}
+.foot{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
 .foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
 @media(max-width:600px){.hd h1{font-size:17px}.wrap{padding:16px 14px 30px}}
 </style>
@@ -48,42 +60,90 @@ a{color:inherit;text-decoration:none}
 </div></div>
 
 <div class="wrap">
-  <p class="lead">영혼을 맑게 하는 음악과 예술 영상을 모았습니다. 오른쪽 위 목록에서 원하는 곡을 골라 들으실 수 있습니다.</p>
-  <div class="frame" id="frame"></div>
+  <div class="stage" id="stage"></div>
+  <div class="now" id="now"></div>
+
+  <div class="sec"><b>곡 목록</b><span id="cnt"></span></div>
+  <div class="grid" id="grid"></div>
 </div>
 
 <div class="foot">
-  <a href="/">포털 첫 화면</a> · <a href="/mind.html">전편 마인드맵</a> · <a href="/chart.html">도표로 본 유란시아서</a>
+  <a href="/">포털 첫 화면</a> · <a href="/study52.html">강의 영상</a> · <a href="/mind.html">전편 마인드맵</a>
 </div>
 
 <script>
-/* ─────────────────────────────────────────────
-   재생목록을 바꾸려면 아래 따옴표 안의 주소만 바꾸세요.
-   유튜브 재생목록 주소를 통째로 붙여넣으면 됩니다.
-   예) https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxxx
-   ───────────────────────────────────────────── */
-var PLAYLIST = "https://www.youtube.com/watch?v=4eyhJFBmBpg&list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
+/* ─────────────────────────────────────────────────────────
+   재생목록 주소 (오른쪽 위 [유튜브에서 보기] 단추가 씁니다)
+   ───────────────────────────────────────────────────────── */
+var PLAYLIST = "https://www.youtube.com/playlist?list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
+
+/* ─────────────────────────────────────────────────────────
+   곡 목록입니다. 한 줄이 작은 창 하나가 됩니다.
+   새 곡이 올라오면 같은 모양으로 한 줄 더 넣으세요.
+     id    : 유튜브 주소 watch?v= 뒤의 글자
+     title : 화면에 보일 제목
+   ───────────────────────────────────────────────────────── */
+var VIDEOS = [
+  { id: "4eyhJFBmBpg", title: "나뉘지 않는 마음" },
+  { id: "1uTuLjhX-Ew", title: "주리고 목마른 마음" },
+  { id: "f06YBq-XoJI", title: "무엇이 되어 가는가" },
+  { id: "LsZjXsnMPiU", title: "함께 걷는 순례자" },
+  { id: "BpD8uV-PdTg", title: "먼 곳의 한 길" },
+  { id: "SCH4n9p3y6Y", title: "마이클, 당신의 생각은" },
+  { id: "JIEBzsS9aqM", title: "네 안의 영의 비밀" },
+  { id: "kG67jHtLRSc", title: "주가 알려 준 이웃 행성의 기도" },
+  { id: "kJij3bRuFt0", title: "진리는 아름답다" },
+  { id: "enNXiUOkN4k", title: "진리의 영" },
+  { id: "i_mfMLXMrxw", title: "하늘 왕국" },
+  { id: "naHfCoxwik8", title: "Urantia Truth" }
+];
 
 (function(){
-  var m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/) ||
-          String(PLAYLIST).match(/^([A-Za-z0-9_-]{12,})$/);
-  var id = m ? m[1] : "";
-  var frame = document.getElementById('frame'), yt = document.getElementById('yt');
-  if(!id){
-    frame.innerHTML = '<div class="empty"><b>재생목록이 아직 연결되지 않았습니다</b>'+
-      '<span>music.html 파일 아래쪽의 PLAYLIST 자리에<br>유튜브 재생목록 주소를 넣어 주세요.</span></div>';
-    yt.style.display = 'none';
-    return;
+  var stage = document.getElementById('stage'),
+      grid = document.getElementById('grid'),
+      now = document.getElementById('now'),
+      cnt = document.getElementById('cnt'),
+      yt = document.getElementById('yt'),
+      m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/),
+      listId = m ? m[1] : "",
+      cur = -1;
+
+  yt.href = listId ? 'https://www.youtube.com/playlist?list=' + listId : '#';
+  cnt.textContent = VIDEOS.length + '개';
+
+  function play(i, auto){
+    cur = i;
+    var v = VIDEOS[i];
+    var src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?rel=0' +
+              (listId ? '&list=' + listId : '') + (auto ? '&autoplay=1' : '');
+    stage.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = src;
+    f.title = v.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    stage.appendChild(f);
+    now.textContent = '지금 듣는 곡 · ' + v.title;
+    [].forEach.call(grid.children, function(c, n){
+      c.className = 'card' + (n === i ? ' on' : '');
+    });
+    if (auto) stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  var src = 'https://www.youtube-nocookie.com/embed?listType=playlist&list=' + id + '&rel=0';
-  var f = document.createElement('iframe');
-  f.src = src;
-  f.title = '음악과 예술 재생목록';
-  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-  f.allowFullscreen = true;
-  f.referrerPolicy = 'strict-origin-when-cross-origin';
-  frame.appendChild(f);
-  yt.href = 'https://www.youtube.com/playlist?list=' + id;
+
+  VIDEOS.forEach(function(v, i){
+    var c = document.createElement('figure');
+    c.className = 'card';
+    c.innerHTML =
+      '<div class="thumb"><img loading="lazy" alt="" ' +
+      'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
+      '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
+      '<figcaption class="cap">' + v.title + '</figcaption>';
+    c.onclick = function(){ play(i, true); };
+    grid.appendChild(c);
+  });
+
+  play(0, false);
 })();
 </script>
 </body>
