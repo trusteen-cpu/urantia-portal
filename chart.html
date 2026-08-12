@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도표로 본 유란시아서 — 한국 유란시아서 포털</title>
+<style>
+:root{--navy:#1f3f52;--teal:#2e7d7a;--gold:#a8801f;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hero{position:relative;background:linear-gradient(160deg,#16303f 0%,#1f3f52 55%,#264a5c 100%);
+ color:#fff;padding:34px 20px 30px;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero .in{position:relative;max-width:1240px;margin:0 auto;text-align:center}
+.hero h1{margin:0 0 6px;font-size:27px;letter-spacing:-.4px}
+.hero p{margin:0;font-size:14px;color:#cfe0e8}
+.hero .rule{width:74px;height:3px;background:#d8b45a;margin:13px auto 0;border-radius:2px}
+.bar{position:sticky;top:0;z-index:20;background:rgba(246,248,249,.96);
+ border-bottom:1px solid var(--line);padding:11px 20px}
+.bar .in{max-width:1240px;margin:0 auto;display:flex;align-items:center}
+#q{flex:1;min-width:0;padding:9px 13px;border:1px solid #c8d3d9;border-radius:22px;
+ font-size:14px;font-family:inherit;background:#fff}
+#q:focus{outline:none;border-color:var(--navy)}
+#cnt{margin-left:12px;font-size:12.5px;color:#5d6b73;white-space:nowrap}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 60px}
+.sec{margin-bottom:30px}
+.sh{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
+ border-bottom:2px solid var(--navy);margin-bottom:15px;color:var(--navy)}
+.sh b{font-size:17px}
+.sh span{font-size:12.5px;color:#5d6b73}
+.grid{display:flex;flex-wrap:wrap;gap:14px}
+@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr))}}
+.c{margin:0;width:196px;background:#fff;border:1px solid #e4ebee;border-radius:8px;
+ overflow:hidden;cursor:zoom-in;transition:box-shadow .12s,border-color .12s}
+@supports(display:grid){.c{width:auto}}
+.c:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.14)}
+.th{height:132px;display:flex;align-items:center;justify-content:center;
+ background:#fbfcfd;border-bottom:1px solid #eef2f4;overflow:hidden}
+.th img{max-width:100%;max-height:132px;display:block}
+figcaption{padding:7px 9px 9px;font-size:12px;line-height:1.42}
+.bd{display:inline-block;min-width:19px;margin-right:5px;padding:0 4px;border-radius:4px;
+ background:var(--navy);color:#fff;font-size:10.5px;font-weight:700;text-align:center;
+ vertical-align:1px}
+.tt{color:var(--ink)}
+.foot{max-width:1240px;margin:0 auto;padding:0 20px 44px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+#top{position:fixed;right:17px;bottom:17px;display:none;width:41px;height:41px;border-radius:50%;
+ background:var(--navy);color:#fff;border:0;font-size:17px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.22)}
+#lb{position:fixed;inset:0;z-index:60;display:none;background:rgba(14,26,34,.94)}
+#lb.on{display:flex;flex-direction:column}
+#lb .hd{flex:none;display:flex;align-items:center;gap:12px;padding:11px 15px;color:#e8f0f4;font-size:13.5px}
+#lb .hd .sp{margin-left:auto;display:flex;gap:8px}
+#lb .hd button,#lb .hd a{background:rgba(255,255,255,.13);color:#fff;border:0;border-radius:16px;
+ padding:5px 13px;font-size:12.5px;font-family:inherit;cursor:pointer}
+#lb .bd2{flex:1;display:flex;align-items:center;justify-content:center;padding:0 12px 16px;min-height:0}
+#lb img{max-width:100%;max-height:100%;background:#fff;border-radius:4px}
+@media print{.hero,.bar,#top,.foot,#lb{display:none}.wrap{padding:0;max-width:none}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<canvas id="sky"></canvas>
+<div class="in">
+<h1>도표로 본 유란시아서</h1>
+<p>유란시아서의 구조와 가르침을 한눈에 담은 도표 모음</p>
+<div class="rule"></div>
+</div>
+</div>
+
+<div class="bar"><div class="in">
+<input id="q" type="search" placeholder="번호나 낱말로 찾기 (예: 72, 삼위일체, 에너지)" autocomplete="off">
+<span id="cnt"></span>
+</div></div>
+
+<div class="wrap">
+<section class="sec">
+  <div class="sh"><b>번호순 도표</b><span>133장</span></div>
+  <div class="grid">
+<figure class="c" data-k="1 하나님은 무엇과 같을까 1. 하나님은 무엇과 같을까.jpeg" data-src="charts/1.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%80%20%EB%AC%B4%EC%97%87%EA%B3%BC%20%EA%B0%99%EC%9D%84%EA%B9%8C.jpeg" data-t="하나님은 무엇과 같을까">
+  <div class="th"><img loading="lazy" src="charts/1.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%80%20%EB%AC%B4%EC%97%87%EA%B3%BC%20%EA%B0%99%EC%9D%84%EA%B9%8C.jpeg" alt="하나님은 무엇과 같을까"></div>
+  <figcaption><span class="bd">1</span><span class="tt">하나님은 무엇과 같을까</span></figcaption>
+</figure>
+<figure class="c" data-k="2 실체의 다른 수준들 2. 실체의 다른 수준들.jpeg" data-src="charts/2.%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EB%8B%A4%EB%A5%B8%20%EC%88%98%EC%A4%80%EB%93%A4.jpeg" data-t="실체의 다른 수준들">
+  <div class="th"><img loading="lazy" src="charts/2.%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EB%8B%A4%EB%A5%B8%20%EC%88%98%EC%A4%80%EB%93%A4.jpeg" alt="실체의 다른 수준들"></div>
+  <figcaption><span class="bd">2</span><span class="tt">실체의 다른 수준들</span></figcaption>
+</figure>
+<figure class="c" data-k="3 첫째 근원 중심의 분화 - example_ 3. 첫째 근원 중심의 분화 - example_.jpeg" data-src="charts/3.%20%EC%B2%AB%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC%EC%9D%98%20%EB%B6%84%ED%99%94%20-%20Example_.jpeg" data-t="첫째 근원 중심의 분화 - Example_">
+  <div class="th"><img loading="lazy" src="charts/3.%20%EC%B2%AB%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC%EC%9D%98%20%EB%B6%84%ED%99%94%20-%20Example_.jpeg" alt="첫째 근원 중심의 분화 - Example_"></div>
+  <figcaption><span class="bd">3</span><span class="tt">첫째 근원 중심의 분화 - Example_</span></figcaption>
+</figure>
+<figure class="c" data-k="4 우주 실체의 인간 현시 4.  우주 실체의 인간 현시.jpeg" data-src="charts/4.%20%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%9D%B8%EA%B0%84%20%ED%98%84%EC%8B%9C.jpeg" data-t="우주 실체의 인간 현시">
+  <div class="th"><img loading="lazy" src="charts/4.%20%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%9D%B8%EA%B0%84%20%ED%98%84%EC%8B%9C.jpeg" alt="우주 실체의 인간 현시"></div>
+  <figcaption><span class="bd">4</span><span class="tt">우주 실체의 인간 현시</span></figcaption>
+</figure>
+<figure class="c" data-k="6 glorified corps of finaliters 6 glorified corps of finaliters.png" data-src="charts/6%20Glorified%20corps%20of%20finaliters.png" data-t="Glorified corps of finaliters">
+  <div class="th"><img loading="lazy" src="charts/6%20Glorified%20corps%20of%20finaliters.png" alt="Glorified corps of finaliters"></div>
+  <figcaption><span class="bd">6</span><span class="tt">Glorified corps of finaliters</span></figcaption>
+</figure>
+<figure class="c" data-k="6 3종류의 죽음 (1) 6. 3종류의 죽음 (1).jpeg" data-src="charts/6.%203%EC%A2%85%EB%A5%98%EC%9D%98%20%EC%A3%BD%EC%9D%8C%20%281%29.jpeg" data-t="3종류의 죽음 (1)">
+  <div class="th"><img loading="lazy" src="charts/6.%203%EC%A2%85%EB%A5%98%EC%9D%98%20%EC%A3%BD%EC%9D%8C%20%281%29.jpeg" alt="3종류의 죽음 (1)"></div>
+  <figcaption><span class="bd">6</span><span class="tt">3종류의 죽음 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="8 생각 조절자 8. 생각 조절자.jpeg" data-src="charts/8.%20%EC%83%9D%EA%B0%81%20%EC%A1%B0%EC%A0%88%EC%9E%90.jpeg" data-t="생각 조절자">
+  <div class="th"><img loading="lazy" src="charts/8.%20%EC%83%9D%EA%B0%81%20%EC%A1%B0%EC%A0%88%EC%9E%90.jpeg" alt="생각 조절자"></div>
+  <figcaption><span class="bd">8</span><span class="tt">생각 조절자</span></figcaption>
+</figure>
+<figure class="c" data-k="9 하강하는 하나님 아들 9. 하강하는 하나님 아들.jpeg" data-src="charts/9.%20%ED%95%98%EA%B0%95%ED%95%98%EB%8A%94%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%95%84%EB%93%A4.jpeg" data-t="하강하는 하나님 아들">
+  <div class="th"><img loading="lazy" src="charts/9.%20%ED%95%98%EA%B0%95%ED%95%98%EB%8A%94%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%95%84%EB%93%A4.jpeg" alt="하강하는 하나님 아들"></div>
+  <figcaption><span class="bd">9</span><span class="tt">하강하는 하나님 아들</span></figcaption>
+</figure>
+<figure class="c" data-k="10 창조자 아들 10. 창조자 아들.jpeg" data-src="charts/10.%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4.jpeg" data-t="창조자 아들">
+  <div class="th"><img loading="lazy" src="charts/10.%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4.jpeg" alt="창조자 아들"></div>
+  <figcaption><span class="bd">10</span><span class="tt">창조자 아들</span></figcaption>
+</figure>
+<figure class="c" data-k="11 삼위일체의 삼위일체 11.삼위일체의 삼위일체.jpg" data-src="charts/11.%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%EC%9D%98%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4.jpg" data-t="삼위일체의 삼위일체">
+  <div class="th"><img loading="lazy" src="charts/11.%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%EC%9D%98%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4.jpg" alt="삼위일체의 삼위일체"></div>
+  <figcaption><span class="bd">11</span><span class="tt">삼위일체의 삼위일체</span></figcaption>
+</figure>
+<figure class="c" data-k="12 무한의 일곱 절대자 12. 무한의 일곱 절대자.jpeg" data-src="charts/12.%20%EB%AC%B4%ED%95%9C%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90.jpeg" data-t="무한의 일곱 절대자">
+  <div class="th"><img loading="lazy" src="charts/12.%20%EB%AC%B4%ED%95%9C%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90.jpeg" alt="무한의 일곱 절대자"></div>
+  <figcaption><span class="bd">12</span><span class="tt">무한의 일곱 절대자</span></figcaption>
+</figure>
+<figure class="c" data-k="13 우주와 첫째 근원 중심 13. 우주와 첫째 근원 중심.jpeg" data-src="charts/13.%20%EC%9A%B0%EC%A3%BC%EC%99%80%20%EC%B2%AB%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC.jpeg" data-t="우주와 첫째 근원 중심">
+  <div class="th"><img loading="lazy" src="charts/13.%20%EC%9A%B0%EC%A3%BC%EC%99%80%20%EC%B2%AB%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC.jpeg" alt="우주와 첫째 근원 중심"></div>
+  <figcaption><span class="bd">13</span><span class="tt">우주와 첫째 근원 중심</span></figcaption>
+</figure>
+<figure class="c" data-k="14 초우주의 구성 14. 초우주의 구성.jpeg" data-src="charts/14.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EA%B5%AC%EC%84%B1.jpeg" data-t="초우주의 구성">
+  <div class="th"><img loading="lazy" src="charts/14.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EA%B5%AC%EC%84%B1.jpeg" alt="초우주의 구성"></div>
+  <figcaption><span class="bd">14</span><span class="tt">초우주의 구성</span></figcaption>
+</figure>
+<figure class="c" data-k="15 파라다이스 상승의 일곱단계 15. 파라다이스 상승의 일곱단계.jpeg" data-src="charts/15.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EC%83%81%EC%8A%B9%EC%9D%98%20%EC%9D%BC%EA%B3%B1%EB%8B%A8%EA%B3%84.jpeg" data-t="파라다이스 상승의 일곱단계">
+  <div class="th"><img loading="lazy" src="charts/15.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EC%83%81%EC%8A%B9%EC%9D%98%20%EC%9D%BC%EA%B3%B1%EB%8B%A8%EA%B3%84.jpeg" alt="파라다이스 상승의 일곱단계"></div>
+  <figcaption><span class="bd">15</span><span class="tt">파라다이스 상승의 일곱단계</span></figcaption>
+</figure>
+<figure class="c" data-k="16-1 일곱 주 영이 기원한 일곱 유사성 16-1 일곱 주 영이 기원한 일곱 유사성.png" data-src="charts/16-1%20%EC%9D%BC%EA%B3%B1%20%EC%A3%BC%20%EC%98%81%EC%9D%B4%20%EA%B8%B0%EC%9B%90%ED%95%9C%20%EC%9D%BC%EA%B3%B1%20%EC%9C%A0%EC%82%AC%EC%84%B1.png" data-t="일곱 주 영이 기원한 일곱 유사성">
+  <div class="th"><img loading="lazy" src="charts/16-1%20%EC%9D%BC%EA%B3%B1%20%EC%A3%BC%20%EC%98%81%EC%9D%B4%20%EA%B8%B0%EC%9B%90%ED%95%9C%20%EC%9D%BC%EA%B3%B1%20%EC%9C%A0%EC%82%AC%EC%84%B1.png" alt="일곱 주 영이 기원한 일곱 유사성"></div>
+  <figcaption><span class="bd">16-1</span><span class="tt">일곱 주 영이 기원한 일곱 유사성</span></figcaption>
+</figure>
+<figure class="c" data-k="16-2 일곱 주 영의 개별 특성과 관장 초우주 16-2 일곱 주 영의 개별 특성과 관장 초우주.png" data-src="charts/16-2%20%EC%9D%BC%EA%B3%B1%20%EC%A3%BC%20%EC%98%81%EC%9D%98%20%EA%B0%9C%EB%B3%84%20%ED%8A%B9%EC%84%B1%EA%B3%BC%20%EA%B4%80%EC%9E%A5%20%EC%B4%88%EC%9A%B0%EC%A3%BC.png" data-t="일곱 주 영의 개별 특성과 관장 초우주">
+  <div class="th"><img loading="lazy" src="charts/16-2%20%EC%9D%BC%EA%B3%B1%20%EC%A3%BC%20%EC%98%81%EC%9D%98%20%EA%B0%9C%EB%B3%84%20%ED%8A%B9%EC%84%B1%EA%B3%BC%20%EA%B4%80%EC%9E%A5%20%EC%B4%88%EC%9A%B0%EC%A3%BC.png" alt="일곱 주 영의 개별 특성과 관장 초우주"></div>
+  <figcaption><span class="bd">16-2</span><span class="tt">일곱 주 영의 개별 특성과 관장 초우주</span></figcaption>
+</figure>
+<figure class="c" data-k="16-3 오르본톤 주 영의 영향 영역 16-3 오르본톤 주 영의 영향 영역.png" data-src="charts/16-3%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%86%A4%20%EC%A3%BC%20%EC%98%81%EC%9D%98%20%EC%98%81%ED%96%A5%20%EC%98%81%EC%97%AD.png" data-t="오르본톤 주 영의 영향 영역">
+  <div class="th"><img loading="lazy" src="charts/16-3%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%86%A4%20%EC%A3%BC%20%EC%98%81%EC%9D%98%20%EC%98%81%ED%96%A5%20%EC%98%81%EC%97%AD.png" alt="오르본톤 주 영의 영향 영역"></div>
+  <figcaption><span class="bd">16-3</span><span class="tt">오르본톤 주 영의 영향 영역</span></figcaption>
+</figure>
+<figure class="c" data-k="16-4 우주 마음이 반응하는 세 실체 수준 16-4 우주 마음이 반응하는 세 실체 수준.png" data-src="charts/16-4%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EC%9D%B4%20%EB%B0%98%EC%9D%91%ED%95%98%EB%8A%94%20%EC%84%B8%20%EC%8B%A4%EC%B2%B4%20%EC%88%98%EC%A4%80.png" data-t="우주 마음이 반응하는 세 실체 수준">
+  <div class="th"><img loading="lazy" src="charts/16-4%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EC%9D%B4%20%EB%B0%98%EC%9D%91%ED%95%98%EB%8A%94%20%EC%84%B8%20%EC%8B%A4%EC%B2%B4%20%EC%88%98%EC%A4%80.png" alt="우주 마음이 반응하는 세 실체 수준"></div>
+  <figcaption><span class="bd">16-4</span><span class="tt">우주 마음이 반응하는 세 실체 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="16-5 인간 인격의 상대적 자유의지 일곱 국면 16-5 인간 인격의 상대적 자유의지 일곱 국면.png" data-src="charts/16-5%20%EC%9D%B8%EA%B0%84%20%EC%9D%B8%EA%B2%A9%EC%9D%98%20%EC%83%81%EB%8C%80%EC%A0%81%20%EC%9E%90%EC%9C%A0%EC%9D%98%EC%A7%80%20%EC%9D%BC%EA%B3%B1%20%EA%B5%AD%EB%A9%B4.png" data-t="인간 인격의 상대적 자유의지 일곱 국면">
+  <div class="th"><img loading="lazy" src="charts/16-5%20%EC%9D%B8%EA%B0%84%20%EC%9D%B8%EA%B2%A9%EC%9D%98%20%EC%83%81%EB%8C%80%EC%A0%81%20%EC%9E%90%EC%9C%A0%EC%9D%98%EC%A7%80%20%EC%9D%BC%EA%B3%B1%20%EA%B5%AD%EB%A9%B4.png" alt="인간 인격의 상대적 자유의지 일곱 국면"></div>
+  <figcaption><span class="bd">16-5</span><span class="tt">인간 인격의 상대적 자유의지 일곱 국면</span></figcaption>
+</figure>
+<figure class="c" data-k="16-6 인간 자의식에 잠재한 네 가지 우주-실체 실현 16-6 인간 자의식에 잠재한 네 가지 우주-실체 실현.png" data-src="charts/16-6%20%EC%9D%B8%EA%B0%84%20%EC%9E%90%EC%9D%98%EC%8B%9D%EC%97%90%20%EC%9E%A0%EC%9E%AC%ED%95%9C%20%EB%84%A4%20%EA%B0%80%EC%A7%80%20%EC%9A%B0%EC%A3%BC-%EC%8B%A4%EC%B2%B4%20%EC%8B%A4%ED%98%84.png" data-t="인간 자의식에 잠재한 네 가지 우주-실체 실현">
+  <div class="th"><img loading="lazy" src="charts/16-6%20%EC%9D%B8%EA%B0%84%20%EC%9E%90%EC%9D%98%EC%8B%9D%EC%97%90%20%EC%9E%A0%EC%9E%AC%ED%95%9C%20%EB%84%A4%20%EA%B0%80%EC%A7%80%20%EC%9A%B0%EC%A3%BC-%EC%8B%A4%EC%B2%B4%20%EC%8B%A4%ED%98%84.png" alt="인간 자의식에 잠재한 네 가지 우주-실체 실현"></div>
+  <figcaption><span class="bd">16-6</span><span class="tt">인간 자의식에 잠재한 네 가지 우주-실체 실현</span></figcaption>
+</figure>
+<figure class="c" data-k="16 행성 필사자 시대 구분 16. 행성 필사자 시대 구분.jpeg" data-src="charts/16.%20%ED%96%89%EC%84%B1%20%ED%95%84%EC%82%AC%EC%9E%90%20%EC%8B%9C%EB%8C%80%20%EA%B5%AC%EB%B6%84.jpeg" data-t="행성 필사자 시대 구분">
+  <div class="th"><img loading="lazy" src="charts/16.%20%ED%96%89%EC%84%B1%20%ED%95%84%EC%82%AC%EC%9E%90%20%EC%8B%9C%EB%8C%80%20%EA%B5%AC%EB%B6%84.jpeg" alt="행성 필사자 시대 구분"></div>
+  <figcaption><span class="bd">16</span><span class="tt">행성 필사자 시대 구분</span></figcaption>
+</figure>
+<figure class="c" data-k="17-1 지역 우주 창조 영의 일곱 단계 생애 17-1 지역 우주 창조 영의 일곱 단계 생애.png" data-src="charts/17-1%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%B0%BD%EC%A1%B0%20%EC%98%81%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EB%8B%A8%EA%B3%84%20%EC%83%9D%EC%95%A0.png" data-t="지역 우주 창조 영의 일곱 단계 생애">
+  <div class="th"><img loading="lazy" src="charts/17-1%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%B0%BD%EC%A1%B0%20%EC%98%81%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EB%8B%A8%EA%B3%84%20%EC%83%9D%EC%95%A0.png" alt="지역 우주 창조 영의 일곱 단계 생애"></div>
+  <figcaption><span class="bd">17-1</span><span class="tt">지역 우주 창조 영의 일곱 단계 생애</span></figcaption>
+</figure>
+<figure class="c" data-k="17-2 봉사하는 영들의 기원 계보 17-2 봉사하는 영들의 기원 계보.png" data-src="charts/17-2%20%EB%B4%89%EC%82%AC%ED%95%98%EB%8A%94%20%EC%98%81%EB%93%A4%EC%9D%98%20%EA%B8%B0%EC%9B%90%20%EA%B3%84%EB%B3%B4.png" data-t="봉사하는 영들의 기원 계보">
+  <div class="th"><img loading="lazy" src="charts/17-2%20%EB%B4%89%EC%82%AC%ED%95%98%EB%8A%94%20%EC%98%81%EB%93%A4%EC%9D%98%20%EA%B8%B0%EC%9B%90%20%EA%B3%84%EB%B3%B4.png" alt="봉사하는 영들의 기원 계보"></div>
+  <figcaption><span class="bd">17-2</span><span class="tt">봉사하는 영들의 기원 계보</span></figcaption>
+</figure>
+<figure class="c" data-k="17-3 최상 영 집단의 다섯 가지 총괄 기능 17-3 최상 영 집단의 다섯 가지 총괄 기능.png" data-src="charts/17-3%20%EC%B5%9C%EC%83%81%20%EC%98%81%20%EC%A7%91%EB%8B%A8%EC%9D%98%20%EB%8B%A4%EC%84%AF%20%EA%B0%80%EC%A7%80%20%EC%B4%9D%EA%B4%84%20%EA%B8%B0%EB%8A%A5.png" data-t="최상 영 집단의 다섯 가지 총괄 기능">
+  <div class="th"><img loading="lazy" src="charts/17-3%20%EC%B5%9C%EC%83%81%20%EC%98%81%20%EC%A7%91%EB%8B%A8%EC%9D%98%20%EB%8B%A4%EC%84%AF%20%EA%B0%80%EC%A7%80%20%EC%B4%9D%EA%B4%84%20%EA%B8%B0%EB%8A%A5.png" alt="최상 영 집단의 다섯 가지 총괄 기능"></div>
+  <figcaption><span class="bd">17-3</span><span class="tt">최상 영 집단의 다섯 가지 총괄 기능</span></figcaption>
+</figure>
+<figure class="c" data-k="17 신성의 향기 17.신성의 향기.jpeg" data-src="charts/17.%EC%8B%A0%EC%84%B1%EC%9D%98%20%ED%96%A5%EA%B8%B0.jpeg" data-t="신성의 향기">
+  <div class="th"><img loading="lazy" src="charts/17.%EC%8B%A0%EC%84%B1%EC%9D%98%20%ED%96%A5%EA%B8%B0.jpeg" alt="신성의 향기"></div>
+  <figcaption><span class="bd">17</span><span class="tt">신성의 향기</span></figcaption>
+</figure>
+<figure class="c" data-k="18 최상 존재 18. 최상 존재.jpeg" data-src="charts/18.%20%EC%B5%9C%EC%83%81%20%EC%A1%B4%EC%9E%AC.jpeg" data-t="최상 존재">
+  <div class="th"><img loading="lazy" src="charts/18.%20%EC%B5%9C%EC%83%81%20%EC%A1%B4%EC%9E%AC.jpeg" alt="최상 존재"></div>
+  <figcaption><span class="bd">18</span><span class="tt">최상 존재</span></figcaption>
+</figure>
+<figure class="c" data-k="19 세 절대자 19. 세 절대자.jpeg" data-src="charts/19.%20%EC%84%B8%20%EC%A0%88%EB%8C%80%EC%9E%90.jpeg" data-t="세 절대자">
+  <div class="th"><img loading="lazy" src="charts/19.%20%EC%84%B8%20%EC%A0%88%EB%8C%80%EC%9E%90.jpeg" alt="세 절대자"></div>
+  <figcaption><span class="bd">19</span><span class="tt">세 절대자</span></figcaption>
+</figure>
+<figure class="c" data-k="20 5 섭리시대적 가르침 (92_4.4-9) (1) 20. 5 섭리시대적 가르침 (92_4.4-9) (1).jpeg" data-src="charts/20.%205%20%EC%84%AD%EB%A6%AC%EC%8B%9C%EB%8C%80%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8%20%2892_4.4-9%29%20%281%29.jpeg" data-t="5 섭리시대적 가르침 (92_4.4-9) (1)">
+  <div class="th"><img loading="lazy" src="charts/20.%205%20%EC%84%AD%EB%A6%AC%EC%8B%9C%EB%8C%80%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8%20%2892_4.4-9%29%20%281%29.jpeg" alt="5 섭리시대적 가르침 (92_4.4-9) (1)"></div>
+  <figcaption><span class="bd">20</span><span class="tt">5 섭리시대적 가르침 (92_4.4-9) (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="20 5 섭리시대적 가르침 (92_4.4-9) 20. 5 섭리시대적 가르침 (92_4.4-9).jpeg" data-src="charts/20.%205%20%EC%84%AD%EB%A6%AC%EC%8B%9C%EB%8C%80%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8%20%2892_4.4-9%29.jpeg" data-t="5 섭리시대적 가르침 (92_4.4-9)">
+  <div class="th"><img loading="lazy" src="charts/20.%205%20%EC%84%AD%EB%A6%AC%EC%8B%9C%EB%8C%80%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8%20%2892_4.4-9%29.jpeg" alt="5 섭리시대적 가르침 (92_4.4-9)"></div>
+  <figcaption><span class="bd">20</span><span class="tt">5 섭리시대적 가르침 (92_4.4-9)</span></figcaption>
+</figure>
+<figure class="c" data-k="21 인종의 분산 21. 인종의 분산.jpeg" data-src="charts/21.%20%EC%9D%B8%EC%A2%85%EC%9D%98%20%EB%B6%84%EC%82%B0.jpeg" data-t="인종의 분산">
+  <div class="th"><img loading="lazy" src="charts/21.%20%EC%9D%B8%EC%A2%85%EC%9D%98%20%EB%B6%84%EC%82%B0.jpeg" alt="인종의 분산"></div>
+  <figcaption><span class="bd">21</span><span class="tt">인종의 분산</span></figcaption>
+</figure>
+<figure class="c" data-k="22 7 번의 희년 22. 7 번의 희년.jpeg" data-src="charts/22.%207%20%EB%B2%88%EC%9D%98%20%ED%9D%AC%EB%85%84.jpeg" data-t="7 번의 희년">
+  <div class="th"><img loading="lazy" src="charts/22.%207%20%EB%B2%88%EC%9D%98%20%ED%9D%AC%EB%85%84.jpeg" alt="7 번의 희년"></div>
+  <figcaption><span class="bd">22</span><span class="tt">7 번의 희년</span></figcaption>
+</figure>
+<figure class="c" data-k="23 물리적 에너지 현시 23. 물리적 에너지 현시.jpeg" data-src="charts/23.%20%EB%AC%BC%EB%A6%AC%EC%A0%81%20%EC%97%90%EB%84%88%EC%A7%80%20%ED%98%84%EC%8B%9C.jpeg" data-t="물리적 에너지 현시">
+  <div class="th"><img loading="lazy" src="charts/23.%20%EB%AC%BC%EB%A6%AC%EC%A0%81%20%EC%97%90%EB%84%88%EC%A7%80%20%ED%98%84%EC%8B%9C.jpeg" alt="물리적 에너지 현시"></div>
+  <figcaption><span class="bd">23</span><span class="tt">물리적 에너지 현시</span></figcaption>
+</figure>
+<figure class="c" data-k="24 우주 실체 기본 분류 24. 우주 실체 기본 분류.jpeg" data-src="charts/24.%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%20%EA%B8%B0%EB%B3%B8%20%EB%B6%84%EB%A5%98.jpeg" data-t="우주 실체 기본 분류">
+  <div class="th"><img loading="lazy" src="charts/24.%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%20%EA%B8%B0%EB%B3%B8%20%EB%B6%84%EB%A5%98.jpeg" alt="우주 실체 기본 분류"></div>
+  <figcaption><span class="bd">24</span><span class="tt">우주 실체 기본 분류</span></figcaption>
+</figure>
+<figure class="c" data-k="25 시간과 공간에 의한 실체의 추가 분류 25. 시간과 공간에 의한 실체의 추가 분류.jpg" data-src="charts/25.%20%EC%8B%9C%EA%B0%84%EA%B3%BC%20%EA%B3%B5%EA%B0%84%EC%97%90%20%EC%9D%98%ED%95%9C%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%B6%94%EA%B0%80%20%EB%B6%84%EB%A5%98.jpg" data-t="시간과 공간에 의한 실체의 추가 분류">
+  <div class="th"><img loading="lazy" src="charts/25.%20%EC%8B%9C%EA%B0%84%EA%B3%BC%20%EA%B3%B5%EA%B0%84%EC%97%90%20%EC%9D%98%ED%95%9C%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%B6%94%EA%B0%80%20%EB%B6%84%EB%A5%98.jpg" alt="시간과 공간에 의한 실체의 추가 분류"></div>
+  <figcaption><span class="bd">25</span><span class="tt">시간과 공간에 의한 실체의 추가 분류</span></figcaption>
+</figure>
+<figure class="c" data-k="26 하보나 이후 두 삼위일체 26. 하보나 이후 두 삼위일체.jpg" data-src="charts/26.%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%9D%B4%ED%9B%84%20%EB%91%90%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4.jpg" data-t="하보나 이후 두 삼위일체">
+  <div class="th"><img loading="lazy" src="charts/26.%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%9D%B4%ED%9B%84%20%EB%91%90%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4.jpg" alt="하보나 이후 두 삼위일체"></div>
+  <figcaption><span class="bd">26</span><span class="tt">하보나 이후 두 삼위일체</span></figcaption>
+</figure>
+<figure class="c" data-k="27 하나님 존재의 사실성 27. 하나님 존재의 사실성.jpeg" data-src="charts/27.%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%A1%B4%EC%9E%AC%EC%9D%98%20%EC%82%AC%EC%8B%A4%EC%84%B1.jpeg" data-t="하나님 존재의 사실성">
+  <div class="th"><img loading="lazy" src="charts/27.%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%A1%B4%EC%9E%AC%EC%9D%98%20%EC%82%AC%EC%8B%A4%EC%84%B1.jpeg" alt="하나님 존재의 사실성"></div>
+  <figcaption><span class="bd">27</span><span class="tt">하나님 존재의 사실성</span></figcaption>
+</figure>
+<figure class="c" data-k="28 일곱 정신 원 28. 일곱 정신 원.jpeg" data-src="charts/28.%20%EC%9D%BC%EA%B3%B1%20%EC%A0%95%EC%8B%A0%20%EC%9B%90.jpeg" data-t="일곱 정신 원">
+  <div class="th"><img loading="lazy" src="charts/28.%20%EC%9D%BC%EA%B3%B1%20%EC%A0%95%EC%8B%A0%20%EC%9B%90.jpeg" alt="일곱 정신 원"></div>
+  <figcaption><span class="bd">28</span><span class="tt">일곱 정신 원</span></figcaption>
+</figure>
+<figure class="c" data-k="29 우주 실체의 일곱 수준 29. 우주 실체의 일곱 수준.jpeg" data-src="charts/29.%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpeg" data-t="우주 실체의 일곱 수준">
+  <div class="th"><img loading="lazy" src="charts/29.%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpeg" alt="우주 실체의 일곱 수준"></div>
+  <figcaption><span class="bd">29</span><span class="tt">우주 실체의 일곱 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="30 하나님의 힘의 제한 30. 하나님의 힘의 제한.jpeg" data-src="charts/30.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%9E%98%EC%9D%98%20%EC%A0%9C%ED%95%9C.jpeg" data-t="하나님의 힘의 제한">
+  <div class="th"><img loading="lazy" src="charts/30.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%9E%98%EC%9D%98%20%EC%A0%9C%ED%95%9C.jpeg" alt="하나님의 힘의 제한"></div>
+  <figcaption><span class="bd">30</span><span class="tt">하나님의 힘의 제한</span></figcaption>
+</figure>
+<figure class="c" data-k="31 완성의 신성한 계획 31. 완성의 신성한 계획.jpeg" data-src="charts/31.%20%EC%99%84%EC%84%B1%EC%9D%98%20%EC%8B%A0%EC%84%B1%ED%95%9C%20%EA%B3%84%ED%9A%8D.jpeg" data-t="완성의 신성한 계획">
+  <div class="th"><img loading="lazy" src="charts/31.%20%EC%99%84%EC%84%B1%EC%9D%98%20%EC%8B%A0%EC%84%B1%ED%95%9C%20%EA%B3%84%ED%9A%8D.jpeg" alt="완성의 신성한 계획"></div>
+  <figcaption><span class="bd">31</span><span class="tt">완성의 신성한 계획</span></figcaption>
+</figure>
+<figure class="c" data-k="32 기독교의 3개의 개별적 가르침 32. 기독교의 3개의 개별적 가르침.jpeg" data-src="charts/32.%20%EA%B8%B0%EB%8F%85%EA%B5%90%EC%9D%98%203%EA%B0%9C%EC%9D%98%20%EA%B0%9C%EB%B3%84%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8.jpeg" data-t="기독교의 3개의 개별적 가르침">
+  <div class="th"><img loading="lazy" src="charts/32.%20%EA%B8%B0%EB%8F%85%EA%B5%90%EC%9D%98%203%EA%B0%9C%EC%9D%98%20%EA%B0%9C%EB%B3%84%EC%A0%81%20%EA%B0%80%EB%A5%B4%EC%B9%A8.jpeg" alt="기독교의 3개의 개별적 가르침"></div>
+  <figcaption><span class="bd">32</span><span class="tt">기독교의 3개의 개별적 가르침</span></figcaption>
+</figure>
+<figure class="c" data-k="33 아버지의 일곱 거룩한 구체 33. 아버지의 일곱 거룩한 구체.jpeg" data-src="charts/33.%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EA%B1%B0%EB%A3%A9%ED%95%9C%20%EA%B5%AC%EC%B2%B4.jpeg" data-t="아버지의 일곱 거룩한 구체">
+  <div class="th"><img loading="lazy" src="charts/33.%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%20%EC%9D%BC%EA%B3%B1%20%EA%B1%B0%EB%A3%A9%ED%95%9C%20%EA%B5%AC%EC%B2%B4.jpeg" alt="아버지의 일곱 거룩한 구체"></div>
+  <figcaption><span class="bd">33</span><span class="tt">아버지의 일곱 거룩한 구체</span></figcaption>
+</figure>
+<figure class="c" data-k="34 미가엘 증여의 9가지 조건 34. 미가엘 증여의 9가지 조건.jpeg" data-src="charts/34.%20%EB%AF%B8%EA%B0%80%EC%97%98%20%EC%A6%9D%EC%97%AC%EC%9D%98%209%EA%B0%80%EC%A7%80%20%EC%A1%B0%EA%B1%B4.jpeg" data-t="미가엘 증여의 9가지 조건">
+  <div class="th"><img loading="lazy" src="charts/34.%20%EB%AF%B8%EA%B0%80%EC%97%98%20%EC%A6%9D%EC%97%AC%EC%9D%98%209%EA%B0%80%EC%A7%80%20%EC%A1%B0%EA%B1%B4.jpeg" alt="미가엘 증여의 9가지 조건"></div>
+  <figcaption><span class="bd">34</span><span class="tt">미가엘 증여의 9가지 조건</span></figcaption>
+</figure>
+<figure class="c" data-k="35 미가엘 유란시아 증여에 대한 8 가지 추가 조언 35. 미가엘 유란시아 증여에 대한 8 가지 추가 조언.jpeg" data-src="charts/35.%20%EB%AF%B8%EA%B0%80%EC%97%98%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%A6%9D%EC%97%AC%EC%97%90%20%EB%8C%80%ED%95%9C%208%20%EA%B0%80%EC%A7%80%20%EC%B6%94%EA%B0%80%20%EC%A1%B0%EC%96%B8.jpeg" data-t="미가엘 유란시아 증여에 대한 8 가지 추가 조언">
+  <div class="th"><img loading="lazy" src="charts/35.%20%EB%AF%B8%EA%B0%80%EC%97%98%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%A6%9D%EC%97%AC%EC%97%90%20%EB%8C%80%ED%95%9C%208%20%EA%B0%80%EC%A7%80%20%EC%B6%94%EA%B0%80%20%EC%A1%B0%EC%96%B8.jpeg" alt="미가엘 유란시아 증여에 대한 8 가지 추가 조언"></div>
+  <figcaption><span class="bd">35</span><span class="tt">미가엘 유란시아 증여에 대한 8 가지 추가 조언</span></figcaption>
+</figure>
+<figure class="c" data-k="36 생명의 이식에서 조절자의 도착까지 36. 생명의 이식에서 조절자의 도착까지.jpeg" data-src="charts/36.%20%EC%83%9D%EB%AA%85%EC%9D%98%20%EC%9D%B4%EC%8B%9D%EC%97%90%EC%84%9C%20%EC%A1%B0%EC%A0%88%EC%9E%90%EC%9D%98%20%EB%8F%84%EC%B0%A9%EA%B9%8C%EC%A7%80.jpeg" data-t="생명의 이식에서 조절자의 도착까지">
+  <div class="th"><img loading="lazy" src="charts/36.%20%EC%83%9D%EB%AA%85%EC%9D%98%20%EC%9D%B4%EC%8B%9D%EC%97%90%EC%84%9C%20%EC%A1%B0%EC%A0%88%EC%9E%90%EC%9D%98%20%EB%8F%84%EC%B0%A9%EA%B9%8C%EC%A7%80.jpeg" alt="생명의 이식에서 조절자의 도착까지"></div>
+  <figcaption><span class="bd">36</span><span class="tt">생명의 이식에서 조절자의 도착까지</span></figcaption>
+</figure>
+<figure class="c" data-k="37 공간 호흡 37. 공간 호흡.jpeg" data-src="charts/37.%20%EA%B3%B5%EA%B0%84%20%ED%98%B8%ED%9D%A1.jpeg" data-t="공간 호흡">
+  <div class="th"><img loading="lazy" src="charts/37.%20%EA%B3%B5%EA%B0%84%20%ED%98%B8%ED%9D%A1.jpeg" alt="공간 호흡"></div>
+  <figcaption><span class="bd">37</span><span class="tt">공간 호흡</span></figcaption>
+</figure>
+<figure class="c" data-k="38 주우주 4개의 절대 인력 38. 주우주 4개의 절대 인력.jpeg" data-src="charts/38.%20%EC%A3%BC%EC%9A%B0%EC%A3%BC%204%EA%B0%9C%EC%9D%98%20%EC%A0%88%EB%8C%80%20%EC%9D%B8%EB%A0%A5.jpeg" data-t="주우주 4개의 절대 인력">
+  <div class="th"><img loading="lazy" src="charts/38.%20%EC%A3%BC%EC%9A%B0%EC%A3%BC%204%EA%B0%9C%EC%9D%98%20%EC%A0%88%EB%8C%80%20%EC%9D%B8%EB%A0%A5.jpeg" alt="주우주 4개의 절대 인력"></div>
+  <figcaption><span class="bd">38</span><span class="tt">주우주 4개의 절대 인력</span></figcaption>
+</figure>
+<figure class="c" data-k="39 창조체 삶의 9가지 불가피성 (1) 39. 창조체 삶의 9가지 불가피성 (1).jpeg" data-src="charts/39.%20%EC%B0%BD%EC%A1%B0%EC%B2%B4%20%EC%82%B6%EC%9D%98%209%EA%B0%80%EC%A7%80%20%EB%B6%88%EA%B0%80%ED%94%BC%EC%84%B1%20%281%29.jpeg" data-t="창조체 삶의 9가지 불가피성 (1)">
+  <div class="th"><img loading="lazy" src="charts/39.%20%EC%B0%BD%EC%A1%B0%EC%B2%B4%20%EC%82%B6%EC%9D%98%209%EA%B0%80%EC%A7%80%20%EB%B6%88%EA%B0%80%ED%94%BC%EC%84%B1%20%281%29.jpeg" alt="창조체 삶의 9가지 불가피성 (1)"></div>
+  <figcaption><span class="bd">39</span><span class="tt">창조체 삶의 9가지 불가피성 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="40 하나님이란 말의 뜻 40. 하나님이란 말의 뜻.jpeg" data-src="charts/40.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%B4%EB%9E%80%20%EB%A7%90%EC%9D%98%20%EB%9C%BB.jpeg" data-t="하나님이란 말의 뜻">
+  <div class="th"><img loading="lazy" src="charts/40.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%B4%EB%9E%80%20%EB%A7%90%EC%9D%98%20%EB%9C%BB.jpeg" alt="하나님이란 말의 뜻"></div>
+  <figcaption><span class="bd">40</span><span class="tt">하나님이란 말의 뜻</span></figcaption>
+</figure>
+<figure class="c" data-k="41 신이 기능하는 일곱 수준 41. 신이 기능하는 일곱 수준.jpeg" data-src="charts/41.%20%EC%8B%A0%EC%9D%B4%20%EA%B8%B0%EB%8A%A5%ED%95%98%EB%8A%94%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpeg" data-t="신이 기능하는 일곱 수준">
+  <div class="th"><img loading="lazy" src="charts/41.%20%EC%8B%A0%EC%9D%B4%20%EA%B8%B0%EB%8A%A5%ED%95%98%EB%8A%94%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpeg" alt="신이 기능하는 일곱 수준"></div>
+  <figcaption><span class="bd">41</span><span class="tt">신이 기능하는 일곱 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="42 유란시아서 연대기 42. 유란시아서 연대기.jpeg" data-src="charts/42.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%20%EC%97%B0%EB%8C%80%EA%B8%B0.jpeg" data-t="유란시아서 연대기">
+  <div class="th"><img loading="lazy" src="charts/42.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%20%EC%97%B0%EB%8C%80%EA%B8%B0.jpeg" alt="유란시아서 연대기"></div>
+  <figcaption><span class="bd">42</span><span class="tt">유란시아서 연대기</span></figcaption>
+</figure>
+<figure class="c" data-k="43 완전의 수준 43. 완전의 수준.jpg" data-src="charts/43.%20%EC%99%84%EC%A0%84%EC%9D%98%20%EC%88%98%EC%A4%80.jpg" data-t="완전의 수준">
+  <div class="th"><img loading="lazy" src="charts/43.%20%EC%99%84%EC%A0%84%EC%9D%98%20%EC%88%98%EC%A4%80.jpg" alt="완전의 수준"></div>
+  <figcaption><span class="bd">43</span><span class="tt">완전의 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="44 유란시아서 7대 핵심 진리 44. 유란시아서 7대 핵심 진리.jpeg" data-src="charts/44.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%207%EB%8C%80%20%ED%95%B5%EC%8B%AC%20%EC%A7%84%EB%A6%AC.jpeg" data-t="유란시아서 7대 핵심 진리">
+  <div class="th"><img loading="lazy" src="charts/44.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%207%EB%8C%80%20%ED%95%B5%EC%8B%AC%20%EC%A7%84%EB%A6%AC.jpeg" alt="유란시아서 7대 핵심 진리"></div>
+  <figcaption><span class="bd">44</span><span class="tt">유란시아서 7대 핵심 진리</span></figcaption>
+</figure>
+<figure class="c" data-k="44 하나님의 아들들 44. 하나님의 아들들.jpg" data-src="charts/44.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%EC%95%84%EB%93%A4%EB%93%A4.jpg" data-t="하나님의 아들들">
+  <div class="th"><img loading="lazy" src="charts/44.%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%EC%95%84%EB%93%A4%EB%93%A4.jpg" alt="하나님의 아들들"></div>
+  <figcaption><span class="bd">44</span><span class="tt">하나님의 아들들</span></figcaption>
+</figure>
+<figure class="c" data-k="45 신의 시작과 분화 45. 신의 시작과 분화.jpg" data-src="charts/45.%20%EC%8B%A0%EC%9D%98%20%EC%8B%9C%EC%9E%91%EA%B3%BC%20%EB%B6%84%ED%99%94.jpg" data-t="신의 시작과 분화">
+  <div class="th"><img loading="lazy" src="charts/45.%20%EC%8B%A0%EC%9D%98%20%EC%8B%9C%EC%9E%91%EA%B3%BC%20%EB%B6%84%ED%99%94.jpg" alt="신의 시작과 분화"></div>
+  <figcaption><span class="bd">45</span><span class="tt">신의 시작과 분화</span></figcaption>
+</figure>
+<figure class="c" data-k="46 신이 기능하는 일곱 수준 46. 신이 기능하는 일곱 수준.jpg" data-src="charts/46.%20%EC%8B%A0%EC%9D%B4%20%EA%B8%B0%EB%8A%A5%ED%95%98%EB%8A%94%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpg" data-t="신이 기능하는 일곱 수준">
+  <div class="th"><img loading="lazy" src="charts/46.%20%EC%8B%A0%EC%9D%B4%20%EA%B8%B0%EB%8A%A5%ED%95%98%EB%8A%94%20%EC%9D%BC%EA%B3%B1%20%EC%88%98%EC%A4%80.jpg" alt="신이 기능하는 일곱 수준"></div>
+  <figcaption><span class="bd">46</span><span class="tt">신이 기능하는 일곱 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="46 초우주 봉사 영 46. 초우주 봉사 영.jpg" data-src="charts/46.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B4%89%EC%82%AC%20%EC%98%81.jpg" data-t="초우주 봉사 영">
+  <div class="th"><img loading="lazy" src="charts/46.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B4%89%EC%82%AC%20%EC%98%81.jpg" alt="초우주 봉사 영"></div>
+  <figcaption><span class="bd">46</span><span class="tt">초우주 봉사 영</span></figcaption>
+</figure>
+<figure class="c" data-k="47 완전의 수준 47. 완전의 수준.jpg" data-src="charts/47.%20%EC%99%84%EC%A0%84%EC%9D%98%20%EC%88%98%EC%A4%80.jpg" data-t="완전의 수준">
+  <div class="th"><img loading="lazy" src="charts/47.%20%EC%99%84%EC%A0%84%EC%9D%98%20%EC%88%98%EC%A4%80.jpg" alt="완전의 수준"></div>
+  <figcaption><span class="bd">47</span><span class="tt">완전의 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="48-1 인간, 하나님의 형상 48-1. 인간, 하나님의 형상.jpeg" data-src="charts/48-1.%20%EC%9D%B8%EA%B0%84%2C%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%98%95%EC%83%81.jpeg" data-t="인간, 하나님의 형상">
+  <div class="th"><img loading="lazy" src="charts/48-1.%20%EC%9D%B8%EA%B0%84%2C%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%98%95%EC%83%81.jpeg" alt="인간, 하나님의 형상"></div>
+  <figcaption><span class="bd">48-1</span><span class="tt">인간, 하나님의 형상</span></figcaption>
+</figure>
+<figure class="c" data-k="48-2 하나님의 형상(흑백) 48-2 하나님의 형상(흑백).jpeg" data-src="charts/48-2%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%98%95%EC%83%81%28%ED%9D%91%EB%B0%B1%29.jpeg" data-t="하나님의 형상(흑백)">
+  <div class="th"><img loading="lazy" src="charts/48-2%20%ED%95%98%EB%82%98%EB%8B%98%EC%9D%98%20%ED%98%95%EC%83%81%28%ED%9D%91%EB%B0%B1%29.jpeg" alt="하나님의 형상(흑백)"></div>
+  <figcaption><span class="bd">48-2</span><span class="tt">하나님의 형상(흑백)</span></figcaption>
+</figure>
+<figure class="c" data-k="48 유란시아서 7대 핵심 진리 48. 유란시아서 7대 핵심 진리.jpg" data-src="charts/48.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%207%EB%8C%80%20%ED%95%B5%EC%8B%AC%20%EC%A7%84%EB%A6%AC.jpg" data-t="유란시아서 7대 핵심 진리">
+  <div class="th"><img loading="lazy" src="charts/48.%20%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%EC%84%9C%207%EB%8C%80%20%ED%95%B5%EC%8B%AC%20%EC%A7%84%EB%A6%AC.jpg" alt="유란시아서 7대 핵심 진리"></div>
+  <figcaption><span class="bd">48</span><span class="tt">유란시아서 7대 핵심 진리</span></figcaption>
+</figure>
+<figure class="c" data-k="49 인간과 최상 존재 49. 인간과 최상 존재.jpg" data-src="charts/49.%20%EC%9D%B8%EA%B0%84%EA%B3%BC%20%EC%B5%9C%EC%83%81%20%EC%A1%B4%EC%9E%AC.jpg" data-t="인간과 최상 존재">
+  <div class="th"><img loading="lazy" src="charts/49.%20%EC%9D%B8%EA%B0%84%EA%B3%BC%20%EC%B5%9C%EC%83%81%20%EC%A1%B4%EC%9E%AC.jpg" alt="인간과 최상 존재"></div>
+  <figcaption><span class="bd">49</span><span class="tt">인간과 최상 존재</span></figcaption>
+</figure>
+<figure class="c" data-k="50 파라다이스의 세 영역 50. 파라다이스의 세 영역.jpg" data-src="charts/50.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%84%B8%20%EC%98%81%EC%97%AD.jpg" data-t="파라다이스의 세 영역">
+  <div class="th"><img loading="lazy" src="charts/50.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%EC%9D%98%20%EC%84%B8%20%EC%98%81%EC%97%AD.jpg" alt="파라다이스의 세 영역"></div>
+  <figcaption><span class="bd">50</span><span class="tt">파라다이스의 세 영역</span></figcaption>
+</figure>
+<figure class="c" data-k="51 인간의 기원과 운명 51. 인간의 기원과 운명.jpeg" data-src="charts/51.%20%EC%9D%B8%EA%B0%84%EC%9D%98%20%EA%B8%B0%EC%9B%90%EA%B3%BC%20%EC%9A%B4%EB%AA%85.jpeg" data-t="인간의 기원과 운명">
+  <div class="th"><img loading="lazy" src="charts/51.%20%EC%9D%B8%EA%B0%84%EC%9D%98%20%EA%B8%B0%EC%9B%90%EA%B3%BC%20%EC%9A%B4%EB%AA%85.jpeg" alt="인간의 기원과 운명"></div>
+  <figcaption><span class="bd">51</span><span class="tt">인간의 기원과 운명</span></figcaption>
+</figure>
+<figure class="c" data-k="51 인간의 기원과 운명 51. 인간의 기원과 운명.jpg" data-src="charts/51.%20%EC%9D%B8%EA%B0%84%EC%9D%98%20%EA%B8%B0%EC%9B%90%EA%B3%BC%20%EC%9A%B4%EB%AA%85.jpg" data-t="인간의 기원과 운명">
+  <div class="th"><img loading="lazy" src="charts/51.%20%EC%9D%B8%EA%B0%84%EC%9D%98%20%EA%B8%B0%EC%9B%90%EA%B3%BC%20%EC%9A%B4%EB%AA%85.jpg" alt="인간의 기원과 운명"></div>
+  <figcaption><span class="bd">51</span><span class="tt">인간의 기원과 운명</span></figcaption>
+</figure>
+<figure class="c" data-k="52 에너지 반응의 3 단계 52. 에너지 반응의 3 단계.jpg" data-src="charts/52.%20%EC%97%90%EB%84%88%EC%A7%80%20%EB%B0%98%EC%9D%91%EC%9D%98%203%20%EB%8B%A8%EA%B3%84.jpg" data-t="에너지 반응의 3 단계">
+  <div class="th"><img loading="lazy" src="charts/52.%20%EC%97%90%EB%84%88%EC%A7%80%20%EB%B0%98%EC%9D%91%EC%9D%98%203%20%EB%8B%A8%EA%B3%84.jpg" alt="에너지 반응의 3 단계"></div>
+  <figcaption><span class="bd">52</span><span class="tt">에너지 반응의 3 단계</span></figcaption>
+</figure>
+<figure class="c" data-k="53 주우주를 돌보시는 네 분 53. 주우주를 돌보시는 네 분.jpg" data-src="charts/53.%20%EC%A3%BC%EC%9A%B0%EC%A3%BC%EB%A5%BC%20%EB%8F%8C%EB%B3%B4%EC%8B%9C%EB%8A%94%20%EB%84%A4%20%EB%B6%84.jpg" data-t="주우주를 돌보시는 네 분">
+  <div class="th"><img loading="lazy" src="charts/53.%20%EC%A3%BC%EC%9A%B0%EC%A3%BC%EB%A5%BC%20%EB%8F%8C%EB%B3%B4%EC%8B%9C%EB%8A%94%20%EB%84%A4%20%EB%B6%84.jpg" alt="주우주를 돌보시는 네 분"></div>
+  <figcaption><span class="bd">53</span><span class="tt">주우주를 돌보시는 네 분</span></figcaption>
+</figure>
+<figure class="c" data-k="54 4 공간 운동 54. 4 공간 운동.jpg" data-src="charts/54.%204%20%EA%B3%B5%EA%B0%84%20%EC%9A%B4%EB%8F%99.jpg" data-t="4 공간 운동">
+  <div class="th"><img loading="lazy" src="charts/54.%204%20%EA%B3%B5%EA%B0%84%20%EC%9A%B4%EB%8F%99.jpg" alt="4 공간 운동"></div>
+  <figcaption><span class="bd">54</span><span class="tt">4 공간 운동</span></figcaption>
+</figure>
+<figure class="c" data-k="55 중앙섬 회전의 여섯 공간 수준 55. 중앙섬 회전의 여섯 공간 수준.jpg" data-src="charts/55.%20%EC%A4%91%EC%95%99%EC%84%AC%20%ED%9A%8C%EC%A0%84%EC%9D%98%20%EC%97%AC%EC%84%AF%20%EA%B3%B5%EA%B0%84%20%EC%88%98%EC%A4%80.jpg" data-t="중앙섬 회전의 여섯 공간 수준">
+  <div class="th"><img loading="lazy" src="charts/55.%20%EC%A4%91%EC%95%99%EC%84%AC%20%ED%9A%8C%EC%A0%84%EC%9D%98%20%EC%97%AC%EC%84%AF%20%EA%B3%B5%EA%B0%84%20%EC%88%98%EC%A4%80.jpg" alt="중앙섬 회전의 여섯 공간 수준"></div>
+  <figcaption><span class="bd">55</span><span class="tt">중앙섬 회전의 여섯 공간 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="56 종교적 체험에서 오는 세가지 만족 56. 종교적 체험에서 오는 세가지 만족.jpeg" data-src="charts/56.%20%EC%A2%85%EA%B5%90%EC%A0%81%20%EC%B2%B4%ED%97%98%EC%97%90%EC%84%9C%20%EC%98%A4%EB%8A%94%20%EC%84%B8%EA%B0%80%EC%A7%80%20%EB%A7%8C%EC%A1%B1.jpeg" data-t="종교적 체험에서 오는 세가지 만족">
+  <div class="th"><img loading="lazy" src="charts/56.%20%EC%A2%85%EA%B5%90%EC%A0%81%20%EC%B2%B4%ED%97%98%EC%97%90%EC%84%9C%20%EC%98%A4%EB%8A%94%20%EC%84%B8%EA%B0%80%EC%A7%80%20%EB%A7%8C%EC%A1%B1.jpeg" alt="종교적 체험에서 오는 세가지 만족"></div>
+  <figcaption><span class="bd">56</span><span class="tt">종교적 체험에서 오는 세가지 만족</span></figcaption>
+</figure>
+<figure class="c" data-k="57 유한한 실체의 세가지 기능 수준 57. 유한한 실체의 세가지 기능 수준.jpeg" data-src="charts/57.%20%EC%9C%A0%ED%95%9C%ED%95%9C%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%EA%B0%80%EC%A7%80%20%EA%B8%B0%EB%8A%A5%20%EC%88%98%EC%A4%80.jpeg" data-t="유한한 실체의 세가지 기능 수준">
+  <div class="th"><img loading="lazy" src="charts/57.%20%EC%9C%A0%ED%95%9C%ED%95%9C%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%EA%B0%80%EC%A7%80%20%EA%B8%B0%EB%8A%A5%20%EC%88%98%EC%A4%80.jpeg" alt="유한한 실체의 세가지 기능 수준"></div>
+  <figcaption><span class="bd">57</span><span class="tt">유한한 실체의 세가지 기능 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="58 셋째 근원 중심의 기능적 가족 58. 셋째 근원 중심의 기능적 가족.jpeg" data-src="charts/58.%20%EC%85%8B%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%A0%81%20%EA%B0%80%EC%A1%B1.jpeg" data-t="셋째 근원 중심의 기능적 가족">
+  <div class="th"><img loading="lazy" src="charts/58.%20%EC%85%8B%EC%A7%B8%20%EA%B7%BC%EC%9B%90%20%EC%A4%91%EC%8B%AC%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EC%A0%81%20%EA%B0%80%EC%A1%B1.jpeg" alt="셋째 근원 중심의 기능적 가족"></div>
+  <figcaption><span class="bd">58</span><span class="tt">셋째 근원 중심의 기능적 가족</span></figcaption>
+</figure>
+<figure class="c" data-k="59 7 공간 형태와 움직임 59. 7 공간 형태와 움직임.jpeg" data-src="charts/59.%207%20%EA%B3%B5%EA%B0%84%20%ED%98%95%ED%83%9C%EC%99%80%20%EC%9B%80%EC%A7%81%EC%9E%84.jpeg" data-t="7 공간 형태와 움직임">
+  <div class="th"><img loading="lazy" src="charts/59.%207%20%EA%B3%B5%EA%B0%84%20%ED%98%95%ED%83%9C%EC%99%80%20%EC%9B%80%EC%A7%81%EC%9E%84.jpeg" alt="7 공간 형태와 움직임"></div>
+  <figcaption><span class="bd">59</span><span class="tt">7 공간 형태와 움직임</span></figcaption>
+</figure>
+<figure class="c" data-k="60 중앙 우주의 7 생명 집단 60. 중앙 우주의 7 생명 집단.jpeg" data-src="charts/60.%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%207%20%EC%83%9D%EB%AA%85%20%EC%A7%91%EB%8B%A8.jpeg" data-t="중앙 우주의 7 생명 집단">
+  <div class="th"><img loading="lazy" src="charts/60.%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%207%20%EC%83%9D%EB%AA%85%20%EC%A7%91%EB%8B%A8.jpeg" alt="중앙 우주의 7 생명 집단"></div>
+  <figcaption><span class="bd">60</span><span class="tt">중앙 우주의 7 생명 집단</span></figcaption>
+</figure>
+<figure class="c" data-k="61 하보나 중앙 우주의 목적 (1) 61.하보나 중앙 우주의 목적 (1).jpeg" data-src="charts/61.%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EB%AA%A9%EC%A0%81%20%281%29.jpeg" data-t="하보나 중앙 우주의 목적 (1)">
+  <div class="th"><img loading="lazy" src="charts/61.%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EB%AA%A9%EC%A0%81%20%281%29.jpeg" alt="하보나 중앙 우주의 목적 (1)"></div>
+  <figcaption><span class="bd">61</span><span class="tt">하보나 중앙 우주의 목적 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="61 하보나 중앙 우주의 목적 61.하보나 중앙 우주의 목적.jpeg" data-src="charts/61.%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EB%AA%A9%EC%A0%81.jpeg" data-t="하보나 중앙 우주의 목적">
+  <div class="th"><img loading="lazy" src="charts/61.%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A4%91%EC%95%99%20%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EB%AA%A9%EC%A0%81.jpeg" alt="하보나 중앙 우주의 목적"></div>
+  <figcaption><span class="bd">61</span><span class="tt">하보나 중앙 우주의 목적</span></figcaption>
+</figure>
+<figure class="c" data-k="63 별들의 회전 63. 별들의 회전.jpeg" data-src="charts/63.%20%EB%B3%84%EB%93%A4%EC%9D%98%20%ED%9A%8C%EC%A0%84.jpeg" data-t="별들의 회전">
+  <div class="th"><img loading="lazy" src="charts/63.%20%EB%B3%84%EB%93%A4%EC%9D%98%20%ED%9A%8C%EC%A0%84.jpeg" alt="별들의 회전"></div>
+  <figcaption><span class="bd">63</span><span class="tt">별들의 회전</span></figcaption>
+</figure>
+<figure class="c" data-k="64 천체의 10가지 기원 64. 천체의 10가지 기원.jpeg" data-src="charts/64.%20%EC%B2%9C%EC%B2%B4%EC%9D%98%2010%EA%B0%80%EC%A7%80%20%EA%B8%B0%EC%9B%90.jpeg" data-t="천체의 10가지 기원">
+  <div class="th"><img loading="lazy" src="charts/64.%20%EC%B2%9C%EC%B2%B4%EC%9D%98%2010%EA%B0%80%EC%A7%80%20%EA%B8%B0%EC%9B%90.jpeg" alt="천체의 10가지 기원"></div>
+  <figcaption><span class="bd">64</span><span class="tt">천체의 10가지 기원</span></figcaption>
+</figure>
+<figure class="c" data-k="65 우주 구체의 5 가지 주요 구분 65. 우주 구체의 5 가지 주요 구분.jpeg" data-src="charts/65.%20%EC%9A%B0%EC%A3%BC%20%EA%B5%AC%EC%B2%B4%EC%9D%98%205%20%EA%B0%80%EC%A7%80%20%EC%A3%BC%EC%9A%94%20%EA%B5%AC%EB%B6%84.jpeg" data-t="우주 구체의 5 가지 주요 구분">
+  <div class="th"><img loading="lazy" src="charts/65.%20%EC%9A%B0%EC%A3%BC%20%EA%B5%AC%EC%B2%B4%EC%9D%98%205%20%EA%B0%80%EC%A7%80%20%EC%A3%BC%EC%9A%94%20%EA%B5%AC%EB%B6%84.jpeg" alt="우주 구체의 5 가지 주요 구분"></div>
+  <figcaption><span class="bd">65</span><span class="tt">우주 구체의 5 가지 주요 구분</span></figcaption>
+</figure>
+<figure class="c" data-k="66 파라다이스 주위 3개의 신성한 회로 66. 파라다이스 주위 3개의 신성한 회로.jpeg" data-src="charts/66.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EC%A3%BC%EC%9C%84%203%EA%B0%9C%EC%9D%98%20%EC%8B%A0%EC%84%B1%ED%95%9C%20%ED%9A%8C%EB%A1%9C.jpeg" data-t="파라다이스 주위 3개의 신성한 회로">
+  <div class="th"><img loading="lazy" src="charts/66.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EC%A3%BC%EC%9C%84%203%EA%B0%9C%EC%9D%98%20%EC%8B%A0%EC%84%B1%ED%95%9C%20%ED%9A%8C%EB%A1%9C.jpeg" alt="파라다이스 주위 3개의 신성한 회로"></div>
+  <figcaption><span class="bd">66</span><span class="tt">파라다이스 주위 3개의 신성한 회로</span></figcaption>
+</figure>
+<figure class="c" data-k="67 6 본부 세계 67. 6 본부 세계.jpeg" data-src="charts/67.%206%20%EB%B3%B8%EB%B6%80%20%EC%84%B8%EA%B3%84.jpeg" data-t="6 본부 세계">
+  <div class="th"><img loading="lazy" src="charts/67.%206%20%EB%B3%B8%EB%B6%80%20%EC%84%B8%EA%B3%84.jpeg" alt="6 본부 세계"></div>
+  <figcaption><span class="bd">67</span><span class="tt">6 본부 세계</span></figcaption>
+</figure>
+<figure class="c" data-k="68 물질화 과정 68. 물질화 과정.jpeg" data-src="charts/68.%20%EB%AC%BC%EC%A7%88%ED%99%94%20%EA%B3%BC%EC%A0%95.jpeg" data-t="물질화 과정">
+  <div class="th"><img loading="lazy" src="charts/68.%20%EB%AC%BC%EC%A7%88%ED%99%94%20%EA%B3%BC%EC%A0%95.jpeg" alt="물질화 과정"></div>
+  <figcaption><span class="bd">68</span><span class="tt">물질화 과정</span></figcaption>
+</figure>
+<figure class="c" data-k="69 초우주의 회로들 69. 초우주의 회로들.jpeg" data-src="charts/69.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%ED%9A%8C%EB%A1%9C%EB%93%A4.jpeg" data-t="초우주의 회로들">
+  <div class="th"><img loading="lazy" src="charts/69.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%ED%9A%8C%EB%A1%9C%EB%93%A4.jpeg" alt="초우주의 회로들"></div>
+  <figcaption><span class="bd">69</span><span class="tt">초우주의 회로들</span></figcaption>
+</figure>
+<figure class="c" data-k="70 초우주의 통치자들 70. 초우주의 통치자들.jpeg" data-src="charts/70.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%ED%86%B5%EC%B9%98%EC%9E%90%EB%93%A4.jpeg" data-t="초우주의 통치자들">
+  <div class="th"><img loading="lazy" src="charts/70.%20%EC%B4%88%EC%9A%B0%EC%A3%BC%EC%9D%98%20%ED%86%B5%EC%B9%98%EC%9E%90%EB%93%A4.jpeg" alt="초우주의 통치자들"></div>
+  <figcaption><span class="bd">70</span><span class="tt">초우주의 통치자들</span></figcaption>
+</figure>
+<figure class="c" data-k="71 힘과 에너지 통제자 71. 힘과 에너지 통제자.jpeg" data-src="charts/71.%20%ED%9E%98%EA%B3%BC%20%EC%97%90%EB%84%88%EC%A7%80%20%ED%86%B5%EC%A0%9C%EC%9E%90.jpeg" data-t="힘과 에너지 통제자">
+  <div class="th"><img loading="lazy" src="charts/71.%20%ED%9E%98%EA%B3%BC%20%EC%97%90%EB%84%88%EC%A7%80%20%ED%86%B5%EC%A0%9C%EC%9E%90.jpeg" alt="힘과 에너지 통제자"></div>
+  <figcaption><span class="bd">71</span><span class="tt">힘과 에너지 통제자</span></figcaption>
+</figure>
+<figure class="c" data-k="72 살아있는 존재들의 파라다이스 분류 (1) 72. 살아있는 존재들의 파라다이스 분류 (1).jpeg" data-src="charts/72.%20%EC%82%B4%EC%95%84%EC%9E%88%EB%8A%94%20%EC%A1%B4%EC%9E%AC%EB%93%A4%EC%9D%98%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%B6%84%EB%A5%98%20%281%29.jpeg" data-t="살아있는 존재들의 파라다이스 분류 (1)">
+  <div class="th"><img loading="lazy" src="charts/72.%20%EC%82%B4%EC%95%84%EC%9E%88%EB%8A%94%20%EC%A1%B4%EC%9E%AC%EB%93%A4%EC%9D%98%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%B6%84%EB%A5%98%20%281%29.jpeg" alt="살아있는 존재들의 파라다이스 분류 (1)"></div>
+  <figcaption><span class="bd">72</span><span class="tt">살아있는 존재들의 파라다이스 분류 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="72 살아있는 존재들의 파라다이스 분류 72. 살아있는 존재들의 파라다이스 분류.jpeg" data-src="charts/72.%20%EC%82%B4%EC%95%84%EC%9E%88%EB%8A%94%20%EC%A1%B4%EC%9E%AC%EB%93%A4%EC%9D%98%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%B6%84%EB%A5%98.jpeg" data-t="살아있는 존재들의 파라다이스 분류">
+  <div class="th"><img loading="lazy" src="charts/72.%20%EC%82%B4%EC%95%84%EC%9E%88%EB%8A%94%20%EC%A1%B4%EC%9E%AC%EB%93%A4%EC%9D%98%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%B6%84%EB%A5%98.jpeg" alt="살아있는 존재들의 파라다이스 분류"></div>
+  <figcaption><span class="bd">72</span><span class="tt">살아있는 존재들의 파라다이스 분류</span></figcaption>
+</figure>
+<figure class="c" data-k="73 인간 자유 의지의 7가지 상대적 성격 73. 인간 자유 의지의 7가지 상대적 성격.jpeg" data-src="charts/73.%20%EC%9D%B8%EA%B0%84%20%EC%9E%90%EC%9C%A0%20%EC%9D%98%EC%A7%80%EC%9D%98%207%EA%B0%80%EC%A7%80%20%EC%83%81%EB%8C%80%EC%A0%81%20%EC%84%B1%EA%B2%A9.jpeg" data-t="인간 자유 의지의 7가지 상대적 성격">
+  <div class="th"><img loading="lazy" src="charts/73.%20%EC%9D%B8%EA%B0%84%20%EC%9E%90%EC%9C%A0%20%EC%9D%98%EC%A7%80%EC%9D%98%207%EA%B0%80%EC%A7%80%20%EC%83%81%EB%8C%80%EC%A0%81%20%EC%84%B1%EA%B2%A9.jpeg" alt="인간 자유 의지의 7가지 상대적 성격"></div>
+  <figcaption><span class="bd">73</span><span class="tt">인간 자유 의지의 7가지 상대적 성격</span></figcaption>
+</figure>
+<figure class="c" data-k="74 오르본턴 주 영의 7가지 잠재적 영향 74. 오르본턴 주 영의 7가지 잠재적 영향.jpeg" data-src="charts/74.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%A3%BC%20%EC%98%81%EC%9D%98%207%EA%B0%80%EC%A7%80%20%EC%9E%A0%EC%9E%AC%EC%A0%81%20%EC%98%81%ED%96%A5.jpeg" data-t="오르본턴 주 영의 7가지 잠재적 영향">
+  <div class="th"><img loading="lazy" src="charts/74.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%A3%BC%20%EC%98%81%EC%9D%98%207%EA%B0%80%EC%A7%80%20%EC%9E%A0%EC%9E%AC%EC%A0%81%20%EC%98%81%ED%96%A5.jpeg" alt="오르본턴 주 영의 7가지 잠재적 영향"></div>
+  <figcaption><span class="bd">74</span><span class="tt">오르본턴 주 영의 7가지 잠재적 영향</span></figcaption>
+</figure>
+<figure class="c" data-k="75 우주 동력 감독자 75. 우주 동력 감독자.jpeg" data-src="charts/75.%20%EC%9A%B0%EC%A3%BC%20%EB%8F%99%EB%A0%A5%20%EA%B0%90%EB%8F%85%EC%9E%90.jpeg" data-t="우주 동력 감독자">
+  <div class="th"><img loading="lazy" src="charts/75.%20%EC%9A%B0%EC%A3%BC%20%EB%8F%99%EB%A0%A5%20%EA%B0%90%EB%8F%85%EC%9E%90.jpeg" alt="우주 동력 감독자"></div>
+  <figcaption><span class="bd">75</span><span class="tt">우주 동력 감독자</span></figcaption>
+</figure>
+<figure class="c" data-k="76 지역 우주 시간  변환표 76. 지역 우주 시간  변환표.jpeg" data-src="charts/76.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%8B%9C%EA%B0%84%20%20%EB%B3%80%ED%99%98%ED%91%9C.jpeg" data-t="지역 우주 시간  변환표">
+  <div class="th"><img loading="lazy" src="charts/76.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%8B%9C%EA%B0%84%20%20%EB%B3%80%ED%99%98%ED%91%9C.jpeg" alt="지역 우주 시간  변환표"></div>
+  <figcaption><span class="bd">76</span><span class="tt">지역 우주 시간  변환표</span></figcaption>
+</figure>
+<figure class="c" data-k="77 지역 우주행정 77. 지역 우주행정.jpeg" data-src="charts/77.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%ED%96%89%EC%A0%95.jpeg" data-t="지역 우주행정">
+  <div class="th"><img loading="lazy" src="charts/77.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%ED%96%89%EC%A0%95.jpeg" alt="지역 우주행정"></div>
+  <figcaption><span class="bd">77</span><span class="tt">지역 우주행정</span></figcaption>
+</figure>
+<figure class="c" data-k="78 대우주 회로 78. 대우주 회로.jpeg" data-src="charts/78.%20%EB%8C%80%EC%9A%B0%EC%A3%BC%20%ED%9A%8C%EB%A1%9C.jpeg" data-t="대우주 회로">
+  <div class="th"><img loading="lazy" src="charts/78.%20%EB%8C%80%EC%9A%B0%EC%A3%BC%20%ED%9A%8C%EB%A1%9C.jpeg" alt="대우주 회로"></div>
+  <figcaption><span class="bd">78</span><span class="tt">대우주 회로</span></figcaption>
+</figure>
+<figure class="c" data-k="80 우주 마음과 실체의 세 마음 80. 우주 마음과 실체의 세 마음.jpeg" data-src="charts/80.%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EA%B3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%20%EB%A7%88%EC%9D%8C.jpeg" data-t="우주 마음과 실체의 세 마음">
+  <div class="th"><img loading="lazy" src="charts/80.%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EA%B3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%20%EB%A7%88%EC%9D%8C.jpeg" alt="우주 마음과 실체의 세 마음"></div>
+  <figcaption><span class="bd">80</span><span class="tt">우주 마음과 실체의 세 마음</span></figcaption>
+</figure>
+<figure class="c" data-k="80 우주 마음과 실체의 세 수준 80. 우주 마음과 실체의 세 수준.jpeg" data-src="charts/80.%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EA%B3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%20%EC%88%98%EC%A4%80.jpeg" data-t="우주 마음과 실체의 세 수준">
+  <div class="th"><img loading="lazy" src="charts/80.%20%EC%9A%B0%EC%A3%BC%20%EB%A7%88%EC%9D%8C%EA%B3%BC%20%EC%8B%A4%EC%B2%B4%EC%9D%98%20%EC%84%B8%20%EC%88%98%EC%A4%80.jpeg" alt="우주 마음과 실체의 세 수준"></div>
+  <figcaption><span class="bd">80</span><span class="tt">우주 마음과 실체의 세 수준</span></figcaption>
+</figure>
+<figure class="c" data-k="81 대우주의 구성 81. 대우주의 구성.jpeg" data-src="charts/81.%20%EB%8C%80%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EA%B5%AC%EC%84%B1.jpeg" data-t="대우주의 구성">
+  <div class="th"><img loading="lazy" src="charts/81.%20%EB%8C%80%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EA%B5%AC%EC%84%B1.jpeg" alt="대우주의 구성"></div>
+  <figcaption><span class="bd">81</span><span class="tt">대우주의 구성</span></figcaption>
+</figure>
+<figure class="c" data-k="82-1 창조체 인격-1 82-1 창조체 인격-1 .jpeg" data-src="charts/82-1%20%EC%B0%BD%EC%A1%B0%EC%B2%B4%20%EC%9D%B8%EA%B2%A9-1%20.jpeg" data-t="창조체 인격-1">
+  <div class="th"><img loading="lazy" src="charts/82-1%20%EC%B0%BD%EC%A1%B0%EC%B2%B4%20%EC%9D%B8%EA%B2%A9-1%20.jpeg" alt="창조체 인격-1"></div>
+  <figcaption><span class="bd">82-1</span><span class="tt">창조체 인격-1</span></figcaption>
+</figure>
+<figure class="c" data-k="83 4 우주 실체 인식 83. 4 우주 실체 인식.jpeg" data-src="charts/83.%204%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%20%EC%9D%B8%EC%8B%9D.jpeg" data-t="4 우주 실체 인식">
+  <div class="th"><img loading="lazy" src="charts/83.%204%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4%20%EC%9D%B8%EC%8B%9D.jpeg" alt="4 우주 실체 인식"></div>
+  <figcaption><span class="bd">83</span><span class="tt">4 우주 실체 인식</span></figcaption>
+</figure>
+<figure class="c" data-k="84 일곱 최상영 집단 84. 일곱 최상영 집단.jpeg" data-src="charts/84.%20%EC%9D%BC%EA%B3%B1%20%EC%B5%9C%EC%83%81%EC%98%81%20%EC%A7%91%EB%8B%A8.jpeg" data-t="일곱 최상영 집단">
+  <div class="th"><img loading="lazy" src="charts/84.%20%EC%9D%BC%EA%B3%B1%20%EC%B5%9C%EC%83%81%EC%98%81%20%EC%A7%91%EB%8B%A8.jpeg" alt="일곱 최상영 집단"></div>
+  <figcaption><span class="bd">84</span><span class="tt">일곱 최상영 집단</span></figcaption>
+</figure>
+<figure class="c" data-k="85 지역 우주어머니 영의 7 단계 85. 지역 우주어머니 영의 7 단계.jpeg" data-src="charts/85.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%EC%96%B4%EB%A8%B8%EB%8B%88%20%EC%98%81%EC%9D%98%207%20%EB%8B%A8%EA%B3%84.jpeg" data-t="지역 우주어머니 영의 7 단계">
+  <div class="th"><img loading="lazy" src="charts/85.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%EC%96%B4%EB%A8%B8%EB%8B%88%20%EC%98%81%EC%9D%98%207%20%EB%8B%A8%EA%B3%84.jpeg" alt="지역 우주어머니 영의 7 단계"></div>
+  <figcaption><span class="bd">85</span><span class="tt">지역 우주어머니 영의 7 단계</span></figcaption>
+</figure>
+<figure class="c" data-k="87 일곱 삼위일체 기원 집단들 87. 일곱 삼위일체 기원 집단들.jpeg" data-src="charts/87.%20%EC%9D%BC%EA%B3%B1%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EC%A7%91%EB%8B%A8%EB%93%A4.jpeg" data-t="일곱 삼위일체 기원 집단들">
+  <div class="th"><img loading="lazy" src="charts/87.%20%EC%9D%BC%EA%B3%B1%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EC%A7%91%EB%8B%A8%EB%93%A4.jpeg" alt="일곱 삼위일체 기원 집단들"></div>
+  <figcaption><span class="bd">87</span><span class="tt">일곱 삼위일체 기원 집단들</span></figcaption>
+</figure>
+<figure class="c" data-k="88 7 삼위일체 기원 동급 존재 88. 7 삼위일체 기원 동급 존재.jpeg" data-src="charts/88.%207%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EB%8F%99%EA%B8%89%20%EC%A1%B4%EC%9E%AC.jpeg" data-t="7 삼위일체 기원 동급 존재">
+  <div class="th"><img loading="lazy" src="charts/88.%207%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EB%8F%99%EA%B8%89%20%EC%A1%B4%EC%9E%AC.jpeg" alt="7 삼위일체 기원 동급 존재"></div>
+  <figcaption><span class="bd">88</span><span class="tt">7 삼위일체 기원 동급 존재</span></figcaption>
+</figure>
+<figure class="c" data-k="90 미래 하보나 주민 (3가지 가능성) (2) 90. 미래 하보나 주민 (3가지 가능성) (2).jpeg" data-src="charts/90.%20%EB%AF%B8%EB%9E%98%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A3%BC%EB%AF%BC%20%283%EA%B0%80%EC%A7%80%20%EA%B0%80%EB%8A%A5%EC%84%B1%29%20%282%29.jpeg" data-t="미래 하보나 주민 (3가지 가능성) (2)">
+  <div class="th"><img loading="lazy" src="charts/90.%20%EB%AF%B8%EB%9E%98%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A3%BC%EB%AF%BC%20%283%EA%B0%80%EC%A7%80%20%EA%B0%80%EB%8A%A5%EC%84%B1%29%20%282%29.jpeg" alt="미래 하보나 주민 (3가지 가능성) (2)"></div>
+  <figcaption><span class="bd">90</span><span class="tt">미래 하보나 주민 (3가지 가능성) (2)</span></figcaption>
+</figure>
+<figure class="c" data-k="90 미래 하보나 주민 (3가지 가능성) 90. 미래 하보나 주민 (3가지 가능성).jpeg" data-src="charts/90.%20%EB%AF%B8%EB%9E%98%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A3%BC%EB%AF%BC%20%283%EA%B0%80%EC%A7%80%20%EA%B0%80%EB%8A%A5%EC%84%B1%29.jpeg" data-t="미래 하보나 주민 (3가지 가능성)">
+  <div class="th"><img loading="lazy" src="charts/90.%20%EB%AF%B8%EB%9E%98%20%ED%95%98%EB%B3%B4%EB%82%98%20%EC%A3%BC%EB%AF%BC%20%283%EA%B0%80%EC%A7%80%20%EA%B0%80%EB%8A%A5%EC%84%B1%29.jpeg" alt="미래 하보나 주민 (3가지 가능성)"></div>
+  <figcaption><span class="bd">90</span><span class="tt">미래 하보나 주민 (3가지 가능성)</span></figcaption>
+</figure>
+<figure class="c" data-k="91 아보날의 3중 기능 91. 아보날의 3중 기능.jpeg" data-src="charts/91.%20%EC%95%84%EB%B3%B4%EB%82%A0%EC%9D%98%203%EC%A4%91%20%EA%B8%B0%EB%8A%A5.jpeg" data-t="아보날의 3중 기능">
+  <div class="th"><img loading="lazy" src="charts/91.%20%EC%95%84%EB%B3%B4%EB%82%A0%EC%9D%98%203%EC%A4%91%20%EA%B8%B0%EB%8A%A5.jpeg" alt="아보날의 3중 기능"></div>
+  <figcaption><span class="bd">91</span><span class="tt">아보날의 3중 기능</span></figcaption>
+</figure>
+<figure class="c" data-k="92 지역 우주 아버지의 세가지 한계 92. 지역 우주 아버지의 세가지 한계.jpeg" data-src="charts/92.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%20%EC%84%B8%EA%B0%80%EC%A7%80%20%ED%95%9C%EA%B3%84.jpeg" data-t="지역 우주 아버지의 세가지 한계">
+  <div class="th"><img loading="lazy" src="charts/92.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%20%EC%84%B8%EA%B0%80%EC%A7%80%20%ED%95%9C%EA%B3%84.jpeg" alt="지역 우주 아버지의 세가지 한계"></div>
+  <figcaption><span class="bd">92</span><span class="tt">지역 우주 아버지의 세가지 한계</span></figcaption>
+</figure>
+<figure class="c" data-k="93 창조자 아들의 주권 7 단계 93. 창조자 아들의 주권 7 단계.jpeg" data-src="charts/93.%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%EC%9D%98%20%EC%A3%BC%EA%B6%8C%207%20%EB%8B%A8%EA%B3%84.jpeg" data-t="창조자 아들의 주권 7 단계">
+  <div class="th"><img loading="lazy" src="charts/93.%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%EC%9D%98%20%EC%A3%BC%EA%B6%8C%207%20%EB%8B%A8%EA%B3%84.jpeg" alt="창조자 아들의 주권 7 단계"></div>
+  <figcaption><span class="bd">93</span><span class="tt">창조자 아들의 주권 7 단계</span></figcaption>
+</figure>
+<figure class="c" data-k="93 창조자 아들의 주권 7단계 93.창조자 아들의 주권 7단계.jpeg" data-src="charts/93.%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%EC%9D%98%20%EC%A3%BC%EA%B6%8C%207%EB%8B%A8%EA%B3%84.jpeg" data-t="창조자 아들의 주권 7단계">
+  <div class="th"><img loading="lazy" src="charts/93.%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%EC%9D%98%20%EC%A3%BC%EA%B6%8C%207%EB%8B%A8%EA%B3%84.jpeg" alt="창조자 아들의 주권 7단계"></div>
+  <figcaption><span class="bd">93</span><span class="tt">창조자 아들의 주권 7단계</span></figcaption>
+</figure>
+<figure class="c" data-k="95 칠중의 창조자 아들 주권의 성격 95. 칠중의 창조자 아들 주권의 성격.jpeg" data-src="charts/95.%20%EC%B9%A0%EC%A4%91%EC%9D%98%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%20%EC%A3%BC%EA%B6%8C%EC%9D%98%20%EC%84%B1%EA%B2%A9.jpeg" data-t="칠중의 창조자 아들 주권의 성격">
+  <div class="th"><img loading="lazy" src="charts/95.%20%EC%B9%A0%EC%A4%91%EC%9D%98%20%EC%B0%BD%EC%A1%B0%EC%9E%90%20%EC%95%84%EB%93%A4%20%EC%A3%BC%EA%B6%8C%EC%9D%98%20%EC%84%B1%EA%B2%A9.jpeg" alt="칠중의 창조자 아들 주권의 성격"></div>
+  <figcaption><span class="bd">95</span><span class="tt">칠중의 창조자 아들 주권의 성격</span></figcaption>
+</figure>
+<figure class="c" data-k="99 고독한 사자 봉사 일곱 부문 99. 고독한 사자 봉사 일곱 부문.jpeg" data-src="charts/99.%20%EA%B3%A0%EB%8F%85%ED%95%9C%20%EC%82%AC%EC%9E%90%20%EB%B4%89%EC%82%AC%20%EC%9D%BC%EA%B3%B1%20%EB%B6%80%EB%AC%B8.jpeg" data-t="고독한 사자 봉사 일곱 부문">
+  <div class="th"><img loading="lazy" src="charts/99.%20%EA%B3%A0%EB%8F%85%ED%95%9C%20%EC%82%AC%EC%9E%90%20%EB%B4%89%EC%82%AC%20%EC%9D%BC%EA%B3%B1%20%EB%B6%80%EB%AC%B8.jpeg" alt="고독한 사자 봉사 일곱 부문"></div>
+  <figcaption><span class="bd">99</span><span class="tt">고독한 사자 봉사 일곱 부문</span></figcaption>
+</figure>
+<figure class="c" data-k="101 무한영 가족 3 대 분루 101. 무한영 가족 3 대 분루.jpeg" data-src="charts/101.%20%EB%AC%B4%ED%95%9C%EC%98%81%20%EA%B0%80%EC%A1%B1%203%20%EB%8C%80%20%EB%B6%84%EB%A3%A8.jpeg" data-t="무한영 가족 3 대 분루">
+  <div class="th"><img loading="lazy" src="charts/101.%20%EB%AC%B4%ED%95%9C%EC%98%81%20%EA%B0%80%EC%A1%B1%203%20%EB%8C%80%20%EB%B6%84%EB%A3%A8.jpeg" alt="무한영 가족 3 대 분루"></div>
+  <figcaption><span class="bd">101</span><span class="tt">무한영 가족 3 대 분루</span></figcaption>
+</figure>
+<figure class="c" data-k="101 아보날의 3중 기능 101. 아보날의 3중 기능.jpeg" data-src="charts/101.%20%EC%95%84%EB%B3%B4%EB%82%A0%EC%9D%98%203%EC%A4%91%20%EA%B8%B0%EB%8A%A5.jpeg" data-t="아보날의 3중 기능">
+  <div class="th"><img loading="lazy" src="charts/101.%20%EC%95%84%EB%B3%B4%EB%82%A0%EC%9D%98%203%EC%A4%91%20%EA%B8%B0%EB%8A%A5.jpeg" alt="아보날의 3중 기능"></div>
+  <figcaption><span class="bd">101</span><span class="tt">아보날의 3중 기능</span></figcaption>
+</figure>
+<figure class="c" data-k="102 지역 우주 아버지의 3 제한 102. 지역 우주 아버지의 3 제한.jpeg" data-src="charts/102.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%203%20%EC%A0%9C%ED%95%9C.jpeg" data-t="지역 우주 아버지의 3 제한">
+  <div class="th"><img loading="lazy" src="charts/102.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EC%95%84%EB%B2%84%EC%A7%80%EC%9D%98%203%20%EC%A0%9C%ED%95%9C.jpeg" alt="지역 우주 아버지의 3 제한"></div>
+  <figcaption><span class="bd">102</span><span class="tt">지역 우주 아버지의 3 제한</span></figcaption>
+</figure>
+<figure class="c" data-k="132 지역 우주 본부 샐빙턴 132. 지역 우주 본부 샐빙턴.jpeg" data-src="charts/132.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EC%83%90%EB%B9%99%ED%84%B4.jpeg" data-t="지역 우주 본부 샐빙턴">
+  <div class="th"><img loading="lazy" src="charts/132.%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EC%83%90%EB%B9%99%ED%84%B4.jpeg" alt="지역 우주 본부 샐빙턴"></div>
+  <figcaption><span class="bd">132</span><span class="tt">지역 우주 본부 샐빙턴</span></figcaption>
+</figure>
+<figure class="c" data-k="134 멜기세덱 구체의 6 부속 위성 134. 멜기세덱 구체의 6 부속 위성.jpeg" data-src="charts/134.%20%EB%A9%9C%EA%B8%B0%EC%84%B8%EB%8D%B1%20%EA%B5%AC%EC%B2%B4%EC%9D%98%206%20%EB%B6%80%EC%86%8D%20%EC%9C%84%EC%84%B1.jpeg" data-t="멜기세덱 구체의 6 부속 위성">
+  <div class="th"><img loading="lazy" src="charts/134.%20%EB%A9%9C%EA%B8%B0%EC%84%B8%EB%8D%B1%20%EA%B5%AC%EC%B2%B4%EC%9D%98%206%20%EB%B6%80%EC%86%8D%20%EC%9C%84%EC%84%B1.jpeg" alt="멜기세덱 구체의 6 부속 위성"></div>
+  <figcaption><span class="bd">134</span><span class="tt">멜기세덱 구체의 6 부속 위성</span></figcaption>
+</figure>
+<figure class="c" data-k="146 오르본턴 초우주 본부 구체들(1) 146. 오르본턴 초우주 본부 구체들(1).jpeg" data-src="charts/146.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EA%B5%AC%EC%B2%B4%EB%93%A4%281%29.jpeg" data-t="오르본턴 초우주 본부 구체들(1)">
+  <div class="th"><img loading="lazy" src="charts/146.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EA%B5%AC%EC%B2%B4%EB%93%A4%281%29.jpeg" alt="오르본턴 초우주 본부 구체들(1)"></div>
+  <figcaption><span class="bd">146</span><span class="tt">오르본턴 초우주 본부 구체들(1)</span></figcaption>
+</figure>
+<figure class="c" data-k="146 오르본턴 초우주 본부 구체들 146. 오르본턴 초우주 본부 구체들.jpeg" data-src="charts/146.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EA%B5%AC%EC%B2%B4%EB%93%A4.jpeg" data-t="오르본턴 초우주 본부 구체들">
+  <div class="th"><img loading="lazy" src="charts/146.%20%EC%98%A4%EB%A5%B4%EB%B3%B8%ED%84%B4%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B3%B8%EB%B6%80%20%EA%B5%AC%EC%B2%B4%EB%93%A4.jpeg" alt="오르본턴 초우주 본부 구체들"></div>
+  <figcaption><span class="bd">146</span><span class="tt">오르본턴 초우주 본부 구체들</span></figcaption>
+</figure>
+<figure class="c" data-k="147 7 행성 조력자 집단 147. 7 행성 조력자 집단.jpeg" data-src="charts/147.%207%20%ED%96%89%EC%84%B1%20%EC%A1%B0%EB%A0%A5%EC%9E%90%20%EC%A7%91%EB%8B%A8.jpeg" data-t="7 행성 조력자 집단">
+  <div class="th"><img loading="lazy" src="charts/147.%207%20%ED%96%89%EC%84%B1%20%EC%A1%B0%EB%A0%A5%EC%9E%90%20%EC%A7%91%EB%8B%A8.jpeg" alt="7 행성 조력자 집단"></div>
+  <figcaption><span class="bd">147</span><span class="tt">7 행성 조력자 집단</span></figcaption>
+</figure>
+<figure class="c" data-k="148 과도기 봉사자 148. 과도기 봉사자.jpeg" data-src="charts/148.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%B4%89%EC%82%AC%EC%9E%90.jpeg" data-t="과도기 봉사자">
+  <div class="th"><img loading="lazy" src="charts/148.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%B4%89%EC%82%AC%EC%9E%90.jpeg" alt="과도기 봉사자"></div>
+  <figcaption><span class="bd">148</span><span class="tt">과도기 봉사자</span></figcaption>
+</figure>
+<figure class="c" data-k="150-1 비영적 에너지 체계 (1) 150-1 비영적 에너지 체계 (1).jpeg" data-src="charts/150-1%20%EB%B9%84%EC%98%81%EC%A0%81%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%B2%B4%EA%B3%84%20%281%29.jpeg" data-t="비영적 에너지 체계 (1)">
+  <div class="th"><img loading="lazy" src="charts/150-1%20%EB%B9%84%EC%98%81%EC%A0%81%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%B2%B4%EA%B3%84%20%281%29.jpeg" alt="비영적 에너지 체계 (1)"></div>
+  <figcaption><span class="bd">150-1</span><span class="tt">비영적 에너지 체계 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k="150 파라다이스와 지역 우주 행정 150. 파라다이스와 지역 우주 행정.jpeg" data-src="charts/150.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%EC%99%80%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%ED%96%89%EC%A0%95.jpeg" data-t="파라다이스와 지역 우주 행정">
+  <div class="th"><img loading="lazy" src="charts/150.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%EC%99%80%20%EC%A7%80%EC%97%AD%20%EC%9A%B0%EC%A3%BC%20%ED%96%89%EC%A0%95.jpeg" alt="파라다이스와 지역 우주 행정"></div>
+  <figcaption><span class="bd">150</span><span class="tt">파라다이스와 지역 우주 행정</span></figcaption>
+</figure>
+<figure class="c" data-k="151 classification of matter 151. classification of matter.jpeg" data-src="charts/151.%20Classification%20of%20Matter.jpeg" data-t="Classification of Matter">
+  <div class="th"><img loading="lazy" src="charts/151.%20Classification%20of%20Matter.jpeg" alt="Classification of Matter"></div>
+  <figcaption><span class="bd">151</span><span class="tt">Classification of Matter</span></figcaption>
+</figure>
+<figure class="c" data-k="152 wavelike energy manifestation 152. wavelike energy manifestation.jpeg" data-src="charts/152.%20Wavelike%20Energy%20Manifestation.jpeg" data-t="Wavelike Energy Manifestation">
+  <div class="th"><img loading="lazy" src="charts/152.%20Wavelike%20Energy%20Manifestation.jpeg" alt="Wavelike Energy Manifestation"></div>
+  <figcaption><span class="bd">152</span><span class="tt">Wavelike Energy Manifestation</span></figcaption>
+</figure>
+<figure class="c" data-k="161 에너지 조종자 161. 에너지 조종자.jpeg" data-src="charts/161.%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%A1%B0%EC%A2%85%EC%9E%90.jpeg" data-t="에너지 조종자">
+  <div class="th"><img loading="lazy" src="charts/161.%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%A1%B0%EC%A2%85%EC%9E%90.jpeg" alt="에너지 조종자"></div>
+  <figcaption><span class="bd">161</span><span class="tt">에너지 조종자</span></figcaption>
+</figure>
+<figure class="c" data-k="162 설계자와 치장자 162. 설계자와 치장자.jpeg" data-src="charts/162.%20%EC%84%A4%EA%B3%84%EC%9E%90%EC%99%80%20%EC%B9%98%EC%9E%A5%EC%9E%90.jpeg" data-t="설계자와 치장자">
+  <div class="th"><img loading="lazy" src="charts/162.%20%EC%84%A4%EA%B3%84%EC%9E%90%EC%99%80%20%EC%B9%98%EC%9E%A5%EC%9E%90.jpeg" alt="설계자와 치장자"></div>
+  <figcaption><span class="bd">162</span><span class="tt">설계자와 치장자</span></figcaption>
+</figure>
+<figure class="c" data-k="163 과도기 문화 세계 163. 과도기 문화 세계.jpeg" data-src="charts/163.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%AC%B8%ED%99%94%20%EC%84%B8%EA%B3%84.jpeg" data-t="과도기 문화 세계">
+  <div class="th"><img loading="lazy" src="charts/163.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%AC%B8%ED%99%94%20%EC%84%B8%EA%B3%84.jpeg" alt="과도기 문화 세계"></div>
+  <figcaption><span class="bd">163</span><span class="tt">과도기 문화 세계</span></figcaption>
+</figure>
+<figure class="c" data-k="163 설계자와 치장자 163. 설계자와 치장자.jpeg" data-src="charts/163.%20%EC%84%A4%EA%B3%84%EC%9E%90%EC%99%80%20%EC%B9%98%EC%9E%A5%EC%9E%90.jpeg" data-t="설계자와 치장자">
+  <div class="th"><img loading="lazy" src="charts/163.%20%EC%84%A4%EA%B3%84%EC%9E%90%EC%99%80%20%EC%B9%98%EC%9E%A5%EC%9E%90.jpeg" alt="설계자와 치장자"></div>
+  <figcaption><span class="bd">163</span><span class="tt">설계자와 치장자</span></figcaption>
+</figure>
+<figure class="c" data-k="164 과도기 문화 세계 164. 과도기 문화 세계.jpeg" data-src="charts/164.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%AC%B8%ED%99%94%20%EC%84%B8%EA%B3%84.jpeg" data-t="과도기 문화 세계">
+  <div class="th"><img loading="lazy" src="charts/164.%20%EA%B3%BC%EB%8F%84%EA%B8%B0%20%EB%AC%B8%ED%99%94%20%EC%84%B8%EA%B3%84.jpeg" alt="과도기 문화 세계"></div>
+  <figcaption><span class="bd">164</span><span class="tt">과도기 문화 세계</span></figcaption>
+</figure>
+<figure class="c" data-k="165 체계 정부 일곱 라노난덱 165. 체계 정부 일곱 라노난덱.jpeg" data-src="charts/165.%20%EC%B2%B4%EA%B3%84%20%EC%A0%95%EB%B6%80%20%EC%9D%BC%EA%B3%B1%20%EB%9D%BC%EB%85%B8%EB%82%9C%EB%8D%B1.jpeg" data-t="체계 정부 일곱 라노난덱">
+  <div class="th"><img loading="lazy" src="charts/165.%20%EC%B2%B4%EA%B3%84%20%EC%A0%95%EB%B6%80%20%EC%9D%BC%EA%B3%B1%20%EB%9D%BC%EB%85%B8%EB%82%9C%EB%8D%B1.jpeg" alt="체계 정부 일곱 라노난덱"></div>
+  <figcaption><span class="bd">165</span><span class="tt">체계 정부 일곱 라노난덱</span></figcaption>
+</figure>
+<figure class="c" data-k="166 예루셈 집행 위원회 12위원 166.  예루셈 집행 위원회 12위원.jpeg" data-src="charts/166.%20%20%EC%98%88%EB%A3%A8%EC%85%88%20%EC%A7%91%ED%96%89%20%EC%9C%84%EC%9B%90%ED%9A%8C%2012%EC%9C%84%EC%9B%90.jpeg" data-t="예루셈 집행 위원회 12위원">
+  <div class="th"><img loading="lazy" src="charts/166.%20%20%EC%98%88%EB%A3%A8%EC%85%88%20%EC%A7%91%ED%96%89%20%EC%9C%84%EC%9B%90%ED%9A%8C%2012%EC%9C%84%EC%9B%90.jpeg" alt="예루셈 집행 위원회 12위원"></div>
+  <figcaption><span class="bd">166</span><span class="tt">예루셈 집행 위원회 12위원</span></figcaption>
+</figure>
+<figure class="c" data-k="167 일곱 맨션 세계 167. 일곱 맨션 세계.jpeg" data-src="charts/167.%20%EC%9D%BC%EA%B3%B1%20%EB%A7%A8%EC%85%98%20%EC%84%B8%EA%B3%84.jpeg" data-t="일곱 맨션 세계">
+  <div class="th"><img loading="lazy" src="charts/167.%20%EC%9D%BC%EA%B3%B1%20%EB%A7%A8%EC%85%98%20%EC%84%B8%EA%B3%84.jpeg" alt="일곱 맨션 세계"></div>
+  <figcaption><span class="bd">167</span><span class="tt">일곱 맨션 세계</span></figcaption>
+</figure>
+<figure class="c" data-k="169 파라다이스 도착 169. 파라다이스 도착.jpeg" data-src="charts/169.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%8F%84%EC%B0%A9.jpeg" data-t="파라다이스 도착">
+  <div class="th"><img loading="lazy" src="charts/169.%20%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4%20%EB%8F%84%EC%B0%A9.jpeg" alt="파라다이스 도착"></div>
+  <figcaption><span class="bd">169</span><span class="tt">파라다이스 도착</span></figcaption>
+</figure>
+<figure class="c" data-k="171 노동의 전문화 171. 노동의 전문화.jpeg" data-src="charts/171.%20%EB%85%B8%EB%8F%99%EC%9D%98%20%EC%A0%84%EB%AC%B8%ED%99%94.jpeg" data-t="노동의 전문화">
+  <div class="th"><img loading="lazy" src="charts/171.%20%EB%85%B8%EB%8F%99%EC%9D%98%20%EC%A0%84%EB%AC%B8%ED%99%94.jpeg" alt="노동의 전문화"></div>
+  <figcaption><span class="bd">171</span><span class="tt">노동의 전문화</span></figcaption>
+</figure>
+  </div>
+</section>
+<section class="sec">
+  <div class="sh"><b>그 밖의 도표</b><span>32장</span></div>
+  <div class="grid">
+<figure class="c" data-k=" 생명 생산과 진화의 3 수준 생명 생산과 진화의 3 수준.jpeg" data-src="charts/%EC%83%9D%EB%AA%85%20%EC%83%9D%EC%82%B0%EA%B3%BC%20%EC%A7%84%ED%99%94%EC%9D%98%203%20%EC%88%98%EC%A4%80.jpeg" data-t="생명 생산과 진화의 3 수준">
+  <div class="th"><img loading="lazy" src="charts/%EC%83%9D%EB%AA%85%20%EC%83%9D%EC%82%B0%EA%B3%BC%20%EC%A7%84%ED%99%94%EC%9D%98%203%20%EC%88%98%EC%A4%80.jpeg" alt="생명 생산과 진화의 3 수준"></div>
+  <figcaption><span class="tt">생명 생산과 진화의 3 수준</span></figcaption>
+</figure>
+<figure class="c" data-k=" 생명 이식에서 조절자 도착까지 생명 이식에서 조절자 도착까지.jpg" data-src="charts/%EC%83%9D%EB%AA%85%20%EC%9D%B4%EC%8B%9D%EC%97%90%EC%84%9C%20%EC%A1%B0%EC%A0%88%EC%9E%90%20%EB%8F%84%EC%B0%A9%EA%B9%8C%EC%A7%80.jpg" data-t="생명 이식에서 조절자 도착까지">
+  <div class="th"><img loading="lazy" src="charts/%EC%83%9D%EB%AA%85%20%EC%9D%B4%EC%8B%9D%EC%97%90%EC%84%9C%20%EC%A1%B0%EC%A0%88%EC%9E%90%20%EB%8F%84%EC%B0%A9%EA%B9%8C%EC%A7%80.jpg" alt="생명 이식에서 조절자 도착까지"></div>
+  <figcaption><span class="tt">생명 이식에서 조절자 도착까지</span></figcaption>
+</figure>
+<figure class="c" data-k=" 생명의 부여 생명의 부여.jpeg" data-src="charts/%EC%83%9D%EB%AA%85%EC%9D%98%20%EB%B6%80%EC%97%AC.jpeg" data-t="생명의 부여">
+  <div class="th"><img loading="lazy" src="charts/%EC%83%9D%EB%AA%85%EC%9D%98%20%EB%B6%80%EC%97%AC.jpeg" alt="생명의 부여"></div>
+  <figcaption><span class="tt">생명의 부여</span></figcaption>
+</figure>
+<figure class="c" data-k=" 생명의 시작 생명의 시작.jpeg" data-src="charts/%EC%83%9D%EB%AA%85%EC%9D%98%20%EC%8B%9C%EC%9E%91.jpeg" data-t="생명의 시작">
+  <div class="th"><img loading="lazy" src="charts/%EC%83%9D%EB%AA%85%EC%9D%98%20%EC%8B%9C%EC%9E%91.jpeg" alt="생명의 시작"></div>
+  <figcaption><span class="tt">생명의 시작</span></figcaption>
+</figure>
+<figure class="c" data-k=" 우주 에너지 일곱 부문 우주 에너지 일곱 부문.jpeg" data-src="charts/%EC%9A%B0%EC%A3%BC%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%9D%BC%EA%B3%B1%20%EB%B6%80%EB%AC%B8.jpeg" data-t="우주 에너지 일곱 부문">
+  <div class="th"><img loading="lazy" src="charts/%EC%9A%B0%EC%A3%BC%20%EC%97%90%EB%84%88%EC%A7%80%20%EC%9D%BC%EA%B3%B1%20%EB%B6%80%EB%AC%B8.jpeg" alt="우주 에너지 일곱 부문"></div>
+  <figcaption><span class="tt">우주 에너지 일곱 부문</span></figcaption>
+</figure>
+<figure class="c" data-k=" 우주의 인격 분류 b4 해설-1 우주의 인격 분류 b4 해설-1.jpg" data-src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98%20B4%20%ED%95%B4%EC%84%A4-1.jpg" data-t="우주의 인격 분류 B4 해설-1">
+  <div class="th"><img loading="lazy" src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98%20B4%20%ED%95%B4%EC%84%A4-1.jpg" alt="우주의 인격 분류 B4 해설-1"></div>
+  <figcaption><span class="tt">우주의 인격 분류 B4 해설-1</span></figcaption>
+</figure>
+<figure class="c" data-k=" 우주의 인격 분류 b4 우주의 인격 분류 b4.jpg" data-src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98%20B4.jpg" data-t="우주의 인격 분류 B4">
+  <div class="th"><img loading="lazy" src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98%20B4.jpg" alt="우주의 인격 분류 B4"></div>
+  <figcaption><span class="tt">우주의 인격 분류 B4</span></figcaption>
+</figure>
+<figure class="c" data-k=" 우주의 인격 분류 우주의 인격 분류.jpeg" data-src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98.jpeg" data-t="우주의 인격 분류">
+  <div class="th"><img loading="lazy" src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98.jpeg" alt="우주의 인격 분류"></div>
+  <figcaption><span class="tt">우주의 인격 분류</span></figcaption>
+</figure>
+<figure class="c" data-k=" 우주의 인격 분류 우주의 인격 분류.png" data-src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98.png" data-t="우주의 인격 분류">
+  <div class="th"><img loading="lazy" src="charts/%EC%9A%B0%EC%A3%BC%EC%9D%98%20%EC%9D%B8%EA%B2%A9%20%EB%B6%84%EB%A5%98.png" alt="우주의 인격 분류"></div>
+  <figcaption><span class="tt">우주의 인격 분류</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 24 상담자 유란시아 24 상담자.jpg" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%2024%20%EC%83%81%EB%8B%B4%EC%9E%90.jpg" data-t="유란시아 24 상담자">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%2024%20%EC%83%81%EB%8B%B4%EC%9E%90.jpg" alt="유란시아 24 상담자"></div>
+  <figcaption><span class="tt">유란시아 24 상담자</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 삼위일체 고정 아들 유란시아 삼위일체 고정 아들.jpg" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B3%A0%EC%A0%95%20%EC%95%84%EB%93%A4.jpg" data-t="유란시아 삼위일체 고정 아들">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B3%A0%EC%A0%95%20%EC%95%84%EB%93%A4.jpg" alt="유란시아 삼위일체 고정 아들"></div>
+  <figcaption><span class="tt">유란시아 삼위일체 고정 아들</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 삼위일체 기원 존재 14 유란시아 삼위일체 기원 존재 14.png" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EC%A1%B4%EC%9E%AC%2014.png" data-t="유란시아 삼위일체 기원 존재 14">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%82%BC%EC%9C%84%EC%9D%BC%EC%B2%B4%20%EA%B8%B0%EC%9B%90%20%EC%A1%B4%EC%9E%AC%2014.png" alt="유란시아 삼위일체 기원 존재 14"></div>
+  <figcaption><span class="tt">유란시아 삼위일체 기원 존재 14</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 생명 개시 시대 유란시아 생명 개시 시대.jpeg" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%83%9D%EB%AA%85%20%EA%B0%9C%EC%8B%9C%20%EC%8B%9C%EB%8C%80.jpeg" data-t="유란시아 생명 개시 시대">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%83%9D%EB%AA%85%20%EA%B0%9C%EC%8B%9C%20%EC%8B%9C%EB%8C%80.jpeg" alt="유란시아 생명 개시 시대"></div>
+  <figcaption><span class="tt">유란시아 생명 개시 시대</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 지도 유란시아 지도.jpeg" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%A7%80%EB%8F%84.jpeg" data-t="유란시아 지도">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%A7%80%EB%8F%84.jpeg" alt="유란시아 지도"></div>
+  <figcaption><span class="tt">유란시아 지도</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유란시아 초우주 법정 유란시아 초우주 법정.png" data-src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B2%95%EC%A0%95.png" data-t="유란시아 초우주 법정">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%9E%80%EC%8B%9C%EC%95%84%20%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EB%B2%95%EC%A0%95.png" alt="유란시아 초우주 법정"></div>
+  <figcaption><span class="tt">유란시아 초우주 법정</span></figcaption>
+</figure>
+<figure class="c" data-k=" 유버사 유버사.jpg" data-src="charts/%EC%9C%A0%EB%B2%84%EC%82%AC.jpg" data-t="유버사">
+  <div class="th"><img loading="lazy" src="charts/%EC%9C%A0%EB%B2%84%EC%82%AC.jpg" alt="유버사"></div>
+  <figcaption><span class="tt">유버사</span></figcaption>
+</figure>
+<figure class="c" data-k=" 인간 우주 실체 인간 우주 실체.jpeg" data-src="charts/%EC%9D%B8%EA%B0%84%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4.jpeg" data-t="인간 우주 실체">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%B8%EA%B0%84%20%EC%9A%B0%EC%A3%BC%20%EC%8B%A4%EC%B2%B4.jpeg" alt="인간 우주 실체"></div>
+  <figcaption><span class="tt">인간 우주 실체</span></figcaption>
+</figure>
+<figure class="c" data-k=" 인간에게 현시된 하나님 실체(흑백) 인간에게 현시된 하나님 실체(흑백).jpeg" data-src="charts/%EC%9D%B8%EA%B0%84%EC%97%90%EA%B2%8C%20%ED%98%84%EC%8B%9C%EB%90%9C%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%8B%A4%EC%B2%B4%28%ED%9D%91%EB%B0%B1%29.jpeg" data-t="인간에게 현시된 하나님 실체(흑백)">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%B8%EA%B0%84%EC%97%90%EA%B2%8C%20%ED%98%84%EC%8B%9C%EB%90%9C%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%8B%A4%EC%B2%B4%28%ED%9D%91%EB%B0%B1%29.jpeg" alt="인간에게 현시된 하나님 실체(흑백)"></div>
+  <figcaption><span class="tt">인간에게 현시된 하나님 실체(흑백)</span></figcaption>
+</figure>
+<figure class="c" data-k=" 인간에게 현시된 하나님 실체 인간에게 현시된 하나님 실체.jpeg" data-src="charts/%EC%9D%B8%EA%B0%84%EC%97%90%EA%B2%8C%20%ED%98%84%EC%8B%9C%EB%90%9C%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%8B%A4%EC%B2%B4.jpeg" data-t="인간에게 현시된 하나님 실체">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%B8%EA%B0%84%EC%97%90%EA%B2%8C%20%ED%98%84%EC%8B%9C%EB%90%9C%20%ED%95%98%EB%82%98%EB%8B%98%20%EC%8B%A4%EC%B2%B4.jpeg" alt="인간에게 현시된 하나님 실체"></div>
+  <figcaption><span class="tt">인간에게 현시된 하나님 실체</span></figcaption>
+</figure>
+<figure class="c" data-k=" 인간의 본질 인간의 본질.jpeg" data-src="charts/%EC%9D%B8%EA%B0%84%EC%9D%98%20%EB%B3%B8%EC%A7%88.jpeg" data-t="인간의 본질">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%B8%EA%B0%84%EC%9D%98%20%EB%B3%B8%EC%A7%88.jpeg" alt="인간의 본질"></div>
+  <figcaption><span class="tt">인간의 본질</span></figcaption>
+</figure>
+<figure class="c" data-k=" 인간의 최상위 달성 인간의 최상위 달성.jpeg" data-src="charts/%EC%9D%B8%EA%B0%84%EC%9D%98%20%EC%B5%9C%EC%83%81%EC%9C%84%20%EB%8B%AC%EC%84%B1.jpeg" data-t="인간의 최상위 달성">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%B8%EA%B0%84%EC%9D%98%20%EC%B5%9C%EC%83%81%EC%9C%84%20%EB%8B%AC%EC%84%B1.jpeg" alt="인간의 최상위 달성"></div>
+  <figcaption><span class="tt">인간의 최상위 달성</span></figcaption>
+</figure>
+<figure class="c" data-k=" 일곱 절대자의 기능 (1) 일곱 절대자의 기능 (1).jpeg" data-src="charts/%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5%20%281%29.jpeg" data-t="일곱 절대자의 기능 (1)">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5%20%281%29.jpeg" alt="일곱 절대자의 기능 (1)"></div>
+  <figcaption><span class="tt">일곱 절대자의 기능 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k=" 일곱 절대자의 기능 일곱 절대자의 기능.jpeg" data-src="charts/%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5.jpeg" data-t="일곱 절대자의 기능">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%BC%EA%B3%B1%20%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5.jpeg" alt="일곱 절대자의 기능"></div>
+  <figcaption><span class="tt">일곱 절대자의 기능</span></figcaption>
+</figure>
+<figure class="c" data-k=" 일곱절대자의 기능과 분화 (1) 일곱절대자의 기능과 분화 (1).jpeg" data-src="charts/%EC%9D%BC%EA%B3%B1%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EA%B3%BC%20%EB%B6%84%ED%99%94%20%281%29.jpeg" data-t="일곱절대자의 기능과 분화 (1)">
+  <div class="th"><img loading="lazy" src="charts/%EC%9D%BC%EA%B3%B1%EC%A0%88%EB%8C%80%EC%9E%90%EC%9D%98%20%EA%B8%B0%EB%8A%A5%EA%B3%BC%20%EB%B6%84%ED%99%94%20%281%29.jpeg" alt="일곱절대자의 기능과 분화 (1)"></div>
+  <figcaption><span class="tt">일곱절대자의 기능과 분화 (1)</span></figcaption>
+</figure>
+<figure class="c" data-k=" 지질시대 지질시대.jpeg" data-src="charts/%EC%A7%80%EC%A7%88%EC%8B%9C%EB%8C%80.jpeg" data-t="지질시대">
+  <div class="th"><img loading="lazy" src="charts/%EC%A7%80%EC%A7%88%EC%8B%9C%EB%8C%80.jpeg" alt="지질시대"></div>
+  <figcaption><span class="tt">지질시대</span></figcaption>
+</figure>
+<figure class="c" data-k=" 초우주 경과 총 위성 초우주 경과 총 위성.jpg" data-src="charts/%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EA%B2%BD%EA%B3%BC%20%EC%B4%9D%20%EC%9C%84%EC%84%B1.jpg" data-t="초우주 경과 총 위성">
+  <div class="th"><img loading="lazy" src="charts/%EC%B4%88%EC%9A%B0%EC%A3%BC%20%EA%B2%BD%EA%B3%BC%20%EC%B4%9D%20%EC%9C%84%EC%84%B1.jpg" alt="초우주 경과 총 위성"></div>
+  <figcaption><span class="tt">초우주 경과 총 위성</span></figcaption>
+</figure>
+<figure class="c" data-k=" 최상위의 진화 최상위의 진화.jpeg" data-src="charts/%EC%B5%9C%EC%83%81%EC%9C%84%EC%9D%98%20%EC%A7%84%ED%99%94.jpeg" data-t="최상위의 진화">
+  <div class="th"><img loading="lazy" src="charts/%EC%B5%9C%EC%83%81%EC%9C%84%EC%9D%98%20%EC%A7%84%ED%99%94.jpeg" alt="최상위의 진화"></div>
+  <figcaption><span class="tt">최상위의 진화</span></figcaption>
+</figure>
+<figure class="c" data-k=" 최종자 군단과 영단계 최종자 군단과 영단계.jpeg" data-src="charts/%EC%B5%9C%EC%A2%85%EC%9E%90%20%EA%B5%B0%EB%8B%A8%EA%B3%BC%20%EC%98%81%EB%8B%A8%EA%B3%84.jpeg" data-t="최종자 군단과 영단계">
+  <div class="th"><img loading="lazy" src="charts/%EC%B5%9C%EC%A2%85%EC%9E%90%20%EA%B5%B0%EB%8B%A8%EA%B3%BC%20%EC%98%81%EB%8B%A8%EA%B3%84.jpeg" alt="최종자 군단과 영단계"></div>
+  <figcaption><span class="tt">최종자 군단과 영단계</span></figcaption>
+</figure>
+<figure class="c" data-k=" 칠중 하나님 칠중 하나님.jpeg" data-src="charts/%EC%B9%A0%EC%A4%91%20%ED%95%98%EB%82%98%EB%8B%98.jpeg" data-t="칠중 하나님">
+  <div class="th"><img loading="lazy" src="charts/%EC%B9%A0%EC%A4%91%20%ED%95%98%EB%82%98%EB%8B%98.jpeg" alt="칠중 하나님"></div>
+  <figcaption><span class="tt">칠중 하나님</span></figcaption>
+</figure>
+<figure class="c" data-k=" 칠중 하나님 칠중 하나님.jpg" data-src="charts/%EC%B9%A0%EC%A4%91%20%ED%95%98%EB%82%98%EB%8B%98.jpg" data-t="칠중 하나님">
+  <div class="th"><img loading="lazy" src="charts/%EC%B9%A0%EC%A4%91%20%ED%95%98%EB%82%98%EB%8B%98.jpg" alt="칠중 하나님"></div>
+  <figcaption><span class="tt">칠중 하나님</span></figcaption>
+</figure>
+<figure class="c" data-k=" 혼이란 무엇인가 혼이란 무엇인가.jpeg" data-src="charts/%ED%98%BC%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80.jpeg" data-t="혼이란 무엇인가">
+  <div class="th"><img loading="lazy" src="charts/%ED%98%BC%EC%9D%B4%EB%9E%80%20%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80.jpeg" alt="혼이란 무엇인가"></div>
+  <figcaption><span class="tt">혼이란 무엇인가</span></figcaption>
+</figure>
+<figure class="c" data-k=" 홈, 마음, 인격, 영 홈, 마음, 인격, 영.jpeg" data-src="charts/%ED%99%88%2C%20%EB%A7%88%EC%9D%8C%2C%20%EC%9D%B8%EA%B2%A9%2C%20%EC%98%81.jpeg" data-t="홈, 마음, 인격, 영">
+  <div class="th"><img loading="lazy" src="charts/%ED%99%88%2C%20%EB%A7%88%EC%9D%8C%2C%20%EC%9D%B8%EA%B2%A9%2C%20%EC%98%81.jpeg" alt="홈, 마음, 인격, 영"></div>
+  <figcaption><span class="tt">홈, 마음, 인격, 영</span></figcaption>
+</figure>
+  </div>
+</section>
+</div>
+
+<div class="foot">
+도표를 누르면 크게 볼 수 있습니다. 좌우 화살표 키로 다음 도표로 넘어갑니다.<br>
+<a href="/">포털 첫 화면</a> · <a href="/text.html">유란시아서 본문</a> · <a href="/mind.html">전편 마인드맵</a>
+</div>
+
+<button id="top" title="맨 위로">↑</button>
+
+<div id="lb">
+  <div class="hd">
+    <span id="lbt"></span>
+    <span class="sp">
+      <button id="pv">← 이전</button>
+      <button id="nx">다음 →</button>
+      <a id="op" href="#" target="_blank" rel="noopener">원본 크기 ↗</a>
+      <button id="cl">닫기 ✕</button>
+    </span>
+  </div>
+  <div class="bd2"><img id="lbi" alt=""></div>
+</div>
+
+<script>
+(function(){
+  var c=document.getElementById('sky'),x=c.getContext('2d');
+  function draw(){
+    var r=c.parentNode.getBoundingClientRect();
+    c.width=r.width;c.height=r.height;
+    for(var i=0;i<130;i++){
+      var a=Math.random()*.75+.12,s=Math.random()*1.5+.3;
+      x.beginPath();x.arc(Math.random()*c.width,Math.random()*c.height,s,0,6.3);
+      x.fillStyle='rgba(255,255,255,'+a+')';x.fill();
+    }
+  }
+  draw();window.addEventListener('resize',draw);
+})();
+
+var cards=[].slice.call(document.querySelectorAll('.c'));
+
+(function(){
+  var q=document.getElementById('q'),cnt=document.getElementById('cnt'),
+      secs=[].slice.call(document.querySelectorAll('.sec'));
+  function show(){
+    var v=q.value.trim().toLowerCase(),n=0;
+    cards.forEach(function(el){
+      var hit=!v||el.getAttribute('data-k').indexOf(v)>=0;
+      el.style.display=hit?'':'none';if(hit)n++;
+    });
+    secs.forEach(function(s){
+      var any=[].slice.call(s.querySelectorAll('.c')).some(function(e){return e.style.display!=='none';});
+      s.style.display=any?'':'none';
+    });
+    cnt.textContent=n+'장';
+  }
+  q.addEventListener('input',show);show();
+})();
+
+(function(){
+  var lb=document.getElementById('lb'),img=document.getElementById('lbi'),
+      ttl=document.getElementById('lbt'),op=document.getElementById('op'),cur=-1;
+  function vis(){return cards.filter(function(e){return e.style.display!=='none';});}
+  function open(el){
+    var list=vis();cur=list.indexOf(el);
+    img.src=el.getAttribute('data-src');
+    ttl.textContent=el.getAttribute('data-t');
+    op.href=el.getAttribute('data-src');
+    lb.className='on';
+  }
+  function step(d){
+    var list=vis();if(!list.length)return;
+    cur=(cur+d+list.length)%list.length;open(list[cur]);
+  }
+  cards.forEach(function(el){el.onclick=function(){open(el);};});
+  document.getElementById('cl').onclick=function(){lb.className='';img.src='';};
+  document.getElementById('pv').onclick=function(e){e.stopPropagation();step(-1);};
+  document.getElementById('nx').onclick=function(e){e.stopPropagation();step(1);};
+  lb.onclick=function(e){if(e.target===lb||e.target.className==='bd2'){lb.className='';img.src='';}};
+  document.addEventListener('keydown',function(e){
+    if(lb.className!=='on')return;
+    if(e.key==='Escape'){lb.className='';img.src='';}
+    if(e.key==='ArrowLeft')step(-1);
+    if(e.key==='ArrowRight')step(1);
+  });
+})();
+
+(function(){
+  var b=document.getElementById('top');
+  window.addEventListener('scroll',function(){b.style.display=window.scrollY>500?'block':'none';});
+  b.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};
+})();
+</script>
+</body>
+</html>
