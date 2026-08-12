@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아서 52주 스터디 강의 — 한국 유란시아서 포털</title>
+<style>
+:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hd{background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+ border-bottom:3px solid var(--gold);padding:15px 20px}
+.hd .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.hd h1{margin:0;font-size:19px;letter-spacing:-.3px}
+.hd .crumb{width:100%;font-size:12px;color:#b9cdd8}
+.hd .crumb a:hover{color:#fff;text-decoration:underline}
+.hd .sp{margin-left:auto;display:flex;gap:8px}
+.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:5px 13px;font-size:12.5px}
+.hd .sp a:hover{background:rgba(255,255,255,.24)}
+.wrap{max-width:1120px;margin:0 auto;padding:20px 20px 46px}
+.stage{position:relative;width:100%;padding-top:56.25%;background:#000;
+ border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy)}
+.sec{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
+ border-bottom:2px solid var(--navy);margin-bottom:14px;color:var(--navy)}
+.sec b{font-size:16px}
+.sec span{font-size:12.5px;color:#5d6b73}
+.grid{display:flex;flex-wrap:wrap;gap:14px}
+@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr))}}
+.card{margin:0;width:212px;background:#fff;border:1px solid #e4ebee;border-radius:9px;
+ overflow:hidden;cursor:pointer;transition:box-shadow .12s,border-color .12s;text-align:left}
+@supports(display:grid){.card{width:auto}}
+.card:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.15)}
+.card.on{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,90,.45)}
+.thumb{position:relative;width:100%;padding-top:56.25%;background:#0d1a22}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.thumb .no{position:absolute;left:7px;top:7px;background:rgba(31,63,82,.92);color:#fff;
+ font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px}
+.thumb .pl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+ color:#fff;font-size:26px;opacity:0;transition:.12s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.card:hover .thumb .pl{opacity:.95}
+.cap{padding:8px 10px 10px;font-size:13px;line-height:1.45;color:var(--ink)}
+.foot{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+@media(max-width:600px){.hd h1{font-size:17px}.wrap{padding:16px 14px 30px}}
+</style>
+</head>
+<body>
+
+<div class="hd"><div class="in">
+  <div class="crumb"><a href="/">홈</a> › 멀티미디어 › 강의 영상</div>
+  <h1>유란시아서 52주 스터디 강의</h1>
+  <div class="sp">
+    <a id="yt" href="#" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
+    <a href="/">포털 첫 화면</a>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div class="stage" id="stage"></div>
+  <div class="now" id="now"></div>
+
+  <div class="sec"><b>강의 목록</b><span id="cnt"></span></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="foot">
+  <a href="/">포털 첫 화면</a> · <a href="/mind.html">전편 마인드맵</a> · <a href="/chart.html">도표로 본 유란시아서</a>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────
+   재생목록 주소 (오른쪽 위 [유튜브에서 보기] 단추가 씁니다)
+   ───────────────────────────────────────────────────────── */
+var PLAYLIST = "https://www.youtube.com/playlist?list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
+
+/* ─────────────────────────────────────────────────────────
+   강의 목록입니다. 한 줄이 작은 창 하나가 됩니다.
+   새 강의가 올라오면 같은 모양으로 한 줄 더 넣으세요.
+     id    : 유튜브 주소 watch?v= 뒤의 글자
+     title : 화면에 보일 제목
+   ───────────────────────────────────────────────────────── */
+var VIDEOS = [
+  { id: "VvmBybmFBQM", title: "제1강 우주 아버지" },
+  { id: "eZST2RiIfu0", title: "제2강 영원 아들" },
+  { id: "_dLLTrbR3XY", title: "제3강 무한 영" },
+  { id: "qa3-f_nHCA4", title: "제4강 삼위일체" },
+  { id: "1camFsBx6F0", title: "제5강 신들의 관계" },
+  { id: "5jMcVX0fW2Y", title: "제6강 신성한 중앙 우주" },
+  { id: "4-IZd6A8Bsc", title: "제7강 일곱 초우주와 초우주 봉사의 영" },
+  { id: "CSFmeV82tUg", title: "제8강 일곱 주 영과 최상 영 집단" },
+  { id: "WQzCIJnamLQ", title: "제9강 옛적부터 늘 계신 이" },
+  { id: "XXxKteKF29U", title: "제10강 하나님의 아들들" }
+];
+
+(function(){
+  var stage = document.getElementById('stage'),
+      grid = document.getElementById('grid'),
+      now = document.getElementById('now'),
+      cnt = document.getElementById('cnt'),
+      yt = document.getElementById('yt'),
+      m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/),
+      listId = m ? m[1] : "",
+      cur = -1;
+
+  yt.href = listId ? 'https://www.youtube.com/playlist?list=' + listId : '#';
+  cnt.textContent = VIDEOS.length + '개';
+
+  function play(i, auto){
+    cur = i;
+    var v = VIDEOS[i];
+    var src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?rel=0' +
+              (listId ? '&list=' + listId : '') + (auto ? '&autoplay=1' : '');
+    stage.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = src;
+    f.title = v.title;
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    stage.appendChild(f);
+    now.textContent = '지금 보는 강의 · ' + v.title;
+    [].forEach.call(grid.children, function(c, n){
+      c.className = 'card' + (n === i ? ' on' : '');
+    });
+    if (auto) stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  VIDEOS.forEach(function(v, i){
+    var c = document.createElement('figure');
+    c.className = 'card';
+    c.innerHTML =
+      '<div class="thumb"><img loading="lazy" alt="" ' +
+      'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
+      '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
+      '<figcaption class="cap">' + v.title + '</figcaption>';
+    c.onclick = function(){ play(i, true); };
+    grid.appendChild(c);
+  });
+
+  play(0, false);
+})();
+</script>
+</body>
+</html>
