@@ -56,11 +56,11 @@
         },
         {
           "name": "유란시아서 디지털 리더(reader)",
-          "url": "/reader.html"
+          "url": "https://urantia-korea.netlify.app/reader.html"
         },
         {
           "name": "유란시아서 읽기쉬운 해설판 ",
-          "url": "http://urantia-korea.netlify.app/papers.html"
+          "url": "/papers.html"
         },
         {
           "name": "유란시아서 본문 요약",
