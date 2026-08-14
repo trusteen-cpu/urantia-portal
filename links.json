@@ -533,8 +533,8 @@
           "member": true
         },
         {
-          "name": "아침 기도 및 명상",
-          "url": "",
+          "name": "오늘의 묵상 ",
+          "url": "/devotion/",
           "member": true
         },
         {
