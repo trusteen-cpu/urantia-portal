@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Urantia Book — Digital Reader (English) — Korean Urantia Portal</title>
+<style>
+:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hd{flex:none;background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+ border-bottom:3px solid var(--gold);padding:15px 20px}
+.hd .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.hd h1{margin:0;font-size:18px;letter-spacing:-.3px}
+.hd .crumb{width:100%;font-size:12px;color:#b9cdd8}
+.hd .crumb a:hover{color:#fff;text-decoration:underline}
+.hd .sp{margin-left:auto;display:flex;gap:8px}
+.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:5px 13px;font-size:12.5px}
+.hd .sp a:hover{background:rgba(255,255,255,.24)}
+.note{flex:none;background:#fffdf5;border-bottom:1px solid #eadfbe;padding:8px 20px;
+ font-size:12.5px;color:#5a5233;text-align:center}
+.stage{position:relative;flex:1;min-height:0}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+.loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:10px;color:#5d6b73;background:#f6f8f9;transition:opacity .25s}
+.loading.hide{opacity:0;pointer-events:none}
+.spin{width:34px;height:34px;border:3px solid #dfe6ea;border-top-color:var(--navy);
+ border-radius:50%;animation:sp 0.8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="hd"><div class="in">
+  <div class="crumb"><a href="/">Home</a> › Digital Reader (English)</div>
+  <h1>The Urantia Book — Digital Reader (English)</h1>
+  <div class="sp">
+    <a id="ext" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+    <a href="/">Portal Home</a>
+  </div>
+</div></div>
+
+<div class="note">
+  Highlights, notes, and read-date marks are saved in this browser. For the safest experience, open in a new tab.
+</div>
+
+<div class="stage">
+  <div class="loading" id="loading"><div class="spin"></div><div>Loading the reader…</div></div>
+  <iframe id="fr" src="/reader-en/index.html" title="The Urantia Book — Digital Reader (English)"
+    allow="clipboard-write; clipboard-read; fullscreen"></iframe>
+</div>
+
+<script>
+var SRC = "/reader-en/index.html";
+document.getElementById('fr').src = SRC;
+document.getElementById('ext').href = SRC;
+document.getElementById('fr').addEventListener('load', function(){
+  document.getElementById('loading').classList.add('hide');
+});
+</script>
+</body>
+</html>
