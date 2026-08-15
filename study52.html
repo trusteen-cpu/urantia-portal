@@ -61,8 +61,8 @@ a{color:inherit;text-decoration:none}
 </div></div>
 
 <div class="wrap">
-  <div class="stage" id="stage"></div>
-  <div class="now" id="now">
+  <div class="stage"><div id="ytPlayer"></div></div>
+  <div class="now">
     <span id="nowLabel"></span>
     <label class="cont"><input type="checkbox" id="cont" checked> 이어서 계속 재생</label>
   </div>
@@ -81,10 +81,7 @@ a{color:inherit;text-decoration:none}
    새 강의가 올라오면 같은 모양으로 한 줄 더 넣으세요.
      id    : 유튜브 주소 watch?v= 뒤의 글자
      title : 화면에 보일 제목
-   이 강의들은 재생목록이 아니라 영상 하나하나를 따로 재생합니다.
-   (전에 걸려 있던 재생목록 번호가 다른 메뉴의 음악 재생목록과
-   겹쳐서, 어떤 강을 눌러도 그 음악 영상만 나오는 문제가 있었습니다.
-   그래서 재생목록 번호를 빼고 영상 하나만 재생하도록 고쳤습니다.)
+   재생목록 번호는 쓰지 않고, 이 화면이 직접 순서를 관리합니다.
    ----------------------------------------------------------- */
 var VIDEOS = [
   { id: "VvmBybmFBQM", title: "제1강 우주 아버지" },
@@ -99,63 +96,64 @@ var VIDEOS = [
   { id: "XXxKteKF29U", title: "제10강 하나님의 아들들" }
 ];
 
-(function(){
-  var stage = document.getElementById('stage'),
-      grid = document.getElementById('grid'),
-      nowLabel = document.getElementById('nowLabel'),
-      cnt = document.getElementById('cnt'),
-      contBox = document.getElementById('cont'),
-      cur = -1;
+var grid = document.getElementById('grid'),
+    nowLabel = document.getElementById('nowLabel'),
+    cnt = document.getElementById('cnt'),
+    contBox = document.getElementById('cont'),
+    cur = 0, ytPlayer = null, apiReady = false;
 
-  cnt.textContent = VIDEOS.length + '개';
+cnt.textContent = VIDEOS.length + '개';
 
-  function play(i, auto){
-    cur = (i + VIDEOS.length) % VIDEOS.length;
-    var v = VIDEOS[cur];
-    /* enablejsapi=1 을 넣어야 영상이 끝났다는 신호(onStateChange)를 받을 수 있습니다. */
-    var src = 'https://www.youtube-nocookie.com/embed/' + v.id +
-      '?rel=0&enablejsapi=1&origin=' + encodeURIComponent(location.origin) +
-      (auto ? '&autoplay=1' : '');
-    stage.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.id = 'ytFrame';
-    f.src = src;
-    f.title = v.title;
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    f.allowFullscreen = true;
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    stage.appendChild(f);
-    nowLabel.textContent = '지금 보는 강의 · ' + v.title;
-    [].forEach.call(grid.children, function(c, n){
-      c.className = 'card' + (n === cur ? ' on' : '');
-    });
-    if (auto) stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+function markCard(i){
+  nowLabel.textContent = '지금 보는 강의 · ' + VIDEOS[i].title;
+  [].forEach.call(grid.children, function(c, n){
+    c.className = 'card' + (n === i ? ' on' : '');
+  });
+}
+
+VIDEOS.forEach(function(v, i){
+  var c = document.createElement('figure');
+  c.className = 'card';
+  c.innerHTML =
+    '<div class="thumb"><img loading="lazy" alt="" ' +
+    'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
+    '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
+    '<figcaption class="cap">' + v.title + '</figcaption>';
+  c.onclick = function(){ playIndex(i, true); };
+  grid.appendChild(c);
+});
+markCard(0);
+
+function playIndex(i, autoplay){
+  cur = (i + VIDEOS.length) % VIDEOS.length;
+  markCard(cur);
+  if (apiReady && ytPlayer && ytPlayer.loadVideoById) {
+    if (autoplay) ytPlayer.loadVideoById(VIDEOS[cur].id);
+    else ytPlayer.cueVideoById(VIDEOS[cur].id);
+    document.querySelector('.stage').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+}
 
-  /* 유튜브 재생기가 보내는 상태 신호를 듣고 있다가, 영상이 끝나면(0) 다음 강으로 넘어갑니다. */
-  window.addEventListener('message', function(e){
-    if (e.origin.indexOf('youtube') === -1) return;
-    var data;
-    try { data = JSON.parse(e.data); } catch (err) { return; }
-    if (data.event === 'onStateChange' && data.info === 0 && contBox.checked) {
-      play(cur + 1, true);
+/* 유튜브 공식 재생기 연결 라이브러리를 불러옵니다. */
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
+
+window.onYouTubeIframeAPIReady = function(){
+  ytPlayer = new YT.Player('ytPlayer', {
+    videoId: VIDEOS[0].id,
+    playerVars: { rel: 0 },
+    events: {
+      onReady: function(){ apiReady = true; },
+      onStateChange: function(e){
+        /* 0 = 영상이 끝남 */
+        if (e.data === 0 && contBox.checked) {
+          playIndex(cur + 1, true);
+        }
+      }
     }
   });
-
-  VIDEOS.forEach(function(v, i){
-    var c = document.createElement('figure');
-    c.className = 'card';
-    c.innerHTML =
-      '<div class="thumb"><img loading="lazy" alt="" ' +
-      'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
-      '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
-      '<figcaption class="cap">' + v.title + '</figcaption>';
-    c.onclick = function(){ play(i, true); };
-    grid.appendChild(c);
-  });
-
-  play(0, false);
-})();
+};
 </script>
 </body>
 </html>
