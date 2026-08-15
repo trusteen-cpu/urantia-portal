@@ -105,7 +105,7 @@
         },
         {
           "name": "유란시아서 개념, 교훈",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/17"
         },
         {
           "name": "유란시아서 핵심 교리 오디오북 (한글)",
@@ -122,15 +122,15 @@
         },
         {
           "name": "모든 것의 이야기",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/52"
         },
         {
           "name": "유란시아서 강해",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/22"
         },
         {
           "name": "예수의 삶과 가르침",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/108"
         },
         {
           "name": "유란시아서 도표",
@@ -138,23 +138,23 @@
         },
         {
           "name": "유란시아서 연대기",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/24"
         },
         {
           "name": "유란시아서 용어 관계",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/60"
         },
         {
           "name": "유란시아서 번역본들",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/74"
         },
         {
           "name": "외국독자원본글들",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/104"
         },
         {
           "name": "영어 자료실",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/105"
         }
       ]
     },
@@ -166,40 +166,45 @@
       "preview": 40,
       "items": [
         {
+          "member": false,
+          "name": "주제별 연구",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/18"
+        },
+        {
           "name": "유란시아서 머리말",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/75"
         },
         {
           "name": "천문 천답",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/71"
         },
         {
           "name": "신들의 관계",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/63"
         },
         {
           "name": "윤회",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/64"
         },
         {
           "name": "다수 구원론",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/65"
         },
         {
           "name": "인격",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/66"
         },
         {
           "name": "하나님의 형상",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/67"
         },
         {
           "name": "성경 바로 잡기",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/68"
         },
         {
           "name": "예수의 삶과 가르침",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/69"
         }
       ]
     },
