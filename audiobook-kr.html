@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>핵심교리 오디오북 (한국어) — 한국 유란시아서 포털</title>
+<style>
+:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hd{background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+ border-bottom:3px solid var(--gold);padding:15px 20px}
+.hd .in{max-width:1100px;margin:0 auto}
+.hd .crumb{font-size:12px;color:#b9cdd8;margin-bottom:8px}
+.hd .crumb a:hover{color:#fff;text-decoration:underline}
+.hd .row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.hd h1{margin:0;font-size:20px}
+.hd .sp{margin-left:auto;display:flex;gap:8px}
+.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:6px 14px;font-size:12.5px}
+.hd .sp a:hover{background:rgba(255,255,255,.24)}
+.bar{position:sticky;top:0;z-index:10;background:rgba(246,248,249,.97);
+ border-bottom:1px solid var(--line);padding:11px 20px}
+.bar .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+#q{flex:1;padding:9px 13px;border:1px solid #c8d3d9;border-radius:22px;
+ font-size:14px;font-family:inherit;background:#fff}
+#q:focus{outline:none;border-color:var(--navy)}
+#cnt{font-size:12.5px;color:#5d6b73;white-space:nowrap}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 20px 50px}
+.grid{display:flex;flex-wrap:wrap;gap:12px}
+@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+.card{background:#fff;border:1px solid #e4ebee;border-radius:10px;padding:14px 16px;
+ transition:box-shadow .12s,border-color .12s}
+.card:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.12)}
+.card .n{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
+ border-radius:5px;padding:2px 8px;margin-bottom:8px}
+.card .t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.foot{max-width:1100px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+</style>
+</head>
+<body>
+
+<div class="hd"><div class="in">
+  <div class="crumb"><a href="/">홈</a> › 핵심교리 오디오북 (한국어)</div>
+  <div class="row">
+    <h1>핵심교리 오디오북 · 한국어</h1>
+    <span class="sp">
+      <a href="/audiobook-en.html">English ↗</a>
+      <a href="/">포털 첫 화면</a>
+    </span>
+  </div>
+</div></div>
+
+<div class="bar"><div class="in">
+  <input id="q" type="search" placeholder="강 번호나 제목으로 찾기" autocomplete="off">
+  <span id="cnt"></span>
+</div></div>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="foot">
+  <a href="/">포털 첫 화면</a> · <a href="/text.html">유란시아서 본문</a> · <a href="/mind.html">전편 마인드맵</a>
+</div>
+
+<script>
+/* 강이 늘거나 이름이 바뀌면 아래 배열만 고치면 됩니다. n: 강 번호, t: 제목 */
+var KR = [
+  {n:1,t:"영생"},{n:2,t:"구원"},{n:3,t:"신앙"},{n:4,t:"하늘왕국"},{n:5,t:"치유"},
+  {n:6,t:"인격"},{n:7,t:"생각 조절자"},{n:8,t:"I AM"},{n:9,t:"기독론"},{n:10,t:"기독교와 유란시아서"},
+  {n:11,t:"혼의 기원과 운명"},{n:12,t:"천사론"},{n:13,t:"삼위일체"},{n:14,t:"하나님의 뜻"},{n:15,t:"예배"},
+  {n:16,t:"기도"},{n:17,t:"최상 존재"},{n:18,t:"종교의 본질"},{n:19,t:"나사렛 예수"},{n:20,t:"우주의 구성과 행정"},
+  {n:21,t:"예수의 마지막 일주일"},{n:22,t:"예수의 가르침"},{n:23,t:"최초의 인간과 그 가족"},{n:24,t:"인종의 기원과 분산"},{n:25,t:"아담과 이브"},
+  {n:26,t:"물질화 과정"},{n:27,t:"멜기세덱 가르침의 세계 전파"},{n:28,t:"마음"},{n:29,t:"삼위일체 (2)"},{n:30,t:"열두 사도"}
+];
+
+(function(){
+  var grid = document.getElementById('grid'), q = document.getElementById('q'), cnt = document.getElementById('cnt');
+  function render(){
+    var v = q.value.trim().toLowerCase();
+    grid.innerHTML = '';
+    var n = 0;
+    KR.forEach(function(item){
+      var key = (String(item.n) + ' ' + item.t).toLowerCase();
+      if (v && key.indexOf(v) < 0) return;
+      n++;
+      var a = document.createElement('a');
+      a.className = 'card';
+      a.href = '/audiobook/kr/ch' + String(item.n).padStart(2, '0') + '/';
+      a.innerHTML = '<div class="n">제' + item.n + '강</div><div class="t">' + item.t + '</div>';
+      grid.appendChild(a);
+    });
+    cnt.textContent = n + '개';
+  }
+  q.addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>

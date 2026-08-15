@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core Truth Audiobook (English) — Korean Urantia Portal</title>
+<style>
+:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.hd{background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
+ border-bottom:3px solid var(--gold);padding:15px 20px}
+.hd .in{max-width:1100px;margin:0 auto}
+.hd .crumb{font-size:12px;color:#b9cdd8;margin-bottom:8px}
+.hd .crumb a:hover{color:#fff;text-decoration:underline}
+.hd .row{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.hd h1{margin:0;font-size:20px}
+.hd .sp{margin-left:auto;display:flex;gap:8px}
+.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:6px 14px;font-size:12.5px}
+.hd .sp a:hover{background:rgba(255,255,255,.24)}
+.bar{position:sticky;top:0;z-index:10;background:rgba(246,248,249,.97);
+ border-bottom:1px solid var(--line);padding:11px 20px}
+.bar .in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+#q{flex:1;padding:9px 13px;border:1px solid #c8d3d9;border-radius:22px;
+ font-size:14px;font-family:inherit;background:#fff}
+#q:focus{outline:none;border-color:var(--navy)}
+#cnt{font-size:12.5px;color:#5d6b73;white-space:nowrap}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 20px 50px}
+.grid{display:flex;flex-wrap:wrap;gap:12px}
+@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+.card{background:#fff;border:1px solid #e4ebee;border-radius:10px;padding:14px 16px;
+ transition:box-shadow .12s,border-color .12s}
+.card:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.12)}
+.card .n{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
+ border-radius:5px;padding:2px 8px;margin-bottom:8px}
+.card .t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.foot{max-width:1100px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
+.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
+</style>
+</head>
+<body>
+
+<div class="hd"><div class="in">
+  <div class="crumb"><a href="/">Home</a> › Core Truth Audiobook (English)</div>
+  <div class="row">
+    <h1>Core Truth Audiobook · English</h1>
+    <span class="sp">
+      <a href="/audiobook-kr.html">한국어 ↗</a>
+      <a href="/">Portal Home</a>
+    </span>
+  </div>
+</div></div>
+
+<div class="bar"><div class="in">
+  <input id="q" type="search" placeholder="Search by number or title" autocomplete="off">
+  <span id="cnt"></span>
+</div></div>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="foot">
+  <a href="/">Portal Home</a> · <a href="/text.html">Urantia Book Text</a> · <a href="/mind.html">Mind Map</a>
+</div>
+
+<script>
+/* Add or rename chapters by editing this array. n: chapter number, t: title */
+var EN = [
+  {n:1,t:"Eternal Life"},{n:2,t:"Faith"},{n:3,t:"Salvation"},{n:4,t:"Kingdom of Heaven"},{n:5,t:"Healing"},
+  {n:6,t:"Personality"},{n:7,t:"I AM"},{n:8,t:"Thought Adjuster"},{n:9,t:"Christology"},{n:10,t:"Trinity"},
+  {n:11,t:"Christianity"},{n:12,t:"Destiny of the Soul"},{n:13,t:"Angelology"},{n:14,t:"Will of God"},{n:15,t:"Worship"},
+  {n:16,t:"Prayer"},{n:17,t:"Supreme Being"},{n:18,t:"The Nature of Religion"},{n:19,t:"Jesus of Nazareth"},{n:20,t:"Structure of the Universe"},
+  {n:21,t:"Last Week of Jesus"},{n:22,t:"Jesus' Teaching"},{n:23,t:"First Humans and Family"},{n:24,t:"Origin of Humanity"},{n:25,t:"Adam and Eve"},
+  {n:26,t:"Materialization"},{n:27,t:"Lucifer Rebellion"},{n:28,t:"Mind"},{n:29,t:"Sons of God"},{n:30,t:"Future of Christianity"}
+];
+
+(function(){
+  var grid = document.getElementById('grid'), q = document.getElementById('q'), cnt = document.getElementById('cnt');
+  function render(){
+    var v = q.value.trim().toLowerCase();
+    grid.innerHTML = '';
+    var n = 0;
+    EN.forEach(function(item){
+      var key = (String(item.n) + ' ' + item.t).toLowerCase();
+      if (v && key.indexOf(v) < 0) return;
+      n++;
+      var a = document.createElement('a');
+      a.className = 'card';
+      a.href = '/audiobook/en/ch' + String(item.n).padStart(2, '0') + '/';
+      a.innerHTML = '<div class="n">Ch. ' + item.n + '</div><div class="t">' + item.t + '</div>';
+      grid.appendChild(a);
+    });
+    cnt.textContent = n + ' items';
+  }
+  q.addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>
