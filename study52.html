@@ -23,7 +23,9 @@ a{color:inherit;text-decoration:none}
 .stage{position:relative;width:100%;padding-top:56.25%;background:#000;
  border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
 .stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy)}
+.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.now .cont{margin-left:auto;font-weight:400;font-size:13px;color:#42525c;display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.now .cont input{width:16px;height:16px}
 .sec{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
  border-bottom:2px solid var(--navy);margin-bottom:14px;color:var(--navy)}
 .sec b{font-size:16px}
@@ -54,14 +56,16 @@ a{color:inherit;text-decoration:none}
   <div class="crumb"><a href="/">홈</a> › 멀티미디어 › 강의 영상</div>
   <h1>유란시아서 52주 스터디 강의</h1>
   <div class="sp">
-    <a id="yt" href="#" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
     <a href="/">포털 첫 화면</a>
   </div>
 </div></div>
 
 <div class="wrap">
   <div class="stage" id="stage"></div>
-  <div class="now" id="now"></div>
+  <div class="now" id="now">
+    <span id="nowLabel"></span>
+    <label class="cont"><input type="checkbox" id="cont" checked> 이어서 계속 재생</label>
+  </div>
 
   <div class="sec"><b>강의 목록</b><span id="cnt"></span></div>
   <div class="grid" id="grid"></div>
@@ -72,17 +76,16 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script>
-/* ─────────────────────────────────────────────────────────
-   재생목록 주소 (오른쪽 위 [유튜브에서 보기] 단추가 씁니다)
-   ───────────────────────────────────────────────────────── */
-var PLAYLIST = "https://www.youtube.com/playlist?list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
-
-/* ─────────────────────────────────────────────────────────
+/* -----------------------------------------------------------
    강의 목록입니다. 한 줄이 작은 창 하나가 됩니다.
    새 강의가 올라오면 같은 모양으로 한 줄 더 넣으세요.
      id    : 유튜브 주소 watch?v= 뒤의 글자
      title : 화면에 보일 제목
-   ───────────────────────────────────────────────────────── */
+   이 강의들은 재생목록이 아니라 영상 하나하나를 따로 재생합니다.
+   (전에 걸려 있던 재생목록 번호가 다른 메뉴의 음악 재생목록과
+   겹쳐서, 어떤 강을 눌러도 그 음악 영상만 나오는 문제가 있었습니다.
+   그래서 재생목록 번호를 빼고 영상 하나만 재생하도록 고쳤습니다.)
+   ----------------------------------------------------------- */
 var VIDEOS = [
   { id: "VvmBybmFBQM", title: "제1강 우주 아버지" },
   { id: "eZST2RiIfu0", title: "제2강 영원 아들" },
@@ -99,35 +102,45 @@ var VIDEOS = [
 (function(){
   var stage = document.getElementById('stage'),
       grid = document.getElementById('grid'),
-      now = document.getElementById('now'),
+      nowLabel = document.getElementById('nowLabel'),
       cnt = document.getElementById('cnt'),
-      yt = document.getElementById('yt'),
-      m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/),
-      listId = m ? m[1] : "",
+      contBox = document.getElementById('cont'),
       cur = -1;
 
-  yt.href = listId ? 'https://www.youtube.com/playlist?list=' + listId : '#';
   cnt.textContent = VIDEOS.length + '개';
 
   function play(i, auto){
-    cur = i;
-    var v = VIDEOS[i];
-    var src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?rel=0' +
-              (listId ? '&list=' + listId : '') + (auto ? '&autoplay=1' : '');
+    cur = (i + VIDEOS.length) % VIDEOS.length;
+    var v = VIDEOS[cur];
+    /* enablejsapi=1 을 넣어야 영상이 끝났다는 신호(onStateChange)를 받을 수 있습니다. */
+    var src = 'https://www.youtube-nocookie.com/embed/' + v.id +
+      '?rel=0&enablejsapi=1&origin=' + encodeURIComponent(location.origin) +
+      (auto ? '&autoplay=1' : '');
     stage.innerHTML = '';
     var f = document.createElement('iframe');
+    f.id = 'ytFrame';
     f.src = src;
     f.title = v.title;
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     f.allowFullscreen = true;
     f.referrerPolicy = 'strict-origin-when-cross-origin';
     stage.appendChild(f);
-    now.textContent = '지금 보는 강의 · ' + v.title;
+    nowLabel.textContent = '지금 보는 강의 · ' + v.title;
     [].forEach.call(grid.children, function(c, n){
-      c.className = 'card' + (n === i ? ' on' : '');
+      c.className = 'card' + (n === cur ? ' on' : '');
     });
     if (auto) stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
+
+  /* 유튜브 재생기가 보내는 상태 신호를 듣고 있다가, 영상이 끝나면(0) 다음 강으로 넘어갑니다. */
+  window.addEventListener('message', function(e){
+    if (e.origin.indexOf('youtube') === -1) return;
+    var data;
+    try { data = JSON.parse(e.data); } catch (err) { return; }
+    if (data.event === 'onStateChange' && data.info === 0 && contBox.checked) {
+      play(cur + 1, true);
+    }
+  });
 
   VIDEOS.forEach(function(v, i){
     var c = document.createElement('figure');
