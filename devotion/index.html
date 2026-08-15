@@ -76,7 +76,7 @@ var DAYS = [
   DAYS.forEach(function(d){
     var a = document.createElement('a');
     a.className = 'card';
-    a.href = 'devotion/' + d.folder + '/';
+    a.href =  d.folder + '/';
     a.innerHTML =
       '<div class="top"><span class="kind">' + d.kind + '</span>' +
       '<span class="date">' + d.date + '</span></div>' +
