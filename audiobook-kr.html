@@ -28,6 +28,10 @@ a{color:inherit;text-decoration:none}
 #q:focus{outline:none;border-color:var(--navy)}
 #cnt{font-size:12.5px;color:#5d6b73;white-space:nowrap}
 .wrap{max-width:1100px;margin:0 auto;padding:22px 20px 50px}
+.combo{display:block;background:#fffdf5;border:1px solid #eadfbe;border-left:4px solid var(--gold);
+ border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:14px;color:#5a5233}
+.combo b{color:var(--navy);font-size:15px}
+.combo:hover{border-left-width:6px}
 .grid{display:flex;flex-wrap:wrap;gap:12px}
 @supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
 .card{background:#fff;border:1px solid #e4ebee;border-radius:10px;padding:14px 16px;
@@ -36,6 +40,7 @@ a{color:inherit;text-decoration:none}
 .card .n{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
  border-radius:5px;padding:2px 8px;margin-bottom:8px}
 .card .t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.card .ext{float:right;color:#93a3ac;font-size:12px}
 .foot{max-width:1100px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
 .foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
 </style>
@@ -59,22 +64,54 @@ a{color:inherit;text-decoration:none}
 </div></div>
 
 <div class="wrap">
+  <a class="combo" href="https://incredible-pastelito-ca9000.netlify.app/" target="_blank" rel="noopener">
+    <b>30개 통합 오디오북 ↗</b><br>서른 개 강을 이어서 한 번에 들을 수 있는 모음판입니다.
+  </a>
+
   <div class="grid" id="grid"></div>
 </div>
 
 <div class="foot">
+  각 강을 누르면 새 창에서 원본 화면이 그대로 열립니다.<br>
   <a href="/">포털 첫 화면</a> · <a href="/text.html">유란시아서 본문</a> · <a href="/mind.html">전편 마인드맵</a>
 </div>
 
 <script>
-/* 강이 늘거나 이름이 바뀌면 아래 배열만 고치면 됩니다. n: 강 번호, t: 제목 */
+/* 강이 늘거나 이름·주소가 바뀌면 아래 배열만 고치면 됩니다. n: 강 번호, t: 제목, u: 주소 */
 var KR = [
-  {n:1,t:"영생"},{n:2,t:"구원"},{n:3,t:"신앙"},{n:4,t:"하늘왕국"},{n:5,t:"치유"},
-  {n:6,t:"인격"},{n:7,t:"생각 조절자"},{n:8,t:"I AM"},{n:9,t:"기독론"},{n:10,t:"기독교와 유란시아서"},
-  {n:11,t:"혼의 기원과 운명"},{n:12,t:"천사론"},{n:13,t:"삼위일체"},{n:14,t:"하나님의 뜻"},{n:15,t:"예배"},
-  {n:16,t:"기도"},{n:17,t:"최상 존재"},{n:18,t:"종교의 본질"},{n:19,t:"나사렛 예수"},{n:20,t:"우주의 구성과 행정"},
-  {n:21,t:"예수의 마지막 일주일"},{n:22,t:"예수의 가르침"},{n:23,t:"최초의 인간과 그 가족"},{n:24,t:"인종의 기원과 분산"},{n:25,t:"아담과 이브"},
-  {n:26,t:"물질화 과정"},{n:27,t:"멜기세덱 가르침의 세계 전파"},{n:28,t:"마음"},{n:29,t:"삼위일체 (2)"},{n:30,t:"열두 사도"}
+  {n:1,t:"구원",u:"https://phenomenal-kangaroo-3d1ce8.netlify.app/"},
+  {n:2,t:"영원한 삶",u:"https://dynamic-granita-98153b.netlify.app/"},
+  {n:3,t:"신앙",u:"https://incomparable-youtiao-b76edd.netlify.app/"},
+  {n:4,t:"하늘왕국",u:"https://nimble-treacle-a3f06b.netlify.app/"},
+  {n:5,t:"치유",u:"https://leafy-taffy-b17942.netlify.app/"},
+  {n:6,t:"인격",u:"https://euphonious-babka-e6e879.netlify.app/"},
+  {n:7,t:"생각 조절자",u:"https://snazzy-halva-ba1a62.netlify.app/"},
+  {n:8,t:"스스로 계신 이",u:"https://ornate-macaron-10a095.netlify.app/"},
+  {n:9,t:"기독론",u:"https://funny-rabanadas-fa0015.netlify.app/"},
+  {n:10,t:"기독교와 유란시아서",u:"https://jade-puffpuff-586b80.netlify.app/"},
+  {n:11,t:"혼의 기원과 운명",u:"https://hilarious-fairy-474c88.netlify.app/"},
+  {n:12,t:"천사론",u:"https://lambent-faun-a71dc4.netlify.app/"},
+  {n:13,t:"삼위일체",u:"https://magenta-rugelach-5d6213.netlify.app/"},
+  {n:14,t:"하나님의 뜻",u:"https://poetic-gelato-77279c.netlify.app/"},
+  {n:15,t:"예배",u:"https://stately-marzipan-dacfb1.netlify.app/"},
+  {n:16,t:"기도",u:"https://splendorous-longma-f911ca.netlify.app/"},
+  {n:17,t:"최상 존재",u:"https://rococo-pie-c86b42.netlify.app/"},
+  {n:18,t:"종교의 본질",u:"https://willowy-malabi-c1a2c5.netlify.app/"},
+  {n:19,t:"나사렛 예수",u:"https://stellar-granita-9f0fa4.netlify.app/"},
+  {n:20,t:"우주의 구성과 행정",u:"https://astonishing-meerkat-973346.netlify.app/"},
+  {n:21,t:"예수의 마지막 일주일",u:"https://leafy-lokum-4c08d4.netlify.app/"},
+  {n:22,t:"예수의 가르침 (비유와 강론)",u:"https://endearing-concha-c2f159.netlify.app/"},
+  {n:23,t:"최초의 인간과 그 가족",u:"https://verdant-axolotl-2857ab.netlify.app/"},
+  {n:24,t:"인종의 기원과 분산",u:"https://resplendent-semolina-a04a4e.netlify.app/"},
+  {n:25,t:"아담과 이브",u:"https://radiant-profiterole-6f33a2.netlify.app/"},
+  {n:26,t:"물질화 과정",u:"https://singular-capybara-d9000b.netlify.app/"},
+  {n:27,t:"루시퍼 반란",u:"https://lovely-malasada-f23290.netlify.app/"},
+  {n:28,t:"마음",u:"https://delicate-syrniki-b1740d.netlify.app/"},
+  {n:29,t:"하나님의 아들들",u:"https://fantastic-hotteok-b52e24.netlify.app/"},
+  {n:30,t:"기독교의 기원, 발전 그리고 미래",u:"https://steady-pegasus-faea4c.netlify.app/"},
+  {n:31,t:"멜기세덱 가르침의 세계 전파",u:"https://endearing-biscuit-ea3029.netlify.app/"},
+  {n:32,t:"삼위일체 (2)",u:"https://graceful-pika-02496b.netlify.app/"},
+  {n:33,t:"열두 사도",u:"https://stunning-flan-f8e060.netlify.app/"}
 ];
 
 (function(){
@@ -89,8 +126,10 @@ var KR = [
       n++;
       var a = document.createElement('a');
       a.className = 'card';
-      a.href = '/audiobook/kr/ch' + String(item.n).padStart(2, '0') + '/';
-      a.innerHTML = '<div class="n">제' + item.n + '강</div><div class="t">' + item.t + '</div>';
+      a.href = item.u;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = '<span class="ext">↗</span><div class="n">제' + item.n + '강</div><div class="t">' + item.t + '</div>';
       grid.appendChild(a);
     });
     cnt.textContent = n + '개';

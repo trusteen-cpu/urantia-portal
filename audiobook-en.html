@@ -36,6 +36,7 @@ a{color:inherit;text-decoration:none}
 .card .n{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
  border-radius:5px;padding:2px 8px;margin-bottom:8px}
 .card .t{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4}
+.card .ext{float:right;color:#93a3ac;font-size:12px}
 .foot{max-width:1100px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
 .foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
 </style>
@@ -63,18 +64,43 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <div class="foot">
+  Each chapter opens the original presentation in a new tab.<br>
   <a href="/">Portal Home</a> · <a href="/text.html">Urantia Book Text</a> · <a href="/mind.html">Mind Map</a>
 </div>
 
 <script>
-/* Add or rename chapters by editing this array. n: chapter number, t: title */
+/* Add or rename chapters by editing this array. n: chapter number, t: title, u: url */
 var EN = [
-  {n:1,t:"Eternal Life"},{n:2,t:"Faith"},{n:3,t:"Salvation"},{n:4,t:"Kingdom of Heaven"},{n:5,t:"Healing"},
-  {n:6,t:"Personality"},{n:7,t:"I AM"},{n:8,t:"Thought Adjuster"},{n:9,t:"Christology"},{n:10,t:"Trinity"},
-  {n:11,t:"Christianity"},{n:12,t:"Destiny of the Soul"},{n:13,t:"Angelology"},{n:14,t:"Will of God"},{n:15,t:"Worship"},
-  {n:16,t:"Prayer"},{n:17,t:"Supreme Being"},{n:18,t:"The Nature of Religion"},{n:19,t:"Jesus of Nazareth"},{n:20,t:"Structure of the Universe"},
-  {n:21,t:"Last Week of Jesus"},{n:22,t:"Jesus' Teaching"},{n:23,t:"First Humans and Family"},{n:24,t:"Origin of Humanity"},{n:25,t:"Adam and Eve"},
-  {n:26,t:"Materialization"},{n:27,t:"Lucifer Rebellion"},{n:28,t:"Mind"},{n:29,t:"Sons of God"},{n:30,t:"Future of Christianity"}
+  {n:1,t:"Eternal Life",u:"https://storied-pavlova-2e1c7c.netlify.app/"},
+  {n:2,t:"Faith",u:"https://comfy-biscuit-1923b8.netlify.app/"},
+  {n:3,t:"Salvation",u:"https://loquacious-gecko-2b90bc.netlify.app/"},
+  {n:4,t:"The Kingdom of Heaven",u:"https://regal-souffle-c1466c.netlify.app/"},
+  {n:5,t:"Healing",u:"https://famous-caramel-7084b2.netlify.app/"},
+  {n:6,t:"Personality",u:"https://zesty-blini-02b658.netlify.app/"},
+  {n:7,t:"The I AM",u:"https://golden-valkyrie-699853.netlify.app/"},
+  {n:8,t:"Thought Adjuster",u:"https://taupe-fudge-e4b518.netlify.app/"},
+  {n:9,t:"Christology",u:"https://storied-cheesecake-e656c2.netlify.app/"},
+  {n:10,t:"Trinity",u:"https://cerulean-paprenjak-f3804b.netlify.app/"},
+  {n:11,t:"The Christianity and the Urantia Book",u:"https://darling-croquembouche-7b294e.netlify.app/"},
+  {n:12,t:"The Destiny of the Soul",u:"https://admirable-liger-d84488.netlify.app/"},
+  {n:13,t:"Angelology",u:"https://euphonious-madeleine-8fb0bc.netlify.app/"},
+  {n:14,t:"The Will of God",u:"https://idyllic-pavlova-ca4aca.netlify.app/"},
+  {n:15,t:"The Worship",u:"https://cheery-kangaroo-f744b8.netlify.app/"},
+  {n:16,t:"The Prayer",u:"https://helpful-marigold-e1ccff.netlify.app/"},
+  {n:17,t:"The Supreme Being",u:"https://moonlit-ganache-edf839.netlify.app/"},
+  {n:18,t:"The Nature of Religion",u:"https://incandescent-pastelito-6d2108.netlify.app/"},
+  {n:19,t:"Jesus of Nazareth",u:"https://glistening-meringue-fac30c.netlify.app/"},
+  {n:20,t:"Structure and Administration of the Universe",u:"https://iridescent-vacherin-a8cbd1.netlify.app/"},
+  {n:21,t:"Jesus' Last Week",u:"https://stellular-florentine-40f005.netlify.app/"},
+  {n:22,t:"The First Human: Andon and Fonta",u:"https://aquamarine-faun-9f2427.netlify.app/"},
+  {n:23,t:"Jesus' Teaching",u:"https://cozy-monstera-490a7a.netlify.app/"},
+  {n:24,t:"Origin of Humanity and Races",u:"https://verdant-alfajores-a18919.netlify.app/"},
+  {n:25,t:"Adam and Eve",u:"https://mellifluous-lolly-d80c04.netlify.app/"},
+  {n:26,t:"Materialization",u:"https://spiffy-biscochitos-84b978.netlify.app/"},
+  {n:27,t:"The Lucifer Rebellion",u:"https://venerable-chimera-64a741.netlify.app/"},
+  {n:28,t:"The Mind",u:"https://beamish-haupia-a067a9.netlify.app/"},
+  {n:29,t:"The Sons of God",u:"https://enchanting-hamster-716203.netlify.app/"},
+  {n:30,t:"The Origin and Future of Christianity",u:"https://dynamic-blini-bcc714.netlify.app/"}
 ];
 
 (function(){
@@ -89,8 +115,10 @@ var EN = [
       n++;
       var a = document.createElement('a');
       a.className = 'card';
-      a.href = '/audiobook/en/ch' + String(item.n).padStart(2, '0') + '/';
-      a.innerHTML = '<div class="n">Ch. ' + item.n + '</div><div class="t">' + item.t + '</div>';
+      a.href = item.u;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = '<span class="ext">↗</span><div class="n">Ch. ' + item.n + '</div><div class="t">' + item.t + '</div>';
       grid.appendChild(a);
     });
     cnt.textContent = n + ' items';
