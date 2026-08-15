@@ -142,7 +142,7 @@ document.head.appendChild(tag);
 window.onYouTubeIframeAPIReady = function(){
   ytPlayer = new YT.Player('ytPlayer', {
     videoId: VIDEOS[0].id,
-    playerVars: { rel: 0 },
+    playerVars: { rel: 0, autoplay: 1 },
     events: {
       onReady: function(){ apiReady = true; },
       onStateChange: function(e){
