@@ -46,7 +46,7 @@
     {
       "color": "teal",
       "preview": 40,
-      "title": "독자 공동체",
+      "title": "독자 게시판",
       "items": [
         {
           "member": false,
@@ -73,7 +73,8 @@
           "name": "공지 사항",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10"
         }
-      ]
+      ],
+      "id": "readerbulletin"
     },
     {
       "id": "study",
