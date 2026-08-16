@@ -44,6 +44,38 @@
   },
   "groups": [
     {
+      "color": "teal",
+      "preview": 40,
+      "title": "독자 공동체",
+      "items": [
+        {
+          "member": false,
+          "name": "자유게시판 ",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1"
+        },
+        {
+          "member": false,
+          "name": "독자게시판 ",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/13"
+        },
+        {
+          "member": false,
+          "name": "가입인사",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9"
+        },
+        {
+          "member": false,
+          "name": "유란시아서 Q&A",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50"
+        },
+        {
+          "member": false,
+          "name": "공지 사항",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10"
+        }
+      ]
+    },
+    {
       "id": "study",
       "title": "유란시아서 연구",
       "color": "gold",
@@ -618,38 +650,6 @@
         {
           "name": "영문 인용구",
           "url": ""
-        }
-      ]
-    },
-    {
-      "color": "teal",
-      "preview": 40,
-      "title": "독자 공동체",
-      "items": [
-        {
-          "member": false,
-          "name": "자유게시판 ",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1"
-        },
-        {
-          "member": false,
-          "name": "독자게시판 ",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/13"
-        },
-        {
-          "member": false,
-          "name": "가입인사",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9"
-        },
-        {
-          "member": false,
-          "name": "유란시아서 Q&A",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50"
-        },
-        {
-          "member": false,
-          "name": "공지 사항",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10"
         }
       ]
     }
