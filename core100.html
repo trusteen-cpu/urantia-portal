@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 핵심 100강 — 한국 유란시아서 독자 모임</title>
+<style>
+:root{
+  --navy:#12203f; --navy2:#1b2c52; --gold:#b7791f; --gold2:#d6a84a;
+  --ink:#22262e; --dim:#6b7280; --line:#e4e7ec; --bg:#f6f7f9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+a{color:inherit}
+
+/* 머리 띠 */
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#eef2f8;
+     border-bottom:3px solid var(--gold)}
+.top .in{max-width:1180px;margin:0 auto;padding:15px 20px;
+         display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px;letter-spacing:.01em}
+.crumb{font-size:13px;color:#aebbd2}
+.crumb a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.grow{flex:1}
+.tbtn{display:inline-block;padding:7px 13px;border-radius:999px;font-size:13.5px;
+      text-decoration:none;color:#f6e3b8;border:1px solid rgba(214,168,74,.55);
+      background:rgba(255,255,255,.06);white-space:nowrap}
+.tbtn:hover{background:rgba(214,168,74,.18);border-color:rgba(214,168,74,.9);color:#fff6df}
+
+main{max-width:1180px;margin:0 auto;padding:20px}
+
+/* 재생기 */
+.player{background:#000;border-radius:12px;overflow:hidden;
+        box-shadow:0 6px 22px rgba(18,32,63,.16)}
+.ratio{position:relative;width:100%;padding-top:56.25%}
+.ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.nowrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+        margin:12px 2px 22px;font-size:15px}
+.nowrap .lab{font-size:12.5px;color:var(--dim);letter-spacing:.04em}
+.nowrap .tt{font-weight:600}
+
+/* 찾기 */
+.find{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 2px 14px}
+.find input{flex:1;min-width:200px;font:inherit;padding:9px 12px;
+  border:1px solid var(--line);border-radius:9px;background:#fff}
+.find input:focus{outline:2px solid #cfe0ff;border-color:#8fb4f2}
+.find .cnt{font-size:13.5px;color:var(--dim);white-space:nowrap}
+
+/* 썸네일 격자 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:11px;overflow:hidden;
+      cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;
+      transition:transform .14s,box-shadow .14s,border-color .14s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,32,63,.13)}
+.card.on{border-color:var(--gold2);box-shadow:0 0 0 2px rgba(214,168,74,.45)}
+.thumb{position:relative;width:100%;padding-top:56.25%;background:#dfe3ea}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.no{position:absolute;left:8px;top:8px;z-index:2;
+    background:rgba(18,32,63,.88);color:#f6e3b8;font-size:12px;font-weight:600;
+    padding:2px 8px;border-radius:999px;letter-spacing:.02em}
+.play{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+      opacity:0;transition:opacity .14s}
+.card:hover .play,.card.on .play{opacity:1}
+.play span{width:46px;height:46px;border-radius:50%;background:rgba(18,32,63,.78);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;
+  padding-left:3px}
+.tit{padding:10px 11px 12px;font-size:14px;line-height:1.45;
+     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.empty{padding:34px 16px;text-align:center;color:var(--dim);
+       background:#fff;border:1px dashed #cbd2dd;border-radius:12px}
+footer{max-width:1180px;margin:0 auto;padding:26px 20px 50px;color:var(--dim);font-size:13.5px}
+.totop{position:fixed;right:16px;bottom:16px;width:42px;height:42px;border-radius:50%;
+  background:var(--navy);color:#f6e3b8;display:none;align-items:center;justify-content:center;
+  text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.totop.on{display:flex}
+@media(max-width:560px){
+  .top h1{font-size:17px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:11px}
+  .tit{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="in">
+    <div>
+      <div class="crumb"><a href="/">홈</a> › 강의 › 유란시아서 핵심 100강</div>
+      <h1>유란시아서 핵심 100강</h1>
+    </div>
+    <span class="grow"></span>
+    <a class="tbtn" id="ytLink" href="#" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
+    <a class="tbtn" href="/">포털 첫 화면</a>
+  </div>
+</div>
+
+<main>
+  <div class="player"><div class="ratio"><iframe id="frame" allowfullscreen
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>
+  <div class="nowrap"><span class="lab">지금 보는 강의</span><span class="tt" id="nowTit"></span></div>
+
+  <div class="find">
+    <input id="q" type="search" placeholder="강의 제목으로 찾기  (예: 아버지, 조정자, 예수)" autocomplete="off">
+    <span class="cnt" id="cnt"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none"></div>
+</main>
+
+<footer>
+  영상은 유튜브에 있습니다. 이 페이지는 목록만 보여 줍니다.
+</footer>
+<a href="#" class="totop" id="totop" title="맨 위로">▲</a>
+
+<script>
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════════
+   여기만 고치시면 됩니다.
+
+   PLAYLIST : 재생목록 주소나 아이디
+   VIDEOS   : 강의 목록. 한 줄에 하나씩, 순서대로 늘어놓으시면 됩니다.
+              {id:"영상아이디", title:"강의 제목"},
+   ═══════════════════════════════════════════════════════════════ */
+
+var PLAYLIST = "https://www.youtube.com/playlist?list=PL-tt4ZIqzEKayheLBwqaCzB_PgmzEqkmy";
+
+var VIDEOS = [
+  {id:"Kg0oDggEZNo", title:"제1강 계시란 무엇인가?"},
+  {id:"xpm-j3aFVGw", title:"제2강 유란시아서 머리말 해설"},
+  {id:"KaDWBJ1ZsIQ", title:"제3강 우주 아버지"},
+  {id:"7hI7V-SaimY", title:"제4강 영원아들"},
+  {id:"cQQjAeosjDU", title:"제5강 무한 영"},
+  {id:"Ma47XTHgi1Q", title:"제6강 삼위일체"},
+  {id:"CBbHEVlpN7E", title:"제7강 영원한 섬 파라다이스"},
+  {id:"2p69F6jENNw", title:"제8강 신성한 중앙 우주"},
+  {id:"7wXQluNKAck", title:"제9강 일곱 초우주"},
+  {id:"LqX66kezrlk", title:"제10강 일곱 주 영과 최상영 집단"},
+  {id:"mTuhJs0mkqU", title:"제11강 삼위일체 기원의 인격들"},
+  {id:"kiHj8LLpbw0", title:"제12강 파라다이스 아들"},
+  {id:"B3tGNokpf78", title:"제13강 우주의 사자들"},
+  {id:"nZKak3PXb44", title:"제14강 대우주의 봉사하는 영들"},
+  {id:"MveorRV2ZtM", title:"제15강 우주 동력 감독자, 에너지, 물질, 마음"},
+  {id:"pIfTz4-m41E", title:"제16강 최종자 군단"},
+  {id:"wqLPvaIFo8M", title:"제17강 지역우주의 진화와 관리"},
+  {id:"LfwjbMSngTo", title:"제18강 창조자 아들과 창조 어머니 영"},
+  {id:"cpyAWZgcRfE", title:"제19강 생명 운반자"},
+  {id:"r4B_xdEAdsk", title:"제20강 지역우주 인격과 상승계획"},
+  {id:"PS4PUWbEeMs", title:"제21강 물질, 마음, 영"},
+  {id:"LgHdxkc6jiQ", title:"제22강 지역체계 별자리"},
+  {id:"q_0oduDJfSs", title:"제23강 멘션세계와 모론시아 삶"},
+  {id:"r81n0ZHqcPo", title:"유란시아서란 무엇인가?"},
+  {id:"BHaNcHMOhhI", title:"예수님의 성장과정과 사명"},
+  {id:"F0oN7LMajSs", title:"파라다이스 창조자 아들"},
+
+  /* 새 강의는 이 아래에 한 줄씩 더하시면 됩니다.
+     {id:"영상아이디", title:"제27강 제목"},                        */
+];
+
+/* ─── 아래는 손대지 않으셔도 됩니다 ───────────────────────────── */
+
+function listId(s){
+  s = String(s||"").trim(); if(!s) return "";
+  var m = s.match(/[?&]list=([^&#]+)/);
+  return m ? m[1] : (/^PL|^UU|^OL|^LL|^FL/.test(s) ? s : "");
+}
+var LIST = listId(PLAYLIST);
+
+var $ = function(id){ return document.getElementById(id); };
+var cur = -1;
+
+document.getElementById("ytLink").href =
+  LIST ? "https://www.youtube.com/playlist?list=" + LIST : "https://www.youtube.com";
+
+function play(i, autoplay){
+  var v = VIDEOS[i]; if(!v) return;
+  cur = i;
+  var u = "https://www.youtube-nocookie.com/embed/" + v.id + "?rel=0"
+        + (LIST ? "&list=" + LIST : "")
+        + (autoplay ? "&autoplay=1" : "");
+  $("frame").src = u;
+  $("nowTit").textContent = v.title || ("제" + (i+1) + "강");
+  paintSel();
+  if(autoplay){
+    window.scrollTo({top:0, behavior:"smooth"});
+    if(history.replaceState) history.replaceState(null, "", "#" + (i+1));
+  }
+}
+function paintSel(){
+  var cards = $("grid").querySelectorAll(".card");
+  for(var k=0;k<cards.length;k++)
+    cards[k].classList.toggle("on", +cards[k].dataset.i === cur);
+}
+
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+function draw(filter){
+  var f = (filter||"").trim().toLowerCase(), h = "", n = 0;
+  VIDEOS.forEach(function(v,i){
+    if(f && (v.title||"").toLowerCase().indexOf(f) < 0
+         && String(i+1).indexOf(f) < 0) return;
+    n++;
+    h += '<button class="card" data-i="' + i + '" type="button">'
+      +  '<div class="thumb"><span class="no">' + (i+1) + '</span>'
+      +  '<img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(v.id) + '/mqdefault.jpg">'
+      +  '<span class="play"><span>▶</span></span></div>'
+      +  '<div class="tit">' + esc(v.title || ("제" + (i+1) + "강")) + '</div></button>';
+  });
+  $("grid").innerHTML = h;
+  $("cnt").textContent = VIDEOS.length ? (f ? n + " / " + VIDEOS.length + "개" : "모두 " + VIDEOS.length + "개") : "";
+  paintSel();
+
+  if(!VIDEOS.length){
+    $("empty").style.display = "";
+    $("empty").innerHTML = "아직 강의 목록이 채워지지 않았습니다.<br>"
+      + "이 파일 안의 VIDEOS 칸에 영상 아이디와 제목을 넣어 주세요.";
+  }else if(!n){
+    $("empty").style.display = "";
+    $("empty").textContent = "찾는 강의가 없습니다.";
+  }else{
+    $("empty").style.display = "none";
+  }
+}
+
+$("grid").addEventListener("click", function(e){
+  var b = e.target.closest(".card"); if(!b) return;
+  play(+b.dataset.i, true);
+});
+$("q").addEventListener("input", function(){ draw(this.value); });
+
+window.addEventListener("scroll", function(){
+  $("totop").classList.toggle("on", window.scrollY > 500);
+});
+
+draw("");
+if(VIDEOS.length){
+  var hash = parseInt(String(location.hash).replace("#",""), 10);
+  play((hash >= 1 && hash <= VIDEOS.length) ? hash-1 : 0, false);
+}else{
+  $("nowTit").textContent = "—";
+}
+</script>
+</body>
+</html>
