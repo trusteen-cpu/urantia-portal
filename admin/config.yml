@@ -7,7 +7,7 @@ backend:
   name: github
   repo: trusteen-cpu/urantia-portal
   branch: main
-
+  base_url: https://cms-auth.trusteen.workers.dev
 # 사진을 올릴 폴더 (지금은 쓰지 않지만 비워 두면 안 됩니다)
 media_folder: "images"
 public_folder: "/images"
