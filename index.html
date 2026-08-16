@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>한국 유란시아서 독자 모임</title>
 <link rel="stylesheet" href="style.css">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#1f3f52">
-<link rel="apple-touch-icon" href="/icon-192.png">
 <style>
 /* ── 아이콘·도형 장식 (2026-08-11 추가) ─────────────────────── */
 .card .hd{position:relative}
@@ -24,6 +21,28 @@
   background:linear-gradient(90deg,transparent,rgba(183,121,31,.35),transparent)}
 /* 그룹 번호 배지를 조금 또렷하게 */
 .badge{box-shadow:0 1px 0 rgba(0,0,0,.12)}
+
+/* ── 언어 단추 (2026-08-16 추가) ───────────────────────────── */
+.titlerow{display:flex;align-items:center;justify-content:center;
+          gap:26px;flex-wrap:wrap}
+.titlerow h1{margin:0}
+.langbtn{display:inline-flex;align-items:center;gap:7px;
+  padding:7px 15px;border-radius:999px;cursor:pointer;
+  font:600 14px/1 inherit;letter-spacing:.02em;white-space:nowrap;
+  color:#f6e3b8;background:rgba(255,255,255,.06);
+  border:1px solid rgba(214,168,74,.55);
+  backdrop-filter:blur(2px);transition:background .18s,border-color .18s,color .18s}
+.langbtn:hover{background:rgba(214,168,74,.18);border-color:rgba(214,168,74,.9);color:#fff6df}
+.langbtn:active{transform:translateY(1px)}
+.langbtn svg{width:15px;height:15px;flex:0 0 auto}
+.langbtn[disabled]{opacity:.5;cursor:progress}
+@media(max-width:560px){.titlerow{gap:12px}.langbtn{font-size:13px;padding:6px 13px}}
+
+/* 구글 번역이 붙이는 위쪽 띠·풍선 감추기 */
+iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+body{top:0!important;position:static!important}
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+#google_translate_element{display:none}
 </style>
 </head>
 <body>
@@ -33,7 +52,16 @@
   <div class="glow"></div>
   <div class="inner">
     <span class="ribbon" id="hBadge"></span>
-    <h1 id="hTitle"></h1>
+    <div class="titlerow">
+      <h1 id="hTitle"></h1>
+      <button type="button" id="langBtn" class="langbtn notranslate" translate="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
+          <path d="M12 3c2.6 3 2.6 15 0 18-2.6-3-2.6-15 0-18z"/>
+        </svg><span id="langBtnTxt">English</span>
+      </button>
+    </div>
     <div class="sub" id="hSub"></div>
     <div class="quote" id="hQuote"></div>
     <div class="qref" id="hQref"></div>
@@ -171,58 +199,57 @@ window.addEventListener('scroll',()=>{
   document.getElementById('totop').classList.toggle('on', window.scrollY>500);
 });
 </script>
-<button id="installBtn" style="display:none;position:fixed;right:18px;bottom:18px;z-index:999;
-  background:#1f3f52;color:#fff;border:0;border-radius:24px;padding:12px 20px;font-size:14px;
-  font-family:'Malgun Gothic','맑은 고딕',system-ui,sans-serif;
-  box-shadow:0 4px 14px rgba(31,63,82,.35);cursor:pointer">
-  📲 홈 화면에 추가
-</button>
 
+<!-- ── 한국어 ↔ English 전환 (구글 번역 위젯) ──────────────────
+     페이지를 그대로 둔 채 글자만 바꿉니다. 다른 주소로 넘어가지 않습니다.
+     googtrans 쿠키에 상태를 적어 두므로, 다시 들어와도 고른 언어가 유지됩니다. -->
+<div id="google_translate_element"></div>
 <script>
-(function () {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(function () {});
+(function(){
+  var btn  = document.getElementById('langBtn'),
+      txt  = document.getElementById('langBtnTxt');
+
+  /* 쿠키 읽기 — /ko/en 이면 지금 영어로 보고 있는 것 */
+  function isEnglish(){
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    return !!(m && decodeURIComponent(m[1]).indexOf('/en') > 0);
   }
 
-  var btn = document.getElementById('installBtn');
-  var deferredPrompt = null;
-  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-  var isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
-                      window.navigator.standalone === true;
-
-  if (isStandalone) {
-    /* 이미 홈 화면에 추가되어 그 상태로 열려 있으면 단추를 안 보여 줍니다. */
-  } else if (isIOS) {
-    btn.style.display = 'block';
-    btn.onclick = function () {
-      alert('아이폰에서 추가하는 법\n\n' +
-            '화면 아래(또는 위)의 공유 아이콘(네모에 위쪽 화살표)을 누르신 뒤\n' +
-            '"홈 화면에 추가"를 선택해 주세요.');
-    };
-  } else {
-    window.addEventListener('beforeinstallprompt', function (e) {
-      e.preventDefault();
-      deferredPrompt = e;
-      btn.style.display = 'block';
+  /* 도메인이 여러 형태로 저장될 수 있어 후보를 모두 다룹니다 */
+  function domains(){
+    var h = location.hostname, out = ['', h, '.' + h], p = h.split('.');
+    if (p.length > 2) out.push('.' + p.slice(-2).join('.'));
+    return out;
+  }
+  function setCookie(val){
+    domains().forEach(function(d){
+      document.cookie = 'googtrans=' + val + '; path=/' + (d ? '; domain=' + d : '');
     });
-    btn.onclick = function () {
-      if (!deferredPrompt) {
-        alert('이 브라우저는 자동 설치 창을 지원하지 않습니다.\n' +
-              '주소창 오른쪽의 설치 아이콘을 찾아 눌러 주세요.');
-        return;
-      }
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function () {
-        deferredPrompt = null;
-        btn.style.display = 'none';
-      });
-    };
+  }
+  function clearCookie(){
+    domains().forEach(function(d){
+      document.cookie = 'googtrans=; path=/' + (d ? '; domain=' + d : '') +
+                        '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    });
   }
 
-  window.addEventListener('appinstalled', function () {
-    btn.style.display = 'none';
+  function paint(){ txt.textContent = isEnglish() ? '한국어' : 'English'; }
+  paint();
+
+  btn.addEventListener('click', function(){
+    btn.setAttribute('disabled','');
+    if (isEnglish()) clearCookie(); else setCookie('/ko/en');
+    location.reload();
   });
 })();
+
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement(
+    {pageLanguage:'ko', includedLanguages:'en,ko', autoDisplay:false},
+    'google_translate_element');
+}
 </script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        defer></script>
 </body>
 </html>
