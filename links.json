@@ -360,7 +360,20 @@
       "items": [
         {
           "name": "유란시아서 핵심 (52주)",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/103"
+          "url": "",
+          "children": [
+            {
+              "member": false,
+              "name": "인터렉티브 학습페이지",
+              "children": [
+                {
+                  "member": false,
+                  "name": "제 10 강 하나님의 아들들",
+                  "url": "https://urantiareaders.com/learn/w10.html"
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "UUI 교사 훈련 프로그램",
