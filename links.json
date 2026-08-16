@@ -217,15 +217,15 @@
       "items": [
         {
           "name": "성경 보정",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/57"
         },
         {
           "name": "Bible Study",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/58"
         },
         {
           "name": "성경 vs 유란시아서",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/59"
         }
       ]
     },
@@ -238,11 +238,11 @@
       "items": [
         {
           "name": "진행 작업 동영상",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/76"
         },
         {
           "name": "주제별 연구",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/27"
         },
         {
           "name": "음악, 예술",
@@ -250,15 +250,15 @@
         },
         {
           "name": "유란시아 관련 동영상",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/53"
         },
         {
           "name": "유란시아서 요약 동영상",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/29"
         },
         {
           "name": "4부 예수의 삶과 가르침 낭독",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/30"
         }
       ]
     },
@@ -271,23 +271,23 @@
       "items": [
         {
           "name": "유란시아서 핵심 개념 50",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/115"
         },
         {
           "name": "유란시아서 영어 강의",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/77"
         },
         {
           "name": "주제별 강의 동영상 (20주)",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/26"
         },
         {
           "name": "유란시아서 도표 강의 (20주)",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/81"
         },
         {
           "name": "유란시아서 영어 도표 강의",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/82"
         },
         {
           "name": "유란시아서 핵심 비디오 강의 52강",
@@ -295,11 +295,16 @@
         },
         {
           "name": "신규 독자 강의 (10주)",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/93"
         },
         {
           "name": "유란시아서 통합 강의 (80강)",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/94"
+        },
+        {
+          "member": false,
+          "name": "유란시아서 강해 (196주)",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/83"
         }
       ]
     },
@@ -312,11 +317,11 @@
       "items": [
         {
           "name": "유란시아서 핵심 (52주)",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/103"
         },
         {
           "name": "UUI 교사 훈련 프로그램",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/114"
         }
       ]
     },
@@ -355,35 +360,35 @@
       "items": [
         {
           "name": "foreword & Part 1",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/37"
         },
         {
           "name": "Theology",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/38"
         },
         {
           "name": "Bible Study",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/39"
         },
         {
           "name": "Science",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/40"
         },
         {
           "name": "Topical Doctrinal",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/41"
         },
         {
           "name": "Jesus",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/42"
         },
         {
           "name": "Terminology",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/43"
         },
         {
           "name": "Worship, Wisdom",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/44"
         }
       ]
     },
@@ -396,61 +401,61 @@
       "items": [
         {
           "name": "유란시아서 핵심",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/90"
         },
         {
           "name": "청소년을 위한 유란시아서",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/21"
         },
         {
           "name": "모든 것의 이야기",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/72",
           "children": [
             {
               "name": "유란시아서 500 소주제",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/91"
             },
             {
               "name": "유란시아서 용어 해설",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/92"
             },
             {
               "name": "유란시아서 개념적 개관",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/95"
             },
             {
               "name": "유란시아서의 과학",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/96"
             },
             {
               "name": "유란시아서 인류학",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/97"
             },
             {
               "name": "혼의 기원과 발전 그리고 운명",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/98"
             },
             {
               "name": "성경 업데이트",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/99"
             },
             {
               "name": "우주의 구성과 행정",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/100"
             },
             {
               "name": "예수의 종교",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/101"
             }
           ]
         },
         {
           "name": "철학과의 대화",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/106",
           "children": [
             {
               "name": "켄 윌버의 에덴을 넘어서",
-              "url": ""
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/107"
             }
           ]
         }
@@ -465,15 +470,15 @@
       "items": [
         {
           "name": "번역 서적 구매",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/46"
         },
         {
           "name": "유란시아서 POD 구매",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/47"
         },
         {
           "name": "유란시아서 전자책 구매",
-          "url": ""
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/48"
         }
       ]
     },
@@ -524,17 +529,17 @@
       "items": [
         {
           "name": "가입인사",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9",
           "member": true
         },
         {
           "name": "자유게시판",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1",
           "member": true
         },
         {
           "name": "오늘의 강론",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/79",
           "member": true
         },
         {
@@ -544,27 +549,27 @@
         },
         {
           "name": "유란시아서 심층주제연구",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/49",
           "member": true
         },
         {
           "name": "명상록",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/51",
           "member": true
         },
         {
           "name": "쇼츠명상록",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/70",
           "member": true
         },
         {
           "name": "유란시아서 Q & A",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50",
           "member": true
         },
         {
           "name": "공지 사항",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10",
           "member": true
         }
       ]
@@ -578,7 +583,7 @@
       "items": [
         {
           "name": "외국 독자 글",
-          "url": "",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/12",
           "member": true,
           "children": [
             {
