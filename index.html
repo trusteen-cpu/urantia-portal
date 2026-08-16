@@ -21,6 +21,28 @@
   background:linear-gradient(90deg,transparent,rgba(183,121,31,.35),transparent)}
 /* 그룹 번호 배지를 조금 또렷하게 */
 .badge{box-shadow:0 1px 0 rgba(0,0,0,.12)}
+
+/* ── 언어 단추 (2026-08-16 추가) ───────────────────────────── */
+.titlerow{display:flex;align-items:center;justify-content:center;
+          gap:26px;flex-wrap:wrap}
+.titlerow h1{margin:0}
+.langbtn{display:inline-flex;align-items:center;gap:7px;
+  padding:7px 15px;border-radius:999px;cursor:pointer;
+  font:600 14px/1 inherit;letter-spacing:.02em;white-space:nowrap;
+  color:#f6e3b8;background:rgba(255,255,255,.06);
+  border:1px solid rgba(214,168,74,.55);
+  backdrop-filter:blur(2px);transition:background .18s,border-color .18s,color .18s}
+.langbtn:hover{background:rgba(214,168,74,.18);border-color:rgba(214,168,74,.9);color:#fff6df}
+.langbtn:active{transform:translateY(1px)}
+.langbtn svg{width:15px;height:15px;flex:0 0 auto}
+.langbtn[disabled]{opacity:.5;cursor:progress}
+@media(max-width:560px){.titlerow{gap:12px}.langbtn{font-size:13px;padding:6px 13px}}
+
+/* 구글 번역이 붙이는 위쪽 띠·풍선 감추기 */
+iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}
+body{top:0!important;position:static!important}
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+#google_translate_element{display:none}
 </style>
 </head>
 <body>
@@ -30,7 +52,16 @@
   <div class="glow"></div>
   <div class="inner">
     <span class="ribbon" id="hBadge"></span>
-    <h1 id="hTitle"></h1>
+    <div class="titlerow">
+      <h1 id="hTitle"></h1>
+      <button type="button" id="langBtn" class="langbtn notranslate" translate="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
+          <path d="M12 3c2.6 3 2.6 15 0 18-2.6-3-2.6-15 0-18z"/>
+        </svg><span id="langBtnTxt">English</span>
+      </button>
+    </div>
     <div class="sub" id="hSub"></div>
     <div class="quote" id="hQuote"></div>
     <div class="qref" id="hQref"></div>
@@ -168,5 +199,57 @@ window.addEventListener('scroll',()=>{
   document.getElementById('totop').classList.toggle('on', window.scrollY>500);
 });
 </script>
+
+<!-- ── 한국어 ↔ English 전환 (구글 번역 위젯) ──────────────────
+     페이지를 그대로 둔 채 글자만 바꿉니다. 다른 주소로 넘어가지 않습니다.
+     googtrans 쿠키에 상태를 적어 두므로, 다시 들어와도 고른 언어가 유지됩니다. -->
+<div id="google_translate_element"></div>
+<script>
+(function(){
+  var btn  = document.getElementById('langBtn'),
+      txt  = document.getElementById('langBtnTxt');
+
+  /* 쿠키 읽기 — /ko/en 이면 지금 영어로 보고 있는 것 */
+  function isEnglish(){
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    return !!(m && decodeURIComponent(m[1]).indexOf('/en') > 0);
+  }
+
+  /* 도메인이 여러 형태로 저장될 수 있어 후보를 모두 다룹니다 */
+  function domains(){
+    var h = location.hostname, out = ['', h, '.' + h], p = h.split('.');
+    if (p.length > 2) out.push('.' + p.slice(-2).join('.'));
+    return out;
+  }
+  function setCookie(val){
+    domains().forEach(function(d){
+      document.cookie = 'googtrans=' + val + '; path=/' + (d ? '; domain=' + d : '');
+    });
+  }
+  function clearCookie(){
+    domains().forEach(function(d){
+      document.cookie = 'googtrans=; path=/' + (d ? '; domain=' + d : '') +
+                        '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    });
+  }
+
+  function paint(){ txt.textContent = isEnglish() ? '한국어' : 'English'; }
+  paint();
+
+  btn.addEventListener('click', function(){
+    btn.setAttribute('disabled','');
+    if (isEnglish()) clearCookie(); else setCookie('/ko/en');
+    location.reload();
+  });
+})();
+
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement(
+    {pageLanguage:'ko', includedLanguages:'en,ko', autoDisplay:false},
+    'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        defer></script>
 </body>
 </html>
