@@ -23,7 +23,9 @@ a{color:inherit;text-decoration:none}
 .stage{position:relative;width:100%;padding-top:56.25%;background:#000;
  border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
 .stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy)}
+.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.now .cont{margin-left:auto;font-weight:400;font-size:13px;color:#42525c;display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
+.now .cont input{width:16px;height:16px}
 .sec{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
  border-bottom:2px solid var(--navy);margin-bottom:14px;color:var(--navy)}
 .sec b{font-size:16px}
@@ -54,14 +56,16 @@ a{color:inherit;text-decoration:none}
   <div class="crumb"><a href="/">홈</a> › 멀티미디어 › 강의 영상</div>
   <h1>유란시아서 52주 스터디 강의</h1>
   <div class="sp">
-    <a id="yt" href="#" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
     <a href="/">포털 첫 화면</a>
   </div>
 </div></div>
 
 <div class="wrap">
-  <div class="stage" id="stage"></div>
-  <div class="now" id="now"></div>
+  <div class="stage"><div id="ytPlayer"></div></div>
+  <div class="now">
+    <span id="nowLabel"></span>
+    <label class="cont"><input type="checkbox" id="cont" checked> 이어서 계속 재생</label>
+  </div>
 
   <div class="sec"><b>강의 목록</b><span id="cnt"></span></div>
   <div class="grid" id="grid"></div>
@@ -72,17 +76,13 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <script>
-/* ─────────────────────────────────────────────────────────
-   재생목록 주소 (오른쪽 위 [유튜브에서 보기] 단추가 씁니다)
-   ───────────────────────────────────────────────────────── */
-var PLAYLIST = "https://www.youtube.com/playlist?list=PL_uGHPc5SUrDGXDlhz2k0V_jlcIpFFL-1";
-
-/* ─────────────────────────────────────────────────────────
+/* -----------------------------------------------------------
    강의 목록입니다. 한 줄이 작은 창 하나가 됩니다.
    새 강의가 올라오면 같은 모양으로 한 줄 더 넣으세요.
      id    : 유튜브 주소 watch?v= 뒤의 글자
      title : 화면에 보일 제목
-   ───────────────────────────────────────────────────────── */
+   재생목록 번호는 쓰지 않고, 이 화면이 직접 순서를 관리합니다.
+   ----------------------------------------------------------- */
 var VIDEOS = [
   { id: "VvmBybmFBQM", title: "제1강 우주 아버지" },
   { id: "eZST2RiIfu0", title: "제2강 영원 아들" },
@@ -96,53 +96,64 @@ var VIDEOS = [
   { id: "XXxKteKF29U", title: "제10강 하나님의 아들들" }
 ];
 
-(function(){
-  var stage = document.getElementById('stage'),
-      grid = document.getElementById('grid'),
-      now = document.getElementById('now'),
-      cnt = document.getElementById('cnt'),
-      yt = document.getElementById('yt'),
-      m = String(PLAYLIST).match(/[?&]list=([A-Za-z0-9_-]+)/),
-      listId = m ? m[1] : "",
-      cur = -1;
+var grid = document.getElementById('grid'),
+    nowLabel = document.getElementById('nowLabel'),
+    cnt = document.getElementById('cnt'),
+    contBox = document.getElementById('cont'),
+    cur = 0, ytPlayer = null, apiReady = false;
 
-  yt.href = listId ? 'https://www.youtube.com/playlist?list=' + listId : '#';
-  cnt.textContent = VIDEOS.length + '개';
+cnt.textContent = VIDEOS.length + '개';
 
-  function play(i, auto){
-    cur = i;
-    var v = VIDEOS[i];
-    var src = 'https://www.youtube-nocookie.com/embed/' + v.id + '?rel=0' +
-              (listId ? '&list=' + listId : '') + (auto ? '&autoplay=1' : '');
-    stage.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = src;
-    f.title = v.title;
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    f.allowFullscreen = true;
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    stage.appendChild(f);
-    now.textContent = '지금 보는 강의 · ' + v.title;
-    [].forEach.call(grid.children, function(c, n){
-      c.className = 'card' + (n === i ? ' on' : '');
-    });
-    if (auto) stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  VIDEOS.forEach(function(v, i){
-    var c = document.createElement('figure');
-    c.className = 'card';
-    c.innerHTML =
-      '<div class="thumb"><img loading="lazy" alt="" ' +
-      'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
-      '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
-      '<figcaption class="cap">' + v.title + '</figcaption>';
-    c.onclick = function(){ play(i, true); };
-    grid.appendChild(c);
+function markCard(i){
+  nowLabel.textContent = '지금 보는 강의 · ' + VIDEOS[i].title;
+  [].forEach.call(grid.children, function(c, n){
+    c.className = 'card' + (n === i ? ' on' : '');
   });
+}
 
-  play(0, false);
-})();
+VIDEOS.forEach(function(v, i){
+  var c = document.createElement('figure');
+  c.className = 'card';
+  c.innerHTML =
+    '<div class="thumb"><img loading="lazy" alt="" ' +
+    'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
+    '<span class="no">' + (i + 1) + '</span><span class="pl">▶</span></div>' +
+    '<figcaption class="cap">' + v.title + '</figcaption>';
+  c.onclick = function(){ playIndex(i, true); };
+  grid.appendChild(c);
+});
+markCard(0);
+
+function playIndex(i, autoplay){
+  cur = (i + VIDEOS.length) % VIDEOS.length;
+  markCard(cur);
+  if (apiReady && ytPlayer && ytPlayer.loadVideoById) {
+    if (autoplay) ytPlayer.loadVideoById(VIDEOS[cur].id);
+    else ytPlayer.cueVideoById(VIDEOS[cur].id);
+    document.querySelector('.stage').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+/* 유튜브 공식 재생기 연결 라이브러리를 불러옵니다. */
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
+
+window.onYouTubeIframeAPIReady = function(){
+  ytPlayer = new YT.Player('ytPlayer', {
+    videoId: VIDEOS[0].id,
+    playerVars: { rel: 0, autoplay: 1 },
+    events: {
+      onReady: function(){ apiReady = true; },
+      onStateChange: function(e){
+        /* 0 = 영상이 끝남 */
+        if (e.data === 0 && contBox.checked) {
+          playIndex(cur + 1, true);
+        }
+      }
+    }
+  });
+};
 </script>
 </body>
 </html>
