@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>일곱 주 영과 최상 영 집단 — 유란시아서 제16·17편</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E4E7E6;
+  --paper-2:#EDEFEE;
+  --ink:#161B1E;
+  --muted:#5C666C;
+  --rule:#C4CBCC;
+  --rule-soft:#D4D9D9;
+  --hue:#161B1E;
+  --serif:'Nanum Myeongjo','Batang','바탕','Apple SD Gothic Neo',serif;
+  --sans:'Noto Sans KR','Pretendard','Malgun Gothic','맑은 고딕',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wrap:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-weight:300;font-size:16.5px;line-height:1.85;
+  -webkit-font-smoothing:antialiased;letter-spacing:-.005em;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+/* ---------- bar ---------- */
+.bar{
+  position:sticky;top:0;z-index:50;background:rgba(228,231,230,.92);
+  backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--rule);
+}
+.bar-in{max-width:var(--wrap);margin:0 auto;padding:11px 28px;display:flex;align-items:center;gap:20px}
+.bar-title{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.01em;white-space:nowrap}
+.bar-title em{font-style:normal;color:var(--muted);font-weight:400;margin-left:8px;font-size:12.5px;font-family:var(--mono)}
+.dots{display:flex;gap:5px;margin-left:auto}
+.dot{
+  width:25px;height:25px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--rule);color:var(--muted);text-decoration:none;
+  font-family:var(--mono);font-size:11px;transition:.18s;
+}
+.dot:hover,.dot:focus-visible{border-color:var(--hue);color:var(--hue);outline:none}
+.dot.on{background:var(--hue);border-color:var(--hue);color:#fff}
+.print{
+  border:1px solid var(--ink);background:transparent;color:var(--ink);
+  font-family:var(--sans);font-size:12.5px;font-weight:500;padding:7px 14px;cursor:pointer;
+  letter-spacing:.02em;transition:.18s;white-space:nowrap;
+}
+.print:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 60px;border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 20px;
+}
+h1{
+  font-family:var(--serif);font-weight:800;font-size:clamp(38px,6.2vw,62px);
+  line-height:1.14;letter-spacing:-.02em;margin:0 0 8px;
+}
+.sub{font-family:var(--serif);font-size:16px;color:var(--muted);margin:0 0 30px;font-weight:400}
+.lead{font-size:16px;line-height:2.0;margin:0;max-width:56ch;text-align:justify}
+.lead::first-line{font-weight:400}
+
+/* ---------- wheel ---------- */
+.wheel-box{position:relative}
+svg.wheel{width:100%;height:auto;display:block;overflow:visible}
+.w-ring{fill:none;stroke:var(--rule-soft);stroke-width:1}
+.w-line{stroke-width:1;opacity:.25;transition:.2s}
+.w-arc{fill:none;stroke-width:3.5;stroke-linecap:round;opacity:.42;transition:.2s}
+.w-node{transition:.2s}
+.w-hit{fill:transparent;cursor:pointer}
+.w-num{font-family:var(--mono);font-size:10px;fill:#fff;text-anchor:middle;pointer-events:none}
+.w-core{fill:var(--ink)}
+.w-core-label{
+  font-family:var(--mono);font-size:9.5px;fill:var(--muted);text-anchor:middle;
+  letter-spacing:.1em;
+}
+.spoke{cursor:pointer;outline:none}
+.spoke:hover .w-arc,.spoke.on .w-arc{opacity:1;stroke-width:5}
+.spoke:hover .w-line,.spoke.on .w-line{opacity:.7}
+.spoke:hover .w-node,.spoke.on .w-node{r:12}
+.spoke:focus-visible .w-node{stroke:var(--ink);stroke-width:2}
+.wheel-cap{
+  font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7;
+  margin:20px 0 0;text-align:center;letter-spacing:.01em;
+}
+
+/* ---------- toc ---------- */
+.toc{padding:40px 0 8px;border-bottom:1px solid var(--rule)}
+.toc-h{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+.toc-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 32px}
+.toc-item{
+  display:grid;grid-template-columns:26px 1fr;gap:0 12px;text-decoration:none;color:inherit;
+  padding:13px 0;border-top:1px solid var(--rule-soft);align-items:baseline;
+}
+.toc-item:first-child{border-top:none}
+.toc-n{font-family:var(--mono);font-size:12px;color:var(--hue);font-weight:500}
+.toc-t{font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.4}
+.toc-k{grid-column:2;font-family:var(--mono);font-size:10.5px;color:var(--muted);margin-top:3px}
+.toc-item:hover .toc-t{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--hue)}
+
+/* ---------- sections ---------- */
+.sec{
+  display:grid;grid-template-columns:88px 1fr;gap:0 32px;
+  padding:66px 0;border-bottom:1px solid var(--rule);
+}
+.sec-rail{position:sticky;top:96px;align-self:start;text-align:right;padding-top:4px}
+.sec-num{
+  display:block;font-family:var(--serif);font-weight:800;font-size:46px;line-height:1;
+  color:var(--hue);letter-spacing:-.03em;
+}
+.sec-hue{
+  display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted);
+  margin-top:8px;letter-spacing:.14em;
+}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--muted);margin:0 0 12px;text-transform:uppercase}
+.sec h2{
+  font-family:var(--serif);font-weight:800;font-size:clamp(26px,3.4vw,36px);
+  line-height:1.28;letter-spacing:-.02em;margin:0 0 20px;
+}
+.sec h2::after{
+  content:"";display:block;width:52px;height:3px;background:var(--hue);margin-top:18px;
+}
+.summary{font-size:16px;line-height:2.0;margin:0;max-width:62ch;text-align:justify}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.ctl{
+  font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.01em;
+  background:transparent;color:var(--ink);border:1px solid var(--rule);
+  padding:9px 16px;cursor:pointer;transition:.18s;position:relative;
+}
+.ctl:hover{border-color:var(--hue)}
+.ctl[aria-expanded="true"]{background:var(--hue);border-color:var(--hue);color:#fff}
+.ctl .cnt{font-family:var(--mono);font-size:11px;opacity:.65;margin-left:4px}
+.ctl:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+.panel{
+  margin-top:22px;border-left:3px solid var(--hue);background:var(--paper-2);
+  padding:26px 30px 28px;
+}
+.panel-label{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--hue);margin:0 0 16px;font-weight:500;
+}
+.panel-hint{font-size:12.5px;color:var(--muted);margin:-8px 0 18px}
+.prose p{margin:0 0 15px;line-height:1.95;text-align:justify;max-width:66ch}
+.prose p:last-child{margin-bottom:0}
+
+/* ---------- q&a ---------- */
+.qa{border-top:1px solid var(--rule-soft)}
+.qa:first-of-type{border-top:none}
+.q{
+  width:100%;display:grid;grid-template-columns:34px 1fr 18px;gap:10px;align-items:start;
+  background:none;border:0;padding:15px 0;cursor:pointer;text-align:left;font-family:inherit;
+  color:var(--ink);
+}
+.q-mark{font-family:var(--mono);font-size:11.5px;color:var(--hue);padding-top:4px;font-weight:500}
+.q-text{font-size:15px;font-weight:400;line-height:1.65}
+.q-chev{
+  width:9px;height:9px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:rotate(45deg);margin-top:8px;transition:.2s;justify-self:end;
+}
+.q[aria-expanded="true"] .q-chev{transform:rotate(-135deg);border-color:var(--hue)}
+.q:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.a{display:none;padding:0 0 18px 44px}
+.a p{margin:0;font-size:14.5px;line-height:1.9;color:#2C3439;text-align:justify;max-width:62ch}
+.q[aria-expanded="true"]+.a{display:block}
+
+/* ---------- quotes ---------- */
+.quotes{margin:0;padding:0;list-style:none;counter-reset:q}
+.quotes li{
+  display:grid;grid-template-columns:82px 1fr;gap:0 16px;
+  padding:12px 0;border-top:1px solid var(--rule-soft);align-items:baseline;
+}
+.quotes li:first-child{border-top:none}
+.ref{
+  font-family:var(--mono);font-size:11.5px;color:var(--hue);font-weight:500;
+  letter-spacing:-.01em;white-space:nowrap;
+}
+.qt{font-family:var(--serif);font-size:15px;line-height:1.78}
+
+/* ---------- foot ---------- */
+.foot{padding:46px 0 70px;color:var(--muted);font-size:12.5px;line-height:1.9}
+.foot .mono{font-family:var(--mono);font-size:11px;letter-spacing:.05em}
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .wheel-box{max-width:400px;margin:0 auto}
+  .sec{grid-template-columns:1fr;gap:0}
+  .sec-rail{position:static;text-align:left;display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .sec-num{font-size:34px}
+  .sec-hue{margin-top:0}
+  .bar-title em{display:none}
+  .panel{padding:22px 20px}
+  .a{padding-left:0}
+  .quotes li{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:560px){
+  .wrap,.bar-in{padding-left:18px;padding-right:18px}
+  .dots{gap:3px}
+  .dot{width:22px;height:22px;font-size:10px}
+  .hero{padding:48px 0 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+
+/* ---------- print ---------- */
+@media print{
+  @page{size:A4;margin:16mm 15mm}
+  html{scroll-padding-top:0}
+  body{background:#fff;color:#000;font-size:10.5pt;line-height:1.65}
+  .bar,.controls,.wheel-cap,.q-chev,.panel-hint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .hero{padding:0 0 14pt;border-bottom:1pt solid #999}
+  .hero-grid{grid-template-columns:1fr;gap:12pt}
+  .wheel-box{max-width:74mm;margin:0 auto}
+  h1{font-size:26pt}
+  .lead,.summary{font-size:10.5pt;line-height:1.7;max-width:none}
+  .toc{page-break-after:always;border:none}
+  .sec{page-break-before:always;grid-template-columns:1fr;gap:0;padding:0 0 10pt;border:none}
+  .sec-rail{position:static;text-align:left;display:flex;gap:8pt;align-items:baseline;margin-bottom:6pt}
+  .sec-num{font-size:22pt}
+  .sec h2{font-size:17pt;margin-bottom:10pt}
+  .sec h2::after{height:2pt;margin-top:9pt}
+  .panel{display:block!important;background:#fff;border-left:2pt solid var(--hue);
+         padding:10pt 0 10pt 12pt;margin-top:12pt;page-break-inside:auto}
+  .panel[hidden]{display:block!important}
+  .a{display:block!important;padding-left:0}
+  .q{padding:6pt 0 2pt;grid-template-columns:28pt 1fr}
+  .q-text{font-weight:500}
+  .prose p,.qt,.a p{max-width:none}
+  .quotes li{padding:5pt 0;page-break-inside:avoid}
+  .foot{page-break-before:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar-in">
+    <span class="bar-title">일곱 주 영과 최상 영 집단<em>UB 16 · 17</em></span>
+    <nav class="dots" aria-label="장 이동"><a class="dot" href="#s1" style="--hue:#A6383C" title="1. 칠중 신의 영원한 표현"><span>1</span></a>
+<a class="dot" href="#s2" style="--hue:#B0642A" title="2. 무한 영이 지나는 유일한 통로"><span>2</span></a>
+<a class="dot" href="#s3" style="--hue:#9C8A1C" title="3. 일곱 초상, 1번에서 6번까지"><span>3</span></a>
+<a class="dot" href="#s4" style="--hue:#3B7A57" title="4. 7번 주 영과 최상 존재"><span>4</span></a>
+<a class="dot" href="#s5" style="--hue:#2C6A93" title="5. 우주 마음과 인간 의식의 세 실체"><span>5</span></a>
+<a class="dot" href="#s6" style="--hue:#3C4A8E" title="6. 최상 집행자와 마제스톤의 반영성"><span>6</span></a>
+<a class="dot" href="#s7" style="--hue:#6C3E85" title="7. 회로 영에서 보조 마음 영까지"><span>7</span></a></nav>
+    <button class="print" id="printBtn">PDF로 출력</button>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">유란시아서 학습 · 일곱 계층</p>
+        <h1>일곱 주 영과 최상 영 집단</h1>
+        <p class="sub">유란시아서 제16편 · 제17편 통합 학습</p>
+        <p class="lead">무한 영은 스스로를 복제하는 칠중의 창조 행위로, 세 신의 사실적 실존에 수학적으로 내재하는 연합 가능성을 모두 소진하였다. 그 결과가 파라다이스의 일곱 주 영이다. 세 신에게는 오직 일곱 가지 연합 가능성만이 내재하므로 우주는 일곱 개의 큰 부분으로 운영되며, 일곱이라는 수가 그 조직과 행정에서 근본이 된다. 주 영들은 영적 성품에서는 하나와 같지만 다른 모든 정체성 측면에서는 현저히 다르고, 이 다양성이 일곱 초우주의 성격을 갈라놓는다. 각 주 영은 파라다이스 주변부를 천천히 순환하는 힘의 초점을 본부로 삼되, 그 자리는 언제나 자신이 감독하는 초우주의 반대편이다. 그러나 주 영은 홀로 일하지 않는다. 그들을 정점으로 일곱 최상 집행자, 반영 영, 반영 영상 보조자, 회로의 일곱 영, 지역 우주 창조 영, 보조 마음 영이 하나의 계보로 이어지며, 이 일곱 계층을 유버사에서는 일곱 최상 영 집단이라 부른다. 그 활동 영역은 영원한 섬 가장자리의 개인적 현존에서 시작하여, 진화 세계의 필사자 마음에 부여된 보조 영의 미천한 봉사에까지 내려온다. 곧 파라다이스에서 사람의 마음까지 끊기지 않고 이어진 하나의 사다리다.</p>
+      </div>
+      <div class="wheel-box">
+        <svg class="wheel" viewBox="0 0 400 400" role="img"
+             aria-label="일곱 주 영의 파라다이스 본부와 각자가 감독하는 초우주가 서로 반대편에 놓인 배치도">
+          <circle cx="200" cy="200" r="92.0" class="w-ring"/>
+<circle cx="200" cy="200" r="156.0" class="w-ring"/>
+<g class="spoke" data-n="1" tabindex="0" role="link" aria-label="1. 칠중 신의 영원한 표현"><line x1="200.00" y1="108.00" x2="200.00" y2="356.00" class="w-line" style="stroke:#A6383C"/><path d="M 245.61 349.18 A 156.00 156.00 0 0 1 154.39 349.18" class="w-arc" style="stroke:#A6383C"/><circle cx="200.00" cy="108.00" r="15" class="w-hit"/><circle cx="200.00" cy="108.00" r="9" class="w-node" style="fill:#A6383C"/><text x="200.00" y="111.60" class="w-num">1</text></g>
+<g class="spoke" data-n="2" tabindex="0" role="link" aria-label="2. 무한 영이 지나는 유일한 통로"><line x1="271.93" y1="142.64" x2="78.03" y2="297.26" class="w-line" style="stroke:#B0642A"/><path d="M 111.80 328.67 A 156.00 156.00 0 0 1 54.93 257.36" class="w-arc" style="stroke:#B0642A"/><circle cx="271.93" cy="142.64" r="15" class="w-hit"/><circle cx="271.93" cy="142.64" r="9" class="w-node" style="fill:#B0642A"/><text x="271.93" y="146.24" class="w-num">2</text></g>
+<g class="spoke" data-n="3" tabindex="0" role="link" aria-label="3. 일곱 초상, 1번에서 6번까지"><line x1="289.69" y1="220.47" x2="47.91" y2="165.29" class="w-line" style="stroke:#9C8A1C"/><path d="M 44.41 211.27 A 156.00 156.00 0 0 1 64.71 122.34" class="w-arc" style="stroke:#9C8A1C"/><circle cx="289.69" cy="220.47" r="15" class="w-hit"/><circle cx="289.69" cy="220.47" r="9" class="w-node" style="fill:#9C8A1C"/><text x="289.69" y="224.07" class="w-num">3</text></g>
+<g class="spoke" data-n="4" tabindex="0" role="link" aria-label="4. 7번 주 영과 최상 존재"><line x1="239.92" y1="282.89" x2="132.31" y2="59.45" class="w-line" style="stroke:#3B7A57"/><path d="M 94.18 85.38 A 156.00 156.00 0 0 1 176.36 45.80" class="w-arc" style="stroke:#3B7A57"/><circle cx="239.92" cy="282.89" r="15" class="w-hit"/><circle cx="239.92" cy="282.89" r="9" class="w-node" style="fill:#3B7A57"/><text x="239.92" y="286.49" class="w-num">4</text></g>
+<g class="spoke" data-n="5" tabindex="0" role="link" aria-label="5. 우주 마음과 인간 의식의 세 실체"><line x1="160.08" y1="282.89" x2="267.69" y2="59.45" class="w-line" style="stroke:#2C6A93"/><path d="M 223.64 45.80 A 156.00 156.00 0 0 1 305.82 85.38" class="w-arc" style="stroke:#2C6A93"/><circle cx="160.08" cy="282.89" r="15" class="w-hit"/><circle cx="160.08" cy="282.89" r="9" class="w-node" style="fill:#2C6A93"/><text x="160.08" y="286.49" class="w-num">5</text></g>
+<g class="spoke" data-n="6" tabindex="0" role="link" aria-label="6. 최상 집행자와 마제스톤의 반영성"><line x1="110.31" y1="220.47" x2="352.09" y2="165.29" class="w-line" style="stroke:#3C4A8E"/><path d="M 335.29 122.34 A 156.00 156.00 0 0 1 355.59 211.27" class="w-arc" style="stroke:#3C4A8E"/><circle cx="110.31" cy="220.47" r="15" class="w-hit"/><circle cx="110.31" cy="220.47" r="9" class="w-node" style="fill:#3C4A8E"/><text x="110.31" y="224.07" class="w-num">6</text></g>
+<g class="spoke" data-n="7" tabindex="0" role="link" aria-label="7. 회로 영에서 보조 마음 영까지"><line x1="128.07" y1="142.64" x2="321.97" y2="297.26" class="w-line" style="stroke:#6C3E85"/><path d="M 345.07 257.36 A 156.00 156.00 0 0 1 288.20 328.67" class="w-arc" style="stroke:#6C3E85"/><circle cx="128.07" cy="142.64" r="15" class="w-hit"/><circle cx="128.07" cy="142.64" r="9" class="w-node" style="fill:#6C3E85"/><text x="128.07" y="146.24" class="w-num">7</text></g>
+<circle cx="200" cy="200" r="5.5" class="w-core"/>
+<text x="200" y="222" class="w-core-label">파라다이스</text>
+        </svg>
+        <p class="wheel-cap">안쪽 점은 각 주 영의 파라다이스 본부,<br>바깥 호는 그가 감독하는 초우주다.<br>본부는 언제나 그 초우주의 반대편에 있다. [16:0.12]</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="목차">
+    <p class="toc-h">일곱 소제목</p>
+    <div class="toc-list"><a class="toc-item" href="#s1" style="--hue:#A6383C"><span class="toc-n">1</span><span class="toc-t">칠중 신의 영원한 표현</span><span class="toc-k">기원 · 제16편 서론과 1장</span></a>
+<a class="toc-item" href="#s2" style="--hue:#B0642A"><span class="toc-n">2</span><span class="toc-t">무한 영이 지나는 유일한 통로</span><span class="toc-k">분배 · 제16편 2장과 5장</span></a>
+<a class="toc-item" href="#s3" style="--hue:#9C8A1C"><span class="toc-n">3</span><span class="toc-t">일곱 초상, 1번에서 6번까지</span><span class="toc-k">개별성 · 제16편 3장 전반</span></a>
+<a class="toc-item" href="#s4" style="--hue:#3B7A57"><span class="toc-n">4</span><span class="toc-t">7번 주 영과 최상 존재</span><span class="toc-k">오르본톤 · 제16편 3장 후반과 4장</span></a>
+<a class="toc-item" href="#s5" style="--hue:#2C6A93"><span class="toc-n">5</span><span class="toc-t">우주 마음과 인간 의식의 세 실체</span><span class="toc-k">마음 · 제16편 6장에서 9장</span></a>
+<a class="toc-item" href="#s6" style="--hue:#3C4A8E"><span class="toc-n">6</span><span class="toc-t">최상 집행자와 마제스톤의 반영성</span><span class="toc-k">집행과 반영 · 제17편 1장에서 4장</span></a>
+<a class="toc-item" href="#s7" style="--hue:#6C3E85"><span class="toc-n">7</span><span class="toc-t">회로 영에서 보조 마음 영까지</span><span class="toc-k">하강하는 계보 · 제17편 5장에서 8장</span></a></div>
+  </nav>
+
+  
+<section class="sec" id="s1" style="--hue:#A6383C">
+  <div class="sec-rail">
+    <span class="sec-num">1</span>
+    <span class="sec-hue">홍</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">기원 · 제16편 서론과 1장</p>
+    <h2>칠중 신의 영원한 표현</h2>
+    <p class="summary">일곱 주 영은 무한 영의 일차적 인격들이다. 무한 영은 칠중의 창조 행위로 세 신에게 내재한 연합 가능성을 모두 소진했고, 더 만드는 것이 가능했다면 그리했겠지만 가능성은 오직 일곱뿐이었다. 그래서 우주가 일곱 개의 큰 부분으로 운영된다. 아버지, 아들, 영, 아버지와 아들, 아버지와 영, 아들과 영, 그리고 셋 모두 — 이 일곱 유사성에서 각 주 영의 개별적 성격이 유래한다. 신의 삼중 인격화가 절대적 불가피성이라면 일곱 주 영의 출현은 그보다 한 단계 낮은 준절대적 불가피성이다. 그들은 삼중의 신을 대표하지는 못하나, 칠중 신의 영원한 표현이다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-1" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-1" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-1" aria-expanded="false">유란시아서 인용 <span class="cnt">12</span></button>
+    </div>
+
+    <div class="panel" id="more-1" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>여기서 가장 조심해야 할 구분은 '칠중 신'과 '삼위일체'의 차이다. 주 영들은 단독으로나 집단으로 가능성 있는 모든 신 기능을 대표하지만, 삼위일체로서는 대표하지 않는다. 아버지와 아들과 영이 함께 행동할 때 그들은 7번 주 영을 통해 기능할 수 있고 실제로 그렇게 하지만, 그 통로가 곧 삼위일체인 것은 아니다. 일곱째 주 영이 파라다이스 삼위일체에 관해 개인적으로 기능하지 않는다는 바로 그 사실 때문에, 그는 최상 존재를 위해 개인적으로 기능할 수 있다. 이것은 뒤에 나올 7번 주 영 논의 전체의 열쇠가 되는 문장이다.</p>
+<p>그러나 일곱 주 영이 개인적 권능과 초우주 권위의 자리를 비우고 파라다이스 신의 삼자일치 현존 안에서 공동 행위자 주위에 모일 때는 사정이 달라진다. 그때 그곳에서 그들은 나뉘지 않은 신, 곧 삼위일체의 기능적 권능과 지혜와 권위를 진화하는 우주들에게 집단적으로 대표한다. 신의 원초적 칠중 표현의 그러한 파라다이스 연합은 최상위와 궁극위 안에서 세 영원한 신의 모든 속성과 태도를 문자 그대로 에워싸며, 사실상 모든 면에서 주 우주에 대한 최상-궁극위의 기능적 영역을 망라한다.</p>
+<p>다만 범위에는 한계가 있다. 우리가 분별할 수 있는 한 이 일곱 영은 신의 세 영원한 위격의 신성한 활동들과 연관되며, 절대자의 세 영원한 국면들의 기능적 현존과 직접 연관되었다는 증거는 발견되지 않는다. 연합될 때 주 영들은 대략 유한한 행위 영역 안에서 파라다이스 신들을 대표하며, 그 영역은 궁극적인 많은 것을 포함할 수 있으나 절대적인 것은 아니다. 기원에 관해서도 겸손한 여백이 남는다. 주 영들은 분명히 무한 영의 인격적 행위로 존재하게 되었으나, 아버지와 아들 두 분 모두 그 기원에 참여했다고 알림을 받았을 뿐, 그 활동의 내용에 대해서는 거의 알지 못한다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-1" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">왜 하필 일곱인가? 이 수가 임의의 상징이 아니라고 볼 근거는 무엇인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>세 신의 사실적 실존에 수학적으로 내재하는 연합 가능성이 정확히 일곱이기 때문이다. 아버지, 아들, 영 각각과 아버지-아들, 아버지-영, 아들-영, 그리고 셋 모두의 조합으로 일곱이 다 소진된다. 더 창조하는 것이 가능했다면 그리했겠지만 그 이상은 없었다. 그래서 일곱은 상징이 아니라 우주 조직과 행정의 실제 구조적 사실이다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">'칠중 신'과 '파라다이스 삼위일체'는 어떻게 다른가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>주 영들은 단독으로나 집단으로 모든 신 기능을 대표하지만 삼위일체로서는 대표하지 않는다. 다만 칠중 신으로 연합할 때, 그 연합은 개인적 의미가 아니라 신의 의미에서 삼위일체 기능과 연관될 수 있는 기능적 수준과 동등해진다. 곧 칠중 영은 삼위일체 '자체'가 아니라 삼위일체와 기능적으로 연관될 수 있는 표현이다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">이 편이 인정하는 '모르는 부분'은 어디이며, 그것을 어떻게 다루어야 하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>주 영 창조에서 아버지와 아들이 무엇을 했는지 거의 알지 못한다는 점, 그리고 절대자의 세 국면과 직접 연관되었다는 증거가 없다는 점이다. 계시는 알려진 것과 알려지지 않은 것을 분명히 구분해 두었으므로, 여백을 추측으로 메우기보다 확인된 진술의 범위 안에서 신학을 세우는 태도가 요구된다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-1" hidden>
+      <p class="panel-label">유란시아서 인용 12개</p>
+      <ol class="quotes"><li><span class="ref">16:0.1</span><span class="qt">파라다이스의 일곱 주 영은 무한 영의 일차적 인격들이다.</span></li>
+<li><span class="ref">16:0.1</span><span class="qt">무한 영은 스스로를 복제하는 이 칠중의 창조 행위를 통해, 신 세 분의 사실적 실존에 수학적으로 내재하는 연합 가능성을 모두 소진하였다.</span></li>
+<li><span class="ref">16:0.1</span><span class="qt">주 영을 더 많이 창조하는 것이 가능했다면 그리했겠지만, 세 신에게는 오직 일곱 가지 연합 가능성만이 내재한다.</span></li>
+<li><span class="ref">16:0.1</span><span class="qt">이것이 우주가 일곱 개의 큰 부분으로 운영되는 이유이며, 일곱이라는 수가 그 조직과 행정에서 기본적으로 근본이 되는 이유를 설명한다.</span></li>
+<li><span class="ref">16:0.10</span><span class="qt">분명히 그들은 무한 영의 인격적 행위에 의해 존재하게 되었지만, 아버지와 아들 두 분 모두 그 기원에 참여했다고 우리는 분명히 알림을 받았다.</span></li>
+<li><span class="ref">16:0.11</span><span class="qt">영적 성품과 본성에서 이 파라다이스 일곱 영은 하나와 같지만, 다른 모든 정체성 측면에서는 현저히 다르다.</span></li>
+<li><span class="ref">16:0.12</span><span class="qt">각 주 영은 파라다이스 주변부를 천천히 순환하는, 힘의 초점이 되는 거대한 본부를 유지한다.</span></li>
+<li><span class="ref">16:1.1</span><span class="qt">우리는 신의 삼중 인격화를 절대적 불가피성이라 말하게 되었고, 일곱 주 영의 출현을 그보다 한 단계 낮은 준절대적 불가피성으로 보게 되었다.</span></li>
+<li><span class="ref">16:1.2</span><span class="qt">그들은 칠중 신의 영원한 표현이며, 신의 영원히 존재하는 세 위격의 활동적이고 연합적인 기능들이다.</span></li>
+<li><span class="ref">16:1.2</span><span class="qt">일곱째 주 영은 파라다이스 삼위일체에 관해서는 개인적으로 기능하지 않으며, 바로 그 때문에 그는 최상 존재를 위해 개인적으로 기능할 수 있다.</span></li>
+<li><span class="ref">16:1.3</span><span class="qt">그때 그곳에서 그들은 집단적으로 나누어지지 않은 신—삼위일체—의 기능적 권능, 지혜, 권위를 진화하는 우주들에게 그리고 그 안에서 대표한다.</span></li>
+<li><span class="ref">16:1.4</span><span class="qt">연합될 때, 주 영들은 대략 행위의 유한한 영역으로 생각될 수 있는 것 안에서 파라다이스 신들을 대표한다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s2" style="--hue:#B0642A">
+  <div class="sec-rail">
+    <span class="sec-num">2</span>
+    <span class="sec-hue">오렌지</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">분배 · 제16편 2장과 5장</p>
+    <h2>무한 영이 지나는 유일한 통로</h2>
+    <p class="summary">파라다이스 아버지는 우주들의 우주에 대해 오직 아들을 통해서만 말하고, 그와 아들은 공동으로 오직 무한 영을 통해서만 행동한다. 그리고 파라다이스와 하보나 바깥에서 무한 영은 오직 일곱 주 영의 목소리로만 말한다. 그러므로 어떤 세계나 어떤 개인에게 임하는 셋째 근원 중심의 초우주 영 현존은, 그 구역을 감독하는 주 영의 고유한 본성에 의해 조건 지어진다. 전능·전지·편재는 오직 집단적으로만 드러나며, 개별 주 영은 자신이 감독하는 초우주에 개인적으로 제한된다. 그 결과 초우주의 모든 토착 창조체는 자기 주 영의 각인을 영원히 지닌다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-2" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-2" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-2" aria-expanded="false">유란시아서 인용 <span class="cnt">12</span></button>
+    </div>
+
+    <div class="panel" id="more-2" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>이 장의 요지는 '통로의 유일성'과 '각인의 영속성' 두 가지다. 먼저 통로. 무한 영은 파라다이스-하보나 체계의 경계 안에서는 개인적 현존의 영향을 발휘하지만, 그 바깥에서는 그의 개인적 영 현존이 일곱 주 영 중 한 분을 통해 발휘된다. 방향은 양쪽이다. 영적 힘과 지성의 결합된 선들도 일곱 주 영을 거쳐 신의 셋째 분에게로 들어간다. 그래서 공동 행위자의 신성과 인격에 관해 말해진 모든 것은, 그들의 신성한 천부 능력에 따라 그리고 각자의 고유한 본성의 방식으로 일곱 주 영에게 동등하고 온전하게 적용되며, 무한 영의 이름들 가운데 어떤 것이나 모든 것을 이 집단에 적용해도 무방하다. 집단적으로 그들은 모든 준절대적 수준에서 공동 창조주와 하나다.</p>
+<p>다음은 각인. 대우주의 각 구역과 각 세계는 일곱 주 영 모두의 연합된 조언과 지혜의 혜택을 누리지만, 개인적인 손길과 색채는 오직 한 분에게서만 받는다. 그 결과 파라다이스와 하보나 바깥의 모든 계급의 창조체는, 인간이든 천사든, 일곱 파라다이스 영 가운데 어느 한 분의 선조적 본성을 나타내는 개성의 각인을 지녀야만 한다. 한 주 영의 물리적 각인은 인간의 물질적 기원의 일부이며, 전체 모론시아 생애가 같은 영향 아래에서 진행되고, 이후의 영적 생애도 그 특징적 각인을 결코 온전히 근절하지 못한다.</p>
+<p>다만 주 영이 진화 세계의 개별 물질 마음에 직접 침투하지는 않는다는 점을 반드시 붙여 두어야 한다. 유란시아 필사자는 오르본톤 주 영의 마음-영 영향을 개인적 현존으로 체험하지 않는다. 접촉이 성취된다면 그것은 지역 우주 창조 영의 봉사를 통해서 일어나야 하며, 바로 그 창조 어머니 영이 본성과 성품에서 오르본톤의 주 영과 아주 흡사하다. 각인은 강제된 도장이 아니라, 계보를 따라 전해진 가문의 얼굴에 가깝다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-2" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">'무한 영은 일곱 주 영의 목소리로만 말한다'는 진술이 기도와 예배에 주는 함의는 무엇인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>하나님과의 접촉이 추상적 편재가 아니라 실제 인격 계보를 따라 이루어진다는 뜻이다. 다만 이 계보의 마지막 구간은 우리에게 창조 어머니 영과 내주하는 조절자이므로, 신자가 체험하는 친밀함은 조금도 줄지 않는다. 오히려 멀리 있는 것처럼 보이던 셋째 근원 중심이 실제 통로를 통해 내 세계까지 이어져 있음을 확인해 준다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">초우주 각인이 영원히 지워지지 않는다는 것을 개성의 제약으로 보아야 하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>제약이 아니라 정체성으로 보는 편이 본문에 맞다. 하보나의 긴 훈련도 파라다이스의 강렬한 교양도 초우주 기원의 귀표를 지우지 못하며, 오히려 진화 창조 전체를 대표해야 할 때는 각 초우주에서 한 명씩 일곱 최종자 집단이 소집된다. 다양성 자체가 전체를 대표하는 자격이 된다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">전능·전지·편재가 '집단적으로만' 드러난다는 진술을 어떻게 이해할 수 있는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>각 주 영은 그 천부 능력을 개별적으로 공유하지만, 개인으로서 그 권능을 행사할 때는 자신이 직접 감독하는 초우주로 제한된다. 곧 완전함은 협동의 형태로만 나타난다. 이것은 개인의 유능함보다 연합이 우주 행정의 기본 원리임을 보여 준다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-2" hidden>
+      <p class="panel-label">유란시아서 인용 12개</p>
+      <ol class="quotes"><li><span class="ref">16:2.1</span><span class="qt">무한하고 신성한 영은 일곱 주 영과 그 연관된 영 집단들의 통로를 통해 드러난다.</span></li>
+<li><span class="ref">16:2.2</span><span class="qt">파라다이스 아버지는 우주들의 우주에 대해 오직 그의 아들을 통해서만 말씀하시며, 그와 아들은 공동으로 오직 무한 영을 통해서만 행동하신다.</span></li>
+<li><span class="ref">16:2.2</span><span class="qt">파라다이스와 하보나 바깥에서 무한 영은 오직 일곱 주 영들의 목소리로만 말한다.</span></li>
+<li><span class="ref">16:2.3</span><span class="qt">어떤 세계나 어떤 개인에 대한 셋째 근원 중심의 초우주 영 현존은, 창조의 그 구역을 감독하는 주 영의 고유한 본성에 의해 조건 지어진다.</span></li>
+<li><span class="ref">16:2.3</span><span class="qt">영적 힘과 지성의 결합된 선들은 일곱 주 영을 거쳐 신의 셋째분에게로 들어간다.</span></li>
+<li><span class="ref">16:2.4</span><span class="qt">전능, 전지, 편재의 속성들은 오직 집단적으로만 드러난다. 그들 중 누구도 보편적으로 그렇게 기능할 수 없다.</span></li>
+<li><span class="ref">16:2.5</span><span class="qt">집단적으로 그들은 모든 준절대적 수준에서 공동 창조주와 하나이다.</span></li>
+<li><span class="ref">16:5.1</span><span class="qt">대우주의 각 구역, 각 개별 우주와 세계는 모든 일곱 주 영들의 연합된 조언과 지혜의 혜택을 누리지만, 오직 한 분으로부터만 개인적인 손길과 색채를 받는다.</span></li>
+<li><span class="ref">16:5.2</span><span class="qt">토착민인 각 창조체는, 인간이든 천사든, 영원히 이 태생 식별의 휘장을 지닐 것이다.</span></li>
+<li><span class="ref">16:5.3</span><span class="qt">일곱 주 영은 공간의 진화 세계들 위 개별 창조체들의 물질 마음에 직접적으로 침투하지 않는다.</span></li>
+<li><span class="ref">16:5.3</span><span class="qt">바로 이 창조 어머니 영은, 본성과 성품에서 오르본톤의 주 영과 아주 흡사하다.</span></li>
+<li><span class="ref">16:5.5</span><span class="qt">온 영원을 통하여, 상승 필사자는 자신의 출생 초우주의 주재 영을 나타내는 특성들을 보일 것이다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3" style="--hue:#9C8A1C">
+  <div class="sec-rail">
+    <span class="sec-num">3</span>
+    <span class="sec-hue">황</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">개별성 · 제16편 3장 전반</p>
+    <h2>일곱 초상, 1번에서 6번까지</h2>
+    <p class="summary">일곱 주 영은 묘사하기 어려운 존재들이지만 뚜렷하고 명확하게 인격적이다. 그들은 이름이 있으나 본문은 번호로 그들을 소개한다. 무한 영의 일차적 인격화로서 서로 비슷하되, 삼자일체 신의 일곱 가지 가능한 연합의 일차적 표현으로서 본성에서 본질적으로 다양하며, 이 다양성이 초우주 행위의 차등을 결정한다. 1번은 아버지, 2번은 영원 아들, 3번은 무한 영을 닮고, 4번은 아버지와 아들, 5번은 아버지와 영, 6번은 아들과 영의 결합된 본성을 지닌다. 각자는 자기 초우주를 다스리며 그 수도의 반영 영들과 늘 연락을 유지한다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-3" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-3" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-3" aria-expanded="false">유란시아서 인용 <span class="cnt">12</span></button>
+    </div>
+
+    <div class="panel" id="more-3" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>여섯 초상을 한 자리에 놓고 보면, 각 주 영의 '닮음'이 곧 '직무'로 이어진다는 규칙이 드러난다.</p>
+<p>1번 주 영은 우주 아버지의 권능과 사랑과 지혜의 독특하고 효율적인 현현이며, 디비닝턴의 인격화된 조절자 대학을 주재하는 신비의 관찰자들의 우두머리와 가까운 동료이자 최상의 조언자다. 아버지를 닮았다는 사실이 조절자 계열과의 밀접한 협력으로 이어진다. 2번 주 영은 모든 창조의 첫째 아들인 영원 아들의 비할 데 없는 본성과 매력적인 성품을 묘사하며, 하나님의 아들들이 개인으로서든 즐거운 회합에서든 거주 우주에 있을 때마다 그들의 모든 계급과 긴밀한 연합을 유지한다. 3번 주 영은 무한 영을 닮아 그의 높은 인격들 다수의 움직임과 업무를 지휘하고 그들의 집회를 주재한다.</p>
+<p>이중 결합에서 그 규칙은 더 분명해진다. 4번 주 영은 아버지와 아들의 결합된 본성을 공유하기에, 무한 영에 도달한 뒤 이제 아들과 아버지를 볼 후보자가 된 상승 존재들의 주된 지휘자이자 조언자가 된다. 상승자의 다음 관문이 아버지와 아들이므로 그 안내자도 아버지-아들 본성을 지녀야 한다. 5번 주 영은 우주 아버지와 무한 영의 성품을 정교하게 혼합하여, 동력 감독자와 동력 중심과 물리적 통제자들로 알려진 거대한 존재 집단의 조언자가 된다. 6번 주 영은 영원 아들과 무한 영의 결합된 성품을 묘사하며, 아들과 영에 의해 공동으로 창조된 창조체들이 중앙 우주에 모일 때 그들의 조언자가 된다.</p>
+<p>평의회에서의 발언권도 같은 원리를 따른다. 아버지를 위해 말하는 이는 언제나 1번이고, 영원 아들을 위해서는 2번, 무한 영을 위해서는 3번, 아버지와 아들을 함께 대표해야 할 때는 4번, 아버지-영의 태도가 문제 될 때는 5번, 아들과 영을 위해 공동으로 말해야 할 때는 6번이 응답한다. 우주 행정에서 '누가 말하는가'는 '누구를 닮았는가'로 이미 결정되어 있다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-3" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">주 영들이 이름 대신 번호로 소개되는 것을 학습자는 어떻게 받아들여야 하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>본문은 그들에게 이름이 있다고 분명히 밝히면서도 번호를 택했다. 번호는 그들의 정체가 신의 일곱 연합 가능성이라는 구조에서 나온다는 점을 계속 상기시킨다. 이름이 인격을 지운 것이 아니라, 구조가 곧 인격의 내용임을 드러내는 서술 방식으로 읽는 것이 좋다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">'닮음이 곧 직무가 된다'는 규칙의 구체적인 예를 하나 들어 설명해 보라.</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>4번 주 영이 좋은 예다. 그는 아버지와 아들의 결합된 본성을 공유하므로, 무한 영에 도달하여 이제 아들과 아버지를 만나게 될 상승 존재들의 주된 지휘자이자 조언자가 된다. 안내자의 본성이 피안내자가 향하는 목적지와 일치한다. 5번이 동력 감독자와 물리적 통제자의 조언자가 되는 것도 같은 논리다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">여섯 주 영의 다양성이 초우주별 특성 차이를 만든다면, 이것이 우리의 문화 이해에 주는 통찰은 무엇인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>동일한 신성이 서로 다른 통로를 지나면 서로 다른 성격의 문명을 낳는다는 점이다. 차이는 결함이 아니라 설계이며, 본성의 다양성이 초우주 행위의 차등을 결정한다고 본문이 명시한다. 이는 지역과 민족의 영적 기질 차이를 우열이 아니라 계보로 읽게 해 준다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-3" hidden>
+      <p class="panel-label">유란시아서 인용 12개</p>
+      <ol class="quotes"><li><span class="ref">16:3.1</span><span class="qt">일곱 주 영은 묘사하기 어려운 존재들이지만, 뚜렷하고 명확하게 인격적이다.</span></li>
+<li><span class="ref">16:3.1</span><span class="qt">이 본성의 다양성이 그들의 초우주 행위의 차등을 결정한다.</span></li>
+<li><span class="ref">16:3.2</span><span class="qt">그는 우주 아버지의 권능, 사랑, 지혜의 독특하고 효율적인 현현이다.</span></li>
+<li><span class="ref">16:3.2</span><span class="qt">일곱 주 영의 모든 연합에서, 우주 아버지를 위해 말하는 이는 항상 1번 주 영이다.</span></li>
+<li><span class="ref">16:3.4</span><span class="qt">이 영은 모든 창조의 첫째 아들인 영원 아들의 비할 데 없는 본성과 매력적인 성품을 적절히 묘사한다.</span></li>
+<li><span class="ref">16:3.5</span><span class="qt">이 영은 2번 초우주의 운명들을 지휘하며, 영원 아들이 할 것처럼 이 광대한 영역을 다스린다.</span></li>
+<li><span class="ref">16:3.6</span><span class="qt">이 영 인격은 특히 무한 영을 닮았으며, 그는 무한 영의 높은 인격들 다수의 움직임과 업무를 지휘한다.</span></li>
+<li><span class="ref">16:3.8</span><span class="qt">이 영은 무한 영에 도달하여 아들과 아버지를 볼 후보자가 된 상승 존재들의 주된 지휘자이자 조언자이다.</span></li>
+<li><span class="ref">16:3.10</span><span class="qt">이 신성한 인격은, 동력 감독자, 동력 중심, 물리적 통제자들로 알려진 거대한 존재 집단의 조언자이다.</span></li>
+<li><span class="ref">16:3.12</span><span class="qt">아들과 영에 의해 공동으로 창조된 창조체들이 중앙 우주에 모일 때마다, 그들의 조언자가 되는 이는 이 주 영이다.</span></li>
+<li><span class="ref">16:3.13</span><span class="qt">이 영은 영원 아들과 무한 영이 할 것처럼 여섯째 초우주의 사무를 지휘한다.</span></li>
+<li><span class="ref">16:0.2</span><span class="qt">따라서 일곱 주 영은 아래 일곱 가지 유사성으로부터 기원하며, 그 개별적인 성격이 유래한다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s4" style="--hue:#3B7A57">
+  <div class="sec-rail">
+    <span class="sec-num">4</span>
+    <span class="sec-hue">녹</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">오르본톤 · 제16편 3장 후반과 4장</p>
+    <h2>7번 주 영과 최상 존재</h2>
+    <p class="summary">일곱째 초우주의 주재 영은 우주 아버지와 영원 아들과 무한 영의 독특하게 동등한 묘사다. 그는 삼자일체-기원 존재들의 양육 조언자이며, 아버지와 아들과 영의 결합된 봉사를 통해 영광의 뜰에 도달한 하보나의 모든 상승 순례자들의 조언자이자 지휘자다. 그는 파라다이스 삼위일체를 유기적으로 대표하지 않는다. 그러나 그의 개인적이고 영적인 본성이 세 무한한 개인을 동등한 비율로 묘사한 공동 행위자의 초상이므로, 그 기능이 최상 하나님의 개인적이고 영적인 본성의 근원이 된다. 최상 존재가 접촉 불가능한 현 우주 시대에 그는 상승 창조체들의 하나님 자리에서 기능한다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-4" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-4" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-4" aria-expanded="false">유란시아서 인용 <span class="cnt">12</span></button>
+    </div>
+
+    <div class="panel" id="more-4" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>7번 주 영의 특별함은 '무엇이 아닌가'에서 시작한다. 그는 파라다이스 삼위일체를 유기적으로 대표하지 않는다. 일곱 영 중 누구도 그렇게 하지 않는다. 그러나 그들이 칠중 신으로 연합할 때 그 연합은 개인적 의미가 아니라 신의 의미에서 삼위일체 기능과 연관될 수 있는 기능적 수준과 동등해지고, 이런 의미에서 7번 주 영은 때때로 삼중-신-연합의 태도, 곧 파라다이스 삼위일체의 태도에 관한 칠중-영-연합의 태도를 위한 대변인으로 행동한다. 그래서 그는 일곱 주 영의 파라다이스 평의회에서 내재적으로 주재하는 우두머리가 된다.</p>
+<p>그의 기능은 층층이 확장된다. 아버지와 아들과 영의 개인적 본성들의 결합된 묘사에서 시작하여, 최상 하나님의 개인적 태도의 표현을 거쳐, 파라다이스 삼위일체의 신 태도를 드러내는 데까지 이르고, 어떤 면에서는 궁극위와 최상-궁극위의 태도까지 표현한다. 상승자에게 가장 중요한 것은 마지막 층이다. 하보나 순례자들이 최상 하나님을 온전히 발견하지 못하는 것은 일곱째 주 영에 의해 보상된다. 그의 삼자일체 본성이 최상 존재의 영 인격을 독특하게 드러내기 때문이다. 최상 존재의 개인이 접촉 불가능한 현 우주 시대 동안, 7번 주 영은 개인적 관계의 문제에 있어서 상승 창조체들의 하나님의 자리에서 기능한다. 그는 모든 상승자가 영광의 중심들에 도달할 때 확실히 인식하고 다소 이해하게 될 한 분의 높은 영 존재다.</p>
+<p>오르본톤에 대한 그의 행정은 아버지와 아들과 영의 신성한 본성들이 통합적으로 혼합된 경이로운 대칭을 드러낸다. 그리고 명확한 증거를 제시할 수는 없다고 전제하면서도, 본문은 오르본톤의 주 영이 결정적 영향을 미칠 가능성이 매우 높은 일곱 영역을 열거한다. 생명 운반자들의 생명-개시 절차, 보조 마음-영들의 생명 활성화, 조직된 물질의 에너지 현현 변동, 무제한 절대의 파악에서 해방되는 출현 에너지의 작용, 성령의 증여, 진리의 영의 후속 증여, 그리고 지역 우주와 초우주의 반사 작용 기제다. 반대로 그가 전혀 관여하지 않는 두 영역도 확언된다. 생각 조절자들의 증여와 봉사, 그리고 무제한 절대의 헤아릴 수 없는 기능들이다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-4" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">7번 주 영이 '삼위일체를 유기적으로 대표하지 않는다'면서도 삼위일체 태도를 대변할 수 있는 근거는 무엇인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>그의 개인적이고 영적인 본성이 세 무한한 개인을 동등한 비율로 묘사한 공동 행위자의 초상이기 때문이다. 유기적 대표가 아니라 초상으로서의 대표다. 그래서 칠중-영-연합의 태도를 삼위일체의 태도에 '관하여' 말하는 대변인이 될 수 있고, 동시에 삼위일체에 매이지 않기에 최상 존재를 위해 개인적으로 기능할 수 있다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">'상승 창조체들의 하나님 자리에서 기능한다'는 표현을 대체 신앙으로 오해하지 않으려면 무엇을 붙들어야 하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>이것은 현 우주 시대의 한시적 보상이라는 점이다. 최상 존재의 개인이 아직 접촉 불가능하기 때문에 그 거리가 메워지는 것이지, 예배의 대상이 바뀌는 것이 아니다. 본문도 상승자가 영광의 중심들에 도달할 때 그를 '인식하고 다소 이해하게 될' 높은 영 존재로만 말한다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">주 영이 관여하지 않는 두 영역을 계시가 굳이 명시한 이유는 무엇이겠는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>생각 조절자의 증여와 봉사, 그리고 무제한 절대의 기능은 주 영의 관할 밖이다. 이 경계선은 내주하는 아버지 단편이 초우주 행정 체계를 거치지 않고 아버지에게 직접 잇닿아 있음을 보증한다. 각인은 초우주가 주지만, 내주는 아버지가 직접 주신다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-4" hidden>
+      <p class="panel-label">유란시아서 인용 12개</p>
+      <ol class="quotes"><li><span class="ref">16:3.14</span><span class="qt">일곱째 초우주의 주재 영은 우주 아버지, 영원 아들, 무한 영의 독특하게 동등한 묘사이다.</span></li>
+<li><span class="ref">16:3.14</span><span class="qt">일곱째 영은 하보나의 모든 상승 순례자들의 조언자이자 지휘자이다.</span></li>
+<li><span class="ref">16:3.15</span><span class="qt">7번 주 영은 파라다이스 삼위일체를 유기적으로 대표하지는 않는다.</span></li>
+<li><span class="ref">16:3.15</span><span class="qt">이처럼 삼위일체로서의 그러한 기능은 최상 하나님의 개인적이고 영적인 본성의 근원이 된다.</span></li>
+<li><span class="ref">16:3.15</span><span class="qt">그는 이리하여 일곱 주 영의 파라다이스 평의회에서 내재적으로 주재하는 우두머리가 된다.</span></li>
+<li><span class="ref">16:3.17</span><span class="qt">일곱째 주 영의 다중적 기능은 이리하여 아버지, 아들, 영의 개인적 본성들의 결합된 묘사로부터, 최상 하나님의 개인적 태도의 표현을 거쳐, 파라다이스 삼위일체의 신 태도를 드러내는 데까지 이른다.</span></li>
+<li><span class="ref">16:3.19</span><span class="qt">최상 존재의 개인이 접촉 불가능한 현 우주 시대 동안, 7번 주 영은 개인적 관계의 문제에 있어서 상승 창조체들의 하나님의 자리에서 기능한다.</span></li>
+<li><span class="ref">16:3.20</span><span class="qt">오르본톤에 대한 그의 행정은 아버지, 아들, 영의 신성한 본성들이 통합적으로 혼합된 경이로운 대칭을 드러낸다.</span></li>
+<li><span class="ref">16:4.1</span><span class="qt">이 일곱 영이 삼자일체 신의 인격화된 물리적 권능, 우주 마음, 영적 현존, 즉 “온 우주에 보내진 하나님의 일곱 영”이라는 것은 문자 그대로 사실이다.</span></li>
+<li><span class="ref">16:4.2</span><span class="qt">주 영들은 절대적 수준을 제외한 실체의 모든 우주 수준에서 기능한다는 점에서 독특하다.</span></li>
+<li><span class="ref">16:4.13</span><span class="qt">유란시아에서 성령으로 알려진, 지역 우주 창조 영의 봉사 영의 증여.</span></li>
+<li><span class="ref">16:4.16</span><span class="qt">우리는 그들이 전혀 아무 관련도 갖지 않는, 광대한 범위의 우주 활동들 속에 두 영역이 있음을 확신한다: 생각 조절자들의 증여와 봉사, 그리고 무제한 절대의 헤아릴 수 없는 기능들이다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s5" style="--hue:#2C6A93">
+  <div class="sec-rail">
+    <span class="sec-num">5</span>
+    <span class="sec-hue">청</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">마음 · 제16편 6장에서 9장</p>
+    <h2>우주 마음과 인간 의식의 세 실체</h2>
+    <p class="summary">주 영들은 우주 마음의 칠중 근원이며 대우주의 지적 잠재력이다. 이 우주 마음은 셋째 근원 중심 마음의 준절대적 현현이며, 어떤 방식으로는 진화하는 최상 존재의 마음과 기능적으로 관련된다. 우주 마음이라는 사실은 여러 유형의 인간과 초인간 마음들의 혈족 관계를 설명한다. 우주 마음은 세 수준에서 틀림없이 반응한다. 인과관계는 우주적 분별의 수학적 형태이고, 의무는 사법적 형태이며, 예배는 가장 높은 통찰이자 경건한 형태다. 이 셋을 예리하게 하는 것이 교육의 목적이고, 통일하는 것이 인격의 목적이다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-5" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-5" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-5" aria-expanded="false">유란시아서 인용 <span class="cnt">12</span></button>
+    </div>
+
+    <div class="panel" id="more-5" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>우주 마음의 세 반응은 곧 인간이 과학과 철학과 종교의 영역에서 이성적이고 자의식적인 인격으로 기능하게 하는 선험적 가정들이다. 물질-에너지는 감각의 수학적 논리로 인식되고, 마음-이성은 직관적으로 그 도덕적 의무를 알며, 영-믿음은 영적 체험의 실체의 종교가 된다. 이 셋은 인격 발달에서 통일될 수도 있고 각각 불균형해져 사실상 무관해질 수도 있다. 통일될 때 그것들은 사실적 과학, 도덕적 철학, 진정한 종교적 체험의 상호관계로 이루어진 강한 성품을 낳으며, 사물과 의미와 가치 안에서 인간의 체험에 객관적 타당성을 부여한다.</p>
+<p>도덕은 지성만으로 설명되지 않는다. 동물의 선택적 반응은 행동의 운동 수준에 국한되며 대개 시행착오 뒤에야 나타나지만, 인간은 모든 탐사나 실험에 앞서 과학적, 도덕적, 영적 통찰을 행사할 수 있다. 오직 인격만이 그것을 행하기 전에 자신이 무엇을 하고 있는지 알 수 있고, 뛰기 전에 볼 수 있으므로 뛰는 것뿐 아니라 보는 것으로부터도 배운다. 지성만으로는 무분별한 목적을 위한 최선의 수단을 분별하지만, 도덕적 존재는 수단뿐 아니라 목적 사이도 분별한다. 미덕은 의로움, 곧 우주와의 일치이며, 미덕들의 이름을 대는 것이 그것들을 정의하는 것이 아니요 그것들을 사는 것이 그것들을 아는 것이다. 그러므로 최상의 미덕은 하늘에 계신 아버지의 뜻을 행하기로 진심으로 선택하는 것이다.</p>
+<p>인격론도 여기서 이어진다. 인격은 기원적 본성의 독특한 천부적 자질이며, 그 실존은 생각 조절자의 증여와 독립적이고 그에 앞선다. 인격들은 비슷할 수는 있으나 결코 같지 않다. 인격은 표현 매개체가 아무리 변형되어도 우리가 이전에 알던 바로 그 사람으로 그를 식별하게 해 주는 부분이다. 창조체 인격은 자의식과 그에 연관된 상대적 자유의지로 구별되며, 그 자유의지는 도덕적 결정, 영적 선택, 이기심 없는 사랑, 목적 있는 협력, 우주적 통찰, 인격 헌신, 예배로 나타난다. 그리고 자의식은 본질적으로 공동체적 의식이다. 하나님과 인간, 아버지와 아들, 창조주와 창조체의 의식이다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-5" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">주 영이 우리 마음에 직접 침투하지 않는다면, 우주 마음은 어떤 방식으로 우리에게 작용하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>주 영들은 지역 우주들 안에서 특화되어 진화 세계 개인들의 삶 속에서 기능하는 지적·영적 잠재력의 실제 근원이다. 우리는 네바돈 창조 영의 직접적인 영향 아래 살지만, 그 마음의 기본 반응들을 지배하는 것은 여전히 주 영들이다. 직접 접촉이 아니라 근원과 특화의 관계다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">과학·도덕·종교 가운데 하나만 발달한 사람에게 본문은 무엇이라 말하는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>세 요인은 인격 발달에서 통일될 수도 있고 각각의 기능에서 불균형해져 사실상 무관해질 수도 있다고 말한다. 통일될 때에만 강한 성품이 나오고 체험에 객관적 타당성이 생긴다. 한 축만 키운 사람은 유능할 수는 있어도 실체와 온전히 만나지는 못한다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">'미덕은 사는 것이 아는 것'이라는 진술을 소그룹의 실천으로 옮기면 무엇이 되는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>도덕성은 결코 법이나 힘으로 증진될 수 없고, 도덕적으로 향기로운 개인들의 접촉이라는 전염에 의해 전파되어야 한다는 진술과 함께 읽으면 답이 분명해진다. 규칙을 늘리는 모임이 아니라, 아버지의 뜻을 행하기로 선택한 사람들의 동행이 곧 방법이다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-5" hidden>
+      <p class="panel-label">유란시아서 인용 12개</p>
+      <ol class="quotes"><li><span class="ref">16:6.1</span><span class="qt">주 영들은 우주 마음의 칠중 근원이며, 대우주의 지적 잠재력이다.</span></li>
+<li><span class="ref">16:6.2</span><span class="qt">너희는 네바돈의 창조 영의 직접적인 영향 아래에서 산다.</span></li>
+<li><span class="ref">16:6.3</span><span class="qt">우주 마음이라는 사실은 다양한 유형의 인간 및 초인간 마음들의 혈족 관계를 설명한다.</span></li>
+<li><span class="ref">16:6.6</span><span class="qt">이것은 우주적 분별의 수학적 형태이다.</span></li>
+<li><span class="ref">16:6.8</span><span class="qt">이것은 우주 마음의 가장 높은 통찰이며, 우주적 분별의 경건하고 예배적인 형태이다.</span></li>
+<li><span class="ref">16:6.11</span><span class="qt">인간 마음의 이러한 타고난 천부 능력들을 개발하고 예리하게 하는 것이 교육의 목적이며, 그것들을 표현하는 것이 문명의 목적이다.</span></li>
+<li><span class="ref">16:7.1</span><span class="qt">도덕성, 즉 미덕은 인간 인격에 토착이다.</span></li>
+<li><span class="ref">16:7.3</span><span class="qt">인격은 뛰기 전에 볼 수 있으며, 따라서 뛰는 것뿐만 아니라 보는 것으로부터도 배울 수 있다.</span></li>
+<li><span class="ref">16:7.6</span><span class="qt">미덕은 의로움—우주와의 일치—이다.</span></li>
+<li><span class="ref">16:7.10</span><span class="qt">그러므로 최상의 미덕은, 하늘에 계신 아버지의 뜻을 행하기로 진심으로 선택하는 것이다.</span></li>
+<li><span class="ref">16:8.3</span><span class="qt">인격은 기원적 본성의 독특한 천부적 자질이며, 그 실존은 생각 조절자의 증여와는 독립적이고 그에 앞선다.</span></li>
+<li><span class="ref">16:9.9</span><span class="qt">자의식은 본질적으로 공동체적 의식이다: 하나님과 인간, 아버지와 아들, 창조주와 창조체.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6" style="--hue:#3C4A8E">
+  <div class="sec-rail">
+    <span class="sec-num">6</span>
+    <span class="sec-hue">남</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">집행과 반영 · 제17편 1장에서 4장</p>
+    <h2>최상 집행자와 마제스톤의 반영성</h2>
+    <p class="summary">주 영들의 집행 본부는 무한 영의 일곱 파라다이스 위성에 있고, 그곳을 아버지와 아들과 무한 영이 삼위일체화한 일곱 최상 집행자가 통제한다. 그들은 하보나 이후 창조의 경영 이사회라 불릴 수 있으나 정책을 입안하지도 우주 절차를 수정하지도 않는다. 한편 파라다이스 삼위일체와 각 주 영이 연결되어 일곱 분씩 창조된 49명의 반영 영이 있고, 마흔아홉째가 인격화되었을 때 신 절대 안의 새로운 반응이 마제스톤의 인격화로 절정에 이르렀다. 마제스톤의 창조는 최상 존재의 첫 번째 최상 창조 행위였다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-6" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-6" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-6" aria-expanded="false">유란시아서 인용 <span class="cnt">14</span></button>
+    </div>
+
+    <div class="panel" id="more-6" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>집행자들의 권한은 넓고 한계는 분명하다. 그들은 일곱 초우주와 하보나에서 일어나는 모든 것을 보고 듣고 느끼며 심지어 모든 것을 안다. 그러나 정책을 입안하지도 우주 절차를 수정하지도 않으며, 옛적부터 늘 계신 이들의 통치나 창조자 아들들의 주권을 방해하지 않는다. 그들은 조정하는 집행자이며, 그 기능은 정식으로 수립된 모든 통치자들의 연합된 정책을 수행하는 것이다. 배치도 일대일이다. 집행 구역 1번의 집행자 1번부터 일곱째 위성의 집행자 7번까지 각각 하나의 초우주에만 헌신하며, 초우주들의 이름은 실제로 이 위성들에서 유래했다. 각 집행자에게는 두 개의 자문 조직이 있는데, 하나는 초우주 본부의 무한 영의 자녀들이 선출하고, 다른 하나는 파라다이스에 도달한 필사자들과 영화된 필사자의 삼위일체화된 아들들로 구성된다. 상승 생애를 마친 이들이 대우주 행정에 실제로 참여한다는 뜻이다.</p>
+<p>마제스톤은 진정한 인격이며 일곱 초우주에서 일어나는 반영 현상의 인격적이고 무오한 중심으로, 일곱 주 영의 만남의 장소에 영구적인 파라다이스 본부를 둔다. 그는 오직 반영성 서비스의 조정과 유지에만 전념하며 다른 방식으로 우주 업무 행정에 관여하지 않는다. 그가 파라다이스 인격 목록에 포함되지 않는 이유도 분명하다. 신 절대와 기능적으로 협력한 최상 존재가 창조한 신성한 인격 가운데 유일하게 현존하는 존재이기 때문이다. 이 행동에 대한 의지는 최상 존재에게서 자발적이었으나 신 절대의 반응은 미리 예측되지 않았고, 그들이 목적한 의도를 훨씬 뛰어넘었다.</p>
+<p>반영 영들은 단순한 전달 매개자가 아니다. 그들은 보존하는 인격들이며 그들의 자손 세코나핌도 보존하고 기록하는 인격들이어서, 진정한 영적 가치를 지닌 모든 것은 이중으로 등록된다. 우주의 공식 기록은 천사 기록자들이 전달하지만, 진정한 영적 기록은 반영성으로 모아져 무한 영 가족의 살아있는 마음 속에 보존된다. 본문은 이것을 '공식적이고 죽은 기록과 대조되는 살아있는 기록'이라 부른다. 그리고 이 조직은 모든 창조계의 뉴스 수집과 법령 배포 체계이기도 하여, 주기적으로 작동하는 방송과 달리 지속적으로 작동한다. 반영 영들과 초우주 당국 사이에는 49명의 반영 영상 보조자가 서 있는데, 이들은 반영성 속성을 뺀 사실상의 복제물이며 인격처럼 보이지만 의지를 지니지 않아 선택의 힘을 행사하지 않는다. 상승하는 필사자는 반영성과 직접 접촉하지 않고, 언제나 반영적 본성을 지닌 어떤 존재가 사이에 배치된다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-6" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">'모든 것을 아는' 집행자들이 정책을 입안하지 않는다는 설계는 무엇을 보여 주는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>정보의 총량과 통치 권한이 분리되어 있다는 점이다. 그들은 조정하는 집행자로서 정식으로 수립된 통치자들의 연합된 정책을 수행할 뿐, 옛적부터 늘 계신 이들의 통치나 창조자 아들들의 주권을 침범하지 않는다. 권력 집중이 아니라 권한 분산이 우주 행정의 원리다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">마제스톤의 창조에서 '예측되지 않은 반응'이 갖는 신학적 의미는 무엇인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>최상 존재의 의지는 자발적이었으나 신 절대의 반응은 미리 예측되지 않았고 그들의 예견을 크게 초과했다. 곧 체험적 신성과 실존적 삼위일체 사이의 관계 통합에 대한 신 절대의 잠재적 반응에는 한계가 없어 보인다. 우주는 완결된 설계도가 아니라 아직 반응할 여지가 남아 있는 실체라는 뜻이다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">'살아있는 기록'과 '공식적이고 죽은 기록'의 대비를 우리 삶에 적용하면 무엇이 남는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>진정한 영적 가치를 지닌 모든 것은 이중으로 등록되며, 그 하나는 인격들의 살아있는 마음 속에 보존된다. 문서로 남지 않는 선의와 봉사도 사라지지 않는다는 보증이다. 기록되지 않았기에 무의미하다는 두려움은 이 체계 앞에서 설 자리가 없다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-6" hidden>
+      <p class="panel-label">유란시아서 인용 14개</p>
+      <ol class="quotes"><li><span class="ref">17:1.1</span><span class="qt">주 영들의 집행 본부는 무한 영의 일곱 파라다이스 위성에 위치한다.</span></li>
+<li><span class="ref">17:1.3</span><span class="qt">그들은 하보나 이후 창조의 경영 이사회라 불릴 수 있다.</span></li>
+<li><span class="ref">17:1.3</span><span class="qt">그들은 일곱 초우주와 하보나에서 일어나는 모든 것을 보고, 듣고, 느끼며, 심지어 모든 것을 안다.</span></li>
+<li><span class="ref">17:1.4</span><span class="qt">이 최상 집행자들은 정책을 입안하지도, 우주 절차를 수정하지도 않는다.</span></li>
+<li><span class="ref">17:1.5</span><span class="qt">사실 초우주들의 이름은 이 위성들에서 유래하였다.</span></li>
+<li><span class="ref">17:1.8</span><span class="qt">다른 모든 사무 책임자들은 최상 집행자들에 의해 임명된다.</span></li>
+<li><span class="ref">17:2.2</span><span class="qt">삼위일체의 창조적 잠재력과 최상 창조자의 창조적 힘 결합이 바로 최상 존재의 실제성 그 자체의 근원이다.</span></li>
+<li><span class="ref">17:2.3</span><span class="qt">마제스톤은 진정한 인격이며, 시간과 공간의 일곱 초우주에서 일어나는 반영 현상의 인격적이고 무오한 중심이다.</span></li>
+<li><span class="ref">17:2.5</span><span class="qt">마제스톤의 창조는 최상 존재의 첫 번째 최상 창조 행위였다.</span></li>
+<li><span class="ref">17:2.5</span><span class="qt">최상 존재와 그의 동료들의 창조적 의지에 대한 신 절대의 반응은 그들의 목적한 의도를 훨씬 뛰어넘었다.</span></li>
+<li><span class="ref">17:3.3</span><span class="qt">신성한 유전은 때로는 창조주 안에서 드러나지 않는 속성을 창조체 안에서 나타낸다.</span></li>
+<li><span class="ref">17:3.6</span><span class="qt">이것들은 공식적이고 죽은 기록들과 대조되는 살아있는 기록들이다.</span></li>
+<li><span class="ref">17:3.8</span><span class="qt">그 정밀성은 인격적 협력의 완전성에서 비롯된다.</span></li>
+<li><span class="ref">17:4.3</span><span class="qt">항상 반영적 본성을 가진 어떤 존재가 너희와 이 서비스의 실제 운영 사이에 배치될 것이다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7" style="--hue:#6C3E85">
+  <div class="sec-rail">
+    <span class="sec-num">7</span>
+    <span class="sec-hue">보라</span>
+  </div>
+  <div class="sec-body">
+    <p class="kicker">하강하는 계보 · 제17편 5장에서 8장</p>
+    <h2>회로 영에서 보조 마음 영까지</h2>
+    <p class="summary">회로의 일곱 영은 중앙 우주의 일곱 회로에 대한 무한 영과 일곱 주 영의 공동의 비인격적 대표들이다. 주 영들은 일곱 초우주에는 다양한 행정 인격성을 주지만, 이 균일한 회로 영들을 통해 하보나에는 통일되고 조화된 감독을 준다. 아래로 내려가면 지역 우주 창조 영이 있어 여섯 단계의 생애가 알려져 있고 일곱째가 추측되며, 그가 인격 특권의 지위로 높여질 때 비로소 칠중의 보조 마음 영을 증여할 수 있다. 최상 영들의 영역은 파라다이스 삼위일체가 계신 곳에서 공간 행성의 필사자 마음에까지 미친다.</p>
+
+    <div class="controls">
+      <button class="ctl" data-panel="more-7" aria-expanded="false">더 알아보기</button>
+      <button class="ctl" data-panel="ques-7" aria-expanded="false">소그룹 질문</button>
+      <button class="ctl" data-panel="quot-7" aria-expanded="false">유란시아서 인용 <span class="cnt">13</span></button>
+    </div>
+
+    <div class="panel" id="more-7" hidden>
+      <p class="panel-label">더 알아보기</p>
+      <div class="prose"><p>회로 영들은 각각 하보나 회로 하나씩만 침투하도록 제한되며, 그들의 일은 전적으로 하보나에만 국한된다. 이들은 생각 조절자가 진화 세계의 필사 창조체와 관련되듯 하보나 원주민들과 깊이 관련된다. 조절자처럼 비인격적이며, 아버지의 비인격적 영들이 필사 인간의 유한한 마음에 내주하듯 하보나 존재들의 완전한 마음과 어울린다. 그러나 결코 하보나 인격들의 영구적인 부분이 되지는 않는다. 너희가 회로에서 회로로 나아갈 때 그들을 알게 되고 그 영적 영향을 개인적으로 누리겠지만, 개인적 친교를 가질 수는 없을 것이다.</p>
+<p>창조 영의 생애는 이 편 전체에서 가장 감동적인 대목이다. 창조자 아들이 인격화될 때 무한 영 안에서 '보완 최상 반응'이 동시에 일어나며, 이는 그 파라다이스 아들의 미래 지역 우주 배우자가 될 잠재태의 탄생을 뜻한다. 미가엘의 긴 예비 훈련 기간에 그 배우자도 실체의 발전을 겪으며 운명을 집단적으로 의식하게 된다. 책임이 주어질 때 배정된 주 영이 무한 영의 현존 앞에서 '신분 확인 기도'를 하고, 그 순간 처음으로 무한 영에게서 차별되는 실체가 나타나 주 영의 일부가 되는 듯 보인다. 창조자 아들이 공간 모험을 떠나는 순간 주 영은 이 새 영적 배우자를 그에게 맡기고, 그때 파라다이스에서 가장 깊은 감동을 주는 사건 중 하나가 일어난다. 우주 아버지가 그 영원한 연합을 공표하는 것이다.</p>
+<p>생명 창조의 의사 선포 뒤에는 파라다이스의 '인격화 의식'이 따르고, 그 순간 지금까지 비인격이던 영적 배우자가 모든 실질적 의도와 목적에서 진정한 인격이 된다. 이후로 그는 인격으로 여겨지며 뒤이어 생겨나는 모든 인격 무리와 개인적 관계를 유지한다. 일곱째 증여를 마치고 완전한 통치권을 얻은 창조자 아들이 돌아오면 그는 우주 어머니 영을 공동 통치자로 높이고 자기와 동격으로 인정한다. 그리고 빛과 생명 시대가 정착되면 여섯째 단계에 들어가는데, 그 본질은 설명될 수 없다. 일곱째 생애가 있는가 하는 물음에 본문은 최종자들에게 아직 밝혀지지 않은 생애가 기다린다고 기록된 것을 유념하며, 어머니 영들에게도 그러한 일곱째 단계가 있으리라 추측한다.</p>
+<p>총괄하면 최상 영 집단은 무한 어머니 영과 함께 셋째 근원 중심의 방대한 창조체 집단을 직접 창조한 자들이다. 1차 초천사는 무한 영에게서, 2차 계급은 주 영들에 의해, 3차 초천사는 회로 영들에 의해, 세코나핌은 반영 영들에 의해, 각 지역 우주의 천사 계급들은 창조 영들에 의해 생겨난다. 그러나 무한 영은 모든 천사 봉사자들의 최초의 어머니요 영원한 어머니다.</p></div>
+    </div>
+
+    <div class="panel" id="ques-7" hidden>
+      <p class="panel-label">소그룹 질문과 모범 답안</p>
+      <p class="panel-hint">질문을 누르면 모범 답안이 열립니다.</p>
+      <div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q1</span><span class="q-text">회로 영들이 비인격적이면서도 하보나 인격의 영구한 부분이 되지 않는다는 점은 조절자와 어떻게 대비되는가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>조절자는 필사자의 유한한 마음에 내주하여 생존 시 영원한 연합에 이르지만, 회로 영은 하보나 존재들의 완전한 마음과 어울리되 결코 그들의 영구적인 부분이 되지 않는다. 완전한 존재에게는 융합을 통한 완성이 필요하지 않기 때문으로 읽을 수 있다. 진화 창조체에게만 주어진 특권이 무엇인지 오히려 선명해진다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q2</span><span class="q-text">창조 영의 생애 여섯 단계 가운데 신학적으로 가장 중요한 전환점은 어디이며 왜인가?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>네 번째, 곧 생명 창조 시대의 인격화 의식이다. 그 순간 비인격이던 영적 배우자가 진정한 인격이 되고, 이후 생겨나는 모든 인격 무리와 개인적 관계를 유지하게 된다. 우리가 성령을 인격적으로 체험할 수 있는 근거가 바로 이 사건에 있다.</p></div></div>
+<div class="qa"><button class="q" aria-expanded="false" data-qa><span class="q-mark">Q3</span><span class="q-text">파라다이스에서 사람의 마음까지 이어지는 이 계보를 한 문장으로 요약한다면?</span><span class="q-chev" aria-hidden="true"></span></button><div class="a"><p>최상 영들의 영역은 파라다이스 삼위일체가 계신 곳으로부터 공간의 행성에서 진화하는 필사자들의 마음 기능에까지 미친다는 문장이다. 일곱 계층은 서로 다른 이름을 갖지만 하나의 하강하는 행정 수준을 이루며, 그 끝은 언제나 한 사람의 마음이다.</p></div></div>
+    </div>
+
+    <div class="panel" id="quot-7" hidden>
+      <p class="panel-label">유란시아서 인용 13개</p>
+      <ol class="quotes"><li><span class="ref">17:5.1</span><span class="qt">하보나 회로의 일곱 영은 중앙 우주의 일곱 회로에 대한 무한 영과 일곱 주 영의 공동의 비인격적 대표들이다.</span></li>
+<li><span class="ref">17:5.2</span><span class="qt">그들의 일은 전적으로 하보나에만 국한된다.</span></li>
+<li><span class="ref">17:5.5</span><span class="qt">그러나 회로 영들은 결코 하보나 인격들의 영구적인 부분이 되지는 않는다.</span></li>
+<li><span class="ref">17:6.3</span><span class="qt">동격의 창조자 아들의 탄생은 무한 영 안에서 이 파라다이스 아들의 미래 지역 우주 배우자가 될 잠재태의 탄생을 의미한다.</span></li>
+<li><span class="ref">17:6.5</span><span class="qt">우주 아버지가 그 창조자 아들과 창조 영의 영원한 연합을 공표한다.</span></li>
+<li><span class="ref">17:6.7</span><span class="qt">지금까지 비인격이었던 영적 배우자는 모든 실질적 의도와 목적에서 진정한 인격이 된다.</span></li>
+<li><span class="ref">17:6.8</span><span class="qt">승리한 창조자 아들은 우주 어머니 영을 공동 통치자로 높이 올리고 그 영적 배우자를 자기와 동격으로 인정한다.</span></li>
+<li><span class="ref">17:6.10</span><span class="qt">'일곱째 생애가 있는가?' 우리는 묻지 않을 수 없다.</span></li>
+<li><span class="ref">17:7.1</span><span class="qt">보조 영들은 한 지역 우주 어머니 영이, 창조자 아들과 함께 살아 있는 창조체들을 합동으로 창조할 때 증여하는 칠중 마음이다.</span></li>
+<li><span class="ref">17:8.1</span><span class="qt">최상 영들의 영역은 파라다이스 삼위일체가 계신 곳으로부터, 공간의 행성에서 진화하는 필사자들의 마음 기능에까지 미친다.</span></li>
+<li><span class="ref">17:8.2</span><span class="qt">무한 영은 모든 천사 봉사자들의 최초의 어머니요, 영원한 어머니이다.</span></li>
+<li><span class="ref">17:8.6</span><span class="qt">그들은 최상 존재가 아직 직접 행사하지 않는 영-마음-권능의 주권을 간직한 수탁자들이다.</span></li>
+<li><span class="ref">17:8.9</span><span class="qt">공동 행위자 안에 본래부터 있는 기능적 통일성은 그의 주요 인격들인 일곱 주 영 안에서 진화하는 우주들에게 드러난다.</span></li></ol>
+    </div>
+  </div>
+</section>
+
+  <div class="foot">
+    <p>인용문은 첨부된 제16편·제17편 한글 번역본에서 가져왔으며, 번호는 편:장.절 표기를 따랐습니다.<br>
+    각 절의 전체 문맥은 원문에서 확인하시기 바랍니다.</p>
+    <p class="mono">제16편 일곱 주 영 · 제17편 일곱 최상 영 집단</p>
+  </div>
+
+</div>
+</main>
+
+<script>
+(function(){
+  // panels
+  document.querySelectorAll('.ctl').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = document.getElementById(b.dataset.panel);
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+      p.hidden = open;
+    });
+  });
+
+  // q&a toggles
+  document.querySelectorAll('[data-qa]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', String(!open));
+    });
+  });
+
+  // wheel + dots -> jump
+  document.querySelectorAll('.spoke').forEach(function(g){
+    function go(){ location.hash = '#s' + g.dataset.n; }
+    g.addEventListener('click', go);
+    g.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); }
+    });
+  });
+
+  // active section tracking
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.sec'));
+  var dots = {}, spokes = {};
+  document.querySelectorAll('.dot').forEach(function(d){ dots[d.getAttribute('href').slice(2)] = d; });
+  document.querySelectorAll('.spoke').forEach(function(s){ spokes[s.dataset.n] = s; });
+
+  function setActive(n){
+    Object.keys(dots).forEach(function(k){ dots[k].classList.toggle('on', k === n); });
+    Object.keys(spokes).forEach(function(k){ spokes[k].classList.toggle('on', k === n); });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) setActive(e.target.id.slice(1));
+      });
+    }, {rootMargin: '-45% 0px -50% 0px'});
+    secs.forEach(function(s){ io.observe(s); });
+  }
+
+  // print: open everything, restore after
+  var btn = document.getElementById('printBtn');
+  var stash = [];
+  function openAll(){
+    stash = [];
+    document.querySelectorAll('.ctl').forEach(function(b){
+      stash.push([b, b.getAttribute('aria-expanded')]);
+      b.setAttribute('aria-expanded','true');
+      document.getElementById(b.dataset.panel).hidden = false;
+    });
+    document.querySelectorAll('[data-qa]').forEach(function(b){
+      stash.push([b, b.getAttribute('aria-expanded')]);
+      b.setAttribute('aria-expanded','true');
+    });
+  }
+  function restore(){
+    stash.forEach(function(pair){
+      pair[0].setAttribute('aria-expanded', pair[1]);
+      if(pair[0].dataset.panel){
+        document.getElementById(pair[0].dataset.panel).hidden = (pair[1] !== 'true');
+      }
+    });
+    stash = [];
+  }
+  btn.addEventListener('click', function(){ openAll(); window.print(); });
+  window.addEventListener('beforeprint', openAll);
+  window.addEventListener('afterprint', restore);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제6강 신성한 중앙 우주 · 유란시아서 핵심 52주</title>
+<style>
+  :root{
+    --paper:#f4efe4; --card:#fdfaf3; --line:#e2d7bf; --navy:#1a2b52; --navy2:#14224a;
+    --gold:#b8862e; --gold-soft:#e6c877; --ink:#2f2b23; --muted:#6f6858;
+    --c1:#2f5fa6; --c2:#c77e2a; --c3:#2f8f8a; --c4:#6b4fa0; --c5:#3a8f8a; --c6:#b23a48; --c7:#8a5a2b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#d8cdb6;color:var(--ink);
+    font-family:'Noto Serif KR',-apple-system,'Malgun Gothic',serif;line-height:1.85;padding:26px 14px 60px}
+  .sheet{max-width:1000px;margin:0 auto;background:
+      radial-gradient(1100px 420px at 50% -8%, #faf5ea, var(--paper) 55%);
+    border:1px solid #cdbf9f;border-radius:18px;padding:34px 32px 40px;box-shadow:0 22px 55px rgba(40,30,10,.28)}
+  .topbar{display:flex;justify-content:flex-end;margin-bottom:6px}
+  .printbtn{background:linear-gradient(180deg,var(--navy),var(--navy2));color:var(--gold-soft);
+    border:none;border-radius:999px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,.25)}
+  .printbtn:hover{filter:brightness(1.12)}
+  .ribbon{display:flex;justify-content:center;margin:2px 0 4px}
+  .ribbon span{background:linear-gradient(180deg,var(--navy),var(--navy2));color:var(--gold-soft);
+    font-weight:700;font-size:18px;letter-spacing:.05em;padding:9px 30px;
+    clip-path:polygon(6% 0,94% 0,100% 50%,94% 100%,6% 100%,0 50%)}
+  h1{text-align:center;color:var(--navy);font-size:52px;font-weight:800;letter-spacing:.1em;margin:10px 0 8px}
+  .subtitle{text-align:center;color:var(--c7);font-size:17px;font-weight:700;margin-bottom:6px}
+  .paperchips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 14px}
+  .paperchips b{background:#efe6d2;border:1px solid var(--line);color:var(--navy);
+    border-radius:999px;padding:5px 14px;font-size:13.5px;font-weight:700}
+  .intro{text-align:center;color:var(--ink);font-size:15.5px;max-width:780px;margin:6px auto 4px}
+  .divider{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:22px 0 8px}
+
+  .topic{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 20px;margin-top:20px;box-shadow:0 6px 16px rgba(120,100,60,.08)}
+  .thead{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+  .tnum{flex:0 0 auto;width:40px;height:40px;border-radius:11px;color:#fff;font-weight:800;font-size:20px;
+    display:flex;align-items:center;justify-content:center;background:var(--navy);box-shadow:0 3px 7px rgba(0,0,0,.2)}
+  .ttag{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.04em}
+  .thead h2{color:var(--navy);font-size:23px;font-weight:800;line-height:1.35;margin:2px 0}
+  .tpapers{color:var(--muted);font-size:13px}
+  .summary{font-size:15.5px;color:#39352c;margin:4px 2px 2px}
+
+  #t1 .tnum{background:var(--c1)} #t2 .tnum{background:var(--c2)} #t3 .tnum{background:var(--c3)}
+  #t4 .tnum{background:var(--c4)} #t5 .tnum{background:var(--c5)} #t6 .tnum{background:var(--c6)}
+  #t7 .tnum{background:var(--c7)}
+
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .pill{background:#f3ecdb;border:1px solid var(--line);color:var(--navy);border-radius:10px;
+    padding:9px 16px;font-size:14px;font-weight:700;cursor:pointer;transition:.18s;font-family:inherit}
+  .pill:hover{background:var(--navy);color:var(--gold-soft);border-color:var(--navy)}
+  .pill.active{background:var(--navy);color:var(--gold-soft);border-color:var(--navy)}
+
+  .panel{display:none;margin-top:14px;padding:18px 18px;background:#fbf6ea;border:1px solid var(--line);
+    border-radius:12px;border-left:4px solid var(--gold)}
+  .panel.show{display:block}
+  .panel h3{color:var(--gold);font-size:15px;letter-spacing:.06em;margin-bottom:10px}
+  .panel p{font-size:15px;color:#39352c}
+  .disc-list{padding-left:20px} .disc-list li{margin:12px 0;font-size:14.8px}
+  .disc-q{margin-bottom:5px}
+  .disc-ans{margin:2px 0 4px}
+  .disc-ans summary{cursor:pointer;color:var(--c3);font-weight:700;font-size:13.5px;list-style:none}
+  .disc-ans summary::-webkit-details-marker{display:none}
+  .disc-ans summary::before{content:"▸ ";color:var(--c3)}
+  .disc-ans[open] summary::before{content:"▾ "}
+  .disc-ans-body{margin-top:6px;padding:11px 14px;background:#eef5f2;border-left:3px solid var(--c3);
+    border-radius:8px;font-size:14px;color:#33413d}
+  .verse-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .verse-list li{display:flex;gap:10px;font-size:14.5px;align-items:baseline}
+  .vref{flex:0 0 auto;color:var(--gold);font-weight:800;font-variant-numeric:tabular-nums;min-width:66px}
+  .vtxt{color:#3d3930}
+  .mcq-item{margin:12px 0;padding-bottom:6px;border-bottom:1px dashed var(--line)}
+  .mcq-q{font-weight:700;color:var(--navy);margin-bottom:6px}
+  .mcq-opts{list-style:decimal;padding-left:24px} .mcq-opts li{margin:3px 0;font-size:14.5px}
+  .mcq-opts li.correct{}
+  .mcq-ans{margin-top:6px} .mcq-ans summary{cursor:pointer;color:var(--gold);font-weight:700;font-size:13.5px}
+  .mcq-ans span{display:inline-block;margin-top:5px;color:var(--c6);font-weight:700;font-size:14px}
+
+  .foot{margin-top:28px;padding:18px 20px;background:linear-gradient(180deg,#f6eeda,#efe5cd);
+    border:1px solid var(--line);border-radius:12px;font-size:13.5px;color:var(--muted);text-align:center}
+  .foot a{color:var(--navy);font-weight:700}
+
+  @media print{
+    body{background:#fff;padding:0}
+    .sheet{box-shadow:none;border:none;max-width:100%;border-radius:0}
+    .no-print{display:none !important}
+    .printbtn{display:none !important}
+    .panel{display:block !important;border-left:3px solid var(--gold);break-inside:avoid}
+    .panel.quiz{display:none !important}
+    .mcq-ans{display:none}
+    .disc-ans-body{display:block !important}
+    .disc-ans summary{display:none !important}
+    .disc-ans{margin-top:4px}
+    .topic{break-inside:avoid;box-shadow:none}
+    h1{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="topbar no-print"><button class="printbtn" onclick="window.print()">🖨 PDF로 인쇄 / 저장</button></div>
+  <div class="ribbon"><span>제 6 강 · 유란시아서 핵심 52주</span></div>
+  <h1>신성한 중앙 우주</h1>
+  <div class="subtitle">파라다이스와 하보나 — 창조의 영원한 핵</div>
+  <div class="paperchips"><b>제11편</b><b>제12편</b><b>제13편</b><b>제14편</b></div>
+  <p class="intro">유란시아서 제11–14편의 핵심을 일곱 주제로 정리했습니다. 각 주제 아래 네 단추를 눌러
+  더 깊은 해설, 토의 질문, 관련 구절, 객관식 문제를 펼쳐 보세요. 우측 상단 단추로 전체를 PDF로 인쇄·저장할 수 있습니다
+  (인쇄본에는 객관식 문제가 제외되고, 토의 질문의 모범 답안은 포함됩니다).</p>
+  <div class="divider"></div>
+  
+<section class="topic" id="t1">
+  <div class="thead">
+    <span class="tnum">1</span>
+    <div class="tmeta">
+      <div class="ttag">주제 1 · 영원한 중심</div>
+      <h2>파라다이스, 창조의 영원한 중심</h2>
+      <div class="tpapers">제11편 0–1장</div>
+    </div>
+  </div>
+  <p class="summary">파라다이스는 우주들의 우주의 영원한 중심이며, 우주 아버지·영원 아들·무한 영이 실제로 거주하는 장소다. 문헌은 이를 막연한 상징이 아니라 특정한 거처이자 온 창조계의 지리적 중심으로 규정한다. 특히 파라다이스는 영적 거처이면서 동시에 물질적 구체라는 이중 실체로 제시된다. 아버지의 모든 지적 창조가 물질적 거주지에 근거하므로, 그 절대적 통제의 중심 또한 실제적이고 물질적일 수밖에 없다는 것이다. 또한 파라다이스는 영원부터 있었고 그 기원에 관한 어떤 기록도 전설도 없다. 이는 단지 오래되었다는 뜻이 아니라, 그것이 시간의 산물이 아니라 시간보다 앞서는 무시원(無始原)의 실존임을 가리킨다. 창조된 대상들의 계열에 속하지 않고, 오히려 그 계열이 회전하는 부동의 축으로 존재한다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more1')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc1')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse1')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz1')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more1"><h3>더 알아보기</h3><p>파라다이스가 ‘중심’이라는 규정은 두 방향에서 확인된다. 첫째는 인격적 차원이다. 우주 아버지의 인격적 현존이 신들의 거처 상부 표면의 바로 중심에 거하며, 그 둘레를 영원 아들의 현존이, 다시 그 전체를 무한 영의 영광이 감싼다. 하나님은 “이 동일한 중앙의 영원한 거처에 거주하고, 거주하여 왔으며, 영속적으로 거주할 것”이라고 문헌은 단언한다. 둘째는 물리적 차원이다. 아버지가 그 중앙 위치에서 이동한다면 즉각 우주적 대혼란이 초래되는데, 창조계의 끝에서부터 뻗어 온 모든 인력선이 바로 이 중심에 수렴하기 때문이다. 흥미롭게도 문헌은 하나님의 거처가 뉴욕이나 런던처럼 지리적으로 실재하는 장소이며, 자격을 갖춘 항해자가 배와 지도로 도시를 찾듯 영적으로 자격을 갖춘 자는 회로에서 회로로 인도되어 마침내 그 중심에 이를 수 있다고 말한다. 우리가 그곳을 아직 방문하지 못했다는 사실이 그 실재를 부정하지 못한다. 요컨대 파라다이스는 관념적 중심이 아니라, 인격과 물리력이 함께 수렴하는 실제의 중심이다.</p></div>
+  <div class="panel disc" id="disc1"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">파라다이스를 ‘영적이면서 물질적’이라고 규정하는 문헌의 논리는 무엇이며, 순수하게 영적인 상징으로 보는 통념과 어떻게 다른가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">문헌의 논리는 단순하다—아버지의 모든 지적 창조가 물질적 거주지에 근거하므로, 그 절대적 통제의 중심 또한 실제적·물질적이어야 한다는 것이다. 이는 파라다이스를 순수한 영적 은유로 환원하는 통념과 정반대다. 물질과 영을 분리하지 않고 한 중심 안에서 두 차원이 결합되어 있다고 본다. 다만 그 물질은 진화 우주의 물질이 아니라 고유한 근원 물질, 곧 절대소다.</div></details></li>
+<li><div class="disc-q">‘파라다이스의 기원에 관한 어떤 기록도 전설도 없다’는 진술은 그 존재 방식에 대해 무엇을 함축하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">이는 파라다이스가 매우 오래되었다는 뜻이 아니라, 시간 안에서 만들어진 대상이 아님을 가리킨다. 창조된 것들의 계열에 속하지 않고, 오히려 그 계열이 회전하는 부동의 축으로 존재한다. 곧 ‘언제 생겼는가’라는 물음 자체가 성립하지 않는 무시원(無始原)의 실존이다.</div></details></li>
+<li><div class="disc-q">아버지가 중앙 위치에서 이동하면 우주적 대혼란이 온다는 진술은 파라다이스의 중심성을 어떻게 드러내는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">창조계 끝에서부터 뻗어 온 모든 인력선이 이 중심에 수렴하기 때문에, 아버지가 이동하면 우주 전체의 균형이 무너진다. 이는 파라다이스가 상징적 중심이 아니라 만유를 붙드는 실제의 물리적·인격적 축임을 드러낸다.</div></details></li>
+<li><div class="disc-q">하나님의 거처를 지리적 실재로 묘사하는 도시 비유는 우리의 신앙적 상상에 어떤 영향을 주는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하나님의 거처를 뉴욕·런던처럼 지리적으로 실재하는 장소로 묘사함으로써, 신앙의 대상을 막연한 관념이 아니라 실제로 ‘도달 가능한’ 목적지로 상상하게 한다. 우리가 아직 방문하지 못했다는 사실이 그 실재를 부정하지 못하듯, 파라다이스는 멀지만 실재한다.</div></details></li>
+<li><div class="disc-q">‘중심’이 만물의 기원일 뿐 아니라 만물이 돌아갈 목적지이기도 하다면, 이는 인간 운명에 어떤 의미가 있는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">만물이 흘러나온 중심이 곧 돌아갈 목적지라면, 인간의 삶은 표류가 아니라 귀향(歸鄕)의 여정이 된다. 우리의 기원과 운명이 같은 중심에 있다는 것은, 상승이 낯선 곳으로의 이주가 아니라 본래 자리로의 복귀임을 뜻한다.</div></details></li>
+<li><div class="disc-q">물질적 중심과 영적 중심이 하나로 결합되어 있다는 관념은 물질과 영을 분리하는 이원론과 어떻게 대비되는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">물질과 영을 대립시키는 이원론과 달리, 문헌은 한 중심 안에서 두 차원이 결합되어 있다고 본다. 파라다이스는 물질적이되 영적 거처이며, 이는 물질을 폄하하지 않고 영과 함께 신성한 질서의 일부로 긍정한다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse1"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">11:0.1</span><span class="vtxt">파라다이스는 우주들의 우주의 영원한 중심이며, 우주 아버지·영원 아들·무한 영이 거주하는 장소이다.</span></li>
+<li><span class="vref">11:0.1</span><span class="vtxt">파라다이스는 영적 거처일 뿐 아니라 물질적 구체이며, 절대적 통제의 중심 역시 반드시 물질적이어야 한다.</span></li>
+<li><span class="vref">11:0.2</span><span class="vtxt">파라다이스는 영원부터 있었으며, 이 빛과 생명의 핵인 섬의 기원에 관해서는 어떤 기록도 전설도 존재하지 않는다.</span></li>
+<li><span class="vref">11:1.1</span><span class="vtxt">창조체 존재들에게 파라다이스는 기본적으로 신의 거처로서 존재한다.</span></li>
+<li><span class="vref">11:1.2</span><span class="vtxt">하나님은 이 동일한 중앙의 영원한 거처에 거주하고, 거주하여 왔으며, 영속적으로 거주할 것이다.</span></li>
+<li><span class="vref">11:1.3</span><span class="vtxt">자격을 갖춘 자는 회로에서 회로로 인도받으며 마침내 아버지의 영광으로 빛나는 중심 앞에 서게 될 것이다.</span></li>
+<li><span class="vref">11:1.4</span><span class="vtxt">창조계의 끝에서부터 우주 인력선들이 이 거주 중심에 계신 그분 안에 수렴된다.</span></li>
+<li><span class="vref">11:9.2</span><span class="vtxt">파라다이스는 무한의 지리적 중심이며, 영원하고 유일무이한 존재이다.</span></li>
+<li><span class="vref">11:9.3</span><span class="vtxt">아버지는 실체를 인격적인 것과 비인격적인 것, 영적인 것과 비영적인 것으로 투사하셨다.</span></li>
+<li><span class="vref">11:9.7</span><span class="vtxt">파라다이스는 모든 창조의 중심, 모든 에너지의 근원, 그리고 모든 인격의 기원지이다.</span></li>
+<li><span class="vref">11:9.8</span><span class="vtxt">이 완전한 아버지의 거처는 상승 창조체들의 불멸하는 혼이 도달할 실제적이고 아득히 먼 운명이다.</span></li>
+<li><span class="vref">12:8.1</span><span class="vtxt">‘하나님은 영이시다.’ 그러나 파라다이스는 아니다—물질 우주는 모든 영적 활동이 일어나는 무대이다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz1"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 파라다이스에 거주한다고 문헌이 밝히는 세 신격이 아닌 것은?</p><ol class="mcq-opts"><li class="">우주 아버지</li>
+<li class="">영원 아들</li>
+<li class="">무한 영</li>
+<li class="correct">최종자 군단</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 4번 — 최종자 군단</span></details></div><div class="mcq-item"><p class="mcq-q">2. 파라다이스의 실체를 문헌은 어떻게 규정하는가?</p><ol class="mcq-opts"><li class="">순수한 영적 상징</li>
+<li class="correct">영적이면서 동시에 물질적인 구체</li>
+<li class="">순수한 물질 덩어리</li>
+<li class="">환영(幻影)</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 영적이면서 동시에 물질적인 구체</span></details></div><div class="mcq-item"><p class="mcq-q">3. ‘기원에 관한 어떤 기록도 전설도 없다’가 뜻하는 것은?</p><ol class="mcq-opts"><li class="">아주 오래되었다</li>
+<li class="correct">시간의 산물이 아닌 무시원의 실존이다</li>
+<li class="">기록이 소실되었다</li>
+<li class="">비밀에 부쳐졌다</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 시간의 산물이 아닌 무시원의 실존이다</span></details></div><div class="mcq-item"><p class="mcq-q">4. 아버지가 중앙 위치에서 이동하면 일어나는 일은?</p><ol class="mcq-opts"><li class="">아무 일 없음</li>
+<li class="correct">즉각적인 우주적 대혼란</li>
+<li class="">새 우주 탄생</li>
+<li class="">시간 정지</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 즉각적인 우주적 대혼란</span></details></div><div class="mcq-item"><p class="mcq-q">5. 파라다이스를 문헌은 무엇의 중심이라 하는가?</p><ol class="mcq-opts"><li class="">오직 영의 중심</li>
+<li class="correct">모든 창조·에너지·인격의 중심</li>
+<li class="">초우주만의 중심</li>
+<li class="">하보나만의 중심</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 모든 창조·에너지·인격의 중심</span></details></div><div class="mcq-item"><p class="mcq-q">6. 하나님의 거처를 문헌이 도시에 비유한 이유는?</p><ol class="mcq-opts"><li class="">실재하지 않기 때문</li>
+<li class="correct">지리적으로 실재하는 장소임을 강조하려고</li>
+<li class="">은유일 뿐이어서</li>
+<li class="">접근이 금지되어서</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 지리적으로 실재하는 장소임을 강조하려고</span></details></div></div>
+</section>
+
+<section class="topic" id="t2">
+  <div class="thead">
+    <span class="tnum">2</span>
+    <div class="tmeta">
+      <div class="ttag">주제 2 · 형태와 구역</div>
+      <h2>타원형 구조와 상부·주변·하부의 세 구역</h2>
+      <div class="tpapers">제11편 2–7장</div>
+    </div>
+  </div>
+  <p class="summary">파라다이스의 형태는 문헌 전체에서 가장 구체적인 대목이다. 그것은 구형이 아니라, 동서 지름보다 남북 지름이 6분의 1 더 긴 분명한 타원체이며, 중앙 섬은 본질적으로 평평하고 두께는 동서 지름의 10분의 1에 불과한 매우 편평한 형태다. 이 비대칭은 단순한 외형 묘사가 아니라, 북쪽 끝에서의 더 큰 힘-에너지 압력과 연관되어 주(主)우주에서 절대 방향을 설정하는 근거가 된다. 파라다이스는 또 지리적으로 세 활동 구역으로 나뉜다. 인격적 활동이 이루어지는 상부, 힘과 에너지가 기원하는 하부, 그리고 인격적이지도 비인격적이지도 않은 주변이다. 특히 공간은 하부 파라다이스 바로 아래에서, 시간은 상부 파라다이스 바로 위에서 기원하는 듯 보인다고 문헌은 신중하게 서술한다. 형태와 구역은 곧 파라다이스의 기능을 드러내는 지도인 셈이다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more2')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc2')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse2')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz2')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more2"><h3>더 알아보기</h3><p>세 구역은 위치의 구분이면서 동시에 기능의 구분이다. 상부 파라다이스에는 신 현존 지역, 지성소, 거룩한 지대가 있으며, 거룩한 지대는 일곱 동심 지대로 나뉘어 흔히 ‘아버지의 파라다이스 맨션들’이라 불린다. 가장 안쪽 지대는 파라다이스 시민과 하보나 원주민이, 두 번째 지대는 일곱 초우주에서 상승해 온 존재들이 차지한다. 하부 파라다이스에는 인격이 거주하지 않으며, 모든 물리적 에너지와 우주 힘 회로가 여기서 기원한다. 그 중심에는 거대한 심장처럼 박동하며 물리적 공간 끝까지 전류를 보내는 힘 중심이 자리한다. 주변 파라다이스는 영 인격들이 착륙·출발하는 착발장이자, 창조자 아들들에게 배정된 방대한 역사·예언 전시 지역이다. 나아가 문헌은 모든 공간이 약 10억 년 주기로 교대로 팽창·수축하는 ‘공간 호흡’을 서술하는데, 이는 파라다이스 위아래의 비충만 공간 저장소와 수평의 충만 공간 사이의 균형으로 나타난다. 전체 공간의 수직 단면이 몰타 십자가와 유사하다는 묘사는, 파라다이스가 단순한 장소가 아니라 시공간 자체가 조직되는 기하학적 원점임을 보여 준다.</p></div>
+  <div class="panel disc" id="disc2"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">파라다이스가 구형이 아니라 편평한 타원체라는 구체적 진술은 왜 중요하며, 그 비대칭은 어떤 우주적 기능과 연결되는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">구체적 형태 진술은 파라다이스를 추상적 상징이 아니라 측정 가능한 실재로 붙든다. 특히 남북 비대칭은 북쪽 끝의 더 큰 힘-에너지 압력과 연결되어, 주우주에서 절대 방향을 설정하는 우주적 좌표의 기준이 된다. 곧 모양 자체가 기능이다.</div></details></li>
+<li><div class="disc-q">상부·주변·하부의 세 구역이 ‘위치의 구분이자 기능의 구분’이라는 말은 무슨 뜻인가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">세 구역은 단순한 공간 구획이 아니라 활동의 구획이다. 인격적·영적 활동은 상부에, 물리적 힘과 에너지의 기원은 하부에, 그 중간 기능은 주변에 집중된다. 어디에 있느냐가 무엇을 하느냐와 직결된다.</div></details></li>
+<li><div class="disc-q">시간이 상부에서, 공간이 하부에서 기원하는 ‘듯 보인다’는 신중한 표현에서 문헌의 서술 태도를 어떻게 읽을 수 있는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">‘~듯 보인다’는 조심스러운 표현은 문헌이 관찰의 한계를 정직하게 인정함을 보여 준다. 단정 대신 신중한 서술을 택함으로써, 계시가 아는 것과 모르는 것을 구분하는 학문적 태도를 드러낸다.</div></details></li>
+<li><div class="disc-q">‘아버지의 맨션들’이라 불리는 일곱 거주 지대의 구조는 우주적 질서에 대해 무엇을 시사하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">거룩한 지대가 일곱 동심 지대로 정연하게 나뉘고 초우주별로 배정되어 있다는 것은, 우주가 무질서한 광대함이 아니라 세심하게 조직된 질서임을 시사한다. ‘아버지의 집’이라는 표현은 그 질서가 차갑지 않고 가족적임을 함축한다.</div></details></li>
+<li><div class="disc-q">‘공간 호흡’ 개념은 우주를 정적인 배경이 아니라 살아 움직이는 실재로 보게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">모든 공간이 약 20억 년 주기로 팽창·수축한다는 관념은, 공간을 텅 빈 배경이 아니라 리듬을 지닌 살아 있는 실재로 보게 한다. 우주는 정지한 무대가 아니라 호흡하는 유기적 전체다.</div></details></li>
+<li><div class="disc-q">파라다이스가 필요한 공간의 백만 배를 갖추고 있다는 진술은 창조의 규모와 목적에 대해 무엇을 말하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">파라다이스가 필요의 백만 배 공간을 갖추었다는 것은, 창조가 이미 완결된 것이 아니라 아직 상승을 시작하지 않은 존재들까지 품도록 열려 있음을 뜻한다. 넉넉함 자체가 끝없는 상승자들의 미래라는 창조의 목적을 증언한다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse2"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">11:2.2</span><span class="vtxt">파라다이스는 구형이 아니며, 남북 지름이 동서보다 6분의 1 더 긴 편평한 타원체이다.</span></li>
+<li><span class="vref">11:2.3</span><span class="vtxt">크기상의 이 차이와 북쪽 끝의 더 큰 힘-에너지 압력은 주우주에서 절대 방향을 설정하게 해 준다.</span></li>
+<li><span class="vref">11:2.4</span><span class="vtxt">중앙 섬은 지리적으로 상부·주변·하부의 세 활동 영역으로 나뉜다.</span></li>
+<li><span class="vref">11:2.8</span><span class="vtxt">상부는 인격적 활동, 하부는 비인격적 평면을 지배하며, 주변은 그 중간 기능을 맡는다.</span></li>
+<li><span class="vref">11:2.11</span><span class="vtxt">공간은 하부 파라다이스 아래에서, 시간은 상부 파라다이스 위에서 기원하는 듯 보인다.</span></li>
+<li><span class="vref">11:3.1</span><span class="vtxt">상부 파라다이스에는 신 현존 지역, 지성소, 거룩한 지대라는 세 활동 구체가 있다.</span></li>
+<li><span class="vref">11:3.3</span><span class="vtxt">거룩한 지대의 일곱 동심 지대는 흔히 ‘아버지의 파라다이스 맨션들’이라 불린다.</span></li>
+<li><span class="vref">11:4.1</span><span class="vtxt">주변부 표면은 여러 영 인격들이 착륙·출발하는 착발장으로 이용된다.</span></li>
+<li><span class="vref">11:4.3</span><span class="vtxt">주변부는 창조자 아들들에게 배정된 거대한 역사적·예언적 전시 지역으로 구성된다.</span></li>
+<li><span class="vref">11:5.1</span><span class="vtxt">하부 파라다이스에는 인격이 거주하지 않으며, 모든 물리적 에너지와 힘 회로가 여기서 기원한다.</span></li>
+<li><span class="vref">11:6.1</span><span class="vtxt">모든 공간은 교대로 수축하고 팽창하며, 이를 ‘공간 호흡’이라 부른다.</span></li>
+<li><span class="vref">11:6.4</span><span class="vtxt">공간 호흡의 각 국면은 약 10억 년이며, 한 주기를 마치는 데 약 20억 년이 걸린다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz2"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 파라다이스의 형태로 옳은 것은?</p><ol class="mcq-opts"><li class="">완전한 구형</li>
+<li class="correct">남북이 동서보다 1/6 긴 편평한 타원체</li>
+<li class="">정육면체</li>
+<li class="">무한 평면</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 남북이 동서보다 1/6 긴 편평한 타원체</span></details></div><div class="mcq-item"><p class="mcq-q">2. 인격적 활동이 이루어지는 파라다이스의 표면은?</p><ol class="mcq-opts"><li class="">하부</li>
+<li class="">주변</li>
+<li class="correct">상부</li>
+<li class="">중심핵</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 상부</span></details></div><div class="mcq-item"><p class="mcq-q">3. 모든 물리적 에너지와 힘 회로가 기원하는 구역은?</p><ol class="mcq-opts"><li class="">상부</li>
+<li class="">주변</li>
+<li class="correct">하부</li>
+<li class="">지성소</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 하부</span></details></div><div class="mcq-item"><p class="mcq-q">4. ‘아버지의 맨션들’로 불리는 일곱 지대가 있는 곳은?</p><ol class="mcq-opts"><li class="">하부 파라다이스</li>
+<li class="correct">상부 파라다이스의 거룩한 지대</li>
+<li class="">하보나 일곱째 회로</li>
+<li class="">주변 파라다이스</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 상부 파라다이스의 거룩한 지대</span></details></div><div class="mcq-item"><p class="mcq-q">5. 공간 호흡 한 주기(팽창+수축)에 걸리는 시간은 대략?</p><ol class="mcq-opts"><li class="">10억 년</li>
+<li class="correct">20억 년</li>
+<li class="">100만 년</li>
+<li class="">영원</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 20억 년</span></details></div><div class="mcq-item"><p class="mcq-q">6. 시간·공간의 기원에 대한 문헌의 서술 태도는?</p><ol class="mcq-opts"><li class="">단정적 확언</li>
+<li class="correct">신중한 관찰적 표현(‘~듯 보인다’)</li>
+<li class="">완전한 침묵</li>
+<li class="">비유적 부정</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 신중한 관찰적 표현(‘~듯 보인다’)</span></details></div></div>
+</section>
+
+<section class="topic" id="t3">
+  <div class="thead">
+    <span class="tnum">3</span>
+    <div class="tmeta">
+      <div class="ttag">주제 3 · 절대소·중력</div>
+      <h2>절대소(絶對素)와 절대적 중심으로서의 기능</h2>
+      <div class="tpapers">제11편 2·8·9장</div>
+    </div>
+  </div>
+  <p class="summary">파라다이스를 이루는 물질은 우주 어디에서도 발견되지 않는 단 하나의 근원 물질, 곧 ‘절대소(absolutum)’다. 이 물질은 죽은 것도 살아 있는 것도 아니며, 첫째 근원 중심의 최초의 비영적 표현으로서 복제될 수 없는 유일무이한 실재다. 파라다이스는 시간 없이 존재하고 공간에 위치하지 않는다. 이 부동의 물질적 중심이 있기에 중력이 작동한다. 문헌은 중력을 ‘파라다이스의 물리적 현존이 발휘하는 전능한 붙들음’으로 정의한다. 창조계 끝에서부터 뻗어 온 모든 인력선이 이 중심에 수렴하므로 무수한 우주들은 흩어지지 않고 질서 잡힌 회로 안에서 운행한다. 나아가 아버지는 실체를 인격적인 것(영원 아들)과 비인격적인 것(파라다이스)으로 투사했으며, 파라다이스는 모든 원형의 절대적 저장고인 반면 하보나는 그 잠재성이 실제로 전시된 무대다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more3')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc3')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse3')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz3')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more3"><h3>더 알아보기</h3><p>절대소의 성격은 역설적으로 규정된다. 그것은 실체의 고정된 체계이자 단일한 물질화 형태로, 살아 있지도 죽어 있지도 않고, 시간 없이 존재하며 공간에 위치하지 않는다. 이 진술들은 파라다이스가 우리가 아는 물질과 시공간의 범주로는 온전히 포착되지 않는 차원의 실재임을 가리킨다. 문헌은 절대적 인력이 곧 파라다이스 인력이며, 에너지의 전기적 단계에 속하는 지역적·직선적 인력과 구별된다고 말한다. 또한 대우주에는 네 개의 절대 인력 회로—아버지의 인격 인력, 아들의 영 인력, 공동 행위자의 마음 인력, 파라다이스 섬의 우주 인력—가 작동한다. 물질이 파라다이스 인력에 반응하는 단계도 전(前)인력(힘·분리소), 인력(에너지·궁극소), 후(後)인력(동력·삼력소/인력소)으로 구분된다. 한편 문헌은 파라다이스가 ‘신이 아니다’라고 분명히 밝혀, 비인격적 실재를 신격과 혼동하지 말라고 경계한다. 이 모든 것의 결론은 하나다. 파라다이스는 모든 창조의 중심, 모든 에너지의 근원, 그리고 모든 인격의 기원지이며, 그 완전한 안정은 관성이 아니라 최고도 신성이 이룬 균형이라는 것이다.</p></div>
+  <div class="panel disc" id="disc3"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">‘절대소’가 죽은 것도 살아 있는 것도 아니라는 역설적 규정은 무엇을 의미하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">살아 있지도 죽어 있지도 않다는 규정은, 절대소가 생물/무생물의 이분법으로 포착되지 않는 고유한 차원임을 뜻한다. 그것은 첫째 근원 중심의 최초의 비영적 표현으로, 우리가 아는 물질 범주를 넘어선다.</div></details></li>
+<li><div class="disc-q">중력을 ‘파라다이스의 물리적 현존이 발휘하는 붙들음’으로 정의하는 것은 중력에 대한 통상적 이해와 어떻게 다른가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">중력을 ‘파라다이스의 물리적 현존이 발휘하는 붙들음’으로 정의하는 것은, 중력을 추상적 힘의 법칙이 아니라 실재하는 중심의 능동적 작용으로 본다는 뜻이다. 우주 어디서나 관찰되는 중력이 궁극적으로 한 중심에 뿌리를 둔다.</div></details></li>
+<li><div class="disc-q">파라다이스가 ‘원형들의 절대’이고 하보나가 그 ‘전시’라는 구분은 뒤에 이어질 하보나 논의에 어떤 다리를 놓는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">파라다이스가 모든 원형의 절대적 저장고이고 하보나가 그 잠재성의 실제 전시라면, 뒤이을 하보나 논의는 ‘완전의 청사진이 어떻게 구현되는가’를 다루게 된다. 이 구분이 파라다이스에서 하보나로 넘어가는 논리적 다리다.</div></details></li>
+<li><div class="disc-q">아버지가 실체를 인격적인 것과 비인격적인 것으로 투사했다는 진술은 영원 아들과 파라다이스의 관계를 어떻게 설명하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">아버지가 인격적 자아를 영원 아들로, 비인격적 자아를 파라다이스로 투사했다는 것은, 파라다이스가 아버지 의지의 필연적 반향임을 뜻한다. 영원 아들이 아버지의 인격적 표현이라면, 파라다이스는 그분의 비인격적 표현이다.</div></details></li>
+<li><div class="disc-q">파라다이스가 ‘신이 아니다’라는 진술(11:9.4)은 무엇을 경계하려는 것인가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">이 진술은 비인격적 실재(에너지·물질의 반향)를 신격과 혼동하지 말라는 경계다. 신은 신이 아닌 많은 것을 야기할 수 있으며, 파라다이스는 그중 하나다. 물질을 신으로 떠받드는 오해를 막는 신학적 안전장치다.</div></details></li>
+<li><div class="disc-q">‘완전한 안정은 관성이 아니라 신성의 균형’이라는 관점은 우주의 질서를 어떻게 새롭게 이해하게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">완전한 안정이 관성(움직이지 않음)이 아니라 최고도 신성이 이룬 균형이라면, 질서는 정지가 아니라 조화의 산물이다. 이는 우주의 안정을 죽은 고정이 아니라 살아 있는 균형으로 이해하게 한다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse3"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">11:2.9</span><span class="vtxt">네바돈의 멜기세덱들은 파라다이스의 근원 물질을 오래 전부터 ‘절대소(absolutum)’라 불러왔다.</span></li>
+<li><span class="vref">11:2.9</span><span class="vtxt">이 파라다이스 근원 물질은 죽은 것도 살아 있는 것도 아니며, 파라다이스는 복제될 수 없다.</span></li>
+<li><span class="vref">11:2.10</span><span class="vtxt">파라다이스는 시간 없이 존재하며, 공간에 위치하지 않는다.</span></li>
+<li><span class="vref">11:8.1</span><span class="vtxt">인력은 파라다이스의 물리적 현존이 발휘하는 전능한 붙들음이다.</span></li>
+<li><span class="vref">11:8.2</span><span class="vtxt">절대적 물질 인력의 중심이자 초점은 파라다이스 섬이다.</span></li>
+<li><span class="vref">11:8.3</span><span class="vtxt">절대 인력은 파라다이스 인력이며, 지역적·직선적 인력과 구별된다.</span></li>
+<li><span class="vref">11:8.5</span><span class="vtxt">전(前)인력 단계는 순수 에너지, 곧 ‘분리소(segregata)’라 불린다.</span></li>
+<li><span class="vref">11:8.6</span><span class="vtxt">파라다이스 인력에 반응하는 인력 단계의 에너지를 ‘궁극소(ultimata)’라 부른다.</span></li>
+<li><span class="vref">11:9.4</span><span class="vtxt">신의 행위에서 비롯된 에너지와 물질의 반향은 신이라 불리기 어렵다—파라다이스는 신이 아니다.</span></li>
+<li><span class="vref">11:9.5</span><span class="vtxt">파라다이스는 원형들의 절대이며, 하보나는 이러한 잠재성들이 실제로 전시된 것이다.</span></li>
+<li><span class="vref">12:3.5</span><span class="vtxt">대우주의 네 절대 인력 회로 중 하나는 파라다이스 섬의 우주 인력이다.</span></li>
+<li><span class="vref">12:8.2</span><span class="vtxt">모든 원초적 힘-에너지는 파라다이스에서 나오며, 우주 인력의 영역은 파라다이스 섬의 기능이다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz3"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 파라다이스를 이루는 근원 물질의 이름은?</p><ol class="mcq-opts"><li class="">궁극소</li>
+<li class="correct">절대소(absolutum)</li>
+<li class="">삼력소</li>
+<li class="">분리소</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 절대소(absolutum)</span></details></div><div class="mcq-item"><p class="mcq-q">2. 문헌은 중력을 무엇의 ‘붙들음’이라 정의하는가?</p><ol class="mcq-opts"><li class="">무제한 절대</li>
+<li class="correct">파라다이스의 물리적 현존</li>
+<li class="">영원 아들</li>
+<li class="">초우주 정부</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 파라다이스의 물리적 현존</span></details></div><div class="mcq-item"><p class="mcq-q">3. 파라다이스와 하보나의 관계를 바르게 짝지은 것은?</p><ol class="mcq-opts"><li class="correct">원형의 절대 – 잠재성의 전시</li>
+<li class="">결과 – 원인</li>
+<li class="">상징 – 실재</li>
+<li class="">진화 – 완전</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 1번 — 원형의 절대 – 잠재성의 전시</span></details></div><div class="mcq-item"><p class="mcq-q">4. 대우주의 네 절대 인력 회로가 아닌 것은?</p><ol class="mcq-opts"><li class="">인격 인력</li>
+<li class="">영 인력</li>
+<li class="">마음 인력</li>
+<li class="correct">열(熱) 인력</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 4번 — 열(熱) 인력</span></details></div><div class="mcq-item"><p class="mcq-q">5. 파라다이스에 대한 진술로 옳은 것은?</p><ol class="mcq-opts"><li class="">신 그 자체다</li>
+<li class="">시간 안에서 창조되었다</li>
+<li class="correct">시간 없이 존재하며 공간에 위치하지 않는다</li>
+<li class="">하보나의 일부다</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 시간 없이 존재하며 공간에 위치하지 않는다</span></details></div><div class="mcq-item"><p class="mcq-q">6. 파라다이스가 파라다이스 인력에 반응하는 첫 단계(전인력)의 이름은?</p><ol class="mcq-opts"><li class="">궁극소</li>
+<li class="correct">분리소(segregata)</li>
+<li class="">인력소</li>
+<li class="">삼력소</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 분리소(segregata)</span></details></div></div>
+</section>
+
+<section class="topic" id="t4">
+  <div class="thead">
+    <span class="tnum">4</span>
+    <div class="tmeta">
+      <div class="ttag">주제 4 · 하보나</div>
+      <h2>중앙 우주 하보나 — 10억 구체와 일곱 회로</h2>
+      <div class="tpapers">제12편 1장·제13편·제14편 0–4장</div>
+    </div>
+  </div>
+  <p class="summary">시선을 파라다이스에서 그것을 둘러싼 중앙 우주로 넓히면 하보나가 나타난다. 하보나는 시간의 창조가 아니라 영원한 실존이며, 시작도 끝도 없이 숭고하게 완전한 10억 개의 구체로 이루어진다. 이것은 전체적으로 창조된 완전한 우주이지 진화의 산물이 아니다. 파라다이스와 하보나 사이에는 아버지·아들·영의 세 회로에 각각 일곱씩, 모두 스물한 개의 신성한 위성이 자리해 중심의 빛을 매개한다. 하보나의 10억 세계는 일곱 동심 회로에 배열되며, 가장 안쪽 회로에 3천5백만 개 이상, 가장 바깥에 2억4천5백만 개 이상이 정연한 비례로 놓인다. 각 구체는 획일적 복제가 아니라 어느 둘도 같지 않은 개별적 완전으로 창조되었다. 완벽하기에 이 우주에는 정부가 없다—규제 없는 질서, 곧 참된 자치의 이상이 여기서 절정에 이른다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more4')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc4')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse4')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz4')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more4"><h3>더 알아보기</h3><p>하보나의 물리적 실체는 진화 우주와 근본적으로 다른 에너지 등급을 나타내며, 정확히 1천 개의 기본 화학 원소와 일곱 형태의 하보나 에너지의 균형으로 이루어진다. 쇠퇴와 죽음은 이곳 생명 주기의 일부가 아니다. 하보나 원주민들은 파라다이스 삼위일체의 소생(所生)으로 창조체 부모가 없으며 번식하지 않는다. 이들에게는 진화 창조체와 결정적으로 다른 점이 있다. 필사자는 하나님의 뜻을 ‘행하려’ 애써야 하지만, 하보나 주민은 그 본성 안에서 이미 ‘하나님의 뜻 자체’다. 파라다이스를 도는 스물한 위성도 저마다 뚜렷한 기능을 지닌다. 아버지의 일곱 비밀 구체(디비닝턴·소나링턴·스피리팅턴 등)는 중심의 신성한 광휘를 반사하고, 영원 아들의 일곱 빛나는 세계는 영적 광명의 기원이며, 무한 영의 일곱 거대한 구체는 일곱 주(主) 영의 집행 본부다. 하보나의 완전은 획일적 복제가 아니라 개별적 완전이며, 그 통치는 강제 없는 조화로 나타난다. 요컨대 하보나는 진화하지 않는, 진화 우주들의 부동한 준거점이자 목표다.</p></div>
+  <div class="panel disc" id="disc4"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">‘영원의 창조’인 하보나와 ‘시간의 창조’인 초우주의 대비는 존재 방식의 어떤 근본적 차이를 드러내는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하보나는 처음부터 완전하게 창조된 반면, 초우주는 불완전에서 완전을 향해 진화한다. 이는 두 존재 방식의 근본적 차이—이미 있는 완전과 되어 가는 완전—를 드러낸다. 완전한 중심이 먼저 있고, 그 둘레에서 시간의 우주가 진화한다.</div></details></li>
+<li><div class="disc-q">10억 구체가 ‘어느 둘도 같지 않다’는 개별성은 하보나의 완전을 획일적 완전과 어떻게 구별하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">10억 구체가 어느 둘도 같지 않다는 것은, 하보나의 완전이 획일적 복제가 아니라 저마다 고유한 완전임을 뜻한다. 완전은 단조로운 동일함이 아니라, 무한한 다양성 속의 조화다.</div></details></li>
+<li><div class="disc-q">‘너무 완벽하여 정부가 필요 없다’는 진술이 말하는 ‘참된 자치’란 무엇인가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">정부가 필요 없는 것은 무법이 아니라, 규제가 필요 없을 만큼 완전한 질서다. 주민들이 본래적 완전을 지녔기에 강제 없이도 조화가 성립한다. 이것이 ‘규제 없는 질서’, 곧 참된 자치의 절정이다.</div></details></li>
+<li><div class="disc-q">하보나 주민이 ‘본성 안에서 이미 하나님의 뜻 자체’인 것과, 필사자가 뜻을 ‘행하려 애쓰는’ 것의 차이는 우열의 문제인가, 존재 방식의 차이인가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하보나 주민에게 선은 본성적으로 주어진 상태이고, 필사자에게 선은 노력과 선택으로 도달할 목표다. 이는 우열이 아니라 존재 방식의 차이다. 오히려 문헌은 애써 도달하는 진화의 길에 고유한 가치가 있다고 본다.</div></details></li>
+<li><div class="disc-q">스물한 개의 파라다이스 위성이 ‘중간 영역’으로 기능한다는 것은 중심의 신성과 바깥 창조 사이의 관계를 어떻게 매개하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">세 회로의 위성들은 중심의 순수한 신성과 바깥 창조 사이의 ‘중간 영역’으로, 신성의 빛을 반사·매개한다. 절대적 중심과 창조계가 직접 맞닿지 않고, 이 위성들을 통해 단계적으로 연결된다.</div></details></li>
+<li><div class="disc-q">완전한 중심이 먼저 있고 그 둘레에서 시간의 우주가 진화한다는 구도는 ‘완전’과 ‘진화’의 관계를 어떻게 재정의하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">완전한 중심이 먼저 있고 시간의 우주가 그것을 향해 진화한다는 구도는, 진화를 결핍이 아니라 이미 존재하는 완전을 향한 여정으로 재정의한다. 완전은 진화의 반대가 아니라 그 목표이자 원형이다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse4"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">12:1.10</span><span class="vtxt">중앙 우주 하보나는 시간의 창조가 아니며, 시작도 끝도 없는 영원한 실존이다.</span></li>
+<li><span class="vref">12:1.16</span><span class="vtxt">중앙 우주는 영원의 창조이며, 일곱 초우주는 시간의 창조이다.</span></li>
+<li><span class="vref">13:0.1</span><span class="vtxt">파라다이스와 하보나 사이에는 세 개의 더 작은 특별한 구체 회로가 자리 잡고 있다.</span></li>
+<li><span class="vref">13:0.3</span><span class="vtxt">아버지의 일곱 비밀 구체는 중심의 신성한 광휘를 파라다이스와 하보나 회로에까지 뿌린다.</span></li>
+<li><span class="vref">13:0.4</span><span class="vtxt">영원 아들의 일곱 신성한 세계에서는 영적 광명의 비인격적 에너지들이 기원한다.</span></li>
+<li><span class="vref">13:0.5</span><span class="vtxt">무한 영의 일곱 세계는 일곱 초우주의 운명을 주관하는 일곱 주(主) 영이 차지한다.</span></li>
+<li><span class="vref">14:0.1</span><span class="vtxt">완전하고도 신성한 우주가 온 창조계의 중심을 차지하고 있다.</span></li>
+<li><span class="vref">14:0.2</span><span class="vtxt">이것은 전체적으로 창조된 완전한 우주이지, 진화적 산물이 아니다.</span></li>
+<li><span class="vref">14:1.9</span><span class="vtxt">하보나의 10억 세계는 일곱 동심 회로에 배열되며, 가장 안쪽에 3천5백만, 바깥에 2억4천5백만 이상이 있다.</span></li>
+<li><span class="vref">14:2.9</span><span class="vtxt">하보나는 영적으로 완전하고 물리적으로 안정된 우주이다.</span></li>
+<li><span class="vref">14:3.1</span><span class="vtxt">중앙 우주에는 정부가 없다—하보나는 너무 완벽하여 지적인 정부 체계를 요구하지 않는다.</span></li>
+<li><span class="vref">14:4.13</span><span class="vtxt">하보나 존재들은 그 본성 안에서 이미 하나님의 뜻 자체이다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz4"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 하보나를 이루는 구체의 수는?</p><ol class="mcq-opts"><li class="">100만</li>
+<li class="">일곱</li>
+<li class="correct">10억</li>
+<li class="">7조</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 10억</span></details></div><div class="mcq-item"><p class="mcq-q">2. 하보나는 어떤 창조인가?</p><ol class="mcq-opts"><li class="">시간의 진화적 창조</li>
+<li class="correct">영원한, 창조된 완전</li>
+<li class="">미완의 실험</li>
+<li class="">필사자의 산물</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 영원한, 창조된 완전</span></details></div><div class="mcq-item"><p class="mcq-q">3. 파라다이스를 도는 신성한 위성의 총수는?</p><ol class="mcq-opts"><li class="">7</li>
+<li class="">14</li>
+<li class="correct">21</li>
+<li class="">10억</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 21</span></details></div><div class="mcq-item"><p class="mcq-q">4. 하보나에 정부가 없는 이유는?</p><ol class="mcq-opts"><li class="">통치자가 아직 없어서</li>
+<li class="correct">너무 완벽하여 규제가 필요 없어서</li>
+<li class="">주민이 없어서</li>
+<li class="">삼위일체가 금지해서</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 너무 완벽하여 규제가 필요 없어서</span></details></div><div class="mcq-item"><p class="mcq-q">5. 하보나 주민과 진화 필사자의 근본적 차이는?</p><ol class="mcq-opts"><li class="">수명</li>
+<li class="correct">본성이 곧 하나님의 뜻인가, 뜻을 행하려 애쓰는가</li>
+<li class="">거주 회로</li>
+<li class="">언어</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 본성이 곧 하나님의 뜻인가, 뜻을 행하려 애쓰는가</span></details></div><div class="mcq-item"><p class="mcq-q">6. 하보나 물질을 이루는 기본 화학 원소의 수는?</p><ol class="mcq-opts"><li class="">92</li>
+<li class="">100</li>
+<li class="correct">1,000</li>
+<li class="">무한</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 3번 — 1,000</span></details></div></div>
+</section>
+
+<section class="topic" id="t5">
+  <div class="thead">
+    <span class="tnum">5</span>
+    <div class="tmeta">
+      <div class="ttag">주제 5 · 상승 순례</div>
+      <h2>일곱 회로를 통과하는 상승 순례</h2>
+      <div class="tpapers">제14편 5장</div>
+    </div>
+  </div>
+  <p class="summary">진화 세계에서 출발해 초우주의 훈련을 마친 상승자는 하보나의 가장 바깥, 곧 일곱째 회로의 수용 세계에 상륙한다. 거기서부터 그는 안쪽으로, 행성마다 회로마다 점진적으로 전진하며, 마침내 신들을 달성하고 파라다이스 거주를 성취한다. 각 회로에는 성취해야 할 명확한 과업이 있어, 순례자는 초우주 주 영을 파악하고 최상위를 실현하며 무한 영·영원 아들·우주 아버지를 차례로 인식해 간다. 하보나의 첫째 회로에 도착한다는 것은 곧 파라다이스 봉사에 수용됨을 의미한다. 흥미롭게도 인간의 내면적 성장을 가리키는 ‘진보의 원(circle)들’이라는 표현 자체가 바로 이 하보나의 회로 배치에서 유래했다. 중앙 우주에서의 삶은 너무나 풍요롭고 충만하여, 모험의 활력과 호기심의 자극이 생애 끝까지 이어진다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more5')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc5')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse5')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz5')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more5"><h3>더 알아보기</h3><p>상승은 바깥에서 안으로, 한 회로씩 이루어진다. 지성적 존재가 처음 중앙 우주에 도달하면 일곱째 하보나 회로의 안내 세계에서 영접을 받아 거주하게 되고, 배정된 회로의 세계들을 자유롭게 방문하도록 허락받는다. 문헌은 이 여정을 ‘신들을 달성하고 파라다이스 거주를 성취할 때까지 회로마다 점진적으로 전진한다’고 서술한다. 각 회로는 하나의 성취 과제를 담고 있으며, 순례자는 안쪽으로 나아가며 신격들을 차례로 인식해 간다. 주목할 점은 이 여정을 이끄는 힘이 두려움이 아니라 호기심이라는 것이다. 문헌은 조사의 정신·발견의 충동·탐험의 추진력인 호기심을, 진화하는 공간 창조체에게 주어진 ‘타고난 신성한 천부 능력’이라 부른다. 단조로움은 오히려 창조적 상상력의 미숙함을 뜻하며, 하보나의 무한한 다양성 앞에서 상승자는 결코 지루해질 수 없다. 인간 마음의 ‘진보의 원’이라는 개념이 이 회로 배치에서 나왔다는 사실은, 우리의 내적 성장이 이미 중앙 우주의 구조를 반영하고 있음을 시사한다. 지상에서의 짧은 삶은 그 거대한 여정의 서곡인 셈이다.</p></div>
+  <div class="panel disc" id="disc5"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">상승이 ‘바깥에서 안으로’ 이루어진다는 방향성은 영적 성장에 대해 어떤 은유를 제공하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">바깥에서 안으로의 상승은, 영적 성장이 중심(하나님)을 향해 점점 가까워지는 구심적 여정임을 은유한다. 성장은 흩어짐이 아니라 수렴이며, 매 단계가 중심에 한 걸음 더 다가서는 일이다.</div></details></li>
+<li><div class="disc-q">호기심을 ‘타고난 신성한 천부 능력’이라 부르는 것은 인간의 탐구심을 어떻게 재평가하게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">호기심을 신성한 천부 능력이라 부르는 것은, 인간의 탐구심을 죄나 산만함이 아니라 하나님이 심으신 상승의 추진력으로 긍정한다. 조사·발견·탐험의 충동은 창조체를 앞으로 나아가게 하는 거룩한 본능이다.</div></details></li>
+<li><div class="disc-q">‘단조로움은 창조적 상상력의 미숙함’이라는 진술은 권태에 대한 통상적 이해를 어떻게 뒤집는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">단조로움을 창조적 상상력의 미숙함으로 보는 것은, 권태를 외부 환경 탓이 아니라 내면의 상상력 부족으로 돌린다. 무한한 다양성 앞에서 지루함은 세계의 결핍이 아니라 보는 눈의 미성숙이다.</div></details></li>
+<li><div class="disc-q">하보나의 ‘진보의 원’과 인간 마음의 ‘진보의 원’이 같은 뿌리를 가진다는 것은 무엇을 시사하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">인간 마음의 ‘진보의 원’이 하보나 회로 배치에서 유래했다는 것은, 우리의 내적 성장 구조가 이미 중앙 우주의 질서를 반영하고 있음을 시사한다. 소우주(마음)와 대우주(하보나)가 같은 상승의 문법을 공유한다.</div></details></li>
+<li><div class="disc-q">각 회로마다 신격을 차례로 인식해 간다는 상승 구조는 하나님을 아는 일이 단번이 아니라 점진적임을 어떻게 보여 주는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">각 회로마다 신격을 차례로 인식해 간다는 구조는, 하나님을 아는 일이 단번의 사건이 아니라 오랜 세월에 걸쳐 이어지는 점진적 과정임을 보여 준다. 계시는 한꺼번이 아니라 단계적으로 열린다.</div></details></li>
+<li><div class="disc-q">첫째 회로 도착이 곧 ‘파라다이스 봉사에의 수용’이라면, 도달은 끝인가 아니면 새로운 시작인가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">첫째 회로 도착이 곧 파라다이스 봉사에의 수용이라면, 도달은 여정의 끝이 아니라 더 높은 봉사의 시작이다. 완성은 정지가 아니라 새로운 지평으로의 진입이다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse5"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">14:3.4</span><span class="vtxt">10억 구체는 파라다이스·하보나 토착 인격들과 시간의 상승자들의 훈련 세계를 구성한다.</span></li>
+<li><span class="vref">14:4.15</span><span class="vtxt">하보나 원주민의 진보에는 첫째에서 일곱째 회로까지 바깥으로의 체험적 진보가 있다.</span></li>
+<li><span class="vref">14:4.16</span><span class="vtxt">또한 일곱째에서 첫째 회로까지 안으로의 진보가 있다.</span></li>
+<li><span class="vref">14:5.1</span><span class="vtxt">유란시아에서 너희는 물질적 실존의 초기 삶 동안 짧고 강렬한 시험을 통과한다.</span></li>
+<li><span class="vref">14:5.4</span><span class="vtxt">지성적 존재가 처음 도달하면 일곱째 회로의 안내 세계에서 영접받아 거주하게 된다.</span></li>
+<li><span class="vref">14:5.5</span><span class="vtxt">상승 순례자는 배정된 회로의 세계들 사이를 자유롭게 방문하도록 허락받는다.</span></li>
+<li><span class="vref">14:5.6</span><span class="vtxt">이 광대한 중앙 창조에는 신선한 독창성이 있다—어느 둘도 같지 않다.</span></li>
+<li><span class="vref">14:5.7</span><span class="vtxt">하보나 회로의 마지막을 가로지를 때까지 모험의 활력과 호기심의 자극이 생애에 이어진다.</span></li>
+<li><span class="vref">14:5.8</span><span class="vtxt">단조로움은 창조적 상상력의 미숙함과 영적 조정의 부진을 나타낸다.</span></li>
+<li><span class="vref">14:5.10</span><span class="vtxt">모험에 대한 사랑·호기심·단조로움에 대한 두려움은 진화 인간 본성에 내재한다.</span></li>
+<li><span class="vref">14:5.11</span><span class="vtxt">호기심—조사·발견·탐험의 추진력—은 진화 창조체의 타고난 신성한 천부 능력이다.</span></li>
+<li><span class="vref">14:6.37</span><span class="vtxt">하보나는 모든 필사자 유형의 원형 인격의 고향이다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz5"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 상승 순례자가 하보나에 처음 상륙하는 회로는?</p><ol class="mcq-opts"><li class="">첫째 회로</li>
+<li class="correct">일곱째(가장 바깥) 회로</li>
+<li class="">파라다이스</li>
+<li class="">넷째 회로</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 일곱째(가장 바깥) 회로</span></details></div><div class="mcq-item"><p class="mcq-q">2. 하보나 상승의 방향은?</p><ol class="mcq-opts"><li class="">안에서 바깥으로</li>
+<li class="correct">바깥에서 안으로</li>
+<li class="">무작위</li>
+<li class="">위에서 아래로</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 바깥에서 안으로</span></details></div><div class="mcq-item"><p class="mcq-q">3. 하보나 첫째 회로 도착이 의미하는 것은?</p><ol class="mcq-opts"><li class="">여정의 실패</li>
+<li class="correct">파라다이스 봉사에의 수용</li>
+<li class="">초우주로의 귀환</li>
+<li class="">영원한 휴식</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 파라다이스 봉사에의 수용</span></details></div><div class="mcq-item"><p class="mcq-q">4. 문헌이 ‘타고난 신성한 천부 능력’이라 부르는 것은?</p><ol class="mcq-opts"><li class="">두려움</li>
+<li class="correct">호기심(탐험의 추진력)</li>
+<li class="">경쟁심</li>
+<li class="">소유욕</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 호기심(탐험의 추진력)</span></details></div><div class="mcq-item"><p class="mcq-q">5. 인간 마음의 ‘진보의 원(circle)들’ 개념의 유래는?</p><ol class="mcq-opts"><li class="">초우주 정부</li>
+<li class="correct">하보나의 회로 배치</li>
+<li class="">지역 우주</li>
+<li class="">맨션 세계</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 하보나의 회로 배치</span></details></div><div class="mcq-item"><p class="mcq-q">6. 하보나에서 ‘단조로움’이 뜻하는 바는?</p><ol class="mcq-opts"><li class="">완전의 표지</li>
+<li class="correct">창조적 상상력의 미숙함</li>
+<li class="">높은 영성</li>
+<li class="">휴식의 상태</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 창조적 상상력의 미숙함</span></details></div></div>
+</section>
+
+<section class="topic" id="t6">
+  <div class="thead">
+    <span class="tnum">6</span>
+    <div class="tmeta">
+      <div class="ttag">주제 6 · 목적과 삼위일체</div>
+      <h2>원형이자 훈련장으로서의 하보나</h2>
+      <div class="tpapers">제14편 6장·제12편 6–7장</div>
+    </div>
+  </div>
+  <p class="summary">하보나는 왜 존재하는가? 문헌은 이 완벽한 창조가 여러 계급의 우주 지성 각각에게 서로 다른 방식으로 봉사한다고 설명한다. 삼위일체에게는 세 신격의 협력적 효과성을 보여 주는 영원한 증거가 되고, 창조자 아들들에게는 그들의 후속적 우주 창조 모험을 준비하는 교육 훈련장이자 지향할 완전의 원형이 되며, 진화하는 최상 존재에게는 미래 완전성의 예시가 된다. 각 창조자 아들은 자신의 지역 우주가 결국 이 파라다이스–하보나 수준의 완전에 도달하도록 노력한다. 여기서 원형과 복제의 구도가 다시 확인된다—하보나는 완전의 청사진이고, 시간의 우주들은 그 청사진을 시공간 속에서 재현하려는 노력이다. 그리고 이 모든 것을 관통하는 신학적 원리를 문헌은 이렇게 요약한다. ‘안정성은 전적으로 그리고 항상 신성에 비례한다.’</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more6')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc6')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse6')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz6')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more6"><h3>더 알아보기</h3><p>제14편 6장은 하보나가 봉사하는 대상을 일곱으로 나누어 서술한다. 우주 아버지에게 하보나는 최상의 부모로서의 만족을, 영원 아들에게는 신성한 가족의 협력 효과성에 대한 최초이자 영원한 실증을, 무한 영에게는 자비의 봉사자로서 활동할 무대를 제공한다. 진화하는 최상 존재에게 하보나는 그 미래 완전성의 완성된 묘사가 되고, 창조자 아들에게는 훈련장이자 원형이, 봉사하는 딸 영들에게는 마음 원형의 저장고가 된다. 마지막으로 상승하는 진화 필사자에게 하보나는 가장 높은 실체 수준에서 참된 영 가치를 달성하려는 모든 인간적 충동을 자극한다. 이 다층적 목적을 관통하는 원리를 문헌은 이렇게 요약한다. 우주는 정적이 아니며, 안정성은 균형 잡힌 에너지·협력하는 마음·영의 상위 통제·인격 통합의 산물이고, ‘전적으로 그리고 항상 신성에 비례한다.’ 곧 하보나가 완벽하게 안정된 이유는 움직이지 않아서가 아니라 최고도로 신성하기 때문이다. 완전한 안정과 완전한 신성은 같은 실재의 두 측면이다. 또한 하나님의 태도는 개인을 향한 ‘자비’와 전체를 향한 ‘공정성’으로 나타난다.</p></div>
+  <div class="panel disc" id="disc6"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">하보나가 서로 다른 계급의 존재들에게 각기 다른 방식으로 봉사한다는 것은 ‘목적’의 다층성에 대해 무엇을 말하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하보나가 존재마다 다르게 봉사한다는 것은, 하나의 실재가 여러 층위의 목적을 동시에 담을 수 있음을 뜻한다. 삼위일체에겐 증거, 창조자 아들에겐 원형, 최상 존재에겐 예시, 상승자에겐 관문이다. 목적은 단일하지 않고 관계에 따라 달라진다.</div></details></li>
+<li><div class="disc-q">하보나가 창조자 아들의 ‘훈련장이자 원형’이라는 이중 기능은 무엇을 뜻하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하보나는 창조자 아들이 자신의 우주를 창조하기 전 준비되는 훈련장이자, 그가 완성해야 할 완전의 청사진이다. 배우는 곳이면서 동시에 지향점이다.</div></details></li>
+<li><div class="disc-q">‘완전의 청사진(하보나)’과 ‘그 재현 노력(시간의 우주)’이라는 구도는 우리 세계의 불완전을 어떻게 이해하게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하보나가 완전의 청사진이고 시간의 우주가 그 재현 노력이라면, 우리 세계의 불완전은 실패가 아니라 아직 완성 중인 과정이다. 불완전은 완전을 향해 나아가는 도상의 상태다.</div></details></li>
+<li><div class="disc-q">‘안정성은 언제나 신성에 비례한다’는 원리를 개인의 영적 삶에 적용하면 어떤 함의가 있는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">개인의 삶에 적용하면, 내면의 안정은 상황을 통제하는 데서가 아니라 신성—하나님의 뜻—과의 일치에서 온다. 흔들리지 않음은 관성이 아니라 신성에 정렬된 균형이다.</div></details></li>
+<li><div class="disc-q">개인을 향한 ‘자비’와 전체를 향한 ‘공정성’의 구분(12:7.1)은 하나님의 태도를 어떻게 이해하게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">개인을 향한 자비와 전체를 향한 공정성의 구분은, 하나님이 각 사람을 고유하게 사랑하시면서도 전체의 질서를 공평하게 지키심을 뜻한다. 사랑과 정의가 대립이 아니라 한 태도의 두 방향이다.</div></details></li>
+<li><div class="disc-q">완전한 안정과 완전한 신성이 ‘같은 실재의 두 측면’이라는 통찰은 안정을 관성으로 보는 통념과 어떻게 다른가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">완전한 안정과 완전한 신성이 같은 실재의 두 측면이라면, 안정은 움직이지 않아서가 아니라 최고도로 신성하기 때문에 성립한다. 이는 안정을 죽은 관성이 아니라 살아 있는 신성의 표현으로 보게 한다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse6"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">14:6.6</span><span class="vtxt">아버지 하나님은 중앙 창조의 완전성에서 최상의 부모로서의 만족을 얻는다.</span></li>
+<li><span class="vref">14:6.12</span><span class="vtxt">영원 아들에게 이 중앙 창조는 신성한 가족의 협력 효과성에 대한 실증이다.</span></li>
+<li><span class="vref">14:6.17</span><span class="vtxt">하보나는 무한 영에게 자신이 공동 행위자, 곧 통일된 아버지-아들의 대표임을 증명한다.</span></li>
+<li><span class="vref">14:6.23</span><span class="vtxt">하보나 창조는 최상 존재의 영적 실체에 대한 영원하고 완벽한 증거이다.</span></li>
+<li><span class="vref">14:6.27</span><span class="vtxt">하보나는 파라다이스 미가엘들이 후속 창조 모험을 위해 준비되는 교육 훈련장이며 모든 창조자 아들의 원형이다.</span></li>
+<li><span class="vref">14:6.29</span><span class="vtxt">창조자 아들들은 중앙 창조가 자신들의 지역 우주를 안정·통일하는 상위 통제의 근원임을 안다.</span></li>
+<li><span class="vref">14:6.32</span><span class="vtxt">봉사하는 딸 영들은 하보나 세계에서 자신들의 마음 원형을 발견한다.</span></li>
+<li><span class="vref">14:6.37</span><span class="vtxt">하보나는 상승 생애의 진화 필사자에게 원형 인격의 고향이 된다.</span></li>
+<li><span class="vref">12:6.1</span><span class="vtxt">안정성은 관성의 결과가 아니라, 전적으로 그리고 항상 신성에 비례한다.</span></li>
+<li><span class="vref">12:6.4</span><span class="vtxt">보편 현상을 숙고할 때는 물리·지성·영 에너지의 상호관계와 인격에 의한 통일을 고려해야 한다.</span></li>
+<li><span class="vref">12:7.1</span><span class="vtxt">시간과 공간 전체에 걸쳐 우주적 섭리에 상응하는 법칙이 기능한다.</span></li>
+<li><span class="vref">12:7.1</span><span class="vtxt">자비는 개인에 대한 하나님의 사랑을, 공정성은 전체에 대한 하나님의 태도를 특징짓는다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz6"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 하보나가 창조자 아들들에게 갖는 의미는?</p><ol class="mcq-opts"><li class="">유배지</li>
+<li class="correct">교육 훈련장이자 완전의 원형</li>
+<li class="">심판대</li>
+<li class="">임시 거처</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 교육 훈련장이자 완전의 원형</span></details></div><div class="mcq-item"><p class="mcq-q">2. ‘안정성은 ( )에 비례한다’—괄호에 알맞은 것은?</p><ol class="mcq-opts"><li class="">크기</li>
+<li class="correct">신성</li>
+<li class="">나이</li>
+<li class="">인구</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 신성</span></details></div><div class="mcq-item"><p class="mcq-q">3. 하보나가 삼위일체에게 주는 것은?</p><ol class="mcq-opts"><li class="">통치 권한</li>
+<li class="correct">세 신격의 협력적 효과성에 대한 영원한 증거</li>
+<li class="">심판 기준</li>
+<li class="">물질 자원</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 세 신격의 협력적 효과성에 대한 영원한 증거</span></details></div><div class="mcq-item"><p class="mcq-q">4. 개인을 향한 하나님의 사랑의 태도를 특징짓는 것은?</p><ol class="mcq-opts"><li class="">공정성</li>
+<li class="correct">자비</li>
+<li class="">관성</li>
+<li class="">중력</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 자비</span></details></div><div class="mcq-item"><p class="mcq-q">5. 진화하는 최상 존재에게 하보나는?</p><ol class="mcq-opts"><li class="">무의미하다</li>
+<li class="correct">미래 완전성의 완성된 묘사·예시</li>
+<li class="">경쟁 상대</li>
+<li class="">과거의 기록</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 미래 완전성의 완성된 묘사·예시</span></details></div><div class="mcq-item"><p class="mcq-q">6. 하보나가 완벽하게 안정된 근본 이유는?</p><ol class="mcq-opts"><li class="">움직이지 않아서</li>
+<li class="correct">최고도로 신성하기 때문에</li>
+<li class="">아무도 살지 않아서</li>
+<li class="">법이 엄격해서</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 최고도로 신성하기 때문에</span></details></div></div>
+</section>
+
+<section class="topic" id="t7">
+  <div class="thead">
+    <span class="tnum">7</span>
+    <div class="tmeta">
+      <div class="ttag">주제 7 · 최종 운명</div>
+      <h2>파라다이스 도달과 최종자의 전망</h2>
+      <div class="tpapers">제14편 6장·제11편 9장</div>
+    </div>
+  </div>
+  <p class="summary">논의의 마지막 국면은 파라다이스 도달이 상승하는 존재에게 지니는 의미다. 문헌은 하보나가 모든 의지 창조체 앞에 ‘파라다이스와 하나님 달성으로의 관문’으로 서 있다고 말한다. 파라다이스는 최종자들의 집이며, 하보나는 그들의 작업장이자 놀이터다. 하나님을 아는 모든 필사자는 이 최종자가 되기를 갈망한다. 여기서 강의의 원이 닫힌다. 우리는 파라다이스라는 창조의 부동한 중심에서 출발했는데, 그 중심은 단지 만물이 흘러나온 기원에 그치지 않고 진화하는 존재가 마침내 돌아갈 궁극의 목적지이기도 하다. 이 완전한 아버지의 거처가 시간과 공간의 상승 창조체들의 불멸하는 혼이 도달할 ‘실제적이고 아득히 먼 운명’이라는 진술은, 미천한 공간의 구체에서 시작된 여정이 최상위에 거의 맞닿는 영적 변환으로 완성됨을 보여 준다.</p>
+  <div class="btnrow no-print">
+    <button class="pill" onclick="tog(this,'more7')">📖 더 알아보기</button>
+    <button class="pill" onclick="tog(this,'disc7')">💬 토의 질문</button>
+    <button class="pill" onclick="tog(this,'verse7')">📜 관련 구절</button>
+    <button class="pill quizbtn" onclick="tog(this,'quiz7')">✅ 객관식 문제</button>
+  </div>
+  <div class="panel more" id="more7"><h3>더 알아보기</h3><p>파라다이스 도달은 끝이 아니라 새로운 지평의 시작이다. 문헌은 중앙 우주가 인간의 확립된 운명일 뿐 아니라, 최종자들이 언젠가 우주 아버지의 무한성을 탐험하는 미래 시대의 출발점이기도 하다고 말한다. 파라다이스를 집으로 삼은 최종자 군단은 현재 조직 중인 네 외부 공간 수준의 미래 창조를 위해 준비되고 있다고 여겨진다. 특히 제11편 9장 8절의 진술이 핵심이다. 이 완전한 우주 아버지의 거처가, 시간과 공간의 진화 세계에 속한 ‘하나님을 아는 필사 물질 아들들의 불멸하는 혼이 도달할 실제적이고 아득히 먼 운명’이라는 것이다. 그리고 문헌은 덧붙인다. 아버지의 뜻을 행하는 생애를 받아들인, 하나님을 아는 모든 필사자는 신성 추구와 완전 성취의 길고 긴 파라다이스 여정을 ‘이미 시작한 것’이라고. 동물-기원의 존재가 미천한 공간의 구체로부터 상승하여 마침내 파라다이스의 하나님들 앞에 설 때, 그 성취는 최상위의 한계에 거의 맞닿는 영적 변환의 실체를 나타낸다. 그러므로 오늘 내딛는 한 걸음은 이미 그 아득한 여정의 일부다.</p></div>
+  <div class="panel disc" id="disc7"><h3>토의 질문</h3><ol class="disc-list"><li><div class="disc-q">파라다이스가 ‘기원’이자 동시에 ‘운명’이라는 것은 인간 실존의 의미를 어떻게 규정하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">파라다이스가 기원이자 운명이라면, 인간 실존은 무의미한 표류가 아니라 시작한 곳으로 돌아가는 귀향의 여정이 된다. 우리의 뿌리와 목적지가 같은 중심에 있다.</div></details></li>
+<li><div class="disc-q">하보나가 ‘관문’이라는 표현은 파라다이스 도달을 끝이 아니라 시작으로 보게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">‘관문’이라는 표현은 파라다이스 도달을 종착이 아니라 통과점으로 보게 한다. 하보나를 지나 파라다이스에 이르는 것은 끝이 아니라 더 넓은 봉사와 탐험으로 들어서는 문이다.</div></details></li>
+<li><div class="disc-q">‘파라다이스는 최종자들의 집이며 하보나는 작업장이자 놀이터’라는 표현에서 일과 놀이의 통합은 무엇을 시사하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">파라다이스가 집이고 하보나가 작업장이자 놀이터라는 표현은, 완성된 삶에서 일과 놀이가 분리되지 않음을 시사한다. 최고의 봉사가 곧 최고의 기쁨인 상태다.</div></details></li>
+<li><div class="disc-q">하나님을 아는 모든 필사자가 ‘이미 파라다이스 여정을 시작한 것’이라는 진술은 오늘의 삶에 어떤 의미를 주는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">하나님의 뜻을 행하기로 한 필사자가 이미 여정을 시작했다는 진술은, 파라다이스가 먼 미래의 보상이 아니라 지금 여기서 시작되는 현재의 실재임을 뜻한다. 오늘의 한 걸음이 이미 그 여정의 일부다.</div></details></li>
+<li><div class="disc-q">미천한 공간의 구체에서 파라다이스에 이르는 상승이 ‘최상위에 거의 맞닿는 영적 변환’이라면, 인간 존엄의 근거는 어디에 있는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">미천한 구체에서 파라다이스에 이르는 상승이 최상위에 맞닿는 영적 변환이라면, 인간 존엄은 현재의 성취가 아니라 하나님이 부여하신 운명—아들 됨과 상승의 잠재력—에 근거한다.</div></details></li>
+<li><div class="disc-q">최종자 군단의 ‘미공개된 미래’는 완성을 최종 상태가 아니라 끝없는 지평으로 보게 하는가?</div><details class="disc-ans"><summary>모범 답안 보기</summary><div class="disc-ans-body">최종자 군단의 미공개된 미래는, 완성을 최종 상태가 아니라 끝없이 열린 지평으로 보게 한다. 파라다이스 도달조차 무한한 아버지를 탐험하는 새로운 시작일 뿐이다.</div></details></li></ol></div>
+  <div class="panel verse" id="verse7"><h3>관련 구절</h3><ul class="verse-list"><li><span class="vref">11:9.1</span><span class="vtxt">파라다이스는 최초의 기원 영역이며, 모든 영 인격들에게 궁극의 운명지라는 점에서 독특하다.</span></li>
+<li><span class="vref">11:9.6</span><span class="vtxt">그가 거주하시는 중앙 우주는 모든 우주들의 이상과 조직, 궁극적 운명의 원형이다.</span></li>
+<li><span class="vref">11:9.8</span><span class="vtxt">아버지의 뜻을 행하는 생애를 받아들인 모든 필사자는 이미 긴 파라다이스 여정을 시작한 것이다.</span></li>
+<li><span class="vref">14:3.4</span><span class="vtxt">10억 구체는 시간의 진화 세계들로부터 온 상승 순례자들의 훈련 세계이기도 하다.</span></li>
+<li><span class="vref">14:4.14</span><span class="vtxt">하보나인들은 선택적인 현재 운명과 계시되지 않은 미래 운명을 모두 가진다.</span></li>
+<li><span class="vref">14:5.2</span><span class="vtxt">중앙 우주의 삶은 너무나 풍요롭고 충만하여 창조된 존재가 체험할 수 있는 최고에 이른다.</span></li>
+<li><span class="vref">14:6.11</span><span class="vtxt">영원한 아버지는 자신의 집을 성취하고 있는 시간의 상승 후보자들을 위한 봉사를 소중히 여긴다.</span></li>
+<li><span class="vref">14:6.38</span><span class="vtxt">이 세계들은 가장 높은 실체 수준에서 참된 영 가치를 달성하려는 모든 인간적 충동을 자극한다.</span></li>
+<li><span class="vref">14:6.39</span><span class="vtxt">파라다이스는 최종자들의 집이며, 하보나는 작업장이자 놀이터이다—모든 필사자는 최종자가 되기를 갈망한다.</span></li>
+<li><span class="vref">14:6.40</span><span class="vtxt">중앙 우주는 인간의 확립된 운명일 뿐 아니라, 최종자들이 아버지의 무한성을 탐험할 출발점이다.</span></li>
+<li><span class="vref">14:6.41</span><span class="vtxt">하보나는 미래 우주 시대들에서도 순례자들이 하나님을 찾는 무대가 될 것이다.</span></li>
+<li><span class="vref">12:1.16</span><span class="vtxt">네 외부 공간 차원은 의심할 여지 없이 창조의 궁극성을 향한 미래의 무대이다.</span></li></ul></div>
+  <div class="panel quiz" id="quiz7"><h3>객관식 문제</h3><div class="mcq-item"><p class="mcq-q">1. 하보나는 모든 의지 창조체 앞에 무엇으로 서 있는가?</p><ol class="mcq-opts"><li class="">심판대</li>
+<li class="correct">파라다이스와 하나님 달성으로의 관문</li>
+<li class="">장벽</li>
+<li class="">휴식처</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 파라다이스와 하나님 달성으로의 관문</span></details></div><div class="mcq-item"><p class="mcq-q">2. 파라다이스는 누구의 집인가?</p><ol class="mcq-opts"><li class="">초우주 통치자</li>
+<li class="correct">최종자들</li>
+<li class="">진화 필사자</li>
+<li class="">성운</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 최종자들</span></details></div><div class="mcq-item"><p class="mcq-q">3. ‘하나님을 아는 모든 필사자는 ( )가 되기를 갈망한다’—괄호는?</p><ol class="mcq-opts"><li class="">천사</li>
+<li class="correct">최종자</li>
+<li class="">통치자</li>
+<li class="">교사</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 최종자</span></details></div><div class="mcq-item"><p class="mcq-q">4. 11:9.8이 말하는, 상승 창조체의 불멸하는 혼이 도달할 것은?</p><ol class="mcq-opts"><li class="">소멸</li>
+<li class="correct">실제적이고 아득히 먼 운명(파라다이스)</li>
+<li class="">초우주</li>
+<li class="">맨션 세계</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 실제적이고 아득히 먼 운명(파라다이스)</span></details></div><div class="mcq-item"><p class="mcq-q">5. 아버지의 뜻을 행하기로 한 필사자에 대한 문헌의 진술은?</p><ol class="mcq-opts"><li class="">아직 여정 밖에 있다</li>
+<li class="correct">이미 파라다이스 여정을 시작했다</li>
+<li class="">자격이 없다</li>
+<li class="">관망 중이다</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 2번 — 이미 파라다이스 여정을 시작했다</span></details></div><div class="mcq-item"><p class="mcq-q">6. 오늘 강의에서 파라다이스는 무엇으로 규정되는가?</p><ol class="mcq-opts"><li class="correct">기원이자 최종 운명</li>
+<li class="">단지 과거의 기원</li>
+<li class="">상징적 이상</li>
+<li class="">미래에만 존재</li></ol><details class="mcq-ans"><summary>정답 보기</summary><span>정답: 1번 — 기원이자 최종 운명</span></details></div></div>
+</section>
+  <div class="foot">
+    유란시아서 핵심 52주 · 제6강 「신성한 중앙 우주」 · 제11–14편<br>
+    따옴표(“ ”)로 표기한 직접 인용은 유란시아서 한국어 교정본과 대조한 문장이며, 그 외 해설은 패러프레이즈입니다.<br>
+    관련 자료: <a href="https://endearing-tanuki-1a69e1.netlify.app/" target="_blank" rel="noopener">삼위일체 · 유란시아 핵심 진리 에피소드 10</a>
+  </div>
+</div>
+<script>
+function tog(btn, id){
+  var p=document.getElementById(id);
+  var open=p.classList.toggle('show');
+  btn.classList.toggle('active', open);
+}
+window.addEventListener('beforeprint',function(){
+  document.querySelectorAll('details.disc-ans').forEach(function(d){
+    d.dataset.prev=d.open?'1':'0'; d.open=true;
+  });
+});
+window.addEventListener('afterprint',function(){
+  document.querySelectorAll('details.disc-ans').forEach(function(d){
+    if(d.dataset.prev==='0') d.open=false;
+  });
+});
+</script>
+</body>
+</html>
