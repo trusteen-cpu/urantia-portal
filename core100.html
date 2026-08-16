@@ -129,6 +129,9 @@ footer{max-width:1180px;margin:0 auto;padding:26px 20px 50px;color:var(--dim);fo
 var PLAYLIST = "https://www.youtube.com/playlist?list=PL-tt4ZIqzEKayheLBwqaCzB_PgmzEqkmy";
 
 var VIDEOS = [
+  {id:"F0oN7LMajSs", title:"파라다이스 창조자 아들"},
+  {id:"BHaNcHMOhhI", title:"예수님의 성장과정과 사명"},
+  {id:"r81n0ZHqcPo", title:"유란시아서란 무엇인가?"},
   {id:"Kg0oDggEZNo", title:"제1강 계시란 무엇인가?"},
   {id:"xpm-j3aFVGw", title:"제2강 유란시아서 머리말 해설"},
   {id:"KaDWBJ1ZsIQ", title:"제3강 우주 아버지"},
@@ -152,9 +155,6 @@ var VIDEOS = [
   {id:"PS4PUWbEeMs", title:"제21강 물질, 마음, 영"},
   {id:"LgHdxkc6jiQ", title:"제22강 지역체계 별자리"},
   {id:"q_0oduDJfSs", title:"제23강 멘션세계와 모론시아 삶"},
-  {id:"r81n0ZHqcPo", title:"유란시아서란 무엇인가?"},
-  {id:"BHaNcHMOhhI", title:"예수님의 성장과정과 사명"},
-  {id:"F0oN7LMajSs", title:"파라다이스 창조자 아들"},
 
   /* 새 강의는 이 아래에 한 줄씩 더하시면 됩니다.
      {id:"영상아이디", title:"제27강 제목"},                        */
@@ -169,24 +169,36 @@ function listId(s){
 }
 var LIST = listId(PLAYLIST);
 
+/* 나중에 올린 것이 맨 위(큰 화면)에 오게 합니다.
+   위 VIDEOS 목록은 만든 순서 그대로 두시고, 새 강의는 늘 맨 아래에 더하세요.
+   목록 그대로 1강부터 보이게 하려면 아래를 false 로 바꾸시면 됩니다. */
+var NEWEST_FIRST = true;
+
+var ORDER = VIDEOS.map(function(v, i){ return i; });
+if (NEWEST_FIRST) ORDER.reverse();
+function vidAt(pos){ return VIDEOS[ORDER[pos]]; }
+
+/* 카드에 붙는 번호는 제목의 "제N강"에서 가져옵니다. 없으면 번호를 달지 않습니다. */
+function noOf(v){ var m = String(v.title||"").match(/제\s*(\d+)\s*강/); return m ? m[1] : ""; }
+
 var $ = function(id){ return document.getElementById(id); };
 var cur = -1;
 
 document.getElementById("ytLink").href =
   LIST ? "https://www.youtube.com/playlist?list=" + LIST : "https://www.youtube.com";
 
-function play(i, autoplay){
-  var v = VIDEOS[i]; if(!v) return;
-  cur = i;
+function play(pos, autoplay){
+  var v = vidAt(pos); if(!v) return;
+  cur = pos;
   var u = "https://www.youtube-nocookie.com/embed/" + v.id + "?rel=0"
         + (LIST ? "&list=" + LIST : "")
         + (autoplay ? "&autoplay=1" : "");
   $("frame").src = u;
-  $("nowTit").textContent = v.title || ("제" + (i+1) + "강");
+  $("nowTit").textContent = v.title || "";
   paintSel();
   if(autoplay){
     window.scrollTo({top:0, behavior:"smooth"});
-    if(history.replaceState) history.replaceState(null, "", "#" + (i+1));
+    if(history.replaceState) history.replaceState(null, "", "#" + (pos+1));
   }
 }
 function paintSel(){
@@ -200,15 +212,16 @@ function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,function(c){
 
 function draw(filter){
   var f = (filter||"").trim().toLowerCase(), h = "", n = 0;
-  VIDEOS.forEach(function(v,i){
-    if(f && (v.title||"").toLowerCase().indexOf(f) < 0
-         && String(i+1).indexOf(f) < 0) return;
+  ORDER.forEach(function(vi,pos){
+    var v = VIDEOS[vi];
+    if(f && (v.title||"").toLowerCase().indexOf(f) < 0) return;
     n++;
-    h += '<button class="card" data-i="' + i + '" type="button">'
-      +  '<div class="thumb"><span class="no">' + (i+1) + '</span>'
+    var no = noOf(v);
+    h += '<button class="card" data-i="' + pos + '" type="button">'
+      +  '<div class="thumb">' + (no ? '<span class="no">' + no + '</span>' : '')
       +  '<img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + esc(v.id) + '/mqdefault.jpg">'
       +  '<span class="play"><span>▶</span></span></div>'
-      +  '<div class="tit">' + esc(v.title || ("제" + (i+1) + "강")) + '</div></button>';
+      +  '<div class="tit">' + esc(v.title || "") + '</div></button>';
   });
   $("grid").innerHTML = h;
   $("cnt").textContent = VIDEOS.length ? (f ? n + " / " + VIDEOS.length + "개" : "모두 " + VIDEOS.length + "개") : "";
