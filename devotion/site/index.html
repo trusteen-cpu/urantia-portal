@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080D1F">
+<title>오늘의 묵상</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#080D1F; --ink-2:#101838; --veil:#24305C;
+  --moon:#F2EBDA; --lamp:#E8A94E; --water:#6FA9A2; --dim:#7F8AB4;
+  --serif:"Gowun Batang","Nanum Myeongjo",serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1100px 620px at 50% -8%, #1B2A55 0%, transparent 62%),
+    linear-gradient(180deg,#0B1230 0%, var(--ink) 55%, #05070F 100%);
+  background-attachment:fixed;
+  color:var(--moon);font-family:var(--serif);
+  -webkit-font-smoothing:antialiased;min-height:100vh
+}
+#stars{position:fixed;inset:0;pointer-events:none;opacity:.5}
+.wrap{position:relative;max-width:860px;margin:0 auto;padding:34px 22px 60px}
+
+.eyebrow{
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.34em;color:var(--dim);
+  text-transform:uppercase;display:flex;gap:14px;align-items:center
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--veil),transparent)}
+h1{font-size:clamp(26px,5.4vw,38px);font-weight:700;letter-spacing:-.01em;margin:14px 0 6px;line-height:1.32}
+.ref{font-family:var(--sans);font-size:13px;color:var(--lamp);letter-spacing:.06em}
+.ref span{color:var(--dim)}
+.oneline{margin-top:18px;padding-left:16px;border-left:2px solid var(--lamp);
+  font-size:16px;line-height:1.85;color:#D8D2C2}
+
+.stage{margin:30px 0 0;border:1px solid rgba(36,48,92,.9);background:#05070F;
+  border-radius:2px;overflow:hidden;position:relative;aspect-ratio:16/9}
+.stage iframe{width:100%;height:100%;display:block;border:0}
+.stage .empty{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  font-family:var(--sans);font-size:13px;color:var(--dim);letter-spacing:.1em;padding:20px
+}
+
+.chips{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chip{
+  flex:1;min-width:96px;font-family:var(--sans);font-size:13px;
+  background:none;border:1px solid rgba(36,48,92,.9);color:var(--dim);
+  padding:11px 6px 12px;border-radius:2px;cursor:pointer;transition:.2s;
+  display:flex;flex-direction:column;align-items:center;gap:4px
+}
+.chip small{font-size:10.5px;color:#4C568A;font-variant-numeric:tabular-nums}
+.chip:hover{color:var(--moon);border-color:var(--water)}
+.chip.on{color:var(--ink);background:var(--lamp);border-color:var(--lamp);font-weight:500}
+.chip.on small{color:rgba(8,13,31,.65)}
+.chip:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+
+.row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.btn{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;
+  background:none;border:1px solid rgba(36,48,92,.9);color:var(--dim);
+  padding:11px 16px;border-radius:2px;cursor:pointer;transition:.2s
+}
+.btn:hover{color:var(--moon);border-color:var(--water)}
+.btn:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
+.btn.mode{margin-left:auto;color:var(--water);border-color:var(--water)}
+.btn.mode.off{color:var(--dim);border-color:rgba(36,48,92,.9)}
+
+.panel{margin-top:24px;background:rgba(16,24,56,.44);
+  border:1px solid rgba(36,48,92,.9);border-radius:2px;padding:26px 24px}
+.panel-head{display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--dim);
+  padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid rgba(36,48,92,.8)}
+.panel-head b{color:var(--lamp);font-weight:500}
+.body-text{font-size:17px;line-height:2.05;color:#E4DECE;white-space:pre-wrap;word-break:keep-all}
+.hint{font-family:var(--sans);font-size:10.5px;color:#4C568A;text-align:center;
+  margin-top:22px;letter-spacing:.05em}
+@media(max-width:520px){.hint{display:none}.chip{min-width:0;font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div class="wrap">
+  <div class="eyebrow"><span id="dateTxt">—</span></div>
+  <h1 id="theme">—</h1>
+  <div class="ref"><span id="paper">—</span> · <b id="refTxt">—</b></div>
+  <p class="oneline" id="oneLine">—</p>
+
+  <div class="stage" id="stage"><div class="empty" id="empty">영상을 준비하고 있습니다</div></div>
+
+  <div class="chips" id="chips"></div>
+  <div class="row">
+    <button class="btn" id="prev">이전</button>
+    <button class="btn" id="back">10초 뒤로</button>
+    <button class="btn" id="fwd">10초 앞으로</button>
+    <button class="btn" id="next">건너뛰기</button>
+    <button class="btn mode" id="mode">전체 무한</button>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><b id="trackLabel">낭독</b><span id="trackSub">—</span></div>
+    <div class="body-text" id="bodyText">—</div>
+  </div>
+
+  <div class="hint">스페이스 재생 · ← → 10초 · N 건너뛰기 · P 이전 · R 반복 방식</div>
+</div>
+
+<script src="content.js"></script>
+<script>
+(() => {
+  const D = window.MEDITATION;
+  const $ = id => document.getElementById(id);
+  const T = D.tracks;
+  const timed = T.every(t => typeof t.start === 'number');
+  const MODES = [{k:'all',t:'전체 무한'},{k:'one',t:'이 항목 무한'},{k:'once',t:'한 번만'}];
+  let player = null, mode = 0, idx = 0, ready = false;
+
+  const d = new Date(D.date + 'T00:00:00');
+  const wk = ['일','월','화','수','목','금','토'][d.getDay()];
+  $('dateTxt').textContent = `오늘의 묵상 · ${D.date.replace(/-/g,'.')} ${wk}`;
+  $('theme').textContent = D.theme;
+  $('paper').textContent = D.paperTitle + ' › ' + D.sectionTitle;
+  $('refTxt').textContent = D.reference;
+  $('oneLine').textContent = D.oneLine;
+
+  const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+
+  /* 순서 단추 */
+  T.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.className = 'chip';
+    b.innerHTML = `${t.label}<small>${timed ? fmt(t.start) : ''}</small>`;
+    b.onclick = () => go(i);
+    $('chips').append(b);
+  });
+
+  function show(i){
+    idx = i;
+    const t = T[i];
+    $('trackLabel').textContent = t.label;
+    $('trackSub').textContent = t.sub;
+    $('bodyText').textContent = t.text;
+    document.querySelectorAll('.chip').forEach((c, k) => c.classList.toggle('on', k === i));
+  }
+  function go(i){
+    i = (i + T.length) % T.length;
+    show(i);
+    if (ready && timed) player.seekTo(T[i].start + .1, true), player.playVideo();
+  }
+  show(0);
+
+  /* 유튜브 */
+  if (D.youtubeId){
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.append(tag);
+    window.onYouTubeIframeAPIReady = () => {
+      $('empty').remove();
+      const host = document.createElement('div');
+      host.id = 'yt';
+      $('stage').append(host);
+      player = new YT.Player('yt', {
+        videoId: D.youtubeId,
+        playerVars: {rel:0, modestbranding:1, playsinline:1, iv_load_policy:3},
+        events: {
+          onReady: () => { ready = true; watch(); },
+          onStateChange: e => { if (e.data === YT.PlayerState.ENDED) atEnd(); }
+        }
+      });
+    };
+  } else {
+    $('empty').textContent = '영상이 아직 연결되지 않았습니다. 아래 본문을 읽으실 수 있습니다.';
+  }
+
+  function atEnd(){
+    const m = MODES[mode].k;
+    if (m === 'once') return;
+    if (m === 'one' && timed){ player.seekTo(T[idx].start, true); player.playVideo(); return; }
+    player.seekTo(0, true); player.playVideo(); show(0);
+  }
+
+  function watch(){
+    setInterval(() => {
+      if (!ready || !timed) return;
+      const t = player.getCurrentTime();
+      const m = MODES[mode].k;
+      if (m === 'one' && t >= T[idx].end - .2){
+        player.seekTo(T[idx].start, true);
+        return;
+      }
+      const cur = T.findIndex(s => t >= s.start && t < s.end);
+      if (cur >= 0 && cur !== idx) show(cur);
+    }, 400);
+  }
+
+  /* 조작 */
+  const seek = n => ready && player.seekTo(Math.max(0, player.getCurrentTime() + n), true);
+  $('next').onclick = () => go(idx + 1);
+  $('prev').onclick = () => (ready && timed && player.getCurrentTime() - T[idx].start > 3)
+    ? player.seekTo(T[idx].start, true) : go(idx - 1);
+  $('back').onclick = () => seek(-10);
+  $('fwd').onclick  = () => seek(10);
+  $('mode').onclick = () => {
+    mode = (mode + 1) % MODES.length;
+    $('mode').textContent = MODES[mode].t;
+    $('mode').classList.toggle('off', MODES[mode].k === 'once');
+  };
+  addEventListener('keydown', e => {
+    if (e.code === 'Space'){
+      e.preventDefault();
+      if (!ready) return;
+      player.getPlayerState() === 1 ? player.pauseVideo() : player.playVideo();
+    }
+    else if (e.key === 'ArrowLeft')  e.shiftKey ? $('prev').click() : $('back').click();
+    else if (e.key === 'ArrowRight') e.shiftKey ? $('next').click() : $('fwd').click();
+    else if (e.key.toLowerCase() === 'n') $('next').click();
+    else if (e.key.toLowerCase() === 'p') $('prev').click();
+    else if (e.key.toLowerCase() === 'r') $('mode').click();
+  });
+
+  /* 밤하늘 */
+  const cv = $('stars'), ctx = cv.getContext('2d');
+  function sky(){
+    cv.width = innerWidth; cv.height = innerHeight;
+    ctx.clearRect(0,0,cv.width,cv.height);
+    for (let i = 0; i < Math.round(innerWidth * innerHeight / 5200); i++){
+      ctx.globalAlpha = Math.random() * .65 + .12;
+      ctx.fillStyle = Math.random() > .88 ? '#E8A94E' : '#F2EBDA';
+      ctx.beginPath();
+      ctx.arc(Math.random()*cv.width, Math.random()*cv.height, Math.random()*1.15+.18, 0, 7);
+      ctx.fill();
+    }
+  }
+  sky(); addEventListener('resize', sky);
+})();
+</script>
+</body>
+</html>

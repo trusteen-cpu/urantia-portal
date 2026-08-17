@@ -1,0 +1,75 @@
+========================================
+Suno AI 입력용 · 2026-08-17 취침 묵상
+곡 제목: 삼키지 못한 빵
+========================================
+
+[STYLE PROMPT — Suno의 Style 칸에 붙여넣기]
+Korean sacred lullaby, ambient gospel, 62 BPM, warm female lead vocal,
+felt piano, soft strings, brushed cymbals, deep reverb, night air, hymn-like,
+gentle dynamics, no drums until bridge
+
+[TITLE 칸]
+삼키지 못한 빵
+
+----------------------------------------
+[LYRICS 칸 — 아래 전체를 복사]
+----------------------------------------
+
+[Intro]
+[soft felt piano, low humming]
+
+[1절]
+등불 아래 남은 물음 하나
+붙잡을 수 없는 것을 붙잡으려 했네
+살과 피를 달라 외치던 밤에
+당신은 삶으로 그 빵을 떼어 주셨네
+
+[Pre-Chorus]
+[strings enter softly]
+삼키려 할수록 멀어지고
+내려놓을 때 가까워지는
+
+[Chorus]
+먹을 수 없는 빵, 마실 수 없는 잔
+그러나 하나 될 수 있는 사랑
+아버지와 아들이 하나이신 것처럼
+이 밤 나도 당신 안에 잠듭니다
+
+[2절]
+손에 잡히는 것만 믿었던 하루
+증명되지 않으면 지워버린 마음
+눈을 감아야 보이는 것이 있어
+어둠은 나에게 다른 눈을 주네
+
+[Pre-Chorus]
+문자에 걸려 넘어진 자리에
+조용히 흐르는 생명의 물
+
+[Chorus]
+먹을 수 없는 빵, 마실 수 없는 잔
+그러나 하나 될 수 있는 사랑
+아버지와 아들이 하나이신 것처럼
+이 밤 나도 당신 안에 잠듭니다
+
+[Bridge]
+[brushed drums, dynamics rise]
+내 안에 계신 뜻이여
+잠든 사이에도 나를 이끄소서
+내일 아침 눈을 뜨면
+그 뜻을 살아내는 사람 되게 하소서
+
+[Final Chorus]
+[full arrangement, soaring]
+먹을 수 없는 빵, 마실 수 없는 잔
+그러나 하나 될 수 있는 사랑
+말씀이 육신으로 내게 오셨으니
+나는 오늘 밤 배부르게 잠듭니다
+
+[Outro]
+[piano only, fading, humming]
+당신 안에 잠듭니다
+당신 안에 잠듭니다
+
+----------------------------------------
+생성 후 → site/audio/03_song.mp3 로 저장
+----------------------------------------
