@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아침 명상 · 영이 하시는 말씀</title>
+<style>
+  :root{
+    --sky1:#fef6ec; --sky2:#fbe7d2; --sky3:#f4d7be;
+    --amber:#c98a3c; --amber-deep:#a9692a; --amber-soft:#e0a862;
+    --ink:#3a2e23; --ink-soft:#6b5b48;
+    --ink-dim:#9c8a72;
+    --line:rgba(201,138,60,.28);
+    --card:rgba(255,255,255,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Noto Serif KR","함초롬바탕",serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 620px at 50% -8%, #ffe9c6 0%, transparent 62%),
+      linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 55%,var(--sky3) 100%);
+    background-attachment:fixed;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:150px;
+  }
+  .rays{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .sun{position:absolute;top:-90px;left:50%;transform:translateX(-50%);
+    width:260px;height:260px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,214,140,.75),rgba(255,214,140,0) 70%);
+    filter:blur(2px)}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:60px 26px 40px}
+
+  header{text-align:center;margin-bottom:52px}
+  .icon{font-size:34px;color:var(--amber);margin-bottom:12px;
+    text-shadow:0 0 22px rgba(201,138,60,.35)}
+  header .date{letter-spacing:.32em;font-size:12.5px;color:var(--amber-deep);
+    text-transform:uppercase;margin-bottom:16px}
+  header h1{font-size:30px;font-weight:700;color:#2b2118;letter-spacing:.02em}
+  header .cite{margin-top:12px;font-size:14px;color:var(--amber-deep);letter-spacing:.06em}
+
+  section{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.6);
+    border-radius:18px;
+    padding:34px 30px;
+    margin-bottom:26px;
+    box-shadow:0 14px 40px -26px rgba(120,80,30,.35);
+    transition:box-shadow .5s ease,border-color .5s ease,background .5s ease;
+    backdrop-filter:blur(2px);
+  }
+  section.active{
+    border-color:var(--line);
+    background:rgba(255,248,236,.82);
+    box-shadow:0 0 0 1px var(--line),0 20px 60px -22px rgba(201,138,60,.5);
+  }
+  .tag{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.28em;color:var(--amber-deep);
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .tag::before{content:"";width:26px;height:1px;background:var(--amber);opacity:.7}
+  .num{color:var(--amber-deep);font-size:13px;font-weight:700;margin-right:8px;
+    letter-spacing:.02em}
+  .para{margin-bottom:18px;color:var(--ink-soft);font-size:16.5px;text-align:justify}
+  .para:last-child{margin-bottom:0}
+  .para.key{color:var(--ink);
+    border-left:2px solid var(--amber);padding-left:16px;margin-left:-2px}
+
+  .sermon p{color:var(--ink);font-size:17px;text-align:justify;margin-bottom:16px}
+  .sermon p:last-child{margin-bottom:0}
+
+  .verse{white-space:pre-line;text-align:center;color:var(--amber-deep);
+    font-size:18px;line-height:2.2;letter-spacing:.02em}
+  .song-title{text-align:center;color:var(--ink-soft);font-size:14px;
+    letter-spacing:.14em;margin-bottom:22px}
+  .verse-label{display:block;text-align:center;color:var(--ink-dim);
+    font-size:12px;letter-spacing:.24em;margin-bottom:14px}
+
+  .prayer{white-space:pre-line;text-align:center;color:var(--ink);
+    font-size:17.5px;line-height:2.3;letter-spacing:.01em}
+
+  /* 하단 재생 바 */
+  .player{
+    position:fixed;left:0;right:0;bottom:0;z-index:20;
+    background:linear-gradient(180deg,rgba(250,231,210,0) 0%,rgba(250,231,210,.96) 34%);
+    padding:30px 22px calc(22px + env(safe-area-inset-bottom));
+  }
+  .player-inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .steps{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+  .step{font-size:12px;letter-spacing:.18em;color:var(--ink-dim);
+    padding:6px 14px;border:1px solid rgba(160,110,50,.22);border-radius:999px;
+    background:rgba(255,255,255,.4);transition:.4s}
+  .step.on{color:#fff;background:var(--amber);border-color:var(--amber);font-weight:700}
+  .step.done{color:var(--amber-deep);border-color:var(--line)}
+  .controls{display:flex;justify-content:center;align-items:center;gap:18px}
+  .play{
+    width:64px;height:64px;border-radius:50%;border:none;cursor:pointer;
+    background:radial-gradient(circle at 32% 30%,var(--amber-soft),var(--amber));
+    color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 34px -8px rgba(201,138,60,.7);transition:transform .2s}
+  .play:hover{transform:scale(1.05)}
+  .mini{background:none;border:none;color:var(--ink-soft);cursor:pointer;
+    font-size:13px;letter-spacing:.1em}
+  .mini:hover{color:var(--ink)}
+  .hint{text-align:center;color:var(--ink-dim);font-size:12px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="rays"><div class="sun"></div></div>
+
+<div class="wrap">
+  <header>
+    <div class="icon">☀</div>
+    <div class="date">2026년 7월 8일 · 아침 명상</div>
+    <h1>영이 하시는 말씀</h1>
+    <div class="cite">유란시아서 8:6</div>
+  </header>
+
+  <!-- 낭독 대상 = 8:6.3 (음성). 6.4-6.7 은 표시 전용 -->
+  <section id="sec-reading">
+    <span class="tag">본문 · 낭독</span>
+    <p class="para key"><span class="num">8:6.3</span>무한 영, 신의 셋째 인격은 너희가 인격에 관련하여 인식하는 모든 속성들을 소유하고 계신다. 무한 영은 절대 마음을 갖고 계시며, “영은 모든 것, 심지어 하나님의 깊은 것까지도 통달한다.” 영은 마음뿐 아니라 의지도 지니신다. 그의 은사들의 증여에 관하여 이렇게 기록되어 있다: “그러나 이 모든 일은 하나이자 동일한 영이 행하시며, 각 사람에게 그가 뜻하시는 대로 나누어 주신다.”</p>
+    <p class="para"><span class="num">8:6.4</span>“영의 사랑”은 실제이며, 그의 슬픔도 마찬가지로 실재한다. 그러므로 “하나님의 영을 슬프게 하지 말라.” 우리가 무한 영을 파라다이스 신으로 보든, 지역 우주의 창조 영으로 보든, 우리는 공동 창조자가 셋째 근원 중심일 뿐 아니라, 하나의 신성한 인격임을 알게 된다. 이 신성한 인격은 우주에게 인격으로 반응하신다. 영은 너희에게 말씀하신다: “귀 있는 자는 영이 하시는 말씀을 들을지어다.” “영 자신이 너희를 위해 간구하시느니라.” 영은 창조된 존재들에게 직접적이며 인격적으로 영향을 미친다. “이는 하나님의 영에 의해 인도함을 받는 자는 곧 하나님의 아들들이기 때문이다.”</p>
+    <p class="para"><span class="num">8:6.5</span>우리가 우주들의 우주의 멀리 떨어진 세계들에 대한 무한 영의 보살핌의 현상을 목격한다 하더라도, 셋째 근원 중심에서 기원한 다양한 존재들의 헤아릴 수 없는 군단들 안에서 그리고 그들을 통해 활동하시는 이 동일한 조정하는 신을 그려본다 하더라도, 그리고 영의 편재하심을 인식한다 하더라도, 그럼에도 우리는 여전히 이 동일한 셋째 근원 중심이 하나의 인격이며, 모든 사물과 모든 존재와 모든 우주의 공동 창조자이심을 확언한다.</p>
+    <p class="para"><span class="num">8:6.6</span>우주들의 행정에 있어, 아버지, 아들, 그리고 무한 영은 완전히, 영원히 연합되어 있다. 비록 각자가 모든 창조계에 개인적 보살핌을 베풀고 있지만, 세 분 모두는 그들을 영원히 하나로 만드는 창조와 통제의 봉사 안에서 신성하고 절대적으로 맞물려 있다.</p>
+    <p class="para"><span class="num">8:6.7</span>무한 영의 인격 안에는 아버지와 아들이 상호적으로 현존하며, 항상 무제한적인 완전함 속에 계신다. 이는 영이 아버지와 같고 아들과 같으며, 또한 그 둘이 영원히 하나이신 아버지와 아들과도 같으시기 때문이다.</p>
+  </section>
+
+  <section id="sec-sermon" class="sermon">
+    <span class="tag">강론</span>
+    <p>아침입니다. 새로운 하루가 열리는 이 시간, 우리는 먼저 귀를 기울입니다. “귀 있는 자는 영이 하시는 말씀을 들을지어다.” 무한 영은 멀리 계신 힘이 아니라, 우리가 인격에게서 인식하는 모든 속성을 지니신 신성한 인격이십니다. 그분은 마음을 지니시고, 의지를 지니시며, 각 사람에게 그가 뜻하시는 대로 은사를 나누어 주십니다.</p>
+    <p>무엇보다 놀라운 것은 “영의 사랑”이 실제라는 사실입니다. 그 사랑이 실재하기에, 그분의 슬픔 또한 실재합니다. 그러므로 성경은 우리에게 권합니다. “하나님의 영을 슬프게 하지 말라.” 우리를 향한 그분의 관심은 추상적인 원리가 아니라, 한 인격이 다른 인격에게 건네는 살아 있는 사랑입니다.</p>
+    <p>오늘 하루도 우리는 홀로 걷지 않습니다. 우리가 무엇을 구해야 할지 알지 못할 때에도, “영 자신이 우리를 위해 간구하시느니라.” 우리가 길을 몰라 머뭇거릴 때, 영은 직접적이고 인격적으로 우리에게 영향을 미치시어 바른 길로 이끄십니다. “하나님의 영에 의해 인도함을 받는 자는 곧 하나님의 아들들이기 때문입니다.”</p>
+    <p>아버지와 아들과 무한 영은 영원히 하나로 연합되어 계십니다. 그러니 우리가 영의 인도를 받을 때, 우리는 삼위일체 하나님 전체의 사랑 안에 있는 것입니다. 영의 인도를 따르는 삶은 두려움이 아니라 아들다운 확신 위에 서 있습니다. 이 아침, 우리의 마음을 열어 영의 음성에 귀 기울입시다. 그분이 이끄시는 대로, 우리는 아버지의 아들딸로서 담대히 이 하루를 시작합니다.</p>
+  </section>
+
+  <section id="sec-song">
+    <span class="tag">노래</span>
+    <div class="song-title">영이 하시는 말씀</div>
+    <span class="verse-label">1절</span>
+    <div class="verse">새 아침 밝아오는 이 시간에
+귀를 열어 영의 음성 듣습니다
+멀리 계신 힘이 아니라
+내 곁에 계신 신성한 인격</div>
+  </section>
+
+  <section id="sec-prayer">
+    <span class="tag">기도</span>
+    <div class="prayer">은혜로우신 아버지 하나님
+새 아침을 열어 주셔서
+감사를 드립니다
+오늘도 제 곁에 계신
+영의 음성에 귀 기울이게 하소서
+제가 구할 바를 알지 못할 때
+영이 저를 위해 간구하시니
+그 인도하심을 따르게 하소서
+영의 사랑이 실제임을
+이 하루 동안 느끼게 하소서
+영을 슬프게 하지 않고
+그 뜻대로 살게 하소서
+아버지의 아들로서
+담대히 이 하루를 걷게 하소서
+예수님의 이름으로 기도드립니다</div>
+  </section>
+</div>
+
+<div class="player">
+  <div class="player-inner">
+    <div class="steps" id="steps">
+      <span class="step" data-i="0">낭독</span>
+      <span class="step" data-i="1">강론</span>
+      <span class="step" data-i="2">노래</span>
+      <span class="step" data-i="3">기도</span>
+    </div>
+    <div class="controls">
+      <button class="mini" id="restart" style="visibility:hidden">처음부터</button>
+      <button class="play" id="play" aria-label="재생">▶</button>
+      <button class="mini" id="stop" style="visibility:hidden">정지</button>
+    </div>
+    <div class="hint" id="hint">버튼을 누르면 낭독 · 강론 · 노래 · 기도가 순서대로 재생됩니다</div>
+  </div>
+</div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+  const TRACKS=[
+    {id:'sec-reading', file:'https://archive.org/download/urantia-devotion-2026-07-08-morning/reading.mp3'},
+    {id:'sec-sermon',  file:'https://archive.org/download/urantia-devotion-2026-07-08-morning/sermon.mp3'},
+    {id:'sec-song',    file:'https://archive.org/download/urantia-devotion-2026-07-08-morning/song.mp3'},
+    {id:'sec-prayer',  file:'https://archive.org/download/urantia-devotion-2026-07-08-morning/prayer.mp3'},
+  ];
+
+  const audio=document.getElementById('audio');
+  const playBtn=document.getElementById('play');
+  const stopBtn=document.getElementById('stop');
+  const restartBtn=document.getElementById('restart');
+  const hint=document.getElementById('hint');
+  const stepEls=[...document.querySelectorAll('.step')];
+
+  let idx=-1, playing=false;
+
+  function markSection(i){
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    stepEls.forEach((el,k)=>{
+      el.classList.toggle('on',k===i);
+      el.classList.toggle('done',k<i);
+    });
+    if(i>=0){
+      const sec=document.getElementById(TRACKS[i].id);
+      sec.classList.add('active');
+      sec.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+  }
+
+  function playIndex(i){
+    if(i>=TRACKS.length){ finish(); return; }
+    idx=i; playing=true;
+    markSection(i);
+    audio.src=TRACKS[i].file;
+    audio.play().catch(()=>{});
+    playBtn.textContent='⏸';
+    stopBtn.style.visibility='visible';
+    restartBtn.style.visibility='visible';
+    hint.textContent=stepEls[i].textContent+' 재생 중…';
+  }
+
+  function finish(){
+    playing=false; idx=-1;
+    playBtn.textContent='▶';
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    stepEls.forEach(el=>{el.classList.remove('on');el.classList.add('done');});
+    hint.textContent='명상을 마쳤습니다. 은혜로운 하루 되시기 바랍니다. ☀';
+  }
+
+  audio.addEventListener('ended',()=>playIndex(idx+1));
+  audio.addEventListener('error',()=>{ if(playing) setTimeout(()=>playIndex(idx+1),400); });
+
+  playBtn.addEventListener('click',()=>{
+    if(!playing && idx===-1){ playIndex(0); return; }
+    if(audio.paused){ audio.play(); playBtn.textContent='⏸'; playing=true; }
+    else{ audio.pause(); playBtn.textContent='▶'; playing=false; }
+  });
+
+  stopBtn.addEventListener('click',()=>{
+    audio.pause(); audio.currentTime=0; finish();
+    stepEls.forEach(el=>el.classList.remove('done','on'));
+    hint.textContent='버튼을 누르면 낭독 · 강론 · 노래 · 기도가 순서대로 재생됩니다';
+  });
+
+  restartBtn.addEventListener('click',()=>{ audio.pause(); playIndex(0); });
+</script>
+</body>
+</html>

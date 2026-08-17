@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>오늘의 취침 묵상 2026-07-26 · 흥정하지 않는 사랑</title>
+<style>
+:root{
+  --navy:#0A1128; --navy2:#141F3E; --navy3:#1D2B50;
+  --gold:#E3C078; --gold-d:#9A7C3C; --ink:#F2EEE2; --dim:#93A3C6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;background:var(--navy);color:var(--ink);
+  font-family:'Noto Serif KR','Nanum Myeongjo',serif;
+  background-image:
+    radial-gradient(70% 42% at 78% 8%, rgba(227,192,120,.16) 0%, rgba(227,192,120,0) 62%),
+    linear-gradient(180deg,#0A1128 0%,#141F3E 52%,#1D2B50 100%);
+  background-attachment:fixed;
+}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:34px 22px 190px}
+
+/* 머리 */
+.head{text-align:center;padding:14px 0 26px}
+.moon{
+  width:74px;height:74px;border-radius:50%;margin:0 auto 20px;
+  background:radial-gradient(circle at 36% 32%, #FFF6DC 0%, #F0DCA8 52%, #C9A85E 100%);
+  box-shadow:0 0 46px rgba(240,220,168,.42), 0 0 96px rgba(240,220,168,.18);
+}
+.date{font-size:14px;letter-spacing:.22em;color:var(--gold-d)}
+h1{font-size:31px;font-weight:700;color:var(--gold);margin:9px 0 7px;letter-spacing:-.01em}
+.cite{font-size:15px;color:var(--dim)}
+.src{font-size:13px;color:#6E7DA0;margin-top:5px}
+
+/* 메뉴 */
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:22px 0 24px}
+.tab{
+  background:rgba(255,255,255,.05);border:1px solid rgba(227,192,120,.24);
+  color:var(--dim);padding:12px 4px;border-radius:12px;cursor:pointer;
+  font-family:inherit;font-size:15px;transition:.2s;
+}
+.tab:hover{border-color:rgba(227,192,120,.55);color:var(--ink)}
+.tab.on{background:rgba(227,192,120,.16);border-color:var(--gold);color:var(--gold);font-weight:700}
+.tab.off{opacity:.34}
+
+/* 본문 */
+.panel{
+  background:rgba(255,255,255,.045);border:1px solid rgba(227,192,120,.16);
+  border-radius:18px;padding:30px 28px 32px;min-height:330px;
+}
+.plabel{
+  font-size:13px;letter-spacing:.2em;color:var(--gold-d);
+  padding-bottom:11px;border-bottom:1px solid rgba(227,192,120,.2);margin-bottom:20px;
+}
+.body{font-size:18px;line-height:2.0;color:var(--ink);white-space:pre-wrap;word-break:keep-all}
+.body.verse{white-space:pre-wrap;text-align:center;line-height:2.15}
+.tag{color:var(--gold);font-size:15px;letter-spacing:.05em}
+.vcite{
+  display:inline-block;margin-bottom:16px;font-size:13px;color:var(--gold);
+  border:1px solid rgba(227,192,120,.4);border-radius:999px;padding:4px 15px;
+}
+
+/* 재생기 */
+.player{
+  position:fixed;left:0;right:0;bottom:0;z-index:5;
+  background:rgba(10,17,40,.94);backdrop-filter:blur(10px);
+  border-top:1px solid rgba(227,192,120,.26);padding:13px 20px 20px;
+}
+.pin{max-width:760px;margin:0 auto}
+.bar{height:6px;background:rgba(255,255,255,.1);border-radius:99px;cursor:pointer;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold-d),var(--gold));border-radius:99px}
+.times{display:flex;justify-content:space-between;font-size:12px;color:var(--dim);margin:6px 2px 11px;font-family:system-ui}
+.ctrls{display:flex;align-items:center;justify-content:center;gap:12px}
+.btn{
+  background:rgba(255,255,255,.07);border:1px solid rgba(227,192,120,.3);
+  color:var(--ink);width:46px;height:46px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.18s;
+}
+.btn:hover{border-color:var(--gold);background:rgba(227,192,120,.14)}
+.btn.play{width:60px;height:60px;background:var(--gold);border-color:var(--gold)}
+.btn.play svg{fill:#0A1128}
+.btn svg{width:19px;height:19px;fill:var(--ink)}
+.btn.play svg{width:23px;height:23px}
+.btn.act{border-color:var(--gold);color:var(--gold)}
+.btn.act svg{fill:var(--gold)}
+.rep{position:relative}
+.rep .n{
+  position:absolute;top:-4px;right:-4px;background:var(--gold);color:#0A1128;
+  font-size:10px;font-weight:700;width:17px;height:17px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:system-ui;
+}
+.now{text-align:center;font-size:13px;color:var(--dim);margin-top:10px}
+.now b{color:var(--gold);font-weight:400}
+
+/* 시작 오버레이 */
+.ov{
+  position:fixed;inset:0;z-index:20;background:rgba(10,17,40,.96);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  cursor:pointer;text-align:center;padding:30px;
+}
+.ov .moon{width:96px;height:96px;margin-bottom:4px}
+.ov h2{font-size:26px;color:var(--gold);font-weight:700}
+.ov p{font-size:16px;color:var(--dim);line-height:1.8}
+.ov .go{
+  margin-top:12px;border:1px solid var(--gold);color:var(--gold);
+  padding:13px 38px;border-radius:999px;font-size:17px;
+}
+.hide{display:none!important}
+@media(max-width:520px){
+  .wrap{padding:24px 16px 200px}
+  h1{font-size:26px}
+  .panel{padding:24px 19px 26px}
+  .body{font-size:17px;line-height:1.95}
+  .tab{font-size:14px;padding:11px 2px}
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<div class="ov" id="ov">
+  <div class="moon"></div>
+  <h2>오늘의 취침 묵상</h2>
+  <p>2026년 7월 26일<br>흥정하지 않는 사랑</p>
+  <div class="go">화면을 눌러 시작하세요</div>
+</div>
+
+<div class="wrap">
+  <div class="head">
+    <div class="moon"></div>
+    <div class="date">2026 · 07 · 26</div>
+    <h1>흥정하지 않는 사랑</h1>
+    <div class="cite">유란시아서 140:10.4</div>
+    <div class="src">제140편 열두 사도의 임명 · 성별 후 저녁</div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="panel">
+    <div class="plabel" id="plabel">낭독</div>
+    <div id="pbody"></div>
+  </div>
+</div>
+
+<div class="player">
+  <div class="pin">
+    <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+    <div class="times"><span id="tcur">0:00</span><span id="ttot">0:00</span></div>
+    <div class="ctrls">
+      <button class="btn" id="mute" title="음소거">
+        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></button>
+      <button class="btn" id="prev" title="이전">
+        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6L18 6v12z"/></svg></button>
+      <button class="btn play" id="play" title="재생">
+        <svg viewBox="0 0 24 24" id="picon"><path d="M8 5v14l11-7z"/></svg></button>
+      <button class="btn" id="next" title="다음">
+        <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg></button>
+      <button class="btn rep" id="rep" title="반복">
+        <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+        <span class="n hide" id="repn">1</span></button>
+    </div>
+    <div class="now" id="now">낭독 · <b>이어서 자동 재생</b></div>
+  </div>
+</div>
+
+<audio id="au"></audio>
+
+<script>
+const DATA = {
+  reading: {
+    label: "낭독",
+    cite: "140:10.4",
+    text: `그날 저녁 도마가 예수께 질문했다. “주님, 당신은 우리가 어린아이와 같이 되어야 아버지의 왕국에 들어갈 수 있다고 하셨지만, 또한 거짓 선지자들에게 속지 말라고 경고하셨고, 우리의 진주를 돼지 앞에 던지지 말라고 하셨습니다. 저는 솔직히 당혹스럽습니다. 당신의 가르침을 이해할 수 없습니다.” 예수는 도마에게 말했다. “내가 얼마나 너희와 함께 있어야 하겠느냐! 너희는 내가 가르치는 모든 것을 문자 그대로 해석하려 한다. 내가 너희에게 아버지의 왕국에 들어가기 위한 대가로 어린아이와 같이 되라고 했을 때, 나는 속기 쉬운 것, 단순히 믿으려는 의향, 즉 친절한 낯선 사람을 빨리 신뢰하는 것에 대해 말한 것이 아니다. 내가 바란 것은 너희가 자녀와 아버지의 관계라는 실례에서 교훈을 얻는 것이다. 너희는 자녀이고, 너희가 들어가려는 것은 아버지의 왕국이다. 정상적인 자녀와 아버지 사이에는 이해와 사랑을 보장하는 자연스러운 애정이 있으며, 이 관계는 아버지의 사랑과 자비를 흥정하려는 모든 성향을 영원히 배제한다. 그리고 너희가 전파하러 나아가는 복음은 바로 이 영원한 자녀와 아버지의 관계의 신앙 인식에서 자라나는 구원에 관한 것이다.”`
+  },
+  sermon: {
+    label: "강론",
+    text: `도마의 당혹은 정직한 당혹이었습니다. 어린아이처럼 되라 하시더니 속지 말라 하시고, 진주를 아무에게나 던지지 말라 하시니, 어느 장단에 맞추어야 할지 몰랐던 것입니다.
+
+예수의 대답은 뜻밖에도 도마를 나무라지 않고 오해의 뿌리를 짚습니다. 어린아이가 되라는 말은 아무나 쉽게 믿으라는 뜻이 아니었습니다. 낯선 이를 덥석 신뢰하는 순진함을 칭찬하신 것이 아닙니다. 그분이 가리키신 것은 아이의 어수룩함이 아니라, 아이와 아버지 사이에 흐르는 자연스러운 애정이었습니다.
+
+우리는 종교를 자꾸 거래로 만듭니다. 이만큼 기도했으니 이만큼 들어주시겠지, 이만큼 참았으니 이만큼 갚아 주시겠지. 그렇게 계산하는 순간 우리는 자녀가 아니라 협상하는 사람이 됩니다. 그런데 정상적인 집에서 아이는 아버지의 사랑을 놓고 흥정하지 않습니다. 흥정할 필요가 없기 때문입니다. 이미 아들이고 딸이기 때문입니다.
+
+오늘 하루도 무언가를 증명하느라 애쓰셨을 것입니다. 그러나 밤이 되어 불을 끄고 누울 때, 증명해야 얻는 사랑이 아니라는 것을 기억하시기 바랍니다. 우리가 전할 복음도 결국 이것입니다. 값을 치르고 얻는 구원이 아니라, 이미 자녀라는 사실을 믿음으로 알아보는 데서 자라나는 구원입니다.
+
+오늘 밤은 아무것도 흥정하지 마십시오. 그저 아버지의 집에서 잠드는 아이가 되십시오.`
+  },
+  song: {
+    label: "노래",
+    title: "아버지의 자녀 되어",
+    text: `[1절]
+무엇을 더 드려야만
+사랑을 얻으오리까
+값을 놓고 다투던 밤
+이제는 내려놓으리
+
+[후렴]
+아버지의 자녀 되어
+흥정하지 않으리라
+아이처럼 잠이 들어
+그 품에 안기오리다
+
+[2절]
+믿음은 흥정 아니요
+아버지를 알아봄이라
+
+[후렴]
+아버지의 자녀 되어
+흥정하지 않으리라
+아이처럼 잠이 들어
+그 품에 안기오리다`
+  },
+  prayer: {
+    label: "기도",
+    text: `자녀로 불러 주신
+아버지 하나님,
+
+오늘도 무엇을 드려야
+사랑받을 수 있을까
+헤아리며 살았습니다.
+
+드린 것을 세어 보고
+받을 것을 가늠하는
+그 오래된 버릇을
+이제 내려놓습니다.
+
+제가 잘한 날에도
+제가 무너진 날에도
+아버지의 마음은
+한결같으심을 믿습니다.
+
+도마처럼 저도
+당혹스러울 때가 많습니다.
+알아듣지 못하는 저를
+꾸짖지 않으시고
+다시 가르쳐 주시니
+감사합니다.
+
+어수룩한 순진함이 아니라
+아버지를 알아보는
+참된 신뢰를 주옵소서.
+
+흥정하려는 마음이 들 때마다
+이미 자녀 되었음을
+기억하게 하옵소서.
+
+내일 만날 사람들에게도
+값을 묻지 않는 사랑을
+흘려보내게 하옵소서.
+
+이 밤 아무 걱정 없이
+아버지의 집에서
+잠들게 하옵소서.
+
+예수님의 이름으로
+기도드립니다.`
+  }
+};
+
+const SEG = [
+  ["reading", "https://archive.org/download/urantia-devotion-2026-07-26-night/01_reading.mp3"],
+  ["sermon",  "https://archive.org/download/urantia-devotion-2026-07-26-night/02_sermon.mp3"],
+  ["song",    "https://archive.org/download/urantia-devotion-2026-07-26-night/03_song.mp3"],
+  ["prayer",  "https://archive.org/download/urantia-devotion-2026-07-26-night/04_prayer.mp3"]
+];
+
+const au = document.getElementById('au');
+let idx = 0, repeat = 0, missing = {};   // repeat 0=없음 1=전체 2=한 메뉴
+
+/* 별 */
+(function(){
+  const c = document.getElementById('stars'), x = c.getContext('2d');
+  function draw(){
+    c.width = innerWidth; c.height = innerHeight;
+    for (let i = 0; i < 150; i++){
+      const px = Math.random()*c.width, py = Math.random()*c.height;
+      const r = Math.random()*1.3+.3, a = Math.random()*.65+.12;
+      x.beginPath(); x.arc(px,py,r,0,7); x.fillStyle = 'rgba(255,250,232,'+a+')'; x.fill();
+    }
+  }
+  draw(); addEventListener('resize', draw);
+})();
+
+/* 메뉴 */
+const tabsEl = document.getElementById('tabs');
+SEG.forEach((s,i)=>{
+  const b = document.createElement('button');
+  b.className = 'tab'; b.textContent = DATA[s[0]].label;
+  b.onclick = ()=>{ go(i, true); };
+  tabsEl.appendChild(b);
+});
+
+function fmt(t){
+  if (!isFinite(t)) return '0:00';
+  const m = Math.floor(t/60), s = Math.floor(t%60);
+  return m + ':' + String(s).padStart(2,'0');
+}
+
+function paint(){
+  const key = SEG[idx][0], d = DATA[key];
+  document.getElementById('plabel').textContent =
+    d.label + (d.title ? ' · ' + d.title : '');
+  const body = document.getElementById('pbody');
+  body.className = '';
+  let html = '';
+  if (key === 'reading')
+    html = '<span class="vcite">' + d.cite + '</span><div class="body">' +
+           d.text + '</div>';
+  else if (key === 'song')
+    html = '<div class="body verse">' +
+           d.text.replace(/\[(.+?)\]/g, '<span class="tag">[$1]</span>') + '</div>';
+  else
+    html = '<div class="body' + (key === 'prayer' ? ' verse' : '') + '">' + d.text + '</div>';
+  body.innerHTML = html;
+
+  [...tabsEl.children].forEach((b,i)=>{
+    b.classList.toggle('on', i === idx);
+    b.classList.toggle('off', !!missing[i]);
+  });
+  const modes = ['이어서 자동 재생','전체 무한 반복','이 메뉴 무한 반복'];
+  document.getElementById('now').innerHTML = d.label + ' · <b>' + modes[repeat] + '</b>';
+}
+
+function go(i, play){
+  idx = (i + SEG.length) % SEG.length;
+  paint();
+  au.src = SEG[idx][1];
+  au.load();
+  if (play) au.play().catch(()=>{});
+}
+
+function nextSeg(){
+  if (repeat === 2){ au.currentTime = 0; au.play(); return; }
+  let n = idx + 1, guard = 0;
+  while (guard++ < 8){
+    if (n >= SEG.length){
+      if (repeat === 1) n = 0;
+      else { pauseUI(); return; }
+    }
+    if (!missing[n]) break;
+    n++;
+  }
+  go(n, true);
+}
+
+au.onended = nextSeg;
+au.onerror = ()=>{ missing[idx] = true; paint(); nextSeg(); };
+au.ontimeupdate = ()=>{
+  document.getElementById('fill').style.width =
+    (au.duration ? au.currentTime/au.duration*100 : 0) + '%';
+  document.getElementById('tcur').textContent = fmt(au.currentTime);
+};
+au.onloadedmetadata = ()=>{ document.getElementById('ttot').textContent = fmt(au.duration); };
+
+const picon = document.getElementById('picon');
+function playUI(){ picon.innerHTML = '<path d="M6 5h4v14H6zm8 0h4v14h-4z"/>'; }
+function pauseUI(){ picon.innerHTML = '<path d="M8 5v14l11-7z"/>'; }
+au.onplay = playUI; au.onpause = pauseUI;
+
+document.getElementById('play').onclick = ()=>{ au.paused ? au.play() : au.pause(); };
+document.getElementById('next').onclick = ()=>{ go(idx+1, true); };
+document.getElementById('prev').onclick = ()=>{
+  if (au.currentTime > 3){ au.currentTime = 0; } else go(idx-1, true);
+};
+document.getElementById('mute').onclick = e=>{
+  au.muted = !au.muted;
+  e.currentTarget.classList.toggle('act', au.muted);
+};
+document.getElementById('rep').onclick = e=>{
+  repeat = (repeat + 1) % 3;
+  e.currentTarget.classList.toggle('act', repeat > 0);
+  const n = document.getElementById('repn');
+  n.classList.toggle('hide', repeat !== 2);
+  paint();
+};
+document.getElementById('bar').onclick = e=>{
+  const r = e.currentTarget.getBoundingClientRect();
+  if (au.duration) au.currentTime = (e.clientX - r.left)/r.width * au.duration;
+};
+addEventListener('keydown', e=>{
+  if (e.code === 'Space'){ e.preventDefault(); au.paused ? au.play() : au.pause(); }
+  if (e.code === 'ArrowRight') go(idx+1, true);
+  if (e.code === 'ArrowLeft') go(idx-1, true);
+});
+
+document.getElementById('ov').onclick = function(){
+  this.classList.add('hide');
+  go(0, true);
+};
+paint();
+</script>
+</body>
+</html>

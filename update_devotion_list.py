@@ -23,7 +23,7 @@ for _s in (sys.stdout, sys.stderr):
         pass
 
 # ══════════════════════════════════════════════════════════════
-REPO = r"E:\OneDrive\내 문서\유란시아\Urantia Portal"
+REPO = r"E:\OneDrive\문서\GitHub\urantia-portal"
 PROGRESS = "publish_progress.json"
 # ══════════════════════════════════════════════════════════════
 

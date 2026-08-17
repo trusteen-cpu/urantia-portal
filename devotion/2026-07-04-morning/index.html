@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 — 2026년 7월 4일</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1E2761;
+  --gold:#B8901F;
+  --cream:#F4F0E6;
+  --bg:#0D1A3A;
+  --card:#162050;
+  --text:#E8E4D8;
+  --muted:#8A9BBF;
+  --teal:#1A6B78;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ── HEADER ── */
+header{
+  width:100%;
+  background:var(--navy);
+  border-bottom:2px solid var(--gold);
+  padding:20px 24px 14px;
+  text-align:center;
+}
+header .series{
+  font-size:11px;
+  letter-spacing:3px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+header h1{
+  font-size:22px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:4px;
+  line-height:1.3;
+}
+header .date{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:1px;
+}
+
+/* ── MAIN ── */
+main{
+  width:100%;
+  max-width:760px;
+  padding:24px 16px 60px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:28px 0 10px;
+}
+.section-label .icon{
+  width:32px;height:32px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;
+  flex-shrink:0;
+}
+.section-label .name{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.icon-reading{ background:var(--navy); border:1px solid var(--gold); color:var(--gold); }
+.icon-sermon { background:var(--teal); color:#fff; }
+.icon-song   { background:#4A2C6B; color:#C9A3EF; }
+.icon-prayer { background:#1A3D2B; color:#6FD99A; }
+
+/* ── CARDS ── */
+.card{
+  background:var(--card);
+  border-radius:10px;
+  padding:18px 20px;
+  border:1px solid rgba(184,144,31,0.25);
+  line-height:1.85;
+  font-size:15px;
+}
+.card.reading-card{
+  border-color:rgba(184,144,31,0.5);
+}
+.card p+p{ margin-top:12px; }
+
+/* passage blocks */
+.passage{
+  background:#0D1A3A;
+  border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;
+  padding:14px 16px;
+  margin-bottom:14px;
+  font-size:14.5px;
+  line-height:1.9;
+  color:var(--cream);
+}
+.passage .ref{
+  font-size:11px;
+  font-weight:700;
+  color:var(--gold);
+  letter-spacing:1px;
+  display:block;
+  margin-bottom:6px;
+}
+
+/* sermon card */
+.sermon-card p{
+  margin-bottom:12px;
+  font-size:15px;
+  line-height:1.9;
+  color:var(--cream);
+}
+.sermon-card p:last-child{ margin-bottom:0; }
+.highlight{
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* song card */
+.song-card{
+  background:linear-gradient(135deg,#1A0D2E 0%,#16203A 100%);
+  border-color:rgba(180,130,255,0.3);
+}
+.song-stanza{
+  margin-bottom:14px;
+  color:#D0B8EE;
+  font-size:14.5px;
+  line-height:2;
+}
+.song-stanza .stanza-label{
+  font-size:10px;
+  letter-spacing:2px;
+  color:#9A75D0;
+  font-weight:700;
+  display:block;
+  margin-bottom:4px;
+}
+.chorus{
+  color:#C9A3EF;
+  font-weight:600;
+}
+
+/* prayer card */
+.prayer-card{
+  background:linear-height,#0A1F14;
+  background:#0A1F14;
+  border-color:rgba(111,217,154,0.25);
+  color:#C5EDD6;
+  font-size:15px;
+  line-height:2.0;
+}
+
+/* ── PLAYER BAR ── */
+#player-bar{
+  position:fixed;
+  bottom:0; left:0; right:0;
+  background:rgba(13,26,58,0.97);
+  border-top:2px solid var(--gold);
+  padding:10px 16px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  z-index:100;
+}
+#track-info{
+  font-size:12px;
+  color:var(--muted);
+  letter-spacing:1px;
+}
+#track-name{
+  color:var(--gold);
+  font-weight:700;
+}
+#progress-wrap{
+  width:100%;
+  max-width:500px;
+  height:3px;
+  background:#2A3A6A;
+  border-radius:2px;
+  cursor:pointer;
+  position:relative;
+}
+#progress-fill{
+  height:100%;
+  background:var(--gold);
+  border-radius:2px;
+  width:0%;
+  transition:width 0.2s linear;
+  pointer-events:none;
+}
+#controls{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.ctrl-btn{
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+  padding:4px 8px;
+  border-radius:6px;
+  transition:background 0.15s;
+}
+.ctrl-btn:hover{ background:rgba(255,255,255,0.08); }
+#btn-play{ font-size:28px; color:var(--gold); }
+
+#vol-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px; color:var(--muted);
+}
+#vol-slider{
+  -webkit-appearance:none;
+  width:80px; height:3px;
+  background:#2A3A6A;
+  border-radius:2px;
+  outline:none;
+  cursor:pointer;
+}
+#vol-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:13px;height:13px;
+  border-radius:50%;
+  background:var(--gold);
+  cursor:pointer;
+}
+
+/* ── STATUS DOTS ── */
+.stage-dots{
+  display:flex;gap:6px;
+}
+.dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#2A3A6A;
+  transition:background 0.3s;
+}
+.dot.active{ background:var(--gold); }
+.dot.done  { background:var(--teal); }
+
+/* ── ACTIVE SECTION HIGHLIGHT ── */
+.section-block{ transition:opacity 0.4s; }
+.section-block.playing{ opacity:1; }
+.section-block.inactive{ opacity:0.45; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="series">오늘의 묵상 · Urantia Book Core Truth</div>
+  <h1>생명의 불꽃<br><span style="font-size:16px;font-weight:400;color:var(--gold)">아버지 안에 내재하고 · 아들 안에 표현되며 · 영 안에 실현된다</span></h1>
+  <div class="date">2026년 7월 4일 · 유란시아서 36:6.5–6.7</div>
+</header>
+
+<main>
+
+<!-- ── 본문 전체 표시 ── -->
+<div class="section-block" id="block-reading">
+  <div class="section-label">
+    <div class="icon icon-reading">📖</div>
+    <div class="name" style="color:var(--gold)">오늘의 본문</div>
+  </div>
+
+  <div class="passage">
+    <span class="ref">36:6.5</span>
+    생명 운반자들이 식물과 동물에게 수여한 생명은 식물이나 동물이 죽을 때 생명 운반자들에게 돌아가지 않는다. 그러한 살아있는 것의 떠나는 생명은 정체성도 인격도 소유하지 않으며, 죽음을 개별적으로 살아남지 못한다. 그것은 존재하는 동안, 그리고 물질의 몸에 머무는 시간 동안 변화를 겪었다. 그것은 에너지 진화를 겪었으며 우주의 우주적 힘들의 일부로서만 생존한다. 그것은 개별 생명으로 생존하지 않는다. <strong style="color:var(--gold)">필사 창조체의 생존은 전적으로 필사 마음 안에 불멸의 혼이 진화하는 것에 달려 있다.</strong>
+  </div>
+
+  <div class="passage">
+    <span class="ref">36:6.6</span>
+    우리는 생명을 "에너지"와 "힘"으로 말하지만, 그것은 실제로는 둘 다 아니다. 힘-에너지는 다양하게 중력에 반응하지만, 생명은 그렇지 않다. 원형 또한 중력에 반응하지 않는데, 이는 이미 모든 중력-반응 의무를 이행한 에너지들의 한 배열이기 때문이다. <strong style="color:var(--gold)">생명 그 자체는, 어떤 원형-배열되거나 달리 분리된 에너지 체계의 활성화를 구성한다.</strong>
+  </div>
+
+  <div class="passage">
+    <span class="ref">36:6.7</span>
+    진화 행성들에서 생명의 정교화와 관련된 어떤 것들은 우리에게 전적으로 명확하지 않다. 우리는 생명 운반자들의 전기화학적 공식들의 물리적 조직을 완전히 이해하지만, 생명-활성화 불꽃의 본질과 근원은 온전히 이해하지 못한다. <strong style="color:var(--gold)">우리는 생명이 아버지를 통해 아들을 거쳐 영에 의해 흐른다는 것을 안다.</strong> 주 영들이 모든 창조계에 부어지는 생명 강의 칠중 통로일 가능성이 매우 높다. 우리는 우주 어머니 영이 실제로 생명 없는 원형들을 활성화하고 그러한 활성화된 원형질에 유기체적 번식의 특권을 전수한다는 것을 알고 있다. <strong style="color:var(--gold)">단지 개념은 아버지 안에 내재하고, 표현은 아들 안에 있으며, 생명 실현은 영 안에 있다는 것뿐이다.</strong>
+  </div>
+</div>
+
+<!-- ── 강론 ── -->
+<div class="section-block" id="block-sermon">
+  <div class="section-label">
+    <div class="icon icon-sermon">🕊</div>
+    <div class="name" style="color:#6FD9C8">강론</div>
+  </div>
+  <div class="card sermon-card">
+    <p>생명이란 무엇인가? 36:6.6은 대담하게 선언합니다. <span class="highlight">생명은 힘도 에너지도 아니다.</span> 그것은 에너지 체계의 '활성화'입니다. 즉, 물질·마음·영의 어느 차원에서든, 그 안에 불꽃처럼 점화되는 어떤 것입니다.</p>
+    <p>생명 운반자들은 그 공식의 물리적 구조를 완전히 이해하지만, 정작 그 불꽃이 어디서 오는지는 알지 못한다고 고백합니다(36:6.7). 이 고백은 <span class="highlight">우주적 겸손</span>입니다. 최고의 우주 지성들도 생명의 본질 앞에서는 무릎을 꿇습니다.</p>
+    <p>그런데 그들이 아는 것이 하나 있습니다. <span class="highlight">"생명은 아버지를 통해 아들을 거쳐 영에 의해 흐른다."</span> 이 한 문장이 오늘 묵상의 핵심입니다. 생명의 근원은 우주 아버지이며, 그 표현은 영원 아들 안에 있고, 실현과 점화는 무한 영을 통해 이루어집니다.</p>
+    <p>36:6.5는 더 근본적인 질문으로 우리를 이끕니다. 식물과 동물의 생명은 죽음과 함께 소멸합니다. 정체성도, 인격도 없기 때문입니다. 그러나 필사 인간은 다릅니다. 인간에게는 불멸의 혼이 진화할 수 있는 마음이 있습니다. <span class="highlight">생존은 바로 이 혼의 진화에 전적으로 달려 있습니다.</span></p>
+    <p>오늘 이 진리가 우리에게 묻습니다. 나의 생명은 단순한 생물학적 활성화에 머물고 있는가, 아니면 아버지의 생명이 아들을 통해 영 안에서 나를 점화하고 있는가? 혼은 자라고 있는가?</p>
+    <p>생명의 신비 앞에서 우주의 현자들도 침묵합니다. 그러나 우리는 압니다. 개념은 아버지 안에 내재합니다. 표현은 아들 안에 있습니다. 실현은 영 안에 있습니다. <span class="highlight">그리고 그 영은 지금 이 순간, 우리 안에 내주하고 있습니다.</span></p>
+  </div>
+</div>
+
+<!-- ── 노래 ── -->
+<div class="section-block" id="block-song">
+  <div class="section-label">
+    <div class="icon icon-song">🎵</div>
+    <div class="name" style="color:#C9A3EF">오늘의 찬양 — 생명의 불꽃</div>
+  </div>
+  <div class="card song-card">
+    <div class="song-stanza">
+      <span class="stanza-label">1절</span>
+      아버지 안에 내재된 생명<br>
+      말할 수 없는 그 근원<br>
+      아들 안에 표현된 사랑<br>
+      영 안에 불꽃으로 타오르네
+    </div>
+    <div class="song-stanza chorus">
+      <span class="stanza-label" style="color:#7A50B0">후렴</span>
+      흘러라 생명이여 흘러라<br>
+      아버지에서 아들 통해 영으로<br>
+      내 혼을 적시는 그 강물<br>
+      영원을 향해 흘러가네
+    </div>
+    <div class="song-stanza">
+      <span class="stanza-label">2절</span>
+      원형질에 생명 불어넣어<br>
+      우주 어머니 영 활성화하시니<br>
+      나는 단순한 물질이 아닌<br>
+      불멸의 혼을 키워가는 자
+    </div>
+    <div class="song-stanza chorus">
+      <span class="stanza-label" style="color:#7A50B0">후렴</span>
+      흘러라 생명이여 흘러라<br>
+      아버지에서 아들 통해 영으로<br>
+      내 혼을 적시는 그 강물<br>
+      영원을 향해 흘러가네
+    </div>
+    <div class="song-stanza" style="color:#B09ADA;font-style:italic">
+      <span class="stanza-label" style="color:#7A50B0">브리지</span>
+      신비 앞에 무릎 꿇어도<br>
+      한 가지만은 알고 있어<br>
+      생명은 당신께로부터 와서<br>
+      당신께로 돌아가네
+    </div>
+  </div>
+</div>
+
+<!-- ── 기도 ── -->
+<div class="section-block" id="block-prayer">
+  <div class="section-label">
+    <div class="icon icon-prayer">🙏</div>
+    <div class="name" style="color:#6FD99A">아침 기도</div>
+  </div>
+  <div class="card prayer-card">
+    은혜로우신 아버지 하나님,<br>
+    오늘 생명의 신비 앞에<br>
+    겸허히 서옵니다.<br>
+    우주의 현자들도 알지 못하는<br>
+    그 생명의 불꽃이<br>
+    지금 이 순간도<br>
+    저의 마음과 혼 안에서<br>
+    타오르고 있음을 감사드립니다.<br>
+    아버지를 통해<br>
+    아들을 거쳐<br>
+    영으로 흐르는 생명이<br>
+    저를 활성화하고 계심을<br>
+    믿사옵니다.<br>
+    저의 혼이 날마다 자라나<br>
+    불멸의 실체로 진화하게 하시고<br>
+    생물학적 생명에만 머물지 않고<br>
+    아버지의 생명에 참여하는<br>
+    자녀 되게 하여 주옵소서.<br>
+    오늘도 생명의 강이<br>
+    저를 통해 흘러<br>
+    이웃에게 닿게 하소서.<br>
+    예수님의 이름으로 기도드립니다.
+  </div>
+</div>
+
+</main>
+
+<!-- ── PLAYER BAR ── -->
+<div id="player-bar">
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:500px;justify-content:space-between;">
+    <div id="track-info">재생 중: <span id="track-name">대기 중</span></div>
+    <div class="stage-dots">
+      <div class="dot" id="dot-0" title="낭독"></div>
+      <div class="dot" id="dot-1" title="강론"></div>
+      <div class="dot" id="dot-2" title="찬양"></div>
+      <div class="dot" id="dot-3" title="기도"></div>
+    </div>
+  </div>
+  <div id="progress-wrap">
+    <div id="progress-fill"></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <div id="controls">
+      <button class="ctrl-btn" id="btn-prev" title="이전">⏮</button>
+      <button class="ctrl-btn" id="btn-play" title="재생/정지">▶</button>
+      <button class="ctrl-btn" id="btn-next" title="다음">⏭</button>
+    </div>
+    <div id="vol-row">
+      🔊<input type="range" id="vol-slider" min="0" max="1" step="0.05" value="1">
+    </div>
+  </div>
+</div>
+
+<audio id="audio-player" preload="auto"></audio>
+
+<script>
+(function(){
+  const TRACKS = [
+    { src:"https://archive.org/download/urantia-devotion-2026-07-04-morning/reading.mp3", name:"📖 낭독 — 36:6.5",   block:"block-reading", dot:0 },
+    { src:"https://archive.org/download/urantia-devotion-2026-07-04-morning/sermon.mp3",  name:"🕊 강론",            block:"block-sermon",  dot:1 },
+    { src:"https://archive.org/download/urantia-devotion-2026-07-04-morning/song.mp3",    name:"🎵 생명의 불꽃",     block:"block-song",    dot:2 },
+    { src:"https://archive.org/download/urantia-devotion-2026-07-04-morning/prayer.mp3",  name:"🙏 아침 기도",       block:"block-prayer",  dot:3 },
+  ];
+
+  const audio   = document.getElementById("audio-player");
+  const btnPlay = document.getElementById("btn-play");
+  const btnPrev = document.getElementById("btn-prev");
+  const btnNext = document.getElementById("btn-next");
+  const fill    = document.getElementById("progress-fill");
+  const wrap    = document.getElementById("progress-wrap");
+  const volSlider = document.getElementById("vol-slider");
+  const trackName = document.getElementById("track-name");
+  const dots    = [0,1,2,3].map(i=>document.getElementById("dot-"+i));
+  const blocks  = ["block-reading","block-sermon","block-song","block-prayer"]
+                    .map(id=>document.getElementById(id));
+
+  let cur = 0;
+  let playing = false;
+
+  function updateDots(active){
+    dots.forEach((d,i)=>{
+      d.className = "dot" + (i < active ? " done" : i===active ? " active" : "");
+    });
+  }
+
+  function updateBlocks(active){
+    blocks.forEach((b,i)=>{
+      b.className = "section-block " + (i===active ? "playing" : "inactive");
+    });
+  }
+
+  function loadTrack(idx, autoplay){
+    cur = ((idx % TRACKS.length) + TRACKS.length) % TRACKS.length;
+    const t = TRACKS[cur];
+    audio.src = t.src;
+    audio.load();
+    trackName.textContent = t.name;
+    updateDots(cur);
+    updateBlocks(cur);
+    fill.style.width = "0%";
+    // scroll block into view
+    const blk = document.getElementById(t.block);
+    if(blk) blk.scrollIntoView({behavior:"smooth", block:"center"});
+    if(autoplay){
+      audio.play().then(()=>{ playing=true; btnPlay.textContent="⏸"; })
+               .catch(()=>{ playing=false; btnPlay.textContent="▶"; });
+    } else {
+      playing=false; btnPlay.textContent="▶";
+    }
+  }
+
+  function togglePlay(){
+    if(playing){
+      audio.pause(); playing=false; btnPlay.textContent="▶";
+    } else {
+      audio.play().then(()=>{ playing=true; btnPlay.textContent="⏸"; })
+               .catch(()=>{ playing=false; });
+    }
+  }
+
+  audio.addEventListener("timeupdate",()=>{
+    if(audio.duration) fill.style.width=(audio.currentTime/audio.duration*100)+"%";
+  });
+
+  audio.addEventListener("ended",()=>{
+    if(cur < TRACKS.length-1){ loadTrack(cur+1, true); }
+    else { playing=false; btnPlay.textContent="▶"; updateBlocks(-1); fill.style.width="100%"; }
+  });
+
+  wrap.addEventListener("click",e=>{
+    if(!audio.duration) return;
+    const r = wrap.getBoundingClientRect();
+    audio.currentTime = ((e.clientX-r.left)/r.width)*audio.duration;
+  });
+
+  volSlider.addEventListener("input",()=>{ audio.volume=volSlider.value; });
+  btnPlay.addEventListener("click", togglePlay);
+  btnPrev.addEventListener("click",()=>loadTrack(cur-1, playing));
+  btnNext.addEventListener("click",()=>loadTrack(cur+1, playing));
+
+  document.addEventListener("keydown",e=>{
+    if(e.key===" "||e.key==="k"){ e.preventDefault(); togglePlay(); }
+    if(e.key==="ArrowRight"||e.key==="l") loadTrack(cur+1, playing);
+    if(e.key==="ArrowLeft"||e.key==="j")  loadTrack(cur-1, playing);
+  });
+
+  // init
+  loadTrack(0, false);
+  updateBlocks(0);
+  // 방문 즉시 자동 재생 시도 (브라우저 정책상 사용자 상호작용 후 작동)
+  audio.addEventListener("canplaythrough",()=>{
+    if(!playing){
+      audio.play().then(()=>{ playing=true; btnPlay.textContent="⏸"; }).catch(()=>{});
+    }
+  },{once:true});
+})();
+</script>
+</body>
+</html>

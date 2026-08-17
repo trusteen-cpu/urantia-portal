@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 · 나비처럼 드러날 참된 인격</title>
+<style>
+  :root{
+    --cream:#f6f1e7; --paper:#fffdf8; --ink:#2b2620; --soft:#6b6255;
+    --gold:#c9a227; --navy:#1e2761; --line:#e4dccb; --glow:#fbf6ea;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Nanum Myeongjo','Apple SD Gothic Neo','Noto Serif KR',serif;
+    background:linear-gradient(180deg,#efe7d6 0%,#f6f1e7 100%);
+    color:var(--ink); line-height:1.9; -webkit-font-smoothing:antialiased;
+    padding:0 0 120px;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  header{text-align:center;padding:46px 0 26px}
+  .date{font-size:.82rem;letter-spacing:3px;color:var(--gold);font-weight:700}
+  h1{font-size:1.7rem;margin:12px 0 6px;color:var(--navy);letter-spacing:-.3px}
+  .ref{font-size:.86rem;color:var(--soft)}
+  .rule{width:54px;height:2px;background:var(--gold);margin:22px auto 0;border-radius:2px}
+
+  section{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;margin:20px 0;box-shadow:0 6px 22px rgba(60,50,30,.05);
+    transition:box-shadow .4s, border-color .4s, transform .4s;
+  }
+  section.active{
+    border-color:var(--gold);box-shadow:0 8px 30px rgba(201,162,39,.20);
+    background:var(--glow);transform:translateY(-2px);
+  }
+  .tag{
+    display:inline-block;font-size:.72rem;letter-spacing:2px;font-weight:700;
+    color:#fff;background:var(--navy);padding:4px 12px;border-radius:20px;margin-bottom:14px;
+  }
+  section.active .tag{background:var(--gold)}
+
+  .verse{margin:0 0 14px;padding-left:0}
+  .verse:last-child{margin-bottom:0}
+  .cite{font-size:.74rem;font-weight:700;color:var(--gold);letter-spacing:1px}
+  .verse p{margin-top:2px}
+  .verse.read{background:linear-gradient(90deg,rgba(201,162,39,.10),transparent);
+    border-left:3px solid var(--gold);padding:6px 0 6px 14px;border-radius:0 8px 8px 0}
+  .muted{color:var(--soft)}
+  .hint{font-size:.76rem;color:var(--soft);margin-top:12px;font-style:italic}
+
+  .sermon p{margin-bottom:15px}.sermon p:last-child{margin-bottom:0}
+  .song{white-space:pre-line;font-size:1.02rem}
+  .song .lbl{color:var(--gold);font-weight:700;font-size:.82rem;letter-spacing:1px}
+  .prayer{white-space:pre-line;text-align:center;font-size:1.05rem;color:#3a342b}
+  .song-title{font-size:1.05rem;color:var(--navy);font-weight:700;margin-bottom:10px}
+
+  /* 플레이어 바 */
+  .player{
+    position:fixed;left:0;right:0;bottom:0;z-index:50;
+    background:rgba(30,39,97,.97);backdrop-filter:blur(8px);
+    color:#f6f1e7;padding:12px 18px 16px;box-shadow:0 -6px 24px rgba(0,0,0,.18);
+  }
+  .pbar{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:14px}
+  .play{
+    width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;flex:none;
+    background:var(--gold);color:#1e2761;font-size:1.3rem;display:flex;
+    align-items:center;justify-content:center;transition:transform .15s;
+  }
+  .play:active{transform:scale(.92)}
+  .pinfo{flex:1;min-width:0}
+  .pnow{font-size:.92rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pseq{font-size:.72rem;color:#c9cbe0;margin-top:2px}
+  .track{height:5px;background:rgba(255,255,255,.18);border-radius:4px;margin-top:8px;overflow:hidden}
+  .fill{height:100%;width:0;background:var(--gold);transition:width .2s linear}
+  .steps{display:flex;gap:6px;margin-top:9px;max-width:720px;margin-left:auto;margin-right:auto}
+  .step{flex:1;text-align:center;font-size:.7rem;color:#9aa0c4;padding:5px 2px;
+    border-radius:8px;cursor:pointer;transition:.25s;border:1px solid transparent}
+  .step.on{color:#1e2761;background:var(--gold);font-weight:700}
+  .step.done{color:#e8e4d5}
+  footer{text-align:center;color:var(--soft);font-size:.78rem;padding:34px 0 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="date">2026 · 07 · 06</div>
+    <h1>나비처럼 드러날 참된 인격</h1>
+    <div class="ref">유란시아서 112:6.1 – 112:6.4</div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- 1. 낭독 -->
+  <section id="sec-reading">
+    <span class="tag">낭독 · READING</span>
+    <div id="verses"></div>
+    <div class="hint">첫째 절만 낭독되며, 나머지 절은 함께 묵상하도록 표시됩니다.</div>
+  </section>
+
+  <!-- 2. 강론 -->
+  <section id="sec-sermon">
+    <span class="tag">강론 · MESSAGE</span>
+    <div class="sermon" id="sermon"></div>
+  </section>
+
+  <!-- 3. 노래 -->
+  <section id="sec-song">
+    <span class="tag">노래 · SONG</span>
+    <div class="song-title" id="song-title"></div>
+    <div class="song" id="song"></div>
+  </section>
+
+  <!-- 4. 아침 기도 -->
+  <section id="sec-prayer">
+    <span class="tag">아침 기도 · PRAYER</span>
+    <div class="prayer" id="prayer"></div>
+  </section>
+
+  <footer>편집 및 제작 한종인 · 오늘의 묵상</footer>
+</div>
+
+<!-- 플레이어 -->
+<div class="player">
+  <div class="pbar">
+    <button class="play" id="play" aria-label="재생">▶</button>
+    <div class="pinfo">
+      <div class="pnow" id="pnow">낭독을 시작하려면 재생을 누르세요</div>
+      <div class="pseq" id="pseq">낭독 → 강론 → 노래 → 아침기도</div>
+      <div class="track"><div class="fill" id="fill"></div></div>
+    </div>
+  </div>
+  <div class="steps" id="steps"></div>
+</div>
+
+<audio id="au"></audio>
+
+<script>
+// ── 콘텐츠 데이터 (content.py 와 동일) ─────────────────────────
+const PASSAGES = [
+ {cite:"112:6.1", text:"나비가 애벌레에서 나오듯, 인간의 참된 인격은 맨션 세계에서 처음으로 나타날 것이다. 그곳에서 비로소 한때 물질 육체에 감추어졌던 인격이 드러난다. 지역 우주에서의 모론시아 경력은 혼의 존재의 초기 단계에서부터 점진적 영성의 최고 수준에 이르기까지 인격 메커니즘의 지속적 향상과 관련된다."},
+ {cite:"112:6.2", text:"지역 우주 경력을 위한 너희의 모론시아 인격 형태를 설명하기는 어렵다. 너희는 인격을 표현할 수 있는 모론시아 형태를 부여받게 될 것이며, 이러한 부여된 형체들은 궁극적으로 너희의 이해를 초월한다. 이러한 형태들은 완전히 실재하지만, 너희가 현재 이해하는 물질적 질서의 에너지 패턴은 아니다. 그러나 그것들은 지역 우주 세계들에서 인간이 태어난 행성의 물질적 몸이 수행하는 것과 같은 목적을 이룬다."},
+ {cite:"112:6.3", text:"물질적 신체의 외형은 어느 정도 인격의 본성을 반영한다. 물리적 삶에서는 내면적으로 아름답지 않아도 외적으로는 아름다울 수 있다. 그러나 모론시아 삶, 특히 더 높은 수준에서는 인격의 형태가 내면의 본성에 직접적으로 비례한다. 영적 단계에서는 외적 형태와 내적 본성이 점차 완전한 일치를 이루며, 더 높은 영적 수준으로 갈수록 이 동일성은 더욱 완전해진다."},
+ {cite:"112:6.4", text:"모론시아 상태에서 상승하는 필사자는 오르본톤의 주(主) 영이 부여한 우주 마음의 네바돈 수정형을 받는다. 필사적 지성은 창조적 영의 미분화된 마음 회로와는 별개로 존재하던 초점화된 우주적 실체로서 사라지지만, 그 마음의 의미와 가치는 소멸하지 않는다. 마음의 일부 기능은 생존하는 혼 속에 남고, 인간 마음의 경험적 가치들은 조절자에 의해 보존된다. 또한 필사자가 육체로 살던 생애의 기록은 지역 우주에 보존되어 있으며, 이는 세라핌에서 우주 검열자, 그리고 아마도 최상 존재에 이르기까지 상승자의 최종 평가에 관련된다."}
+];
+
+const SERMON = [
+ "나비는 처음부터 나비가 아니었다. 좁고 어두운 고치 속에서, 자기가 무엇이 될지도 모른 채 견디는 시간이 있었다. 그러다 어느 날 날개가 펼쳐진다. 우리의 참된 자아도 그러하다. 지금은 몸 안에 감추어져 있어, 우리조차 자신이 누구인지 온전히 알지 못한다. 그러나 다음 생의 첫 문턱에서, 오래 감추어졌던 참된 인격이 마침내 환하게 드러난다.",
+ "놀라운 약속은 여기에 있다. 그곳에서는 겉모습과 속마음이 점점 하나가 된다. 지금 우리는 아름다운 얼굴 뒤에 초라한 마음을 감출 수도 있지만, 그 세계에서는 내면이 곧 형상이 된다. 사랑한 만큼 빛나고, 진실한 만큼 아름다워진다. 우리가 자라갈수록 겉과 속의 거리는 사라지고, 마침내 우리는 있는 그대로 온전히 알려진다.",
+ "그리고 아무것도 헛되이 사라지지 않는다. 우리가 배운 의미, 우리가 지킨 가치, 우리가 살아온 나날의 기록까지 하나도 잃지 않고 보존된다. 오늘 흘린 눈물과 조용히 감당한 수고, 아무도 알아주지 않던 작은 친절 하나까지도, 아버지께서는 빠짐없이 간직하신다. 애벌레의 수고가 나비의 날개가 되듯, 오늘 우리의 작은 성실함도 영원한 인격의 재료가 된다.",
+ "그러니 감추어진 오늘을 실망하지 말자. 지금 우리 모습이 초라해 보여도, 그것은 끝이 아니라 피어나기 전의 고치일 뿐이다. 아버지께서는 우리 안의 참된 나를 이미 보고 계시며, 그날 우리를 눈부시게 피어나게 하실 것이다. 오늘도 겉을 꾸미기보다 속을 맑게 가꾸며, 사랑으로 참된 나를 정성껏 빚어 가자."
+];
+
+const SONG_TITLE = "참된 나로 피어나리";
+const SONG = `[Verse 1]
+어두운 고치 속에 숨어 있던 나
+내가 누군지 나조차 몰랐네
+그러나 그날이 오면 날개를 펴리
+감추인 참된 내가 드러나리라
+
+[Chorus]
+있는 그대로 나를 아시는 분
+겉과 속이 하나 되는 그 나라로
+사랑한 만큼 빛나는 그곳에서
+나는 마침내 참된 나로 피어나리
+
+[Verse 2]
+아름다운 얼굴 뒤에 숨긴 마음도
+그곳에선 더는 감출 수 없네
+내가 자랄수록 환히 드러나는
+내 안의 진실, 내 안의 사랑
+
+[Bridge]
+헛되이 사라지는 건 아무것도 없어
+내가 걸어온 모든 날의 기록
+아버지 품에 고이 간직되어
+영원한 나를 이루어 가네`;
+
+const PRAYER = `은혜로우신 아버지 하나님
+새 아침의 빛을 주셔서
+감사드립니다
+
+저희는 아직
+자신이 누구인지
+다 알지 못합니다
+그러나 아버지께서는
+저희 안의 참된 모습을
+이미 보고 계십니다
+
+오늘 하루도
+겉모습을 꾸미기보다
+속마음을 맑게 하는
+하루가 되게 하소서
+
+작은 성실과
+조용한 사랑으로
+참된 인격을 빚어 가게
+하소서
+
+저희가 걸어가는
+모든 날의 걸음이
+헛되지 않음을 믿으며
+기쁨으로 나아가게
+하소서
+
+예수님의 이름으로
+기도드립니다`;
+
+// ── 화면 렌더링 ─────────────────────────────────────────────
+const vwrap = document.getElementById('verses');
+PASSAGES.forEach((p,i)=>{
+  const d=document.createElement('div');
+  d.className='verse'+(i===0?' read':'');
+  d.innerHTML=`<span class="cite">${p.cite}</span>`+
+    (i>0?' <span class="muted" style="font-size:.72rem">(묵상용 · 낭독 제외)</span>':'')+
+    `<p${i>0?' class="muted"':''}>${p.text}</p>`;
+  vwrap.appendChild(d);
+});
+document.getElementById('sermon').innerHTML = SERMON.map(t=>`<p>${t}</p>`).join('');
+document.getElementById('song-title').textContent = '「'+SONG_TITLE+'」';
+document.getElementById('song').innerHTML =
+  SONG.replace(/\[(.+?)\]/g,'<span class="lbl">[$1]</span>');
+document.getElementById('prayer').textContent = PRAYER;
+
+// ── 자동재생 플레이어 ────────────────────────────────────────
+const TRACKS=[
+  {key:'reading', label:'낭독',     sec:'sec-reading', file:'https://archive.org/download/urantia-devotion-2026-07-06-morning/reading.mp3'},
+  {key:'sermon',  label:'강론',     sec:'sec-sermon',  file:'https://archive.org/download/urantia-devotion-2026-07-06-morning/sermon.mp3'},
+  {key:'song',    label:'노래',     sec:'sec-song',    file:'https://archive.org/download/urantia-devotion-2026-07-06-morning/song.mp3'},
+  {key:'prayer',  label:'아침기도', sec:'sec-prayer',  file:'https://archive.org/download/urantia-devotion-2026-07-06-morning/prayer.mp3'},
+];
+const au=document.getElementById('au');
+const playBtn=document.getElementById('play');
+const pnow=document.getElementById('pnow');
+const fill=document.getElementById('fill');
+const stepsEl=document.getElementById('steps');
+let idx=0, playing=false;
+
+TRACKS.forEach((t,i)=>{
+  const s=document.createElement('div');
+  s.className='step'; s.textContent=t.label;
+  s.onclick=()=>{ load(i,true); };
+  stepsEl.appendChild(s);
+});
+const stepEls=[...stepsEl.children];
+
+function highlight(){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  const sec=document.getElementById(TRACKS[idx].sec);
+  sec.classList.add('active');
+  sec.scrollIntoView({behavior:'smooth',block:'center'});
+  stepEls.forEach((e,i)=>{
+    e.classList.toggle('on', i===idx);
+    e.classList.toggle('done', i<idx);
+  });
+  pnow.textContent = (idx+1)+'. '+TRACKS[idx].label;
+}
+
+function load(i, autoplay){
+  idx=i; au.src=TRACKS[i].file; fill.style.width='0%';
+  highlight();
+  if(autoplay){ au.play().then(()=>{playing=true;playBtn.textContent='❚❚';}).catch(()=>{}); }
+}
+
+playBtn.onclick=()=>{
+  if(!au.src){ load(0,true); return; }
+  if(playing){ au.pause(); } else { au.play(); }
+};
+au.onplay =()=>{ playing=true;  playBtn.textContent='❚❚'; };
+au.onpause=()=>{ playing=false; playBtn.textContent='▶'; };
+au.ontimeupdate=()=>{
+  if(au.duration) fill.style.width=(au.currentTime/au.duration*100)+'%';
+};
+au.onended=()=>{
+  if(idx < TRACKS.length-1){ load(idx+1,true); }
+  else { fill.style.width='100%'; playBtn.textContent='▶'; playing=false;
+         pnow.textContent='묵상을 마쳤습니다 · 처음부터 다시 들으려면 재생'; idx=0; au.src=''; }
+};
+au.onerror=()=>{
+  pnow.textContent = TRACKS[idx].label+' 음성 파일이 아직 없습니다 ('+TRACKS[idx].file+')';
+};
+
+// 초기 하이라이트 (낭독 섹션)
+document.getElementById('sec-reading').classList.add('active');
+stepEls[0].classList.add('on');
+</script>
+</body>
+</html>

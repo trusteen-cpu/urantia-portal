@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 — 진리는 아름답다 (2:7.1)</title>
+<style>
+  :root { --navy:#1E2761; --gold:#B8901F; --cream:#F4F1E8; --teal:#2E6E6A; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Serif KR','Nanum Myeongjo',serif; background:var(--cream); color:#2a2a2a; line-height:1.9; }
+  .wrap { max-width:720px; margin:0 auto; padding:0 20px 80px; }
+  header { background:var(--navy); color:var(--cream); text-align:center; padding:44px 20px 36px; }
+  header .date { font-size:14px; letter-spacing:3px; color:var(--gold); margin-bottom:10px; }
+  header h1 { font-size:30px; font-weight:700; letter-spacing:1px; }
+  header .paper { font-size:13px; margin-top:12px; color:#cfd3e8; }
+  header .divider { width:60px; height:2px; background:var(--gold); margin:16px auto 0; }
+  .master { background:#fff; border:1px solid #e2ddce; border-radius:14px; padding:22px 24px; margin:-26px auto 0; max-width:640px; box-shadow:0 6px 18px rgba(30,39,97,.12); text-align:center; position:relative; }
+  .master button { background:var(--navy); color:var(--cream); border:none; border-radius:30px; padding:13px 38px; font-size:16px; font-family:inherit; cursor:pointer; letter-spacing:1px; }
+  .master button:hover { background:#2a3578; }
+  .master .status { font-size:13px; color:var(--teal); margin-top:10px; min-height:18px; }
+  section { margin-top:52px; }
+  .label { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .label .num { width:30px; height:30px; border-radius:50%; background:var(--gold); color:#fff; font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .label h2 { font-size:20px; color:var(--navy); letter-spacing:1px; }
+  .card { background:#fff; border:1px solid #e6e1d2; border-radius:12px; padding:28px 30px; }
+  .verse-ref { color:var(--gold); font-weight:700; margin-right:8px; }
+  .scripture { font-size:18px; line-height:2.1; }
+  .sermon-title { text-align:center; font-size:22px; color:var(--navy); font-weight:700; margin-bottom:18px; }
+  .sermon p { margin-bottom:16px; text-align:justify; }
+  .song { white-space:pre-line; text-align:center; line-height:2.1; color:#3a3a3a; }
+  .song-note { text-align:center; font-size:12.5px; color:#98917d; margin-top:14px; }
+  .prayer { white-space:pre-line; text-align:center; line-height:2.2; font-size:16.5px; }
+  audio { width:100%; margin-top:18px; }
+  footer { text-align:center; margin-top:64px; font-size:12.5px; color:#9a927c; letter-spacing:1px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="date">오늘의 묵상 · 2026년 7월 3일</div>
+  <h1>진리는 아름답다</h1>
+  <div class="paper">제2편 하나님의 본성 — 7. 신성한 진리와 아름다움</div>
+  <div class="divider"></div>
+</header>
+
+<div class="wrap">
+  <div class="master">
+    <button id="playAll">전체 듣기 (낭독 → 강론 → 노래 → 기도)</button>
+    <div class="status" id="masterStatus"></div>
+  </div>
+
+  <section>
+    <div class="label"><div class="num">1</div><h2>오늘의 말씀</h2></div>
+    <div class="card">
+      <p class="scripture"><span class="verse-ref">2:7.1</span>모든 유한한 지식과 창조체의 이해는 상대적이다. 비록 높은 근원에서 온 정보와 지식이라 하더라도, 그것은 상대적으로만 완전하며, 지역적으로만 정확하고, 개인적으로만 참되다.</p>
+      <audio id="a-scripture" controls preload="none" src="https://archive.org/download/urantia-devotion-2026-07-03-morning/scripture.mp3"></audio>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><div class="num">2</div><h2>강론</h2></div>
+    <div class="card">
+      <div class="sermon-title">진리는 아름답다</div>
+      <div class="sermon" id="sermonBody"></div>
+      <audio id="a-sermon" controls preload="none" src="https://archive.org/download/urantia-devotion-2026-07-03-morning/sermon.mp3"></audio>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><div class="num">3</div><h2>노래 — 진리는 아름다워라</h2></div>
+    <div class="card">
+      <div class="song">[1절]
+내가 아는 것은 언제나 한 조각
+내 눈에 보이는 만큼만 참되네
+그러나 저 너머 변하지 않는 빛
+영원한 진리가 나를 부르네
+
+[후렴]
+진리는 아름다워라 충만하고 균형 잡힌 빛
+진리를 찾는 그 길이 곧 하나님을 찾는 길
+내 작은 앎을 내려놓고 그 크신 설계 바라보리
+진리는 아름다워라 아버지의 빛이어라
+
+[2절]
+반쪽의 지식이 나를 속일 때에
+우주의 고아라 판결하려 할 때
+모든 것 배후에 계신 그 생각이
+창조보다 먼저 나를 품었네
+
+[브릿지]
+흔들리는 건 나의 이해일 뿐
+진리는 영원히 흔들리지 않네
+세계마다 마음마다 다르게 피어도
+그 근원은 오직 한 분이시라
+
+[후렴]
+진리는 아름다워라 충만하고 균형 잡힌 빛
+진리를 찾는 그 길이 곧 하나님을 찾는 길
+내 작은 앎을 내려놓고 그 크신 설계 바라보리
+진리는 아름다워라 아버지의 빛이어라</div>
+      <div class="song-note">이 노래는 무레카(Mureka)로 제작된 곡입니다.</div>
+      <audio id="a-song" controls preload="none" src="https://archive.org/download/urantia-devotion-2026-07-03-morning/song.mp3"></audio>
+    </div>
+  </section>
+
+  <section>
+    <div class="label"><div class="num">4</div><h2>아침 기도</h2></div>
+    <div class="card">
+      <div class="prayer">은혜로우신 아버지 하나님,
+새 아침을 열어 주시니 감사합니다.
+저의 앎은 한 조각에 불과하고
+저의 이해는 상대적임을 고백합니다.
+부분을 붙들고 전체라 우기는
+교만에서 저를 지켜 주소서.
+그러나 아버지의 진리는
+영원하고 보편적임을 믿습니다.
+흔들리는 세상 속에서도
+흔들리지 않는 그 진리 위에
+오늘 하루를 세우게 하소서.
+반쪽 지식이 저를 속일 때
+모든 현상의 배후에 계신
+아버지의 설계를 보게 하시고
+진리를 탐구하는 걸음마다
+신성한 실체를 만나게 하소서.
+충만하고 균형 잡힌
+그 아름다운 진리로
+저의 생각과 말과 행동을
+빚어 주시옵소서.
+예수님의 이름으로 기도드립니다.
+아멘.</div>
+      <audio id="a-prayer" controls preload="none" src="https://archive.org/download/urantia-devotion-2026-07-03-morning/prayer.mp3"></audio>
+    </div>
+  </section>
+
+  <footer>유란시아서 묵상 · 하나님의 아버지되심과 우리 모두의 형제됨</footer>
+</div>
+
+<script>
+var SERMON_TEXT = "오늘 본문은 우리에게 겸손과 확신, 이 두 가지를 동시에 가르칩니다.\n\n먼저 겸손입니다. 모든 유한한 지식과 창조체의 이해는 상대적입니다. 심지어 높은 근원에서 온 지식조차도 상대적으로만 완전하며, 지역적으로만 정확하고, 개인적으로만 참됩니다. 우리는 각자의 체험이 미치는 범위 안에서만 확신할 수 있는 존재입니다. 어떤 곳에서 완전한 사실로 보이는 것도 창조의 다른 부분에서는 상대적으로만 진실할 수 있습니다. 그러므로 내가 아는 부분을 전체라고 선언하는 순간, 우리는 철학자들이 빠졌던 그 심각한 오류에 함께 빠지게 됩니다.\n\n그러나 동시에 확신입니다. 신성한 진리, 곧 최종적 진리는 동일하며 보편적입니다. 첫째 근원 중심의 법과 명령, 생각과 태도는 영원하고 무한하며 보편적으로 참됩니다. 우리의 이해는 흔들려도, 진리 자체는 흔들리지 않습니다. 다만 그 영원한 진리가 각 우주와 세계, 각 사람의 마음에 적용될 때에는 창조자 아들들의 계획과 무한 영의 보살핌 속에서 저마다 다르게 꽃피는 것입니다.\n\n본문은 또 하나의 경고를 줍니다. 유물론의 단편적 지식은 잠재적 악이라는 것입니다. 선과 악이 뒤섞인 반쪽 지식은 인간을 우주에서 추방된 고아로 판결하려 듭니다. 그러나 진리는 아름답습니다. 충만하며 동시에 균형 잡혀 있기 때문입니다. 인간이 진리를 탐구할 때, 그는 곧 신성한 실체를 추구하는 것입니다.\n\n오늘 하루, 부분을 붙들고 전체라 주장하는 교만을 내려놓읍시다. 그리고 모든 현상의 배후에 계신 창조자의 설계를 찾는 현명한 탐구자가 됩시다. 창조자의 생각은 언제나 창조 행위에 앞서 있기 때문입니다.";
+(function(){
+  var body = document.getElementById('sermonBody');
+  SERMON_TEXT.split('\n\n').forEach(function(par){
+    var p = document.createElement('p');
+    p.textContent = par;
+    body.appendChild(p);
+  });
+})();
+
+(function(){
+  var order = ['a-scripture','a-sermon','a-song','a-prayer'];
+  var labels = {'a-scripture':'본문 낭독 (2:7.1)','a-sermon':'강론','a-song':'노래','a-prayer':'아침 기도'};
+  var btn = document.getElementById('playAll');
+  var status = document.getElementById('masterStatus');
+  var idx = -1, playing = false;
+
+  function stopAll(){
+    order.forEach(function(id){
+      var a = document.getElementById(id);
+      a.pause(); a.currentTime = 0;
+    });
+  }
+  function playNext(){
+    idx++;
+    if (idx >= order.length){
+      playing = false; idx = -1;
+      btn.textContent = '전체 듣기 (낭독 → 강론 → 노래 → 기도)';
+      status.textContent = '오늘의 묵상을 마쳤습니다.';
+      return;
+    }
+    var a = document.getElementById(order[idx]);
+    status.textContent = '재생 중: ' + labels[order[idx]];
+    var p = a.play();
+    if (p && p.catch){
+      p.catch(function(){ playNext(); }); // 파일 없으면 다음으로
+    }
+  }
+  order.forEach(function(id){
+    var a = document.getElementById(id);
+    a.addEventListener('ended', function(){ if (playing) playNext(); });
+    a.addEventListener('error', function(){ if (playing && order[idx] === id) playNext(); });
+  });
+  btn.addEventListener('click', function(){
+    if (playing){
+      playing = false; stopAll(); idx = -1;
+      btn.textContent = '전체 듣기 (낭독 → 강론 → 노래 → 기도)';
+      status.textContent = '';
+    } else {
+      playing = true; idx = -1;
+      btn.textContent = '정지';
+      playNext();
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 · 2026년 6월 28일 · 아버지의 뜻과 하나 된 기도</title>
+<style>
+  :root{
+    --navy:#1b2a4a;
+    --navy-soft:#2c3e60;
+    --gold:#b08d30;
+    --gold-soft:#c9a85a;
+    --ivory:#fbf8f1;
+    --cream:#f3ecdd;
+    --ink:#2a2a28;
+    --ink-soft:#55504a;
+    --line:#e3d9c2;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Nanum Myeongjo","Noto Serif KR",Cambria,serif;
+    background:linear-gradient(180deg,var(--ivory),var(--cream));
+    color:var(--ink);
+    line-height:1.9;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px 90px;}
+
+  header.top{
+    text-align:center;
+    padding:54px 18px 30px;
+    border-bottom:1px solid var(--line);
+  }
+  header.top .eyebrow{
+    letter-spacing:.5em;
+    font-size:.78rem;
+    color:var(--gold);
+    margin-bottom:14px;
+  }
+  header.top .date{
+    font-size:.98rem;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  header.top h1{
+    font-size:1.95rem;
+    color:var(--navy);
+    margin:0 0 12px;
+    letter-spacing:.02em;
+  }
+  header.top .subtitle{
+    font-size:.95rem;
+    color:var(--ink-soft);
+  }
+
+  section{padding:42px 0 8px;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .label{
+    display:inline-block;
+    font-size:.8rem;
+    letter-spacing:.32em;
+    color:var(--gold);
+    border:1px solid var(--gold-soft);
+    border-radius:30px;
+    padding:5px 18px;
+    margin-bottom:24px;
+  }
+
+  .verse{margin:0 0 26px;}
+  .verse .cite{
+    display:block;
+    font-family:Calibri,Arial,sans-serif;
+    font-size:.82rem;
+    letter-spacing:.12em;
+    color:var(--gold);
+    margin-bottom:7px;
+  }
+  .verse.focus{
+    background:#fff;
+    border-left:3px solid var(--gold);
+    padding:20px 22px;
+    border-radius:0 10px 10px 0;
+    box-shadow:0 6px 22px rgba(27,42,74,.06);
+  }
+  .verse.focus .cite::after{
+    content:" · 낭독 본문";
+    color:var(--ink-soft);
+    letter-spacing:.05em;
+  }
+  .verse p{margin:0;font-size:1.06rem;}
+
+  .sermon p{margin:0 0 18px;font-size:1.04rem;}
+
+  .prayer{
+    text-align:center;
+    font-size:1.08rem;
+    color:var(--navy-soft);
+    white-space:pre-line;
+    line-height:2.05;
+  }
+
+  .song{
+    text-align:center;
+  }
+  .song .song-title{
+    font-size:1.15rem;
+    color:var(--navy);
+    margin-bottom:18px;
+  }
+  .song .lyric{
+    white-space:pre-line;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    line-height:2.0;
+  }
+  .song .note{
+    margin-top:16px;
+    font-size:.82rem;
+    color:var(--gold);
+    letter-spacing:.08em;
+  }
+
+  /* ── 마스터 플레이어 ───────────────────────── */
+  .player{
+    position:fixed;left:0;right:0;bottom:0;
+    background:var(--navy);
+    color:#fff;
+    box-shadow:0 -6px 24px rgba(0,0,0,.22);
+    z-index:50;
+  }
+  .player-inner{
+    max-width:760px;margin:0 auto;
+    padding:12px 20px 14px;
+    display:flex;flex-direction:column;gap:9px;
+  }
+  .player-row{
+    display:flex;align-items:center;gap:14px;
+  }
+  .play-btn{
+    flex:none;
+    width:46px;height:46px;border-radius:50%;
+    border:none;cursor:pointer;
+    background:var(--gold);color:var(--navy);
+    font-size:1.2rem;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .12s ease;
+  }
+  .play-btn:hover{transform:scale(1.06);}
+  .now{flex:1;min-width:0;}
+  .now .now-label{font-size:.92rem;letter-spacing:.04em;}
+  .now .now-sub{font-size:.74rem;color:var(--gold-soft);margin-top:2px;}
+  .seg-list{
+    display:flex;flex-wrap:wrap;gap:6px;
+  }
+  .seg-chip{
+    font-family:Calibri,Arial,sans-serif;
+    font-size:.74rem;letter-spacing:.04em;
+    padding:4px 11px;border-radius:20px;
+    background:rgba(255,255,255,.10);
+    color:#dfe5f0;cursor:pointer;border:none;
+    transition:background .15s ease;
+  }
+  .seg-chip:hover{background:rgba(255,255,255,.20);}
+  .seg-chip.active{background:var(--gold);color:var(--navy);}
+  .bar{
+    height:4px;border-radius:3px;
+    background:rgba(255,255,255,.16);overflow:hidden;
+  }
+  .bar > span{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear;}
+  .miss{color:var(--gold-soft);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">오늘의 묵상</div>
+    <div class="date">2026년 6월 28일</div>
+    <h1>아버지의 뜻과 하나 된 기도</h1>
+    <div class="subtitle">유란시아서 146:2.5–2.7 · 기도에 관한 설교</div>
+  </header>
+
+  <!-- 본문: 전체 표시 -->
+  <section>
+    <span class="label">말 씀</span>
+    <div class="verse">
+      <span class="cite">146:2.5</span>
+      <p>4. 우주에는 정의의 기본 법칙이 있으며, 자비는 이를 우회할 수 없다. 이기적인 시간과 공간의 창조체가 파라다이스의 이타적인 영광을 받아들일 수는 없다. 심지어 하나님의 무한한 사랑도 영원한 생존을 선택하지 않는 어떤 필사 창조체에게도 강제로 영원한 구원을 줄 수 없다. 자비는 큰 여유를 가지고 베풀어지지만, 결국에는 사랑이 자비와 결합한다고 해도 효과적으로 폐지할 수 없는 정의의 명령이 있다. 예수는 다시 히브리 성서를 인용했다. “내가 불렀으나 너희는 듣기를 거부하였고, 내가 손을 내밀었으나 아무도 주목하지 않았다. 너희는 나의 모든 충고를 무시하였고, 나의 책망을 거부하였다. 그리고 이것이 반항적인 태도이기에, 너희가 나를 부르며 도움을 요청할 때 응답을 받지 못하는 것이 필연적이다. 생명의 길을 거부하였기에, 너희는 고난의 시기에 나를 간절히 찾을지라도, 나를 발견하지 못할 것이다.”</p>
+    </div>
+    <div class="verse">
+      <span class="cite">146:2.6</span>
+      <p>5. 자비를 받으려는 자는 자비를 베풀어야 한다. 너희는 판단받지 않으려거든 판단하지 말라. 너희가 다른 사람들을 판단하는 그 정신으로 너희도 판단받을 것이다. 자비는 우주의 공정성을 완전히 무효화하지는 않는다. 결국에는 “궁핍한 자의 부르짖음에 귀를 막는 자는, 그도 언젠가 도움을 요청할 때, 아무도 그를 듣지 않을 것이다”라는 말이 진실로 드러날 것이다. 기도의 진정성은 그 기도가 들려진다는 확신이다. 기도의 영적 지혜와 우주적 일관성이 응답의 시기, 방식, 정도를 정하는 결정자이다. 현명한 아버지는 그의 무지하고 경험 없는 자녀들의 어리석은 기도를 문자 그대로 응답하지는 않지만, 자녀들은 그러한 터무니없는 청원을 하는 데서 큰 즐거움과 진정한 혼의 만족을 얻는다.</p>
+    </div>
+    <div class="verse focus">
+      <span class="cite">146:2.7</span>
+      <p>6. 너희가 하늘에 계신 아버지의 뜻을 행하는 데 완전히 헌신할 때, 너희의 모든 청원에 대한 응답이 있다. 이는 너희의 기도가 아버지의 뜻과 완전히 일치할 것이기 때문이며, 아버지의 뜻은 그의 광대한 우주 전체에 걸쳐 언제나 드러나기 때문이다. 진정한 아들이 원하는 것과 무한한 아버지가 원하는 것은 실재한다. 그런 기도는 응답받지 않을 수 없으며, 다른 어떤 종류의 청원도 완전히 응답될 수 없다.</p>
+    </div>
+  </section>
+
+  <!-- 강론 -->
+  <section class="sermon">
+    <span class="label">강 론</span>
+    <p>오늘 우리는 예수께서 갈릴리에서 베푸신 기도에 관한 설교의 절정에 이릅니다. 예수는 먼저 우주의 엄정한 질서를 일깨우십니다. 정의는 우주의 기본 법칙이며, 자비조차 이를 우회하지 못합니다. 무한하신 사랑도 영원한 생존을 스스로 거부하는 이에게 구원을 강요하지 않습니다. 자비는 한없이 너그럽게 베풀어지지만, 그 자비를 받으려는 자는 또한 자비를 베풀어야 합니다. 우리가 다른 사람을 판단하는 그 정신으로 우리도 판단받기 때문입니다.</p>
+    <p>이어 예수는 기도의 깊은 비밀을 드러내십니다. 기도의 진정성은 그 기도가 들려진다는 확신입니다. 그러나 현명한 아버지는 무지한 자녀의 어리석은 청원을 문자 그대로 응답하지 않으십니다. 응답의 시기와 방식과 정도는 그 기도에 담긴 영적 지혜와 우주적 일관성이 결정합니다. 그럼에도 자녀들은 아버지께 마음을 쏟아 놓는 그 자리에서 깊은 기쁨과 진정한 혼의 만족을 얻습니다.</p>
+    <p>그리고 마침내 가장 빛나는 약속이 선포됩니다. 우리가 하늘 아버지의 뜻을 행하는 데 온전히 헌신할 때, 우리의 모든 청원은 응답을 받습니다. 그때 우리의 기도는 아버지의 뜻과 완전히 하나가 되기 때문입니다. 참된 아들이 원하는 것과 무한한 아버지가 원하는 것이 하나로 실재할 때, 그런 기도는 결코 응답받지 않을 수 없습니다.</p>
+    <p>그러므로 기도는 하나님을 우리의 뜻으로 움직이려는 시도가 아니라, 우리 자신을 아버지의 뜻에 일치시키는 거룩한 길입니다. 오늘 우리의 모든 기도가 아버지의 영원한 뜻과 하나 되어, 응답받는 기도의 기쁨에 이르기를 소망합니다.</p>
+  </section>
+
+  <!-- 기도 -->
+  <section>
+    <span class="label">기 도</span>
+    <div class="prayer">은혜로우신 아버지 하나님,
+우주를 다스리는
+정의의 법 앞에서
+우리는 겸손히 머리 숙입니다.
+
+아버지의 자비는
+한없이 흘러넘치나
+스스로 닫은 마음에는
+이르지 못함을 깨닫습니다.
+
+우리의 마음을 열어
+아버지의 뜻을 향하게 하소서.
+우리의 모든 기도가
+아버지의 뜻과 하나 되게 하소서.
+
+자비를 받기 원하오니
+먼저 자비를 베풀게 하시고,
+판단하지 아니하며
+용서하는 마음을 주소서.
+
+온전히 헌신하여
+아버지의 뜻을 행할 때,
+우리의 모든 청원이
+응답받는 기쁨을 누리게 하소서.
+
+참된 아들의 소원과
+아버지의 뜻이
+하나로 실재하는
+거룩한 기도를 드리게 하소서.
+
+예수님의 이름으로 기도드립니다.</div>
+  </section>
+
+  <!-- 찬양 (첫 절만 표시) -->
+  <section class="song">
+    <span class="label">찬 양</span>
+    <div class="song-title">아버지의 뜻과 하나 된 기도</div>
+    <div class="lyric">고요한 이 새벽에
+아버지 앞에 나아가네
+정의로운 그 손길이
+나를 늘 지켜 주시네</div>
+    <div class="note">잔잔한 찬양 · 전체 가사는 하단 플레이어에서</div>
+  </section>
+
+</div>
+
+<!-- 마스터 플레이어 -->
+<div class="player">
+  <div class="player-inner">
+    <div class="player-row">
+      <button class="play-btn" id="playBtn" aria-label="재생/일시정지">▶</button>
+      <div class="now">
+        <div class="now-label" id="nowLabel">말씀 낭독 · 146:2.7</div>
+        <div class="now-sub" id="nowSub">재생 버튼을 눌러 순서대로 들으세요</div>
+      </div>
+    </div>
+    <div class="bar"><span id="barFill"></span></div>
+    <div class="seg-list" id="segList"></div>
+  </div>
+</div>
+
+<audio id="player" preload="none"></audio>
+
+<script>
+  var playlist = [
+    { file: "https://archive.org/download/urantia-devotion-2026-06-28-morning/passage.mp3", label: "말씀 낭독 · 146:2.7", sub: "유란시아서 146:2.7" },
+    { file: "https://archive.org/download/urantia-devotion-2026-06-28-morning/sermon.mp3",  label: "강론",               sub: "아버지의 뜻과 하나 된 기도" },
+    { file: "https://archive.org/download/urantia-devotion-2026-06-28-morning/prayer.mp3",  label: "기도",               sub: "은혜로우신 아버지 하나님" },
+    { file: "https://archive.org/download/urantia-devotion-2026-06-28-morning/song.mp3",    label: "찬양",               sub: "아버지의 뜻과 하나 된 기도" }
+  ];
+
+  var current = 0;
+  var audio = document.getElementById("player");
+  var playBtn = document.getElementById("playBtn");
+  var nowLabel = document.getElementById("nowLabel");
+  var nowSub = document.getElementById("nowSub");
+  var barFill = document.getElementById("barFill");
+  var segList = document.getElementById("segList");
+
+  // 세그먼트 칩 생성
+  for (var i = 0; i < playlist.length; i++) {
+    (function (idx) {
+      var chip = document.createElement("button");
+      chip.className = "seg-chip" + (idx === 0 ? " active" : "");
+      chip.textContent = (idx + 1) + ". " + playlist[idx].label;
+      chip.onclick = function () { loadSegment(idx, true); };
+      segList.appendChild(chip);
+    })(i);
+  }
+  var chips = segList.getElementsByClassName("seg-chip");
+
+  function refreshChips() {
+    for (var i = 0; i < chips.length; i++) {
+      if (i === current) { chips[i].className = "seg-chip active"; }
+      else { chips[i].className = "seg-chip"; }
+    }
+  }
+
+  function loadSegment(idx, autoplay) {
+    current = idx;
+    audio.src = playlist[idx].file;
+    nowLabel.textContent = playlist[idx].label;
+    nowSub.textContent = playlist[idx].sub;
+    barFill.style.width = "0%";
+    refreshChips();
+    if (autoplay) {
+      audio.play().then(function () {
+        playBtn.textContent = "❚❚";
+      }).catch(function () {
+        nowSub.innerHTML = '<span class="miss">오디오 파일이 아직 없습니다 (audio/ 생성 후 재생)</span>';
+        playBtn.textContent = "▶";
+      });
+    }
+  }
+
+  playBtn.onclick = function () {
+    if (!audio.src) { loadSegment(current, true); return; }
+    if (audio.paused) {
+      audio.play().then(function () { playBtn.textContent = "❚❚"; })
+        .catch(function () {
+          nowSub.innerHTML = '<span class="miss">오디오 파일이 아직 없습니다 (audio/ 생성 후 재생)</span>';
+        });
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶";
+    }
+  };
+
+  audio.addEventListener("timeupdate", function () {
+    if (audio.duration) {
+      barFill.style.width = (audio.currentTime / audio.duration * 100) + "%";
+    }
+  });
+
+  audio.addEventListener("ended", function () {
+    if (current < playlist.length - 1) {
+      loadSegment(current + 1, true);
+    } else {
+      playBtn.textContent = "▶";
+      barFill.style.width = "100%";
+      nowSub.textContent = "묵상을 마칩니다 · 아멘";
+    }
+  });
+
+  // 초기 로드 (자동재생 안 함)
+  loadSegment(0, false);
+</script>
+</body>
+</html>

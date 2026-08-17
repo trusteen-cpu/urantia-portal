@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 취침 명상 · 너는 하나님의 아들이다</title>
+<style>
+  :root{
+    --navy:#0d1b3e; --navy2:#132752; --gold:#d4af37; --gold-soft:#e8cf82;
+    --ink:#eae6da; --muted:#a7b0c8; --line:rgba(212,175,55,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Noto Serif KR',-apple-system,'Malgun Gothic',serif;
+    background:radial-gradient(1200px 700px at 50% -10%,#1b2f5e 0%,var(--navy) 55%,#070f24 100%);
+    color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; padding:32px 18px 48px; line-height:1.9;
+  }
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(1px 1px at 20% 30%,#fff6,transparent),
+      radial-gradient(1px 1px at 70% 20%,#fff5,transparent),
+      radial-gradient(1px 1px at 40% 70%,#fff4,transparent),
+      radial-gradient(1px 1px at 85% 60%,#fff5,transparent),
+      radial-gradient(1px 1px at 55% 45%,#fff3,transparent);}
+  .wrap{position:relative;z-index:1;width:100%;max-width:640px}
+  header{text-align:center;margin-bottom:26px}
+  .eyebrow{color:var(--gold);letter-spacing:.35em;font-size:12px;margin-bottom:12px}
+  h1{font-size:26px;font-weight:700;color:#fff;letter-spacing:.02em}
+  .ref{color:var(--gold-soft);font-size:14px;margin-top:8px}
+  .moon{font-size:30px;margin-bottom:14px;opacity:.9}
+
+  .tabs{display:flex;gap:8px;justify-content:center;margin:22px 0 18px;flex-wrap:wrap}
+  .tab{padding:9px 18px;border:1px solid var(--line);border-radius:999px;
+    color:var(--muted);font-size:14px;cursor:pointer;transition:.25s;background:rgba(255,255,255,.02)}
+  .tab.active{color:var(--navy);background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    border-color:var(--gold);font-weight:700}
+  .tab.done{color:var(--gold-soft)}
+
+  .card{background:linear-gradient(180deg,rgba(19,39,82,.72),rgba(13,27,62,.72));
+    border:1px solid var(--line);border-radius:20px;padding:30px 26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);backdrop-filter:blur(4px);min-height:260px}
+  .seg-label{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:16px;
+    display:flex;align-items:center;gap:10px}
+  .seg-label::before{content:"";width:26px;height:1px;background:var(--gold)}
+  .seg-text{font-size:17px;color:var(--ink);white-space:pre-wrap}
+  .seg-text.center{text-align:center}
+  .seg-text.verse{font-size:16px;color:#dfe3ee}
+
+  .controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px}
+  .btn{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);
+    width:52px;height:52px;border-radius:50%;font-size:18px;cursor:pointer;transition:.2s}
+  .btn:hover{border-color:var(--gold);color:var(--gold-soft)}
+  .btn.play{width:66px;height:66px;font-size:24px;
+    background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:var(--navy);border:none;
+    box-shadow:0 8px 26px rgba(212,175,55,.35)}
+  .bar{height:4px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:24px;overflow:hidden}
+  .bar>div{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width .2s}
+  .hint{text-align:center;color:var(--muted);font-size:12.5px;margin-top:16px;letter-spacing:.03em}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;opacity:.8}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="wrap">
+  <header>
+    <div class="moon">☾</div>
+    <div class="eyebrow">오늘의 취침 명상</div>
+    <h1>너는 하나님의 아들이다</h1>
+    <div class="ref">유란시아서 141:6.4</div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="card">
+    <div class="seg-label" id="segLabel">낭독</div>
+    <div class="seg-text verse" id="segText"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prevBtn" title="이전">⏮</button>
+    <button class="btn play" id="playBtn" title="재생/일시정지">▶</button>
+    <button class="btn" id="skipBtn" title="건너뛰기">⏭</button>
+  </div>
+  <div class="bar"><div id="prog"></div></div>
+  <div class="hint" id="hint">▶ 를 누르면 낭독 → 강론 → 노래 → 기도 순서로 자동 재생됩니다.</div>
+
+  <footer>유란시아서 일독 · 매일의 쉼과 은혜 · 2026.07.11</footer>
+</div>
+
+<audio id="player"></audio>
+
+<script>
+const SEGMENTS = [
+  { label:"낭독", file:"https://archive.org/download/urantia-devotion-2026-07-11-night/01_nangdok.mp3", cls:"verse",
+    text:`그날 밤 예수는 사도들에게 왕국에서의 새로운 삶에 대해 말했다. 예수는 이렇게 말했다.
+
+"너희가 왕국에 들어갈 때, 너희는 다시 태어나는 것이다. 육신으로만 태어난 자들에게는 영의 깊은 것들을 가르칠 수 없다. 먼저 그들이 영으로 태어났는지 확인한 후에 영의 진보된 길을 가르치라.
+
+먼저 사람들을 성전 안으로 데려가기 전에는 성전의 아름다움을 보여주려 하지 마라. 하나님의 아버지 되심과 사람들의 아들 됨에 대한 교리를 논하기 전에 먼저 사람들을 하나님께 소개하고, 그들이 하나님의 아들임을 알게 하라.
+
+사람들과 다투지 말고 항상 인내하라. 이 왕국은 너희의 것이 아니라, 너희는 단지 대사일 뿐이다.
+
+단순히 나아가서 선포하라: '이것이 하늘 왕국이다—하나님은 너희의 아버지시며 너희는 그의 아들들이다.' 그리고 이 기쁜 소식을 온 마음으로 믿는다면, 그것이 너희의 영원한 구원이다."` },
+  { label:"강론", file:"https://archive.org/download/urantia-devotion-2026-07-11-night/02_gangron.mp3", cls:"",
+    text:`하루가 저뭅니다. 오늘도 우리는 많은 것을 하려 했고, 어떤 것은 이루었으며 어떤 것은 미처 이루지 못했습니다. 이 고요한 밤, 예수가 그날 밤 사도들에게 건넨 말을 조용히 떠올려 봅니다. 왕국에 들어가는 일은 무언가를 더 해내는 일이 아니라, 다시 태어나는 일이라고 그는 말했습니다.
+
+다시 태어난다는 것은 애써 얻어 내는 일이 아닙니다. 아기가 스스로의 힘으로 태어나지 않듯이, 우리도 영의 탄생을 스스로 만들어 내지 못합니다. 그것은 우리를 향한 아버지의 선물이며, 우리가 마음을 열어 받아들이는 순간 이미 우리 안에서 시작된 일입니다.
+
+예수는 성전의 아름다움을 성급히 자랑하지 말라고 했습니다. 먼저 사람을 성전 안으로 데리고 들어가라 했습니다. 진리는 설명으로 전해지는 것이 아니라, 관계 안에서 깨달아지는 것입니다.
+
+오늘 밤 당신이 품고 잠들 것은 단 하나입니다. 하나님은 당신의 아버지이시고, 당신은 그의 자녀입니다. 오늘 이룬 일이 적어도, 넘어진 자리가 있어도, 이 사실은 흔들리지 않습니다. 아들 됨은 성취가 아니라 존재이기 때문입니다.
+
+이제 그 믿음을 베개 삼아, 아버지의 품 안에서 편히 쉬십시오. 당신은 오늘, 사랑받는 자녀로 잠듭니다.` },
+  { label:"노래", file:"https://archive.org/download/urantia-devotion-2026-07-11-night/03_song.mp3", cls:"center",
+    text:`[1절]
+하루가 저물고 별이 뜨는 밤
+지친 두 손을 이제 내려놓네
+이룬 것 적어도 괜찮아
+나는 아버지의 아들
+
+[후렴]
+하나님은 나의 아버지
+나는 그의 사랑받는 아들
+새로 태어난 이 마음으로
+평안히 잠드네 오늘 밤
+
+[2절]
+성전의 문을 두드리기 전에
+이미 그 품 안에 나는 있었네
+설명이 아니라 사랑으로
+아버지를 알아 가네
+
+[브릿지]
+온 마음으로 믿는 이 소식
+그것이 나의 영원한 구원
+어둠이 내려도 두렵지 않네
+아버지 품에 잠들어` },
+  { label:"기도", file:"https://archive.org/download/urantia-devotion-2026-07-11-night/04_prayer.mp3", cls:"center",
+    text:`저를 자녀 삼으신
+아버지 하나님,
+
+오늘 하루도
+당신의 손 안에 있었습니다.
+
+이룬 일이 적어도
+저를 나무라지 않으시고
+아들로 불러 주시니
+감사합니다.
+
+성전의 문을
+스스로 두드리기 전에
+당신이 먼저
+저를 안으로 데려가셨습니다.
+
+이 밤 다시 태어난 마음으로
+당신 품에 눕습니다.
+
+내일의 염려를 내려놓게 하시고
+당신이 저의 아버지이심을
+꿈속에서도 알게 하소서.
+
+온 마음으로 믿는 이 기쁜 소식이
+저의 영원한 구원임을
+잊지 않게 하소서.
+
+편안히 잠들어 새 아침에
+당신의 자녀로 눈뜨게 하소서.
+
+예수님의 이름으로
+기도드립니다.` },
+];
+
+const player = document.getElementById('player');
+const tabsEl = document.getElementById('tabs');
+const segLabel = document.getElementById('segLabel');
+const segText = document.getElementById('segText');
+const playBtn = document.getElementById('playBtn');
+const prevBtn = document.getElementById('prevBtn');
+const skipBtn = document.getElementById('skipBtn');
+const prog = document.getElementById('prog');
+const hint = document.getElementById('hint');
+
+let idx = 0, playing = false, started = false;
+
+SEGMENTS.forEach((s,i)=>{
+  const t = document.createElement('div');
+  t.className='tab'; t.textContent=s.label;
+  t.onclick=()=>{ load(i); if(started) play(); };
+  tabsEl.appendChild(t);
+});
+const tabs=[...tabsEl.children];
+
+function render(){
+  const s=SEGMENTS[idx];
+  segLabel.textContent=s.label;
+  segText.className='seg-text '+s.cls;
+  segText.textContent=s.text;
+  tabs.forEach((t,i)=>{
+    t.classList.toggle('active',i===idx);
+    t.classList.toggle('done',i<idx);
+  });
+}
+function load(i){
+  idx=Math.max(0,Math.min(SEGMENTS.length-1,i));
+  player.src=SEGMENTS[idx].file;
+  prog.style.width='0%';
+  render();
+}
+function play(){
+  started=true;
+  player.play().then(()=>{
+    playing=true; playBtn.textContent='❚❚';
+    hint.textContent=SEGMENTS[idx].label+' 재생 중 · ⏭ 로 건너뛰기';
+  }).catch(()=>{
+    hint.textContent='※ 음성 파일이 아직 없습니다. 텍스트로 감상하세요. (⏭ 로 이동)';
+  });
+}
+function pause(){ player.pause(); playing=false; playBtn.textContent='▶'; }
+
+playBtn.onclick=()=>{ playing?pause():play(); };
+skipBtn.onclick=()=>{
+  if(idx<SEGMENTS.length-1){ load(idx+1); if(started) play(); }
+  else { pause(); hint.textContent='명상을 마쳤습니다. 평안한 밤 되세요. ☾'; }
+};
+prevBtn.onclick=()=>{ load(idx-1); if(started) play(); };
+
+player.addEventListener('timeupdate',()=>{
+  if(player.duration) prog.style.width=(player.currentTime/player.duration*100)+'%';
+});
+player.addEventListener('ended',()=>{
+  if(idx<SEGMENTS.length-1){ load(idx+1); play(); }
+  else { playing=false; playBtn.textContent='▶'; prog.style.width='100%';
+    hint.textContent='명상을 마쳤습니다. 평안한 밤 되세요. ☾'; }
+});
+
+load(0);
+</script>
+</body>
+</html>

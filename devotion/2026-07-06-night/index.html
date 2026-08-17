@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>오늘의 취침 명상 · 2026년 7월 6일</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#0d1226; --bg1:#141a35; --bg2:#1c2445; --card:#1a2140;
+  --gold:#d8b24a; --gold-soft:#e8d089; --star:#f3e9c8;
+  --ink:#e8ecf7; --ink-soft:#a9b2d0; --line:#2c3560;
+  --accent:#8ea2e0; --moon:#f5efd8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Serif KR',serif; color:var(--ink);
+  background:linear-gradient(180deg,#0a0e20 0%,#0d1226 40%,#141a35 100%);
+  min-height:100vh; line-height:1.9; -webkit-font-smoothing:antialiased;
+  padding-bottom:60px; position:relative; overflow-x:hidden;
+}
+.stars{position:fixed; inset:0; z-index:0; pointer-events:none}
+.star{position:absolute; background:var(--star); border-radius:50%; opacity:.6;
+  animation:tw 4s infinite ease-in-out}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:.85}}
+.wrap{max-width:680px; margin:0 auto; padding:0 22px; position:relative; z-index:1}
+header{text-align:center; padding:56px 0 30px}
+.moon{font-size:44px; filter:drop-shadow(0 0 18px rgba(245,239,216,.5)); margin-bottom:14px}
+.kicker{font-family:'Noto Sans KR',sans-serif; font-size:11px; letter-spacing:4px;
+  color:var(--gold); font-weight:600; text-transform:uppercase}
+h1{font-size:29px; font-weight:600; color:var(--moon); margin:12px 0 8px; letter-spacing:-.3px}
+.subtitle{font-size:14.5px; color:var(--ink-soft); font-weight:300; line-height:1.6}
+.date{font-family:'Noto Sans KR',sans-serif; font-size:12.5px; color:var(--accent); margin-top:14px; letter-spacing:1px}
+.player{
+  background:linear-gradient(160deg,#1c2447,#161d3a);
+  border:1px solid var(--line); border-radius:18px; padding:22px 22px 18px;
+  margin:26px 0 34px; box-shadow:0 8px 40px rgba(0,0,0,.35);
+}
+.player-title{font-family:'Noto Sans KR',sans-serif; font-size:12px; color:var(--gold-soft);
+  font-weight:600; letter-spacing:2px; margin-bottom:14px; text-align:center}
+.track{display:flex; align-items:center; gap:13px; padding:11px 12px; border-radius:11px;
+  cursor:pointer; transition:background .2s; margin:3px 0}
+.track:hover{background:rgba(142,162,224,.1)}
+.track.playing{background:rgba(216,178,74,.14)}
+.track-num{flex:0 0 auto; width:30px; height:30px; border-radius:50%;
+  background:var(--bg2); border:1px solid var(--line); color:var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Noto Sans KR',sans-serif; font-size:13px; font-weight:600}
+.track.playing .track-num{background:var(--gold); color:#1a2140; border-color:var(--gold)}
+.track-label{flex:1; font-size:15px; font-weight:400}
+.track-label small{display:block; font-family:'Noto Sans KR',sans-serif; font-size:11px;
+  color:var(--ink-soft); margin-top:2px}
+.track-icon{flex:0 0 auto; color:var(--accent); font-size:15px}
+audio{width:100%; margin-top:14px; filter:invert(.9) hue-rotate(180deg)}
+.audio-note{font-family:'Noto Sans KR',sans-serif; font-size:11px; color:var(--ink-soft);
+  text-align:center; margin-top:10px; opacity:.7}
+section{margin:34px 0}
+.sec-head{display:flex; align-items:center; gap:12px; margin-bottom:18px}
+.sec-head .dot{width:7px; height:7px; border-radius:50%; background:var(--gold);
+  box-shadow:0 0 10px var(--gold)}
+.sec-head h2{font-size:19px; font-weight:600; color:var(--gold-soft); letter-spacing:.5px}
+.sec-head .line{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent)}
+.verse{background:var(--card); border:1px solid var(--line); border-radius:13px;
+  padding:16px 18px; margin:11px 0}
+.verse-full{border-color:var(--gold); background:linear-gradient(160deg,#221f33,#1a2140);
+  box-shadow:0 0 22px rgba(216,178,74,.12)}
+.verse-ref{font-family:'Noto Sans KR',sans-serif; font-size:12.5px; color:var(--accent);
+  font-weight:600; margin-bottom:8px}
+.cite{color:var(--ink-soft); font-weight:400}
+.read-badge{display:inline-block; font-size:10px; background:var(--gold); color:#1a2140;
+  padding:2px 9px; border-radius:20px; font-weight:700; margin-left:6px; letter-spacing:.5px}
+.verse-text{font-size:16px; color:var(--ink); line-height:1.95; word-break:keep-all}
+.verse-full .verse-text{font-size:16.5px; color:var(--moon)}
+.sermon{background:var(--card); border-left:3px solid var(--gold); border-radius:0 13px 13px 0;
+  padding:22px 24px}
+.sermon p{font-size:16px; color:var(--ink); margin-bottom:16px; line-height:2.05; word-break:keep-all}
+.sermon p:last-child{margin-bottom:0}
+.song{background:linear-gradient(160deg,#1e2649,#171e3b); border:1px solid var(--line);
+  border-radius:15px; padding:24px; text-align:center}
+.song-title{font-size:18px; color:var(--gold-soft); font-weight:600; margin-bottom:20px}
+.song-title::before,.song-title::after{content:"♪"; color:var(--gold); margin:0 10px; opacity:.7}
+.song-part{margin:16px 0}
+.song-part .label{font-family:'Noto Sans KR',sans-serif; font-size:10.5px; letter-spacing:2px;
+  color:var(--accent); text-transform:uppercase; margin-bottom:7px; opacity:.8}
+.song-part .lyric{font-size:16px; color:var(--ink); line-height:2.0}
+.song-part.chorus .lyric{color:var(--gold-soft); font-weight:500}
+.song-part.bridge .lyric{font-style:italic; color:var(--moon)}
+.prayer{background:radial-gradient(ellipse at top,#1f2748,#151c39);
+  border:1px solid var(--gold); border-radius:15px; padding:28px 26px; text-align:center;
+  box-shadow:0 0 30px rgba(216,178,74,.1)}
+.prayer-body{font-size:16.5px; color:var(--moon); line-height:2.15; letter-spacing:.2px}
+footer{text-align:center; margin-top:46px; padding-top:26px; border-top:1px solid var(--line)}
+.credit{font-family:'Noto Sans KR',sans-serif; font-size:12px; color:var(--ink-soft)}
+.credit b{color:var(--gold-soft)}
+.blessing{font-size:15px; color:var(--accent); margin-top:16px; font-weight:300; letter-spacing:1px}
+@media (max-width:520px){
+  h1{font-size:24px} .wrap{padding:0 16px}
+  .verse-text,.sermon p,.song-part .lyric{font-size:15.5px}
+}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="wrap">
+  <header>
+    <div class="moon">🌙</div>
+    <div class="kicker">URANTIA · 오늘의 명상</div>
+    <h1>오늘의 취침 명상</h1>
+    <div class="subtitle">평화의 안식 — 하루를 하나님의 손에 맡기며</div>
+    <div class="date">2026년 7월 6일</div>
+  </header>
+
+  <div class="player">
+    <div class="player-title">🎧 오디오 명상 · 낭독 · 강론 · 노래 · 기도</div>
+    <div class="track" data-src="https://archive.org/download/urantia-devotion-2026-07-06-night/01_reading.mp3">
+      <div class="track-num">1</div>
+      <div class="track-label">낭독 <small>100편 2장 7절 전체</small></div>
+      <div class="track-icon">▶</div>
+    </div>
+    <div class="track" data-src="https://archive.org/download/urantia-devotion-2026-07-06-night/02_sermon.mp3">
+      <div class="track-num">2</div>
+      <div class="track-label">강론 <small>평화의 안식</small></div>
+      <div class="track-icon">▶</div>
+    </div>
+    <div class="track" data-src="https://archive.org/download/urantia-devotion-2026-07-06-night/song.mp3">
+      <div class="track-num">3</div>
+      <div class="track-label">노래 <small>흔들리지 않는 성채</small></div>
+      <div class="track-icon">▶</div>
+    </div>
+    <div class="track" data-src="https://archive.org/download/urantia-devotion-2026-07-06-night/04_prayer.mp3">
+      <div class="track-num">4</div>
+      <div class="track-label">기도 <small>취침 기도</small></div>
+      <div class="track-icon">▶</div>
+    </div>
+    <audio id="player" controls></audio>
+    <div class="audio-note">트랙을 눌러 재생하세요 · song.mp3 는 Mureka 로 추가</div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>오늘의 다섯 구절 · 100편 2장 4–8절</h2><span class="line"></span></div>
+    
+      <div class="verse">
+        <div class="verse-ref">100편 2장 4절 <span class="cite">(100:2.4)</span> </div>
+        <p class="verse-text">영성은 하나님께 가까이 있는 정도이자 동료 존재들에게 유익한 정도의 척도이다. 영성은 사물 속에서 아름다움을 발견하고, 의미 속에서 진리를 인식하며, 가치 속에서 선을 발견하는 능력을 향상시킨다.</p>
+      </div>
+      <div class="verse">
+        <div class="verse-ref">100편 2장 5절 <span class="cite">(100:2.5)</span> </div>
+        <p class="verse-text">실제적인 영적 상태는 신 달성의 척도이자 생각 조절자와의 조율 수준으로 측정된다. 영적 완성의 달성은 실체의 극대화, 곧 하나님과 같아지는 상태에 이르는 것과 동등하다. 영원한 생명은 무한한 가치를 끊임없이 추구하는 여정이다.</p>
+      </div>
+      <div class="verse">
+        <div class="verse-ref">100편 2장 6절 <span class="cite">(100:2.6)</span> </div>
+        <p class="verse-text">인간의 자기 실현의 목표는 물질적인 것이 아니라 영적인 것이어야 한다. 추구할 가치가 있는 유일한 실체는 신성하고, 영적이며, 영원한 것이다. 인간 관계와 일시적 제도는 불멸의 인격을 세우는 영원한 기초는 아니다.</p>
+      </div>
+      <div class="verse verse-full">
+        <div class="verse-ref">100편 2장 7절 <span class="cite">(100:2.7)</span> <span class="read-badge">전체 낭독</span></div>
+        <p class="verse-text">예수는 “하나님을 알고 하늘 왕국을 믿는 자에게 이 세상의 모든 것이 무너진다 한들 무슨 상관이 있느냐?”라고 말씀하시며, 하나님을 아는 필사자의 심오한 확신을 묘사하셨다. 세속적 안정은 쉽게 무너질 수 있으나, 영적 확신은 결코 흔들리지 않는다. 인간의 역경, 이기심, 잔인함, 미움, 악의, 질투의 홍수가 필사자의 혼을 덮칠 때에도, 사람은 내면 깊은 곳에 절대로 공격받지 않는 영의 요새 — 하나님의 영이 거하는 영혼의 성채 — 가 있다는 확신 속에 안식할 수 있다. 자신의 혼을 영원한 하나님의 내주하는 영에게 맡긴 모든 사람에게 이것은 진리이다.</p>
+      </div>
+      <div class="verse">
+        <div class="verse-ref">100편 2장 8절 <span class="cite">(100:2.8)</span> </div>
+        <p class="verse-text">영으로 태어난 사람들은 삶의 동기가 새롭게 변화되어, 가장 소중한 포부가 무너지고 가장 열렬한 희망이 좌절될 때에도 평정심을 유지할 수 있다. 그들은 그러한 재난이 다만 다시 방향을 조정하는 격변인 줄 분명히 알며, 이는 더 고귀하고 지속 가능한 실체들을 육성하는 준비임을 안다.</p>
+      </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>강론</h2><span class="line"></span></div>
+    <div class="sermon"><p>하루가 저뭅니다. 오늘 우리가 붙들었던 것들 가운데 무엇이 무너지고, 무엇이 흔들렸습니까. 유란시아서 100편은 영성을 이렇게 정의합니다. 영성이란 하나님께 가까이 있는 정도이며, 사물에서 아름다움을, 의미에서 진리를, 가치에서 선을 발견하는 능력이라고. 하루를 마치는 이 시간은 바로 그 눈으로 오늘을 다시 바라보는 시간입니다.</p><p>예수께서는 깊은 확신을 이렇게 말씀하셨습니다. 하나님을 알고 하늘 왕국을 믿는 자에게 이 세상의 모든 것이 무너진다 한들 무슨 상관이 있느냐. 세속의 안정은 쉽게 무너집니다. 오늘 하루에도 우리는 그것을 겪었습니다. 그러나 유란시아서는 우리 내면 깊은 곳에 결코 공격받지 않는 영의 요새, 곧 하나님의 영이 거하는 영혼의 성채가 있다고 증언합니다. 역경과 미움과 질투의 홍수가 혼을 덮칠 때에도, 자신의 혼을 내주하는 그분의 영에게 맡긴 사람은 그 성채 안에서 안식할 수 있습니다.</p><p>그래서 영으로 태어난 사람은 가장 소중한 포부가 무너질 때에도 평정심을 잃지 않습니다. 그는 그 무너짐이 파멸이 아니라 방향을 다시 잡는 격변임을, 더 고귀하고 지속되는 실체를 세우기 위한 준비임을 알기 때문입니다. 그러니 오늘 밤 무너진 것들을 슬퍼하지 마십시오. 그것은 영원한 기초 위에 다시 세워질 자리를 낸 것뿐입니다. 흔들리지 않는 성채 안에 혼을 맡기고, 평안히 쉬십시오.</p></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>노래</h2><span class="line"></span></div>
+    <div class="song">
+      <div class="song-title">흔들리지 않는 성채</div>
+      <div class="song-part"><div class="label">1절</div><div class="lyric">세상의 안정 무너져도<br>흔들리지 않는 곳 있네<br>내 안 깊은 곳 지어진<br>하나님의 영의 요새</div></div>
+      <div class="song-part chorus"><div class="label">후렴</div><div class="lyric">쉬어라 내 혼아 그 성채 안에<br>역경의 홍수도 넘지 못하리<br>혼을 그 영께 맡긴 자에게<br>이 안식은 참된 진리라네</div></div>
+      <div class="song-part"><div class="label">2절</div><div class="lyric">소중한 포부 무너져도<br>이는 파멸 아닌 격변<br>더 높은 자리 세우려<br>옛것을 비우시는 손길</div></div>
+      <div class="song-part bridge"><div class="label">브릿지</div><div class="lyric">이 세상 모든 것<br>무너진다 한들<br>하나님을 아는 이에게<br>무슨 상관이 있으랴</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="dot"></span><h2>기도</h2><span class="line"></span></div>
+    <div class="prayer"><div class="prayer-body">삼위일체 하나님,<br>저무는 하루의 끝에<br>고요히 당신 앞에<br>나아옵니다.<br>오늘 제가 걸어온 길과<br>만난 얼굴들, 그리고<br>마음에 남은 근심을<br>당신의 손에 내려놓습니다.<br>무엇도 홀로 붙들지 않게<br>하시고, 참으로 맡기는<br>법을 가르쳐 주소서.<br>제 안 깊은 곳에 두신<br>영의 요새가 이 밤에도<br>저를 든든히 지키며,<br>제가 잠든 사이에도<br>그 영이 깨어 저를<br>인도하심을 믿습니다.<br>지속적인 평화와<br>흔들리지 않는 확신을<br>부어 주시어, 오늘 밤<br>제 혼이 참된 안식에<br>머물게 하소서.<br>내일 아침 새롭게<br>깨어날 때, 새 힘으로<br>당신을 섬기며 이 진리를<br>세상에 전하게 하소서.<br>예수님의 이름으로<br>기도드립니다.</div></div>
+  </section>
+
+  <footer>
+    <div class="credit">편집 및 제작 · <b>한종인 (Jay Han)</b></div>
+    <div class="blessing">평안한 밤 되시고, 내일 아침 새 힘으로 깨어나소서 ✨</div>
+  </footer>
+</div>
+<script>
+const sky=document.getElementById('stars');
+for(let i=0;i<70;i++){
+  const s=document.createElement('div'); s.className='star';
+  const sz=Math.random()*2+1;
+  s.style.width=sz+'px'; s.style.height=sz+'px';
+  s.style.left=Math.random()*100+'%'; s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=(Math.random()*4)+'s';
+  sky.appendChild(s);
+}
+const player=document.getElementById('player');
+const tracks=Array.from(document.querySelectorAll('.track'));
+let current=-1;
+
+function clearAll(){
+  tracks.forEach(x=>{x.classList.remove('playing'); x.querySelector('.track-icon').textContent='▶';});
+}
+function playIndex(i){
+  if(i<0 || i>=tracks.length) return;
+  current=i;
+  const t=tracks[i];
+  clearAll();
+  t.classList.add('playing'); t.querySelector('.track-icon').textContent='♪';
+  player.src=t.dataset.src;
+  player.play().catch(()=>{});
+  t.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+tracks.forEach((t,i)=>{ t.onclick=()=>playIndex(i); });
+
+player.onended=()=>{
+  const next=current+1;
+  if(next < tracks.length){
+    playIndex(next);          // 낭독 → 강론 → 노래 → 기도 자동 연결
+  }else{
+    clearAll(); current=-1;   // 마지막 기도까지 끝나면 정지
+  }
+};
+</script>
+</body>
+</html>

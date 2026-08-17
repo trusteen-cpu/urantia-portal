@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오늘의 아침 명상 · 십자가, 가장 높은 사랑의 상징</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf7f0;
+    --bg-2:#f2ece2;
+    --ink:#241f1c;
+    --ink-soft:#6d6358;
+    --gold:#9a6f2e;
+    --gold-soft:rgba(154,111,46,.28);
+    --line:rgba(36,31,28,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(120% 80% at 50% -5%, #fffdf8 0%, var(--bg) 45%, var(--bg-2) 100%);
+    color:var(--ink);
+    font-family:'Noto Sans KR',system-ui,sans-serif;
+    font-weight:300;line-height:1.95;min-height:100vh;
+  }
+  .wrap{max-width:740px;margin:0 auto;padding:72px 24px 130px}
+
+  header{text-align:center;padding-bottom:52px}
+  .eyebrow{font-size:.72rem;letter-spacing:.4em;color:var(--gold);margin-bottom:24px}
+  h1{font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:clamp(1.8rem,5.1vw,2.6rem);line-height:1.42}
+  h1 .thin{display:block;font-weight:400;color:var(--ink-soft);font-size:.55em;margin-top:16px;letter-spacing:.06em}
+  /* 십자가 표식 */
+  .cross{width:1px;height:64px;margin:34px auto 0;background:linear-gradient(var(--gold-soft),transparent);position:relative}
+  .cross::before{content:"";position:absolute;top:18px;left:-11px;width:23px;height:1px;background:var(--gold-soft)}
+
+  section{margin-top:72px;scroll-margin-top:24px}
+  .mark{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+  .mark span{font-family:'Nanum Myeongjo',serif;font-size:1.05rem;font-weight:700;color:var(--gold);letter-spacing:.3em;white-space:nowrap}
+  .mark::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .verse{border-left:1px solid var(--gold-soft);padding:6px 0 6px 22px;margin-bottom:30px}
+  .verse .ref{font-family:'Nanum Myeongjo',serif;color:var(--gold);font-size:.86rem;letter-spacing:.14em;margin-bottom:10px;display:block}
+  .verse p{font-size:1.05rem}
+  .verse.quiet{border-left-color:var(--line)}
+  .verse.quiet .ref{color:var(--ink-soft)}
+  .verse.quiet p{color:var(--ink-soft);font-size:.98rem}
+  .read-tag{display:inline-block;margin-left:10px;font-size:.66rem;letter-spacing:.18em;color:#fff;background:var(--gold);padding:2px 9px;border-radius:2px;vertical-align:2px;font-style:normal}
+
+  .prose p{margin-bottom:20px;font-size:1.02rem}
+  .prose p:last-child{margin-bottom:0}
+
+  .lyric{font-family:'Nanum Myeongjo',serif;white-space:pre-line;font-size:1.03rem;line-height:2.1}
+  .lyric .cue{display:block;font-family:'Noto Sans KR',sans-serif;font-size:.74rem;letter-spacing:.24em;color:var(--gold);margin:26px 0 8px;font-weight:400}
+  .lyric .cue:first-child{margin-top:0}
+
+  .prayer{font-family:'Nanum Myeongjo',serif;white-space:pre-line;font-size:1.05rem;line-height:2.2;text-align:center}
+
+  .player{
+    position:fixed;left:0;right:0;bottom:0;z-index:10;
+    background:rgba(251,247,240,.92);backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);
+    padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+  }
+  .row{max-width:740px;margin:0 auto;display:flex;align-items:center;gap:10px}
+  .now{flex:1;min-width:0}
+  .now b{display:block;font-family:'Nanum Myeongjo',serif;font-size:.94rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .now small{color:var(--ink-soft);font-size:.74rem;letter-spacing:.1em}
+  button{
+    font:inherit;cursor:pointer;border:1px solid var(--gold-soft);background:transparent;color:var(--gold);
+    border-radius:999px;padding:9px 14px;font-size:.85rem;letter-spacing:.04em;transition:background .18s,color .18s;
+  }
+  button:hover{background:var(--gold);color:#fff}
+  button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  #toggle{min-width:74px}
+  .steps{max-width:740px;margin:11px auto 0;display:flex;gap:6px}
+  .steps button{flex:1;padding:0;height:22px;border:0;background:transparent;position:relative}
+  .steps button::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line);border-radius:2px}
+  .steps button[aria-current="true"]::before{background:var(--gold)}
+  .steps button:hover::before{background:var(--gold-soft)}
+  .steps button:hover{background:transparent}
+  audio{display:none}
+
+  footer{margin-top:90px;text-align:center;color:var(--ink-soft);font-size:.78rem;letter-spacing:.14em}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media (max-width:520px){.wrap{padding:52px 20px 120px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">오늘의 아침 명상 · 2026년 7월 11일</div>
+    <h1>십자가, 가장 높은 사랑의 상징
+      <span class="thin">유란시아서 188:5.9 – 188:5.11</span>
+    </h1>
+    <div class="cross"></div>
+  </header>
+
+  <section id="reading">
+    <div class="mark"><span>낭독</span></div>
+
+    <div class="verse">
+      <span class="ref">188:5.9<em class="read-tag">낭독</em></span>
+      <p>십자가는 신성한 봉사와 동료의 복지와 구원을 위한 생명의 헌신을 상징하는 가장 높은 상징이다. 십자가는 죄인들의 자리에 무고한 하나님의 아들이 대신 희생당하고, 모욕당한 하나님의 진노를 달래기 위한 상징이 아니다. 그러나 그것은 유란시아에서뿐만 아니라 광대한 우주에서 선한 자들이 자신을 악한 자들에게 바쳐 그 사랑의 헌신으로 구원하는 상징으로 영원히 서 있다. 십자가는 가장 높은 형태의 이타적 봉사의 상징이며, 정의로운 삶을 온전히 바치는 최고의 헌신이다. 이는 심지어 십자가에서의 죽음에서도 그러하다. 예수의 삶의 헌신을 상징하는 이 위대한 상징을 바라보는 것만으로도, 우리 모두는 그와 같이 살고 싶은 영감을 얻는다.</p>
+    </div>
+
+    <div class="verse quiet">
+      <span class="ref">188:5.10</span>
+      <p>사려 깊은 남성과 여성들이 예수가 십자가에서 자신의 생명을 바치는 모습을 바라볼 때, 그들은 다시는 가장 극심한 삶의 어려움에도 불평하지 않을 것이며, 하물며 사소한 괴롭힘이나 순전히 허구적인 많은 불만에 대해서는 더욱 불평하지 않을 것이다. 그의 삶은 너무도 영광스럽고 그의 죽음은 너무도 승리로워서, 우리는 모두 그것을 기꺼이 나누고 싶어 한다. 예수의 헌신 전체는 그의 어린 시절부터 십자가에서의 죽음에 이르기까지 진정한 매력을 지닌다.</p>
+    </div>
+
+    <div class="verse quiet">
+      <span class="ref">188:5.11</span>
+      <p>십자가를 하나님의 계시로 바라볼 때, 원시인의 눈이나 후대 야만인의 관점으로 바라보지 않도록 주의해야 한다. 원시인과 야만인은 하나님을 엄격한 정의와 법 집행의 무자비한 주권자로 여겼다. 오히려 십자가에서, 예수가 그의 광대한 우주의 필사자 종족들에게 생애를 바치기 위해 자신의 삶의 사명에 대한 사랑과 헌신의 최종적 표현을 보았다는 것을 확인하라. 사람의 아들의 죽음에서, 하나님 아버지의 필사자 아들들에 대한 신성한 사랑이 펼쳐지는 절정을 보아라. 십자가는 기꺼이 사랑하는 마음의 헌신과, 그러한 선물과 헌신을 기꺼이 받아들이는 자들에게 자발적인 구원을 베푸는 것을 보여 준다. 아버지가 십자가에서 요구한 것은 아무것도 없었다. 예수는 기꺼이 그것을 주었으며, 피하려 하지 않았다.</p>
+    </div>
+  </section>
+
+  <section id="sermon">
+    <div class="mark"><span>강론</span></div>
+    <div class="prose">
+      <p>오늘 아침 우리는 십자가 앞에 섭니다. 오랫동안 우리는 십자가를 오해해 왔습니다. 무고한 아들이 죄인 대신 벌을 받아, 분노한 하나님을 달래는 자리라고 여겼습니다. 그러나 본문은 단호하게 말합니다. 아버지가 십자가에서 요구한 것은 아무것도 없었습니다.</p>
+
+      <p>그렇다면 십자가는 무엇입니까. 그것은 진노의 자리가 아니라 사랑의 자리입니다. 선한 이가 스스로를 악한 이에게 내어 주어, 그 사랑의 헌신으로 그들을 건져 올리는 자리입니다. 예수는 강요당해 그곳에 오른 것이 아닙니다. 그는 기꺼이 자신을 주었고, 피하려 하지 않았습니다. 십자가는 빼앗긴 생명이 아니라 바쳐진 생명입니다.</p>
+
+      <p>이것이 우리의 오늘을 바꿉니다. 십자가에서 자신을 온전히 바치는 그분을 바라볼 때, 우리는 가장 극심한 삶의 어려움에도 다시는 불평하지 못합니다. 하물며 사소한 괴롭힘, 허구뿐인 불만에 대해서야 어떻게 원망을 늘어놓을 수 있겠습니까. 그의 삶은 너무도 영광스럽고 그의 죽음은 너무도 승리로워서, 우리는 그것을 나누고 싶어집니다.</p>
+
+      <p>그러니 오늘 십자가를 원시인의 눈으로 보지 마십시오. 무서운 심판자를 달래는 제물로 보지 마십시오. 그 대신 사람의 아들의 죽음에서, 아버지의 자녀들을 향한 신성한 사랑이 활짝 펼쳐지는 절정을 보십시오. 그리고 그 사랑에 응답하여, 오늘 하루 우리도 동료의 복지와 구원을 위해 작은 헌신 하나를 바치는 사람이 되십시오. 십자가를 바라보는 것만으로도 우리는 그와 같이 살고 싶어집니다.</p>
+    </div>
+  </section>
+
+  <section id="song">
+    <div class="mark"><span>노래</span></div>
+    <div class="lyric"><span class="cue">[1절]</span>진노의 자리라 여겼던 그곳
+사랑이 서 있었네 말없이
+강요된 제물이 아니었네
+스스로 내어 주신 생명<span class="cue">[후렴]</span>십자가는 사랑의 자리
+빼앗긴 것이 아니라 드린 것
+기꺼이 나를 주신 그 사랑
+오늘 나를 살게 하네<span class="cue">[2절]</span>극심한 어려움 앞에서도
+이제 나는 원망하지 않으리
+그 삶이 너무도 영광스러워
+그 죽음이 너무도 승리로워<span class="cue">[브릿지]</span>아버지 요구한 것 없었네
+오직 사랑이 넘쳐흘러
+자녀에게 펼쳐진 절정<span class="cue">[후렴]</span>십자가는 사랑의 자리
+빼앗긴 것이 아니라 드린 것
+기꺼이 나를 주신 그 사랑
+오늘 나를 살게 하네<span class="cue">[아웃트로]</span>바라보는 것만으로
+그와 같이 살고 싶어라</div>
+  </section>
+
+  <section id="prayer">
+    <div class="mark"><span>기도</span></div>
+    <div class="prayer">은혜로우신 아버지 하나님
+오늘 아침 십자가 앞에 섭니다
+
+오랫동안 저는
+그 자리를 진노의 자리로
+오해하였습니다
+이제 알겠습니다
+그것은 사랑의 자리였습니다
+
+아버지께서 요구하신 것은
+아무것도 없었고
+예수님은 기꺼이
+자신을 내어 주셨습니다
+
+그 사랑을 바라볼 때
+극심한 어려움 앞에서도
+불평할 수 없습니다
+하물며 사소한 괴로움에
+어찌 원망하겠습니까
+
+오늘 저도
+동료의 복지와 구원을 위해
+작은 헌신 하나를
+기꺼이 드리게 하소서
+
+빼앗기는 삶이 아니라
+드리는 삶을 살게 하소서
+
+십자가를 바라보며
+그와 같이 살기를 원합니다
+
+예수님의 이름으로 기도드립니다</div>
+  </section>
+
+  <footer>유란시아서 188편 5장 · 오늘의 아침 명상</footer>
+</div>
+
+<div class="player">
+  <div class="row">
+    <div class="now">
+      <b id="nowTitle">낭독 · 188:5.9</b>
+      <small id="nowStep">1 / 4</small>
+    </div>
+    <button id="prev" aria-label="이전">이전</button>
+    <button id="toggle">재생</button>
+    <button id="next" aria-label="다음">다음</button>
+  </div>
+  <div class="steps" id="steps"></div>
+  <audio id="au" preload="none"></audio>
+</div>
+
+<script>
+  var tracks = [
+    { src: 'audio/01-낭독.mp3', title: '낭독 · 188:5.9', anchor: 'reading' },
+    { src: 'audio/02-강론.mp3', title: '강론 · 십자가, 사랑의 자리', anchor: 'sermon' },
+    { src: 'audio/03-노래.mp3', title: '노래 · 기꺼이 주신 사랑', anchor: 'song' },
+    { src: 'audio/04-기도.mp3', title: '기도 · 아침 기도', anchor: 'prayer' }
+  ];
+
+  var i = 0;
+  var au = document.getElementById('au');
+  var toggle = document.getElementById('toggle');
+  var nowTitle = document.getElementById('nowTitle');
+  var nowStep = document.getElementById('nowStep');
+  var stepsBox = document.getElementById('steps');
+
+  tracks.forEach(function (t, n) {
+    var b = document.createElement('button');
+    b.setAttribute('aria-label', t.title);
+    b.addEventListener('click', function () { load(n, !au.paused); });
+    stepsBox.appendChild(b);
+  });
+
+  function load(n, autoplay) {
+    i = (n + tracks.length) % tracks.length;
+    au.src = tracks[i].src;
+    nowTitle.textContent = tracks[i].title;
+    nowStep.textContent = (i + 1) + ' / ' + tracks.length;
+
+    var btns = stepsBox.children;
+    for (var k = 0; k < btns.length; k++) {
+      btns[k].setAttribute('aria-current', k === i ? 'true' : 'false');
+    }
+
+    var target = document.getElementById(tracks[i].anchor);
+    if (target) target.scrollIntoView({ block: 'start' });
+
+    if (autoplay) {
+      au.play().catch(function () { toggle.textContent = '재생'; });
+    }
+  }
+
+  toggle.addEventListener('click', function () {
+    if (au.paused) { au.play().catch(function () {}); } else { au.pause(); }
+  });
+  document.getElementById('prev').addEventListener('click', function () { load(i - 1, !au.paused); });
+  document.getElementById('next').addEventListener('click', function () { load(i + 1, true); });
+
+  au.addEventListener('play', function () { toggle.textContent = '멈춤'; });
+  au.addEventListener('pause', function () { toggle.textContent = '재생'; });
+
+  au.addEventListener('ended', function () {
+    if (i < tracks.length - 1) { load(i + 1, true); } else { toggle.textContent = '재생'; }
+  });
+
+  au.addEventListener('error', function () {
+    nowTitle.textContent = tracks[i].title + ' — 음성 파일 없음';
+  });
+
+  load(0, false);
+</script>
+</body>
+</html>

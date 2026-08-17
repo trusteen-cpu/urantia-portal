@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 아침 명상 · 2026-07-14</title>
+<style>
+  :root { --navy:#0b1f3a; --navy2:#122b4f; --gold:#c9a24b; --gold-light:#e6c87e; --text:#f2ecd9; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Noto Serif KR','Batang',serif;
+    background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);
+    color:var(--text); min-height:100vh;
+    display:flex; flex-direction:column; align-items:center;
+    padding:40px 20px 60px;
+  }
+  .date { color:var(--gold-light); letter-spacing:3px; font-size:0.95rem; margin-bottom:10px; }
+  h1 { color:var(--gold); font-size:1.7rem; font-weight:700; margin-bottom:6px; text-align:center; }
+  .citation { color:var(--gold-light); font-size:1rem; margin-bottom:34px; }
+  .divider { width:70px; height:2px; background:var(--gold); margin:0 auto 34px; }
+  .passage {
+    max-width:680px; line-height:2.1; font-size:1.12rem; text-align:justify;
+    background:rgba(255,255,255,0.04); border:1px solid rgba(201,162,75,0.35);
+    border-radius:14px; padding:32px 34px; margin-bottom:40px;
+    box-shadow:0 6px 24px rgba(0,0,0,0.35);
+  }
+  .player { width:100%; max-width:680px; }
+  .step {
+    display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,0.05); border:1px solid rgba(201,162,75,0.25);
+    border-radius:10px; padding:14px 18px; margin-bottom:12px;
+    cursor:pointer; transition:all .25s;
+  }
+  .step:hover { background:rgba(201,162,75,0.12); }
+  .step.active { background:rgba(201,162,75,0.2); border-color:var(--gold); }
+  .step .num {
+    width:34px; height:34px; border-radius:50%; flex-shrink:0;
+    border:1.5px solid var(--gold); color:var(--gold);
+    display:flex; align-items:center; justify-content:center; font-size:0.9rem;
+  }
+  .step.active .num { background:var(--gold); color:var(--navy); }
+  .step .label { font-size:1.05rem; letter-spacing:1px; }
+  .controls { margin-top:24px; text-align:center; }
+  button {
+    font-family:inherit; font-size:1.05rem; letter-spacing:2px;
+    background:var(--gold); color:var(--navy); border:none;
+    padding:13px 46px; border-radius:30px; cursor:pointer; font-weight:700;
+    box-shadow:0 4px 16px rgba(201,162,75,0.4); transition:transform .15s;
+  }
+  button:hover { transform:translateY(-2px); }
+  .status { margin-top:16px; color:var(--gold-light); font-size:0.92rem; min-height:1.3em; }
+  footer { margin-top:46px; color:rgba(242,236,217,0.45); font-size:0.82rem; letter-spacing:1px; }
+</style>
+</head>
+<body>
+  <div class="date">2026년 7월 14일 · 화요일</div>
+  <h1>진정으로 원하는 자</h1>
+  <div class="citation">유란시아서 166:3.5</div>
+  <div class="divider"></div>
+
+  <div class="passage" id="passageText">
+    그러나 두려워하지 마라. 하나님의 나라에 들어가 영생을 찾고자 진정으로 원하는 모든 자는
+    반드시 그런 영원한 구원을 찾을 것이다. 그러나 이 구원을 거부한 너희는 언젠가 아브라함의
+    자손들 중 예언자들이 이 영광스러운 나라에서 이방 민족의 신자들과 함께 앉아 생명의 떡을
+    먹고 그 물로 혼을 새롭게 하는 것을 보게 될 것이다. 그리고 그리하여 하늘 왕국을 영적
+    권능으로 차지하며, 살아있는 믿음의 지속적인 노력으로 그 나라를 차지하려는 자들은 북쪽과
+    남쪽, 동쪽과 서쪽에서 올 것이다. 보라, 첫째가 나중 되고 나중 된 자들이 여러 번 첫째가
+    될 것이다.
+  </div>
+
+  <div class="player">
+    <div class="step" data-idx="0"><div class="num">1</div><div class="label">낭독 — 말씀 듣기</div></div>
+    <div class="step" data-idx="1"><div class="num">2</div><div class="label">강론 — 말씀 묵상</div></div>
+    <div class="step" data-idx="2"><div class="num">3</div><div class="label">노래 — 진정으로 원하는 자</div></div>
+    <div class="step" data-idx="3"><div class="num">4</div><div class="label">기도 — 아침 기도</div></div>
+    <div class="controls">
+      <button id="startBtn">명상 시작</button>
+      <div class="status" id="status"></div>
+    </div>
+  </div>
+
+  <footer>유란시아서 아침 명상 · Urantia Quest</footer>
+
+  <audio id="playerEl"></audio>
+<script>
+var tracks = [
+  "https://archive.org/download/urantia-devotion-2026-07-14-morning/01_reading.mp3",
+  "https://archive.org/download/urantia-devotion-2026-07-14-morning/02_sermon.mp3",
+  "https://archive.org/download/urantia-devotion-2026-07-14-morning/03_song.mp3",
+  "https://archive.org/download/urantia-devotion-2026-07-14-morning/04_prayer.mp3"
+];
+var names = ["낭독", "강론", "노래", "기도"];
+var player = document.getElementById("playerEl");
+var statusEl = document.getElementById("status");
+var startBtn = document.getElementById("startBtn");
+var steps = document.querySelectorAll(".step");
+var current = -1;
+
+function highlight(idx) {
+  for (var i = 0; i < steps.length; i++) {
+    steps[i].classList.toggle("active", i === idx);
+  }
+}
+
+function playIndex(idx) {
+  if (idx >= tracks.length) {
+    highlight(-1);
+    statusEl.textContent = "오늘의 명상을 마쳤습니다. 평안한 하루 되세요.";
+    startBtn.textContent = "다시 듣기";
+    current = -1;
+    return;
+  }
+  current = idx;
+  highlight(idx);
+  statusEl.textContent = names[idx] + " 재생 중...";
+  player.src = tracks[idx];
+  player.oncanplaythrough = function () { player.play(); };
+  player.onended = function () { playIndex(idx + 1); };
+  player.onerror = function () {
+    statusEl.textContent = names[idx] + " 파일을 찾을 수 없어 다음으로 넘어갑니다.";
+    setTimeout(function () { playIndex(idx + 1); }, 800);
+  };
+  player.load();
+}
+
+startBtn.onclick = function () {
+  startBtn.textContent = "처음부터 다시";
+  playIndex(0);
+};
+
+for (var i = 0; i < steps.length; i++) {
+  (function (idx) {
+    steps[idx].onclick = function () { playIndex(idx); };
+  })(i);
+}
+</script>
+</body>
+</html>

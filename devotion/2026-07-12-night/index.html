@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오늘의 취침 명상 · 하나님의 자녀 됨 · 2026-07-12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --night:#0b1428;
+    --night-2:#0e1a34;
+    --panel:#14213f;
+    --panel-line:#26355c;
+    --gold:#d8b45a;
+    --gold-soft:#c7a765;
+    --gold-dim:#8f7a45;
+    --ink:#ece9df;
+    --ink-soft:#b9c0d6;
+    --muted:#7d88a6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 700px at 50% -10%, #1a2a52 0%, rgba(26,42,82,0) 60%),
+      linear-gradient(180deg, var(--night-2) 0%, var(--night) 55%, #08101f 100%);
+    color:var(--ink);
+    font-family:"Noto Serif KR", serif;
+    font-weight:300;
+    line-height:1.9;
+    min-height:100vh;
+    padding:0 20px 160px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* subtle starfield */
+  .stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;}
+  .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;
+    animation:tw 5s ease-in-out infinite;}
+  @keyframes tw{0%,100%{opacity:.12}50%{opacity:.7}}
+  @media (prefers-reduced-motion: reduce){.stars i{animation:none;}}
+
+  .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+
+  header.top{text-align:center;padding:64px 0 26px;}
+  .eyebrow{font-family:"Nanum Myeongjo",serif;letter-spacing:.42em;font-size:12px;
+    color:var(--gold);text-transform:none;margin:0 0 20px;padding-left:.42em;}
+  h1.title{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:38px;line-height:1.3;
+    margin:0 0 14px;color:var(--ink);}
+  .meta{color:var(--muted);font-size:14px;letter-spacing:.02em;}
+  .meta .ref{color:var(--gold-soft);}
+  .rule{width:54px;height:1px;background:var(--gold-dim);margin:26px auto 0;}
+
+  /* flow indicator */
+  .flow{display:flex;justify-content:center;gap:0;margin:30px auto 8px;}
+  .flow .step{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px;
+    font-family:"Nanum Myeongjo",serif;letter-spacing:.14em;}
+  .flow .sep{width:20px;height:1px;background:var(--panel-line);margin:0 12px;}
+  .flow .step .dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--panel-line);
+    background:transparent;transition:.4s;}
+  .flow .step.active{color:var(--gold);}
+  .flow .step.active .dot{background:var(--gold);border-color:var(--gold);
+    box-shadow:0 0 12px 2px rgba(216,180,90,.55);}
+  .flow .step.done .dot{background:var(--gold-dim);border-color:var(--gold-dim);}
+
+  section.seg{
+    margin:22px 0;padding:30px 30px;border:1px solid var(--panel-line);border-radius:14px;
+    background:linear-gradient(180deg, rgba(20,33,63,.55), rgba(14,26,52,.35));
+    transition:border-color .5s, box-shadow .5s, background .5s;
+  }
+  section.seg.active{
+    border-color:rgba(216,180,90,.55);
+    box-shadow:0 0 0 1px rgba(216,180,90,.25), 0 18px 50px -24px rgba(216,180,90,.35);
+    background:linear-gradient(180deg, rgba(28,42,78,.6), rgba(16,29,56,.4));
+  }
+  .seg-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;}
+  .seg-kicker{font-family:"Nanum Myeongjo",serif;font-weight:700;letter-spacing:.28em;
+    font-size:13px;color:var(--gold);}
+  .seg-sub{color:var(--muted);font-size:12.5px;}
+
+  .verse{margin:0 0 16px;}
+  .verse:last-child{margin-bottom:0;}
+  .verse .tag{display:inline-block;font-family:"Nanum Myeongjo",serif;color:var(--gold-soft);
+    font-size:12.5px;letter-spacing:.06em;margin-bottom:4px;}
+  .verse p{margin:0;font-size:17.5px;color:var(--ink);}
+  .lead-in{color:var(--ink-soft);font-style:normal;}
+
+  .homily p{font-size:16.5px;margin:0 0 15px;color:var(--ink);}
+  .homily p:last-child{margin-bottom:0;}
+
+  .song{white-space:pre-line;font-size:16.5px;color:var(--ink);text-align:center;line-height:2.05;}
+  .song .block-label{color:var(--gold-soft);font-family:"Nanum Myeongjo",serif;font-size:13px;
+    letter-spacing:.12em;}
+  .song-note{margin-top:16px;text-align:center;color:var(--muted);font-size:12.5px;}
+
+  .prayer{white-space:pre-line;font-size:17px;color:var(--ink);text-align:center;line-height:2.1;}
+  .prayer .amen{color:var(--gold-soft);}
+
+  footer.foot{text-align:center;color:var(--muted);font-size:12.5px;margin:42px 0 0;
+    font-family:"Nanum Myeongjo",serif;letter-spacing:.06em;}
+
+  /* player bar */
+  .player{position:fixed;left:0;right:0;bottom:0;z-index:5;
+    background:linear-gradient(180deg, rgba(8,15,30,.5), rgba(7,12,24,.96));
+    backdrop-filter:blur(10px);border-top:1px solid var(--panel-line);}
+  .player-inner{max-width:680px;margin:0 auto;padding:14px 20px 18px;}
+  .prog{height:3px;background:var(--panel-line);border-radius:2px;overflow:hidden;margin-bottom:14px;cursor:pointer;}
+  .prog .bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold-dim),var(--gold));transition:width .15s linear;}
+  .controls{display:flex;align-items:center;gap:16px;}
+  .now{flex:1;min-width:0;}
+  .now .lbl{font-family:"Nanum Myeongjo",serif;color:var(--gold);letter-spacing:.14em;font-size:14px;}
+  .now .time{color:var(--muted);font-size:12px;margin-top:2px;}
+  button.ctl{
+    appearance:none;border:1px solid var(--panel-line);background:rgba(216,180,90,.06);
+    color:var(--ink);border-radius:999px;cursor:pointer;font-family:"Noto Serif KR",serif;
+    transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  }
+  button.ctl:hover{border-color:var(--gold-soft);background:rgba(216,180,90,.14);}
+  button.ctl:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .play{width:52px;height:52px;font-size:19px;color:var(--gold);border-color:var(--gold-dim);}
+  .skip{height:40px;padding:0 16px;font-size:14px;letter-spacing:.06em;}
+  .skip .ico{font-size:12px;color:var(--gold-soft);}
+
+  /* start overlay */
+  .overlay{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:24px;
+    background:radial-gradient(900px 600px at 50% 40%, rgba(20,33,63,.7), rgba(7,12,24,.96));
+    backdrop-filter:blur(4px);transition:opacity .6s;}
+  .overlay h2{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:30px;margin:0 0 8px;color:var(--ink);}
+  .overlay p{color:var(--ink-soft);margin:0 0 30px;font-size:15px;}
+  .start{width:auto;height:60px;padding:0 40px;font-size:18px;color:var(--night);
+    background:linear-gradient(180deg,#e6c877,#c99f46);
+    border:none;border-radius:999px;font-family:"Nanum Myeongjo",serif;letter-spacing:.1em;cursor:pointer;
+    box-shadow:0 14px 40px -14px rgba(216,180,90,.7);}
+  .start:hover{filter:brightness(1.05);}
+  .overlay .hint{margin-top:22px;color:var(--muted);font-size:12.5px;}
+  .overlay.hidden{opacity:0;pointer-events:none;}
+
+  @media (max-width:600px){
+    h1.title{font-size:30px;}
+    section.seg{padding:24px 20px;}
+    .verse p,.song,.prayer{font-size:16px;}
+    .flow .sep{margin:0 7px;}
+    .skip span.txt{display:none;}
+    .skip{padding:0 14px;}
+  }
+</style>
+</head>
+<body>
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">오늘의 취침 명상</p>
+    <h1 class="title">하나님의 자녀 됨</h1>
+    <p class="meta">2026년 7월 12일 · <span class="ref">유란시아서 40:6.4–40:6.7</span></p>
+    <div class="rule"></div>
+
+    <div class="flow" id="flow">
+      <div class="step" data-step="0"><span class="dot"></span>낭독</div>
+      <span class="sep"></span>
+      <div class="step" data-step="1"><span class="dot"></span>강론</div>
+      <span class="sep"></span>
+      <div class="step" data-step="2"><span class="dot"></span>노래</div>
+      <span class="sep"></span>
+      <div class="step" data-step="3"><span class="dot"></span>기도</div>
+    </div>
+  </header>
+
+  <!-- 낭독 -->
+  <section class="seg" id="sec-reading">
+    <div class="seg-head"><span class="seg-kicker">낭독</span><span class="seg-sub">본문 전체</span></div>
+    <div class="verse"><p class="lead-in">유란시아 필사자들은 스스로를 다음과 같은 이유로 하나님의 자녀들로 여길 수 있는 자격이 주어져 있다.</p></div>
+    <div class="verse"><span class="tag">40:6.4</span>
+      <p>너희는 영적 약속의 자녀들, 믿음의 자녀들이다. 너희는 자녀 됨의 지위를 받아들였다. 너희는 너희의 자녀 됨의 실체 안에서 믿고 있고, 따라서 하나님에 대한 너희의 자녀 됨은 영원히 실제적이다.</p></div>
+    <div class="verse"><span class="tag">40:6.5</span>
+      <p>하나님의 창조자 아들이 너희 중의 하나가 되었다. 그는 실제로 너희의 맏형이고, 너희가 영 안에서 승리의 미가엘, 그리스도의 진정한 형제가 되면, 너희는 바로 영 안에서 모든 것의 우주 아버지인 같은 아버지를 갖는 자녀들이 될 수밖에 없다.</p></div>
+    <div class="verse"><span class="tag">40:6.6</span>
+      <p>너희에게 아들의 영이 쏟아부어졌기 때문에 너희는 자녀들이다. 그 영은 유란시아 인종들 모두에게 대가 없이 확실하게 증여되었다. 이 영이 너희를 자신의 근원인 신성한 아들을 향해 언제까지나 이끌고, 그 신성한 아들의 근원인 아버지를 향해서 이끈다.</p></div>
+    <div class="verse"><span class="tag">40:6.7</span>
+      <p>그의 신성한 자유 의지로 우주 아버지는 너희에게 창조체 인격을 주셨다. 너희는 그의 자녀가 될 수 있는 모든 존재와 함께 나눌 수 있는 자유 의지 행동의 신성한 자발성을 일정 부분 부여받았다.</p></div>
+  </section>
+
+  <!-- 강론 -->
+  <section class="seg" id="sec-homily">
+    <div class="seg-head"><span class="seg-kicker">강론</span><span class="seg-sub">묵상</span></div>
+    <div class="homily">
+      <p>오늘 하루의 끝에서, 우리는 우리가 누구인지를 다시 조용히 확인합니다. 유란시아의 필사자인 우리는 이미 하나님의 자녀라 불릴 자격을 받았습니다. 이 자녀 됨은 우리가 이룬 업적이나 오늘의 성공과 실패로 얻거나 잃는 것이 아닙니다. 그것은 네 가지 확고한 근거 위에 서 있습니다.</p>
+      <p>첫째, 우리는 믿음의 자녀입니다. 우리가 우리의 자녀 됨을 마음으로 받아들이고 그 실체 안에서 믿는 순간, 하나님에 대한 우리의 자녀 됨은 영원히 실제가 됩니다. 둘째, 하나님의 창조자 아들이 우리 가운데 한 사람이 되셨습니다. 그분은 우리의 맏형이시니, 우리가 영 안에서 그분의 형제가 될 때 우리는 같은 우주 아버지를 모신 자녀가 됩니다. 셋째, 아들의 영이 우리 모두에게 값없이 부어졌습니다. 그 영은 우리를 신성한 아들에게로, 다시 그 아들의 근원인 아버지께로 쉼 없이 이끕니다. 넷째, 우주 아버지는 당신의 신성한 자유 의지로 우리에게 인격과 자유 의지를 선물하셨습니다.</p>
+      <p>그러므로 우리는 우주에서 길 잃은 존재가 아닙니다. 우리는 아버지께로 향하는 길 위에 있고, 그 길 위에서 언제나 붙들려 있습니다. 오늘 다 이루지 못한 일과 마음에 남은 근심을 이제 아버지의 손에 내려놓읍시다. 자녀는 잠들 때 스스로를 지키려 애쓰지 않습니다. 자녀는 아버지의 품에서 쉽니다. 우리의 자녀 됨은 우리가 잠든 사이에도 변함없이 실제이며, 아버지의 사랑은 밤새 우리를 지킵니다.</p>
+    </div>
+  </section>
+
+  <!-- 노래 -->
+  <section class="seg" id="sec-song">
+    <div class="seg-head"><span class="seg-kicker">노래</span><span class="seg-sub">나는 당신의 자녀</span></div>
+    <div class="song"><span class="block-label">[1절]</span>
+하루가 저무는 이 밤에
+나 조용히 눈을 감네
+이룬 것도 못 이룬 것도
+아버지 손에 맡기네
+
+<span class="block-label">[후렴]</span>
+나는 당신의 자녀
+믿음으로 받은 이름
+밤이 깊어도 변치 않는
+영원한 그 사랑 안에 쉬네
+
+<span class="block-label">[2절]</span>
+창조자 아들 나의 맏형
+같은 아버지 우리를 부르시네
+아들의 영이 나를 이끄네
+근원 되신 그분께로
+
+<span class="block-label">[브릿지]</span>
+잠든 사이에도 실제인 이름
+아버지의 품에 안겨
+나는 당신의 자녀
+밤새 지키시는 사랑</div>
+    <p class="song-note" id="song-note" hidden>♪ 노래 오디오(audio/song.mp3)가 아직 없습니다. Mureka로 만들어 넣으면 이 자리에서 재생됩니다.</p>
+  </section>
+
+  <!-- 기도 -->
+  <section class="seg" id="sec-prayer">
+    <div class="seg-head"><span class="seg-kicker">기도</span><span class="seg-sub">취침 기도</span></div>
+    <div class="prayer">은혜로우신 아버지 하나님,
+하루의 끝에서
+당신 앞에 나아갑니다.
+
+저를 당신의 자녀로
+불러 주시니 감사합니다.
+이 자녀 됨이
+제가 이룬 것으로
+얻은 것이 아니라
+아버지의 사랑으로
+주어진 것임을 압니다.
+
+오늘 다 이루지 못한 일과
+마음에 남은 근심을
+이제 아버지의 손에
+내려놓습니다.
+
+아들의 영이
+저를 신성한 아들에게로,
+다시 아버지께로 이끄시니
+저는 길 잃지 않습니다.
+
+자녀는 잠들 때
+스스로를 지키려
+애쓰지 않습니다.
+아버지의 품에서 쉽니다.
+
+밤새 저를 지켜 주시고
+내일 아침
+새 힘으로 눈뜨게 하소서.
+
+<span class="amen">예수님의 이름으로 기도드립니다.</span></div>
+  </section>
+
+  <footer class="foot">유란시아서 40:6.4–40:6.7 · 오늘의 취침 명상</footer>
+</div>
+
+<!-- Player -->
+<div class="player" role="region" aria-label="오디오 재생기">
+  <div class="player-inner">
+    <div class="prog" id="prog" title="탐색"><div class="bar" id="bar"></div></div>
+    <div class="controls">
+      <button class="ctl play" id="playBtn" aria-label="재생/일시정지">▶</button>
+      <div class="now">
+        <div class="lbl" id="nowLbl">낭독</div>
+        <div class="time" id="nowTime">0:00 / 0:00</div>
+      </div>
+      <button class="ctl skip" id="skipBtn" aria-label="다음으로 건너뛰기">
+        <span class="txt">다음</span><span class="ico">⏭</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Start overlay -->
+<div class="overlay" id="overlay">
+  <h2>하나님의 자녀 됨</h2>
+  <p>오늘의 취침 명상 · 2026년 7월 12일</p>
+  <button class="start" id="startBtn">명상 시작 ▸</button>
+  <p class="hint">낭독 → 강론 → 노래 → 기도 순으로 자동 재생됩니다. 언제든 “다음”으로 건너뛸 수 있어요.</p>
+</div>
+
+<audio id="audio" preload="none"></audio>
+
+<script>
+(function(){
+  // starfield
+  var sc=document.getElementById('stars');
+  for(var i=0;i<60;i++){
+    var s=document.createElement('i');
+    s.style.left=(Math.random()*100)+'%';
+    s.style.top=(Math.random()*100)+'%';
+    s.style.animationDelay=(Math.random()*5)+'s';
+    s.style.opacity=(0.2+Math.random()*0.6);
+    sc.appendChild(s);
+  }
+
+  var SEGMENTS=[
+    {label:'낭독', file:'https://archive.org/download/urantia-devotion-2026-07-12-night/reading.mp3', sec:'sec-reading'},
+    {label:'강론', file:'https://archive.org/download/urantia-devotion-2026-07-12-night/homily.mp3',  sec:'sec-homily'},
+    {label:'노래', file:'https://archive.org/download/urantia-devotion-2026-07-12-night/song.mp3',    sec:'sec-song'},
+    {label:'기도', file:'https://archive.org/download/urantia-devotion-2026-07-12-night/prayer.mp3',  sec:'sec-prayer'}
+  ];
+
+  var audio=document.getElementById('audio');
+  var playBtn=document.getElementById('playBtn');
+  var skipBtn=document.getElementById('skipBtn');
+  var bar=document.getElementById('bar');
+  var prog=document.getElementById('prog');
+  var nowLbl=document.getElementById('nowLbl');
+  var nowTime=document.getElementById('nowTime');
+  var overlay=document.getElementById('overlay');
+  var startBtn=document.getElementById('startBtn');
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.flow .step'));
+  var songNote=document.getElementById('song-note');
+
+  var idx=0, started=false;
+
+  function fmt(t){ if(!isFinite(t)||t<0)t=0; var m=Math.floor(t/60), s=Math.floor(t%60); return m+':'+(s<10?'0':'')+s; }
+
+  function markUI(i){
+    steps.forEach(function(st,k){
+      st.classList.toggle('active', k===i);
+      st.classList.toggle('done', k<i);
+    });
+    SEGMENTS.forEach(function(seg,k){
+      document.getElementById(seg.sec).classList.toggle('active', k===i);
+    });
+    nowLbl.textContent=SEGMENTS[i].label;
+    var el=document.getElementById(SEGMENTS[i].sec);
+    if(started && el){ el.scrollIntoView({behavior:'smooth', block:'center'}); }
+  }
+
+  function load(i){ idx=i; markUI(i); audio.src=SEGMENTS[i].file; }
+
+  function playCurrent(){
+    var p=audio.play();
+    if(p&&p.catch){ p.catch(function(){ /* blocked or missing */ }); }
+  }
+
+  function playSegment(i){ load(i); playCurrent(); }
+
+  function next(){
+    if(idx<SEGMENTS.length-1){ playSegment(idx+1); }
+    else { // finished
+      playBtn.textContent='↺';
+      nowTime.textContent='명상을 마쳤습니다';
+      steps.forEach(function(st){st.classList.add('done');st.classList.remove('active');});
+    }
+  }
+
+  audio.addEventListener('ended', next);
+  audio.addEventListener('timeupdate', function(){
+    var d=audio.duration||0, c=audio.currentTime||0;
+    bar.style.width=(d? (c/d*100):0)+'%';
+    nowTime.textContent=fmt(c)+' / '+fmt(d);
+  });
+  audio.addEventListener('play', function(){ playBtn.textContent='❚❚'; });
+  audio.addEventListener('pause', function(){ if(idx<SEGMENTS.length-1||audio.currentTime<audio.duration) playBtn.textContent='▶'; });
+
+  // graceful handling if an audio file is missing (e.g. song.mp3 not yet added)
+  audio.addEventListener('error', function(){
+    if(SEGMENTS[idx].file.indexOf('song')>-1 && songNote){ songNote.hidden=false; }
+    nowTime.textContent='오디오 파일 없음 — 넘어갑니다';
+    if(started){ setTimeout(next, 1200); }
+  });
+
+  playBtn.addEventListener('click', function(){
+    if(playBtn.textContent==='↺'){ started=true; playSegment(0); playBtn.textContent='❚❚'; return; }
+    if(audio.paused){ playCurrent(); } else { audio.pause(); }
+  });
+  skipBtn.addEventListener('click', function(){ started=true; next(); });
+
+  prog.addEventListener('click', function(e){
+    var r=prog.getBoundingClientRect();
+    var ratio=(e.clientX-r.left)/r.width;
+    if(audio.duration){ audio.currentTime=ratio*audio.duration; }
+  });
+
+  startBtn.addEventListener('click', function(){
+    started=true;
+    overlay.classList.add('hidden');
+    playSegment(0);
+    setTimeout(function(){ overlay.style.display='none'; }, 700);
+  });
+
+  // preload first label
+  load(0);
+})();
+</script>
+</body>
+</html>

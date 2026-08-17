@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 아침 묵상 · 2026-07-25 · 정직한 용기</title>
+<style>
+  :root{
+    --navy:#1b2a4a; --navy2:#24365c; --amber:#e0a13c; --amber2:#f0c069;
+    --cream:#f7f1e4; --ink:#eae3d4; --sub:#b9c2d6; --line:#3a4a6b;
+    --card:rgba(255,255,255,.06); --cardline:rgba(224,161,60,.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(240,192,105,.35), transparent 60%),
+      radial-gradient(900px 500px at 15% 8%, rgba(224,161,60,.18), transparent 55%),
+      linear-gradient(180deg,#12203c 0%, #1b2a4a 42%, #46436b 78%, #b9793f 100%);
+    min-height:100vh; overflow-x:hidden;
+  }
+  #stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .wrap{position:relative;z-index:2;max-width:760px;margin:0 auto;
+        padding:32px 22px 120px;min-height:100vh;display:flex;flex-direction:column}
+  header{text-align:center;margin-bottom:22px}
+  .date{color:var(--amber2);font-size:14px;letter-spacing:3px;font-weight:600}
+  h1{font-size:30px;margin:8px 0 4px;color:#fff;font-weight:800;letter-spacing:1px}
+  .sub{color:var(--sub);font-size:15px}
+  .divider{width:64px;height:3px;margin:14px auto 0;border-radius:2px;
+           background:linear-gradient(90deg,var(--amber),var(--amber2))}
+  /* sun */
+  #sun{position:fixed;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+       background:radial-gradient(circle at 50% 50%, rgba(240,192,105,.9), rgba(224,161,60,.25) 55%, transparent 72%);
+       filter:blur(2px);z-index:1;pointer-events:none}
+
+  .tabs{display:flex;gap:8px;justify-content:center;margin:6px 0 20px;flex-wrap:wrap}
+  .tab{padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600;
+       color:var(--sub);background:var(--card);border:1px solid transparent;cursor:pointer;
+       transition:.25s}
+  .tab.active{color:#1b2a4a;background:linear-gradient(180deg,var(--amber2),var(--amber));
+              border-color:var(--amber2)}
+  .stage{flex:1;display:flex;align-items:center;justify-content:center}
+  .panel{display:none;width:100%;background:var(--card);border:1px solid var(--cardline);
+         border-radius:20px;padding:34px 30px;backdrop-filter:blur(4px);animation:fade .6s ease}
+  .panel.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .label{color:var(--amber2);font-size:13px;font-weight:700;letter-spacing:2px;margin-bottom:16px;
+         text-align:center}
+  .verse{font-size:20px;line-height:2.0;color:#fff;letter-spacing:.2px}
+  .body{font-size:17px;line-height:1.95;white-space:pre-wrap}
+  .song{font-size:17px;line-height:1.9;white-space:pre-wrap;text-align:center;color:#f3ead9}
+  .prayer{font-size:19px;line-height:1.85;white-space:pre-wrap;text-align:center;color:#fff}
+  .cite{margin-top:20px;text-align:right;color:var(--amber);font-weight:700;font-size:15px}
+
+  .controls{position:fixed;left:0;right:0;bottom:0;z-index:5;
+            background:linear-gradient(180deg,rgba(18,32,60,0),rgba(15,22,38,.92) 30%);
+            padding:22px 18px 20px}
+  .bar{max-width:760px;margin:0 auto}
+  .progress{height:5px;border-radius:3px;background:rgba(255,255,255,.15);overflow:hidden;
+            cursor:pointer;margin-bottom:14px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2))}
+  .btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  button.ctl{background:var(--card);color:var(--ink);border:1px solid var(--cardline);
+             border-radius:12px;padding:10px 16px;font-size:15px;cursor:pointer;font-weight:600}
+  button.ctl:hover{background:rgba(224,161,60,.16)}
+  .play{background:linear-gradient(180deg,var(--amber2),var(--amber));color:#1b2a4a;
+        border:none;width:56px;height:56px;border-radius:50%;font-size:22px}
+  .loop.on{background:linear-gradient(180deg,var(--amber2),var(--amber));color:#1b2a4a;border:none}
+  .mini{font-size:13px;color:var(--sub);text-align:center;margin-top:10px}
+
+  #overlay{position:fixed;inset:0;z-index:20;background:rgba(12,20,38,.94);
+           display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+  #overlay h2{color:#fff;font-size:24px;margin-bottom:10px}
+  #overlay p{color:var(--sub);font-size:15px}
+  #overlay .go{margin-top:26px;padding:14px 34px;border-radius:999px;font-size:17px;font-weight:700;
+               color:#1b2a4a;background:linear-gradient(180deg,var(--amber2),var(--amber))}
+  .endnote{color:var(--amber2);font-size:16px;text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="sun"></div>
+
+<div id="overlay">
+  <h2>오늘의 아침 묵상</h2>
+  <p>2026-07-25 · 정직한 용기</p>
+  <div class="go">탭하여 시작 ▷</div>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="date">2026 · 07 · 25 · 아침</div>
+    <h1>정직한 용기</h1>
+    <div class="sub">유란시아서 143:1.7 · 아르켈라이스에서의 설교</div>
+    <div class="divider"></div>
+  </header>
+
+  <div class="tabs">
+    <div class="tab" data-i="0">낭독</div>
+    <div class="tab" data-i="1">강론</div>
+    <div class="tab" data-i="2">노래</div>
+    <div class="tab" data-i="3">기도</div>
+  </div>
+
+  <div class="stage">
+    <section class="panel" id="p0">
+      <div class="label" id="l0">낭독 · 143:1.7</div>
+      <div class="verse" id="c0"></div>
+      <div class="cite">143:1.7</div>
+    </section>
+    <section class="panel" id="p1">
+      <div class="label">강론 · 정직한 용기</div>
+      <div class="body" id="c1"></div>
+    </section>
+    <section class="panel" id="p2">
+      <div class="label">노래 · 정직한 용기</div>
+      <div class="song" id="c2"></div>
+    </section>
+    <section class="panel" id="p3">
+      <div class="label">기도</div>
+      <div class="prayer" id="c3"></div>
+    </section>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="bar">
+    <div class="progress" id="prog"><i id="progfill"></i></div>
+    <div class="btns">
+      <button class="ctl" id="prev">◀ 이전</button>
+      <button class="ctl play" id="play">▶</button>
+      <button class="ctl" id="next">다음 ▶</button>
+      <button class="ctl" id="skip">건너뛰기 ⏭</button>
+      <button class="ctl loop on" id="loopAll">전체 반복 ●</button>
+      <button class="ctl loop" id="loopOne">한 메뉴 반복 ○</button>
+      <button class="ctl" id="mute">🔊</button>
+    </div>
+    <div class="mini" id="mini">낭독 → 강론 → 노래 → 기도 · 자동으로 이어집니다</div>
+  </div>
+</div>
+
+<audio id="audio"></audio>
+
+<script>
+const SEG = [
+  { key:"reading", label:"낭독 · 143:1.7", file:"https://archive.org/download/urantia-devotion-2026-07-25-morning/01_reading.mp3" },
+  { key:"sermon",  label:"강론 · 정직한 용기", file:"https://archive.org/download/urantia-devotion-2026-07-25-morning/02_sermon.mp3" },
+  { key:"song",    label:"노래 · 정직한 용기", file:"https://archive.org/download/urantia-devotion-2026-07-25-morning/03_song.mp3" },
+  { key:"prayer",  label:"기도", file:"https://archive.org/download/urantia-devotion-2026-07-25-morning/04_prayer.mp3" },
+];
+
+const READING =
+  "오늘날, 믿지 않는 자들은 너희가 무저항의 복음을 전하며 비폭력의 삶을 산다고 조롱할지 모르지만, 너희는 이 왕국의 복음을 믿는 긴 줄의 첫 번째 자원봉사자들이다. 너희는 모든 인류를 놀라게 할 영웅적인 헌신으로 이 가르침을 실천할 것이다. 세상의 어떤 군대도 너희와 너희의 충실한 후계자들이 모든 세상에 기쁜 소식, 곧 하나님의 아버지 되심과 인간의 형제애를 전파할 때 보여줄 용기와 용맹을 더 많이 보여주지 못했다. 육체의 용기는 용기의 가장 낮은 형태이다. 정신적 용기는 인간 용기의 더 높은 유형이지만, 최고이자 궁극적인 것은 심오한 영적 실체에 대한 계몽된 신념에 대한 타협 없는 충성심이다. 그리고 그러한 용기는 하나님을 아는 사람의 영웅주의를 구성한다. 그리고 너희 모두는 하나님을 아는 자들이다. 너희는 참으로 사람의 아들의 개인적인 동료들이다.";
+
+const SERMON =
+`예수께서 이 말씀을 하실 때, 열두 제자는 지쳐 있었습니다. 그리스 도시에서는 복음이 좀처럼 뿌리내리지 못했고, 사람들은 무저항을 나약함이라 비웃었습니다. 바로 그 낙심의 자리에서 예수는 그들을 자원봉사자라 부르셨습니다. 끌려온 병사가 아니라, 스스로 나선 사람이라는 것입니다.
+
+여러분, 우리는 용기를 대개 몸의 일로 생각합니다. 주먹을 쥐고, 물러서지 않고, 소리 높이는 것. 그러나 예수는 그것을 가장 낮은 용기라 하셨습니다. 두려움 앞에서 마음을 지키는 정신의 용기가 그 위에 있고, 그보다 더 높은 것이 있다고 하셨습니다. 보이지 않는 영적 실체를 끝까지 붙드는 충성심입니다.
+
+이 용기가 왜 가장 높습니까. 아무도 알아주지 않아도 계속되기 때문입니다. 박수도 없고 결과도 보이지 않는 자리에서, 오직 하나님을 알기에 물러서지 않는 마음. 그것이 하나님을 아는 사람의 영웅주의입니다.
+
+오늘 하루, 큰 싸움을 찾지 마십시오. 아무도 보지 않는 곳에서 옳은 것 하나를 지키는 것, 그 조용한 충성이 이미 가장 높은 용기입니다. 여러분은 그 긴 줄의 첫 사람들입니다.`;
+
+const SONG =
+`[1절]
+세상이 비웃어도 나는 물러서지 않네
+아무도 보지 않는 이 자리에서
+주먹이 아니라 마음을 지키며
+조용히 옳은 길을 걸어가네
+
+[후렴]
+정직한 용기, 하나님을 아는 마음
+박수 없어도 멈추지 않으리
+보이지 않는 진리를 붙들고
+나는 오늘도 첫 걸음을 떼네
+
+[2절]
+몸의 힘은 낮고 마음의 힘은 높아
+그보다 높은 건 변치 않는 충성
+아버지 되심과 형제의 사랑을
+온 세상 끝까지 전하고 싶네
+
+[브리지]
+긴 줄의 첫 사람, 나를 부르셨네
+지친 이 자리를 헌신으로 바꾸네
+
+[후렴]
+정직한 용기, 하나님을 아는 마음
+박수 없어도 멈추지 않으리
+보이지 않는 진리를 붙들고
+나는 오늘도 첫 걸음을 떼네`;
+
+const PRAYER =
+`용기의 근원이신
+아버지 하나님,
+
+오늘 아침 저를
+당신의 자원봉사자로
+불러 주시니 감사합니다.
+
+세상은 여전히
+낮은 것을 힘이라 부르고
+높은 것을 나약함이라
+비웃습니다.
+
+그러나 저는 오늘
+몸의 힘을 자랑하기보다
+두려움 앞에서
+마음을 지키게 하시고,
+마음을 지키는 것을 넘어
+보이지 않는 진리에
+끝까지 충성하게 하소서.
+
+아무도 알아주지 않는
+자리에서도
+물러서지 않게 하시고,
+박수가 없는 길 위에서도
+묵묵히 걷게 하소서.
+
+낙심이 찾아올 때
+제가 긴 줄의 첫 사람임을
+기억하게 하시고,
+지친 이 자리를
+헌신의 자리로
+바꾸게 하소서.
+
+아버지 되심과
+형제의 사랑을
+제 삶으로 전하게 하소서.
+
+당신을 아는 것이
+저의 가장 높은 용기임을
+오늘도 믿습니다.
+
+예수님의 이름으로
+기도드립니다.`;
+
+document.getElementById("c0").textContent = READING;
+document.getElementById("c1").textContent = SERMON;
+document.getElementById("c2").textContent = SONG;
+document.getElementById("c3").textContent = PRAYER;
+
+const audio = document.getElementById("audio");
+const panels = [0,1,2,3].map(i=>document.getElementById("p"+i));
+const tabs = [...document.querySelectorAll(".tab")];
+let cur = 0, loopMode = "all", playing = false;
+
+function show(i){
+  cur = i;
+  panels.forEach((p,k)=>p.classList.toggle("show", k===i));
+  tabs.forEach((t,k)=>t.classList.toggle("active", k===i));
+  document.getElementById("mini").textContent = SEG[i].label;
+}
+
+function loadPlay(i){
+  show(i);
+  audio.src = SEG[i].file;
+  audio.play().then(()=>{playing=true;setPlayIcon();})
+    .catch(()=>{ /* 파일 없음 → 자동 건너뜀 */ onEnded(); });
+}
+
+function setPlayIcon(){ document.getElementById("play").textContent = playing ? "❚❚" : "▶"; }
+
+function onEnded(){
+  if(loopMode === "one"){ loadPlay(cur); return; }
+  if(cur < SEG.length-1){ loadPlay(cur+1); }
+  else{
+    if(loopMode === "all"){ loadPlay(0); }
+    else{ playing=false; setPlayIcon(); endNote(); }
+  }
+}
+
+function endNote(){
+  document.getElementById("mini").innerHTML =
+    '<span class="endnote">평안한 하루 되세요 · 탭하면 다시 들을 수 있습니다</span>';
+}
+
+audio.addEventListener("ended", onEnded);
+audio.addEventListener("error", ()=>{ if(playing) onEnded(); });
+audio.addEventListener("timeupdate", ()=>{
+  if(audio.duration){
+    document.getElementById("progfill").style.width =
+      (audio.currentTime/audio.duration*100)+"%";
+  }
+});
+
+document.getElementById("play").onclick = ()=>{
+  if(!audio.src) { loadPlay(cur); return; }
+  if(playing){ audio.pause(); playing=false; }
+  else{ audio.play(); playing=true; }
+  setPlayIcon();
+};
+document.getElementById("prev").onclick = ()=> loadPlay((cur-1+SEG.length)%SEG.length);
+document.getElementById("next").onclick = ()=> loadPlay((cur+1)%SEG.length);
+document.getElementById("skip").onclick = ()=> onEnded();
+tabs.forEach(t=> t.onclick = ()=> loadPlay(+t.dataset.i));
+
+document.getElementById("prog").onclick = (e)=>{
+  if(!audio.duration) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  audio.currentTime = (e.clientX-r.left)/r.width*audio.duration;
+};
+
+const loopAll = document.getElementById("loopAll");
+const loopOne = document.getElementById("loopOne");
+loopAll.onclick = ()=>{ loopMode = loopMode==="all" ? "off" : "all";
+  loopAll.classList.toggle("on", loopMode==="all"); loopOne.classList.remove("on");
+  if(loopMode!=="one") loopOne.classList.remove("on"); };
+loopOne.onclick = ()=>{ loopMode = loopMode==="one" ? "off" : "one";
+  loopOne.classList.toggle("on", loopMode==="one"); loopAll.classList.remove("on"); };
+
+const mute = document.getElementById("mute");
+mute.onclick = ()=>{ audio.muted = !audio.muted; mute.textContent = audio.muted ? "🔇" : "🔊"; };
+
+document.addEventListener("keydown", (e)=>{
+  if(e.code==="Space"){ e.preventDefault(); document.getElementById("play").click(); }
+  else if(e.code==="ArrowLeft"){ document.getElementById("prev").click(); }
+  else if(e.code==="ArrowRight"){ document.getElementById("next").click(); }
+});
+
+document.getElementById("overlay").onclick = ()=>{
+  document.getElementById("overlay").style.display="none";
+  loadPlay(0);
+};
+
+// starfield
+const cv = document.getElementById("stars"), cx = cv.getContext("2d");
+function sizeCv(){ cv.width=innerWidth; cv.height=innerHeight; }
+sizeCv(); addEventListener("resize", sizeCv);
+const stars = Array.from({length:70}, ()=>({
+  x:Math.random()*innerWidth, y:Math.random()*innerHeight*0.55,
+  r:Math.random()*1.3+0.2, a:Math.random()}));
+(function twinkle(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  stars.forEach(s=>{ s.a += (Math.random()-0.5)*0.05; s.a=Math.max(0.1,Math.min(1,s.a));
+    cx.globalAlpha=s.a*0.7; cx.fillStyle="#fff";
+    cx.beginPath(); cx.arc(s.x,s.y,s.r,0,7); cx.fill(); });
+  requestAnimationFrame(twinkle);
+})();
+
+show(0);
+</script>
+</body>
+</html>

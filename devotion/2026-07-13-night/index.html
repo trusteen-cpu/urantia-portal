@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>취침 묵상 · 목수의 비유</title>
+<style>
+  :root{ --navy:#0b1f3a; --gold:#d4af37; --golds:#e8cf82; --ink:#eef1f6; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{
+    background:radial-gradient(circle at 50% 22%, #12294a 0%, #0a1a33 45%, #05070d 100%);
+    color:var(--ink);
+    font-family:"Noto Serif KR","Malgun Gothic","맑은 고딕",serif;
+    -webkit-font-smoothing:antialiased; overflow:hidden;
+  }
+  #wrap{position:fixed;inset:0;display:flex;flex-direction:column;}
+  header{text-align:center;padding:26px 20px 10px;flex:0 0 auto;}
+  header .date{color:var(--gold);opacity:.7;font-size:13px;letter-spacing:3px;}
+  header h1{margin:6px 0 2px;font-size:26px;font-weight:600;color:#fff;letter-spacing:2px;}
+  header .sub{color:var(--golds);font-size:15px;letter-spacing:1px;opacity:.9;}
+  /* segment tabs */
+  #tabs{display:flex;justify-content:center;gap:10px;margin:14px 0 6px;flex:0 0 auto;}
+  .tab{display:flex;align-items:center;gap:7px;color:rgba(232,207,130,.45);
+    font-size:14px;letter-spacing:2px;transition:.3s;}
+  .tab .dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
+  .tab.active{color:var(--gold);}
+  .tab.done{color:rgba(232,207,130,.7);}
+  /* content */
+  #content{flex:1 1 auto;overflow-y:auto;display:flex;align-items:center;justify-content:center;
+    padding:8px 26px 20px;}
+  #panel{max-width:760px;width:100%;line-height:2.05;font-size:20px;color:#e9ecf3;
+    animation:fade .8s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  #panel.reading{font-size:21px;color:#f1ede1;text-align:justify;}
+  #panel.homily p{margin:0 0 16px;text-indent:2px;}
+  #panel.song{text-align:center;font-style:italic;color:var(--golds);font-size:24px;line-height:2.3;}
+  #panel.prayer{text-align:center;color:#f1ede1;font-size:20px;line-height:2.15;}
+  #content::-webkit-scrollbar{width:6px;}
+  #content::-webkit-scrollbar-thumb{background:rgba(212,175,55,.3);border-radius:3px;}
+  /* controls */
+  #bar{flex:0 0 auto;display:flex;align-items:center;gap:16px;justify-content:center;
+    padding:12px 22px calc(18px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,rgba(4,7,14,.9),transparent);}
+  .btn{background:none;border:1px solid rgba(212,175,55,.5);color:var(--golds);
+    width:44px;height:44px;border-radius:50%;font-size:17px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .btn:hover{background:rgba(212,175,55,.15);color:#fff;border-color:var(--gold);}
+  #play{width:56px;height:56px;font-size:22px;border-color:var(--gold);}
+  #seg-name{position:absolute;left:22px;color:var(--golds);font-size:13px;letter-spacing:2px;opacity:.75;}
+  /* start + end overlays */
+  .overlay{position:fixed;inset:0;z-index:20;background:rgba(5,7,13,.9);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);cursor:pointer;text-align:center;padding:24px;}
+  .overlay h2{margin:0;color:#fff;font-size:22px;font-weight:600;letter-spacing:2px;}
+  .overlay p{margin:0;color:var(--golds);font-size:15px;letter-spacing:1px;}
+  .obtn{width:96px;height:96px;border-radius:50%;border:2px solid var(--gold);
+    background:rgba(212,175,55,.12);color:var(--golds);font-size:40px;
+    display:flex;align-items:center;justify-content:center;transition:.2s;}
+  .overlay:hover .obtn{background:rgba(212,175,55,.25);color:#fff;transform:scale(1.05);}
+  #end{display:none;}
+  #toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);z-index:15;
+    background:rgba(90,60,20,.95);color:#fff;padding:10px 16px;border-radius:8px;
+    font-size:13px;max-width:82vw;text-align:center;opacity:0;transition:opacity .3s;pointer-events:none;}
+  #toast.show{opacity:1;}
+  @media(max-width:520px){ #panel{font-size:18px;line-height:1.95;} #panel.song{font-size:21px;} header h1{font-size:22px;} }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <div class="date">2026-07-13</div>
+    <h1>취침 묵상</h1>
+    <div class="sub">목수의 비유 · 156:5.2</div>
+  </header>
+  <div id="tabs"></div>
+  <div id="content"><div id="panel"></div></div>
+  <div id="bar">
+    <span id="seg-name"></span>
+    <button class="btn" id="prev" title="이전">&#10094;</button>
+    <button class="btn" id="play" title="재생/일시정지">&#9658;</button>
+    <button class="btn" id="next" title="다음">&#10095;</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div class="overlay" id="start">
+  <h2>오늘 밤의 묵상</h2>
+  <div class="obtn">&#9658;</div>
+  <p>취침 묵상 · 목수의 비유<br>탭하여 시작하세요</p>
+</div>
+
+<div class="overlay" id="end">
+  <div class="obtn" style="border-style:solid;">&#10227;</div>
+  <p>평안한 밤 되세요<br>다시 들으려면 탭하세요</p>
+</div>
+
+<audio id="audio" preload="none"></audio>
+
+<script>
+const SEG = [{"kind": "낭독", "label": "낭독 · 156:5.2", "audio": "https://archive.org/download/urantia-devotion-2026-07-13-night/01-nangdok.mp3", "cls": "reading", "html": "“영의 열매를 맺으려면 너희는 영으로 거듭나야 한다. 영으로 가르침을 받고 영으로 인도받아야 하며, 그리하여 너희 동료들 사이에서 영으로 충만한 삶을 살아야 한다. 그러나 벌레 먹고 속이 썩어 가는 목재를 사각으로 다듬고, 치수를 재고, 표면을 매끄럽게 하는 데 귀중한 시간을 낭비한 뒤, 그 불량한 목재에 모든 수고를 기울이고 나서야 결국 기초에 쓸 수 없는 것으로 내버려야 하는 어리석은 목수의 잘못을 저지르지 말라. 너희의 영적 본성, 즉 공동으로 창조된 혼은 살아 있는 성장체이지만, 개인의 마음과 도덕은 이러한 인간 발달과 신성한 운명의 더 높은 표현이 솟아나야 하는 토양이다. 진화하는 혼의 토양은 인간적이고 물질적이지만, 이 마음과 영의 결합된 창조체의 운명은 영적이며 신성하다.”"}, {"kind": "강론", "label": "강론", "audio": "https://archive.org/download/urantia-devotion-2026-07-13-night/02-gangron.mp3", "cls": "homily", "html": "<p>오늘 밤, 예수께서 목수의 언어로 들려주신 이 비유 앞에 마음을 내려놓습니다. 평생 나무를 다루셨던 그분은 좋은 기초가 무엇인지 손끝으로 아셨습니다. 그분은 말씀하십니다. 벌레 먹고 속이 썩은 목재를 붙들고, 그것을 다듬고 재고 매끄럽게 하느라 귀한 시간을 다 쓰지 말라고. 아무리 공을 들여도 썩은 나무는 끝내 기초로 쓸 수 없기 때문입니다.</p><p>하루를 돌아보면 우리도 자주 그렇습니다. 이미 속이 상한 근심, 지나간 후회, 남과의 비교. 그 썩은 목재를 붙들고 밤늦도록 홀로 다듬고 있었는지 모릅니다. 예수는 그 헛된 수고를 내려놓으라 하십니다. 정말 견고한 것 위에 삶을 세우라 하십니다.</p><p>그 견고한 기초는 영으로 거듭나는 데서 옵니다. 영으로 가르침받고, 영으로 인도받아, 동료들 사이에서 영으로 충만히 사는 것. 거기서 참된 성장이 자랍니다. 예수는 우리의 혼을 살아 있는 성장체라 부르셨습니다. 그 혼이 자라는 토양은 우리의 마음과 도덕입니다. 토양은 인간적이고 물질적이지만, 그 위에서 자라는 열매의 운명은 영적이며 신성합니다.</p><p>그러니 오늘 밤은 아무것도 억지로 다듬지 않아도 됩니다. 낮 동안 다 이루려던 손을 쉬고, 자라게 하시는 분께 혼을 맡깁니다. 잠든 사이에도 영은 우리 안에서 조용히 일하십니다. 마음과 영이 함께 지어 가는 이 집은, 세월과 폭풍을 견디도록 신성한 건축가께서 친히 세우십니다. 우리는 다만 좋은 토양이 되어, 편히 쉬면 됩니다.</p>"}, {"kind": "노래", "label": "노래", "audio": "https://archive.org/download/urantia-devotion-2026-07-13-night/song.mp3", "cls": "song", "html": "하루의 끝에 손을 내려놓네<br>속이 썩은 나무는 그만 붙들고<br>견고한 반석 그 위에 올라서<br>영으로 다시 태어나리라"}, {"kind": "기도", "label": "기도", "audio": "https://archive.org/download/urantia-devotion-2026-07-13-night/03-gido.mp3", "cls": "prayer", "html": "은혜로우신 아버지 하나님,<br>오늘 하루도 저를<br>붙드셨음을 압니다.<br>낮 동안 붙들고 있던<br>썩은 근심과 후회를<br>이제 내려놓습니다.<br>견고하지 못한 것 위에<br>삶을 세우지 않게 하소서.<br>영으로 거듭나게 하시고<br>영으로 인도하소서.<br>제 혼이 살아 있는<br>성장체로 자라도록<br>마음과 도덕의 토양을<br>부드럽게 고르게 하소서.<br>잠든 이 밤에도<br>아버지의 영이<br>제 안에서 일하심을 믿습니다.<br>아무것도 억지로<br>다듬지 않게 하시고<br>자라게 하시는 손길에<br>저를 온전히 맡깁니다.<br>평안히 쉬게 하시고<br>내일 아침 새 마음으로<br>깨어나게 하소서.<br>예수님의 이름으로 기도드립니다."}];
+const N = SEG.length;
+const panel=document.getElementById("panel");
+const tabs=document.getElementById("tabs");
+const audio=document.getElementById("audio");
+const playBtn=document.getElementById("play");
+const segName=document.getElementById("seg-name");
+const startOv=document.getElementById("start");
+const endOv=document.getElementById("end");
+const contentEl=document.getElementById("content");
+const toast=document.getElementById("toast");
+let idx=0, started=false;
+
+// build tabs
+SEG.forEach((s,i)=>{
+  const t=document.createElement("div"); t.className="tab"; t.dataset.i=i;
+  t.innerHTML='<span class="dot"></span>'+s.kind;
+  t.onclick=()=>{ if(started) go(i,true); };
+  tabs.appendChild(t);
+});
+const tabEls=[...tabs.children];
+
+function showToast(m){toast.textContent=m;toast.classList.add("show");
+  clearTimeout(showToast._t);showToast._t=setTimeout(()=>toast.classList.remove("show"),3800);}
+
+function render(){
+  const s=SEG[idx];
+  panel.className=s.cls;
+  panel.innerHTML=s.html;
+  contentEl.scrollTop=0;
+  segName.textContent=s.label;
+  tabEls.forEach((t,i)=>{t.classList.toggle("active",i===idx);t.classList.toggle("done",i<idx);});
+}
+function setIcon(){playBtn.innerHTML=audio.paused?"&#9658;":"&#10073;&#10073;";}
+
+function go(i, autoplay){
+  idx=Math.max(0,Math.min(N-1,i));
+  render();
+  audio.src=SEG[idx].audio;
+  if(autoplay){ const p=audio.play(); if(p)p.catch(()=>{}); }
+}
+
+audio.addEventListener("ended",()=>{
+  if(idx<N-1) go(idx+1,true);
+  else { endOv.style.display="flex"; }   // 마지막(기도) 후 종료 — 반복 없음
+});
+audio.addEventListener("play",setIcon);
+audio.addEventListener("pause",setIcon);
+audio.addEventListener("error",()=>{
+  if(!audio.src) return;
+  const f=SEG[idx].audio;
+  showToast("오디오 파일이 없습니다: "+f+(f.indexOf("song")>-1?" · Suno의 song.mp3 를 넣으세요":" · generate_audio_daily.py 실행"));
+});
+
+playBtn.onclick=()=>{ if(audio.paused)audio.play(); else audio.pause(); };
+document.getElementById("prev").onclick=()=>go(idx-1,!audio.paused||started);
+document.getElementById("next").onclick=()=>go(idx+1,!audio.paused||started);
+document.addEventListener("keydown",e=>{
+  if(e.code==="Space"){e.preventDefault();playBtn.onclick();}
+  else if(e.code==="ArrowRight")go(idx+1,true);
+  else if(e.code==="ArrowLeft")go(idx-1,true);
+});
+
+function begin(){ if(started)return; started=true; startOv.style.display="none"; go(0,true); }
+startOv.addEventListener("click",begin);
+endOv.addEventListener("click",()=>{ endOv.style.display="none"; go(0,true); });
+
+render(); // 시작 오버레이 뒤로 낭독 미리 표시
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 아침 명상 · 2026-07-07</title>
+<style>
+  :root{
+    --navy:#0f2038; --navy2:#16304f; --gold:#c9a24b; --gold-soft:#e2c988;
+    --cream:#f6f0e2; --cream2:#efe6d0; --ink:#1c1c1c; --muted:#8a7f6a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Noto Serif KR','Nanum Myeongjo',serif;
+    background:radial-gradient(circle at 50% -10%,#1c375c 0%,var(--navy) 55%,#0a1626 100%);
+    color:var(--cream); min-height:100vh; display:flex; justify-content:center;
+    padding:28px 16px 60px;
+  }
+  .wrap{width:100%;max-width:760px}
+  header{text-align:center;margin-bottom:22px}
+  .date{letter-spacing:.32em;font-size:.82rem;color:var(--gold-soft);text-transform:uppercase}
+  h1{font-size:1.9rem;margin:8px 0 6px;color:var(--cream);font-weight:700}
+  .cite{display:inline-block;margin-top:4px;padding:3px 14px;border:1px solid var(--gold);
+    border-radius:20px;color:var(--gold-soft);font-size:.9rem;letter-spacing:.05em}
+  .rule{width:64px;height:2px;background:var(--gold);margin:16px auto 0;opacity:.7}
+
+  .steps{display:flex;justify-content:center;gap:10px;margin:22px 0 18px;flex-wrap:wrap}
+  .step{display:flex;align-items:center;gap:7px;padding:7px 15px;border-radius:22px;
+    background:rgba(255,255,255,.05);border:1px solid rgba(201,162,75,.25);
+    font-size:.92rem;color:var(--cream2);transition:.3s;cursor:pointer}
+  .step .n{width:22px;height:22px;border-radius:50%;background:rgba(201,162,75,.2);
+    display:grid;place-items:center;font-size:.78rem;color:var(--gold-soft)}
+  .step.active{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:700}
+  .step.active .n{background:var(--navy);color:var(--gold-soft)}
+  .step.done{border-color:rgba(201,162,75,.55)}
+  .step.done .n{background:var(--gold-soft);color:var(--navy)}
+
+  .card{background:linear-gradient(180deg,var(--cream) 0%,var(--cream2) 100%);
+    color:var(--ink);border-radius:16px;padding:30px 30px 26px;
+    box-shadow:0 18px 50px rgba(0,0,0,.4);border:1px solid rgba(201,162,75,.4)}
+  .label{display:flex;align-items:center;gap:10px;color:var(--navy);
+    font-size:1.15rem;font-weight:700;margin-bottom:16px;
+    padding-bottom:12px;border-bottom:1px solid rgba(15,32,56,.15)}
+  .label .badge{background:var(--navy);color:var(--gold-soft);font-size:.78rem;
+    padding:3px 11px;border-radius:12px;letter-spacing:.04em}
+  .body{font-size:1.12rem;line-height:2.05;color:#2a2a2a;white-space:pre-wrap;
+    min-height:180px}
+  .body p{margin-bottom:1.05em;text-align:justify}
+  .body p:last-child{margin-bottom:0}
+  .lyric-tag{color:var(--gold);font-size:.9rem;letter-spacing:.05em;
+    display:block;margin:1.1em 0 .35em}
+  .lyric-tag:first-child{margin-top:0}
+  .prayer .body{text-align:center;line-height:1.95}
+
+  .controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:24px}
+  .btn{background:var(--gold);color:var(--navy);border:none;border-radius:30px;
+    font-family:inherit;font-weight:700;cursor:pointer;transition:.2s;
+    box-shadow:0 6px 18px rgba(201,162,75,.35)}
+  .btn:hover{background:var(--gold-soft);transform:translateY(-1px)}
+  .btn.play{width:70px;height:70px;font-size:1.6rem;border-radius:50%;display:grid;place-items:center}
+  .btn.nav{width:48px;height:48px;font-size:1.1rem;border-radius:50%;
+    background:rgba(255,255,255,.08);color:var(--gold-soft);box-shadow:none;
+    border:1px solid rgba(201,162,75,.35)}
+  .btn.nav:hover{background:rgba(201,162,75,.2);color:var(--cream)}
+  .hint{text-align:center;color:var(--gold-soft);font-size:.86rem;margin-top:14px;min-height:20px}
+  .start{display:block;margin:20px auto 0;padding:14px 40px;font-size:1.05rem}
+  .missing{color:#a94b3a;font-size:.9rem}
+  audio{display:none}
+  footer{text-align:center;margin-top:30px;color:rgba(226,201,136,.45);font-size:.78rem;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="date">2026 · 07 · 07 · 아침 명상</div>
+    <h1>완전을 향한 매혹적인 모험</h1>
+    <span class="cite">1:0.3</span>
+    <div class="rule"></div>
+  </header>
+
+  <div class="steps" id="steps"></div>
+
+  <div class="card" id="card">
+    <div class="label" id="label"></div>
+    <div class="body" id="body"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn nav" id="prev" title="이전">‹</button>
+    <button class="btn play" id="play" title="재생/일시정지">▶</button>
+    <button class="btn nav" id="next" title="다음">›</button>
+  </div>
+  <div class="hint" id="hint"></div>
+  <button class="btn start" id="start">🌅 아침 명상 시작</button>
+
+  <audio id="audio"></audio>
+  <footer>유란시아서 핵심 · 오늘의 묵상</footer>
+</div>
+
+<script>
+const SEGMENTS = [
+  { id:"reading", label:"낭독", badge:"1:0.3", file:"reading.mp3",
+    html:`<p>계몽된 세계들은 모든 창조의 영원한 창조자이며 무한한 유지자인 우주 아버지를 인식하고 예배한다. 우주들의 우주의 의지 창조체들은 파라다이스로 가는 길고 긴 여행을 시작했으니, 이는 아버지 하나님에 도달하고자 하는 영원한 모험의 매혹적인 도전이다. 시간의 자녀들의 초월적 목표는 영원한 하나님을 발견하고 신성한 본성을 이해하고 우주 아버지를 인식하는 것이다. 하나님을 아는 창조체들은 단 한 가지 최고의 열망, 곧 단 하나의 강렬한 소망을 가지고 있는데, 바로 자기들의 구체에서 파라다이스에서의 하나님이 인격의 완전함과 의로운 최상위의 보편적 영역 안에 계신 것처럼 되는 것이다. 영원에 거하시는 우주 아버지로부터 최상의 명령이 내려졌다. “내가 완전한 것처럼 너희도 완전하라.” 사랑과 자비로써 파라다이스 전령들이 이 신성한 권고를 여러 시대에 걸쳐 여러 우주를 통해 전했으며, 심지어 유란시아의 낮고 동물적 기원을 가진 인류에게까지 이르게 했다.</p>
+<p>신성의 완전을 성취하려고 노력하라는 장엄하고 보편적인 권면은 완전하신 하나님께 속한 모든 분투하는 창조 존재들의 첫째 의무이자 가장 높은 열망이 되어야 한다. 신성한 완전에 도달할 가능성은 인간의 영원한 영적 진보의 최종적이고 확실한 운명이다.</p>
+<p>유란시아의 인간들이 무한이란 의미에서 완전하기를 도저히 바랄 수 없지만, 인간이 이 행성에서 시작하는 그들의 방식대로 출발하여 무한한 하나님이 유한한 인간들을 위해서 세워 준 고귀하고 신성한 목표를 달성하는 일은 전적으로 가능하다. 그들이 이 숙명을 성취했을 때 그들은 자아 실현과 마음 달성에 관련해서 하나님 자신이 무한하고 영원한 그의 구체에서 그런 것처럼 신성한 완전의 자기 영역에서 충만하게 될 것이다. 그러한 완전함은 물질적인 의미에서는 보편적이지 않고 지적인 이해에서는 제한이 있을지도 모르고 영적 체험에서 최종적이지 않을 수도 있지만, 그것은 의지 신성함, 인격 동기 완전함, 하나님 의식이라는 모든 유한의 측면에서는 최종적이고 완전하다.</p>
+<p>이것이 “너희는 완전하라, 내가 완전하듯이”라는 신의 명령의 진정한 의미이다. 이 명령은 언제나 유한한 인간으로 하여금 앞으로 나아가도록 독려하고 더 높고 높은 수준의 영적 가치와 진정한 우주 의미를 깨닫게 하기 위한 그 긴 매혹적인 투쟁 안으로 그를 부른다. 우주들의 하나님을 찾는 이 숭고한 탐구는 시간과 공간 모든 세계 거주민들의 최상의 모험이다.</p>` },
+
+  { id:"sermon", label:"강론", badge:"", file:"sermon.mp3",
+    html:`<p>사랑하는 여러분, 오늘 아침 우리는 우주 아버지를 향한 놀라운 초대 앞에 서 있습니다. 계몽된 모든 세계가 인식하고 예배하는 그분은 모든 창조의 영원한 창조자이시며 무한한 유지자이십니다. 우주들의 우주에 사는, 의지를 가진 모든 창조체는 이미 파라다이스를 향한 길고 긴 여행을 시작했습니다. 이것은 무거운 의무가 아니라, 아버지 하나님께 도달하려는 매혹적인 모험이며, 영원을 향해 열린 가장 아름다운 도전입니다.</p>
+<p>우리 안에는 단 하나의 지고한 열망이 있습니다. 우리가 사는 이 구체에서, 파라다이스의 하나님이 완전하신 것처럼 우리도 완전해지는 것입니다. 영원에 거하시는 아버지께서 친히 이렇게 명하셨습니다. 내가 완전한 것처럼 너희도 완전하라. 이 신성한 권고는 여러 시대와 여러 우주를 지나, 사랑과 자비를 품은 파라다이스 전령들을 통해, 낮고 동물적 기원을 가진 우리 유란시아 인류에게까지 이르렀습니다. 그러니 이 부르심이 지금 우리 마음에 닿은 것은 결코 우연이 아닙니다.</p>
+<p>물론 우리가 무한의 의미에서 완전할 수는 없습니다. 그러나 이 행성에서 지금의 자리에서 출발하여, 무한하신 하나님이 유한한 우리를 위해 친히 세워 주신 고귀하고 신성한 목표에 도달하는 일은 전적으로 가능합니다. 그 완전은 물질의 크기로 재는 것도, 지식의 넓이로 재는 것도 아닙니다. 그것은 하나님을 향해 돌아선 의지, 순전한 인격의 동기, 그리고 살아 있는 하나님 의식 안에서 이미 오늘 온전할 수 있습니다.</p>
+<p>완전은 손이 닿지 않는 먼 이상이 아니라, 지금 이 순간 우리를 앞으로 부르시는 살아 있는 음성입니다. 그러므로 오늘 아침, 이 숭고한 탐구를 다시 시작합시다. 하나님을 찾는 이 여정이야말로 시간과 공간 모든 세계 거주민의 최상의 모험이며, 우리의 오늘 첫걸음이 곧 영원한 완전을 향한 매혹적인 첫걸음이기 때문입니다.</p>` },
+
+  { id:"song", label:"노래", badge:"찬양", file:"song.mp3",
+    html:`<span class="lyric-tag">Verse 1</span>계몽된 세계들이 부르는 그 이름
+영원한 창조자 우주 아버지
+길고 긴 여정의 문이 열리고
+파라다이스 향해 나는 걸어가네
+<span class="lyric-tag">Chorus</span>완전하라 내가 완전하듯이
+그 음성이 시대를 지나 오네
+사랑과 자비로 전해진 부르심
+하나님을 향한 최상의 모험
+<span class="lyric-tag">Verse 2</span>무한하진 못해도 나아갈 수 있어
+낮은 곳에서 시작한 이 걸음
+신성한 목표가 나를 부르네
+날마다 새로워지는 이 마음
+<span class="lyric-tag">Bridge</span>시간과 공간 모든 세계 거주민
+함께 걸어가는 숭고한 이 길
+아버지를 발견하는 그날까지
+멈추지 않으리 이 매혹의 여정` },
+
+  { id:"prayer", label:"기도", badge:"", file:"prayer.mp3", cls:"prayer",
+    html:`영원한 창조자이시며
+무한한 유지자이신
+우주 아버지시여
+오늘 이 아침 저희를
+당신 앞에 세워 주시니
+진심으로 감사드립니다
+저희 안에 완전을 향한
+거룩한 갈망을 심어 주시고
+파라다이스로 가는
+이 길고 긴 여정의 첫걸음을
+기쁨으로 내딛게 하소서
+연약하고 유한한 저희이오나
+당신이 완전하신 것처럼
+너희도 완전하라
+부르시는 그 음성을
+날마다 마음에 새기며
+한 걸음씩 따르게 하소서
+은혜로우신 아버지
+어지러운 세상 가운데서도
+저희 마음을 새롭게 하시고
+지식이 아니라 사랑으로
+당신을 닮아 가게 하소서
+오늘 하루도
+당신을 찾는 최상의 모험 안에서
+기쁨으로 살아가게 하소서
+예수님의 이름으로 기도드립니다` },
+];
+
+const stepsEl=document.getElementById('steps');
+const labelEl=document.getElementById('label');
+const bodyEl=document.getElementById('body');
+const cardEl=document.getElementById('card');
+const audio=document.getElementById('audio');
+const playBtn=document.getElementById('play');
+const startBtn=document.getElementById('start');
+const hint=document.getElementById('hint');
+
+let cur=0, autoplay=false;
+
+SEGMENTS.forEach((s,i)=>{
+  const d=document.createElement('div');
+  d.className='step'; d.dataset.i=i;
+  d.innerHTML=`<span class="n">${i+1}</span>${s.label}`;
+  d.onclick=()=>{ autoplay=true; go(i); };
+  stepsEl.appendChild(d);
+});
+
+function render(i){
+  const s=SEGMENTS[i];
+  cardEl.className='card'+(s.cls?' '+s.cls:'');
+  labelEl.innerHTML=`${s.label}${s.badge?`<span class="badge">${s.badge}</span>`:''}`;
+  bodyEl.innerHTML=s.html;
+  [...stepsEl.children].forEach((el,idx)=>{
+    el.classList.toggle('active',idx===i);
+    el.classList.toggle('done',idx<i);
+  });
+}
+
+function go(i){
+  cur=i; render(i);
+  const s=SEGMENTS[i];
+  audio.src=s.file;
+  hint.textContent='';
+  audio.play().then(()=>{ playBtn.textContent='⏸'; })
+    .catch(()=>{
+      playBtn.textContent='▶';
+      if(s.id==='song') hint.innerHTML='<span class="missing">🎵 song.mp3 파일을 이 폴더에 넣어 주세요.</span>';
+      else hint.textContent='재생 버튼을 눌러 주세요.';
+    });
+}
+
+audio.addEventListener('ended',()=>{
+  playBtn.textContent='▶';
+  [...stepsEl.children][cur].classList.add('done');
+  if(autoplay && cur<SEGMENTS.length-1){ go(cur+1); }
+  else if(cur===SEGMENTS.length-1){ hint.textContent='🙏 오늘의 아침 명상을 마칩니다.'; }
+});
+
+audio.addEventListener('error',()=>{
+  playBtn.textContent='▶';
+  const s=SEGMENTS[cur];
+  if(s.id==='song'){
+    hint.innerHTML='<span class="missing">🎵 song.mp3 가 아직 없습니다. 파일을 추가하면 자동재생됩니다.</span>';
+    if(autoplay){ setTimeout(()=>{ if(cur<SEGMENTS.length-1) go(cur+1); },1200); }
+  } else {
+    hint.innerHTML='<span class="missing">오디오 파일('+s.file+')이 없습니다. 먼저 오디오 스크립트를 실행하세요.</span>';
+  }
+});
+
+playBtn.onclick=()=>{
+  if(audio.paused){ autoplay=true; audio.play(); playBtn.textContent='⏸'; }
+  else { audio.pause(); playBtn.textContent='▶'; }
+};
+document.getElementById('prev').onclick=()=>{ autoplay=false; go(Math.max(0,cur-1)); };
+document.getElementById('next').onclick=()=>{ autoplay=false; go(Math.min(SEGMENTS.length-1,cur+1)); };
+
+startBtn.onclick=()=>{ autoplay=true; startBtn.style.display='none'; go(0); };
+
+render(0);
+</script>
+</body>
+</html>

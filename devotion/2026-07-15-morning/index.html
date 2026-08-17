@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 · 문제를 마주하는 용기</title>
+<style>
+  :root{
+    --navy:#0d1b3e; --navy2:#152a5c; --gold:#d4af37; --gold-soft:#e8cf82;
+    --ink:#f4f0e6; --muted:#b9c2d8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+    background:radial-gradient(1200px 800px at 50% -10%, var(--navy2), var(--navy) 60%, #070f26 100%);
+    color:var(--ink); min-height:100vh; display:flex; flex-direction:column;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{flex:1; width:100%; max-width:720px; margin:0 auto; padding:28px 22px 150px;}
+  header{text-align:center; padding:14px 0 6px}
+  header .date{color:var(--gold); letter-spacing:3px; font-size:13px}
+  header h1{font-size:26px; margin-top:8px; font-weight:700; letter-spacing:1px}
+  header .ref{color:var(--muted); font-size:14px; margin-top:8px}
+  .rule{width:60px; height:2px; background:var(--gold); margin:18px auto; opacity:.8}
+
+  .tabs{display:flex; gap:8px; justify-content:center; margin:10px 0 22px; flex-wrap:wrap}
+  .tab{
+    border:1px solid rgba(212,175,55,.4); background:transparent; color:var(--muted);
+    padding:8px 16px; border-radius:20px; font-size:14px; cursor:pointer;
+    font-family:inherit; transition:.25s;
+  }
+  .tab.active{background:var(--gold); color:var(--navy); border-color:var(--gold); font-weight:700}
+
+  .panel{display:none; animation:fade .6s ease}
+  .panel.show{display:block}
+  @keyframes fade{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+
+  .verse-code{color:var(--gold); font-size:15px; letter-spacing:1px; margin-bottom:12px; text-align:center}
+  .body-text{font-size:19px; line-height:2.0; letter-spacing:.2px}
+  .body-text p{margin-bottom:18px}
+  .verse{background:rgba(255,255,255,.03); border-left:3px solid var(--gold);
+    padding:20px 22px; border-radius:6px; font-size:19px; line-height:2.0}
+  .song{white-space:pre-line; text-align:center; font-size:19px; line-height:2.1}
+  .song .marker{color:var(--gold-soft); font-size:14px; letter-spacing:2px}
+  .prayer{white-space:pre-line; text-align:center; font-size:19px; line-height:2.0; color:#f7f2e4}
+
+  .startgate{
+    position:fixed; inset:0; background:rgba(7,15,38,.94); z-index:50;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; text-align:center; padding:24px;
+  }
+  .startgate h2{font-size:22px; font-weight:700}
+  .startgate p{color:var(--muted); font-size:15px; line-height:1.8}
+  .startbtn{
+    background:var(--gold); color:var(--navy); border:none; border-radius:30px;
+    padding:14px 40px; font-size:17px; font-weight:700; cursor:pointer; font-family:inherit;
+    box-shadow:0 6px 24px rgba(212,175,55,.35);
+  }
+
+  .player{
+    position:fixed; left:0; right:0; bottom:0; background:rgba(9,17,42,.96);
+    border-top:1px solid rgba(212,175,55,.3); backdrop-filter:blur(8px);
+    padding:14px 18px 18px;
+  }
+  .player-inner{max-width:720px; margin:0 auto}
+  .nowplaying{color:var(--gold); font-size:13px; letter-spacing:2px; text-align:center; margin-bottom:10px}
+  .bar{height:5px; background:rgba(255,255,255,.12); border-radius:3px; cursor:pointer; overflow:hidden}
+  .bar-fill{height:100%; width:0; background:var(--gold); transition:width .1s linear}
+  .controls{display:flex; align-items:center; justify-content:center; gap:26px; margin-top:12px}
+  .controls button{
+    background:none; border:none; color:var(--ink); font-size:26px; cursor:pointer; line-height:1;
+  }
+  .controls .play{
+    width:54px; height:54px; border-radius:50%; background:var(--gold); color:var(--navy);
+    font-size:22px; display:flex; align-items:center; justify-content:center;
+  }
+  footer{color:var(--muted); font-size:12px; text-align:center; opacity:.7; margin-top:30px}
+</style>
+</head>
+<body>
+
+<div class="startgate" id="gate">
+  <div class="date" style="color:var(--gold);letter-spacing:3px">2026 · 07 · 15</div>
+  <h2>오늘의 묵상</h2>
+  <p>문제를 마주하는 용기<br>유란시아서 160:1.7</p>
+  <button class="startbtn" id="startbtn">묵상 시작하기</button>
+  <p style="font-size:13px;opacity:.7">낭독 → 강론 → 노래 → 기도<br>순서대로 자동 진행됩니다</p>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="date">2026 · 07 · 15</div>
+    <h1>문제를 마주하는 용기</h1>
+    <div class="ref">유란시아서 160:1.7</div>
+  </header>
+  <div class="rule"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-i="0">낭독</button>
+    <button class="tab" data-i="1">강론</button>
+    <button class="tab" data-i="2">노래</button>
+    <button class="tab" data-i="3">기도</button>
+  </div>
+
+  <section class="panel show" id="p0">
+    <div class="verse-code">160:1.7</div>
+    <div class="verse" id="verseText"></div>
+  </section>
+
+  <section class="panel" id="p1">
+    <div class="body-text" id="sermonText"></div>
+  </section>
+
+  <section class="panel" id="p2">
+    <div class="verse-code">두려움 없이</div>
+    <div class="song" id="songText"></div>
+  </section>
+
+  <section class="panel" id="p3">
+    <div class="prayer" id="prayerText"></div>
+  </section>
+
+  <footer>편집 및 제작 · 한종인 &nbsp;|&nbsp; 유란시아 핵심진리</footer>
+</div>
+
+<div class="player">
+  <div class="player-inner">
+    <div class="nowplaying" id="nowplaying">낭독</div>
+    <div class="bar" id="bar"><div class="bar-fill" id="fill"></div></div>
+    <div class="controls">
+      <button id="prev">⏮</button>
+      <button class="play" id="play">▶</button>
+      <button id="next">⏭</button>
+    </div>
+  </div>
+</div>
+
+<audio id="au" preload="auto"></audio>
+
+<script>
+var DATA = {
+  verse: "성공적인 삶이란 흔한 문제를 해결하는 신뢰할 만한 기술을 마스터하는 예술이다. 문제 해결의 첫 단계는 문제의 성격과 심각성을 솔직하게 인정하고 분리해내는 것이다. 삶의 문제가 깊은 두려움을 자극할 때, 사람들은 그것을 인정하지 않으려 한다. 자신의 어려움을 인정하려면 오래 간직한 자만심이나 시기심, 또는 깊은 편견을 내려놓아야 할 수도 있기 때문이다. 하지만 진정으로 용감한 사람만이 마음속에서 발견한 진실을 정직하게 인정하고 두려움 없이 직면할 수 있다.",
+  sermon: [
+    "알렉산드리아의 로단은 성공적인 삶이 특별한 재능이 아니라 하나의 예술이라고 말합니다. 흔한 문제를 신뢰할 만한 기술로 풀어내는 것, 그것이 곧 삶의 예술입니다. 그런데 그 예술의 첫 붓질은 놀랍게도 정직하게 인정하는 일입니다. 우리는 흔히 문제를 해결하려면 먼저 방법을 찾아야 한다고 생각합니다. 그러나 로단은 순서를 바꿉니다. 방법보다 먼저 필요한 것은 문제의 성격과 심각성을 솔직하게 바라보고 그것을 분리해내는 용기입니다. 아직 이름조차 붙이지 못한 문제는 결코 풀 수 없습니다. 안개처럼 흐릿하게 두려움만 키우던 어려움도, 그 정체와 크기를 정확히 가려내는 순간 비로소 다룰 수 있는 대상이 됩니다.",
+    "왜 이 첫걸음이 그토록 어려운가요. 문제가 우리 마음 깊은 두려움을 건드릴 때, 우리는 본능적으로 눈을 감기 때문입니다. 어려움을 인정하는 순간, 오래 지켜온 자만심이 무너질 수 있고, 감추어 둔 시기심이 드러날 수 있으며, 익숙한 편견을 내려놓아야 할지도 모릅니다. 그래서 많은 사람이 문제를 해결하는 대신 문제를 부인하며 살아갑니다. 그러나 부인은 문제를 없애지 못합니다. 다만 그것을 더 깊은 곳으로 밀어 넣어, 언젠가 더 큰 무게로 되돌아오게 할 뿐입니다.",
+    "하지만 하나님의 자녀는 진리를 두려워하지 않습니다. 진정으로 용감한 사람만이 자기 마음속에서 발견한 진실을 정직하게 인정하고 두려움 없이 마주 설 수 있습니다. 신앙은 눈을 감게 하는 것이 아니라 눈을 뜨게 합니다. 아버지의 사랑 안에 있는 사람은 자신의 약함을 감출 필요가 없습니다. 이미 알려지고 이미 사랑받는 존재이기 때문입니다. 나를 지으신 아버지 앞에서 나의 부족함은 더 이상 숨겨야 할 수치가 아니라, 함께 다루어 갈 과제가 됩니다.",
+    "오늘 아침, 우리 안에서 애써 외면해 온 문제 하나를 조용히 이름 불러 봅니다. 그것을 인정하는 것은 패배가 아니라 해결의 시작입니다. 자만심과 시기심과 편견을 내려놓은 그 자리에, 새로운 길이 열립니다. 정직하게 바라보는 바로 그 자리에서, 삶의 예술은 비로소 시작됩니다."
+  ],
+  song: "가리고 싶던 마음의 자리\n애써 외면해 온 그 이름\n오늘 아침 조용히 불러 봅니다\n숨지 않고 마주 섭니다",
+  prayer: "은혜로우신 아버지 하나님,\n오늘 아침 저희를\n아버지 앞에 세워 주소서.\n\n마음속 깊이 감추어 둔\n문제들을 외면하지 않고\n정직하게 바라보게 하소서.\n\n자만심을 내려놓게 하시고\n시기심과 편견에서\n저희를 자유롭게 하소서.\n\n진리를 두려워하지 않는\n용감한 마음을 주소서.\n아버지의 사랑 안에서\n약함을 감추지 않게 하소서.\n\n문제를 마주하는 그 자리가\n해결의 시작임을 믿습니다.\n아버지와 함께 걷는\n오늘 하루가 되게 하소서.\n\n예수님의 이름으로 기도드립니다."
+};
+
+// 텍스트 주입
+document.getElementById("verseText").textContent = DATA.verse;
+document.getElementById("sermonText").innerHTML = DATA.sermon.map(function(p){return "<p>"+p+"</p>";}).join("");
+document.getElementById("songText").textContent = DATA.song;
+document.getElementById("prayerText").textContent = DATA.prayer;
+
+var TRACKS = [
+  {label:"낭독", src:"https://archive.org/download/urantia-devotion-2026-07-15-morning/01_reading.mp3"},
+  {label:"강론", src:"https://archive.org/download/urantia-devotion-2026-07-15-morning/02_sermon.mp3"},
+  {label:"노래", src:"https://archive.org/download/urantia-devotion-2026-07-15-morning/song.mp3"},
+  {label:"기도", src:"https://archive.org/download/urantia-devotion-2026-07-15-morning/03_prayer.mp3"}
+];
+
+var au = document.getElementById("au");
+var fill = document.getElementById("fill");
+var playBtn = document.getElementById("play");
+var nowplaying = document.getElementById("nowplaying");
+var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+var panels = [0,1,2,3].map(function(i){return document.getElementById("p"+i);});
+var cur = 0;
+var started = false;
+
+function showPanel(i){
+  tabs.forEach(function(t,k){ t.classList.toggle("active", k===i); });
+  panels.forEach(function(p,k){ p.classList.toggle("show", k===i); });
+  nowplaying.textContent = TRACKS[i].label;
+}
+
+function load(i, autoplay){
+  cur = i;
+  showPanel(i);
+  au.src = TRACKS[i].src;
+  au.load();
+  fill.style.width = "0%";
+  if(autoplay){
+    au.play().then(function(){ playBtn.textContent="⏸"; })
+      .catch(function(){ playBtn.textContent="▶"; });
+  } else {
+    playBtn.textContent="▶";
+  }
+}
+
+// 파일이 없으면(404) 다음 순서로 건너뜀
+au.addEventListener("error", function(){
+  if(!started) return;
+  if(cur < TRACKS.length-1){ load(cur+1, true); }
+});
+
+au.addEventListener("timeupdate", function(){
+  if(au.duration){ fill.style.width = (au.currentTime/au.duration*100)+"%"; }
+});
+
+au.addEventListener("ended", function(){
+  if(cur < TRACKS.length-1){
+    load(cur+1, true);
+  } else {
+    playBtn.textContent="▶";
+    nowplaying.textContent="묵상을 마칩니다 · 평안한 하루 되세요";
+  }
+});
+
+playBtn.addEventListener("click", function(){
+  if(au.paused){ au.play(); playBtn.textContent="⏸"; }
+  else { au.pause(); playBtn.textContent="▶"; }
+});
+
+document.getElementById("bar").addEventListener("click", function(e){
+  if(!au.duration) return;
+  var r = this.getBoundingClientRect();
+  au.currentTime = (e.clientX - r.left)/r.width * au.duration;
+});
+
+document.getElementById("prev").addEventListener("click", function(){ load(Math.max(0,cur-1), !au.paused); });
+document.getElementById("next").addEventListener("click", function(){ if(cur<TRACKS.length-1) load(cur+1, !au.paused); });
+
+tabs.forEach(function(t){
+  t.addEventListener("click", function(){ load(parseInt(t.dataset.i,10), started); });
+});
+
+document.getElementById("startbtn").addEventListener("click", function(){
+  started = true;
+  document.getElementById("gate").style.display = "none";
+  load(0, true);
+});
+
+// 초기 표시
+showPanel(0);
+</script>
+</body>
+</html>

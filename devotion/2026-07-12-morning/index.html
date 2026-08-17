@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 아침 명상 · 효력 있는 기도</title>
+<style>
+  :root{
+    --sky1:#1b2f5e; --sky2:#3a4e86; --dawn:#e8a06a; --dawn2:#f4c98a;
+    --gold:#c98a2e; --gold-soft:#f0cf8a; --ink:#2c2a24; --cream:#fbf5e9;
+    --muted:#7b715f; --line:rgba(201,138,46,.30);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Noto Serif KR',-apple-system,'Malgun Gothic',serif;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:32px 18px 48px; line-height:1.9; color:var(--ink);
+    background:linear-gradient(180deg,#1b2f5e 0%,#5b6ea8 32%,#c98f6e 66%,#f4c98a 100%);
+  }
+  .sun{position:fixed;left:50%;top:58%;transform:translateX(-50%);width:520px;height:520px;
+    border-radius:50%;background:radial-gradient(circle,rgba(255,238,200,.75),rgba(255,214,150,.25) 45%,transparent 70%);
+    pointer-events:none;z-index:0;filter:blur(6px)}
+  .wrap{position:relative;z-index:1;width:100%;max-width:640px}
+  header{text-align:center;margin-bottom:22px}
+  .glyph{font-size:32px;color:#fff2d4;margin-bottom:10px;text-shadow:0 0 22px rgba(255,220,160,.9)}
+  .eyebrow{color:#fff1d6;letter-spacing:.34em;font-size:12px;margin-bottom:12px;text-shadow:0 1px 6px rgba(0,0,0,.3)}
+  h1{font-size:30px;font-weight:800;color:#fff;letter-spacing:.03em;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+  .ref{color:#fff0d2;font-size:14px;margin-top:8px}
+
+  .tabs{display:flex;gap:8px;justify-content:center;margin:20px 0 18px;flex-wrap:wrap}
+  .tab{padding:9px 18px;border:1px solid rgba(255,255,255,.5);border-radius:999px;
+    color:#fff;font-size:14px;cursor:pointer;transition:.25s;background:rgba(255,255,255,.10)}
+  .tab.active{color:#5a3d12;background:linear-gradient(180deg,var(--dawn2),var(--gold-soft));
+    border-color:#fff;font-weight:700}
+  .tab.done{color:#fff3d8}
+
+  .card{background:linear-gradient(180deg,rgba(251,245,233,.97),rgba(247,238,220,.97));
+    border:1px solid var(--line);border-radius:20px;padding:30px 26px;
+    box-shadow:0 24px 60px rgba(40,30,10,.35);min-height:260px}
+  .seg-label{color:var(--gold);letter-spacing:.2em;font-size:13px;margin-bottom:16px;
+    display:flex;align-items:center;gap:10px;font-weight:700}
+  .seg-label::before{content:"";width:26px;height:1px;background:var(--gold)}
+  .seg-text{font-size:17px;color:var(--ink);white-space:pre-wrap}
+  .seg-text.center{text-align:center}
+  .seg-text.verse{font-size:16px}
+
+  .controls{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px}
+  .btn{border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.14);color:#fff;
+    width:52px;height:52px;border-radius:50%;font-size:18px;cursor:pointer;transition:.2s}
+  .btn:hover{background:rgba(255,255,255,.28)}
+  .btn.play{width:66px;height:66px;font-size:24px;
+    background:linear-gradient(180deg,var(--dawn2),var(--gold));color:#4a300f;border:none;
+    box-shadow:0 8px 26px rgba(201,138,46,.5)}
+  .bar{height:4px;background:rgba(255,255,255,.28);border-radius:4px;margin-top:24px;overflow:hidden}
+  .bar>div{height:100%;width:0;background:linear-gradient(90deg,#fff,var(--gold-soft));transition:width .2s}
+  .hint{text-align:center;color:#fff3dc;font-size:12.5px;margin-top:16px;letter-spacing:.03em;
+    text-shadow:0 1px 6px rgba(0,0,0,.3)}
+  footer{text-align:center;color:#fff2d8;font-size:12px;margin-top:30px;opacity:.9}
+</style>
+</head>
+<body>
+<div class="sun"></div>
+<div class="wrap">
+  <header>
+    <div class="glyph">☀</div>
+    <div class="eyebrow">오늘의 아침 명상</div>
+    <h1>효력 있는 기도</h1>
+    <div class="ref">유란시아서 91:9.1 – 9.8</div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="card">
+    <div class="seg-label" id="segLabel">낭독</div>
+    <div class="seg-text verse" id="segText"></div>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prevBtn" title="이전">⏮</button>
+    <button class="btn play" id="playBtn" title="재생/일시정지">▶</button>
+    <button class="btn" id="skipBtn" title="건너뛰기">⏭</button>
+  </div>
+  <div class="bar"><div id="prog"></div></div>
+  <div class="hint" id="hint">▶ 를 누르면 낭독 → 강론 → 노래 → 기도 순서로 자동 재생됩니다.</div>
+
+  <footer>유란시아서 일독 · 새 아침의 기도 · 2026.07.12</footer>
+</div>
+
+<audio id="player"></audio>
+
+<script>
+const SEGMENTS = [
+  { label:"낭독", file:"https://archive.org/download/urantia-devotion-2026-07-12-morning/01_nangdok.mp3", cls:"verse",
+    text:`효력 있는 기도의 조건
+
+효과적인 기도를 하려면, 유효한 청원의 법칙을 염두에 둬야 한다.
+
+1. 우주 실체의 문제에 진심으로 그리고 용감하게 맞서며, 강력한 기도자가 될 자격을 갖추어야 한다. 우주적인 인내심을 지녀야 한다.
+
+2. 인간적인 조정을 위한 인간의 능력을 정직하게 다하고 성실히 노력해야 한다.
+
+3. 마음의 모든 소망과 혼의 모든 갈망을 영적 성장에 완전히 맡기고 의미를 향상시키고 가치를 고양한다.
+
+4. 신성한 뜻을 전심으로 선택하고 우유부단함을 없앤다.
+
+5. 아버지의 뜻을 인식하고 그것을 선택했을 뿐만 아니라, 실제로 아버지의 뜻을 수행하는 것에 무조건적이고 역동적인 헌신을 이룬다.
+
+6. 기도는 파라다이스 상승 과정에서 직면하는 구체적인 인간 문제를 해결하기 위한 신성한 지혜를 구하는 데 전적으로 집중되어야 한다.
+
+7. 살아 있는 신앙을 가져야 한다.` },
+  { label:"강론", file:"https://archive.org/download/urantia-devotion-2026-07-12-morning/02_gangron.mp3", cls:"",
+    text:`아침입니다. 새 하루의 문 앞에서 우리는 기도로 하나님 앞에 섭니다. 예수는 효력 있는 기도에도 조건이 있다고 가르쳤습니다. 그것은 원하는 것을 얻어 내는 마법의 주문이 아니라, 살아 있는 관계 속에서 자라 가는 마음의 자세입니다.
+
+먼저, 용기입니다. 우주의 실체 앞에 진실하게 맞서고, 우주적 인내를 품는 것입니다. 응답은 우리의 시간표가 아니라 아버지의 지혜 안에서 옵니다. 그러니 조급함이 아니라 긴 호흡으로 기다리는 믿음이 필요합니다.
+
+다음은 정직한 수고입니다. 사람으로서 할 수 있는 노력을 다한 뒤에 기도해야 합니다. 기도는 게으름의 핑계가 아니라, 최선을 다한 자의 간구입니다. 하늘은 우리가 스스로 열 수 있는 문을 대신 열어 주지 않습니다.
+
+그리고 내어드림입니다. 마음의 소망과 혼의 갈망을 영적 성장에 온전히 맡기고, 신성한 뜻을 흔들림 없이 선택하는 것입니다. 여기서 한 걸음 더 나아가, 뜻을 아는 데서 멈추지 않고 실제로 그 뜻을 행하는 헌신으로 들어갑니다. 아는 기도가 아니라 사는 기도입니다.
+
+효력 있는 기도는 눈앞의 이익을 구하지 않습니다. 파라다이스로 오르는 길에서 만나는 구체적인 문제 앞에, 답이 아니라 지혜를 구합니다. 가장 좋은 응답은 문제가 사라지는 것이 아니라, 그것을 감당할 지혜와 힘이 우리 안에서 자라나는 것입니다.
+
+이 모든 것의 바탕은 살아 있는 신앙입니다. 오늘 아침, 그 신앙으로 하루를 여십시오. 당신이 아버지의 뜻 안에 서는 순간, 당신의 기도는 이미 그분께 닿아 있습니다.` },
+  { label:"노래", file:"https://archive.org/download/urantia-devotion-2026-07-12-morning/03_song.mp3", cls:"center",
+    text:`[1절]
+새 아침 빛 속에 두 손을 모으네
+용기와 인내로 아버지를 부르네
+할 수 있는 모든 것 다한 뒤에
+무릎 꿇어 지혜를 구하네
+
+[후렴]
+살아있는 신앙으로
+오늘 하루를 엽니다
+아버지의 뜻을 택하고
+그 뜻을 행하며 걷네
+
+[2절]
+마음의 소망도 혼의 갈망도
+당신 손에 온전히 맡기네
+눈앞의 것 아니라 지혜를 구해
+파라다이스 길을 오르네
+
+[브릿지]
+흔들림 없이 택한 그 뜻
+전심으로 행하는 헌신
+살아있는 믿음 하나로
+아버지께 닿는 기도` },
+  { label:"기도", file:"https://archive.org/download/urantia-devotion-2026-07-12-morning/04_prayer.mp3", cls:"center",
+    text:`저를 새 아침으로
+부르시는 아버지 하나님,
+
+오늘 하루도
+당신 앞에 섭니다.
+
+용기와 인내를 주시어
+우주의 실체 앞에
+진실하게 서게 하소서.
+
+제가 할 수 있는 일에
+게으르지 않게 하시고
+최선을 다한 자리에서
+당신께 간구하게 하소서.
+
+마음의 소망과 혼의 갈망을
+영적 성장에 맡기오니
+당신의 뜻을
+흔들림 없이 택하게 하소서.
+
+뜻을 아는 데 그치지 않고
+그 뜻을 행하는
+헌신으로 살게 하소서.
+
+눈앞의 이익이 아니라
+오늘 만날 문제 앞에
+당신의 지혜를 구하게 하소서.
+
+살아 있는 신앙으로
+이 하루를 걷게 하소서.
+
+예수님의 이름으로
+기도드립니다.` },
+];
+
+const player=document.getElementById('player');
+const tabsEl=document.getElementById('tabs');
+const segLabel=document.getElementById('segLabel');
+const segText=document.getElementById('segText');
+const playBtn=document.getElementById('playBtn');
+const prevBtn=document.getElementById('prevBtn');
+const skipBtn=document.getElementById('skipBtn');
+const prog=document.getElementById('prog');
+const hint=document.getElementById('hint');
+
+let idx=0, started=false;
+
+SEGMENTS.forEach((s,i)=>{
+  const t=document.createElement('div');
+  t.className='tab'; t.textContent=s.label;
+  t.onclick=()=>{ load(i); if(started) play(); };
+  tabsEl.appendChild(t);
+});
+const tabs=[...tabsEl.children];
+
+function render(){
+  const s=SEGMENTS[idx];
+  segLabel.textContent=s.label;
+  segText.className='seg-text '+s.cls;
+  segText.textContent=s.text;
+  tabs.forEach((t,i)=>{ t.classList.toggle('active',i===idx); t.classList.toggle('done',i<idx); });
+  segText.parentElement.scrollTop=0;
+}
+function load(i){
+  idx=Math.max(0,Math.min(SEGMENTS.length-1,i));
+  player.src=SEGMENTS[idx].file; prog.style.width='0%'; render();
+}
+function play(){
+  started=true;
+  player.play().then(()=>{
+    playBtn.textContent='❚❚';
+    hint.textContent=SEGMENTS[idx].label+' 재생 중 · ⏭ 로 건너뛰기';
+  }).catch(()=>{
+    hint.textContent='※ 음성 파일이 아직 없습니다. 텍스트로 감상하세요. (⏭ 로 이동)';
+  });
+}
+function pause(){ player.pause(); playBtn.textContent='▶'; }
+
+playBtn.onclick=()=>{ player.paused?play():pause(); };
+skipBtn.onclick=()=>{
+  if(idx<SEGMENTS.length-1){ load(idx+1); if(started) play(); }
+  else { pause(); hint.textContent='명상을 마쳤습니다. 은혜로운 하루 되세요. ☀'; }
+};
+prevBtn.onclick=()=>{ load(idx-1); if(started) play(); };
+
+player.addEventListener('timeupdate',()=>{ if(player.duration) prog.style.width=(player.currentTime/player.duration*100)+'%'; });
+player.addEventListener('ended',()=>{
+  if(idx<SEGMENTS.length-1){ load(idx+1); play(); }
+  else { playBtn.textContent='▶'; prog.style.width='100%';
+    hint.textContent='명상을 마쳤습니다. 은혜로운 하루 되세요. ☀'; }
+});
+
+load(0);
+</script>
+</body>
+</html>

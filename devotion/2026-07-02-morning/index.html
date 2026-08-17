@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 · 2026-07-02 · 너희 가운데 있는 하늘나라</title>
+<style>
+  :root{ --navy:#1E2761; --gold:#C9A227; --cream:#F4F1E8; --ink:#2a2f45; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Nanum Myeongjo','Malgun Gothic',serif;
+    background:linear-gradient(160deg,#141a3a 0%,#0d1030 100%);
+    color:var(--cream); min-height:100vh; display:flex;
+    flex-direction:column; align-items:center; padding:24px 16px;
+  }
+  .wrap{width:100%; max-width:760px;}
+  .head{text-align:center; margin-bottom:22px;}
+  .date{color:var(--gold); letter-spacing:3px; font-size:14px; margin-bottom:8px;}
+  .title{font-size:clamp(24px,4.4vw,34px); font-weight:700; color:#fff; line-height:1.35;}
+  .ref{color:#aeb4d6; font-size:14px; margin-top:8px;}
+
+  .card{
+    background:rgba(20,25,60,.55); border:1px solid rgba(201,162,39,.25);
+    border-radius:16px; padding:26px 24px; margin-bottom:18px;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+  }
+  .card h2{
+    font-size:15px; letter-spacing:2px; color:var(--gold);
+    text-transform:uppercase; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .card h2 .ko{font-size:19px; letter-spacing:0;}
+  .body{font-size:17px; line-height:2.0; color:var(--cream); white-space:pre-wrap; word-break:keep-all;}
+  .scripture .body{font-style:italic; color:#f3ecd0;}
+  .song .body{font-family:'Malgun Gothic',sans-serif; font-size:16px; line-height:1.9; color:#e6e9f5;}
+
+  /* 현재 재생중 강조 */
+  .card.active{border-color:var(--gold); box-shadow:0 0 0 1px var(--gold),0 12px 44px rgba(201,162,39,.18);}
+
+  /* 플레이어 바 */
+  .player{
+    position:sticky; bottom:16px; margin-top:8px;
+    background:rgba(14,17,44,.94); border:1px solid rgba(201,162,39,.3);
+    border-radius:14px; padding:14px 18px; display:flex; align-items:center;
+    gap:14px; flex-wrap:wrap; justify-content:center; backdrop-filter:blur(6px);
+  }
+  .player button{
+    background:transparent; border:1px solid rgba(201,162,39,.5); color:var(--cream);
+    border-radius:9px; padding:10px 18px; font-size:15px; cursor:pointer; font-weight:600;
+    font-family:'Malgun Gothic',sans-serif;
+  }
+  .player button:hover{background:rgba(201,162,39,.18);}
+  .player .now{font-size:14px; color:var(--gold); min-width:120px; text-align:center; font-family:'Malgun Gothic',sans-serif;}
+  .progress{height:5px; background:rgba(255,255,255,.12); border-radius:3px; width:100%; margin-top:12px; overflow:hidden;}
+  .progress>span{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--gold),#e9c65a);}
+  .err{color:#ffb3b3; font-size:13px; text-align:center; margin-top:8px; font-family:'Malgun Gothic',sans-serif; min-height:16px;}
+  .foot{color:#8b90b5; font-size:12px; text-align:center; margin-top:18px; line-height:1.7; font-family:'Malgun Gothic',sans-serif;}
+
+  .overlay{
+    position:fixed; inset:0; background:rgba(10,13,36,.9); z-index:20;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; cursor:pointer;
+  }
+  .overlay .sub{color:var(--gold); letter-spacing:3px; font-size:14px;}
+  .overlay h1{color:#fff; font-size:clamp(22px,4vw,32px); text-align:center; padding:0 20px; line-height:1.4;}
+  .playbtn{width:84px; height:84px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 30px rgba(201,162,39,.5);}
+  .playbtn svg{width:36px; height:36px; margin-left:5px;}
+  .overlay .hint{color:#aeb4d6; font-size:13px; font-family:'Malgun Gothic',sans-serif;}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div class="date">2026 · 07 · 02  오늘의 묵상</div>
+      <div class="title">너희 가운데 있는 하늘나라</div>
+      <div class="ref">유란시아서 137:8.6–8.9 · 낭독 137:8.9</div>
+    </div>
+
+    <div class="card scripture" data-track="scripture">
+      <h2>본문 <span class="ko">· 낭독</span></h2>
+      <div class="body">‘여기에 하늘나라가 있다, 저기에 있다’라고 말하는 자들을 따라 속지 말라. 내 아버지의 나라는 눈에 보이는 물질적인 것이 아니다. 그리고 이 나라는 이미 너희 가운데 있다. 왜냐하면 하나님의 영이 사람의 혼을 가르치고 인도하는 곳에 하늘나라가 있기 때문이다. 하나님의 나라는 성령 안에서의 올바름과 평화와 기쁨이다. (137:8.9)</div>
+    </div>
+
+    <div class="card sermon" data-track="sermon">
+      <h2>강론 <span class="ko">· 말씀</span></h2>
+      <div class="body">사람들은 언제나 하늘나라를 바깥에서 찾으려 합니다. ‘여기 있다, 저기 있다’ 하며 눈에 보이는 표적과 손에 잡히는 권세를 구합니다. 예수 당시의 사람들도 로마를 몰아낼 정치적 왕국을 기대했고, 오늘 우리도 종종 더 큰 성공과 더 안전한 울타리 안에 하나님의 나라가 있으리라 착각합니다. 그러나 예수께서는 분명히 말씀하십니다. 아버지의 나라는 눈에 보이는 물질적인 것이 아니라고 말입니다.
+
+이 나라는 이미 우리 가운데 있습니다. 하나님의 영이 사람의 혼을 가르치고 인도하시는 바로 그곳에 하늘나라가 있기 때문입니다. 다시 말해 하늘나라는 장소가 아니라 관계이며, 제도가 아니라 내주하시는 영의 임재입니다. 예수께서는 아버지의 영이 사람의 마음속에 오시고, 진리의 영이 모든 육체 위에 부어질 것이라 약속하셨습니다. 그 영이 우리 안에서 다스리실 때, 우리는 이미 그 나라의 백성이 됩니다.
+
+그렇다면 그 나라의 내용은 무엇입니까. 예수께서는 세 마디로 요약하십니다. 성령 안에서의 올바름과 평화와 기쁨입니다. 올바름은 아버지의 뜻과 하나 되려는 마음의 방향이요, 평화는 그 뜻 안에 쉬는 혼의 안식이며, 기쁨은 하나님의 자녀 됨을 아는 데서 솟아나는 생명의 샘입니다. 이 셋은 환경이 주는 것이 아니라 내주하시는 영이 낳으시는 열매입니다.
+
+그러므로 오늘 우리는 나라를 멀리서 찾기를 그치고, 이미 우리 안에 오신 아버지의 영께 귀를 기울여야 합니다. 어린아이의 단순한 믿음과 순전한 신뢰로 그분의 인도하심을 받을 때, 우리는 세상 한복판에서도 하늘나라를 살아갑니다. 하늘나라는 저 너머 언젠가가 아니라, 하나님의 영이 다스리시는 지금 여기, 바로 당신의 혼 안에 있습니다.</div>
+    </div>
+
+    <div class="card song" data-track="song">
+      <h2>노래 <span class="ko">· 찬양</span></h2>
+      <div class="body">[Verse 1]
+여기 있다 저기 있다
+세상은 외치지만
+아버지의 그 나라는
+눈에 보이지 않네</div>
+    </div>
+
+    <div class="card prayer" data-track="prayer">
+      <h2>기도 <span class="ko">· 아침 기도</span></h2>
+      <div class="body">은혜로우신 아버지 하나님,
+눈에 보이는 것에서
+그 나라를 찾던 저희를
+용서하여 주옵소서.
+
+아버지의 나라는
+이미 저희 가운데 있고
+내주하시는 영이
+저희 혼을 인도하심을
+믿게 하여 주옵소서.
+
+성령 안에서의 올바름과
+평화와 기쁨으로
+오늘 하루를
+살아가게 하옵소서.
+
+어린아이의 단순한 믿음과
+순전한 신뢰를 주시어
+아버지의 뜻 안에
+머물게 하옵소서.
+
+세상 한복판에서도
+하늘나라를 살아가는
+아버지의 자녀 되게 하옵소서.
+
+예수님의 이름으로 기도드립니다.</div>
+    </div>
+
+    <div class="player">
+      <button id="prev">◀ 이전</button>
+      <button id="playpause">⏸ 일시정지</button>
+      <button id="next">다음 ▶</button>
+      <div class="now" id="now">본문</div>
+      <button id="restart">↺ 처음부터</button>
+      <div class="progress"><span id="prog"></span></div>
+    </div>
+    <div class="err" id="err"></div>
+    <div class="foot">
+      본문 → 강론 → 노래 → 기도 순서로 자동 재생됩니다.<br>
+      음성 파일은 audio/ 폴더에서 재생됩니다 (scripture · sermon · song · prayer).
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="sub">2026 · 07 · 02  오늘의 묵상</div>
+    <h1>너희 가운데 있는 하늘나라</h1>
+    <div class="playbtn"><svg viewBox="0 0 24 24" fill="#1E2761"><path d="M8 5v14l11-7z"/></svg></div>
+    <div class="hint">화면을 누르면 시작됩니다 · 자동 재생</div>
+  </div>
+
+<script>
+  const TRACKS = [
+    {key:'scripture', label:'본문'},
+    {key:'sermon',    label:'강론'},
+    {key:'song',      label:'노래'},
+    {key:'prayer',    label:'기도'},
+  ];
+  const cards = {};
+  document.querySelectorAll('.card').forEach(c => cards[c.dataset.track] = c);
+  const overlay = document.getElementById('overlay');
+  const nowEl = document.getElementById('now');
+  const progEl = document.getElementById('prog');
+  const errEl = document.getElementById('err');
+  const btnPrev = document.getElementById('prev');
+  const btnNext = document.getElementById('next');
+  const btnPP = document.getElementById('playpause');
+  const btnRestart = document.getElementById('restart');
+
+  const audio = document.createElement('audio');
+  audio.preload = 'auto';
+  document.body.appendChild(audio);
+
+  let idx = 0, started = false, paused = false;
+
+  function highlight(i){
+    Object.values(cards).forEach(c => c.classList.remove('active'));
+    const t = TRACKS[i];
+    if (cards[t.key]){
+      cards[t.key].classList.add('active');
+      cards[t.key].scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    nowEl.textContent = t.label;
+    progEl.style.width = '0%';
+  }
+
+  function load(i){
+    idx = (i + TRACKS.length) % TRACKS.length;   // 순환
+    highlight(idx);
+    errEl.textContent = '';
+    audio.src = 'https://archive.org/download/urantia-devotion-2026-07-02-morning/' + TRACKS[idx].key + '.mp3';
+    audio.load();
+    if (!paused) audio.play().catch(()=>{});
+  }
+
+  audio.addEventListener('ended', ()=>{
+    // 기도까지 끝나면 멈춤 (반복 원하면 load(idx+1)로 순환)
+    if (idx < TRACKS.length - 1) load(idx + 1);
+    else { nowEl.textContent = '묵상 완료'; progEl.style.width='100%'; }
+  });
+  audio.addEventListener('timeupdate', ()=>{
+    if (audio.duration) progEl.style.width = (audio.currentTime/audio.duration*100)+'%';
+  });
+  audio.addEventListener('error', ()=>{
+    errEl.textContent = 'https://archive.org/download/urantia-devotion-2026-07-02-morning/'+TRACKS[idx].key+'.mp3 를 찾을 수 없습니다. generate_audio_daily.py 실행 후, 노래는 song.mp3 를 넣으세요.';
+    clearTimeout(window.__t);
+    if (idx < TRACKS.length - 1) window.__t = setTimeout(()=> load(idx+1), 4000);
+  });
+
+  function start(){ if(started) return; started=true; overlay.classList.add('hidden'); load(0); }
+  overlay.addEventListener('click', start);
+  btnNext.addEventListener('click', ()=>{ if(!started){start();return;} load(idx+1); });
+  btnPrev.addEventListener('click', ()=>{ if(!started){start();return;} load(idx-1); });
+  btnRestart.addEventListener('click', ()=>{ paused=false; btnPP.textContent='⏸ 일시정지'; if(!started){start();return;} load(0); });
+  btnPP.addEventListener('click', ()=>{
+    if(!started){ start(); return; }
+    if(audio.paused){ audio.play(); paused=false; btnPP.textContent='⏸ 일시정지'; }
+    else { audio.pause(); paused=true; btnPP.textContent='▶ 재생'; }
+  });
+  document.addEventListener('keydown',(e)=>{
+    if(e.code==='Space'){ e.preventDefault(); btnPP.click(); }
+    else if(e.code==='ArrowRight'){ btnNext.click(); }
+    else if(e.code==='ArrowLeft'){ btnPrev.click(); }
+  });
+</script>
+</body>
+</html>

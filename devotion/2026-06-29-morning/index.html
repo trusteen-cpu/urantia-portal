@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 묵상 · 2026-06-29 · 모론시아로 가는 문</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --navy:#1E2761; --navy2:#2c357a; --gold:#C9A227; --golds:#f7efd8;
+    --cream:#fbf7ee; --ink:#1c1c22; --soft:#5a5648; --line:#e8ddc4;
+  }
+  body{font-family:"Gowun Batang","Nanum Myeongjo",serif;color:var(--ink);
+    background:linear-gradient(170deg,#fbf7ee,#eef1f9);line-height:2;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px 120px;}
+
+  header.hero{text-align:center;background:linear-gradient(125deg,#1E2761,#3a2f73 55%,#7a5a1c);
+    color:#fff;border-radius:0 0 26px 26px;padding:40px 22px 34px;box-shadow:0 10px 30px rgba(30,25,70,.28);}
+  header .date{letter-spacing:.3em;font-size:.8rem;opacity:.9;}
+  header .badge{display:inline-block;margin:12px 0;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.4);border-radius:30px;padding:5px 16px;font-size:.82rem;}
+  header h1{font-family:"Song Myung",serif;font-size:2.2rem;letter-spacing:.04em;}
+  header .sub{margin-top:12px;font-size:.92rem;opacity:.93;}
+
+  /* PLAYER */
+  .player{position:sticky;top:0;z-index:20;margin:18px 0 8px;background:#fff;
+    border:1px solid var(--line);border-radius:16px;box-shadow:0 6px 20px rgba(50,40,30,.12);padding:14px 16px;}
+  .ptabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px;}
+  .ptab{border:2px solid var(--golds);background:var(--golds);color:#8a6410;border-radius:11px;
+    padding:9px 4px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:"Gowun Batang",serif;text-align:center;line-height:1.3;}
+  .ptab.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .ptab small{display:block;font-size:.66rem;opacity:.8;font-weight:400;margin-top:1px;}
+  .pctrl{display:flex;align-items:center;gap:12px;}
+  .pbtn{flex:none;width:50px;height:50px;border-radius:50%;background:var(--gold);color:#241c00;border:none;
+    font-size:1.3rem;cursor:pointer;box-shadow:0 4px 12px rgba(201,162,39,.4);}
+  .pbtn:active{transform:scale(.96);}
+  .pbar{flex:1;height:7px;background:#ece6d6;border-radius:6px;overflow:hidden;cursor:pointer;}
+  .pfill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--navy));}
+  .pnav{flex:none;display:flex;gap:6px;}
+  .pnav button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:.9rem;color:var(--navy);}
+  .pnow{text-align:center;font-size:.8rem;color:var(--soft);margin-top:8px;}
+
+  section{background:#fff;border-radius:18px;margin:18px 0;padding:24px 24px;
+    box-shadow:0 5px 18px rgba(50,40,30,.09);border-top:6px solid var(--c,#1E2761);scroll-margin-top:200px;}
+  section.active{box-shadow:0 0 0 3px var(--gold),0 8px 22px rgba(50,40,30,.16);}
+  .label{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.16em;color:#fff;
+    background:var(--c,#1E2761);padding:3px 13px;border-radius:20px;margin-bottom:14px;}
+  h2{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:1.35rem;color:var(--navy);margin-bottom:16px;}
+
+  .verse{margin-bottom:16px;padding-left:14px;border-left:3px solid var(--golds);}
+  .verse .cite{font-family:Consolas,monospace;font-size:.82rem;font-weight:700;color:#8a6410;display:block;margin-bottom:3px;}
+  .verse p{font-size:1.02rem;color:#23232a;text-align:justify;}
+  .verse.read{border-left-color:var(--gold);background:#fcf7e8;border-radius:0 12px 12px 0;padding:10px 14px;}
+  .verse.read .cite{color:#a9760a;}
+  .readtag{display:inline-block;font-size:.7rem;background:var(--gold);color:#241c00;font-weight:700;
+    padding:1px 9px;border-radius:14px;margin-left:8px;vertical-align:middle;font-family:"Gowun Batang",serif;}
+
+  .sermon p{font-size:1.05rem;color:#1f1f26;text-align:justify;margin-bottom:14px;}
+  .song{white-space:pre-line;font-size:1.05rem;color:#23232a;line-height:2.05;text-align:center;}
+  .song .stitle{font-family:"Nanum Myeongjo",serif;font-weight:700;color:var(--gold);margin-bottom:14px;font-size:1.05rem;}
+  .prayer{white-space:pre-line;font-size:1.07rem;color:#23232a;line-height:2.1;text-align:center;font-family:"Nanum Myeongjo",serif;}
+
+  footer{text-align:center;color:#8c8676;font-size:.82rem;margin-top:26px;line-height:1.9;}
+  footer .big{font-family:"Song Myung",serif;color:var(--gold);font-size:1rem;display:block;margin-bottom:6px;}
+  audio{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="date">2026 · 06 · 29</div>
+    <div class="badge">오늘의 묵상</div>
+    <h1>모론시아로 가는 문</h1>
+    <div class="sub">유란시아서 47:10 · 맨션 세계의 졸업과 모론시아 생애</div>
+  </header>
+
+  <!-- PLAYER -->
+  <div class="player">
+    <div class="ptabs">
+      <div class="ptab on" data-i="0">낭독<small>47:10.7</small></div>
+      <div class="ptab" data-i="1">강론<small>말씀</small></div>
+      <div class="ptab" data-i="2">노래<small>유리 바다를 건너</small></div>
+      <div class="ptab" data-i="3">기도<small>마침</small></div>
+    </div>
+    <div class="pctrl">
+      <button class="pbtn" id="play">▶</button>
+      <div class="pbar" id="bar"><div class="pfill" id="fill"></div></div>
+      <div class="pnav">
+        <button id="prev">⏮</button>
+        <button id="next">⏭</button>
+      </div>
+    </div>
+    <div class="pnow" id="now">낭독 — 47:10.7 (재생 버튼을 누르세요)</div>
+    <div style="text-align:center;margin-top:6px;"><button id="resume" style="display:none;background:var(--gold);color:#241c00;border:none;border-radius:20px;padding:7px 16px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:'Gowun Batang',serif;">▶ 탭하여 이어듣기</button></div>
+  </div>
+  <audio id="au" preload="auto"></audio>
+
+  <!-- 낭독: 본문 전체 표시, 47:10.7만 낭독 -->
+  <section id="sec0" class="active" style="--c:#1E2761">
+    <span class="label">낭독 · 본문 47:10</span>
+    <h2>맨션 세계의 졸업 — 모론시아 생애로</h2>
+    <div id="verses"></div>
+    <p style="font-size:.86rem;color:#8a6410;margin-top:6px;">※ 본문 전체를 함께 읽되, 오디오 낭독은 47:10.7절만 들려드립니다.</p>
+  </section>
+
+  <!-- 강론 -->
+  <section id="sec1" style="--c:#7a5a1c">
+    <span class="label" style="--c:#7a5a1c">강론</span>
+    <h2>죽음은 끝이 아니라 문입니다</h2>
+    <div class="sermon" id="sermon"></div>
+  </section>
+
+  <!-- 노래 -->
+  <section id="sec2" style="--c:#157a45">
+    <span class="label" style="--c:#157a45">노래</span>
+    <h2>유리 바다를 건너</h2>
+    <div class="song"><div class="stitle">♪ 유리 바다를 건너</div><div id="song"></div></div>
+  </section>
+
+  <!-- 기도 -->
+  <section id="sec3" style="--c:#5d3596">
+    <span class="label" style="--c:#5d3596">기도</span>
+    <h2>오늘의 기도</h2>
+    <div class="prayer" id="prayer"></div>
+  </section>
+
+  <footer>
+    <span class="big">오늘의 묵상 · 2026-06-29</span>
+    유란시아서 47:10 · 맨션 세계의 졸업과 모론시아 생애<br>
+    편집 및 제작 한종인
+  </footer>
+
+</div>
+
+<script>
+// ── 본문 ──
+var VERSES = [
+  ["47:10.1","맨션 세계 졸업생의 새로운 학급을 맞이하는 것은 모든 예루셈이 환영 위원회로 모이라는 신호이다. 심지어 스포르나기아도 행성의 경주를 마치고 맨션 세계 과정을 끝낸, 진화 기원의 이 승리한 상승자들의 도착을 즐긴다. 오직 물리 통제자들과 모론시아 동력 감독관들만이 이 기쁨의 자리에 빠진다.",false],
+  ["47:10.2","계시자 요한은 일곱 번째 맨션 세계에서 그들의 첫 번째 하늘, 즉 예루셈의 영광으로 나아가는 한 무리의 필사자들의 도착에 대한 환상을 보았다. 그는 이렇게 기록했다. \u201C내가 보니 불이 섞인 유리 바다 같은 것이 있고, 원래 그들 안에 있던 짐승을, 맨션 세계들을 거치는 동안 지속되었던 그 형상을, 그리고 마침내 마지막 표와 흔적을 이긴 자들이 하나님의 하프를 가지고 유리 바다 위에 서서, 필사적 두려움과 죽음으로부터의 구원의 노래를 부르더라.\u201D (이 모든 세계에서는 완벽한 공간 통신이 가능하며, 너희가 어디서든 그러한 통신을 수신할 수 있는 것은 \u201C하나님의 하프\u201D, 즉 미성숙한 모론시아 감각 기관을 공간 통신 수신에 직접 조절할 수 없는 것을 보완하는 모론시아 장치를 가지고 다니기 때문에 가능하다.)",false],
+  ["47:10.3","바울 또한 예루셈에서 완전해져 가는 필사자들의 상승 시민 군단에 대한 환상을 보았는데, 그는 이렇게 썼다. \u201C그러나 너희가 이른 곳은 시온 산과 살아 계신 하나님의 도성인 하늘의 예루셈이요, 셀 수 없는 천사들의 무리와, 미가엘의 대 집회와, 온전하게 된 의인들의 영들에게니라.\u201D",false],
+  ["47:10.4","필사자들이 체계 본부에 거주하게 된 후에는, 더 이상 문자 그대로의 부활을 체험하지 않을 것이다. 맨션 세계 생애를 떠날 때 너희에게 부여된 모론시아 형태는 지역 우주 체험의 끝까지 너희를 데려다 줄 것이다. 때때로 변화가 있겠지만, 너희는 상승하는 문화와 영 훈련의 초우주 세계들로 옮겨가기 위해 준비하는 1단계 영으로 나타날 때 그 형태에 작별을 고할 때까지 이 동일한 형태를 유지할 것이다.",false],
+  ["47:10.5","맨션 세계의 전 생애를 통과하는 필사자들은 일곱 번의 조절 수면과 부활 각성을 체험한다. 그러나 마지막 부활 전당, 최종 각성실은 일곱 번째 맨션 세계에 남겨두었다. 더 이상 형태 변화가 의식의 소멸이나 개인 기억의 연속성 단절을 필요로 하지 않을 것이다.",false],
+  ["47:10.6","진화 세계에서 시작되어 육신 안에 거하며 신비의 감시자가 내주하고 진리의 영이 부여된 필사 인격은, 그러한 예루셈 시민이 에덴시아로 가는 허가를 받고 네바돈 모론시아 군단의 진정한 구성원\u2015조절자와 연합한 불멸의 생존자, 파라다이스 상승자, 모론시아 지위의 인격체, 지고자들의 참된 자녀\u2015으로 선포되는 그날까지 완전히 동원되고, 실현되며, 통합되지 않는다.",false],
+  ["47:10.7","필사자의 죽음은 육신으로 사는 물질적 생애로부터의 탈출 기법이다. 그리고 교정 훈련과 문화 교육의 일곱 세계를 거치는 점진적 생애의 맨션 체험은 필사 생존자들에게 모론시아 생애를 소개하는 것을 의미한다. 이 모론시아 생애는 진화하는 물질적 존재와, 영원의 문에 이르도록 운명 지어진 시간의 상승자들이 이룰 더 높은 영적 성취 사이에 놓인 과도기적 생애이다.",true]
+];
+var SERMON = ["오늘 우리는 예루셈의 한 장면 앞에 섭니다. 맨션 세계의 모든 과정을 마친 승리한 상승자들이 도착하면, 온 예루셈이 환영 위원회로 모입니다. 작은 스포르나기아조차 이 기쁨에 동참하니, 행성의 경주를 마치고 마침내 모론시아의 문턱에 이른 자녀들을 온 하늘이 함께 맞이하는 것입니다.","계시자 요한은 불이 섞인 유리 바다 위에 선 자들을 보았습니다. 그들은 짐승의 형상과 그 마지막 흔적까지 이긴 자들이었고, 하나님의 하프를 들고 두려움과 죽음으로부터의 구원을 노래했습니다. 바울 또한 살아 계신 하나님의 도성, 하늘의 예루셈에 이른 온전하게 된 의인들의 영을 보았습니다.","이 모든 영광의 한가운데, 오늘의 한 말씀이 놓여 있습니다. 필사자의 죽음은 육신으로 사는 물질적 생애로부터의 탈출 기법이라는 것입니다. 죽음은 끝이 아니라 문입니다. 우리가 그토록 두려워하는 마지막 순간이, 실은 더 높은 생애로 건너가는 자비로운 기법이라는 선언입니다.","맨션 세계의 일곱 단계를 지나며 우리는 모론시아 생애로 들어섭니다. 그것은 진화하는 물질적 존재와, 영원의 문을 향해 운명 지어진 시간의 상승자들이 이룰 더 높은 영적 성취 사이에 놓인 과도기의 생애입니다. 우리 안에는 신비의 감시자가 거하시고, 진리의 영이 함께하시며, 우리의 모든 걸음은 파라다이스를 향합니다.","또한 오늘의 말씀은 우리에게 깊은 위로를 줍니다. 체계 본부에 이른 뒤로는 더 이상 의식의 소멸도, 기억의 단절도 없습니다. 형태는 때때로 바뀌어도 우리는 여전히 우리 자신입니다. 진화 세계에서 시작된 한 인격이, 마침내 조절자와 연합한 불멸의 생존자, 모론시아 지위의 인격체, 지고자들의 참된 자녀로 선포되는 그날까지, 하나님은 우리의 정체성을 한순간도 잃어버리지 않으십니다. 우리를 빚으신 그 사랑이 우리를 끝까지 붙드십니다.","그러니 오늘 두려움을 내려놓읍시다. 죽음조차 우리를 멈추게 하지 못합니다. 그것은 다만, 우리를 더 큰 생명으로 건너가게 하시는 하나님의 자비로운 기법일 뿐입니다."];
+var SONG = "[Verse 1]\n유리 바다 그 빛 위에\n두려움을 이긴 자들\n하나님의 하프를 들고\n구원의 노래 부르네\n\n[Chorus]\n죽음은 끝이 아니라\n더 높은 생애의 문\n모론시아 그 길 위로\n나의 혼은 건너가네\n\n[Verse 2]\n맨션 세계 일곱 단계\n빛을 향해 오르는 길\n신비의 감시자 함께\n파라다이스 향하네\n\n[Chorus]\n죽음은 끝이 아니라\n더 높은 생애의 문\n모론시아 그 길 위로\n나의 혼은 건너가네\n\n[Bridge]\n두려움을 내려놓고\n이 한 걸음 내딛으면\n영원의 문 그 너머로\n아버지 나를 부르네";
+var PRAYER = "은혜로우신 아버지 하나님,\n오늘 죽음 너머의 빛을\n바라보게 하시니 감사합니다.\n\n저희의 두려움을 아십니다.\n끝이라 여겼던 그 자리가\n실은 더 큰 생애의 문임을\n믿게 하여 주옵소서.\n\n유리 바다를 건넌 자들처럼\n저희도 두려움을 이기고\n하나님의 하프를 들게 하소서.\n\n저희 안에 거하시는\n신비의 감시자를 따라\n한 걸음씩 빛을 향해\n오르게 하여 주옵소서.\n\n모론시아의 그 길 위에서도\n진리의 영이 함께하시니\n저희 혼이 흔들리지 않고\n파라다이스를 향하게 하소서.\n\n오늘 하루도 주어진 자리에서\n사랑으로 살게 하시고\n영원의 문을 바라보며\n기쁨으로 걷게 하옵소서.\n\n예수님의 이름으로 기도드립니다.";
+
+// ── 본문/텍스트 렌더 ──
+var vbox = document.getElementById("verses");
+VERSES.forEach(function(v){
+  var d = document.createElement("div");
+  d.className = "verse" + (v[2] ? " read" : "");
+  d.innerHTML = '<span class="cite">' + v[0] + (v[2] ? ' <span class="readtag">낭독</span>' : '') + '</span><p>' + v[1] + '</p>';
+  vbox.appendChild(d);
+});
+var sbox = document.getElementById("sermon");
+SERMON.forEach(function(p){ var el=document.createElement("p"); el.textContent=p; sbox.appendChild(el); });
+document.getElementById("song").textContent = SONG;
+document.getElementById("prayer").textContent = PRAYER;
+
+// ── 플레이어 ──
+var TRACKS = [
+  {label:"낭독 — 47:10.7", src:"https://archive.org/download/urantia-devotion-2026-06-29-morning/01_reading.mp3", sec:0},
+  {label:"강론", src:"https://archive.org/download/urantia-devotion-2026-06-29-morning/02_sermon.mp3", sec:1},
+  {label:"노래 — 유리 바다를 건너", src:"song.mp3", sec:2},
+  {label:"기도", src:"https://archive.org/download/urantia-devotion-2026-06-29-morning/03_prayer.mp3", sec:3}
+];
+var au = document.getElementById("au");
+var fill = document.getElementById("fill");
+var playBtn = document.getElementById("play");
+var now = document.getElementById("now");
+var tabs = document.querySelectorAll(".ptab");
+var cur = 0, playing = false, chainActive = false;
+var watchdog = null;
+
+function clearWatchdog(){ if (watchdog){ clearTimeout(watchdog); watchdog = null; } }
+function armWatchdog(i){
+  clearWatchdog();
+  // 12초 안에 재생이 시작되지 않으면(로드 멈춤 등) 다음 트랙으로 넘어감
+  watchdog = setTimeout(function(){
+    if (cur === i && au.paused && (au.currentTime === 0)){
+      console.warn("[묵상] 로드 지연으로 건너뜀: " + TRACKS[i].src + " (readyState=" + au.readyState + ")");
+      if (chainActive && cur < TRACKS.length-1){
+        now.textContent = TRACKS[i].label + " · 로드가 지연되어 다음으로 넘어갑니다";
+        load(cur+1, true);
+      } else {
+        showResume("▶ 탭하여 노래 재생 (" + TRACKS[i].label + ")");
+        now.textContent = TRACKS[i].label + " · 탭하여 재생해 주세요";
+      }
+    }
+  }, 12000);
+}
+
+function setActiveSection(i){
+  for (var s=0;s<4;s++){ document.getElementById("sec"+s).classList.toggle("active", s===i); }
+  tabs.forEach(function(t,j){ t.classList.toggle("on", j===i); });
+}
+
+// 자동재생이 막혔을 때 뜨는 "이어듣기" 버튼
+function showResume(msg){
+  var r = document.getElementById("resume");
+  r.textContent = msg || "▶ 탭하여 이어듣기";
+  r.style.display = "inline-block";
+}
+function hideResume(){ document.getElementById("resume").style.display = "none"; }
+
+function tryPlay(){
+  var pr = au.play();
+  if (pr && pr.catch){
+    pr.then(function(){ clearWatchdog(); console.log("[묵상] 재생 시작: " + TRACKS[cur].src); hideResume(); })
+      .catch(function(err){
+        console.warn("[묵상] 자동재생 차단됨: " + TRACKS[cur].src + " · " + err);
+        showResume("▶ 탭하여 이어듣기 (" + TRACKS[cur].label + ")");
+      });
+  }
+}
+
+function load(i, autoplay){
+  cur = i;
+  clearWatchdog();
+  au.src = TRACKS[i].src;
+  au.load();
+  now.textContent = TRACKS[i].label;
+  fill.style.width = "0%";
+  setActiveSection(TRACKS[i].sec);
+  document.getElementById("sec"+TRACKS[i].sec).scrollIntoView({behavior:"smooth", block:"start"});
+  hideResume();
+  console.log("[묵상] 트랙 " + i + " 로드: " + TRACKS[i].src + " (autoplay=" + autoplay + ")");
+  if (autoplay){ armWatchdog(i); tryPlay(); }
+}
+
+playBtn.addEventListener("click", function(){
+  chainActive = true;
+  if (!au.src) { load(0, true); return; }
+  if (au.paused) tryPlay(); else au.pause();
+});
+
+document.getElementById("resume").addEventListener("click", function(){
+  chainActive = true;
+  tryPlay();
+});
+
+au.addEventListener("loadedmetadata", function(){ console.log("[묵상] 메타데이터 수신: " + TRACKS[cur].src + " · 길이 " + (au.duration||"?") + "s"); });
+au.addEventListener("canplay", function(){ console.log("[묵상] 재생 준비됨: " + TRACKS[cur].src); if (chainActive && au.paused){ tryPlay(); } });
+au.addEventListener("playing", function(){ clearWatchdog(); });
+au.addEventListener("stalled", function(){ console.warn("[묵상] stalled(데이터 지연): " + TRACKS[cur].src); });
+au.addEventListener("suspend", function(){ console.log("[묵상] suspend: " + TRACKS[cur].src + " (readyState=" + au.readyState + ")"); });
+au.addEventListener("play", function(){ playing=true; chainActive=true; playBtn.textContent="⏸"; hideResume(); });
+au.addEventListener("pause", function(){ playing=false; playBtn.textContent="▶"; });
+au.addEventListener("timeupdate", function(){
+  if (au.duration){ fill.style.width = (au.currentTime/au.duration*100) + "%"; }
+});
+
+// 한 곡이 끝나면 다음 곡 자동 재생 (낭독→강론→노래→기도)
+au.addEventListener("ended", function(){
+  if (cur < TRACKS.length-1){ load(cur+1, true); }
+  else { fill.style.width="100%"; playBtn.textContent="▶"; now.textContent="묵상을 마칩니다."; }
+});
+
+// 파일을 못 읽으면(예: song.mp3 아직 없음) 멈추지 말고 다음 곡으로 자동 이동
+au.addEventListener("error", function(){
+  clearWatchdog();
+  var msg = (au.error ? ("code " + au.error.code) : "unknown");
+  console.error("[묵상] 오디오 오류: " + TRACKS[cur].src + " · " + msg);
+  if (!chainActive) return;            // 재생 시작 전이면 무시
+  if (!au.src) return;
+  if (cur < TRACKS.length-1){
+    now.textContent = TRACKS[cur].label + " · 파일을 못 읽어 다음으로 넘어갑니다 (" + msg + ")";
+    var skipTo = cur + 1;
+    setTimeout(function(){ load(skipTo, true); }, 900);
+  } else {
+    now.textContent = TRACKS[cur].label + " · 파일을 찾을 수 없습니다 (" + msg + ")";
+  }
+});
+
+document.getElementById("bar").addEventListener("click", function(e){
+  if (!au.duration) return;
+  var r = this.getBoundingClientRect();
+  au.currentTime = (e.clientX - r.left)/r.width * au.duration;
+});
+document.getElementById("prev").addEventListener("click", function(){ chainActive=true; load(Math.max(0,cur-1), true); });
+document.getElementById("next").addEventListener("click", function(){ chainActive=true; if(cur<TRACKS.length-1) load(cur+1, true); });
+tabs.forEach(function(t){ t.addEventListener("click", function(){ chainActive=true; load(parseInt(t.dataset.i,10), true); }); });
+
+load(0, false);
+</script>
+</body>
+</html>

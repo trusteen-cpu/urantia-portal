@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아침 명상 · 하나님의 형상으로</title>
+<style>
+  :root{
+    --sky1:#fef6ec; --sky2:#fbe7d2; --sky3:#f4d7be;
+    --amber:#c98a3c; --amber-deep:#a9692a; --amber-soft:#e0a862;
+    --ink:#3a2e23; --ink-soft:#6b5b48; --ink-dim:#9c8a72;
+    --line:rgba(201,138,60,.28); --card:rgba(255,255,255,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Noto Serif KR","함초롬바탕",serif; color:var(--ink);
+    background:
+      radial-gradient(1100px 620px at 50% -8%, #ffe9c6 0%, transparent 62%),
+      linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 55%,var(--sky3) 100%);
+    background-attachment:fixed; line-height:1.9; -webkit-font-smoothing:antialiased;
+    padding-bottom:150px;
+  }
+  .rays{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .sun{position:absolute;top:-90px;left:50%;transform:translateX(-50%);width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,214,140,.75),rgba(255,214,140,0) 70%);filter:blur(2px)}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:60px 26px 40px}
+  header{text-align:center;margin-bottom:52px}
+  .icon{font-size:34px;color:var(--amber);margin-bottom:12px;text-shadow:0 0 22px rgba(201,138,60,.35)}
+  header .date{letter-spacing:.32em;font-size:12.5px;color:var(--amber-deep);text-transform:uppercase;margin-bottom:16px}
+  header h1{font-size:30px;font-weight:700;color:#2b2118;letter-spacing:.02em}
+  header .cite{margin-top:12px;font-size:14px;color:var(--amber-deep);letter-spacing:.06em}
+  section{background:var(--card);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:34px 30px;margin-bottom:26px;box-shadow:0 14px 40px -26px rgba(120,80,30,.35);transition:box-shadow .5s ease,border-color .5s ease,background .5s ease;backdrop-filter:blur(2px)}
+  section.active{border-color:var(--line);background:rgba(255,248,236,.82);box-shadow:0 0 0 1px var(--line),0 20px 60px -22px rgba(201,138,60,.5)}
+  .tag{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.28em;color:var(--amber-deep);text-transform:uppercase;margin-bottom:20px}
+  .tag::before{content:"";width:26px;height:1px;background:var(--amber);opacity:.7}
+  .num{color:var(--amber-deep);font-size:13px;font-weight:700;margin-right:8px;letter-spacing:.02em}
+  .para{margin-bottom:18px;color:var(--ink-soft);font-size:16.5px;text-align:justify}
+  .para:last-child{margin-bottom:0}
+  .para.key{color:var(--ink);border-left:2px solid var(--amber);padding-left:16px;margin-left:-2px}
+  .sermon p{color:var(--ink);font-size:17px;text-align:justify;margin-bottom:16px}
+  .sermon p:last-child{margin-bottom:0}
+  .verse{white-space:pre-line;text-align:center;color:var(--amber-deep);font-size:18px;line-height:2.2;letter-spacing:.02em}
+  .song-title{text-align:center;color:var(--ink-soft);font-size:14px;letter-spacing:.14em;margin-bottom:22px}
+  .verse-label{display:block;text-align:center;color:var(--ink-dim);font-size:12px;letter-spacing:.24em;margin-bottom:14px}
+  .prayer{white-space:pre-line;text-align:center;color:var(--ink);font-size:17.5px;line-height:2.3;letter-spacing:.01em}
+  .player{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(180deg,rgba(250,231,210,0) 0%,rgba(250,231,210,.96) 34%);padding:30px 22px calc(22px + env(safe-area-inset-bottom))}
+  .player-inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .steps{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+  .step{font-size:12px;letter-spacing:.18em;color:var(--ink-dim);padding:6px 14px;border:1px solid rgba(160,110,50,.22);border-radius:999px;background:rgba(255,255,255,.4);transition:.4s}
+  .step.on{color:#fff;background:var(--amber);border-color:var(--amber);font-weight:700}
+  .step.done{color:var(--amber-deep);border-color:var(--line)}
+  .controls{display:flex;justify-content:center;align-items:center;gap:18px}
+  .play{width:64px;height:64px;border-radius:50%;border:none;cursor:pointer;background:radial-gradient(circle at 32% 30%,var(--amber-soft),var(--amber));color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 34px -8px rgba(201,138,60,.7);transition:transform .2s}
+  .play:hover{transform:scale(1.05)}
+  .mini{background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:13px;letter-spacing:.1em}
+  .mini:hover{color:var(--ink)}
+  .hint{text-align:center;color:var(--ink-dim);font-size:12px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="rays"><div class="sun"></div></div>
+<div class="wrap">
+  <header>
+    <div class="icon">☀</div>
+    <div class="date">2026년 7월 9일 · 아침 명상</div>
+    <h1>하나님의 형상으로</h1>
+    <div class="cite">유란시아서 117:3</div>
+  </header>
+
+  <!-- 낭독 대상 = 117:3.5 (음성). 3.6-3.7 은 표시 전용 -->
+  <section id="sec-reading">
+    <span class="tag">본문 · 낭독</span>
+    <p class="para key"><span class="num">117:3.5</span>필사 인간은 단순 비유가 아닌 실제로 하나님의 형상대로 만들어졌다. 물리적 의미에서는 그렇지 않지만, 우주적 잠재성의 특정 측면에서는 참으로 사실이다. 인류 속에서 인간은 우주들 우주에서 더 큰 규모로 일어나는 것과 유사한 진화적 성취의 드라마를 펼쳐 가고 있다. 의지를 가진 인격인 인간은 최상 존재의 유한한 잠재성 안에서 비인격적 실체인 조절자와 협력하며 창조적 존재가 되고, 그 결과는 불멸 혼의 개화이다. 시간과 공간의 창조자 인격들은 파라다이스 삼위일체의 비인격적 영과 협력하면서 신적 실체의 새로운 동력 잠재성을 창출한다.</p>
+    <p class="para"><span class="num">117:3.6</span>인간은 창조체이므로 신적 존재인 최상 존재와 같을 수는 없지만, 인간의 진화는 여러 면에서 최상 존재의 성장과 유사하다. 인간은 자신의 결단의 힘과 끈기를 통해 물질에서 영으로 의식적으로 성장하며, 동시에 생각 조절자가 영적 수준에서 모론시아 혼 수준으로 도달하기 위한 새로운 기술을 개발할 때도 성장한다. 한편, 혼이 일단 존재하게 되면 그 자체로 성장하기 시작한다.</p>
+    <p class="para"><span class="num">117:3.7</span>이는 최상 존재의 확장 방식과 어느 정도 유사하다. 그의 주권은 최상 창조자 인격들의 행위와 성취 속에서 안팎으로 성장한다. 이것이 바로 거대한 우주의 통치자로서 그의 동력의 웅장함이 진화하는 과정이다. 그의 신적 본성은 파라다이스 삼위일체의 선재적 통일성에 의존한다. 그러나 또 하나의 측면이 있는데, 최상 하나님은 창조자에 의해 진화되고 삼위일체로부터 유래하기만 하는 것이 아니라, 스스로도 진화하며 자아에서 비롯된다. 최상 하나님은 자신의 신성을 실제화함에 있어 스스로 의지적이고 창조적인 참여자이다. 인간의 모론시아 혼 또한 자신의 불멸화를 창출하는 데 있어 의지적이고 공동 창조적인 동반자이다.</p>
+  </section>
+
+  <section id="sec-sermon" class="sermon">
+    <span class="tag">강론</span>
+    <p>새 아침이 밝았습니다. 오늘 우리가 무엇이 되어 가는지를 생각하며 하루를 엽니다. 이 본문은 놀라운 선언으로 시작합니다. 필사 인간은 단순한 비유가 아니라, 실제로 하나님의 형상대로 지어졌다는 것입니다.</p>
+    <p>물리적인 몸을 말하는 것이 아닙니다. 우주적 잠재성의 어떤 측면에서, 우리는 참으로 하나님을 닮았습니다. 그 닮음은 이미 완성된 조각상이 아니라, 지금도 펼쳐지는 하나의 드라마입니다. 의지를 가진 우리가 우리 안에 계신 조절자와 협력할 때, 우리는 창조적인 존재가 되고, 그 협력의 열매로 불멸의 혼이 피어납니다.</p>
+    <p>오늘 하루도 우리는 이 공동 창조의 자리로 초대받습니다. 본문은 우리가 물질에서 영으로 자란다고 말합니다. 그런데 그 성장은 우리의 결단의 힘과 끈기를 통해 이루어집니다. 조절자는 인도하시지만, 걸음을 내딛는 것은 우리입니다. 혼은 우리의 선택으로 태어나고, 일단 태어난 혼은 스스로 자라기 시작합니다.</p>
+    <p>그래서 오늘의 작은 선택들이 그토록 소중합니다. 친절할지 무심할지, 참을지 성낼지, 사랑할지 외면할지, 이 평범한 결단들이 영원한 혼을 빚어 가는 조각칼입니다. 최상 존재조차 스스로 진화하며 자신의 신성에 의지적으로 참여하듯, 우리의 혼도 자신의 불멸을 이루는 일에 의지적인 동반자입니다.</p>
+    <p>그러니 이 아침, 우리는 무거운 각오가 아니라 기쁜 협력으로 하루를 시작합니다. 우리 안에 계신 조절자께 오늘의 걸음을 함께 맡기며, 한 걸음 한 걸음, 물질에서 영으로 자라 가기를 택합니다. 우리는 홀로 자라지 않습니다. 우리를 지으신 분이 우리 안에서 함께 자라 가십니다.</p>
+  </section>
+
+  <section id="sec-song">
+    <span class="tag">노래</span>
+    <div class="song-title">하나님의 형상으로</div>
+    <span class="verse-label">1절</span>
+    <div class="verse">아침 빛 속에 눈을 뜨니
+내 안에 계신 그 음성
+나는 형상대로 지어진 자
+사랑으로 빚어진 혼</div>
+  </section>
+
+  <section id="sec-prayer">
+    <span class="tag">기도</span>
+    <div class="prayer">은혜로우신 아버지 하나님
+새 아침을 열어 주셔서
+감사를 드립니다
+저를 형상대로 지으시고
+제 안에 거하시니
+오늘도 함께 자라게 하소서
+물질에서 영으로
+한 걸음 내딛게 하소서
+저의 작은 결단마다
+불멸의 혼을 빚으소서
+조절자의 인도를 따라
+사랑으로 걷게 하소서
+기쁜 협력의 하루 되게 하소서
+저를 통해 아버지 자라시니
+그 은혜에 감사드립니다
+예수님의 이름으로 기도드립니다</div>
+  </section>
+</div>
+
+<div class="player">
+  <div class="player-inner">
+    <div class="steps" id="steps">
+      <span class="step" data-i="0">낭독</span>
+      <span class="step" data-i="1">강론</span>
+      <span class="step" data-i="2">노래</span>
+      <span class="step" data-i="3">기도</span>
+    </div>
+    <div class="controls">
+      <button class="mini" id="restart" style="visibility:hidden">처음부터</button>
+      <button class="play" id="play" aria-label="재생">▶</button>
+      <button class="mini" id="stop" style="visibility:hidden">정지</button>
+    </div>
+    <div class="hint" id="hint">버튼을 누르면 낭독 · 강론 · 노래 · 기도가 순서대로 재생됩니다</div>
+  </div>
+</div>
+
+<audio id="audio" preload="auto"></audio>
+<script>
+  const TRACKS=[
+    {id:'sec-reading', file:'https://archive.org/download/urantia-devotion-2026-07-09-morning/reading.mp3'},
+    {id:'sec-sermon',  file:'https://archive.org/download/urantia-devotion-2026-07-09-morning/sermon.mp3'},
+    {id:'sec-song',    file:'https://archive.org/download/urantia-devotion-2026-07-09-morning/song.mp3'},
+    {id:'sec-prayer',  file:'https://archive.org/download/urantia-devotion-2026-07-09-morning/prayer.mp3'},
+  ];
+  const audio=document.getElementById('audio');
+  const playBtn=document.getElementById('play');
+  const stopBtn=document.getElementById('stop');
+  const restartBtn=document.getElementById('restart');
+  const hint=document.getElementById('hint');
+  const stepEls=[...document.querySelectorAll('.step')];
+  let idx=-1, playing=false;
+  function markSection(i){
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    stepEls.forEach((el,k)=>{ el.classList.toggle('on',k===i); el.classList.toggle('done',k<i); });
+    if(i>=0){ const sec=document.getElementById(TRACKS[i].id); sec.classList.add('active'); sec.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+  function playIndex(i){
+    if(i>=TRACKS.length){ finish(); return; }
+    idx=i; playing=true; markSection(i);
+    audio.src=TRACKS[i].file; audio.play().catch(()=>{});
+    playBtn.textContent='⏸'; stopBtn.style.visibility='visible'; restartBtn.style.visibility='visible';
+    hint.textContent=stepEls[i].textContent+' 재생 중…';
+  }
+  function finish(){
+    playing=false; idx=-1; playBtn.textContent='▶';
+    document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+    stepEls.forEach(el=>{el.classList.remove('on');el.classList.add('done');});
+    hint.textContent='명상을 마쳤습니다. 은혜로운 하루 되시기 바랍니다. ☀';
+  }
+  audio.addEventListener('ended',()=>playIndex(idx+1));
+  audio.addEventListener('error',()=>{ if(playing) setTimeout(()=>playIndex(idx+1),400); });
+  playBtn.addEventListener('click',()=>{
+    if(!playing && idx===-1){ playIndex(0); return; }
+    if(audio.paused){ audio.play(); playBtn.textContent='⏸'; playing=true; }
+    else{ audio.pause(); playBtn.textContent='▶'; playing=false; }
+  });
+  stopBtn.addEventListener('click',()=>{
+    audio.pause(); audio.currentTime=0; finish();
+    stepEls.forEach(el=>el.classList.remove('done','on'));
+    hint.textContent='버튼을 누르면 낭독 · 강론 · 노래 · 기도가 순서대로 재생됩니다';
+  });
+  restartBtn.addEventListener('click',()=>{ audio.pause(); playIndex(0); });
+</script>
+</body>
+</html>
