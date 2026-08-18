@@ -43,6 +43,18 @@ iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame{di
 body{top:0!important;position:static!important}
 .goog-text-highlight{background:none!important;box-shadow:none!important}
 #google_translate_element{display:none}
+
+/* ── 새 글 딱지 (2026-08-18 추가) ─────────────────────────── */
+.nb{display:inline-flex;align-items:center;justify-content:center;
+    min-width:16px;height:16px;padding:0 4px;margin-left:6px;
+    border-radius:999px;background:#d93025;color:#fff;
+    font:700 10px/1 system-ui,sans-serif;letter-spacing:0;
+    vertical-align:middle;flex:0 0 auto;
+    box-shadow:0 1px 2px rgba(0,0,0,.18)}
+.nb.dot{min-width:8px;height:8px;padding:0;margin-left:6px}
+.card .hd .nb{margin-left:4px}
+@keyframes nbpop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+.nb{animation:nbpop .28s ease-out}
 </style>
 <meta property="og:title" content="한국 유란시아서 독자 모임 — 진리를 함께 걷는 자리">
 <meta property="og:description" content="유란시아서 본문, 52주·100강 강의, 인터랙티브 학습, 매일의 아침·취침 묵상까지 — 한 곳에서 만나는 유란시아서 여정.">
@@ -109,7 +121,7 @@ body{top:0!important;position:static!important}
 
 let DATA=null, FLAT=[];
 
-loadData().then(d=>{DATA=d;render();}).catch(()=>{
+Promise.all([loadData(), loadUpdates()]).then(r=>{DATA=r[0];UPDATES=r[1];render();}).catch(()=>{
   document.getElementById('grid').innerHTML =
     '<div class="empty">links.json 을 읽지 못했습니다.<br>파일을 더블클릭하지 마시고 넷리파이에 올린 주소로 열어 주세요.</div>';
 });
@@ -118,6 +130,62 @@ loadData().then(d=>{DATA=d;render();}).catch(()=>{
    이모지 대신 씁니다. 색은 그룹 색을 따라갑니다.
    새 그룹을 만들면 아래 ICON 에 아이디를 추가하시면 되고,
    없으면 별 모양이 기본으로 들어갑니다.                        */
+/* ── 새 글 딱지 ────────────────────────────────────────────
+   updates.json 에 적힌 '마지막으로 바뀐 날짜'를 읽어
+   NEW_DAYS 일 안에 바뀐 페이지에 자동으로 빨간 딱지를 붙입니다.
+   updates.json 은 PC에서 make_updates.py 를 한 번 돌리면 만들어집니다.
+   손으로 적을 것은 없습니다. 아래 NEW_ITEMS 는 카페 게시판처럼
+   깃허브 밖에 있는 항목에만 쓰는 예비 칸입니다.                */
+const NEW_DAYS = 7;
+const NEW_ITEMS = {};      /* 예: "카페 공지": "2026-08-18" */
+let UPDATES = {};
+
+function loadUpdates(){
+  return fetch('updates.json', {cache:'no-cache'})
+    .then(r => r.ok ? r.json() : {})
+    .then(j => (j && j.paths) ? j.paths : {})
+    .catch(() => ({}));
+}
+
+function daysAgo(ymd){
+  const d = new Date(ymd + "T00:00:00");
+  if (isNaN(d)) return 9999;
+  return Math.floor((Date.now() - d.getTime()) / 86400000);
+}
+
+/* 링크 주소로 updates.json 에서 날짜 찾기 */
+function dateOfHref(href){
+  if (!href) return null;
+  let p = String(href).split('#')[0].split('?')[0];
+  if (/^https?:/i.test(p)) return null;          /* 바깥 주소는 알 수 없음 */
+  p = p.replace(/^\.?\//, '');
+  if (!p) return null;
+  const tries = [p];
+  if (p.endsWith('/')) { tries.push(p + 'index.html', p.slice(0, -1)); }
+  else { tries.push(p + '/index.html', p + '/'); }
+  for (const t of tries){ if (UPDATES[t]) return UPDATES[t]; }
+  return null;
+}
+
+function newDate(name, href){
+  const ymd = dateOfHref(href) || NEW_ITEMS[name];
+  if (!ymd || daysAgo(ymd) > NEW_DAYS) return null;
+  return ymd;
+}
+function seenKey(name){ return "seen:" + name; }
+function isNewItem(name, href){
+  const ymd = newDate(name, href);
+  if (!ymd) return false;
+  try { if (localStorage.getItem(seenKey(name)) === ymd) return false; } catch(e){}
+  return true;
+}
+function markSeen(name, href){
+  const ymd = newDate(name, href);
+  if (!ymd) return;
+  try { localStorage.setItem(seenKey(name), ymd); } catch(e){}
+}
+function newBadge(){ return '<span class="nb">N</span>'; }
+
 const ICON = {
   ch:'<path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M10 20v-5h4v5"/>',
   join:'<path d="M4 5h16v10H8l-4 4z"/><path d="M8.5 9h7"/><path d="M8.5 12h4"/>',
@@ -159,16 +227,27 @@ function render(){
   (DATA.groups||[]).forEach((g,gi)=>{
     const col=colorOf(g), items=g.items||[], max=g.preview||40, over=items.length>max;
     const shown=over?items.slice(0,max):items;
+    const cafe = (DATA.site||{}).cafeUrl||'#';
+    const newCnt = shown.filter((it,ii)=>
+      isNewItem(it.name, targetOf(it, cafe, g.id, ii).href)).length;
     html+='<article class="card" id="g-'+esc(g.id)+'"><div class="bar" style="background:'+col+'"></div>'
         + '<div class="hd" style="color:'+col+'"><span class="badge" style="background:'+col+'">'+(gi+1)+'</span>'
         + iconSvg(g)
-        + '<h2>'+esc(g.title)+'</h2><span class="cnt">'+items.length+'</span></div><ul class="list">';
+        + '<h2>'+esc(g.title)+'</h2>'
+        + (newCnt ? '<span class="nb">'+newCnt+'</span>' : '')
+        + '<span class="cnt">'+items.length+'</span></div><ul class="list">';
     shown.forEach((it,ii)=>{ html+=topLine(it,g,ii); });
     html+='</ul><div class="fin"></div>';
     if(over) html+='<a class="more" href="'+href(g.id)+'">전체 '+items.length+'개 보기 →</a>';
     html+='</article>';
   });
   grid.innerHTML=html;
+
+  /* 눌러 본 항목은 그 사람 화면에서 딱지를 지웁니다 */
+  grid.addEventListener('click', function(e){
+    const a = e.target.closest('a[data-name]');
+    if (a) markSeen(a.getAttribute('data-name'), a.getAttribute('href'));
+  });
 
   FLAT=flatten(DATA);
 }
@@ -181,8 +260,10 @@ function topLine(it,g,ii){
             : it.member       ? '<span class="tag mem">회원</span>'
             : (t.empty?'<span class="tag todo">주소</span>':'');
   const dot = kids ? '▸' : t.kind==='text' ? '▪' : '·';
-  return '<li><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')+'>'
-      +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+tag+'</a></li>';
+  const nb  = isNewItem(it.name, t.href) ? newBadge() : '';
+  return '<li><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')
+      +' data-name="'+esc(it.name)+'">'
+      +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+nb+tag+'</a></li>';
 }
 
 /* 검색 */
