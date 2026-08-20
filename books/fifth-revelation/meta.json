@@ -1,0 +1,443 @@
+{
+ "title": "제5계시 유란시아서",
+ "sub": "개정 증보판",
+ "orig": "The Fifth Epochal Revelation",
+ "author": "켈리 엘스트롯 (Kelly Elstrott)",
+ "translator": "한종인",
+ "publisher": "퍼플",
+ "year": "2025",
+ "toc": [
+  {
+   "no": 0,
+   "title": "서 문",
+   "part": null,
+   "file": "c0.json",
+   "subs": [],
+   "n": 27
+  },
+  {
+   "no": 1,
+   "title": "어떻게 내가 유란시아서를 발견했는가",
+   "part": null,
+   "file": "c1.json",
+   "subs": [],
+   "n": 5
+  },
+  {
+   "no": 2,
+   "title": "지구의 형성",
+   "part": "역사 이전의 시기",
+   "file": "c2.json",
+   "subs": [],
+   "n": 20
+  },
+  {
+   "no": 3,
+   "title": "지구 위에 생명이 시작되다.",
+   "part": "역사 이전의 시기",
+   "file": "c3.json",
+   "subs": [],
+   "n": 31
+  },
+  {
+   "no": 4,
+   "title": "첫 번째 인간",
+   "part": "역사 이전의 시기",
+   "file": "c4.json",
+   "subs": [],
+   "n": 30
+  },
+  {
+   "no": 5,
+   "title": "인생의 고난",
+   "part": "인생의 고난",
+   "file": "c5.json",
+   "subs": [],
+   "n": 11
+  },
+  {
+   "no": 6,
+   "title": "근심과 긴장",
+   "part": "인생의 고난",
+   "file": "c6.json",
+   "subs": [],
+   "n": 11
+  },
+  {
+   "no": 7,
+   "title": "분노",
+   "part": "인생의 고난",
+   "file": "c7.json",
+   "subs": [],
+   "n": 5
+  },
+  {
+   "no": 8,
+   "title": "실망",
+   "part": "인생의 고난",
+   "file": "c8.json",
+   "subs": [],
+   "n": 15
+  },
+  {
+   "no": 9,
+   "title": "외로움과 우울함",
+   "part": "인생의 고난",
+   "file": "c9.json",
+   "subs": [],
+   "n": 11
+  },
+  {
+   "no": 10,
+   "title": "고통과 괴로움",
+   "part": "인생의 고난",
+   "file": "c10.json",
+   "subs": [],
+   "n": 14
+  },
+  {
+   "no": 11,
+   "title": "유혹과 중독",
+   "part": "인생의 고난",
+   "file": "c11.json",
+   "subs": [],
+   "n": 10
+  },
+  {
+   "no": 12,
+   "title": "용서",
+   "part": "인생의 고난",
+   "file": "c12.json",
+   "subs": [],
+   "n": 14
+  },
+  {
+   "no": 13,
+   "title": "고대의 역사",
+   "part": "고대의 역사",
+   "file": "c13.json",
+   "subs": [],
+   "n": 3
+  },
+  {
+   "no": 14,
+   "title": "칼리가스티아와 루시퍼",
+   "part": "고대의 역사",
+   "file": "c14.json",
+   "subs": [],
+   "n": 26
+  },
+  {
+   "no": 15,
+   "title": "아담과 이브",
+   "part": "고대의 역사",
+   "file": "c15.json",
+   "subs": [],
+   "n": 36
+  },
+  {
+   "no": 16,
+   "title": "멜기세덱과 아브라함",
+   "part": "고대의 역사",
+   "file": "c16.json",
+   "subs": [],
+   "n": 10
+  },
+  {
+   "no": 17,
+   "title": "구약성서의 기원",
+   "part": "고대의 역사",
+   "file": "c17.json",
+   "subs": [],
+   "n": 32
+  },
+  {
+   "no": 18,
+   "title": "신약 성서의 기원",
+   "part": "고대의 역사",
+   "file": "c18.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 19,
+   "title": "가족: 문명의 기초",
+   "part": "가족",
+   "file": "c19.json",
+   "subs": [],
+   "n": 17
+  },
+  {
+   "no": 20,
+   "title": "교육",
+   "part": "가족",
+   "file": "c20.json",
+   "subs": [],
+   "n": 23
+  },
+  {
+   "no": 21,
+   "title": "결혼과 이혼",
+   "part": "가족",
+   "file": "c21.json",
+   "subs": [],
+   "n": 16
+  },
+  {
+   "no": 22,
+   "title": "자녀 키우기: 귀중한 경험",
+   "part": "가족",
+   "file": "c22.json",
+   "subs": [],
+   "n": 7
+  },
+  {
+   "no": 23,
+   "title": "예수의 생애와 가르침",
+   "part": "예수의 생애와 가르침",
+   "file": "c23.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 24,
+   "title": "예수의 어린 시절",
+   "part": "예수의 생애와 가르침",
+   "file": "c24.json",
+   "subs": [],
+   "n": 28
+  },
+  {
+   "no": 25,
+   "title": "사도들",
+   "part": "예수의 생애와 가르침",
+   "file": "c25.json",
+   "subs": [],
+   "n": 27
+  },
+  {
+   "no": 26,
+   "title": "예수의 가르침의 방법",
+   "part": "예수의 생애와 가르침",
+   "file": "c26.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 27,
+   "title": "예수의 인격",
+   "part": "예수의 생애와 가르침",
+   "file": "c27.json",
+   "subs": [],
+   "n": 11
+  },
+  {
+   "no": 28,
+   "title": "예수의 신성과 인성",
+   "part": "예수의 생애와 가르침",
+   "file": "c28.json",
+   "subs": [],
+   "n": 8
+  },
+  {
+   "no": 29,
+   "title": "예수와 여자들",
+   "part": "예수의 생애와 가르침",
+   "file": "c29.json",
+   "subs": [],
+   "n": 10
+  },
+  {
+   "no": 30,
+   "title": "성만찬",
+   "part": "예수의 생애와 가르침",
+   "file": "c30.json",
+   "subs": [],
+   "n": 40
+  },
+  {
+   "no": 31,
+   "title": "원죄와 십자가",
+   "part": "예수의 생애와 가르침",
+   "file": "c31.json",
+   "subs": [],
+   "n": 16
+  },
+  {
+   "no": 32,
+   "title": "성령, 진리의 영",
+   "part": "예수의 생애와 가르침",
+   "file": "c32.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 33,
+   "title": "미래",
+   "part": "예수의 생애와 가르침",
+   "file": "c33.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 34,
+   "title": "떠오르는 사회",
+   "part": "진화하는 문명",
+   "file": "c34.json",
+   "subs": [],
+   "n": 9
+  },
+  {
+   "no": 35,
+   "title": "정의",
+   "part": "진화하는 문명",
+   "file": "c35.json",
+   "subs": [],
+   "n": 17
+  },
+  {
+   "no": 36,
+   "title": "복지",
+   "part": "진화하는 문명",
+   "file": "c36.json",
+   "subs": [],
+   "n": 6
+  },
+  {
+   "no": 37,
+   "title": "물질주의",
+   "part": "진화하는 문명",
+   "file": "c37.json",
+   "subs": [],
+   "n": 47
+  },
+  {
+   "no": 38,
+   "title": "세계 평화",
+   "part": "진화하는 문명",
+   "file": "c38.json",
+   "subs": [],
+   "n": 20
+  },
+  {
+   "no": 39,
+   "title": "하나님의 본성",
+   "part": "신성",
+   "file": "c39.json",
+   "subs": [],
+   "n": 39
+  },
+  {
+   "no": 40,
+   "title": "진보하는 종교",
+   "part": "신성",
+   "file": "c40.json",
+   "subs": [],
+   "n": 75
+  },
+  {
+   "no": 41,
+   "title": "생각 조절자 : 혼의 형성",
+   "part": "신성",
+   "file": "c41.json",
+   "subs": [],
+   "n": 18
+  },
+  {
+   "no": 42,
+   "title": "꿈",
+   "part": "신성",
+   "file": "c42.json",
+   "subs": [],
+   "n": 12
+  },
+  {
+   "no": 43,
+   "title": "삼위 일체",
+   "part": "신성",
+   "file": "c43.json",
+   "subs": [],
+   "n": 19
+  },
+  {
+   "no": 44,
+   "title": "어떻게 하나님은 지구의 진보를 인도하는가",
+   "part": "신성",
+   "file": "c44.json",
+   "subs": [],
+   "n": 8
+  },
+  {
+   "no": 45,
+   "title": "우주",
+   "part": "우주",
+   "file": "c45.json",
+   "subs": [],
+   "n": 2
+  },
+  {
+   "no": 46,
+   "title": "천사들",
+   "part": "우주",
+   "file": "c46.json",
+   "subs": [],
+   "n": 20
+  },
+  {
+   "no": 47,
+   "title": "죽음과 부활",
+   "part": "우주",
+   "file": "c47.json",
+   "subs": [],
+   "n": 38
+  },
+  {
+   "no": 48,
+   "title": "우주 거주민들",
+   "part": "우주",
+   "file": "c48.json",
+   "subs": [],
+   "n": 38
+  },
+  {
+   "no": 49,
+   "title": "우주 지리학",
+   "part": "우주",
+   "file": "c49.json",
+   "subs": [],
+   "n": 71
+  },
+  {
+   "no": 50,
+   "title": "우주 여행",
+   "part": "우주",
+   "file": "c50.json",
+   "subs": [],
+   "n": 14
+  },
+  {
+   "no": 51,
+   "title": "영원",
+   "part": "우주",
+   "file": "c51.json",
+   "subs": [],
+   "n": 23
+  },
+  {
+   "no": 52,
+   "title": "결론",
+   "part": null,
+   "file": "c52.json",
+   "subs": [],
+   "n": 1
+  },
+  {
+   "no": 53,
+   "title": "후 기",
+   "part": null,
+   "file": "c53.json",
+   "subs": [],
+   "n": 4
+  }
+ ]
+}
