@@ -197,13 +197,34 @@ function renderBody(jump){
     for(var i=0;i<els.length;i++){if(els[i].textContent===jump){els[i].scrollIntoView({block:'start'});return}}}
   window.scrollTo(0,0);
 }
+var CACHE={},PEND=null,PTIMER=null;
+function bring(src,ok){
+  if(PTIMER)clearTimeout(PTIMER);
+  PEND=ok||function(){};
+  var sc=document.createElement('script');
+  sc.src=src;
+  sc.onerror=function(){fail()};
+  document.head.appendChild(sc);
+  PTIMER=setTimeout(function(){if(PEND)fail()},15000);
+}
+function fail(){
+  PEND=null;
+  $('#wrap').innerHTML='<div class="note">글을 불러오지 못했습니다. 인터넷 연결을 확인하신 뒤 이 쪽을 다시 열어 주세요.</div>';
+}
+function UB_CHAP(no,d){
+  if(PTIMER)clearTimeout(PTIMER);
+  CACHE[no]=d;var f=PEND;PEND=null;if(f)f(d);
+}
 function go(i,cb,jump){
   stop();CI=i;save('bk_pos',String(i));
-  fetch(M.toc[i].file).then(function(r){return r.json()}).then(function(d){
+  var t=M.toc[i];
+  var show=function(d){
     CH=d;renderTOC($('#q').value);renderBody(jump);
     if(window.innerWidth<=900)$('#side').classList.remove('open');
     cb&&cb();
-  }).catch(function(){$('#wrap').innerHTML='<div class="note">이 장을 불러오지 못했습니다.</div>'});
+  };
+  if(CACHE[t.no]){show(CACHE[t.no]);return}
+  bring(t.file,show);
 }
 $('#toc').addEventListener('click',function(e){
   var li=e.target.closest('li[data-s]');if(li){go(+li.dataset.i,null,li.dataset.s);return}
@@ -221,11 +242,14 @@ $('#fs').onclick=function(){fi=(fi+1)%F.length;af()};af();
 function ad(){document.documentElement.setAttribute('data-dark',load('bk_dark','0'))}
 $('#dark').onclick=function(){save('bk_dark',load('bk_dark','0')==='1'?'0':'1');ad()};ad();
 
-fetch('meta.json').then(function(r){return r.json()}).then(function(d){
+function UB_META(d){
+  if(PTIMER)clearTimeout(PTIMER);
+  PEND=null;
   M=d;document.title=d.title+' — '+d.author;
   $('#btitle').textContent=d.title;
   $('#bby').textContent=d.author+' 지음 · '+d.translator+' 옮김';
   var p=Math.min(+load('bk_pos','0')||0,d.toc.length-1);
   go(p);
-}).catch(function(){$('#wrap').innerHTML='<div class="note">meta.json 을 불러오지 못했습니다.</div>'});
+}
+bring('meta.js',null);
 </script></body></html>

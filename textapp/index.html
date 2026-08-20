@@ -296,7 +296,8 @@ function showNote(){
   };
   $('#hidenote').onclick=function(){save('ub_note','off');var n=$('#vnote');if(n)n.remove()};
 }
-fetch('book.json').then(function(r){return r.json()}).then(function(d){
+function UB_BOOK(d){
+  if(window._t)clearTimeout(window._t);
   BOOK=d;
   var pos=load('ub_pos','0,0').split(',');
   var p=Math.min(+pos[0]||0,BOOK.papers.length-1);
@@ -304,7 +305,15 @@ fetch('book.json').then(function(r){return r.json()}).then(function(d){
   CUR={p:p,s:s};renderTOC('');renderBody();
   if(!VOICES.length){setTimeout(fillVoices,700)}
   showNote();
-}).catch(function(){
-  $('#wrap').innerHTML='<div class="note">book.json 을 불러오지 못했습니다. index.html 을 직접 더블클릭하지 마시고 <b>2_미리보기</b> 로 열어 주세요.</div>';
-});
+}
+(function(){
+  var sc=document.createElement('script');
+  sc.src='book.js';
+  sc.onerror=function(){bad()};
+  document.head.appendChild(sc);
+  window._t=setTimeout(bad,20000);
+  function bad(){
+    $('#wrap').innerHTML='<div class="note">본문을 불러오지 못했습니다. 인터넷 연결을 확인하신 뒤 이 쪽을 다시 열어 주세요.</div>';
+  }
+})();
 </script></body></html>
