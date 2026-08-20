@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘의 취침 묵상 2026-08-20 갈등 속에서 태어나는 것</title>
+<style>
+:root{--g1:#0b1020;--g2:#121a33;--g3:#1c2647;--ink:#e8ecf6;--dim:#9fb0d0;--gold:#c8b06a;--panel:rgba(18,26,51,.42)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);
+ font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+ background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);}
+canvas#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:26px 18px 120px}
+header{text-align:center;padding:14px 0 6px}
+header .lb{color:var(--gold);letter-spacing:.22em;font-size:12px}
+header h1{margin:10px 0 4px;font-size:27px;letter-spacing:-.01em}
+header .src{color:var(--dim);font-size:13px}
+.panel{background:var(--panel);border:1px solid rgba(200,176,106,.25);border-radius:16px;
+ padding:20px 20px 22px;margin:18px 0}
+.panel h2{margin:0 0 12px;font-size:15px;color:var(--gold);letter-spacing:.16em}
+.v{margin:0 0 14px;line-height:1.95;font-size:17px;text-align:justify;word-break:keep-all}
+.v .c{color:var(--gold);font-size:12.5px;margin-right:7px}
+.ly{white-space:pre-wrap;line-height:1.9;font-size:16px}
+.ly .tag{color:var(--gold)}
+.pr{white-space:pre-wrap;line-height:2;font-size:17px;text-align:center}
+.now{outline:1px solid rgba(200,176,106,.5);border-radius:12px;
+ background:rgba(200,176,106,.10)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;
+ background:rgba(8,12,26,.86);border-top:1px solid rgba(200,176,106,.3);
+ padding:9px 12px 12px}
+.bar .in{max-width:820px;margin:0 auto}
+.seg{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.seg button{background:none;border:1px solid rgba(200,176,106,.35);color:var(--dim);
+ border-radius:999px;padding:5px 13px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--gold);color:#141625;border-color:var(--gold);font-weight:700}
+.pg{height:5px;background:rgba(255,255,255,.14);border-radius:99px;cursor:pointer;margin:7px 0}
+.pg i{display:block;height:100%;width:0;background:var(--gold);border-radius:99px}
+.ctl{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.ctl button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+ color:var(--ink);border-radius:999px;padding:7px 15px;font-size:13.5px;cursor:pointer;font-family:inherit}
+.ctl button.main{background:var(--gold);color:#141625;border-color:var(--gold);font-weight:700}
+.ov{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+ background:rgba(6,9,20,.9);text-align:center;padding:24px}
+.ov div{max-width:420px}
+.ov h2{color:var(--gold);font-size:20px;margin:0 0 10px}
+.ov p{color:var(--dim);font-size:14px;line-height:1.8}
+.ov button{margin-top:16px;background:var(--gold);color:#141625;border:0;border-radius:999px;
+ padding:12px 30px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:700}
+footer{text-align:center;color:var(--dim);font-size:12px;padding:26px 0 0}
+</style></head><body>
+<canvas id="sky"></canvas>
+<div class="wrap">
+  <header>
+    <div class="lb">오늘의 취침 묵상</div>
+    <h1 id="ttl"></h1>
+    <div class="src" id="src"></div>
+  </header>
+  <section class="panel" id="p-reading"><h2>낭독</h2><div id="reading"></div></section>
+  <section class="panel" id="p-sermon"><h2>강론</h2><div id="sermon"></div></section>
+  <section class="panel" id="p-song"><h2>노래</h2><div class="ly" id="song"></div></section>
+  <section class="panel" id="p-prayer"><h2>기도</h2><div class="pr" id="prayer"></div></section>
+  <footer id="ft"></footer>
+</div>
+<div class="bar"><div class="in">
+  <div class="seg">
+    <button data-i="0">낭독</button><button data-i="1">강론</button>
+    <button data-i="2">노래</button><button data-i="3">기도</button>
+  </div>
+  <div class="pg" id="pg"><i id="pgi"></i></div>
+  <div class="ctl">
+    <button id="prev">◀ 이전</button>
+    <button id="play" class="main">▶ 재생</button>
+    <button id="next">건너뛰기 ▶</button>
+    <button id="rep">반복: 전체</button>
+    <button id="mute">🔊</button>
+  </div>
+</div></div>
+<div class="ov" id="ov"><div>
+  <h2 id="ovt"></h2>
+  <p>낭독 · 강론 · 노래 · 기도가 이어서 재생됩니다.</p>
+  <button id="start">시작하기</button>
+</div></div>
+<script>
+var DATA = {"date": "2026-08-20", "kind": "night", "title": "갈등 속에서 태어나는 것", "source": "제100편 종교와 인간 체험 › 종교와 인격 변화", "citation": "100:4.1", "reading": [{"cit": "100:4.1", "text": "종교적인 생활은 헌신적인 생활이고, 헌신적인 생활은 창의적인 생활이며, 독창적이고 자발적인 생활이다. 새로운 종교적 통찰은 오래되고 열등한 반응 형태 대신 새롭고 더 나은 반응 습관을 선택하게 하는 갈등 속에서 생긴다. 새로운 의미는 오직 갈등 속에서만 나타나며, 갈등은 더 높은 가치를 선택하기를 거부할 때만 지속된다."}], "sermon": ["우리는 마음이 부딪치는 날을 실패한 날로 셉니다. 조용하고 흔들림 없는 하루라야 신앙이 잘된 줄 압니다. 그런데 오늘 말씀은 정반대를 말합니다. 새로운 의미는 오직 갈등 속에서만 나타난다고 합니다. 부딪치지 않은 마음에서는 새것이 나오지 않는다는 것입니다.", "종교적인 생활은 헌신이고, 헌신은 창의라고 했습니다. 물려받은 대로 되풀이하는 삶이 아니라, 오늘 처음 짓는 삶이라는 뜻입니다. 어제와 똑같이 반응하는 데는 아무 힘이 들지 않습니다. 힘이 드는 것은 늘 하던 그 반응 대신 다른 반응을 고르려 할 때입니다. 그 힘겨움이 바로 갈등이고, 그 자리에서 새 습관이 태어납니다.", "그런데 마지막 문장이 우리를 찌릅니다. 갈등은 더 높은 가치를 선택하기를 거부할 때만 지속된다고 합니다. 그러니 오래 끄는 괴로움은 대개 답을 몰라서가 아닙니다. 무엇이 더 높은 길인지 이미 알면서 아직 고르지 않아서입니다. 고르는 순간 갈등은 할 일을 마치고 물러갑니다.", "오늘 하루 마음이 걸렸던 자리를 하나만 떠올려 보십시오. 그곳이 실패한 자리가 아니라 무언가 새로 태어나려는 자리입니다. 낮은 반응 하나를 내려놓고 더 높은 것 하나를 고른 뒤에 누우십시오."], "lyrics": "[조용한 밤 찬송, 4/4박자 66bpm, 어쿠스틱 기타와 피아노, 낮은 첼로]\n\n[1절]\n마음이 부딪친 이 밤에\n나는 무너진 줄 알았네\n고요하지 못한 하루를\n실패라 여겼네\n\n[프리코러스]\n그러나 주께서 말씀하시네\n그곳이 시작이라고\n\n[후렴]\n갈등 속에서 태어나네\n내가 몰랐던 새로운 나\n낡은 대답을 내려놓을 때\n더 높은 길이 열리네\n\n[2절]\n어제처럼 답하기는 쉽고\n다르게 답하기는 무거워\n그 무게가 나를 빚는 손길\n나는 이제 아네\n\n[프리코러스]\n그러나 주께서 말씀하시네\n그곳이 시작이라고\n\n[후렴]\n갈등 속에서 태어나네\n내가 몰랐던 새로운 나\n낡은 대답을 내려놓을 때\n더 높은 길이 열리네\n\n[브릿지]\n[목소리와 피아노만]\n길어지는 아픔은\n답을 몰라서가 아니라\n알면서도 고르지 못한\n내 머뭇거림이었네\n\n[마지막 후렴]\n이제 고르렵니다\n더 높은 그 하나를\n갈등은 할 일을 마치고\n평안이 나를 덮으리", "prayer": ["새 마음을 지으시는\n삼위일체 하나님,", "오늘 부딪친 자리를\n실패로 세지 않게\n하여 주소서.", "그 자리가 새것이\n태어나는 자리임을\n믿게 하소서.", "늘 하던 대로 답하려는\n저를 붙들어 주시고\n더 나은 반응 하나를\n고를 힘을 주소서.", "길어진 괴로움이\n답을 몰라서가 아니라\n알면서도 미룬 탓임을\n정직하게 보게 하소서.", "오늘 미룬 그 하나를\n내일로 넘기지 않고\n지금 고르게 하소서.", "헌신이 어제의 되풀이가\n아니라 오늘 처음 짓는\n일임을 알게 하소서.", "작은 선택 하나가\n습관이 되고 습관이\n저를 이루오니\n그 하나를 가벼이\n여기지 않게 하소서.", "저와 부딪친 사람에게도\n같은 은혜가 흐르고\n있음을 잊지 않게\n하여 주소서.", "두려워 멈춰 선 자리에서\n한 걸음만 내딛게\n하여 주소서.", "고른 뒤에 오는 평안\n가운데 눕게 하시고\n내일 아침 새 습관으로\n저를 깨워 주소서.", "예수님의 이름으로\n기도드립니다."], "audioBase": "https://audio.urantiareaders.com/devotion/2026-08-20-night/"};
+var $=function(s){return document.querySelector(s)};
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+/* ---- 화면 ---- */
+$('#ttl').textContent=DATA.title;
+$('#src').textContent=DATA.source+'  ('+DATA.citation+')';
+$('#ovt').textContent=DATA.title;
+$('#ft').textContent=DATA.date+' · 유란시아서 '+DATA.citation;
+$('#reading').innerHTML=DATA.reading.map(function(r){
+  return '<p class="v"><span class="c">'+esc(r.cit)+'</span>'+esc(r.text)+'</p>'}).join('');
+$('#sermon').innerHTML=DATA.sermon.map(function(p){
+  return '<p class="v">'+esc(p)+'</p>'}).join('');
+$('#song').innerHTML=esc(DATA.lyrics).replace(/\[([^\]]*)\]/g,'<span class="tag">[$1]</span>');
+$('#prayer').innerHTML=DATA.prayer.map(function(p){
+  return '<p class="v" style="text-align:center">'+esc(p)+'</p>'}).join('');
+
+/* ---- 별 ---- */
+(function(){
+  var c=$('#sky'),x=c.getContext('2d');
+  function draw(){
+    var w=c.width=innerWidth,h=c.height=innerHeight;
+    x.clearRect(0,0,w,h);
+    var ox=w-90,oy=80;
+    var g=x.createRadialGradient(ox,oy,0,ox,oy,160);
+    g.addColorStop(0,'rgba(255,255,255,.20)');g.addColorStop(1,'rgba(255,255,255,0)');
+    x.fillStyle=g;x.beginPath();x.arc(ox,oy,160,0,6.284);x.fill();
+    x.fillStyle='#f2edd8';x.beginPath();x.arc(ox,oy,43,0,6.284);x.fill();
+    var s=12345;
+    function rnd(){s=(s*1103515245+12345)%2147483648;return s/2147483648}
+    for(var i=0;i<150;i++){
+      var px=rnd()*w,py=rnd()*h*.8,r=rnd()*1.3+.3;
+      if((px-ox)*(px-ox)+(py-oy)*(py-oy)<150*150)continue;
+      x.fillStyle='rgba(255,255,255,'+(rnd()*.5+.25)+')';
+      x.beginPath();x.arc(px,py,r,0,6.284);x.fill();
+    }
+  }
+  draw();addEventListener('resize',draw);
+})();
+
+/* ---- 재생 ---- */
+var FILES=['01_reading','02_sermon','03_song','04_prayer'];
+var PANELS=['#p-reading','#p-sermon','#p-song','#p-prayer'];
+var A=new Audio(),cur=0,playing=false,repMode=0; /* 0 전체 1 이 메뉴 2 없음 */
+var REPL=['반복: 전체','반복: 이 메뉴','반복: 없음'];
+function mark(){
+  PANELS.forEach(function(p,i){$(p).classList.toggle('now',i===cur)});
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.classList.toggle('on',+b.dataset.i===cur)});
+}
+function load(i,go){
+  cur=i;mark();
+  A.src=DATA.audioBase+FILES[i]+'.mp3';
+  $(PANELS[i]).scrollIntoView({behavior:'smooth',block:'start'});
+  if(go){var p=A.play();if(p&&p.catch)p.catch(function(){})}
+}
+function nextSeg(){
+  if(repMode===1){load(cur,true);return}
+  if(cur<3){load(cur+1,true);return}
+  if(repMode===0){load(0,true);return}
+  playing=false;$('#play').textContent='▶ 재생';
+}
+A.addEventListener('ended',nextSeg);
+A.addEventListener('error',function(){if(playing)nextSeg()});  /* 노래 없으면 넘어감 */
+A.addEventListener('timeupdate',function(){
+  if(A.duration)$('#pgi').style.width=(A.currentTime/A.duration*100)+'%';
+});
+$('#play').onclick=function(){
+  if(playing){A.pause();playing=false;this.textContent='▶ 재생'}
+  else{var p=A.play();if(p&&p.catch)p.catch(function(){});playing=true;this.textContent='⏸ 멈춤'}
+};
+$('#next').onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';
+  if(cur<3)load(cur+1,true);else load(0,true)};
+$('#prev').onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';
+  load(cur>0?cur-1:3,true)};
+$('#rep').onclick=function(){repMode=(repMode+1)%3;this.textContent=REPL[repMode]};
+$('#mute').onclick=function(){A.muted=!A.muted;this.textContent=A.muted?'🔇':'🔊'};
+$('#pg').onclick=function(e){
+  if(!A.duration)return;
+  var r=this.getBoundingClientRect();
+  A.currentTime=(e.clientX-r.left)/r.width*A.duration;
+};
+document.querySelectorAll('.seg button').forEach(function(b){
+  b.onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';load(+this.dataset.i,true)}});
+document.addEventListener('keydown',function(e){
+  if(e.code==='Space'){e.preventDefault();$('#play').click()}
+  if(e.code==='ArrowRight')$('#next').click();
+  if(e.code==='ArrowLeft')$('#prev').click();
+});
+$('#start').onclick=function(){
+  $('#ov').style.display='none';playing=true;$('#play').textContent='⏸ 멈춤';load(0,true)};
+mark();A.src=DATA.audioBase+FILES[0]+'.mp3';
+</script></body></html>
