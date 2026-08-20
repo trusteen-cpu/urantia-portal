@@ -124,9 +124,13 @@ $('#rate').oninput=function(){save('ub_rate',this.value)};
 /* ---------- 낭독 ---------- */
 function clean(t){return (t||'').replace(/[「」『』\[\]—―]/g,' ').replace(/\s+/g,' ')}
 var GEN=0, AUD=new Audio(), GFAIL=false;
+function sentences(t){var out=[],cur='',E='.!?\u3002\u201d"';
+  for(var i=0;i<t.length;i++){cur+=t.charAt(i);
+    if(E.indexOf(t.charAt(i))>=0&&(i+1>=t.length||t.charAt(i+1)===' ')){out.push(cur);cur=''}}
+  if(cur)out.push(cur); return out}
 function chunks(t){                      /* 구글 음성은 한 번에 190자까지 */
   var out=[],buf='';
-  t.split(/(?<=[.!?。”"])\s+/).forEach(function(sn){
+  sentences(t).forEach(function(sn){
     while(sn.length>190){out.push(sn.slice(0,190));sn=sn.slice(190)}
     if((buf+' '+sn).trim().length>190){if(buf)out.push(buf.trim());buf=sn}else{buf=(buf+' '+sn).trim()}
   });
