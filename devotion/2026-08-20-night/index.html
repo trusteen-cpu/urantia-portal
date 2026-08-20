@@ -123,7 +123,7 @@ $('#prayer').innerHTML=DATA.prayer.map(function(p){
 /* ---- 재생 ---- */
 var FILES=['01_reading','02_sermon','03_song','04_prayer'];
 var PANELS=['#p-reading','#p-sermon','#p-song','#p-prayer'];
-var A=new Audio(),cur=0,playing=false,repMode=0; /* 0 전체 1 이 메뉴 2 없음 */
+var A=new Audio(),cur=0,playing=false,repMode=0,fails=0; /* 0 전체 1 이 메뉴 2 없음 */
 var REPL=['반복: 전체','반복: 이 메뉴','반복: 없음'];
 function mark(){
   PANELS.forEach(function(p,i){$(p).classList.toggle('now',i===cur)});
@@ -142,8 +142,25 @@ function nextSeg(){
   if(repMode===0){load(0,true);return}
   playing=false;$('#play').textContent='▶ 재생';
 }
-A.addEventListener('ended',nextSeg);
-A.addEventListener('error',function(){if(playing)nextSeg()});  /* 노래 없으면 넘어감 */
+function noSound(){
+  playing=false;fails=0;$('#play').textContent='▶ 재생';
+  PANELS.forEach(function(p){$(p).classList.remove('now')});
+  if(!$('#nosnd')){
+    $('#reading').insertAdjacentHTML('beforebegin',
+      '<div id="nosnd" style="background:rgba(200,80,80,.18);border:1px solid rgba(200,120,120,.5);'
+     +'border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.7;margin-bottom:14px">'
+     +'소리 파일을 아직 찾지 못했습니다. 음성이 올라간 뒤에 다시 열어 주세요.<br>'
+     +'<span style="opacity:.75;font-size:12.5px">'+DATA.audioBase+'01_reading.mp3</span></div>');
+  }
+}
+A.addEventListener('ended',function(){fails=0;nextSeg()});
+A.addEventListener('playing',function(){fails=0});
+A.addEventListener('error',function(){          /* 한 구간이 없으면 넘어가되 */
+  if(!playing)return;
+  fails++;
+  if(fails>=4){noSound();return}               /* 넷 다 없으면 멈추고 알린다 */
+  setTimeout(nextSeg,400);
+});
 A.addEventListener('timeupdate',function(){
   if(A.duration)$('#pgi').style.width=(A.currentTime/A.duration*100)+'%';
 });
