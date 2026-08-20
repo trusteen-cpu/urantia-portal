@@ -569,6 +569,27 @@
       ]
     },
     {
+      "color": "teal",
+      "preview": 40,
+      "title": "번역서들(유란시아관련)",
+      "items": [
+        {
+          "member": false,
+          "name": "유란시아 계시(말콤 로크)",
+          "url": "/books/urantia-revelation/index.html"
+        },
+        {
+          "member": false,
+          "name": "제 5 계시 (켈리 엘스트롯)"
+        },
+        {
+          "member": false,
+          "name": "유란시아 계시 개관 "
+        }
+      ],
+      "id": "transbook"
+    },
+    {
       "id": "ch",
       "title": "관련 채널",
       "color": "navy",
