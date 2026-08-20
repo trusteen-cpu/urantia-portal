@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>번역서 읽기</title>
+<style>
+:root{--navy:#0f2244;--gold:#c9a227;--bg:#f7f5f0;--card:#fff;--ink:#20242c;--dim:#6b7280;--line:#e3ded3;--mw:1060px;--fs:18px}
+html[data-dark="1"]{--bg:#12141a;--card:#181b22;--ink:#dfe3ea;--dim:#98a0ae;--line:#2b3040}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,"맑은 고딕",serif}
+header{background:linear-gradient(180deg,#132a55,#0d1c3a);border-bottom:3px solid var(--gold);color:#fff;padding:9px 15px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:30}
+header h1{font-size:15.5px;margin:0;font-weight:600}
+header .by{font-size:12px;opacity:.72}
+header .sp{flex:1}
+.btn{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{background:rgba(255,255,255,.2)}
+.btn.g{background:var(--gold);color:#20242c;border-color:var(--gold);font-weight:600}
+select{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:4px 6px;font-size:12.5px;font-family:inherit;max-width:200px}
+select option{color:#111}
+#burger{display:none}
+main{display:flex;align-items:flex-start}
+#side{width:320px;flex:0 0 320px;height:calc(100vh - 51px);position:sticky;top:51px;overflow-y:auto;background:var(--card);border-right:1px solid var(--line);padding:10px}
+#q{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font-size:13.5px;font-family:inherit}
+.part{margin:14px 0 5px;padding:0 8px;font-size:11.5px;letter-spacing:.12em;color:var(--gold);font-weight:700}
+.c{display:flex;gap:8px;align-items:baseline;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:14px}
+.c:hover{background:rgba(15,34,68,.06)}
+.c.on{background:rgba(201,162,39,.16)}
+.c b{color:var(--navy);font-size:12px;min-width:26px;font-weight:700}
+html[data-dark="1"] .c b{color:var(--gold)}
+.sub{list-style:none;margin:0 0 6px 34px;padding:0}
+.sub li{padding:3px 8px;font-size:12.5px;color:var(--dim);border-left:2px solid var(--line);cursor:pointer}
+.sub li:hover{color:var(--ink);border-left-color:var(--gold)}
+#body{flex:1;min-width:0;padding:26px 30px 80px}
+.wrap{max-width:var(--mw);margin:0 auto}
+h2.ct{font-size:26px;margin:0 0 6px;color:var(--navy)}
+html[data-dark="1"] h2.ct{color:#e9d99a}
+.cn{color:var(--gold);font-size:12.5px;letter-spacing:.14em;margin-bottom:24px}
+h3.sh{font-size:19px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line);color:var(--navy)}
+html[data-dark="1"] h3.sh{color:#cfe0ff}
+.pa{display:flex;gap:10px;align-items:flex-start;margin:0 0 14px}
+.pa .t{flex:1;font-size:var(--fs);line-height:1.95;text-align:justify;word-break:keep-all}
+.pa .s{flex:0 0 auto;background:none;border:0;color:var(--dim);cursor:pointer;font-size:14px;opacity:.3;padding:3px}
+.pa:hover .s{opacity:.9}
+.pa.now .t{background:rgba(201,162,39,.16);border-radius:5px}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:44px;border-top:1px solid var(--line);padding-top:15px}
+.nav button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;font-size:14px}
+.note{background:rgba(201,162,39,.12);border:1px solid var(--gold);border-radius:10px;padding:10px 13px;font-size:13px;margin-bottom:20px;line-height:1.65}
+.warn{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;font-size:13.5px;box-shadow:0 8px 26px rgba(0,0,0,.3);z-index:60;display:none}
+.copy{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;line-height:1.7}
+@media(max-width:900px){
+ #burger{display:inline-block}
+ #side{position:fixed;left:0;top:51px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
+ #side.open{transform:none}
+ #body{padding:18px 15px 80px}
+}
+@media print{body *{display:none!important}body::after{content:"이 책은 인쇄할 수 없습니다. 화면으로 읽어 주세요.";display:block;padding:40px;font-size:16px}}
+</style></head><body>
+<header>
+ <button class="btn" id="burger">☰ 목차</button>
+ <h1 id="btitle">…</h1><span class="by" id="bby"></span>
+ <span class="sp"></span>
+ <select id="scope" title="어디까지 읽을지">
+   <option value="ch">이 장만</option><option value="all">계속</option>
+ </select>
+ <button class="btn g" id="play">▶ 듣기</button>
+ <button class="btn" id="stopb">■ 중지</button>
+ <select id="voice" title="목소리"></select>
+ <button class="btn" id="wide">↔ 폭</button>
+ <button class="btn" id="fs">가</button>
+ <button class="btn" id="dark">◐</button>
+ <button class="btn" id="home">⌂</button>
+</header>
+<main>
+ <aside id="side"><input id="q" placeholder="장·소제목 찾기"><div id="toc"></div></aside>
+ <section id="body"><div class="wrap" id="wrap"><p style="color:var(--dim)">불러오는 중…</p></div></section>
+</main>
+<div class="warn" id="warn"></div>
+<script>
+var M=null,CH=null,CI=0,SPK=window.speechSynthesis,VOICES=[],Q=[],QI=-1,PLAYING=false,GEN=0,AUD=new Audio(),GFAIL=false;
+var $=function(s){return document.querySelector(s)};
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}}
+function flash(t){var w=$('#warn');w.textContent=t;w.style.display='block';clearTimeout(w._t);w._t=setTimeout(function(){w.style.display='none'},2600)}
+
+/* ---------- 무단 복제 억제 ---------- */
+var LIMIT=600;
+document.addEventListener('copy',function(e){
+  var s=(window.getSelection()||'').toString();
+  if(s.length>LIMIT){e.preventDefault();flash('인용은 되지만 한 번에 '+LIMIT+'자를 넘겨 복사할 수는 없습니다.')}
+});
+document.addEventListener('contextmenu',function(e){if(e.target.closest('#body'))e.preventDefault()});
+document.addEventListener('dragstart',function(e){if(e.target.closest('#body'))e.preventDefault()});
+document.addEventListener('keydown',function(e){
+  var k=(e.key||'').toLowerCase();
+  if((e.ctrlKey||e.metaKey)&&(k==='a'||k==='s'||k==='p')){e.preventDefault();flash('이 책은 전체 복사·저장·인쇄를 할 수 없습니다.')}
+});
+
+/* ---------- 목소리 ---------- */
+var FEM=/sunhi|heami|female|google 한국|google korean/i, MAL=/injoon|hyunsu|male/i;
+function vscore(v){var n=(v.name||'');return /natural|online/i.test(n)?3:(/google/i.test(n)?2:(v.localService?0:1))}
+function vlabel(v){var n=(v.name||'').replace(/^Microsoft\s+/,'').replace(/\s*-\s*Korean.*$/i,'').replace(/Online\s*\(Natural\)/i,'자연스러움');
+  return (vscore(v)>=2?'★ ':'')+n+(FEM.test(v.name)?' · 여':(MAL.test(v.name)?' · 남':''))}
+function fillVoices(){
+  VOICES=(SPK.getVoices()||[]).filter(function(v){return /^ko/i.test(v.lang)});
+  VOICES.sort(function(a,b){return vscore(b)-vscore(a)});
+  var sel=$('#voice');sel.innerHTML='';
+  var o=document.createElement('option');o.value='g';o.textContent='기본 음성 (어느 브라우저나 같음)';sel.appendChild(o);
+  VOICES.forEach(function(v,i){var e=document.createElement('option');e.value=i;e.textContent=vlabel(v);sel.appendChild(e)});
+  var w=load('bk_voice','g');
+  if(w!=='g'){VOICES.forEach(function(v,i){if(v.name===w)w=String(i)})}
+  sel.value=/^\d+$/.test(w)?w:'g';
+}
+SPK.onvoiceschanged=fillVoices;fillVoices();
+$('#voice').onchange=function(){save('bk_voice',this.value==='g'?'g':(VOICES[+this.value]||{}).name||'g');stop()};
+
+/* ---------- 낭독 ---------- */
+function clean(t){return (t||'').replace(/[「」『』\[\]—―·]/g,' ').replace(/\s+/g,' ')}
+function chunks(t){var out=[],buf='';
+  t.split(/(?<=[.!?。”"])\s+/).forEach(function(s){
+    while(s.length>190){out.push(s.slice(0,190));s=s.slice(190)}
+    if((buf+' '+s).trim().length>190){if(buf)out.push(buf.trim());buf=s}else{buf=(buf+' '+s).trim()}});
+  if(buf)out.push(buf); return out.length?out:[t]}
+function gurl(t){return 'https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=ko&ttsspeed=0.90&q='+encodeURIComponent(t)}
+function speak(txt,cb){
+  var g=GEN,t=clean(txt);
+  if($('#voice').value==='g'&&!GFAIL){
+    var ps=chunks(t),i=0;
+    var nx=function(){
+      if(g!==GEN)return;
+      if(i>=ps.length){cb&&cb();return}
+      AUD.onended=function(){if(g!==GEN)return;i++;nx()};
+      AUD.onerror=function(){if(g!==GEN)return;GFAIL=true;if(VOICES.length){$('#voice').value='0';speak(t,cb)}else{cb&&cb()}};
+      AUD.src=gurl(ps[i]);var p=AUD.play();if(p&&p.catch)p.catch(function(){if(g===GEN){GFAIL=true;cb&&cb()}});
+    };nx();return;
+  }
+  var u=new SpeechSynthesisUtterance(t);var v=VOICES[+$('#voice').value];if(v)u.voice=v;
+  u.lang='ko-KR';u.rate=.92;
+  u.onend=function(){if(g===GEN)cb&&cb()};u.onerror=function(){if(g===GEN)cb&&cb()};
+  SPK.speak(u);
+}
+function stop(){GEN++;PLAYING=false;QI=-1;SPK.cancel();try{AUD.pause();AUD.onended=null;AUD.onerror=null}catch(e){}
+  document.querySelectorAll('.pa.now').forEach(function(e){e.classList.remove('now')});$('#play').textContent='▶ 듣기'}
+function step(){
+  if(!PLAYING)return; QI++;
+  document.querySelectorAll('.pa.now').forEach(function(e){e.classList.remove('now')});
+  if(QI>=Q.length){
+    if($('#scope').value==='all'&&CI+1<M.toc.length){go(CI+1,function(){setTimeout(play,300)})}else{stop()}
+    return}
+  var el=document.getElementById('p'+Q[QI].i);
+  if(el){el.classList.add('now');el.scrollIntoView({block:'center',behavior:'smooth'})}
+  speak(Q[QI].t,step);
+}
+function play(){stop();PLAYING=true;$('#play').textContent='⏸ 멈춤';
+  Q=[];CH.blocks.forEach(function(b,i){if(b[0]==='p')Q.push({i:i,t:b[1]})});QI=-1;step()}
+$('#play').onclick=function(){PLAYING?stop():play()};
+$('#stopb').onclick=stop;
+$('#scope').value=load('bk_scope','ch');
+$('#scope').onchange=function(){save('bk_scope',this.value)};
+
+/* ---------- 화면 ---------- */
+function renderTOC(f){
+  f=(f||'').trim();var h='',last=null;
+  M.toc.forEach(function(t,i){
+    var hitc=!f||t.title.indexOf(f)>=0, hits=f?t.subs.filter(function(s){return s.indexOf(f)>=0}):[];
+    if(f&&!hitc&&!hits.length)return;
+    if(t.part&&t.part!==last){h+='<div class="part">'+esc(t.part)+'</div>';last=t.part}
+    h+='<div class="c'+(i===CI?' on':'')+'" data-i="'+i+'"><b>'+(t.no?t.no:'序')+'</b><span>'+esc(t.title)+'</span></div>';
+    var show=(i===CI?t.subs:hits);
+    if(show.length){h+='<ul class="sub">'+show.map(function(s){
+      return '<li data-i="'+i+'" data-s="'+esc(s)+'">'+esc(s)+'</li>'}).join('')+'</ul>'}
+  });
+  $('#toc').innerHTML=h||'<div style="color:var(--dim);font-size:12.5px;padding:6px">찾은 것이 없습니다.</div>';
+}
+function renderBody(jump){
+  var t=M.toc[CI];
+  var h='<h2 class="ct">'+esc(t.title)+'</h2><div class="cn">'+(t.no?'제 '+t.no+' 장':'서문')
+       +(t.part?' · '+esc(t.part):'')+'</div>';
+  CH.blocks.forEach(function(b,i){
+    if(b[0]==='h'){h+='<h3 class="sh" id="p'+i+'">'+esc(b[1])+'</h3>'}
+    else{h+='<div class="pa" id="p'+i+'"><div class="t">'+esc(b[1])+'</div>'
+        +'<button class="s" data-i="'+i+'" title="이 문단 듣기">🔊</button></div>'}
+  });
+  h+='<div class="nav"><button id="prev">← 이전 장</button><button id="next">다음 장 →</button></div>';
+  h+='<div class="copy">'+esc(M.title)+' · '+esc(M.orig||'')+'<br>지은이 '+esc(M.author)
+    +' · 옮긴이 '+esc(M.translator)+' · '+esc(M.publisher||'')+' '+esc(M.year||'')
+    +'<br>이 번역문의 권리는 옮긴이에게 있습니다. 인용은 출처를 밝히고 해 주세요.</div>';
+  $('#wrap').innerHTML=h;
+  $('#prev').onclick=function(){if(CI>0)go(CI-1)};
+  $('#next').onclick=function(){if(CI+1<M.toc.length)go(CI+1)};
+  document.querySelectorAll('.pa .s').forEach(function(b){
+    b.onclick=function(){stop();speak(CH.blocks[+this.dataset.i][1])}});
+  if(jump){var els=document.querySelectorAll('.sh');
+    for(var i=0;i<els.length;i++){if(els[i].textContent===jump){els[i].scrollIntoView({block:'start'});return}}}
+  window.scrollTo(0,0);
+}
+function go(i,cb,jump){
+  stop();CI=i;save('bk_pos',String(i));
+  fetch(M.toc[i].file).then(function(r){return r.json()}).then(function(d){
+    CH=d;renderTOC($('#q').value);renderBody(jump);
+    if(window.innerWidth<=900)$('#side').classList.remove('open');
+    cb&&cb();
+  }).catch(function(){$('#wrap').innerHTML='<div class="note">이 장을 불러오지 못했습니다.</div>'});
+}
+$('#toc').addEventListener('click',function(e){
+  var li=e.target.closest('li[data-s]');if(li){go(+li.dataset.i,null,li.dataset.s);return}
+  var c=e.target.closest('.c[data-i]');if(c){go(+c.dataset.i)}
+});
+$('#q').oninput=function(){renderTOC(this.value)};
+$('#burger').onclick=function(){$('#side').classList.toggle('open')};
+$('#home').onclick=function(){location.href='/'};
+var W=['820px','1060px','1340px','100%'],wi=+load('bk_w','1');
+function aw(){document.documentElement.style.setProperty('--mw',W[wi]);save('bk_w',wi)}
+$('#wide').onclick=function(){wi=(wi+1)%W.length;aw()};aw();
+var F=['16px','18px','20px','23px'],fi=+load('bk_fs','1');
+function af(){document.documentElement.style.setProperty('--fs',F[fi]);save('bk_fs',fi)}
+$('#fs').onclick=function(){fi=(fi+1)%F.length;af()};af();
+function ad(){document.documentElement.setAttribute('data-dark',load('bk_dark','0'))}
+$('#dark').onclick=function(){save('bk_dark',load('bk_dark','0')==='1'?'0':'1');ad()};ad();
+
+fetch('meta.json').then(function(r){return r.json()}).then(function(d){
+  M=d;document.title=d.title+' — '+d.author;
+  $('#btitle').textContent=d.title;
+  $('#bby').textContent=d.author+' 지음 · '+d.translator+' 옮김';
+  var p=Math.min(+load('bk_pos','0')||0,d.toc.length-1);
+  go(p);
+}).catch(function(){$('#wrap').innerHTML='<div class="note">meta.json 을 불러오지 못했습니다.</div>'});
+</script></body></html>
