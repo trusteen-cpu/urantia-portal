@@ -51,6 +51,8 @@ html[data-dark="1"] h3.st{color:#cfe0ff}
 .play button.g{background:var(--gold);color:#20242c;border-color:var(--gold);font-weight:600}
 .note{background:rgba(201,162,39,.12);border:1px solid var(--gold);border-radius:10px;padding:10px 13px;font-size:13px;margin-bottom:18px;line-height:1.6}
 .hit{font-size:12.5px;color:var(--dim);padding:3px 8px}
+.nbtn{background:var(--card);border:1px solid var(--gold);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.nbtn:hover{background:rgba(201,162,39,.18)}
 @media(max-width:900px){
  #burger{display:inline-block}
  #side{position:fixed;left:0;top:52px;z-index:25;transform:translateX(-102%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.3)}
@@ -266,6 +268,30 @@ document.addEventListener('keydown',function(e){
   if(e.shiftKey&&e.code==='ArrowUp')prev();
 });
 
+function showNote(){
+  var h='<div class="note" id="vnote">목소리 칸의 <b>기본 음성</b>은 어느 브라우저에서나 똑같이 들립니다. '
+    +'남자 목소리나 더 자연스러운 음성을 쓰시려면 <b>마이크로소프트 엣지</b>로 여신 뒤 InJoon(남)·SunHi(여)를 고르세요.'
+    +'<div style="margin-top:8px;display:flex;gap:7px;flex-wrap:wrap;align-items:center">'
+    +'<button id="copyurl" class="nbtn">이 쪽 주소 복사</button>'
+    +'<button id="openedge" class="nbtn">엣지로 열기</button>'
+    +'<button id="hidenote" class="nbtn">다시 보지 않기</button>'
+    +'<span id="copied" style="color:var(--dim);font-size:12px"></span></div></div>';
+  if(load('ub_note','')==='off')return;
+  $('#wrap').insertAdjacentHTML('afterbegin',h);
+  $('#copyurl').onclick=function(){
+    var u=location.href;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(u).then(function(){$('#copied').textContent='복사했습니다 — 엣지 주소창에 붙여넣으세요'});
+    }else{
+      window.prompt('이 주소를 복사해서 엣지 주소창에 붙여넣으세요', u);
+    }
+  };
+  $('#openedge').onclick=function(){
+    location.href='microsoft-edge:'+location.href;
+    setTimeout(function(){$('#copied').textContent='엣지가 안 열리면 [이 쪽 주소 복사]를 쓰세요'},1200);
+  };
+  $('#hidenote').onclick=function(){save('ub_note','off');var n=$('#vnote');if(n)n.remove()};
+}
 fetch('book.json').then(function(r){return r.json()}).then(function(d){
   BOOK=d;
   var pos=load('ub_pos','0,0').split(',');
@@ -273,9 +299,7 @@ fetch('book.json').then(function(r){return r.json()}).then(function(d){
   var s=Math.min(+pos[1]||0,BOOK.papers[p].sections.length-1);
   CUR={p:p,s:s};renderTOC('');renderBody();
   if(!VOICES.length){setTimeout(fillVoices,700)}
-  if(true){
-    $('#wrap').insertAdjacentHTML('afterbegin','<div class="note">목소리 칸의 <b>기본 음성</b>은 어느 브라우저에서나 똑같이 들립니다. 남자 목소리나 더 자연스러운 음성을 쓰시려면 <b>마이크로소프트 엣지</b>로 여신 뒤 InJoon(남)·SunHi(여)를 고르세요.</div>');
-  }
+  showNote();
 }).catch(function(){
   $('#wrap').innerHTML='<div class="note">book.json 을 불러오지 못했습니다. index.html 을 직접 더블클릭하지 마시고 <b>2_미리보기</b> 로 열어 주세요.</div>';
 });
