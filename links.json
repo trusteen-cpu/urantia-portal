@@ -306,8 +306,11 @@
         },
         {
           "name": "유란시아서 소개 동영상",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/53",
-          "text": ""
+          "url": "/intro.html"
+        },
+        {
+          "name": "유란시아서 소개 동영상 (카페)",
+          "url": "/intro.html"
         },
         {
           "name": "유란시아서 요약 동영상",
