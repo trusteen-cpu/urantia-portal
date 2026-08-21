@@ -44,37 +44,58 @@
   },
   "groups": [
     {
+      "id": "join",
+      "title": "참여 게시판",
       "color": "teal",
+      "icon": "💬",
       "preview": 40,
-      "title": "독자 게시판",
       "items": [
         {
-          "member": false,
-          "name": "자유게시판 ",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1"
-        },
-        {
-          "member": false,
-          "name": "독자게시판 ",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/13"
-        },
-        {
-          "member": false,
           "name": "가입인사",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9"
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9",
+          "member": true
         },
         {
-          "member": false,
-          "name": "유란시아서 Q&A",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50"
+          "name": "자유게시판",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1",
+          "member": true
         },
         {
-          "member": false,
+          "name": "오늘의 강론",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/79",
+          "member": true
+        },
+        {
+          "name": "오늘의 묵상 ",
+          "url": "/devotion/",
+          "member": true
+        },
+        {
+          "name": "유란시아서 심층주제연구",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/49",
+          "member": true
+        },
+        {
+          "name": "명상록",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/51",
+          "member": true
+        },
+        {
+          "name": "쇼츠명상록",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/70",
+          "member": true
+        },
+        {
+          "name": "유란시아서 Q & A",
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50",
+          "member": true
+        },
+        {
           "name": "공지 사항",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10"
+          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10",
+          "member": true
         }
-      ],
-      "id": "readerbulletin"
+      ]
     },
     {
       "id": "study",
@@ -627,60 +648,6 @@
         {
           "name": "네이버 블로그",
           "url": "https://blog.naver.com/trusteen"
-        }
-      ]
-    },
-    {
-      "id": "join",
-      "title": "참여 게시판",
-      "color": "teal",
-      "icon": "💬",
-      "preview": 40,
-      "items": [
-        {
-          "name": "가입인사",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/9",
-          "member": true
-        },
-        {
-          "name": "자유게시판",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/1",
-          "member": true
-        },
-        {
-          "name": "오늘의 강론",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/79",
-          "member": true
-        },
-        {
-          "name": "오늘의 묵상 ",
-          "url": "/devotion/",
-          "member": true
-        },
-        {
-          "name": "유란시아서 심층주제연구",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/49",
-          "member": true
-        },
-        {
-          "name": "명상록",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/51",
-          "member": true
-        },
-        {
-          "name": "쇼츠명상록",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/70",
-          "member": true
-        },
-        {
-          "name": "유란시아서 Q & A",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/50",
-          "member": true
-        },
-        {
-          "name": "공지 사항",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10",
-          "member": true
         }
       ]
     },
