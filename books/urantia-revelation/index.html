@@ -64,6 +64,7 @@ html[data-dark="1"] h3.sh{color:#cfe0ff}
  <button class="btn g" id="play">▶ 듣기</button>
  <button class="btn" id="stopb">■ 중지</button>
  <select id="voice" title="목소리"></select>
+ <button class="btn" id="spd" title="읽는 속도">1.0×</button>
  <button class="btn" id="wide">↔ 폭</button>
  <button class="btn" id="fs">가</button>
  <button class="btn" id="dark">◐</button>
@@ -124,7 +125,14 @@ function chunks(t){var out=[],buf='';
     while(s.length>190){out.push(s.slice(0,190));s=s.slice(190)}
     if((buf+' '+s).trim().length>190){if(buf)out.push(buf.trim());buf=s}else{buf=(buf+' '+s).trim()}});
   if(buf)out.push(buf); return out.length?out:[t]}
-function gurl(t){return 'https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=ko&ttsspeed=0.90&q='+encodeURIComponent(t)}
+var SPEEDS=[0.8,1.0,1.2,1.5,1.8],si=+load('bk_spd','1');
+function rate(){return SPEEDS[si]||1}
+function applySpeed(){
+  $('#spd').textContent=rate().toFixed(1)+'×';
+  try{AUD.playbackRate=rate()}catch(e){}
+  save('bk_spd',si);
+}
+function gurl(t){return 'https://translate.googleapis.com/translate_tts?ie=UTF-8&client=gtx&tl=ko&ttsspeed=1&q='+encodeURIComponent(t)}
 function speak(txt,cb){
   var g=GEN,t=clean(txt);
   if($('#voice').value==='g'&&!GFAIL){
@@ -134,11 +142,13 @@ function speak(txt,cb){
       if(i>=ps.length){cb&&cb();return}
       AUD.onended=function(){if(g!==GEN)return;i++;nx()};
       AUD.onerror=function(){if(g!==GEN)return;GFAIL=true;if(VOICES.length){$('#voice').value='0';speak(t,cb)}else{cb&&cb()}};
-      AUD.src=gurl(ps[i]);var p=AUD.play();if(p&&p.catch)p.catch(function(){if(g===GEN){GFAIL=true;cb&&cb()}});
+      AUD.src=gurl(ps[i]);
+      AUD.playbackRate=rate();
+      var p=AUD.play();if(p&&p.catch)p.catch(function(){if(g===GEN){GFAIL=true;cb&&cb()}});
     };nx();return;
   }
   var u=new SpeechSynthesisUtterance(t);var v=VOICES[+$('#voice').value];if(v)u.voice=v;
-  u.lang='ko-KR';u.rate=.92;
+  u.lang='ko-KR';u.rate=rate();
   u.onend=function(){if(g===GEN)cb&&cb()};u.onerror=function(){if(g===GEN)cb&&cb()};
   SPK.speak(u);
 }
@@ -233,6 +243,9 @@ $('#toc').addEventListener('click',function(e){
 $('#q').oninput=function(){renderTOC(this.value)};
 $('#burger').onclick=function(){$('#side').classList.toggle('open')};
 $('#home').onclick=function(){location.href='/'};
+$('#spd').onclick=function(){si=(si+1)%SPEEDS.length;applySpeed()};
+AUD.addEventListener('loadedmetadata',function(){AUD.playbackRate=rate()});
+applySpeed();
 var W=['820px','1060px','1340px','100%'],wi=+load('bk_w','1');
 function aw(){document.documentElement.style.setProperty('--mw',W[wi]);save('bk_w',wi)}
 $('#wide').onclick=function(){wi=(wi+1)%W.length;aw()};aw();
