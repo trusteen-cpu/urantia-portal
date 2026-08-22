@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아서 강의 (영어)</title>
+<style>
+  body { margin:0; background:#fafafa; color:#222; font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif; }
+  header { text-align:center; padding:36px 16px 8px; }
+  header h1 { margin:0 0 6px; font-size:28px; font-weight:700; }
+  header p { margin:0; color:#666; font-size:15px; }
+  #ub-intro { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; margin:24px auto; max-width:1140px; padding:0 16px; }
+  #ub-intro a { text-decoration:none; color:#222; display:block; }
+  #ub-intro .thumb { position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:10px; background:#000; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+  #ub-intro .thumb img { width:100%; height:100%; object-fit:cover; transition:transform .25s; }
+  #ub-intro a:hover img { transform:scale(1.05); }
+  #ub-intro .thumb::after { content:"▶"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:44px; background:rgba(0,0,0,.25); opacity:0; transition:opacity .25s; }
+  #ub-intro a:hover .thumb::after { opacity:1; }
+  #ub-intro .num { position:absolute; top:8px; left:8px; background:rgba(0,0,0,.7); color:#fff; font-size:12px; padding:2px 7px; border-radius:4px; }
+  #ub-intro .dur { position:absolute; right:8px; bottom:8px; background:rgba(0,0,0,.8); color:#fff; font-size:12px; padding:2px 6px; border-radius:4px; }
+  #ub-intro .title { margin-top:9px; font-size:15px; line-height:1.45; }
+  footer { text-align:center; padding:12px 16px 48px; font-size:14px; }
+  footer a { color:#c00; text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Urantia Book Lectures (English)</h1>
+  <p>유란시아서 영어 강의 75편 · 영상을 누르면 유튜브에서 재생됩니다</p>
+</header>
+
+<div id="ub-intro"></div>
+
+<footer>
+  <a href="https://www.youtube.com/playlist?list=PLWVgB5d6npnPkh63naGCb0za6yPoKY93K" target="_blank" rel="noopener">▶ 유튜브에서 재생목록 전체 보기</a>
+</footer>
+
+<script>
+  const UB_LIST = "PLWVgB5d6npnPkh63naGCb0za6yPoKY93K";
+  const UB_VIDEOS = [
+    ["tv6ABeW9weY","Urantia Truth 1. God",""],
+    ["OMGbFoX6X84","Urantia Truth 2. Level of Reality","5:24"],
+    ["5mDZgfKvKFI","Urantia Truth 3. Diversification of First Source and Center","2:59"],
+    ["Cfp2OHBD_Ck","Urantia Truth 4. Universal Realities Manifested in Mortal Human","3:35"],
+    ["fBdfQFNGVJY","Urantia Truth 5. Personality","3:23"],
+    ["_HMoscVqZEM","Urantia Truth 6. Death","2:57"],
+    ["Y8oLr7gYeFk","Urantia Truth 7. Trinity and Unity","2:23"],
+    ["jkVqwMKmxhA","Urantia Truth 8. Thought Adjuster","3:55"],
+    ["ulkfr60onHM","Urantia Truth 9. Descending Sons of God","4:28"],
+    ["YaMAWwEe_e4","Urantia Truth 10. Creator Son","2:24"],
+    ["Xnj7iWGFZqM","Urantia Truth 11. Trinity of Trinities","4:36"],
+    ["zDwK--fiqW0","Urantia Truth 12. Seven Absolutes of Infinity","4:51"],
+    ["8_0GxqiAQeE","Urantia Truth 13. God the Sevenfold","4:34"],
+    ["lHlLH83YRVc","The First Source and Universe","2:48"],
+    ["29Q1cQfElcs","15. Seven Steps to Paradise Ascension","7:27"],
+    ["1J2qQ9xGTCQ","Urantia Truth 16. Planetary Mortal Epochs","4:10"],
+    ["aAnLrnurMyg","Urantia Truth 17. Flavor of Divinity","1:08"],
+    ["3t19EzldwIM","Urantia Truth 18. Supreme Being","5:44"],
+    ["dMYqPWaXWZc","Urantia Truth 19. Three Absolutes","1:49"],
+    ["LjYfKTwu39Q","Urantia Truth 20. 5 Epochal Teachings","5:34"],
+    ["wi1Jo7HDsqw","Urantia Truth 21. Dispersion of Races","8:24"],
+    ["fgxY-auhoRM","Urantia Truth 22. 7 Jubilees in Universe Career","1:24"],
+    ["WkZtIUleJmU","Urantia Truth 21. Dispersion of the Races (2)","8:43"],
+    ["ABcfAY3LuFg","Urantia Truth 23. Universal Reality Manifested in Human","3:03"],
+    ["AtH8nVPTVNM","Urantia Truth 24. Universe Reality","2:52"],
+    ["Jc-L--j66EE","Urantia Truth 25. Subdivision of Reality by Time and Space","2:29"],
+    ["EggCr6NJ47w","Urantia Truth 26. Two Post-Havona Trinities","4:53"],
+    ["tnGzFwg7UuM","Urantia Truth 27. Actuality of the Existence of God","2:04"],
+    ["SlHovGbJQLA","Urantia Truth 28. Seven Psychic Circles","6:42"],
+    ["Q9x5Dw7Sroc","Urantia Truth 29. Seven Levels of Universe Destiny","3:54"],
+    ["5GN1dy7nA0w","Urantia Truth 30. Limitation of the Power of God","1:54"],
+    ["5DOPdWOspro","Urantia Truth 31. What God Is Like","2:10"],
+    ["sg__GD31G-8","Re-Imagining Jesus: Discovering the Human Hero (UrantiaBookFilms)","1:11:14"],
+    ["EypbiQN50-g","Urantia Truth 32. Plan of Perfection","5:14"],
+    ["5WaechqWtLw","Urantia Truth 33. 3 Separate Teachings in Christianity","1:55"],
+    ["lrjkkFUpXkY","Urantia Truth 34. Sacred Spheres of the Father","6:15"],
+    ["o5iaU075zyg","Urantia Truth 35. From Life Plantation to Arrival of Thought Adjuster","6:02"],
+    ["jZSAjUrBOhM","Urantia Truth 36. The Space Respiration","2:33"],
+    ["0tJ814ff2II","Urantia Truth 37. 4 Absolute Gravities in Master Universe","3:51"],
+    ["OCtnHGpZ-aQ","Urantia Truth 38. 9 Creatures' Life Inevitabilities","2:55"],
+    ["nL_JAUMH8Pk","Urantia Truth 39. Meaning of the Word God","2:23"],
+    ["d9WK2qVz1TE","Urantia Truth 40. 7 Levels of Deity Function","1:40"],
+    ["BcW_44H96Nc","Urantia Truth 41. The Sons of God","4:17"],
+    ["6kSaj1FApfU","Urantia Truth 42. Chronicles of Urantia","3:01"],
+    ["nj-7hIej3pA","Urantia Truth 43. Perfection Level","1:42"],
+    ["dFP4AS5OZBI","Urantia Truth 44. The Core Truth of Urantia Book","3:43"],
+    ["2YBPbD82jVo","Urantia Truth 45. Ascending Sons of God","6:52"],
+    ["zPWTt0U1Si8","Urantia Truth 46. The Ministering Spirits of Superuniverse","4:55"],
+    ["kGUHzrCsZ4M","Urantia Truth 47. The Beginning and Diversification of Deity","4:07"],
+    ["LnxvlH58NuQ","Urantia Truth 48. Man, Image of God","3:22"],
+    ["oaxWWomWbq0","Urantia Truth 49. Human Being and Supreme Being","3:00"],
+    ["JQFLpnqyFIU","Urantia Truth 50. 3 Paradise Domains","3:50"],
+    ["FYCV5Ba_5Rg","Urantia Truth 51. The Origin and Destiny of Human Being","10:42"],
+    ["--QsRfjSIJ0","Urantia Truth 52. 3 Responsive States of Energy","4:28"],
+    ["5DVxi6fujyo","Urantia Truth 53. 4 Careers of the Master Universe","2:21"],
+    ["QOSp1z7s-Jc","Urantia Truth 54. 4 Space Motions","6:04"],
+    ["hUHkBGenUiU","Urantia Truth 55. 6 Space Levels","7:32"],
+    ["0ZViBi7B1yQ","Urantia Truth 56. 3 Satisfactions from Religion","4:46"],
+    ["TsIgwGtkdJE","75 우주 동력 감독자","7:43"],
+    ["7ccJ0hDIDAE","Urantia Truth 57. 3 Relative Levels of Finite Reality","7:50"],
+    ["xMHlOrcOLCg","57. 3 Functioning Levels of Finite Reality","8:39"],
+    ["uJA6ld31tdQ","58. The Functional Family of Third Source and Center","2:19"],
+    ["hf9Sj5hnEDw","59. 7 Space Conditions and Motions","4:22"],
+    ["Zc1hki8W5TM","60. Basic Life Groups in Havona","4:07"],
+    ["D4SCMg_U0t8","62. The Organization of the Superuniverse","6:24"],
+    ["8dntx4Xsamk","63. Multiple Revolutionary Movements of Stars","6:30"],
+    ["dCFo7fY1aKY","The Beginning of the World and the Relationship among Gods","9:00"],
+    ["Ht5CIlEE_K0","The Beginning of the World 1-2","7:53"],
+    ["J-wusHHoFtw","From Andon & Fonta to Jesus Christ","33:56"],
+    ["IuA7j_gYAP8","Paper 16 The Seven Master Spirits","5:25"],
+    ["ukQ3T2OdfE8","Understanding Evolutionary and Revelatory Religions","9:53"],
+    ["gbcMLkkUEQA","2nd Origin and Root of the Christianity",""],
+    ["EOKKYaRqOSo","Unqualified Absolute & Universal Father","4:03"],
+    ["r9gt6g8kIts","The Establishment and Challenges of Christianity","11:29"],
+    ["xGAcUj1Wl5M","The Completion Process of the Bible","5:51"]
+  ];
+  const ubGrid = document.getElementById("ub-intro");
+  UB_VIDEOS.forEach(([id, title, dur], i) => {
+    const a = document.createElement("a");
+    a.href = `https://www.youtube.com/watch?v=${id}&list=${UB_LIST}`;
+    a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = `
+      <div class="thumb">
+        <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="${title}" loading="lazy">
+        <span class="num">${i + 1}</span>${dur ? `<span class="dur">${dur}</span>` : ""}
+      </div>
+      <div class="title">${title}</div>`;
+    ubGrid.appendChild(a);
+  });
+</script>
+</body>
+</html>
