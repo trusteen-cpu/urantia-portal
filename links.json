@@ -424,6 +424,18 @@
               "member": false,
               "name": "제 10 강 하나님의 아들들 ",
               "url": "https://urantiareaders.com/learn/w10.html"
+            },
+            {
+              "member": false,
+              "url": "",
+              "name": "제 12 강 창조자 아들",
+              "children": [
+                {
+                  "member": false,
+                  "name": "인터렉티브 페이지",
+                  "url": "https://urantiareaders.com/learn/w12.html"
+                }
+              ]
             }
           ]
         },
