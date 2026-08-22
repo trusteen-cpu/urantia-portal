@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>예수의 삶과 가르침 강의</title>
+<style>
+  body { margin:0; background:#fafafa; color:#222; font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif; }
+  header { text-align:center; padding:36px 16px 8px; }
+  header h1 { margin:0 0 6px; font-size:28px; font-weight:700; }
+  header p { margin:0; color:#666; font-size:15px; }
+  #ub-intro { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:22px; margin:24px auto; max-width:1140px; padding:0 16px; }
+  #ub-intro a { text-decoration:none; color:#222; display:block; }
+  #ub-intro .thumb { position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:10px; background:#000; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+  #ub-intro .thumb img { width:100%; height:100%; object-fit:cover; transition:transform .25s; }
+  #ub-intro a:hover img { transform:scale(1.05); }
+  #ub-intro .thumb::after { content:"▶"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:44px; background:rgba(0,0,0,.25); opacity:0; transition:opacity .25s; }
+  #ub-intro a:hover .thumb::after { opacity:1; }
+  #ub-intro .num { position:absolute; top:8px; left:8px; background:rgba(0,0,0,.7); color:#fff; font-size:12px; padding:2px 7px; border-radius:4px; }
+  #ub-intro .dur { position:absolute; right:8px; bottom:8px; background:rgba(0,0,0,.8); color:#fff; font-size:12px; padding:2px 6px; border-radius:4px; }
+  #ub-intro .title { margin-top:9px; font-size:15px; line-height:1.45; }
+  footer { text-align:center; padding:12px 16px 48px; font-size:14px; }
+  footer a { color:#c00; text-decoration:none; }
+  footer a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>예수의 삶과 가르침</h1>
+  <p>유란시아서 4부 강의 · 영상을 누르면 유튜브에서 재생됩니다</p>
+</header>
+
+<div id="ub-intro"></div>
+
+<footer>
+  <a href="https://www.youtube.com/playlist?list=PLWVgB5d6npnNx586_tUHWwi0MVyaE0Z7X" target="_blank" rel="noopener">▶ 유튜브에서 재생목록 전체 보기</a>
+</footer>
+
+<script>
+  const UB_LIST = "PLWVgB5d6npnNx586_tUHWwi0MVyaE0Z7X";
+  const UB_VIDEOS = [
+    ["wzEcfFL36Ns","120편 미가엘의 유란시아 증여 1","12:54"],
+    ["2TJOPNBx0yg","120편 미가엘의 유란시아 증여 2","10:30"],
+    ["XSwCjg_8CVA","120편 미가엘의 유란시아 증여 3",""],
+    ["g8eFLt8jFVc","121편 1. 그리스도 이후 1세기 신앙","10:36"],
+    ["92xBx2Cbd3w","121편 3. 히브리 종교, 유대인과 이방인","11:47"],
+    ["dmP6Mx_Laq0","121편 4. 이전의 기록들","11:34"],
+    ["RRQoc0tvles","122편 2. 요셉의 꿈, 예수의 부모","12:11"],
+    ["6qUFv5UO3Wg","122편 3. 베들레헴 여행, 예수의 탄생, 성전 봉헌","8:04"],
+    ["whCopMgsz2k","122편 4. 성전 봉헌, 헤롯의 행위","7:02"],
+    ["7F6RwhkFSU0","123편 1. 나사렛으로 돌아옴","8:51"],
+    ["X4SFAejkIBM","123편 2. 5살 되던 해, 6살 되던 해","12:37"],
+    ["7v6ke63gpdg","123편 3. 일곱 살 때, 나사렛 시절","12:25"],
+    ["N9c1i6s-aLM","123편 4. 8살 되던 해","6:22"],
+    ["pqswx8HKLZg","124편 1. 예수의 9살 되던 해 (서기 3년)","7:17"],
+    ["VAVj_NBXxiw","124편 2. 예수가 10살, 11살 되던 해","10:51"],
+    ["M1VHQdnXIaU","124편 3. 열두 살, 열세 살이 되던 해",""],
+    ["SdOoJySZPqc","124편 4. 예수의 삶과 가르침","9:11"],
+    ["F5FD_xi1GBQ","125편 1부. 예수의 삶과 가르침","15:31"],
+    ["zGMY-z_5Xa4","새로운 예수상 총합편","1:15:43"],
+    ["cvqDo1lpImo","만약에","2:15"],
+    ["rfsv-mkwqro","예수 – 유란시아 계시 – 진리와 아름다움","10:00"]
+  ];
+  const ubGrid = document.getElementById("ub-intro");
+  UB_VIDEOS.forEach(([id, title, dur], i) => {
+    const a = document.createElement("a");
+    a.href = `https://www.youtube.com/watch?v=${id}&list=${UB_LIST}`;
+    a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = `
+      <div class="thumb">
+        <img src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="${title}" loading="lazy">
+        <span class="num">${i + 1}</span>${dur ? `<span class="dur">${dur}</span>` : ""}
+      </div>
+      <div class="title">${title}</div>`;
+    ubGrid.appendChild(a);
+  });
+</script>
+</body>
+</html>
