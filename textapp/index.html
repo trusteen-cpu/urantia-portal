@@ -61,6 +61,33 @@ html[data-dark="1"] h3.st{color:#cfe0ff}
  header h1{font-size:14px}
 }
 </style></head><body>
+<script>
+// 카카오톡 인앱 브라우저에서는 이 페이지가 7MB가 넘는 본문 데이터 파일(book.js)을
+// 통째로 내려받는데, 이 과정이 멈추거나("불러오는 중" 무한 대기) 20초 타임아웃
+// 메시지조차 뜨지 않는 경우가 있습니다. 카카오톡이 자체 제공하는
+// "다른 브라우저로 열기" 메뉴를 이용하도록 화면 전체에 안내합니다.
+(function () {
+  var ua = navigator.userAgent || '';
+  if (!/KAKAOTALK/i.test(ua)) return;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('div');
+    b.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#f7f5f0;' +
+      'display:flex;align-items:center;justify-content:center;padding:24px;' +
+      'font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;text-align:center';
+    b.innerHTML =
+      '<div style="max-width:360px;border:2px solid #c9a227;border-radius:14px;' +
+      'padding:24px 20px;background:#fffdf5">' +
+      '<div style="font-size:16px;font-weight:800;color:#20242c;margin-bottom:14px;line-height:1.5">' +
+      '카카오톡 브라우저에서는<br>본문이 정상적으로 열리지 않습니다</div>' +
+      '<div style="font-size:14px;color:#6b7280;line-height:1.7">' +
+      '화면 아래쪽(또는 위쪽)의 <b style="color:#c9a227">점 3개(⋮)</b> 또는 ' +
+      '<b style="color:#c9a227">공유</b> 아이콘을 눌러<br>' +
+      '<b style="color:#c9a227">"다른 브라우저로 열기"</b>를 선택해 주세요.<br>' +
+      '(아이폰은 <b style="color:#c9a227">"Safari로 열기"</b>)</div></div>';
+    document.body.appendChild(b);
+  });
+})();
+</script>
 <header>
  <button class="btn" id="burger">☰ 목차</button>
  <h1>유란시아서 <span style="opacity:.6;font-weight:400">한국어 교정본</span></h1>
