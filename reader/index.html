@@ -471,27 +471,30 @@ mark.hl-note{background:#cfe3ff;color:inherit;border-bottom:2px solid #3b6fb0;
 <body>
 <script>
 // 카카오톡 인앱 브라우저에서는 이 페이지가 하는 대용량(6MB+) 텍스트 압축 해제 작업이
-// 멈추거나("불러오는 중" 무한 대기) 응답을 다운로드로 잘못 처리하는 경우가 있어,
-// 무거운 작업을 시작하기 전에 외부 브라우저로 안내/전환합니다.
+// 멈추거나("불러오는 중" 무한 대기) 응답을 다운로드로 잘못 처리하는 경우가 있습니다.
+// 자바스크립트로 외부 브라우저를 강제 실행(intent:// 등)해도 기본 브라우저가
+// 크롬이 아닌 폰(삼성 인터넷 등)에서는 조용히 실패하므로, 대신 카카오톡이
+// 자체 제공하는 "다른 브라우저로 열기" 메뉴를 이용하도록 화면 전체에 안내합니다.
 (function () {
   var ua = navigator.userAgent || '';
   if (!/KAKAOTALK/i.test(ua)) return;
-  var isAndroid = /Android/i.test(ua);
-  var isIOS = /iPhone|iPad|iPod/i.test(ua);
-  if (isAndroid) {
-    var target = location.href.replace(/^https?:\/\//, '');
-    location.href = 'intent://' + target + '#Intent;scheme=https;package=com.android.chrome;end';
-  } else if (isIOS) {
-    document.addEventListener('DOMContentLoaded', function () {
-      var b = document.createElement('div');
-      b.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;' +
-        'background:#8b6914;color:#fff;padding:12px 16px;font-size:13px;' +
-        'text-align:center;line-height:1.5;font-family:sans-serif';
-      b.innerHTML = '카카오톡 브라우저에서는 리더가 느리거나 멈출 수 있습니다.<br>' +
-        '오른쪽 아래 <b>공유(⬆)</b> 버튼을 눌러 <b>"Safari로 열기"</b>를 선택해 주세요.';
-      document.body.prepend(b);
-    });
-  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('div');
+    b.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#fdf8f0;' +
+      'display:flex;align-items:center;justify-content:center;padding:24px;' +
+      'font-family:"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;text-align:center';
+    b.innerHTML =
+      '<div style="max-width:360px;border:2px solid #8b6914;border-radius:14px;' +
+      'padding:24px 20px;background:#fffaf0">' +
+      '<div style="font-size:16px;font-weight:800;color:#2c1f0e;margin-bottom:14px;line-height:1.5">' +
+      '카카오톡 브라우저에서는<br>리더가 정상적으로 열리지 않습니다</div>' +
+      '<div style="font-size:14px;color:#5a4020;line-height:1.7">' +
+      '화면 아래쪽(또는 위쪽)의 <b style="color:#8b6914">점 3개(⋮)</b> 또는 ' +
+      '<b style="color:#8b6914">공유</b> 아이콘을 눌러<br>' +
+      '<b style="color:#8b6914">"다른 브라우저로 열기"</b>를 선택해 주세요.<br>' +
+      '(아이폰은 <b style="color:#8b6914">"Safari로 열기"</b>)</div></div>';
+    document.body.appendChild(b);
+  });
 })();
 </script>
 <!-- 로딩 -->
