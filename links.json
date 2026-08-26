@@ -445,6 +445,11 @@
                   "name": "창조자 아들  일곱번 증여 인포그래",
                   "image": "/images/그리스도_미가엘의_칠중_증여_로드맵.png",
                   "files": []
+                },
+                {
+                  "member": false,
+                  "name": "카페 게시판",
+                  "url": "https://cafe.naver.com/f-e/cafes/31723737/menus/15?viewType=L"
                 }
               ]
             }
