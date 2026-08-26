@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘의 취침 묵상 2026-08-26 아버지의 모습을 바라보다</title>
+<style>
+:root{--g1:#0b1020;--g2:#121a33;--g3:#1c2647;--ink:#e8ecf6;--dim:#9fb0d0;--gold:#c8b06a;--panel:rgba(18,26,51,.42)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);
+ font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+ background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%);}
+canvas#sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:26px 18px 120px}
+header{text-align:center;padding:14px 0 6px}
+header .lb{color:var(--gold);letter-spacing:.22em;font-size:12px}
+header h1{margin:10px 0 4px;font-size:27px;letter-spacing:-.01em}
+header .src{color:var(--dim);font-size:13px}
+.panel{background:var(--panel);border:1px solid rgba(200,176,106,.25);border-radius:16px;
+ padding:20px 20px 22px;margin:18px 0}
+.panel h2{margin:0 0 12px;font-size:15px;color:var(--gold);letter-spacing:.16em}
+.v{margin:0 0 14px;line-height:1.95;font-size:17px;text-align:justify;word-break:keep-all}
+.v .c{color:var(--gold);font-size:12.5px;margin-right:7px}
+.ly{white-space:pre-wrap;line-height:1.9;font-size:16px}
+.ly .tag{color:var(--gold)}
+.pr{white-space:pre-wrap;line-height:2;font-size:17px;text-align:center}
+.now{outline:1px solid rgba(200,176,106,.5);border-radius:12px;
+ background:rgba(200,176,106,.10)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;
+ background:rgba(8,12,26,.86);border-top:1px solid rgba(200,176,106,.3);
+ padding:9px 12px 12px}
+.bar .in{max-width:820px;margin:0 auto}
+.seg{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.seg button{background:none;border:1px solid rgba(200,176,106,.35);color:var(--dim);
+ border-radius:999px;padding:5px 13px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--gold);color:#141625;border-color:var(--gold);font-weight:700}
+.pg{height:5px;background:rgba(255,255,255,.14);border-radius:99px;cursor:pointer;margin:7px 0}
+.pg i{display:block;height:100%;width:0;background:var(--gold);border-radius:99px}
+.ctl{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap}
+.ctl button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+ color:var(--ink);border-radius:999px;padding:7px 15px;font-size:13.5px;cursor:pointer;font-family:inherit}
+.ctl button.main{background:var(--gold);color:#141625;border-color:var(--gold);font-weight:700}
+.ov{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;
+ background:rgba(6,9,20,.9);text-align:center;padding:24px}
+.ov div{max-width:420px}
+.ov h2{color:var(--gold);font-size:20px;margin:0 0 10px}
+.ov p{color:var(--dim);font-size:14px;line-height:1.8}
+.ov button{margin-top:16px;background:var(--gold);color:#141625;border:0;border-radius:999px;
+ padding:12px 30px;font-size:15px;cursor:pointer;font-family:inherit;font-weight:700}
+footer{text-align:center;color:var(--dim);font-size:12px;padding:26px 0 0}
+</style></head><body>
+<canvas id="sky"></canvas>
+<div class="wrap">
+  <header>
+    <div class="lb">오늘의 취침 묵상</div>
+    <h1 id="ttl"></h1>
+    <div class="src" id="src"></div>
+  </header>
+  <section class="panel" id="p-reading"><h2>낭독</h2><div id="reading"></div></section>
+  <section class="panel" id="p-sermon"><h2>강론</h2><div id="sermon"></div></section>
+  <section class="panel" id="p-song"><h2>노래</h2><div class="ly" id="song"></div></section>
+  <section class="panel" id="p-prayer"><h2>기도</h2><div class="pr" id="prayer"></div></section>
+  <footer id="ft"></footer>
+</div>
+<div class="bar"><div class="in">
+  <div class="seg">
+    <button data-i="0">낭독</button><button data-i="1">강론</button>
+    <button data-i="2">노래</button><button data-i="3">기도</button>
+  </div>
+  <div class="pg" id="pg"><i id="pgi"></i></div>
+  <div class="ctl">
+    <button id="prev">◀ 이전</button>
+    <button id="play" class="main">▶ 재생</button>
+    <button id="next">건너뛰기 ▶</button>
+    <button id="rep">반복: 전체</button>
+    <button id="mute">🔊</button>
+  </div>
+</div></div>
+<div class="ov" id="ov"><div>
+  <h2 id="ovt"></h2>
+  <p>낭독 · 강론 · 노래 · 기도가 이어서 재생됩니다.</p>
+  <button id="start">시작하기</button>
+</div></div>
+<script>
+var DATA = {"date": "2026-08-26", "kind": "night", "title": "아버지의 모습을 바라보다", "source": "제2편 하나님의 본성 › 서문", "citation": "2:0.1", "reading": [{"cit": "2:0.1", "text": "근원적이고 무한한 인격에 대한 인간의 사유와 이상 속에는 하나님에 대한 가장 고귀한 개념이 포함되어 있으므로, 신의 품성을 이루는 신성한 본성의 몇 가지 특성을 탐구하는 일은 가능할 뿐 아니라 유익하다. 하나님의 본성은 네바돈의 미가엘이 다방면의 가르침과 육체로서 살아낸 그 탁월한 필사 생애 속에서 계시한 아버지의 모습에서 가장 잘 이해될 수 있다. 신성한 본성은 또한 인간이 자신을 하나님의 자녀로 인식하고 파라다이스 창조주를 진정한 영적 아버지로 바라볼 때 더 잘 이해될 수 있다."}], "sermon": ["오늘 말씀은 하나님을 멀리 있는 추상적 존재로 생각하지 말고, 우리를 사랑으로 품으시는 인격적 아버지로 바라보라고 초대합니다.", "인간의 생각이 아무리 높아져도 무한하신 하나님을 모두 담을 수는 없지만, 우리가 품을 수 있는 가장 고귀한 진리와 선함과 사랑의 이상 속에서 하나님을 향한 길은 열려 있습니다. 그리고 그 길을 가장 분명하게 보여 준 분이 네바돈의 미가엘, 곧 예수의 생애입니다.", "예수는 하나님을 말로만 설명하지 않고 사람을 대하는 태도와 용서, 자비, 용기, 섬김과 진실함을 통해 아버지의 성품을 삶으로 보여 주었습니다. 그러므로 하나님을 알고 싶다면 예수의 삶을 바라보는 동시에 내가 하나님의 자녀라는 사실을 마음 깊이 받아들여야 합니다.", "하나님을 두려움의 통치자가 아니라 영적 아버지로 인식할 때 신앙은 의무에서 관계로, 불안에서 신뢰로, 자기중심에서 사랑과 봉사로 옮겨 갑니다. 오늘 하루를 돌아보며 나는 하나님을 어떤 분으로 생각하며 살았는지, 그리고 그 아버지의 성품을 내 말과 행동 속에 얼마나 드러냈는지 조용히 살펴봅시다."], "lyrics": "[조용하고 느린 밤 찬송, 60bpm, 피아노와 바이올린 중심, 드럼 없음, 낮고 부드러운 음역]\n\n[1절]\n보이지 않아도 사랑은 가까이\n내 마음 깊은 곳 아버지 계시네\n예수의 눈빛에 자비를 배우고\n그 따뜻한 손길 따라 걷네\n\n[후렴]\n아버지의 얼굴 사랑의 빛으로\n오늘 내 마음 다시 밝혀 주소서\n나는 하나님의 자녀 두려움 내려놓고\n진리와 사랑 안에 쉬어 가리\n\n[2절]\n용서의 말 한마디 섬김의 작은 손\n하늘의 성품이 삶 속에 피어나네\n높고 먼 하나님 가까운 아버지\n내일의 길에도 함께하시네\n\n[마지막 후렴]\n아버지의 얼굴 사랑의 빛으로\n잠드는 이 밤도 평안 채워 주소서\n나는 하나님의 자녀 사랑을 품고서\n내일도 그 사랑 나누며 살리\n\n[아웃트로]\n피아노와 바이올린만 남기고 아주 천천히 사라짐", "prayer": ["사랑이 충만하신 삼위일체 하나님,", "오늘도 저희를 자녀로 품어 주시고 아버지의 성품을 더 깊이 알게 하시니 감사합니다.", "예수의 삶 속에 나타난 사랑과 자비와 진실을 바라보며, 하나님을 두려움이 아니라 신뢰와 사랑으로 대하게 하소서.", "저희 마음속의 좁은 생각과 왜곡된 하나님 이미지를 바로잡아 주시고, 매일의 말과 행동 속에서 아버지의 친절과 용서와 섬김을 드러내게 하소서.", "오늘 부족했던 일들을 돌아보며 고칠 것은 고치게 하시고, 받은 사랑을 내일 만나는 사람들에게 나누게 하소서.", "잠드는 이 밤 저희의 생각과 마음을 평안으로 지켜 주시며, 내일도 하나님의 자녀답게 진리와 사랑의 길을 걷게 하소서.", "예수의 이름으로 기도드립니다. 아멘."], "audioBase": "https://audio.urantiareaders.com/devotion/2026-08-26-night/"};
+var $=function(s){return document.querySelector(s)};
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+/* ---- 화면 ---- */
+$('#ttl').textContent=DATA.title;
+$('#src').textContent=DATA.source+'  ('+DATA.citation+')';
+$('#ovt').textContent=DATA.title;
+$('#ft').textContent=DATA.date+' · 유란시아서 '+DATA.citation;
+$('#reading').innerHTML=DATA.reading.map(function(r){
+  return '<p class="v"><span class="c">'+esc(r.cit)+'</span>'+esc(r.text)+'</p>'}).join('');
+$('#sermon').innerHTML=DATA.sermon.map(function(p){
+  return '<p class="v">'+esc(p)+'</p>'}).join('');
+$('#song').innerHTML=esc(DATA.lyrics).replace(/\[([^\]]*)\]/g,'<span class="tag">[$1]</span>');
+$('#prayer').innerHTML=DATA.prayer.map(function(p){
+  return '<p class="v" style="text-align:center">'+esc(p)+'</p>'}).join('');
+
+/* ---- 별 ---- */
+(function(){
+  var c=$('#sky'),x=c.getContext('2d');
+  function draw(){
+    var w=c.width=innerWidth,h=c.height=innerHeight;
+    x.clearRect(0,0,w,h);
+    var ox=w-90,oy=80;
+    var g=x.createRadialGradient(ox,oy,0,ox,oy,160);
+    g.addColorStop(0,'rgba(255,255,255,.20)');g.addColorStop(1,'rgba(255,255,255,0)');
+    x.fillStyle=g;x.beginPath();x.arc(ox,oy,160,0,6.284);x.fill();
+    x.fillStyle='#f2edd8';x.beginPath();x.arc(ox,oy,43,0,6.284);x.fill();
+    var s=12345;
+    function rnd(){s=(s*1103515245+12345)%2147483648;return s/2147483648}
+    for(var i=0;i<150;i++){
+      var px=rnd()*w,py=rnd()*h*.8,r=rnd()*1.3+.3;
+      if((px-ox)*(px-ox)+(py-oy)*(py-oy)<150*150)continue;
+      x.fillStyle='rgba(255,255,255,'+(rnd()*.5+.25)+')';
+      x.beginPath();x.arc(px,py,r,0,6.284);x.fill();
+    }
+  }
+  draw();addEventListener('resize',draw);
+})();
+
+/* ---- 재생 ---- */
+var FILES=['01_reading','02_sermon','03_song','04_prayer'];
+var PANELS=['#p-reading','#p-sermon','#p-song','#p-prayer'];
+var A=new Audio(),cur=0,playing=false,repMode=0,fails=0,retried={}; /* 0 전체 1 이 메뉴 2 없음 */
+var REPL=['반복: 전체','반복: 이 메뉴','반복: 없음'];
+function mark(){
+  PANELS.forEach(function(p,i){$(p).classList.toggle('now',i===cur)});
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.classList.toggle('on',+b.dataset.i===cur)});
+}
+function load(i,go,bust){
+  cur=i;mark();
+  A.src=DATA.audioBase+FILES[i]+'.mp3?v=20260826'+(bust?('&r='+Date.now()):'');
+  A.load();
+  $(PANELS[i]).scrollIntoView({behavior:'smooth',block:'start'});
+  if(go){var p=A.play();if(p&&p.catch)p.catch(function(){})}
+}
+function nextSeg(){
+  if(repMode===1){load(cur,true);return}
+  if(cur<3){load(cur+1,true);return}
+  if(repMode===0){load(0,true);return}
+  playing=false;$('#play').textContent='▶ 재생';
+}
+function noSound(){
+  playing=false;fails=0;$('#play').textContent='▶ 재생';
+  PANELS.forEach(function(p){$(p).classList.remove('now')});
+  if(!$('#nosnd')){
+    $('#reading').insertAdjacentHTML('beforebegin',
+      '<div id="nosnd" style="background:rgba(200,80,80,.18);border:1px solid rgba(200,120,120,.5);'
+     +'border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.7;margin-bottom:14px">'
+     +'소리 파일을 아직 찾지 못했습니다. 음성이 올라간 뒤에 다시 열어 주세요.<br>'
+     +'<span style="opacity:.75;font-size:12.5px">'+DATA.audioBase+'01_reading.mp3</span></div>');
+  }
+}
+A.addEventListener('ended',function(){fails=0;nextSeg()});
+A.addEventListener('playing',function(){fails=0;retried={}});
+A.addEventListener('error',function(){          /* 한 구간이 안 열리면 */
+  if(!playing)return;
+  if(!retried[cur]){                            /* 먼저 그 구간을 한 번 다시 시도 */
+    retried[cur]=1;
+    setTimeout(function(){load(cur,true,true)},600);
+    return;
+  }
+  fails++;
+  if(fails>=4){noSound();return}               /* 넷 다 없으면 멈추고 알린다 */
+  setTimeout(nextSeg,400);
+});
+A.addEventListener('timeupdate',function(){
+  if(A.duration)$('#pgi').style.width=(A.currentTime/A.duration*100)+'%';
+});
+$('#play').onclick=function(){
+  if(playing){A.pause();playing=false;this.textContent='▶ 재생'}
+  else{var p=A.play();if(p&&p.catch)p.catch(function(){});playing=true;this.textContent='⏸ 멈춤'}
+};
+$('#next').onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';
+  if(cur<3)load(cur+1,true);else load(0,true)};
+$('#prev').onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';
+  load(cur>0?cur-1:3,true)};
+$('#rep').onclick=function(){repMode=(repMode+1)%3;this.textContent=REPL[repMode]};
+$('#mute').onclick=function(){A.muted=!A.muted;this.textContent=A.muted?'🔇':'🔊'};
+$('#pg').onclick=function(e){
+  if(!A.duration)return;
+  var r=this.getBoundingClientRect();
+  A.currentTime=(e.clientX-r.left)/r.width*A.duration;
+};
+document.querySelectorAll('.seg button').forEach(function(b){
+  b.onclick=function(){playing=true;$('#play').textContent='⏸ 멈춤';load(+this.dataset.i,true)}});
+document.addEventListener('keydown',function(e){
+  if(e.code==='Space'){e.preventDefault();$('#play').click()}
+  if(e.code==='ArrowRight')$('#next').click();
+  if(e.code==='ArrowLeft')$('#prev').click();
+});
+$('#start').onclick=function(){
+  $('#ov').style.display='none';playing=true;$('#play').textContent='⏸ 멈춤';load(0,true)};
+mark();
+</script></body></html>
