@@ -2,171 +2,134 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>유란시아서 52주 스터디 강의 — 한국 유란시아서 포털</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 핵심 52주 스터디 — 한국 유란시아서 독자 모임</title>
 <style>
-:root{--navy:#1f3f52;--gold:#d8b45a;--ink:#20272c;--line:#dfe6ea;--bg:#f6f8f9}
+:root{--navy:#12203f;--navy2:#1b2c52;--gold:#b7791f;--gold2:#d6a84a;--ink:#22262e;--dim:#6b7280;--line:#e4e7ec;--bg:#f6f7f9}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
- font-family:"Malgun Gothic","맑은 고딕",system-ui,-apple-system,sans-serif;line-height:1.5}
-a{color:inherit;text-decoration:none}
-.hd{background:linear-gradient(160deg,#16303f,#1f3f52 60%,#264a5c);color:#fff;
- border-bottom:3px solid var(--gold);padding:15px 20px}
-.hd .in{max-width:1120px;margin:0 auto;display:flex;align-items:center;flex-wrap:wrap;gap:10px}
-.hd h1{margin:0;font-size:19px;letter-spacing:-.3px}
-.hd .crumb{width:100%;font-size:12px;color:#b9cdd8}
-.hd .crumb a:hover{color:#fff;text-decoration:underline}
-.hd .sp{margin-left:auto;display:flex;gap:8px}
-.hd .sp a{background:rgba(255,255,255,.14);border-radius:16px;padding:5px 13px;font-size:12.5px}
-.hd .sp a:hover{background:rgba(255,255,255,.24)}
-.wrap{max-width:1120px;margin:0 auto;padding:20px 20px 46px}
-.stage{position:relative;width:100%;padding-top:56.25%;background:#000;
- border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(31,63,82,.16)}
-.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.now{margin:12px 2px 20px;font-size:14.5px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.now .cont{margin-left:auto;font-weight:400;font-size:13px;color:#42525c;display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
-.now .cont input{width:16px;height:16px}
-.sec{display:flex;align-items:baseline;gap:9px;padding-bottom:8px;
- border-bottom:2px solid var(--navy);margin-bottom:14px;color:var(--navy)}
-.sec b{font-size:16px}
-.sec span{font-size:12.5px;color:#5d6b73}
-.grid{display:flex;flex-wrap:wrap;gap:14px}
-@supports(display:grid){.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr))}}
-.card{margin:0;width:212px;background:#fff;border:1px solid #e4ebee;border-radius:9px;
- overflow:hidden;cursor:pointer;transition:box-shadow .12s,border-color .12s;text-align:left}
-@supports(display:grid){.card{width:auto}}
-.card:hover{border-color:var(--navy);box-shadow:0 3px 12px rgba(31,63,82,.15)}
-.card.on{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,90,.45)}
-.thumb{position:relative;width:100%;padding-top:56.25%;background:#0d1a22}
-.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.thumb .no{position:absolute;left:7px;top:7px;background:rgba(31,63,82,.92);color:#fff;
- font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px}
-.thumb .pl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
- color:#fff;font-size:26px;opacity:0;transition:.12s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.card:hover .thumb .pl{opacity:.95}
-.cap{padding:8px 10px 10px;font-size:13px;line-height:1.45;color:var(--ink)}
-.foot{max-width:1120px;margin:0 auto;padding:0 20px 40px;font-size:12.5px;color:#68767e;text-align:center}
-.foot a{color:var(--navy);border-bottom:1px solid #c2d0d7}
-@media(max-width:600px){.hd h1{font-size:17px}.wrap{padding:16px 14px 30px}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+a{color:inherit}
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#eef2f8;border-bottom:3px solid var(--gold)}
+.top .in{max-width:1180px;margin:0 auto;padding:15px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px}
+.crumb{font-size:13px;color:#aebbd2}.crumb a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.grow{flex:1}
+.tbtn{display:inline-block;padding:7px 13px;border-radius:999px;font-size:13.5px;text-decoration:none;color:#f6e3b8;border:1px solid rgba(214,168,74,.55);background:rgba(255,255,255,.06);white-space:nowrap}
+.tbtn:hover{background:rgba(214,168,74,.18);color:#fff6df}
+main{max-width:1180px;margin:0 auto;padding:20px}
+.player{background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(18,32,63,.18)}
+.player .ratio{position:relative;padding-top:56.25%}
+.player iframe,.player #stage{position:absolute;inset:0;width:100%;height:100%;border:0}
+.now{display:flex;align-items:center;gap:10px;margin:12px 4px 4px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.now b{color:var(--navy)}
+.note{font-size:13px;color:var(--dim);margin:6px 4px 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,32,63,.12)}
+.card.on{outline:2px solid var(--gold2)}
+.thumb{position:relative;padding-top:56.25%;background:#dfe3ea}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.no{position:absolute;left:8px;top:8px;background:rgba(18,32,63,.85);color:#f6e3b8;font-size:12px;padding:2px 8px;border-radius:999px}
+.pl{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:2px 8px;border-radius:6px}
+.cap{padding:10px 12px;font-size:14px;line-height:1.45;min-height:58px}
+.foot{margin:26px 0 10px;text-align:center;font-size:14px}
+.foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(183,121,31,.4)}
+.msg{padding:18px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--dim);font-size:14px}
 </style>
 </head>
 <body>
+<header class="top"><div class="in">
+  <div><h1>유란시아서 핵심 52주 스터디</h1><div class="crumb"><a href="/">홈</a> › 강의실 › 핵심 52주 스터디</div></div>
+  <div class="grow"></div>
+  <a class="tbtn" href="https://www.youtube.com/playlist?list=PLdnJ8DxWMqSw" target="_blank" rel="noopener">유튜브에서 보기</a>
+</div></header>
 
-<div class="hd"><div class="in">
-  <div class="crumb"><a href="/">홈</a> › 멀티미디어 › 강의 영상</div>
-  <h1>유란시아서 52주 스터디 강의</h1>
-  <div class="sp">
-    <a href="/">포털 첫 화면</a>
-  </div>
-</div></div>
-
-<div class="wrap">
-  <div class="stage"><div id="ytPlayer"></div></div>
-  <div class="now">
-    <span id="nowLabel"></span>
-    <label class="cont"><input type="checkbox" id="cont" checked> 이어서 계속 재생</label>
-  </div>
-
-  <div class="sec"><b>강의 목록</b><span id="cnt"></span></div>
-  <div class="grid" id="grid"></div>
-</div>
-
-<div class="foot">
-  <a href="/">포털 첫 화면</a> · <a href="/mind.html">전편 마인드맵</a> · <a href="/chart.html">도표로 본 유란시아서</a>
-</div>
+<main>
+  <div class="player"><div class="ratio"><div id="stage"></div></div></div>
+  <div class="now"><span id="now">재생목록을 불러오는 중…</span><span class="grow"></span><span id="cnt"></span></div>
+  <div class="note">유튜브 재생목록을 그대로 읽어 옵니다. 재생목록에 영상을 넣기만 하면 이 페이지에 자동으로 나타납니다. 최신 영상이 앞에 옵니다.</div>
+  <div id="grid" class="grid"></div>
+  <div class="foot"><a href="https://www.youtube.com/playlist?list=PLdnJ8DxWMqSw" target="_blank" rel="noopener">재생목록 전체 보기 →</a></div>
+</main>
 
 <script>
-/* -----------------------------------------------------------
-   강의 목록입니다. 한 줄이 작은 창 하나가 됩니다.
-   새 강의가 올라오면 같은 모양으로 한 줄 더 넣으세요.
-     id    : 유튜브 주소 watch?v= 뒤의 글자
-     title : 화면에 보일 제목
-   재생목록 번호는 쓰지 않고, 이 화면이 직접 순서를 관리합니다.
-   ----------------------------------------------------------- */
-var VIDEOS = [
-  { id: "VvmBybmFBQM", title: "제1강 우주 아버지" },
-  { id: "eZST2RiIfu0", title: "제2강 영원 아들" },
-  { id: "_dLLTrbR3XY", title: "제3강 무한 영" },
-  { id: "qa3-f_nHCA4", title: "제4강 삼위일체" },
-  { id: "1camFsBx6F0", title: "제5강 신들의 관계" },
-  { id: "5jMcVX0fW2Y", title: "제6강 신성한 중앙 우주" },
-  { id: "4-IZd6A8Bsc", title: "제7강 일곱 초우주와 초우주 봉사의 영" },
-  { id: "CSFmeV82tUg", title: "제8강 일곱 주 영과 최상 영 집단" },
-  { id: "WQzCIJnamLQ", title: "제9강 옛적부터 늘 계신 이" },
-  { id: "XXxKteKF29U", title: "제10강 하나님의 아들들" },
-  { id: "gWpOvrej7h4", title:"제11강 최상 존재" },
-  { id: "fMOGb-xeZC0", title: "제12강 창조자 아들" },
-];
+/* ---------------------------------------------------------------
+   설정: 재생목록 ID 하나만 바꾸면 됩니다.
+   유튜브 재생목록 주소  https://www.youtube.com/playlist?list=PLxxxxxxxx  의  list= 뒤 글자.
+   --------------------------------------------------------------- */
+var LIST = "PLdnJ8DxWMqSw";
+var NEWEST_FIRST = true;      // 최신 영상을 앞에
 
-/* 새로 만든 강의가 맨 앞(큰 화면)에 오게 합니다.
-   위 VIDEOS 목록은 만든 순서 그대로 두시고, 새 강의는 늘 맨 아래에 더하세요.
-   목록 그대로 1강부터 보이게 하고 싶으시면 아래를 false 로 바꾸시면 됩니다. */
-var NEWEST_FIRST = true;
+var player, ids = [], titles = {}, order = [], curIdx = -1;
+var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
 
-var ORDER = VIDEOS.map(function(v, i){ return i; });
-if (NEWEST_FIRST) ORDER.reverse();
-
-var grid = document.getElementById('grid'),
-    nowLabel = document.getElementById('nowLabel'),
-    cnt = document.getElementById('cnt'),
-    contBox = document.getElementById('cont'),
-    cur = 0, ytPlayer = null, apiReady = false;
-
-cnt.textContent = VIDEOS.length + '개';
-
-function vidAt(pos){ return VIDEOS[ORDER[pos]]; }
-
-function markCard(pos){
-  nowLabel.textContent = '지금 보는 강의 · ' + vidAt(pos).title;
-  [].forEach.call(grid.children, function(c, n){
-    c.className = 'card' + (n === pos ? ' on' : '');
-  });
-}
-
-ORDER.forEach(function(vi, pos){
-  var v = VIDEOS[vi];
-  var c = document.createElement('figure');
-  c.className = 'card';
-  c.innerHTML =
-    '<div class="thumb"><img loading="lazy" alt="" ' +
-    'src="https://i.ytimg.com/vi/' + v.id + '/mqdefault.jpg">' +
-    '<span class="no">' + (vi + 1) + '</span><span class="pl">▶</span></div>' +
-    '<figcaption class="cap">' + v.title + '</figcaption>';
-  c.onclick = function(){ playIndex(pos, true); };
-  grid.appendChild(c);
-});
-markCard(0);
-
-function playIndex(pos, autoplay){
-  cur = (pos + VIDEOS.length) % VIDEOS.length;
-  markCard(cur);
-  if (apiReady && ytPlayer && ytPlayer.loadVideoById) {
-    if (autoplay) ytPlayer.loadVideoById(vidAt(cur).id);
-    else ytPlayer.cueVideoById(vidAt(cur).id);
-    document.querySelector('.stage').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-/* 유튜브 공식 재생기 연결 라이브러리를 불러옵니다. */
 var tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
+tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 
-window.onYouTubeIframeAPIReady = function(){
-  ytPlayer = new YT.Player('ytPlayer', {
-    videoId: vidAt(0).id,
-    playerVars: { rel: 0, autoplay: 1 },
-    events: {
-      onReady: function(){ apiReady = true; },
-      onStateChange: function(e){
-        /* 0 = 영상이 끝남 */
-        if (e.data === 0 && contBox.checked) {
-          playIndex(cur + 1, true);
-        }
-      }
-    }
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('stage', {
+    playerVars: { listType: 'playlist', list: LIST, rel: 0, modestbranding: 1 },
+    events: { onReady: onReady, onStateChange: onState }
   });
-};
+}
+
+function onReady(){
+  // 재생목록이 로드될 때까지 잠시 기다린다
+  var tries = 0;
+  (function poll(){
+    var pl = player.getPlaylist();
+    if (pl && pl.length){ ids = pl.slice(); build(); }
+    else if (++tries < 40) setTimeout(poll, 250);
+    else fail();
+  })();
+}
+
+function fail(){
+  grid.innerHTML = '<div class="msg">재생목록을 읽지 못했습니다. 재생목록이 공개(또는 일부 공개) 상태인지, LIST 값이 맞는지 확인해 주세요.</div>';
+  now.textContent = '';
+}
+
+function build(){
+  order = ids.map(function(_, i){ return i; });
+  if (NEWEST_FIRST) order.reverse();
+  cnt.textContent = ids.length + '개';
+  grid.innerHTML = '';
+  order.forEach(function(idx, n){
+    var id = ids[idx];
+    var c = document.createElement('figure');
+    c.className = 'card'; c.dataset.idx = idx;
+    c.innerHTML = '<div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg">'
+      + '<span class="no">' + (idx + 1) + '</span><span class="pl">▶</span></div>'
+      + '<figcaption class="cap" id="cap-' + idx + '">불러오는 중…</figcaption>';
+    c.onclick = function(){ player.playVideoAt(idx); document.querySelector('.player').scrollIntoView({behavior:'smooth',block:'start'}); };
+    grid.appendChild(c);
+    fetchTitle(id, idx);
+  });
+  mark(player.getPlaylistIndex());
+}
+
+function fetchTitle(id, idx){
+  fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
+    .then(function(r){ return r.json(); })
+    .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim() || ('영상 ' + (idx + 1));
+                       var el = document.getElementById('cap-' + idx); if (el) el.textContent = titles[idx];
+                       if (idx === curIdx) showNow(idx); })
+    .catch(function(){ var el = document.getElementById('cap-' + idx); if (el) el.textContent = '영상 ' + (idx + 1); });
+}
+
+function showNow(idx){
+  now.innerHTML = '지금 보는 강의 · <b>' + (titles[idx] || ('영상 ' + (idx + 1))) + '</b>';
+}
+function mark(idx){
+  if (idx == null || idx < 0) return;
+  curIdx = idx;
+  [].forEach.call(grid.children, function(c){ c.className = 'card' + (+c.dataset.idx === idx ? ' on' : ''); });
+  showNow(idx);
+}
+function onState(e){
+  if (e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.CUED) mark(player.getPlaylistIndex());
+}
 </script>
 </body>
 </html>
