@@ -1,42 +1,137 @@
-<!doctype html>
-<html lang="ko"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>오늘의 아침 묵상</title>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘의 아침 묵상 — 한국 유란시아서 독자 모임</title>
 <style>
-:root{--g1:#0e1630;--g2:#3a3050;--g3:#8a5a34;--ink:#fdf3e3;--dim:#e0c9a6;--gold:#e0a53c}
+:root{--navy:#2a3358;--navy2:#8a5a34;--gold:#b7791f;--gold2:#d6a84a;--ink:#22262e;--dim:#6b7280;--line:#e4e7ec;--bg:#f6f7f9}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
- background:linear-gradient(180deg,var(--g1) 0%,var(--g2) 55%,var(--g3) 100%)}
-.wrap{max-width:960px;margin:0 auto;padding:36px 18px 80px}
-header{text-align:center;padding:10px 0 22px}
-header .lb{color:var(--gold);letter-spacing:.22em;font-size:12px}
-header h1{margin:10px 0 6px;font-size:30px}
-header p{color:var(--dim);font-size:14px;line-height:1.8;margin:0}
-.player{position:relative;width:100%;padding-top:56.25%;border-radius:16px;overflow:hidden;
- border:1px solid rgba(224,165,60,.4);background:#000;box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-.links a{color:var(--gold);border:1px solid rgba(224,165,60,.5);border-radius:999px;padding:8px 18px;
- text-decoration:none;font-size:14px}
-.links a:hover{background:rgba(224,165,60,.14)}
-.note{color:var(--dim);font-size:13px;text-align:center;margin-top:28px;line-height:1.8}
-.note a{color:var(--dim)}
-</style></head><body>
-<div class="wrap">
-  <header>
-    <div class="lb">오늘의 아침 묵상</div>
-    <h1>낭독 · 강론 · 노래 · 기도</h1>
-    <p>하루를 열며 듣는 짧은 묵상입니다. 최근 것이 먼저 재생되고, 끝나면 다음 것이 이어집니다.</p>
-  </header>
-  <div class="player">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L&rel=0"
-      title="오늘의 아침 묵상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="links">
-    <a href="https://www.youtube.com/playlist?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L" target="_blank" rel="noopener">유튜브에서 전체 목록 보기</a>
-    <a href="/devotion/">오늘의 취침 묵상</a>
-    <a href="archive.html">2026년 8월 이전 묵상 (웹 플레이어)</a>
-  </div>
-  <p class="note">영상 왼쪽 위의 목록 단추(≡)를 누르면 날짜별로 골라 들을 수 있습니다.</p>
-</div>
-</body></html>
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+a{color:inherit}
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#eef2f8;border-bottom:3px solid var(--gold)}
+.top .in{max-width:1180px;margin:0 auto;padding:15px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px}
+.crumb{font-size:13px;color:#aebbd2}.crumb a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.grow{flex:1}
+.tbtn{display:inline-block;padding:7px 13px;border-radius:999px;font-size:13.5px;text-decoration:none;color:#f6e3b8;border:1px solid rgba(214,168,74,.55);background:rgba(255,255,255,.06);white-space:nowrap}
+.tbtn:hover{background:rgba(214,168,74,.18);color:#fff6df}
+main{max-width:1180px;margin:0 auto;padding:20px}
+.player{background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(18,32,63,.18)}
+.player .ratio{position:relative;padding-top:56.25%}
+.player iframe,.player #stage{position:absolute;inset:0;width:100%;height:100%;border:0}
+.now{display:flex;align-items:center;gap:10px;margin:12px 4px 4px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.now b{color:var(--navy)}
+.note{font-size:13px;color:var(--dim);margin:6px 4px 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,32,63,.12)}
+.card.on{outline:2px solid var(--gold2)}
+.thumb{position:relative;padding-top:56.25%;background:#dfe3ea}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.no{position:absolute;left:8px;top:8px;background:rgba(18,32,63,.85);color:#f6e3b8;font-size:12px;padding:2px 8px;border-radius:999px}
+.pl{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:2px 8px;border-radius:6px}
+.cap{padding:10px 12px;font-size:14px;line-height:1.45;min-height:58px}
+.foot{margin:26px 0 10px;text-align:center;font-size:14px}
+.foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(183,121,31,.4)}
+.msg{padding:18px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--dim);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div><h1>오늘의 아침 묵상</h1><div class="crumb"><a href="/">홈</a> › 오늘의 아침 묵상</div></div>
+  <div class="grow"></div>
+  <a class="tbtn" href="/devotion/">오늘의 취침 묵상</a>
+  <a class="tbtn" href="/devotion/archive.html">2026년 8월 이전 묵상</a>
+  <a class="tbtn" href="https://www.youtube.com/playlist?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L" target="_blank" rel="noopener">유튜브에서 보기</a>
+</div></header>
+
+<main>
+  <div class="player"><div class="ratio"><div id="stage"></div></div></div>
+  <div class="now"><span id="now">재생목록을 불러오는 중…</span><span class="grow"></span><span id="cnt"></span></div>
+  <div class="note">유튜브 재생목록을 그대로 읽어 옵니다. 재생목록에 영상을 넣기만 하면 이 페이지에 자동으로 나타납니다. 오늘 것이 맨 앞에 오고, 아래로 지난 묵상이 이어집니다.</div>
+  <div id="grid" class="grid"></div>
+  <div class="foot"><a href="https://www.youtube.com/playlist?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L" target="_blank" rel="noopener">재생목록 전체 보기 →</a></div>
+</main>
+
+<script>
+/* ---------------------------------------------------------------
+   설정: 재생목록 ID 하나만 바꾸면 됩니다.
+   유튜브 재생목록 주소  https://www.youtube.com/playlist?list=PLxxxxxxxx  의  list= 뒤 글자.
+   --------------------------------------------------------------- */
+var LIST = "PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L";
+var NEWEST_FIRST = true;      // 최신 영상을 앞에
+
+var player, ids = [], titles = {}, order = [], curIdx = -1;
+var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('stage', {
+    playerVars: { listType: 'playlist', list: LIST, rel: 0, modestbranding: 1 },
+    events: { onReady: onReady, onStateChange: onState }
+  });
+}
+
+function onReady(){
+  // 재생목록이 로드될 때까지 잠시 기다린다
+  var tries = 0;
+  (function poll(){
+    var pl = player.getPlaylist();
+    if (pl && pl.length){ ids = pl.slice(); build(); }
+    else if (++tries < 40) setTimeout(poll, 250);
+    else fail();
+  })();
+}
+
+function fail(){
+  grid.innerHTML = '<div class="msg">재생목록을 읽지 못했습니다. 재생목록이 공개(또는 일부 공개) 상태인지, LIST 값이 맞는지 확인해 주세요.</div>';
+  now.textContent = '';
+}
+
+function build(){
+  order = ids.map(function(_, i){ return i; });
+  if (NEWEST_FIRST) order.reverse();
+  cnt.textContent = ids.length + '개';
+  grid.innerHTML = '';
+  order.forEach(function(idx, n){
+    var id = ids[idx];
+    var c = document.createElement('figure');
+    c.className = 'card'; c.dataset.idx = idx;
+    c.innerHTML = '<div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg">'
+      + '<span class="no">' + (idx + 1) + '</span><span class="pl">▶</span></div>'
+      + '<figcaption class="cap" id="cap-' + idx + '">불러오는 중…</figcaption>';
+    c.onclick = function(){ player.playVideoAt(idx); document.querySelector('.player').scrollIntoView({behavior:'smooth',block:'start'}); };
+    grid.appendChild(c);
+    fetchTitle(id, idx);
+  });
+  mark(player.getPlaylistIndex());
+}
+
+function fetchTitle(id, idx){
+  fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
+    .then(function(r){ return r.json(); })
+    .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim() || ('영상 ' + (idx + 1));
+                       var el = document.getElementById('cap-' + idx); if (el) el.textContent = titles[idx];
+                       if (idx === curIdx) showNow(idx); })
+    .catch(function(){ var el = document.getElementById('cap-' + idx); if (el) el.textContent = '영상 ' + (idx + 1); });
+}
+
+function showNow(idx){
+  now.innerHTML = '지금 듣는 묵상 · <b>' + (titles[idx] || ('영상 ' + (idx + 1))) + '</b>';
+}
+function mark(idx){
+  if (idx == null || idx < 0) return;
+  curIdx = idx;
+  [].forEach.call(grid.children, function(c){ c.className = 'card' + (+c.dataset.idx === idx ? ' on' : ''); });
+  showNow(idx);
+}
+function onState(e){
+  if (e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.CUED) mark(player.getPlaylistIndex());
+}
+</script>
+</body>
+</html>
