@@ -216,6 +216,10 @@
         {
           "name": "영어 자료실",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/105"
+        },
+        {
+          "member": false,
+          "name": "간추린 유란시아서(요약본)"
         }
       ]
     },
