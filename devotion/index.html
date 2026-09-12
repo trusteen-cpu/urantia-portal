@@ -49,7 +49,7 @@ main{max-width:1180px;margin:0 auto;padding:20px}
 <main>
   <div class="player"><div class="ratio"><div id="stage"></div></div></div>
   <div class="now"><span id="now">재생목록을 불러오는 중…</span><span class="grow"></span><span id="cnt"></span></div>
-  <div class="note">유튜브 재생목록을 그대로 읽어 옵니다. 재생목록에 영상을 넣기만 하면 이 페이지에 자동으로 나타납니다. 오늘 것이 맨 앞에 오고, 아래로 지난 묵상이 이어집니다.</div>
+  <div class="note">유튜브 재생목록을 그대로 읽어 옵니다. 재생목록에 영상을 넣기만 하면 이 페이지에 자동으로 나타납니다. 영상 제목의 날짜를 읽어 오늘 것이 맨 앞에 오고, 아래로 지난 묵상이 이어집니다.</div>
   <div id="grid" class="grid"></div>
   <div class="foot"><a href="https://www.youtube.com/playlist?list=PLX9Be6OaQ_g4" target="_blank" rel="noopener">재생목록 전체 보기 →</a></div>
 </main>
@@ -58,9 +58,10 @@ main{max-width:1180px;margin:0 auto;padding:20px}
 /* ---------------------------------------------------------------
    설정: 재생목록 ID 하나만 바꾸면 됩니다.
    유튜브 재생목록 주소  https://www.youtube.com/playlist?list=PLxxxxxxxx  의  list= 뒤 글자.
+   차례는 영상 제목에 든 날짜(2026-09-12)를 읽어 최신이 앞에 오게 정렬합니다.
+   날짜가 없는 영상은 재생목록 순서를 뒤집어 뒤에 붙습니다.
    --------------------------------------------------------------- */
 var LIST = "PLX9Be6OaQ_g4";
-var NEWEST_FIRST = true;      // 최신 영상을 앞에
 
 var player, ids = [], titles = {}, order = [], curIdx = -1;
 var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
@@ -77,47 +78,65 @@ function onYouTubeIframeAPIReady(){
 }
 
 function onReady(){
-  // 재생목록이 로드될 때까지 잠시 기다린다
   var tries = 0;
   (function poll(){
     var pl = player.getPlaylist();
-    if (pl && pl.length){ ids = pl.slice(); build(); }
+    if (pl && pl.length){ ids = pl.slice(); load(); }
     else if (++tries < 40) setTimeout(poll, 250);
     else fail();
   })();
 }
 
 function fail(){
-  grid.innerHTML = '<div class="msg">재생목록을 읽지 못했습니다. 재생목록이 공개(또는 일부 공개) 상태인지, LIST 값이 맞는지 확인해 주세요.</div>';
+  grid.innerHTML = '<div class="msg">재생목록을 읽지 못했습니다. 재생목록이 공개(또는 일부 공개) 상태인지 확인해 주세요.</div>';
   now.textContent = '';
 }
 
-function build(){
-  order = ids.map(function(_, i){ return i; });
-  if (NEWEST_FIRST) order.reverse();
+/* 제목을 먼저 다 받아 온 뒤에 날짜 순으로 늘어놓는다 */
+function load(){
   cnt.textContent = ids.length + '개';
+  grid.innerHTML = '<div class="msg">묵상 목록을 불러오는 중…</div>';
+  var jobs = ids.map(function(id, idx){
+    return fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
+      .then(function(r){ return r.json(); })
+      .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim(); })
+      .catch(function(){ titles[idx] = ''; });
+  });
+  Promise.all(jobs).then(build, build);
+}
+
+function dateOf(idx){
+  var m = (titles[idx] || '').match(/(20\d\d)[.\-\/ ]?(\d{1,2})[.\-\/ ]?(\d{1,2})/);
+  if (!m) return null;
+  return m[1] + ('0' + m[2]).slice(-2) + ('0' + m[3]).slice(-2);
+}
+
+function build(){
+  var dated = [], plain = [];
+  ids.forEach(function(_, idx){ (dateOf(idx) ? dated : plain).push(idx); });
+  dated.sort(function(a, b){
+    var da = dateOf(a), db = dateOf(b);
+    if (da !== db) return db < da ? -1 : 1;   /* 최신 날짜가 앞 */
+    return b - a;                             /* 같은 날이면 나중에 넣은 것이 앞 */
+  });
+  plain.reverse();
+  order = dated.concat(plain);
+
   grid.innerHTML = '';
-  order.forEach(function(idx, n){
+  order.forEach(function(idx){
     var id = ids[idx];
     var c = document.createElement('figure');
     c.className = 'card'; c.dataset.idx = idx;
     c.innerHTML = '<div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg">'
-      + '<span class="no">' + (idx + 1) + '</span><span class="pl">▶</span></div>'
-      + '<figcaption class="cap" id="cap-' + idx + '">불러오는 중…</figcaption>';
+      + '<span class="pl">&#9654;</span></div>'
+      + '<figcaption class="cap" id="cap-' + idx + '"></figcaption>';
+    c.querySelector('.cap').textContent = titles[idx] || ('영상 ' + (idx + 1));
     c.onclick = function(){ player.playVideoAt(idx); document.querySelector('.player').scrollIntoView({behavior:'smooth',block:'start'}); };
     grid.appendChild(c);
-    fetchTitle(id, idx);
   });
-  mark(player.getPlaylistIndex());
-}
 
-function fetchTitle(id, idx){
-  fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
-    .then(function(r){ return r.json(); })
-    .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim() || ('영상 ' + (idx + 1));
-                       var el = document.getElementById('cap-' + idx); if (el) el.textContent = titles[idx];
-                       if (idx === curIdx) showNow(idx); })
-    .catch(function(){ var el = document.getElementById('cap-' + idx); if (el) el.textContent = '영상 ' + (idx + 1); });
+  /* 맨 앞(가장 최근) 것을 재생기에 올려 둔다 */
+  if (order.length) { player.cueVideoAt(order[0]); mark(order[0]); }
 }
 
 function showNow(idx){
