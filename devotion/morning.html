@@ -57,15 +57,13 @@ main{max-width:1180px;margin:0 auto;padding:20px}
 <script>
 /* ---------------------------------------------------------------
    재생목록 ID 하나만 바꾸면 됩니다.
-   차례: 재생목록 순서 그대로(이 재생목록은 최신이 앞).
-        제목을 읽어 오면 제목 속 날짜로 다시 정렬합니다.
-   제목: 숨은 재생기로 유튜브에서 직접 읽어 옵니다.
-        (바깥 제목 서비스에 기대지 않으므로 막힐 일이 없습니다)
+   차례는 재생목록 순서 그대로(이 재생목록은 최신이 앞).
+   제목은 화면 밖 숨은 재생기로 유튜브에서 직접 읽어 옵니다.
    --------------------------------------------------------------- */
 var LIST = "PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L";
 var PLAYLIST_IS_NEWEST_FIRST = true;
 
-var player, probe, ids = [], titles = {}, order = [], curIdx = -1, resorted = false;
+var player, probe, ids = [], titles = {}, order = [], curIdx = -1;
 var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
 
 var tag = document.createElement('script');
@@ -99,76 +97,61 @@ function start(){
   order = ids.map(function(_, i){ return i; });
   if (!PLAYLIST_IS_NEWEST_FIRST) order.reverse();
   render();
-  if (order.length){ player.cueVideoAt(order[0]); mark(order[0]); }
+  mark(order.length ? order[0] : -1);
   startProbe();
 }
 
-/* 숨은 재생기 — 영상을 하나씩 물려서 제목만 뽑아 온다 */
-function startProbe(){
-  var host = document.createElement('div');
-  host.id = 'probe';
-  host.style.cssText = 'position:absolute;left:-9999px;top:0;width:200px;height:120px';
-  document.body.appendChild(host);
-  probe = new YT.Player('probe', {
-    height: '120', width: '200',
-    playerVars: { controls: 0, disablekb: 1 },
-    events: { onReady: function(){ probeNext(0); } }
-  });
-}
-
-function probeNext(i){
-  if (i >= ids.length){ finishTitles(); return; }
-  if (titles[i]){ probeNext(i + 1); return; }
-  var done = false, tries = 0;
-  try { probe.cueVideoById(ids[i]); } catch(e){}
-  (function poll(){
-    if (done) return;
-    var t = '';
-    try { var d = probe.getVideoData && probe.getVideoData(); if (d && d.title) t = d.title; } catch(e){}
-    if (t){
-      done = true;
-      setTitle(i, t);
-      setTimeout(function(){ probeNext(i + 1); }, 30);
-      return;
-    }
-    if (++tries < 30) setTimeout(poll, 120);
-    else { done = true; probeNext(i + 1); }
-  })();
+/* 제목 다듬기 — 해시태그 꼬리를 잘라 낸다 */
+function clean(t){
+  t = String(t || '');
+  var i = t.indexOf('#');
+  if (i > 0) t = t.slice(0, i);
+  return t.replace(/\s+/g, ' ').trim();
 }
 
 function setTitle(idx, t){
-  titles[idx] = String(t).replace(/#\S+/g, '').trim();
+  titles[idx] = clean(t);
   var el = document.getElementById('cap-' + idx);
   if (el) el.textContent = titles[idx];
   if (idx === curIdx) showNow(idx);
 }
 
-function finishTitles(){
-  resort();
+/* 숨은 재생기로 영상을 하나씩 물려 제목만 뽑아 온다 */
+function startProbe(){
+  var host = document.createElement('div');
+  host.id = 'probe';
+  host.style.cssText = 'position:absolute;left:-9999px;top:0;width:200px;height:120px';
+  document.body.appendChild(host);
+  try {
+    probe = new YT.Player('probe', {
+      height: '120', width: '200',
+      playerVars: { controls: 0, disablekb: 1 },
+      events: { onReady: function(){ probeNext(0); } }
+    });
+  } catch (e) {}
+}
+
+function probeNext(i){
+  if (i >= ids.length){ cleanupProbe(); return; }
+  if (titles[i]){ probeNext(i + 1); return; }
+  var id = ids[i], tries = 0;
+  try { probe.cueVideoById(id); } catch (e) { probeNext(i + 1); return; }
+  (function poll(){
+    var d = null;
+    try { d = probe.getVideoData && probe.getVideoData(); } catch (e) {}
+    if (d && d.title && d.video_id === id){
+      setTitle(i, d.title);
+      setTimeout(function(){ probeNext(i + 1); }, 20);
+      return;
+    }
+    if (++tries < 40) setTimeout(poll, 100);
+    else probeNext(i + 1);
+  })();
+}
+
+function cleanupProbe(){
   var h = document.getElementById('probe');
   if (h && h.parentNode) h.parentNode.removeChild(h);
-}
-
-function dateOf(idx){
-  var m = (titles[idx] || '').match(/(20\d\d)[.\-\/ ]?(\d{1,2})[.\-\/ ]?(\d{1,2})/);
-  if (!m) return null;
-  return m[1] + ('0' + m[2]).slice(-2) + ('0' + m[3]).slice(-2);
-}
-
-function resort(){
-  if (resorted) return;
-  var dated = [], plain = [];
-  order.forEach(function(idx){ (dateOf(idx) ? dated : plain).push(idx); });
-  if (!dated.length) return;
-  resorted = true;
-  dated.sort(function(a, b){
-    var da = dateOf(a), db = dateOf(b);
-    if (da === db) return 0;
-    return da > db ? -1 : 1;
-  });
-  order = dated.concat(plain);
-  render();
-  mark(curIdx);
 }
 
 function render(){
