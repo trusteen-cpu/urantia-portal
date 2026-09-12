@@ -120,6 +120,10 @@
           "url": "/core/index.html "
         },
         {
+          "member": false,
+          "name": "간추린 유란시아서(요약본)"
+        },
+        {
           "name": "유란시아서 전편 마인드맵",
           "url": "/mind.html"
         },
