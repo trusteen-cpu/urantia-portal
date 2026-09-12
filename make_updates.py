@@ -28,6 +28,16 @@ SKIP_PREFIX = (".github/", ".git/")
 SKIP_NAME = (".gitignore", "updates.json")
 
 
+def pause():
+    """깃허브 자동 실행(무인) 중이면 멈추지 않는다."""
+    if os.environ.get("CI") or not sys.stdin or not sys.stdin.isatty():
+        return
+    try:
+        input("\n엔터를 누르면 창이 닫힙니다.")
+    except Exception:
+        pass
+
+
 def main():
     repo = REPO if os.path.isdir(REPO) else os.getcwd()
     print(f"저장소: {repo}")
@@ -39,13 +49,13 @@ def main():
         )
     except FileNotFoundError:
         print("[중단] 깃을 찾지 못했습니다. 깃허브 데스크탑이 설치된 PC에서 실행하세요.")
-        input("\n엔터를 누르면 창이 닫힙니다.")
+        pause()
         return
 
     if out.returncode != 0:
         print("[중단] 깃 기록을 읽지 못했습니다.")
         print(out.stderr[:400])
-        input("\n엔터를 누르면 창이 닫힙니다.")
+        pause()
         return
 
     paths = {}
@@ -86,7 +96,7 @@ def main():
     print("최근에 바뀐 것:")
     for d, f in recent:
         print(f"   {d}  {f}")
-    input("\n엔터를 누르면 창이 닫힙니다.")
+    pause()
 
 
 if __name__ == "__main__":
