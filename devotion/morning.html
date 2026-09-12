@@ -56,12 +56,12 @@ main{max-width:1180px;margin:0 auto;padding:20px}
 
 <script>
 /* ---------------------------------------------------------------
-   설정: 재생목록 ID 하나만 바꾸면 됩니다.
-   유튜브 재생목록 주소  https://www.youtube.com/playlist?list=PLxxxxxxxx  의  list= 뒤 글자.
-   차례는 영상 제목에 든 날짜(2026-09-12)를 읽어 최신이 앞에 오게 정렬합니다.
-   날짜가 없는 영상은 재생목록 순서를 뒤집어 뒤에 붙습니다.
+   재생목록 ID 하나만 바꾸면 됩니다.
+   차례: 기본은 재생목록 순서 그대로(이 재생목록은 최신이 앞).
+        제목을 읽어 오는 데 성공하면 제목 속 날짜(2026-09-12)로 다시 정렬합니다.
    --------------------------------------------------------------- */
 var LIST = "PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L";
+var PLAYLIST_IS_NEWEST_FIRST = true;   /* 재생목록 자체가 최신순이면 true */
 
 var player, ids = [], titles = {}, order = [], curIdx = -1;
 var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
@@ -81,7 +81,7 @@ function onReady(){
   var tries = 0;
   (function poll(){
     var pl = player.getPlaylist();
-    if (pl && pl.length){ ids = pl.slice(); load(); }
+    if (pl && pl.length){ ids = pl.slice(); start(); }
     else if (++tries < 40) setTimeout(poll, 250);
     else fail();
   })();
@@ -92,17 +92,28 @@ function fail(){
   now.textContent = '';
 }
 
-/* 제목을 먼저 다 받아 온 뒤에 날짜 순으로 늘어놓는다 */
-function load(){
+function start(){
   cnt.textContent = ids.length + '개';
-  grid.innerHTML = '<div class="msg">묵상 목록을 불러오는 중…</div>';
+  order = ids.map(function(_, i){ return i; });
+  if (!PLAYLIST_IS_NEWEST_FIRST) order.reverse();
+  render();
+  if (order.length){ player.cueVideoAt(order[0]); mark(order[0]); }
+  loadTitles();
+}
+
+function loadTitles(){
   var jobs = ids.map(function(id, idx){
     return fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
       .then(function(r){ return r.json(); })
-      .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim(); })
-      .catch(function(){ titles[idx] = ''; });
+      .then(function(j){
+        titles[idx] = (j.title || '').replace(/#\S+/g, '').trim();
+        var el = document.getElementById('cap-' + idx);
+        if (el && titles[idx]) el.textContent = titles[idx];
+        if (idx === curIdx) showNow(idx);
+      })
+      .catch(function(){});
   });
-  Promise.all(jobs).then(build, build);
+  Promise.all(jobs).then(resort, resort);
 }
 
 function dateOf(idx){
@@ -111,22 +122,28 @@ function dateOf(idx){
   return m[1] + ('0' + m[2]).slice(-2) + ('0' + m[3]).slice(-2);
 }
 
-function build(){
+/* 제목을 받아 왔으면 날짜 기준으로 다시 늘어놓는다 */
+function resort(){
   var dated = [], plain = [];
-  ids.forEach(function(_, idx){ (dateOf(idx) ? dated : plain).push(idx); });
+  order.forEach(function(idx){ (dateOf(idx) ? dated : plain).push(idx); });
+  if (!dated.length) return;
   dated.sort(function(a, b){
     var da = dateOf(a), db = dateOf(b);
-    if (da !== db) return db < da ? -1 : 1;   /* 최신 날짜가 앞 */
-    return b - a;                             /* 같은 날이면 나중에 넣은 것이 앞 */
+    if (da === db) return 0;
+    return da > db ? -1 : 1;      /* 최신 날짜가 앞 */
   });
-  plain.reverse();
   order = dated.concat(plain);
+  render();
+  mark(curIdx);
+}
 
+function render(){
   grid.innerHTML = '';
   order.forEach(function(idx){
     var id = ids[idx];
     var c = document.createElement('figure');
-    c.className = 'card'; c.dataset.idx = idx;
+    c.className = 'card' + (idx === curIdx ? ' on' : '');
+    c.dataset.idx = idx;
     c.innerHTML = '<div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg">'
       + '<span class="pl">&#9654;</span></div>'
       + '<figcaption class="cap" id="cap-' + idx + '"></figcaption>';
@@ -134,9 +151,6 @@ function build(){
     c.onclick = function(){ player.playVideoAt(idx); document.querySelector('.player').scrollIntoView({behavior:'smooth',block:'start'}); };
     grid.appendChild(c);
   });
-
-  /* 맨 앞(가장 최근) 것을 재생기에 올려 둔다 */
-  if (order.length) { player.cueVideoAt(order[0]); mark(order[0]); }
 }
 
 function showNow(idx){
