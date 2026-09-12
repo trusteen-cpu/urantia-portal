@@ -71,6 +71,11 @@
           "member": true
         },
         {
+          "member": true,
+          "name": "오늘의 아침 묵상 ",
+          "url": "https://urantiareaders.com/devotion/morning.html"
+        },
+        {
           "name": "명상록",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/51",
           "member": true
@@ -84,10 +89,6 @@
           "name": "공지 사항",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10",
           "member": true
-        },
-        {
-          "member": false,
-          "name": "오늘의 아침 묵상 "
         }
       ]
     },
