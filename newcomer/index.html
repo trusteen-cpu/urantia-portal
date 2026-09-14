@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아서 신규 독자 과정 (10주) — 한국 유란시아서 독자 모임</title>
+<meta name="description" content="유란시아 대학교 연구소(UUI) 신규 독자 과정 10주 교안 한글판">
+<style>
+  :root{
+    --navy:#1b2450; --navy2:#2a3358; --gold:#e0a53c; --gold2:#f3cd7a;
+    --ink:#1d2233; --muted:#6b7391; --line:#dfe3ee; --bg:#f5f6fa; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+       font-size:16px;line-height:1.65;-webkit-text-size-adjust:100%}
+  a{color:inherit}
+
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:22px 20px 18px}
+  .rainbow{height:4px;background:linear-gradient(90deg,#e05a5a,#e0a53c,#e8d44d,#5cb87a,#4f9fd8,#7b6fd0,#b86fc0)}
+  .htitle{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;max-width:1400px;margin:0 auto}
+  .htitle h1{margin:0;font-size:1.45rem;letter-spacing:-.02em}
+  .htitle .sub{color:var(--gold2);font-size:.95rem}
+  .home{margin-left:auto;border:1px solid rgba(255,255,255,.45);border-radius:999px;
+        padding:6px 14px;font-size:.85rem;text-decoration:none;white-space:nowrap}
+  .home:hover{background:rgba(255,255,255,.12)}
+
+  .intro{max-width:1400px;margin:0 auto;padding:16px 20px 0;color:var(--muted);font-size:.93rem}
+
+  .wrap{max-width:1400px;margin:0 auto;padding:16px 20px 40px;
+        display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+
+  nav.list{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;
+           position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto}
+  nav.list h2{margin:6px 8px 10px;font-size:.82rem;letter-spacing:.08em;color:var(--muted);font-weight:700}
+  .wk{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;
+      padding:10px 12px;border-radius:10px;font:inherit;color:inherit;margin-bottom:2px;
+      border-left:3px solid transparent}
+  .wk:hover{background:#eef1f9}
+  .wk.on{background:var(--navy);color:#fff;border-left-color:var(--gold)}
+  .wk .n{display:block;font-weight:700;font-size:.95rem}
+  .wk .t{display:block;font-size:.83rem;color:var(--muted);margin-top:2px}
+  .wk.on .t{color:var(--gold2)}
+
+  main{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0}
+  .bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .bar .now{font-weight:700;min-width:0}
+  .bar .now small{display:block;font-weight:400;color:var(--muted);font-size:.85rem}
+  .btns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;border:1px solid var(--line);background:#fff;
+       border-radius:999px;padding:7px 14px;font-size:.86rem;color:var(--ink);white-space:nowrap}
+  .btn:hover{border-color:var(--navy)}
+  .btn.gold{background:var(--gold);border-color:var(--gold);color:#3a2a05;font-weight:700}
+
+  .viewer{height:calc(100vh - 190px);min-height:460px;background:#eceff6}
+  .viewer iframe{width:100%;height:100%;border:0;display:block}
+  .fallback{display:none;padding:26px 20px;text-align:center;color:var(--muted);font-size:.92rem}
+  .fallback .btn{margin-top:12px}
+
+  .nextprev{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:#fafbff}
+  .nextprev .btn{flex:1;text-align:center}
+  .nextprev .btn[disabled]{opacity:.4;pointer-events:none}
+
+  footer{max-width:1400px;margin:0 auto;padding:0 20px 36px;color:var(--muted);font-size:.85rem}
+
+  @media (max-width:900px){
+    .wrap{grid-template-columns:1fr;padding:14px 16px 30px}
+    nav.list{position:static;max-height:none}
+    .viewer{height:70vh;min-height:380px}
+    .htitle h1{font-size:1.2rem}
+  }
+</style>
+</head>
+<body>
+<div class="rainbow"></div>
+<header>
+  <div class="htitle">
+    <h1>유란시아서 신규 독자 과정</h1>
+    <span class="sub">유란시아 대학교 연구소(UUI) 10주 과정 · 한글판</span>
+    <a class="home" href="https://urantiareaders.com/">홈으로</a>
+  </div>
+</header>
+
+<p class="intro">
+  유란시아서를 처음 읽는 분들을 위한 10주 안내 과정입니다.
+  왼쪽에서 주차를 고르면 오른쪽에 교안이 열립니다. 내려받아 인쇄해 보셔도 좋습니다.
+</p>
+
+<div class="wrap">
+  <nav class="list" id="list">
+    <h2>10주 교안</h2>
+  </nav>
+
+  <main>
+    <div class="bar">
+      <div class="now" id="now"></div>
+      <div class="btns">
+        <a class="btn" id="openNew" href="#" target="_blank" rel="noopener">새 창에서 열기</a>
+        <a class="btn gold" id="dl" href="#" download>내려받기</a>
+      </div>
+    </div>
+    <div class="viewer">
+      <iframe id="frame" title="교안 보기"></iframe>
+      <div class="fallback" id="fallback">
+        이 기기에서는 화면 안에서 바로 보기가 지원되지 않습니다.
+        아래 단추로 열어 주세요.
+        <br><a class="btn gold" id="fbOpen" href="#" target="_blank" rel="noopener">교안 열기</a>
+      </div>
+    </div>
+    <div class="nextprev">
+      <button class="btn" id="prev" type="button">← 이전 주차</button>
+      <button class="btn" id="next" type="button">다음 주차 →</button>
+    </div>
+  </main>
+</div>
+
+<footer>
+  한국 유란시아서 독자 모임 · 교안 출처: Urantia University Institute, New Reader Course (한글 번역판)
+</footer>
+
+<script>
+/* 주차를 더하거나 제목을 고칠 때는 아래 한 줄씩만 손보면 됩니다.
+   윗줄 끝의 쉼표를 빠뜨리지 않도록 주의하세요. */
+var WEEKS = [
+  {n:1,  file:"w1.pdf",  title:"영적 여정 나누기와 과정 개요"},
+  {n:2,  file:"w2.pdf",  title:"제1부 — 신학, 중앙 우주 구조와 고위 존재들"},
+  {n:3,  file:"w3.pdf",  title:"제2부 — 지역 우주 신학과 구조"},
+  {n:4,  file:"w4.pdf",  title:"제2부(계속) — 지역 우주와 거주 세계에서의 삶"},
+  {n:5,  file:"w5.pdf",  title:"제3부 — 유란시아의 기원과 초기 문명"},
+  {n:6,  file:"w6.pdf",  title:"제3부 — 아담과 이브, 가족, 진화 종교"},
+  {n:7,  file:"w7.pdf",  title:"제3부 — 종교, 고급 신학, 생각 조절자"},
+  {n:8,  file:"w8.pdf",  title:"제4부 — 예수의 생애: 증여와 공적 사역"},
+  {n:9,  file:"w9.pdf",  title:"제4부 — 마지막 주간, 부활과 출현"},
+  {n:10, file:"w10.pdf", title:"통합하고 앞으로 나아가기"}
+];
+
+var listEl = document.getElementById('list');
+var frame  = document.getElementById('frame');
+var nowEl  = document.getElementById('now');
+var dlEl   = document.getElementById('dl');
+var openEl = document.getElementById('openNew');
+var fbEl   = document.getElementById('fallback');
+var fbOpen = document.getElementById('fbOpen');
+var prevEl = document.getElementById('prev');
+var nextEl = document.getElementById('next');
+var cur = 0;
+
+/* 폰(특히 아이폰)은 iframe 안에서 PDF를 못 여는 경우가 많아 단추 화면으로 바꿉니다. */
+var inlineOK = !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+WEEKS.forEach(function(w, i){
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'wk';
+  b.innerHTML = '<span class="n">' + w.n + '주차</span><span class="t"></span>';
+  b.querySelector('.t').textContent = w.title;
+  b.addEventListener('click', function(){ show(i, true); });
+  listEl.appendChild(b);
+});
+var btns = listEl.querySelectorAll('.wk');
+
+function show(i, push){
+  if(i < 0 || i >= WEEKS.length) return;
+  cur = i;
+  var w = WEEKS[i];
+  for(var k = 0; k < btns.length; k++) btns[k].classList.toggle('on', k === i);
+  nowEl.innerHTML = '<span></span><small></small>';
+  nowEl.firstChild.textContent = w.n + '주차';
+  nowEl.lastChild.textContent = w.title;
+  dlEl.href = w.file;
+  dlEl.setAttribute('download', '유란시아서 신규 독자 과정 ' + w.n + '주차.pdf');
+  openEl.href = w.file;
+  fbOpen.href = w.file;
+  if(inlineOK){
+    frame.src = w.file + '#view=FitH';
+    frame.style.display = 'block';
+    fbEl.style.display = 'none';
+  } else {
+    frame.style.display = 'none';
+    fbEl.style.display = 'block';
+  }
+  prevEl.disabled = (i === 0);
+  nextEl.disabled = (i === WEEKS.length - 1);
+  if(push && history.replaceState) history.replaceState(null, '', '#w' + w.n);
+  if(window.innerWidth <= 900 && push){
+    document.querySelector('main').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+}
+
+prevEl.addEventListener('click', function(){ show(cur - 1, true); });
+nextEl.addEventListener('click', function(){ show(cur + 1, true); });
+
+function fromHash(){
+  var m = (location.hash || '').match(/^#w(\d+)$/);
+  if(!m) return 0;
+  for(var j = 0; j < WEEKS.length; j++){
+    if(WEEKS[j].n === parseInt(m[1], 10)) return j;
+  }
+  return 0;
+}
+window.addEventListener('hashchange', function(){ show(fromHash(), false); });
+show(fromHash(), false);
+</script>
+</body>
+</html>
