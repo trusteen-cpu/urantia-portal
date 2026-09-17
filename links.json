@@ -66,9 +66,14 @@
           "member": true
         },
         {
-          "name": "오늘의 묵상 ",
+          "name": "오늘의 취침 묵상 ",
           "url": "/devotion/",
           "member": true
+        },
+        {
+          "member": true,
+          "name": "오늘의 아침 묵상 ",
+          "url": "https://urantiareaders.com/devotion/morning"
         },
         {
           "name": "명상록",
@@ -113,6 +118,10 @@
         {
           "name": "유란시아서 핵심 리더(Reader)",
           "url": "/core/index.html "
+        },
+        {
+          "member": false,
+          "name": "간추린 유란시아서(요약본)"
         },
         {
           "name": "유란시아서 전편 마인드맵",
@@ -355,7 +364,7 @@
         },
         {
           "name": "신규 독자 강의 (10주)",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/93"
+          "url": "https://urantiareaders.com/newcomer"
         },
         {
           "name": "유란시아서 통합 강의 (80강)",

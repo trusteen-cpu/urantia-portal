@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>오늘의 아침 묵상 — 한국 유란시아서 독자 모임</title>
+<style>
+:root{--navy:#2a3358;--navy2:#8a5a34;--gold:#b7791f;--gold2:#d6a84a;--ink:#22262e;--dim:#6b7280;--line:#e4e7ec;--bg:#f6f7f9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+a{color:inherit}
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#eef2f8;border-bottom:3px solid var(--gold)}
+.top .in{max-width:1180px;margin:0 auto;padding:15px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px}
+.crumb{font-size:13px;color:#aebbd2}.crumb a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.grow{flex:1}
+.tbtn{display:inline-block;padding:7px 13px;border-radius:999px;font-size:13.5px;text-decoration:none;color:#f6e3b8;border:1px solid rgba(214,168,74,.55);background:rgba(255,255,255,.06);white-space:nowrap}
+.tbtn:hover{background:rgba(214,168,74,.18);color:#fff6df}
+main{max-width:1180px;margin:0 auto;padding:20px}
+.player{background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(18,32,63,.18)}
+.player .ratio{position:relative;padding-top:56.25%}
+.player iframe,.player #stage{position:absolute;inset:0;width:100%;height:100%;border:0}
+.now{display:flex;align-items:center;gap:10px;margin:12px 4px 4px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.now b{color:var(--navy)}
+.note{font-size:13px;color:var(--dim);margin:6px 4px 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.card{margin:0;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,32,63,.12)}
+.card.on{outline:2px solid var(--gold2)}
+.thumb{position:relative;padding-top:56.25%;background:#dfe3ea}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.no{position:absolute;left:8px;top:8px;background:rgba(18,32,63,.85);color:#f6e3b8;font-size:12px;padding:2px 8px;border-radius:999px}
+.pl{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:2px 8px;border-radius:6px}
+.cap{padding:10px 12px;font-size:14px;line-height:1.45;min-height:58px}
+.foot{margin:26px 0 10px;text-align:center;font-size:14px}
+.foot a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(183,121,31,.4)}
+.msg{padding:18px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--dim);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div><h1>오늘의 아침 묵상</h1><div class="crumb"><a href="/">홈</a> › 오늘의 아침 묵상</div></div>
+  <div class="grow"></div>
+  <a class="tbtn" href="/devotion/">오늘의 취침 묵상</a>
+  <a class="tbtn" href="/devotion/archive.html">2026년 8월 이전 묵상</a>
+  <a class="tbtn" href="https://www.youtube.com/playlist?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L" target="_blank" rel="noopener">유튜브에서 보기</a>
+</div></header>
+
+<main>
+  <div class="player"><div class="ratio"><div id="stage"></div></div></div>
+  <div class="now"><span id="now">재생목록을 불러오는 중…</span><span class="grow"></span><span id="cnt"></span></div>
+  <div class="note">유튜브 재생목록을 그대로 읽어 옵니다. 재생목록에 영상을 넣기만 하면 이 페이지에 자동으로 나타납니다. 영상 제목의 날짜를 읽어 오늘 것이 맨 앞에 오고, 아래로 지난 묵상이 이어집니다.</div>
+  <div id="grid" class="grid"></div>
+  <div class="foot"><a href="https://www.youtube.com/playlist?list=PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L" target="_blank" rel="noopener">재생목록 전체 보기 →</a></div>
+</main>
+
+<script>
+/* ---------------------------------------------------------------
+   재생목록 ID 하나만 바꾸면 됩니다.
+   차례는 재생목록 순서 그대로(이 재생목록은 최신이 앞).
+   제목은 화면 밖 숨은 재생기로 유튜브에서 직접 읽어 옵니다.
+   --------------------------------------------------------------- */
+var LIST = "PL_uGHPc5SUrAE64jJthKmWogaYExlCt_L";
+var PLAYLIST_IS_NEWEST_FIRST = true;
+
+var player, probe, ids = [], titles = {}, order = [], curIdx = -1;
+var grid = document.getElementById('grid'), now = document.getElementById('now'), cnt = document.getElementById('cnt');
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('stage', {
+    playerVars: { listType: 'playlist', list: LIST, rel: 0, modestbranding: 1 },
+    events: { onReady: onReady, onStateChange: onState }
+  });
+}
+
+function onReady(){
+  var tries = 0;
+  (function poll(){
+    var pl = player.getPlaylist();
+    if (pl && pl.length){ ids = pl.slice(); start(); }
+    else if (++tries < 40) setTimeout(poll, 250);
+    else fail();
+  })();
+}
+
+function fail(){
+  grid.innerHTML = '<div class="msg">재생목록을 읽지 못했습니다. 재생목록이 공개(또는 일부 공개) 상태인지 확인해 주세요.</div>';
+  now.textContent = '';
+}
+
+function start(){
+  cnt.textContent = ids.length + '개';
+  order = ids.map(function(_, i){ return i; });
+  if (!PLAYLIST_IS_NEWEST_FIRST) order.reverse();
+  render();
+  mark(order.length ? order[0] : -1);
+  startProbe();
+}
+
+/* 제목 다듬기 — 해시태그 꼬리를 잘라 낸다 */
+function clean(t){
+  t = String(t || '');
+  var i = t.indexOf('#');
+  if (i > 0) t = t.slice(0, i);
+  return t.replace(/\s+/g, ' ').trim();
+}
+
+function setTitle(idx, t){
+  titles[idx] = clean(t);
+  var el = document.getElementById('cap-' + idx);
+  if (el) el.textContent = titles[idx];
+  if (idx === curIdx) showNow(idx);
+}
+
+/* 숨은 재생기로 영상을 하나씩 물려 제목만 뽑아 온다 */
+function startProbe(){
+  var host = document.createElement('div');
+  host.id = 'probe';
+  host.style.cssText = 'position:absolute;left:-9999px;top:0;width:200px;height:120px';
+  document.body.appendChild(host);
+  try {
+    probe = new YT.Player('probe', {
+      height: '120', width: '200',
+      playerVars: { controls: 0, disablekb: 1 },
+      events: { onReady: function(){ probeNext(0); } }
+    });
+  } catch (e) {}
+}
+
+function probeNext(i){
+  if (i >= ids.length){ cleanupProbe(); return; }
+  if (titles[i]){ probeNext(i + 1); return; }
+  var id = ids[i], tries = 0;
+  try { probe.cueVideoById(id); } catch (e) { probeNext(i + 1); return; }
+  (function poll(){
+    var d = null;
+    try { d = probe.getVideoData && probe.getVideoData(); } catch (e) {}
+    if (d && d.title && d.video_id === id){
+      setTitle(i, d.title);
+      setTimeout(function(){ probeNext(i + 1); }, 20);
+      return;
+    }
+    if (++tries < 40) setTimeout(poll, 100);
+    else probeNext(i + 1);
+  })();
+}
+
+function cleanupProbe(){
+  var h = document.getElementById('probe');
+  if (h && h.parentNode) h.parentNode.removeChild(h);
+}
+
+function render(){
+  grid.innerHTML = '';
+  order.forEach(function(idx){
+    var id = ids[idx];
+    var c = document.createElement('figure');
+    c.className = 'card' + (idx === curIdx ? ' on' : '');
+    c.dataset.idx = idx;
+    c.innerHTML = '<div class="thumb"><img loading="lazy" alt="" src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg">'
+      + '<span class="pl">&#9654;</span></div>'
+      + '<figcaption class="cap" id="cap-' + idx + '"></figcaption>';
+    c.querySelector('.cap').textContent = titles[idx] || '';
+    c.onclick = function(){ player.playVideoAt(idx); document.querySelector('.player').scrollIntoView({behavior:'smooth',block:'start'}); };
+    grid.appendChild(c);
+  });
+}
+
+function grabTitleFromPlayer(idx){
+  try {
+    var d = player.getVideoData && player.getVideoData();
+    if (d && d.title && !titles[idx]) setTitle(idx, d.title);
+  } catch (e) {}
+}
+
+function showNow(idx){
+  now.innerHTML = '지금 듣는 묵상 · <b>' + (titles[idx] || '') + '</b>';
+}
+function mark(idx){
+  if (idx == null || idx < 0) return;
+  curIdx = idx;
+  grabTitleFromPlayer(idx);
+  [].forEach.call(grid.children, function(c){ c.className = 'card' + (+c.dataset.idx === idx ? ' on' : ''); });
+  showNow(idx);
+}
+function onState(e){
+  if (e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.CUED) mark(player.getPlaylistIndex());
+}
+</script>
+</body>
+</html>
