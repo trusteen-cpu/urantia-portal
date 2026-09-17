@@ -2019,6 +2019,26 @@ loadData();
     if (typeof window.loadEngData === "function") { try { await window.loadEngData(); } catch {} }
     return (typeof ENG_VERSES !== "undefined" && ENG_VERSES && ENG_VERSES[ref]) || null;
   }
+  function lookupSectionText(paperInput, sectionInput) {
+    if (!PAPERS) return null;
+    const pnum = parseInt(String(paperInput).replace(/[^0-9]/g, ""), 10);
+    if (isNaN(pnum)) return null;
+    const paper = PAPERS.find((p) => p.num === pnum);
+    if (!paper) return null;
+    const snum = String(sectionInput || "").replace(/[^0-9]/g, "");
+    let section = null;
+    if (snum === "") {
+      section = paper.sections[0];
+    } else {
+      section = paper.sections.find((s) =>
+        String(s.num).split(",").map((x) => x.trim()).includes(snum)
+      );
+    }
+    if (!section || !section.paras || !section.paras.length) return null;
+    const text = section.paras.map((pa) => pa.text.replace(/\\/g, "")).join(" ");
+    const label = paper.title + (section.title ? " · " + section.title : "");
+    return { label, text };
+  }
 
   /* ═══════════ ① 한/영 병렬 + 번역 비교 ═══════════ */
   async function openParallel(ref, koTextArg) {
@@ -2160,19 +2180,35 @@ loadData();
   function openSermonEditor(seed) {
     seed = seed || {};
     openModal({
-      title: "✍️ 강론 작성", sub: "1,000자 이상 자유롭게 — AI 초안 도움도 받을 수 있습니다", wide: true,
+      title: "✍️ 강론 작성", sub: "편·장을 입력하고 본문을 불러온 뒤 AI 초안을 받을 수 있습니다", wide: true,
       body: (el) => {
         el.innerHTML = `
           <div class="se-sermon-meta">
-            <input class="se-p" placeholder="편 (예: 5편)" value="${E(seed.paper || "")}">
-            <input class="se-s" placeholder="장 (예: 3장)" value="${E(seed.section || "")}">
+            <input class="se-p" placeholder="편 (예: 5)" value="${E(seed.paper || "")}">
+            <input class="se-s" placeholder="장 (예: 3)" value="${E(seed.section || "")}">
+            <button class="se-btn se-sm" id="se-load-src" type="button">본문 불러오기</button>
             <input class="se-t" placeholder="강론 제목">
           </div>
+          <div id="se-src-box" style="display:none;margin:8px 0 12px;padding:10px 12px;background:rgba(0,0,0,.04);border-radius:8px;max-height:160px;overflow:auto;font-size:13px;line-height:1.6;"></div>
           <div id="se-ai-draft"></div>
-          <textarea class="se-sermon-editor" placeholder="여기에 강론을 적어 보세요…"></textarea>
+          <textarea class="se-sermon-editor" placeholder="여기에 강론을 적어 보세요…(AI 초안을 받으면 여기에 채워집니다)"></textarea>
           <div class="se-charcount">0자</div>`;
         const ta = el.querySelector(".se-sermon-editor");
         const cc = el.querySelector(".se-charcount");
+        const srcBox = el.querySelector("#se-src-box");
+        let loaded = seed.ko ? { label: [seed.paper, seed.section].filter(Boolean).join(" "), text: seed.ko } : null;
+        const showLoaded = () => {
+          if (!loaded) { srcBox.style.display = "none"; srcBox.innerHTML = ""; return; }
+          srcBox.style.display = "block";
+          srcBox.innerHTML = `<div style="font-weight:600;margin-bottom:4px;">${E(loaded.label)}</div><div>${E(loaded.text)}</div>`;
+        };
+        showLoaded();
+        el.querySelector("#se-load-src").onclick = () => {
+          const p = el.querySelector(".se-p").value, s = el.querySelector(".se-s").value;
+          const found = lookupSectionText(p, s);
+          if (!found) { alert("그 편·장의 본문을 찾지 못했습니다. 편·장 번호를 확인해 주세요."); return; }
+          loaded = found; showLoaded();
+        };
         const upd = () => {
           const n = ta.value.replace(/\s/g, "").length;
           cc.textContent = n + "자" + (n >= 1000 ? " ✓" : ` (목표 1,000자, ${1000 - n}자 더)`);
@@ -2181,8 +2217,13 @@ loadData();
         ta.addEventListener("input", upd); upd();
         aiButton(el.querySelector("#se-ai-draft"), "🤖 AI로 강론 초안 써 보기", async () => {
           const p = el.querySelector(".se-p").value, s = el.querySelector(".se-s").value;
+          if (!loaded) {
+            const found = lookupSectionText(p, s);
+            if (found) { loaded = found; showLoaded(); }
+          }
+          if (!loaded) throw new Error('편·장을 입력하고 "본문 불러오기"를 먼저 눌러 주세요.');
           const notes = ta.value.trim();
-          const text = await callAI("sermon", { paper: p, section: s, ko: seed.ko || "", notes: notes || undefined });
+          const text = await callAI("sermon", { paper: p, section: s, ko: loaded.text, notes: notes || undefined });
           ta.value = text; upd();
           return "초안을 아래 편집창에 채워 넣었습니다. 자유롭게 고쳐 쓰세요.";
         });
@@ -2191,6 +2232,7 @@ loadData();
           title: el.querySelector(".se-t").value, body: ta.value,
         });
       },
+
       foot: (el, ov) => {
         const save = document.createElement("button"); save.className = "se-btn"; save.textContent = "저장하기";
         save.onclick = () => {
