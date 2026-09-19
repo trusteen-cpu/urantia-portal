@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제16강 에너지와 물질 그리고 마음 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 42편과 관련 편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 89개">
+<meta property="og:image" content="https://urantiareaders.com/learn/og-w16.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://urantiareaders.com/learn/w16.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>에너지와 물질 그리고 마음 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 16</p>
+    <h1>에너지와 물질 그리고 마음</h1>
+    <p class="papers">유란시아서 42편 · 관련 9 · 12 · 36 · 101 · 103 · 105 · 111 · 116편</p>
+    <div class="lead">유란시아서 42편 「에너지—마음과 물질」은 계시 전체에서 가장 물리학적인 편이다. 파라다이스에서 흘러나오는 힘이 일곱 단계를 거쳐 우주 동력이 되고, 극자와 전자와 원자를 거쳐 열 가지 물질로 조직되는 과정이 구체적인 수치와 함께 서술된다. 그러나 이 편의 결론은 물리학에 있지 않다. 마지막 장은 마음이 보편적으로 물질을 지배하고, 마음은 다시 영의 궁극적 상위통제에 반응하며, 오직 영의 인도를 따르는 마음만이 생존할 수 있다고 맺는다. 물리적 서술이 인격의 선택이라는 결론으로 이어지는 이 구조를 이해하려면 마음의 근원을 다루는 9편, 세 인력 회로를 정의하는 12편, 진화 우주의 위계를 요약한 116편, 혼의 탄생을 설명하는 111편, 과학·철학·종교의 관계를 논하는 103편을 함께 읽어야 한다. 이 페이지는 이 여섯 편을 일곱 마디로 묶어, 에너지의 기원에서 물질의 구성과 마음의 체계를 거쳐 혼의 탄생에 이르는 흐름을 따라간다. 마디마다 요약과 배경 설명, 소그룹 질문과 모범답안, 그리고 본문 인용을 함께 제시한다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 모든 힘은 파라다이스에서 나온다</a></li><li><a href="#s2">2. 비영적 에너지의 일곱 단계와 변환자들</a></li><li><a href="#s3">3. 극자·전자·원자 — 물질의 구성</a></li><li><a href="#s4">4. 변성과 파동, 그리고 자연 철학</a></li><li><a href="#s5">5. 마음의 근원과 마음의 스펙트럼</a></li><li><a href="#s6">6. 마음은 물질을, 영은 마음을 지배한다</a></li><li><a href="#s7">7. 혼의 탄생과 과학·철학·종교의 통합</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>모든 힘은 파라다이스에서 나온다</h2><p class="sub">근원·특권·순환 — 에너지 이해의 세 원리</p></div></div>
+  <p class="summary">42편은 에너지를 모든 실존의 기초로 보면서도, 그 에너지가 스스로 있는 것이 아니라 우주 아버지의 통제 아래 파라다이스에서 흘러나온다고 설명한다. 물질이 자족적인 힘을 가진 듯 보여도 모든 물리 현상의 중력선은 파라다이스에 의존한다. 에너지의 창조와 생명의 증여는 아버지와 동료 창조자들만의 특권이며, 과학이 아무리 발달해도 원자 하나를 창조할 수는 없다. 에너지는 소멸하지 않고 형태만 바꾸며, 영원하지만 무한하지 않은 순환 체계 안에서 결국 파라다이스로 돌아간다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 마디의 핵심은 에너지를 신학의 바깥이 아니라 신학의 안쪽에 놓는다는 점이다. 서론은 힘, 곧 에너지를 우주 절대자의 실존과 현존을 드러내는 영원한 기념비라고 부른다. 보통 신의 존재 증명은 질서나 목적, 도덕 의식에서 출발하지만, 42편은 에너지 흐름이 한 번도 멈춘 적이 없다는 사실 자체를 증거로 삼는다. 12편 8장도 같은 구도를 보여 준다. 모든 원초적 힘-에너지가 파라다이스에서 나오며, 물리적 에너지는 보편 법칙에 대한 순종에서 참되고 확고한 유일한 실체라고 기술한다. 신성한 계획에서 벗어난 것은 오직 창조체 의지의 영역뿐이라는 관찰은, 물질 우주가 반역할 수 없다는 점에서 오히려 가장 순종적인 영역이라는 역설을 드러낸다. 105편은 이 비인격적 관계를 스스로 계신 이의 우주 통제자 국면, 곧 원형으로서의 하나님으로 설명하고, 절대 수준에서는 순수 에너지와 순수 영이 우주 아버지 안에서 절대적으로 응집되어 있다고 말한다. 또 하나 주목할 점은 에너지가 영원하지만 무한하지 않다는 구분이다. 주 우주에는 바깥 한계가 있고, 에너지는 정해진 회로를 따라 결국 파라다이스로 돌아간다. 계시자는 에너지 고갈의 증거가 어디에도 없다는 사실을 이 순환 우주론의 논거로 제시한다. 열역학적 소진을 전제하는 현대 우주론과 비교해 볼 만한 대목이다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>42편은 왜 에너지를 우주 절대자의 실존을 증명하는 기념비라고 부르는가?</span></button><div class="answer">에너지의 흐름이 파라다이스에서 나와 한 번도 멈추거나 끊긴 적이 없기 때문이다. 본문은 무한한 유지에 중단이 없었다는 사실을 신의 지속적 현존의 증거로 본다. 모임에서는 우리가 신의 존재를 떠올릴 때 보통 무엇에서 출발하는지, 그리고 물리적 세계의 항상성에서 출발하는 이 방식이 어떤 느낌을 주는지 함께 나눠 보면 좋겠다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>과학의 진보와 창조의 특권은 어떻게 구별되는가?</span></button><div class="answer">본문은 인간이 물질의 전기 단위를 통제하는 수준까지 진보하더라도 원자 하나를 창조하거나 에너지의 섬광 하나를 일으키거나 물질에 생명을 더하지는 못한다고 말한다. 과학은 신성한 기법을 하나씩 터득해 창조주에게 다가갈 수 있지만, 창조 자체는 우주 아버지와 동료 창조자 인격들의 특권으로 남는다. 발견과 창조는 다른 차원의 일이라는 점을 짚으면 된다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>에너지는 영원하지만 무한하지 않다는 말은 무슨 뜻인가?</span></button><div class="answer">에너지는 소멸하지 않고 끝없이 변모하므로 시간적으로는 영원하다. 그러나 무한자에게서 나오더라도 무한히 현시되지는 않으며, 현재의 주 우주에는 바깥 한계가 있다. 에너지는 무한성의 붙듦에 늘 반응하며 결국 파라다이스로 돌아간다. 그래서 우주는 무한히 퍼져 나가 흩어지는 체계가 아니라 순환하는 체계로 제시된다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">42:0.1</div><div class="qtext">에너지가 모든 실존의 기초라는 의미에서 우주의 기반은 물질적이며, 순수한 에너지는 우주 아버지가 통제한다.</div></div><div class="quote"><div class="ref">42:0.1</div><div class="qtext">파라다이스 현존들으로부터 발원하는 이 거대한 에너지 흐름은 결코 멈춘 적이 없으며, 결코 그친 적이 없다. 무한한 유지에는 결코 중단이 없었다.</div></div><div class="quote"><div class="ref">42:1.1</div><div class="qtext">우주의 기반은 물질적이지만, 생명의 본질은 영이다. 영들의 아버지는 또한 우주들의 선조이다.</div></div><div class="quote"><div class="ref">42:1.2</div><div class="qtext">최초의 측정 가능한 형태의 에너지인 극자는 파라다이스를 핵으로 한다.</div></div><div class="quote"><div class="ref">42:1.4</div><div class="qtext">과학자들은 물질의 원자 하나를 창조하거나, 에너지의 섬광 하나를 일으키거나, 우리가 생명이라 부르는 것을 물질에 더하는 일에 영원히 무력할 것이다.</div></div><div class="quote"><div class="ref">42:1.5</div><div class="qtext">에너지의 창조와 생명의 증여는 우주 아버지와 그의 동료 창조자 인격들의 특권이다.</div></div><div class="quote"><div class="ref">42:1.6</div><div class="qtext">그리고 모든 힘은 파라다이스에서 회로를 이루며, 파라다이스 현존들에서 나와 그곳으로 돌아간다.</div></div><div class="quote"><div class="ref">42:1.7</div><div class="qtext">힘-에너지는 불멸하고 파괴되지 않는다.</div></div><div class="quote"><div class="ref">42:1.8</div><div class="qtext">에너지는 영원하지만 무한하지 않다. 그것은 무한성의 모든 것을 아우르는 붙듦에 언제나 반응한다.</div></div><div class="quote"><div class="ref">42:1.8</div><div class="qtext">파라다이스 신에게서 기원한 것은 오직 파라다이스라는 목적지 또는 신이라는 운명을 가질 수 있을 뿐이다.</div></div><div class="quote"><div class="ref">12:8.2</div><div class="qtext">모든 원초적 힘-에너지는 파라다이스에서 나오며, 무수한 우주들을 만드는 물질이, 충만 공간의 힘-충전을 구성하는 초중력 현존의 형태로 현재 주(主) 우주 전체에 순환하고 있다.</div></div><div class="quote"><div class="ref">12:8.3</div><div class="qtext">물리적 에너지는 보편 법칙에 대한 그 순종에 있어서 참되고 확고한 유일한 실체이다. 오직 창조체 의지의 영역들 안에서만 신성한 길과 원래 계획들로부터의 이탈이 있어 왔다.</div></div><div class="quote"><div class="ref">105:2.6</div><div class="qtext">우주 아버지는 사랑으로서의 하나님이요, 우주 통제자는 원형으로서의 하나님이다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>비영적 에너지의 일곱 단계와 변환자들</h2><p class="sub">공간 잠재력에서 모노타까지, 그리고 그 일을 맡은 존재들</p></div></div>
+  <p class="summary">42편 2장은 물리적 에너지를 일곱 단계로 분류한다. 무제한 절대자의 공간 잠재력(앱솔루타)이 힘 조직자의 현존으로 시원적 힘(세그리가타)이 되고, 유력 에너지와 중력 에너지(얼티마타)를 거쳐 우주 동력(그라비타)이 된다. 그 너머에 하보나 에너지(트리아타), 초월 에너지(트라노스타), 파라다이스의 모노타가 있다. 이 모든 변환에는 주 힘 조직자, 동력 감독자, 생명 운반자 같은 살아 있는 존재들이 관여한다. 에너지는 저절로 진화하지 않는다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>먼저 용어의 약속을 확인해야 한다. 계시자는 영어에 알맞은 단어가 없다고 밝히며, 에너지는 모든 국면을 가리키는 포괄어로, 힘은 중력 이전 단계로, 동력은 중력 이후 단계로 쓰겠다고 정의한다. 이 구분을 놓치면 일곱 단계가 뒤섞여 보인다. 결정적인 분기점은 셋째 단계다. 유력 에너지는 파라다이스 중력에 명확히 반응하지 않지만, 중력 에너지로 넘어가면서 파라다이스의 원형 중력에 직접 반응하고 곧 나타날 물질의 선형 중력에도 민감해진다. 이 순간 일차 주 힘 조직자는 연합 주 힘 조직자에게 자리를 내주고, 중력 반응이 확립되면 연합 힘 조직자는 물러나 우주 동력 감독자가 일을 이어받는다. 동력 감독자들은 일곱 초우주의 서른 가지 에너지 국면 가운데 스물한 가지를 다소간 완전히 통제한다. 이 서술의 특징은 자연 과정과 인격적 관여가 대립하지 않는다는 점이다. 기계론은 우주가 저절로 굴러간다고 보고, 전통적 창조론은 순간적 창조를 말하지만, 42편은 단계적 진화와 지성적 존재의 작업이 동시에 성립한다고 본다. 또한 계시자는 힘 진화의 초기 원인에 대해 매우 불확실하며, 동력 감독자조차 힘 조직자의 기능을 완전히 이해하지 못한다고 솔직하게 적는다. 계시가 아는 것과 모르는 것을 스스로 구분한다는 점은 이 편을 읽는 태도를 정해 준다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>에너지 일곱 단계에서 물질화의 분기점은 어디인가?</span></button><div class="answer">셋째 단계인 창발 에너지 안에서 유력 에너지가 중력 에너지로 넘어가는 지점이다. 중력 에너지는 파라다이스 중력의 원형 붙듦에 직접 반응하며 모든 우주 물질의 활동적인 조상이 된다. 여기서부터 힘 조직자에서 동력 감독자로 일이 넘어가고, 에너지는 우주 동력으로 무르익어 물질이 된다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>에너지 변환에 살아 있는 존재들이 관여한다는 서술은 어떤 의미가 있는가?</span></button><div class="answer">우주의 물리적 과정이 비인격적 기계 작용만이 아니라 조직된 지성의 활동이라는 뜻이다. 동시에 그 과정은 단계적이고 법칙적이어서 즉각적 창조와도 다르다. 모임에서는 자연 법칙과 인격적 섭리를 서로 배타적으로 생각해 온 습관이 있는지, 이 관점이 그 습관을 어떻게 바꾸는지 이야기해 볼 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>계시자가 자기 지식의 한계를 밝히는 대목에서 무엇을 배울 수 있는가?</span></button><div class="answer">계시자는 힘 진화 초기 단계의 원인이 매우 불확실하다고 말하고, 동력 감독자도 힘 조직자의 기능을 완전히 이해하지 못한다는 의견을 적는다. 동시에 창발 에너지가 중력에 반응하는 순간부터는 모든 국면에 정통하다고 말한다. 확실한 것과 불확실한 것을 구분해 읽는 태도가 필요하며, 이 편의 과학적 서술을 절대화하지 말아야 한다는 교훈을 준다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">42:2.1</div><div class="qtext">이 편에서 에너지라는 단어는 현상적 운동·작용·잠재의 모든 국면과 형태를 나타내기 위해 사용되는 반면, 힘은 에너지의 중력 이전 단계에, 그리고 동력은 중력 이후 단계에 적용된다.</div></div><div class="quote"><div class="ref">42:2.5</div><div class="qtext">공간 잠재력은 전(前)실체이다.</div></div><div class="quote"><div class="ref">42:2.6</div><div class="qtext">유버사에서는 공간 잠재력을 앱솔루타(ABSOLUTA)라고 한다.</div></div><div class="quote"><div class="ref">42:2.9</div><div class="qtext">시원적 힘을 때로는 순수 에너지라고 언급하며, 유버사에서 우리는 이를 세그리가타(SEGREGATA)라 말한다.</div></div><div class="quote"><div class="ref">42:2.12</div><div class="qtext">이제 나타나는, 중력에 반응하는 에너지는 우주 동력의 잠재력을 운반하며 모든 우주 물질의 활동적인 조상이 된다.</div></div><div class="quote"><div class="ref">42:2.13</div><div class="qtext">우리는 힘 진화의 초기 단계의 정확한 원인에 대해서는 매우 불확실하지만, 우리는 창발 에너지 현시의 두 수준 모두에서 궁극자의 지성적 행동을 인식한다.</div></div><div class="quote"><div class="ref">42:2.14</div><div class="qtext">이 우주 동력 감독자들은 현재 일곱 초우주의 에너지 체계를 구성하는 서른 가지 에너지 국면 중 스물한 가지를 다소간 완전히 통제한다.</div></div><div class="quote"><div class="ref">42:2.16</div><div class="qtext">하보나 에너지 체계는 이중이 아니라 삼중이다.</div></div><div class="quote"><div class="ref">42:2.19</div><div class="qtext">우리는 모노타가 파라다이스의 살아 있는 비영적 에너지, 곧 기원 아들의 살아 있는 영 에너지의 영원한 대응물이며, 따라서 우주 아버지의 비영적 에너지 체계라고 믿는 편이다.</div></div><div class="quote"><div class="ref">42:2.21</div><div class="qtext">그들이 힘 조직자의 기능을 완전히 이해하지 못한다는 것이 나의 의견이다.</div></div><div class="quote"><div class="ref">42:1.5</div><div class="qtext">힘 조직자들은 결국 에너지가 되는 공간-힘의 변화를 시작하고 수정을 일으킨다. 동력 감독자는 에너지를 물질로 변성한다. 그리하여 물질 세계가 탄생한다.</div></div><div class="quote"><div class="ref">42:4.3</div><div class="qtext">그들은 이 원시 상태에서 순환하는 에너지의 주인들이다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>극자·전자·원자 — 물질의 구성</h2><p class="sub">열 가지 물질 구분과 원자의 십진법 구조</p></div></div>
+  <p class="summary">중앙 우주를 제외한 모든 우주의 물질은 동일하며, 그 성질은 구성 요소의 회전 속도, 수와 크기, 핵으로부터의 거리, 그리고 아직 발견되지 않은 힘에 달려 있다. 물질은 극자 물질부터 붕괴 물질까지 열 가지로 구분된다. 극자는 측정 가능한 최초의 에너지이며, 정확히 백 개가 모여 전자 하나를 이룬다. 원자는 태양계처럼 조직되고, 원소는 꼭 백 가지이며, 원자핵은 중간자의 왕복 작용으로 지탱된다. 스물여덟째 원자부터는 예측 불가능성이 커진다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>이 마디는 42편에서 가장 구체적인 수치가 모여 있는 부분이다. 극자 백 개가 전자 하나, 궤도 전자 백 개가 원자의 한계, 전자는 서른, 서른, 서른, 열의 네 구역, 중간자는 전자보다 백팔십 배 무겁다는 식이다. 이 수치들은 현대 물리학의 용어와 곧바로 대응시키기 어렵다. 극자는 오늘날 알려진 어떤 입자와도 일대일로 맞지 않고, 전자와 극자의 관계는 표준 모형의 기술과 다르다. 따라서 이 대목은 계시자가 101편에서 밝히듯 기록 당시의 과학 수준을 넘지 않도록 제한된 서술로 읽는 것이 적절하다. 그럼에도 해석상 흥미로운 관찰이 몇 가지 있다. 하나는 십진법과 칠중 구조의 공존이다. 에너지와 물질은 십진법을 따르지만, 원소의 성질이 일곱 개씩 주기적으로 되풀이되는 현상을 계시자는 물질세계가 지닌 영적 기원의 흔적으로 해석한다. 다른 하나는 원자의 예측 불가능성이다. 처음 스물일곱 원자는 이해하기 쉽지만, 스물여덟째부터는 무제한 절대자의 추정되는 현존이 지닌 예측 불가능성이 나타나며, 그래서 원자는 예측 가능성에서 개인과 비슷하다고 말한다. 통계 법칙은 다수에 대해서만 성립한다는 이 관점은 결정론적 자연관과 거리를 둔다. 물질의 가장 낮은 층위에서도 완전히 닫힌 기계론은 성립하지 않는다는 뜻으로 읽을 수 있다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>극자와 전자의 관계를 본문에 따라 설명해 보라.</span></button><div class="answer">극자는 측정 가능한 최초의 에너지 형태로 파라다이스를 핵으로 하며, 원형 파라다이스 중력에만 반응한다. 상호 인력이 백 개의 극자를 묶어 전자 하나를 이루며, 전형적인 전자에는 결코 백 개보다 많거나 적은 극자가 없다. 하나라도 잃으면 전자의 열 가지 변형 중 하나가 된다. 극자의 축 회전 속도가 전자의 크기와 음과 양의 반응을 결정한다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>원자가 예측 가능성에서 개인과 비슷하다는 말은 무엇을 뜻하는가?</span></button><div class="answer">통계학자는 수많은 원자나 개인에 대해 법칙을 말할 수 있지만, 한 개별 원자나 한 개인에 대해서는 그럴 수 없다는 뜻이다. 본문은 이 예측 불가능성을 극자의 서로 다른 회전 속도, 뭉치는 성향, 그리고 무제한 절대자의 현존에서 찾는다. 물질의 가장 낮은 층위에도 기계적 결정론만으로 설명되지 않는 여지가 있다는 점을 나눠 볼 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>42편의 물리 수치를 현대 과학과 어떻게 함께 읽어야 할까?</span></button><div class="answer">계시자 스스로 모르는 것과 아직 발견되지 않은 힘을 여러 번 언급하고, 계시의 과학적 서술은 기록 당시의 지식 수준에 맞춰 제한되어 있다. 따라서 수치를 과학 교과서처럼 절대화하기보다, 우주가 질서 있고 지성적으로 조직되어 있다는 큰 틀을 먼저 받아들이고 세부 수치는 열린 질문으로 두는 태도가 적절하다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">42:3.1</div><div class="qtext">중앙 우주를 제외한 모든 우주의 물질은 동일하다.</div></div><div class="quote"><div class="ref">42:3.1</div><div class="qtext">물질의 물리적 성질은 구성 요소들의 회전 속도, 회전하는 구성 요소들의 수와 크기, 핵체로부터의 거리 또는 물질의 공간 함유량, 그리고 유란시아에서 아직 발견되지 않은 특정 힘의 존재에 달려 있다.</div></div><div class="quote"><div class="ref">42:3.3</div><div class="qtext">1. 극자 물질—물질적 실존의 으뜸 물리적 단위, 곧 전자를 구성하는 에너지 입자이다.</div></div><div class="quote"><div class="ref">42:6.3</div><div class="qtext">극자는 서로 끌어당김으로써 기능하며, 원형 파라다이스 중력의 당김에만 반응한다.</div></div><div class="quote"><div class="ref">42:6.5</div><div class="qtext">상호 인력이 전자를 구성하는 백 개의 극자를 함께 묶어 둔다. 전형적인 전자에는 결코 백 개보다 많거나 적은 극자가 없다.</div></div><div class="quote"><div class="ref">42:7.1</div><div class="qtext">모든 물질의 형성은 태양계의 방식을 따른다.</div></div><div class="quote"><div class="ref">42:7.4</div><div class="qtext">지역 우주는 십진법 구조를 가진다.</div></div><div class="quote"><div class="ref">42:7.6</div><div class="qtext">화학 작용은 자유롭게 회전하는 전자의 활성에 전적으로 의존한다.</div></div><div class="quote"><div class="ref">42:7.10</div><div class="qtext">그러므로 원자는 예측 가능성에서 개인과 비슷하다. 통계학자들은 수많은 원자나 개인을 지배하는 법칙을 발표할 수 있지만, 한 개별 원자나 한 개인에 대해서는 그럴 수 없다.</div></div><div class="quote"><div class="ref">42:8.3</div><div class="qtext">원자핵의 전하를 띤 양성자와 전하를 띠지 않은 중성자는 전자보다 180배 무거운 물질의 입자인 중간자의 왕복 작용에 의해 함께 묶여 있다.</div></div><div class="quote"><div class="ref">42:8.6</div><div class="qtext">원자 응집 온전성의 역설적이고 강력한 힘은 유란시아에서 아직 발견되지 않은 에너지의 한 형태이다.</div></div><div class="quote"><div class="ref">42:9.2</div><div class="qtext">숫자 일곱은 중앙 우주와, 성품의 내재적 전수라는 영적 체계에 기본이지만, 숫자 열, 곧 십진법은 에너지, 물질, 물질 창조계에 내재한다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>변성과 파동, 그리고 자연 철학</h2><p class="sub">에너지와 물질은 기원과 본성과 운명에서 하나</p></div></div>
+  <p class="summary">빛, 열, 전기, 자기, 화학 작용, 에너지, 물질은 기원과 본성과 운명에서 하나이며, 끝없는 변모를 거치면서도 자신이 나온 근원에 늘 반응한다. 질량 증가는 에너지 증가를 빛 속도의 제곱으로 나눈 값과 같고, 에너지는 양자라는 정확한 단위로만 흡수되고 방출된다. 오르본톤에는 백 옥타브의 파동 에너지가 있고, 인간의 눈은 그중 한 옥타브만 본다. 에테르는 존재하지 않으며, 계시자는 자연 철학 역시 종교처럼 독단화하는 경향이 있다고 경고한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>4장은 에너지와 물질의 상호 전환을 우주적 규모로 묘사한다. 한 에너지가 어느 우주에서는 빛으로, 다른 우주에서는 열로, 수백만 년 뒤에는 전기나 자기로, 다시 물질로 나타났다가 격변 속에 사라지고, 또 수많은 시대 뒤에 다시 나타난다. 그러나 이 모든 변모에도 그것은 자신을 내보낸 무한한 인격이 정한 길로 나아간다. 물리적 보존 법칙을 신학적 신실성으로 읽는 대목이다. 5장의 파동 서술은 극자 이하 광선부터 헤르츠파까지 열 집단을 나열하는데, 여기서도 인간이 인지하는 범위의 좁음이 강조된다. 백 옥타브 가운데 유란시아가 인지하는 것은 예순네 개이고, 눈이 반응하는 것은 한 옥타브뿐이다. 에테르 부정은 당시 물리학계의 논쟁과 맞물린 대목으로, 계시자는 에테르를 공간의 힘 활동을 뭉뚱그린 이름일 뿐이라고 보면서도 시원적 힘의 행동이 에테르와 비슷한 현상을 낳는다고 인정한다. 9장의 자연 철학 논의는 방법론적 경고다. 종교만 독단적인 것이 아니라 자연 철학도 독단화하며, 과학자는 변모를 관찰하지 못하면 애벌레에서 나비가 나올 가능성도 부정할 것이라고 말한다. 관찰할 수 없다는 것과 존재하지 않는다는 것은 다르다는 이 경고는 과학과 종교 양쪽에 모두 적용되는 원칙이다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>에너지의 끝없는 변모 속에서도 변하지 않는 것은 무엇인가?</span></button><div class="answer">본문은 에너지가 빛, 열, 전기, 물질로 형태를 바꾸며 수많은 우주를 떠돌아도 언제나 자신이 나온 근원에 반응하고, 그것을 내보낸 무한한 인격이 정한 길로 나아간다고 말한다. 형태는 끊임없이 바뀌지만 근원과의 관계와 운명의 방향은 바뀌지 않는다. 이 원리를 인간 삶의 변화와 정체성 문제에 비추어 이야기해 볼 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>인간의 눈이 백 옥타브 가운데 한 옥타브만 본다는 사실은 어떤 태도를 요구하는가?</span></button><div class="answer">인간의 감각이 포착하는 실재의 범위가 매우 좁다는 겸손을 요구한다. 보이지 않는다고 존재하지 않는 것이 아니며, 이는 물리적 파동뿐 아니라 영적 실재에도 적용된다. 과학 장비가 감각의 범위를 넓혀 왔듯, 영적 통찰도 성장할 수 있다는 점을 함께 생각해 볼 만하다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>자연 철학도 독단화한다는 계시자의 경고는 무엇을 겨냥하는가?</span></button><div class="answer">관찰할 수 없는 것을 곧바로 부정하는 과학적 독단을 겨냥한다. 계시자는 변모를 관찰하지 못한 과학자가 애벌레에서 나비가 나올 가능성조차 부정할 것이라고 비유한다. 동시에 에테르처럼 무지를 덮으려는 가설도 비판한다. 과학과 종교 모두 자기 방법의 한계를 인정할 때 건강해진다는 결론으로 정리할 수 있다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">42:4.1</div><div class="qtext">빛, 열, 전기, 자기, 화학 작용, 에너지, 물질은 유란시아에서 아직 발견되지 않은 다른 물질적 실체들과 함께 기원과 본성과 운명에서 하나이며 같은 것이다.</div></div><div class="quote"><div class="ref">42:4.2</div><div class="qtext">그러므로 물질은 시간의 변성을 겪지만 언제나 영원의 원에 충실하게 돌며 계속 흘러간다.</div></div><div class="quote"><div class="ref">42:4.2</div><div class="qtext">비록 오랫동안 그것의 근원으로 돌아가는 것이 막히더라도, 그것은 언제나 자신이 나온 근원에 반응하며, 그것을 내보낸 무한한 인격이 정한 길로 나아간다.</div></div><div class="quote"><div class="ref">42:4.6</div><div class="qtext">실제로 공간은 비어 있지 않다.</div></div><div class="quote"><div class="ref">42:4.11</div><div class="qtext">물질에서 질량의 증가는 에너지의 증가를 빛의 속도의 제곱으로 나눈 값과 같다.</div></div><div class="quote"><div class="ref">42:4.13</div><div class="qtext">물질의 상대적 온전성은 유란시아 과학자들이 양자라고 이름 붙인 바로 그 정확한 양만큼만 에너지가 흡수되거나 방출될 수 있다는 사실로 보장된다.</div></div><div class="quote"><div class="ref">42:5.1</div><div class="qtext">오르본톤 초우주에는 백 옥타브의 파동 에너지가 있다.</div></div><div class="quote"><div class="ref">42:5.13</div><div class="qtext">이 열 단계의 모든 파동 에너지 활동 중에서 인간의 눈은 오직 한 옥타브, 곧 보통 햇빛의 전체 빛에만 반응할 수 있다.</div></div><div class="quote"><div class="ref">42:5.14</div><div class="qtext">이른바 에테르는 공간에서 발생하는 힘과 에너지 활동의 집단을 지칭하는 포괄적인 명칭일 뿐이다.</div></div><div class="quote"><div class="ref">42:5.16</div><div class="qtext">그럼에도 불구하고 에테르는 존재하지 않으며, 바로 이 가설상의 에테르가 없기 때문에 거주 행성은 태양 속으로 떨어지지 않고, 도는 전자는 핵 속으로 떨어지는 것을 견딜 수 있다.</div></div><div class="quote"><div class="ref">42:9.1</div><div class="qtext">종교만이 독단적인 것은 아니다. 자연 철학도 똑같이 독단화하는 경향이 있다.</div></div><div class="quote"><div class="ref">42:9.4</div><div class="qtext">우주의 철학은 이른바 과학의 관찰에 근거할 수 없다. 만약 그러한 변모가 관찰될 수 없다면, 과학자는 애벌레에서 나비가 나올 가능성을 부정하는 경향이 있을 것이다.</div></div><div class="quote"><div class="ref">42:9.5</div><div class="qtext">초월적 지혜가 아니고서는, 그토록 안정되면서 동시에 그토록 효율적으로 유연한 물질 단위를 결코 설계할 수 없다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>마음의 근원과 마음의 스펙트럼</h2><p class="sub">셋째 근원이며 중심에서 인간의 마음까지</p></div></div>
+  <p class="summary">마음의 근원은 셋째 근원이며 중심, 곧 무한 영이다. 그는 절대 마음으로서 우주 전역에 지성을 증여하며, 일곱 주 영을 통해 우주 마음을 분배하고 마음 인력 회로로 모든 마음을 인격적으로 의식한다. 마음은 에너지에 내재하지 않고 그 위에 덧씌워진다. 42편 10장은 비영적 에너지가 마음의 살아 있는 체계 속에 다시 연합되는 수준을 기계적 마음, 보조 영 마음, 모론시아 마음, 우주 마음, 하보나 마음, 파라다이스 마음으로 제시한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>42편은 물질 마음 체계를 다루지만 마음의 근원을 따로 설명하지 않기 때문에 9편과 함께 읽어야 한다. 9편의 핵심 구분은 세 가지다. 첫째, 마음은 에너지 안에 내재하지 않는다. 에너지는 마음을 수용하고 마음에 반응하며, 마음은 에너지 위에 덧씌워질 수 있다. 이 진술은 의식이 물질의 복잡성에서 저절로 생겨난다는 발현론과 분명히 다르다. 둘째, 영은 본래 의식하며 식별하므로 마음을 따로 덧붙일 필요가 없다. 셋째, 에너지는 사물이요, 마음은 의미이며, 영은 가치라는 삼분 구조다. 이 구분은 뒤에서 다룰 과학, 철학, 종교의 관계에도 그대로 이어진다. 42편 10장의 스펙트럼에서 주목할 점은 인간 마음의 위치다. 보조 영 마음은 지역 우주 어머니 영의 일곱 보조 마음-영이 사역하는데, 처음 다섯에서는 동물 지성으로, 일곱 전부에서는 인간 지성으로 체험한다. 36편은 이 보조 영들의 현존 때문에 진화가 우연이 아니라 목적이 있다고 설명한다. 인간의 마음은 이 보조 영 마음에서 모론시아 마음으로 넘어가는 경계에 서 있으며, 모론시아 마음은 오백칠십 수준의 모론시아 생명에 대응하여 차츰 우주 마음과 연합한다. 그리고 파라다이스에서는 절대적이고 하보나에서는 아절대이며 오르본톤에서는 유한한 이 모든 마음은 공동 행위자의 마음-인력에 덮여 있다. 마음이 여러 층을 지니면서도 하나의 회로 안에 있다는 점이 이 체계의 요점이다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>마음은 에너지에 내재하지 않고 덧씌워진다는 9편의 진술은 어떤 의미가 있는가?</span></button><div class="answer">의식이 물질이나 에너지의 복잡성에서 저절로 생겨나지 않는다는 뜻이다. 에너지는 마음을 수용하고 반응할 뿐이며, 마음은 무한 영에게서 증여된다. 그래서 마음은 물질에 기반을 두면서도 물질로 환원되지 않는다. 뇌와 마음의 관계에 대한 오늘날의 논의와 견주어 생각해 볼 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>에너지는 사물, 마음은 의미, 영은 가치라는 구분을 일상의 예로 설명해 보라.</span></button><div class="answer">예를 들어 한 권의 책은 종이와 잉크라는 사물이고, 읽는 사람이 파악하는 내용은 의미이며, 그 내용이 삶을 바꾸는 힘은 가치에 해당한다. 사물은 측정할 수 있고, 의미는 마음이 해석하며, 가치는 영적 통찰로 인식된다. 모임 구성원이 각자 한 가지 예를 들어 세 층위를 나눠 보는 것도 좋은 연습이다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>인간의 마음은 마음의 스펙트럼에서 어디에 있으며, 어디로 향하는가?</span></button><div class="answer">인간의 마음은 지역 우주 어머니 영의 일곱 보조 마음-영이 사역하는 보조 영 마음 수준에 있다. 그 위로 모론시아 마음, 우주 마음이 이어지며, 인간은 생존을 통해 모론시아 마음으로 넘어가 점차 우주 마음과 연합하는 능력을 키운다. 현재의 마음은 끝이 아니라 더 높은 수준으로 넘어가는 출발점이라는 점을 짚으면 된다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">9:1.1</div><div class="qtext">절대 마음으로서 그는 우주들 전역에서 지성을 증여하는 근원이다.</div></div><div class="quote"><div class="ref">9:4.2</div><div class="qtext">마음은 에너지 안에 내재하지 않는다. 에너지는 마음을 수용하며 마음에 반응하고, 마음은 에너지 위에 덧씌워질 수 있다.</div></div><div class="quote"><div class="ref">9:4.2</div><div class="qtext">마음은 순수한 영에 덧붙여질 필요가 없다. 영은 본래 의식하며 식별하기 때문이다.</div></div><div class="quote"><div class="ref">9:4.3</div><div class="qtext">공동 창조자는 마음의 영역, 곧 우주적 지성의 영역에서만 절대적이다.</div></div><div class="quote"><div class="ref">9:4.5</div><div class="qtext">에너지는 사물이요, 마음은 의미이며, 영은 가치이다.</div></div><div class="quote"><div class="ref">9:6.2</div><div class="qtext">아버지가 모든 인격을 자신에게 끌어들이고, 아들이 모든 영적 실체를 이끄는 것과 마찬가지로, 공동 행위자는 모든 마음 위에 인력을 행사한다.</div></div><div class="quote"><div class="ref">42:10.2</div><div class="qtext">우주적 비영적 에너지들은 다양한 수준에서 비창조자 마음들의 살아 있는 체계 속에 다시 연합되며, 그 수준들 중 몇은 다음과 같이 묘사될 수 있다.</div></div><div class="quote"><div class="ref">42:10.3</div><div class="qtext">이것은 가장 원시적인 형태의 물질 생명이 지닌, 가르칠 수 없는 지성인 기계적 마음이지만, 가르칠 수 없는 마음은 원시적인 행성 생명의 그것 외에도 많은 수준에서 기능한다.</div></div><div class="quote"><div class="ref">42:10.4</div><div class="qtext">처음 다섯 보조 영에서는 아(亞)인간(동물) 지성으로, 일곱 보조 영에서는 인간(도덕적) 지성으로, 마지막 두 보조 영에서는 초인간(중도자) 지성으로 체험한다.</div></div><div class="quote"><div class="ref">42:10.5</div><div class="qtext">모론시아 마음은 570 수준의 모론시아 생명에 대응하여 차등적으로 기능하며, 더 높은 달성 수준에서 우주 마음과 연합하는 능력이 커짐을 드러낸다.</div></div><div class="quote"><div class="ref">42:10.7</div><div class="qtext">파라다이스에서 마음은 절대적이고, 하보나에서는 아절대이며, 오르본톤에서는 유한하다.</div></div><div class="quote"><div class="ref">36:5.1</div><div class="qtext">그것이 진화가 우연이 아니라 목적이 있는 이유를 설명한다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>마음은 물질을, 영은 마음을 지배한다</h2><p class="sub">우주 기제, 세 인력 회로, 건축가와 건설자</p></div></div>
+  <p class="summary">우주는 기계적이지도 마법적이지도 않으며, 마음의 창조물이자 법칙의 기제다. 12편은 물질을 선형 중력에 종속된 조직된 에너지로, 마음을 영에 의해 해방되는 조직된 의식으로, 영을 가장 높은 인격적 실체로 정의한다. 116편에 따르면 인격과의 관계에서 물리 체계는 종속적이고 마음 체계는 동격이며 영 체계는 지시적이다. 42편은 이를 한 문장으로 요약한다. 영은 건축가이고 마음은 건설자이며 몸은 물질적 건물이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>11장의 논증은 과학이 왜 신을 발견하지 못하는지에 대한 설명으로 읽을 수 있다. 우주들의 우주는 마음이 계획하고 만들고 관리하지만, 그 기제가 너무 완벽해서 인간의 과학적 방법으로는 무한한 마음의 지배 흔적조차 분별할 수 없다. 우주 기제의 마음은 창조자 수준의 영-마음이고, 발견 능력은 관찰하는 마음의 수준에 달려 있기 때문이다. 신의 부재가 아니라 관찰자의 수준 차이가 문제라는 논증이다. 또 11장은 영성을 재는 기준을 제시한다. 선형 중력 반응은 비영적 에너지의 양적 척도이고, 시간과 공간에서 영성은 선형 중력 반응에 반비례하여 측정된다. 12편 8장도 마음이 영적일수록 물질 중력에 덜 반응한다고 말한다. 12장은 방향을 뒤집는 결론으로 나아간다. 기제가 진화한다는 사실 자체가 숨은 창조적 마음을 가리키며, 마음은 늘 창조적이어서 정체성에 알맞은 몸을 만들어 낸다. 인간은 몸이 영을 가진다고 생각하지만 계시자는 영이 몸을 가진다고 본다. 116편은 이 구도를 거리의 문제로 설명한다. 절대 수준에서는 에너지와 영이 하나이지만, 파라다이스에서 멀어질수록 간격이 넓어지고, 지역 우주에서는 마음이 개입하여 둘을 상호 관련시켜야 한다. 마음의 매개 역할은 우연이 아니라 우주 구조가 요구하는 필연이라는 것이다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>과학적 방법으로 우주를 지배하는 마음을 발견할 수 없는 이유는 무엇인가?</span></button><div class="answer">우주 기제를 창조하고 통제하는 마음은 물질 마음이나 창조체의 마음이 아니라 창조자 수준의 영-마음이기 때문이다. 마음을 분별하는 능력은 관찰하는 마음의 능력과 범위에 달려 있으므로, 가장 낮은 인간의 마음은 그 흔적을 과학적 방법으로 분별할 수 없다. 발견하지 못한다는 사실은 부재의 증거가 아니라 관찰자의 한계라는 점을 정리하면 된다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>영은 건축가, 마음은 건설자, 몸은 건물이라는 비유를 자신의 삶에 적용해 보라.</span></button><div class="answer">몸은 마음이 짓는 건물이고, 마음은 영이 제시하는 설계에 따라 짓는 건설자다. 인간은 보통 몸의 필요가 마음을 움직인다고 느끼지만, 이 비유는 방향을 거꾸로 세운다. 영의 인도를 따르는 마음이 삶의 모양을 결정한다는 뜻이다. 모임에서는 최근의 선택 하나를 떠올려 그것이 몸의 요구, 마음의 판단, 영의 인도 중 무엇에 따랐는지 나눠 볼 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>물리 체계는 종속적, 마음 체계는 동격, 영 체계는 지시적이라는 116편의 위계는 무엇을 뜻하는가?</span></button><div class="answer">진화 우주에서 인격 밖의 영역은 에너지-물질이 지배하지만, 인격 안에서는 마음의 중재를 통해 영이 통달을 위해 투쟁한다는 뜻이다. 물질은 인격을 섬기는 도구가 되고, 마음은 인격과 함께 일하는 동반자가 되며, 영은 방향을 제시한다. 진화 우주의 목표가 마음에 의한 에너지-물질의 정복과 마음과 영의 조율이라는 점과 연결해 설명하면 된다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">42:11.1</div><div class="qtext">마음을 평가하고 인식할 때, 우주는 기계적이지도 마법적이지도 않으며, 마음의 창조물이자 법칙의 기제라는 것을 기억해야 한다.</div></div><div class="quote"><div class="ref">42:11.2</div><div class="qtext">우주들의 우주 전체는 마음이 계획하고, 마음이 만들며, 마음이 관리한다.</div></div><div class="quote"><div class="ref">42:11.4</div><div class="qtext">영 실체 수준은 영 내용에 의해 인식되며, 시간과 공간에서의 영성은 선형 중력 반응에 반비례하여 측정된다.</div></div><div class="quote"><div class="ref">42:11.7</div><div class="qtext">마음이 우주를 조율하기 때문에 기제의 고정성은 존재하지 않는다.</div></div><div class="quote"><div class="ref">42:12.1</div><div class="qtext">기제가 진화하는 것은 창조적 마음이 숨어서 존재하며 지배함을 암시하고 가리킨다.</div></div><div class="quote"><div class="ref">42:12.9</div><div class="qtext">마음은 항상 창조적이다.</div></div><div class="quote"><div class="ref">42:12.12</div><div class="qtext">물질 세계에서 너희는 몸이 영을 가진 것으로 생각하지만 우리는 영이 몸을 가진 것으로 생각한다. 물질적 눈은 진정으로 영으로 태어나는 혼의 창문이다. 영은 건축가이고 마음은 건설자이며 몸은 물질적 건물이다.</div></div><div class="quote"><div class="ref">42:12.14</div><div class="qtext">영은 창조적 실체이다.</div></div><div class="quote"><div class="ref">12:8.5</div><div class="qtext">우주에 있는 어떤 인격의 마음이 더 영적으로, 곧 하나님 같아질수록 그것은 물질 중력에 덜 반응하게 된다.</div></div><div class="quote"><div class="ref">12:8.8</div><div class="qtext">마음은 영적 실체들이 창조체 인격들에게 체험 가능하게 되는 기법이다.</div></div><div class="quote"><div class="ref">12:8.11</div><div class="qtext">2. 마음. 물질 중력에 전적으로 종속되지 않으며, 영에 의해 변경될 때 진정으로 해방되는, 조직된 의식.</div></div><div class="quote"><div class="ref">12:8.15</div><div class="qtext">마음, 물질, 영은 동등하게 실재하지만, 신성을 달성하는 데 있어서 인격에게 동등한 가치를 지니지는 않는다.</div></div><div class="quote"><div class="ref">116:6.1</div><div class="qtext">따라서 인격과의 관계에서 물리적 체계들은 종속적이 되고, 마음 체계들은 동격이 되며, 영 체계들은 지시적이 된다.</div></div><div class="quote"><div class="ref">116:6.3</div><div class="qtext">절대적 수준에서는 에너지와 영이 하나이다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>혼의 탄생과 과학·철학·종교의 통합</h2><p class="sub">마음이라는 베틀, 그리고 사실·의미·가치의 조율</p></div></div>
+  <p class="summary">물질 마음은 인간이 결정을 내리고 하나님을 택하거나 버리는 무대이며, 모론시아 천이 걸린 우주의 베틀이다. 내주하는 생각 조절자가 그 천 위에 영 원형을 짜 넣고, 물질 마음과 신성한 영 사이의 관계에서 물질도 영도 아닌 모론시아 실체, 곧 혼이 태어난다. 같은 삼분 구조가 인식에서도 반복된다. 과학은 에너지-물질을, 종교는 영 가치를 다루고, 철학은 마음으로 둘을 조율하려 한다. 계시는 모론시아 관점의 부재를 보완한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>111편은 42편의 추상적 구도가 인간 안에서 어떻게 구체화되는지를 보여 준다. 혼의 탄생에는 둘이 아니라 세 요인이 작용한다. 인간의 마음, 내주하는 신성한 영, 그리고 이 둘 사이의 관계다. 셋째 요인인 관계는 어느 한쪽에도 없던 가치와 의미를 지니며, 그 실체는 물질도 영도 아닌 모론시아, 곧 혼이다. 중도자들은 이것을 중간 마음이라 불렀다. 여기서 중요한 것은 인간의 역할이다. 마음은 의지에 종속되는 우주 실체로서 인간이 가진 거의 전부이며, 111편은 마음이 무엇을 이해하는가보다 무엇을 이해하기를 원하는가가 생존을 보장한다고 말한다. 42편 마지막 절이 오직 자유롭게 영의 인도를 따르는 마음만이 생존을 희망할 수 있다고 한 말과 정확히 겹친다. 103편은 같은 구조를 앎의 영역으로 옮긴다. 인간은 마음에서 물질을 체험하고 혼에서 영적 실체를 체험하지만, 이 체험을 의식하는 것은 마음이다. 과학과 종교를 조화시키기 어려운 이유는 물질과 영 사이의 모론시아 영역을 모르기 때문이며, 형이상학은 이 간극을 메우려다 실패했다. 모론시아 수준의 통찰 기법인 모타를 인간은 아직 가질 수 없으므로, 계시가 그 부족분을 보상한다. 이렇게 보면 42편 같은 물리학적 계시가 존재하는 이유도 설명된다. 계시는 마음을 매개로 물질과 영을 하나의 체계로 이해하게 하려는 것이다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>혼은 왜 물질도 영도 아닌 셋째 실체라고 하는가?</span></button><div class="answer">혼은 물질 마음과 내주하는 신성한 영 사이의 관계에서 생겨나는데, 그 관계는 두 요소 어느 쪽에도 없던 가치와 의미를 지니기 때문이다. 그래서 혼은 두 요소의 단순한 합이 아니라 전혀 새롭고 고유한 모론시아 실체다. 인간관계에서도 두 사람의 관계가 각자에게 없던 무엇을 낳는 경험과 견주어 이해할 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>마음이 무엇을 이해하는가보다 무엇을 이해하기를 원하는가가 생존을 보장한다는 말은 무슨 뜻인가?</span></button><div class="answer">생존을 좌우하는 것이 지적 성취나 지식의 양이 아니라 마음의 지향과 선택이라는 뜻이다. 지금 얼마나 아는지보다 무엇을 향해 가려 하는지가 혼의 성장을 결정한다. 유란시아서가 누구에게나 열린 구원의 길을 말하는 근거이기도 하다. 모임에서는 각자 지금 마음이 무엇을 이해하기를 원하는지 한 문장으로 나눠 보면 좋다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>과학, 철학, 종교의 관계를 에너지, 마음, 영의 구분과 연결해 설명해 보라.</span></button><div class="answer">과학은 이성으로 에너지-물질의 세계, 곧 사실을 탐구한다. 종교는 신앙으로 영 가치의 코스모스를 체험한다. 철학은 마음의 노력으로 둘을 의미 있게 조직하려 한다. 이는 에너지는 사물, 마음은 의미, 영은 가치라는 구분과 대응한다. 인간에게는 모론시아 관점이 없어서 이 조율이 어렵고, 계시가 그 간극을 메워 마음을 매개로 한 통일을 가능하게 한다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">111:1.1</div><div class="qtext">마음은 인간의 토양이요, 그로부터 영 관찰자는 내주된 인격과의 협동으로 모론시아 혼을 진화시켜야 한다.</div></div><div class="quote"><div class="ref">111:1.3</div><div class="qtext">물질 마음은 인간 인격이 살고 자의식을 지니며, 결정을 내리고 하나님을 택하거나 버리며, 스스로를 영원하게 만들거나 파멸시키는 무대이다.</div></div><div class="quote"><div class="ref">111:1.5</div><div class="qtext">마음이 무엇을 이해하는가보다 마음이 무엇을 이해하기를 원하는가, 이것이 생존을 보장한다.</div></div><div class="quote"><div class="ref">111:2.2</div><div class="qtext">필사 인간의 물질 마음은 모론시아 천이 걸린 우주의 베틀이며, 내주하는 생각 조절자는 그 천 위에 지속적인 가치와 신성한 의미를 지닌 우주 성품의 영 원형들을 꿰어 짜 넣는다.</div></div><div class="quote"><div class="ref">111:2.4</div><div class="qtext">그러한 불멸의 혼을 진화로 창조하는 데는 둘이 아니라 세 가지 요인이 작용한다.</div></div><div class="quote"><div class="ref">111:2.7</div><div class="qtext">이 독특한 관계의 실체는 물질도 영도 아니며, 모론시아이다. 그것은 혼이다.</div></div><div class="quote"><div class="ref">103:6.6</div><div class="qtext">인간은 마음에서 물질을 체험하고, 혼에서 영적 실체를 체험하지만, 이 체험을 의식하는 것은 마음이다.</div></div><div class="quote"><div class="ref">103:6.7</div><div class="qtext">모론시아의 관점은 물리 과학의 발견과 종교적 영의 기능 사이의 모든 차이를 없앤다.</div></div><div class="quote"><div class="ref">103:6.9</div><div class="qtext">과학은 인간이 물리적 환경, 즉 에너지-물질의 세계를 탐구하려는 시도이다. 종교는 영 가치의 코스모스와 함께하는 인간의 체험이다.</div></div><div class="quote"><div class="ref">103:6.13</div><div class="qtext">계시는 진화 인간이 모론시아 간극을 연결할 수 있는 유일한 희망이다.</div></div><div class="quote"><div class="ref">101:2.2</div><div class="qtext">계시는 모론시아 관점의 부재를 보완하며, 마음을 매개로 물질과 영의 실체 및 관계를 이해하는 데서 통일을 이루는 기법을 제공한다.</div></div><div class="quote"><div class="ref">42:12.15</div><div class="qtext">마음은 보편적으로 물질을 지배하며, 마음 또한 영의 궁극적 상위통제에 반응한다.</div></div><div class="quote"><div class="ref">42:12.15</div><div class="qtext">그리고 필사자에게는 오직 자유롭게 영의 인도를 따르는 마음만이 필사적 시간-공간 실존을 넘어, 최상자·궁극자·절대자, 곧 무한자의 영원한 영 세계의 불멸하는 자녀로서 생존하기를 희망할 수 있다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 한글 완전 통합본 본문 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
