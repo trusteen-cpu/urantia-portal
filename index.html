@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>한국 유란시아서 독자 모임</title>
+<title>한국 유란시아서 독자회</title>
 <link rel="stylesheet" href="style.css">
 <style>
 /* ── 아이콘·도형 장식 (2026-08-11 추가) ─────────────────────── */
@@ -44,6 +44,23 @@ body{top:0!important;position:static!important}
 .goog-text-highlight{background:none!important;box-shadow:none!important}
 #google_translate_element{display:none}
 
+/* ── 전문 내려받기 단추 (2026-09-21 추가) ───────────────────── */
+.searchbar .getbook{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  font-size:12.5px;font-weight:700;letter-spacing:-.01em;
+  padding:8px 14px;border-radius:8px;text-decoration:none;
+  color:#3a2a08;background:linear-gradient(180deg,#e7c67e,#cfa355);
+  border:1px solid rgba(183,121,31,.45);
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
+  transition:filter .16s,box-shadow .16s,transform .16s}
+.searchbar .getbook:hover{filter:brightness(1.05);box-shadow:0 3px 8px rgba(183,121,31,.25)}
+.searchbar .getbook:active{transform:translateY(1px)}
+.searchbar .getbook svg{width:14px;height:14px;flex:0 0 auto}
+@media(max-width:560px){
+  .searchbar .row{flex-wrap:wrap}
+  .searchbar input{flex:1 1 100%}
+  .searchbar .getbook{font-size:12px;padding:7px 12px}
+}
+
 /* ── 새 글 딱지 (2026-08-18 추가) ─────────────────────────── */
 .nb{display:inline-flex;align-items:center;justify-content:center;
     min-width:16px;height:16px;padding:0 4px;margin-left:6px;
@@ -56,7 +73,7 @@ body{top:0!important;position:static!important}
 @keyframes nbpop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
 .nb{animation:nbpop .28s ease-out}
 </style>
-<meta property="og:title" content="한국 유란시아서 독자 모임 — 진리를 함께 걷는 자리">
+<meta property="og:title" content="한국 유란시아서 독자회 — 진리를 함께 걷는 자리">
 <meta property="og:description" content="유란시아서 본문, 52주·100강 강의, 인터랙티브 학습, 매일의 아침·취침 묵상까지 — 한 곳에서 만나는 유란시아서 여정.">
 <meta property="og:image" content="https://urantiareaders.com/og-image.jpg">
 <meta property="og:url" content="https://urantiareaders.com">
@@ -88,6 +105,12 @@ body{top:0!important;position:static!important}
 <div class="searchbar">
   <div class="wrap row">
     <input id="q" type="search" placeholder="게시판·자료 이름으로 찾기  (예: 명상, 강의, 도표)" autocomplete="off">
+    <a class="getbook" href="book/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/>
+      </svg><span>유란시아서 전문 내려받기</span>
+    </a>
     <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
   </div>
 </div>
