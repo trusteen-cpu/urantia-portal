@@ -61,6 +61,13 @@ body{top:0!important;position:static!important}
   .searchbar .getbook{font-size:12px;padding:7px 12px}
 }
 
+/* ── 청소년본 단추 (2026-09-23 추가) ───────────────────────── */
+.searchbar .getbook.youth{
+  color:#f2ecff;
+  background:linear-gradient(180deg,#6f57c2,#54409e);
+  border:1px solid rgba(84,64,158,.55)}
+.searchbar .getbook.youth:hover{box-shadow:0 3px 8px rgba(84,64,158,.28)}
+
 /* ── 새 글 딱지 (2026-08-18 추가) ─────────────────────────── */
 .nb{display:inline-flex;align-items:center;justify-content:center;
     min-width:16px;height:16px;padding:0 4px;margin-left:6px;
@@ -110,6 +117,13 @@ body{top:0!important;position:static!important}
            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/>
       </svg><span>유란시아서 전문 내려받기</span>
+    </a>
+    <a class="getbook youth" href="youth-urantia.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 6.5C10 5 7.5 4.6 5 5v13c2.5-.4 5 0 7 1.5 2-1.5 4.5-1.9 7-1.5V5c-2.5-.4-5 0-7 1.5z"/>
+        <path d="M12 6.5v13"/>
+      </svg><span>청소년을 위한 유란시아서</span>
     </a>
     <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
   </div>
