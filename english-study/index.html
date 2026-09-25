@@ -143,6 +143,26 @@ dialog::backdrop{background:rgba(20,22,30,.45)}
   .words{grid-template-columns:1fr}
   .panel{padding:16px}
 }
+
+/* ── 첫 화면 안내 ─────────────────────────────────────── */
+.kakao{display:none;margin:18px 0 0;padding:13px 16px;border-radius:12px;font-size:14.5px;line-height:1.7;
+  background:#fff4e5;border:1px solid #f0d9b5;color:#5c4308}
+.kakao.on{display:block}
+.guide{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand2);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;margin:18px 0 0}
+.guide .ghead{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.guide .ghead .sp{flex:1}
+.guide h3{margin:0;font-size:16.5px;color:var(--brand2)}
+.guide p{margin:9px 0;font-size:14.8px;line-height:1.8;color:#3b4046}
+.guide p.tiny{font-size:13.5px;color:var(--muted);margin-bottom:0}
+.guide.hidden{display:none}
+.reopen{background:none;border:0;color:var(--muted);font-size:13px;text-decoration:underline;padding:6px 0;margin-top:10px}
+@media(max-width:480px){
+  header.top h1{font-size:17px}
+  .iconbtn{padding:6px 10px;font-size:12px;white-space:nowrap}
+  .guide{padding:15px 16px}
+  .guide p{font-size:14.2px}
+}
 </style>
 </head>
 <body>
@@ -161,6 +181,23 @@ dialog::backdrop{background:rgba(20,22,30,.45)}
 <main class="wrap">
 
   <section class="chapview">
+    <div class="kakao" id="kakaoBar">
+      <b>카카오톡 안에서 열렸습니다.</b> 소리가 나지 않으면 오른쪽 아래(기기에 따라 오른쪽 위) 점 세 개를 누르고
+      <b>다른 브라우저로 열기</b>를 고르십시오. 크롬이나 사파리로 열면 정상으로 작동합니다.
+    </div>
+    <div class="guide" id="guideBox">
+      <div class="ghead"><h3>처음 오셨나요?</h3><div class="sp"></div>
+        <button class="ghost" id="guideClose">닫기</button></div>
+      <p><b>휴대폰에서 카톡 링크로 여셨다면</b> 오른쪽 아래 점 세 개 → 다른 브라우저로 열기를 먼저 눌러 주십시오.
+         카톡 안의 간이 브라우저에서는 소리와 마이크가 막힐 수 있습니다. 자주 쓰실 분은 즐겨찾기에 넣어 두십시오.</p>
+      <p><b>공부 순서</b>는 이렇습니다. 절을 누른다 → 나팔로 원문을 듣는다 → 점선 친 단어와 Words로 뜻을 익힌다 →
+         In plain English로 뜻을 잡는다 → KOR로 한글 번역을 확인한다 → 질문 세 개에 영어로 답해 본다 →
+         Reflection(영어 강론)으로 마무리한다. 한 절에 10분, 하루 두세 절이 알맞습니다.</p>
+      <p><b>Fix my English</b>(말한 영어를 고쳐 주는 기능)만 각자 앤트로픽 Claude API 키가 필요합니다.
+         console.anthropic.com에서 키를 만들어 오른쪽 위 설정에 넣으시면 됩니다. 키가 없어도
+         듣기·단어·해설·질문·강론은 모두 됩니다. 챗지피티나 제미나이 키는 쓸 수 없습니다.</p>
+      <p class="tiny">크롬에서 가장 잘 됩니다. 설정에서 읽는 속도를 고를 수 있습니다.</p>
+    </div>
     <div class="chaphead">
       <div class="no" id="chapNo"></div>
       <h2 id="chapTitle"></h2>
@@ -496,11 +533,38 @@ function saveSettings(){
   $('#dlg').close(); toast('저장했습니다');
 }
 
+
+/* ── 첫 화면 안내 ───────────────────────────────────── */
+function setupGuide(){
+  const box = $('#guideBox'), bar = $('#kakaoBar');
+  if (/KAKAOTALK/i.test(navigator.userAgent)) bar.classList.add('on');
+  let hide = false;
+  try { hide = localStorage.getItem('ust.guide') === 'off'; } catch(e){}
+  if (hide) box.classList.add('hidden');
+  $('#guideClose').onclick = () => {
+    box.classList.add('hidden');
+    try { localStorage.setItem('ust.guide','off'); } catch(e){}
+    const b = document.createElement('button');
+    b.className = 'reopen'; b.textContent = '안내 다시 보기';
+    b.onclick = () => { box.classList.remove('hidden'); b.remove();
+      try { localStorage.removeItem('ust.guide'); } catch(e){} };
+    box.after(b);
+  };
+  if (hide){
+    const b = document.createElement('button');
+    b.className = 'reopen'; b.textContent = '안내 다시 보기';
+    b.onclick = () => { box.classList.remove('hidden'); b.remove();
+      try { localStorage.removeItem('ust.guide'); } catch(e){} };
+    box.after(b);
+  }
+}
+
 /* ── 시작 ───────────────────────────────────────────── */
 function init(data){
   DATA = data;
   loadVoices();
   renderChapter();
+  setupGuide();
   $('#backBtn').onclick = () => { stopSpeak(); document.body.classList.remove('detail'); location.hash=''; renderChapter(); };
   $('#prevBtn').onclick = () => openVerse(Math.max(0, idx - 1));
   $('#nextBtn').onclick = () => openVerse(Math.min(DATA.verses.length - 1, idx + 1));
