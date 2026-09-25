@@ -669,6 +669,10 @@
       "title": "번역서들(유란시아관련)",
       "items": [
         {
+          "name": "번역서 서재 (전체 보기)",
+          "url": "/books/"
+        },
+        {
           "member": false,
           "name": "유란시아 계시(말콤 로크)",
           "url": "/books/urantia-revelation/index.html"
