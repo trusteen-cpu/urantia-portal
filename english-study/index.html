@@ -164,6 +164,7 @@ dialog::backdrop{background:rgba(20,22,30,.45)}
   .guide p{font-size:14.2px}
 }
 </style>
+<!--UST-NAV--><style>.chapnav{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}.chapnav a{font-size:13px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--brand);background:#fff}.chapnav a.on{background:var(--brand);color:#fff;border-color:var(--brand)}</style><script>window.UST_ROOT="";window.UST_NO=1;</script><script src="chapters.js"></script><!--/UST-NAV-->
 </head>
 <body>
 <header class="top">
@@ -198,6 +199,7 @@ dialog::backdrop{background:rgba(20,22,30,.45)}
          듣기·단어·해설·질문·강론은 모두 됩니다. 챗지피티나 제미나이 키는 쓸 수 없습니다.</p>
       <p class="tiny">크롬에서 가장 잘 됩니다. 설정에서 읽는 속도를 고를 수 있습니다.</p>
     </div>
+    <div class="chapnav" id="chapNav"></div>
     <div class="chaphead">
       <div class="no" id="chapNo"></div>
       <h2 id="chapTitle"></h2>
@@ -3226,5 +3228,6 @@ function init(data){
   "v32_verse"
  ]
 });</script>
+<!--UST-NAVJS--><script>(function(){var L=window.UST_CHAPTERS||[],R=window.UST_ROOT||'',el=document.getElementById('chapNav');if(!el||L.length<2)return;el.innerHTML=L.map(function(c){return '<a href="'+R+c.path+'"'+(c.no===window.UST_NO?' class="on"':'')+'>'+'Chapter '+c.no+' · '+c.ko+'</a>'}).join('')})();</script><!--/UST-NAVJS-->
 </body>
 </html>
