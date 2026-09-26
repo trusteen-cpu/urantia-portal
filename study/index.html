@@ -2211,8 +2211,8 @@ loadData();
         };
         const upd = () => {
           const n = ta.value.replace(/\s/g, "").length;
-          cc.textContent = n + "자" + (n >= 2000 ? " ✓" : ` (목표 2,000자, ${2000 - n}자 더)`);
-          cc.classList.toggle("se-ok", n >= 2000);
+          cc.textContent = n + "자" + (n >= 1300 ? " ✓" : ` (목표 1,300~1,500자, ${1300 - n}자 더)`);
+          cc.classList.toggle("se-ok", n >= 1300);
         };
         ta.addEventListener("input", upd); upd();
         aiButton(el.querySelector("#se-ai-draft"), "🤖 AI로 강론 초안 써 보기", async () => {
