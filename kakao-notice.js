@@ -22,7 +22,7 @@
     d.className = 'ur-kakao'; d.setAttribute('role', 'note');
     var here = location.href.replace(/([?&])kakao=1(&|$)/, '$1').replace(/[?&]$/, '');
     d.innerHTML =
-      '<b>카카오톡 안에서는 책이 열리지 않거나 멈출 수 있습니다.</b><br>' +
+      '<b>카카오톡 안에서는 화면이 제대로 열리지 않거나 멈출 수 있습니다.</b><br>' +
       '아래 단추를 누르거나, 오른쪽 아래(기기에 따라 오른쪽 위) <b>점 세 개 → 「다른 브라우저로 열기」</b>를 눌러 주세요.<br>' +
       '<a class="go" href="kakaotalk://web/openExternal?url=' + encodeURIComponent(here) + '">크롬·사파리로 바로 열기</a>' +
       '<button class="x" type="button" aria-label="안내 닫기">×</button>';
