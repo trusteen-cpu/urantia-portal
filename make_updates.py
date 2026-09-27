@@ -44,7 +44,7 @@ def main():
 
     try:
         out = subprocess.run(
-            ["git", "log", "--name-only", "--date=short", "--pretty=format:%x01%cI"],
+            ["git", "-c", "core.quotepath=false", "log", "--name-only", "--date=short", "--pretty=format:%x01%cI"],
             cwd=repo, capture_output=True, text=True, encoding="utf-8", errors="replace",
         )
     except FileNotFoundError:
