@@ -54,6 +54,7 @@ html[data-dark="1"] h3.sh{color:#cfe0ff}
 }
 @media print{body *{display:none!important}body::after{content:"이 책은 인쇄할 수 없습니다. 화면으로 읽어 주세요.";display:block;padding:40px;font-size:16px}}
 </style><script src="/home-button.js" data-into="header" defer></script>
+<script src="/kakao-notice.js" defer></script>
 </head><body>
 <header>
  <button class="btn" id="burger">☰ 목차</button>
@@ -266,5 +267,5 @@ function UB_META(d){
   go(p);
 }
 bring('meta.js',null);
-</script><script>/* 머리 띠 높이를 재어 목차 위치를 맞춘다(홈 단추로 머리 띠가 두 줄이 될 때 대비) */(function(){function f(){var h=document.querySelector('header');if(h)document.documentElement.style.setProperty('--hh',h.offsetHeight+'px')}addEventListener('DOMContentLoaded',f);addEventListener('load',f);addEventListener('resize',f);if(window.ResizeObserver)addEventListener('DOMContentLoaded',function(){var h=document.querySelector('header');if(h)new ResizeObserver(f).observe(h)})})();</script>
+</script><script>/* 머리 띠 높이를 재어 목차 위치를 맞춘다(홈 단추로 머리 띠가 두 줄이 될 때 대비) */(function(){function f(){var h=document.querySelector('header');if(h)document.documentElement.style.setProperty('--hh',Math.max(0,Math.round(h.getBoundingClientRect().bottom))+'px')}addEventListener('DOMContentLoaded',f);addEventListener('load',f);addEventListener('resize',f);addEventListener('scroll',f,{passive:true});document.addEventListener('click',f,true);if(window.ResizeObserver)addEventListener('DOMContentLoaded',function(){var h=document.querySelector('header');if(h)new ResizeObserver(f).observe(h)})})();</script>
 </body></html>
