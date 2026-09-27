@@ -180,7 +180,7 @@ function renderTOC(f){
     var hitc=!f||t.title.indexOf(f)>=0, hits=f?t.subs.filter(function(s){return s.indexOf(f)>=0}):[];
     if(f&&!hitc&&!hits.length)return;
     if(t.part&&t.part!==last){h+='<div class="part">'+esc(t.part)+'</div>';last=t.part}
-    h+='<div class="c'+(i===CI?' on':'')+'" data-i="'+i+'"><b>'+(t.no?t.no:'序')+'</b><span>'+esc(t.title)+'</span></div>';
+    h+='<div class="c'+(i===CI?' on':'')+'" data-i="'+i+'"><b>'+(t.mark||(t.no?t.no:'序'))+'</b><span>'+esc(t.title)+'</span></div>';
     var show=(i===CI?t.subs:hits);
     if(show.length){h+='<ul class="sub">'+show.map(function(s){
       return '<li data-i="'+i+'" data-s="'+esc(s)+'">'+esc(s)+'</li>'}).join('')+'</ul>'}
@@ -189,7 +189,7 @@ function renderTOC(f){
 }
 function renderBody(jump){
   var t=M.toc[CI];
-  var h='<h2 class="ct">'+esc(t.title)+'</h2><div class="cn">'+(t.no?'제 '+t.no+' 장':'서문')
+  var h='<h2 class="ct">'+esc(t.title)+'</h2><div class="cn">'+(t.label||(t.no?'제 '+t.no+' 장':'서문'))
        +(t.part?' · '+esc(t.part):'')+'</div>';
   CH.blocks.forEach(function(b,i){
     if(b[0]==='h'){h+='<h3 class="sh" id="p'+i+'">'+esc(b[1])+'</h3>'}
@@ -228,7 +228,7 @@ function UB_CHAP(no,d){
   CACHE[no]=d;var f=PEND;PEND=null;if(f)f(d);
 }
 function go(i,cb,jump){
-  stop();CI=i;save('bk_pos',String(i));
+  stop();CI=i;save('bk_pos:'+location.pathname,String(i));
   var t=M.toc[i];
   var show=function(d){
     CH=d;renderTOC($('#q').value);renderBody(jump);
@@ -263,7 +263,7 @@ function UB_META(d){
   M=d;document.title=d.title+' — '+d.author;
   $('#btitle').textContent=d.title;
   $('#bby').textContent=d.author+' 지음 · '+d.translator+' 옮김';
-  var p=Math.min(+load('bk_pos','0')||0,d.toc.length-1);
+  var p=Math.min(+load('bk_pos:'+location.pathname,'0')||0,d.toc.length-1);
   go(p);
 }
 bring('meta.js',null);

@@ -702,6 +702,21 @@
           "member": false,
           "name": "소피아와의 대화 (올가 로페즈)",
           "url": "/books/dialogues-with-sofia/index.html"
+        },
+        {
+          "member": false,
+          "name": "유란시아 계시 개관 (데이비드 브래들리)",
+          "url": "/books/urantia-overview/index.html"
+        },
+        {
+          "member": false,
+          "name": "혼의 진화 (바이런 벨리토스)",
+          "url": "/books/evolving-soul/index.html"
+        },
+        {
+          "member": false,
+          "name": "예수의 체계적 가르침 (워커 토마스)",
+          "url": "/books/teachings-of-jesus/index.html"
         }
       ],
       "id": "transbook"
