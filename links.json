@@ -726,6 +726,40 @@
       "id": "transbook"
     },
     {
+      "id": "works",
+      "title": "창작서 서재",
+      "color": "gold",
+      "icon": "✒️",
+      "preview": 40,
+      "items": [
+        {
+          "member": false,
+          "name": "창작서 서재 (전체 보기)",
+          "url": "/works/"
+        },
+        {
+          "member": false,
+          "name": "모든 것의 이야기",
+          "url": "/works/story-of-everything/index.html"
+        },
+        {
+          "member": false,
+          "name": "유란시아서 핵심",
+          "url": "/works/urantia-core/index.html"
+        },
+        {
+          "member": false,
+          "name": "365일 영혼의 기도",
+          "url": "/works/prayer-365/index.html"
+        },
+        {
+          "member": false,
+          "name": "하나님의 형상",
+          "url": "/works/image-of-god/index.html"
+        }
+      ]
+    },
+    {
       "id": "ch",
       "title": "관련 채널",
       "color": "navy",
