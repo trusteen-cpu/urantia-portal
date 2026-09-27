@@ -90,6 +90,14 @@ body.en .k,body.ko .e{display:none}
   .v .e,.v .k{padding-bottom:10px;border-bottom:1px dashed var(--line)}
   .sh .e,.sh .k{font-size:15px}
 }
+/* 휴대폰: 좌우가 너무 좁으므로 영문 위, 한글 아래 */
+@media (max-width:600px){
+  .cols,.sh{grid-template-columns:1fr}
+  .colh{display:none}
+  .v .e{font-size:calc(var(--fs) - 1px);margin:2px 0 6px;padding-bottom:0;border-bottom:0}
+  .v .k{font-size:var(--fs);margin:0 0 8px}
+  body.en .v .e{padding-bottom:10px;border-bottom:1px dashed var(--line)}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head><body>
