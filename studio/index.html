@@ -147,9 +147,9 @@ $('#today').onclick = function(){ var t = todayStr(), p = PLAN.filter(function(x
 function drawPlan(){
   var TODAY = todayStr();
   var done = {}; SAVED.forEach(function(s){ if (s.day) done[s.day] = 1 });
-  var h = '', m = 0;
-  PLAN.forEach(function(p){ if (p.month !== m){ m = p.month; h += '<div class="mon">' + MON[m] + '</div>' }
-    h += '<div class="item' + (done[p.day] ? ' done' : '') + (p.date === TODAY ? ' today' : '') + (CUR && CUR.day === p.day ? ' cur' : '') + '" data-d="' + p.day + '"><span class="dt">' + (p.date === TODAY ? '오늘 ' : '') + md(p.date) + '</span>' + esc(p.title) + '<small>' + p.day + '일째 · ' + esc(p.ref) + '</small></div>' });
+  var h = '', m = '';
+  PLAN.forEach(function(p){ var ym = p.date.slice(0, 7); if (ym !== m){ m = ym; h += '<div class="mon">' + ym.slice(0, 4) + '년 ' + (+ym.slice(5)) + '월</div>' }
+    h += '<div class="item' + (done[p.day] ? ' done' : '') + (p.date === TODAY ? ' today' : '') + (CUR && CUR.day === p.day ? ' cur' : '') + '" data-d="' + p.day + '"><span class="dt">' + (p.date === TODAY ? '오늘 ' : '') + md(p.date) + '</span>' + esc(p.title) + '<small>' + p.day + '일째 · ' + esc(p.ref) + (p.tname ? ' · ' + esc(p.tname) : '') + '</small></div>' });
   $('#plan').innerHTML = h;
   [].forEach.call(document.querySelectorAll('#plan .item'), function(el){ el.onclick = function(){ pick(PLAN[+el.dataset.d - 1]) } });
 }
