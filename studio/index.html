@@ -31,6 +31,8 @@ header h1{margin:0;font-size:19px}
 .item small{display:block;color:var(--dim);font-size:12px}
 .item.done{opacity:.5}
 .item.cur{outline:2px solid var(--gold2)}
+.item.today{background:rgba(214,168,74,.22);border-left:4px solid var(--gold)}
+.item .dt{display:inline-block;min-width:74px;color:var(--gold);font-weight:700;font-size:12.5px}
 .mon{font-weight:700;color:var(--gold);font-size:13px;margin:10px 0 2px}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 input[type=text],input[type=password],select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--box);color:var(--ink)}
@@ -73,6 +75,7 @@ dialog::backdrop{background:rgba(0,0,0,.45)}
       <div class="row">
         <input type="text" id="q" placeholder="편/장/절(120:2.3 · 123:2.3~5) 또는 강론 제목">
         <button class="btn pri" id="gen">강론 쓰기</button>
+        <button class="btn" id="today">오늘 제목</button>
       </div>
       <div class="hint">편장절만 넣으면 제목도 지어 줍니다. 제목만 넣으면 맞는 본문을 찾아 씁니다. 왼쪽 365일 제목을 누르면 제목과 본문이 함께 들어갑니다.</div>
       <div id="verses"></div>
@@ -132,18 +135,23 @@ function lookup(ref){
 function showVerses(v){ $('#verses').innerHTML = v.length ? '<div class="verses">' + v.map(function(x){ return '<p><b>' + x[0] + '</b>' + esc(x[1]) + '</p>' }).join('') + '</div>' : '' }
 
 /* ── 365일 제목 ── */
-var PLAN = [], MON = ['', '1월 새로운 시작', '2월 아버지의 사랑', '3월 믿음의 용기', '4월 죽음 너머', '5월 가정과 형제애', '6월 내 안에 계신 아버지', '7월 인간 예수', '8월 기도와 예배', '9월 시련과 성장', '10월 진리·아름다움·선함', '11월 봉사와 감사', '12월 영원한 상승'];
+var PLAN = [], MON = ['', '새로운 시작', '아버지의 사랑', '믿음의 용기', '죽음 너머', '가정과 형제애', '내 안에 계신 아버지', '인간 예수', '기도와 예배', '시련과 성장', '진리·아름다움·선함', '봉사와 감사', '영원한 상승'];
+var WK = '일월화수목금토';
+function todayStr(){ var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) }
+function md(iso){ var d = new Date(iso + 'T00:00:00'); return (d.getMonth() + 1) + '/' + d.getDate() + '(' + WK[d.getDay()] + ')' }
+function pick(p){ CUR = p; $('#q').value = p.title; $('#title').value = p.title; drawPlan(); lookup(p.ref).then(showVerses, function(){}) }
 var CUR = null;      // 지금 쓰는 제목표 항목
-fetch('plan.json').then(function(r){ return r.json() }).then(function(j){ PLAN = j; drawPlan() });
+fetch('plan.json?t=' + Date.now(), { cache: 'no-store' }).then(function(r){ return r.json() }).then(function(j){ PLAN = j; drawPlan();
+  var t = document.querySelector('#plan .today'); if (t) t.scrollIntoView({ block: 'center' }) });
+$('#today').onclick = function(){ var t = todayStr(), p = PLAN.filter(function(x){ return x.date === t })[0]; if (p){ pick(p); var el = document.querySelector('#plan .today'); if (el) el.scrollIntoView({ block: 'center' }) } else flash('오늘 날짜의 제목이 없습니다', 'bad') };
 function drawPlan(){
+  var TODAY = todayStr();
   var done = {}; SAVED.forEach(function(s){ if (s.day) done[s.day] = 1 });
   var h = '', m = 0;
   PLAN.forEach(function(p){ if (p.month !== m){ m = p.month; h += '<div class="mon">' + MON[m] + '</div>' }
-    h += '<div class="item' + (done[p.day] ? ' done' : '') + (CUR && CUR.day === p.day ? ' cur' : '') + '" data-d="' + p.day + '"><b>' + p.day + '</b>' + esc(p.title) + '<small>' + esc(p.ref) + '</small></div>' });
+    h += '<div class="item' + (done[p.day] ? ' done' : '') + (p.date === TODAY ? ' today' : '') + (CUR && CUR.day === p.day ? ' cur' : '') + '" data-d="' + p.day + '"><span class="dt">' + (p.date === TODAY ? '오늘 ' : '') + md(p.date) + '</span>' + esc(p.title) + '<small>' + p.day + '일째 · ' + esc(p.ref) + '</small></div>' });
   $('#plan').innerHTML = h;
-  [].forEach.call(document.querySelectorAll('#plan .item'), function(el){ el.onclick = function(){
-    CUR = PLAN[+el.dataset.d - 1]; $('#q').value = CUR.title; $('#title').value = CUR.title; drawPlan();
-    lookup(CUR.ref).then(showVerses, function(){}) } });
+  [].forEach.call(document.querySelectorAll('#plan .item'), function(el){ el.onclick = function(){ pick(PLAN[+el.dataset.d - 1]) } });
 }
 function nextDay(){ var done = {}; SAVED.forEach(function(s){ if (s.day) done[s.day] = 1 });
   for (var i = 0; i < PLAN.length; i++) if (!done[PLAN[i].day]) return PLAN[i]; return null }
