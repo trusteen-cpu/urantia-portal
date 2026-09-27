@@ -201,14 +201,23 @@ function claude(system, user, maxTok, onText){
     body: JSON.stringify({ model: get('model', 'claude-opus-5-5'), max_tokens: maxTok, stream: true, system: system, messages: [{ role: 'user', content: user }] })
   }).then(function(r){
     if (!r.ok) return r.text().then(function(t){ throw 'API 오류 ' + r.status + ': ' + t.slice(0, 200) });
-    var rd = r.body.getReader(), dec = new TextDecoder(), buf = '', all = '';
+    var rd = r.body.getReader(), dec = new TextDecoder(), buf = '', all = '', seen = {}, stop = '', apiErr = '';
+    function line(l){
+      l = l.replace(/\r$/, ''); if (!/^data:/.test(l)) return;
+      var e; try { e = JSON.parse(l.replace(/^data:\s?/, '')) } catch (err) { return }
+      seen[e.type + (e.delta && e.delta.type ? '/' + e.delta.type : '') + (e.content_block ? '/' + e.content_block.type : '')] = 1;
+      if (e.type === 'content_block_delta' && e.delta && e.delta.type === 'text_delta'){ all += e.delta.text; if (onText) onText(all) }
+      if (e.type === 'message_delta' && e.delta && e.delta.stop_reason) stop = e.delta.stop_reason;
+      if (e.type === 'error') apiErr = (e.error && e.error.message) || 'error';
+    }
     return (function pump(){ return rd.read().then(function(x){
-      if (x.done) return all;
+      if (x.done){ if (buf) line(buf);
+        if (apiErr) throw 'API 오류: ' + apiErr;
+        if (!all.trim()) throw '응답에 글이 없습니다 (끝난 이유: ' + (stop || '?') + ' · 받은 것: ' + Object.keys(seen).join(', ') + ') — 이 문구를 알려 주세요';
+        if (stop === 'max_tokens') flash('글이 길이 한도에서 잘렸습니다', 'bad');
+        return all }
       buf += dec.decode(x.value, { stream: true });
-      var lines = buf.split('\n'); buf = lines.pop();
-      lines.forEach(function(l){ if (l.indexOf('data: ') !== 0) return; try { var e = JSON.parse(l.slice(6));
-        if (e.type === 'content_block_delta' && e.delta && e.delta.text){ all += e.delta.text; if (onText) onText(all) }
-        if (e.type === 'error') throw e.error.message } catch (err) { if (typeof err === 'string') throw err } });
+      var lines = buf.split('\n'); buf = lines.pop(); lines.forEach(line);
       return pump() }) })();
   });
 }
@@ -231,7 +240,7 @@ function plan(q){
   var sys = '너는 유란시아서(The Urantia Book) 전문가다. JSON만 출력한다.';
   var ask = isRef(q) ? '중심 본문 ' + q + ' 으로 강론을 쓴다. 이 주제를 함께 받쳐 줄 유란시아서의 다른 절 3개를 골라라. {"related":["편:장.절",…]}'
     : '강론 제목: "' + q + '". 이 제목에 가장 알맞은 유란시아서 중심 본문(한 절 또는 같은 장 안 1~3절 범위)과, 함께 받쳐 줄 다른 절 3개를 골라라. {"anchor":"편:장.절 또는 편:장.절~절","related":["편:장.절",…]}';
-  return claude(sys, ask, 400).then(function(t){ var m = t.match(/\{[\s\S]*\}/); return m ? JSON.parse(m[0]) : {} });
+  return claude(sys, ask, 4000).then(function(t){ var m = t.match(/\{[\s\S]*\}/); return m ? JSON.parse(m[0]) : {} });
 }
 
 function run(extra){
@@ -256,7 +265,7 @@ function run(extra){
       + '\n\n' + (title ? '제목: ' + title : '제목도 지어 줘.') + (extra || '');
     flash('강론을 쓰는 중…');
     $('#out').value = '';
-    return claude(STYLE, user, 4000, function(t){ var s = split(t); if (s.title) $('#title').value = s.title; $('#out').value = s.body; count() })
+    return claude(STYLE, user, 16000, function(t){ var s = split(t); if (s.title) $('#title').value = s.title; $('#out').value = s.body; count() })
       .then(function(t){ var s = split(t); $('#title').value = title || s.title; $('#out').value = s.body; count();
         var r = checkQuotes(s.body, pool), bad = r.filter(function(x){ return !x.ok }), n = s.body.length;
         if ((bad.length || n < 1450 || n > 1700) && !extra){
