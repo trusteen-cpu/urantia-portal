@@ -76,21 +76,13 @@ main{max-width:1180px;margin:0 auto;padding:20px 16px}
   <div class="now"><span id="now">재생목록을 불러오는 중…</span><span class="grow"></span><span id="cnt"></span></div>
   <div id="grid" class="grid"></div>
 
-  <div class="tabs" role="tablist">
-    <button data-p="scripts" class="on">강론 원고</button>
-    <button data-p="find">본문 찾기</button>
-    <button data-p="plan">365일 제목</button>
-  </div>
-
-  <section class="pane on" id="p-scripts"><div id="scripts"></div></section>
-
-  <section class="pane" id="p-find">
+  <h3 style="margin:30px 0 10px;color:var(--gold)">본문 찾기</h3>
+  <section id="p-find">
     <div class="find"><input id="q" placeholder="예) 120:2.3  ·  123:2.3~5  ·  196:0" inputmode="text"><button class="btn pri" id="go">본문 보기</button></div>
     <div class="hint">편:장.절 · 범위(123:2.3~5, 123:2.3~3.2) · 장 전체(196:0) — 한글 4차 교정판</div>
     <div id="found"></div>
   </section>
 
-  <section class="pane" id="p-plan"><div class="hint">날마다 한 편씩 이어 가는 강론 제목과 중심 본문입니다. 흐린 것은 이미 올라온 강론입니다.</div><div id="plan" class="plan"></div></section>
 </main>
 
 <script>
@@ -145,42 +137,6 @@ function mark(i){ if (i == null || i < 0) return; curIdx = i;
   [].forEach.call(grid.children, function(c){ c.className = 'card' + (+c.dataset.idx === i ? ' on' : '') }); showNow(i) }
 function onState(e){ if (e.data === YT.PlayerState.PLAYING || e.data === YT.PlayerState.CUED) mark(player.getPlaylistIndex()) }
 
-/* ── 탭 ── */
-function tab(p){ [].forEach.call(document.querySelectorAll('.tabs button'), function(b){ b.classList.toggle('on', b.dataset.p === p) });
-  [].forEach.call(document.querySelectorAll('.pane'), function(s){ s.classList.toggle('on', s.id === 'p-' + p) }) }
-[].forEach.call(document.querySelectorAll('.tabs button'), function(b){ b.onclick = function(){ tab(b.dataset.p); if (b.dataset.p === 'scripts') showList() } });
-
-/* ── 강론 원고 ── */
-var DATA = [], PLAN = [];
-function load(u){ return fetch(u + '?t=' + Date.now(), { cache: 'no-store' }).then(function(r){ return r.ok ? r.json() : [] }).catch(function(){ return [] }) }
-Promise.all([load('data.json'), load('titles.json')]).then(function(x){
-  DATA = x[0]; PLAN = x[1];
-  var s = new URLSearchParams(location.search).get('s');
-  if (s && DATA.some(function(d){ return String(d.no) === s })) showDoc(s); else showList();
-  drawPlan();
-});
-function showList(){
-  history.replaceState(null, '', location.pathname);
-  if (!DATA.length){ $('#scripts').innerHTML = '<div class="msg">아직 올라온 강론 원고가 없습니다.</div>'; return }
-  $('#scripts').innerHTML = '<ul class="list">' + DATA.map(function(d){
-    return '<li data-s="' + d.no + '"><span class="d">' + esc(d.date) + '</span><span class="t">' + esc(d.title) + '</span><span class="r">' + esc(d.label) + '</span></li>' }).join('') + '</ul>';
-  [].forEach.call(document.querySelectorAll('#scripts li'), function(li){ li.onclick = function(){ showDoc(li.dataset.s) } });
-}
-function paras(t){ return t.split(/\n\s*\n/).map(function(p){ return '<p>' + esc(p.trim()) + '</p>' }).join('') }
-function showDoc(no){
-  var d = DATA.filter(function(x){ return String(x.no) === String(no) })[0]; if (!d) return;
-  history.replaceState(null, '', '?s=' + d.no); tab('scripts');
-  $('#scripts').innerHTML = '<div class="bar"><button class="btn" id="back">← 목록</button><button class="btn pri" id="copy">원고 복사 (텔레프롬프터)</button><a class="btn" id="dl">txt 내려받기</a></div>'
-    + '<article class="doc"><div class="meta">제' + d.no + '강 · ' + esc(d.date) + '</div><h2>' + esc(d.title) + '</h2><div class="meta">본문 ' + esc(d.label) + '</div>'
-    + '<div class="verses">' + d.verses.map(function(v){ return '<p><b>' + v[0] + '</b>' + esc(v[1]) + '</p>' }).join('') + '</div>'
-    + '<div class="body">' + paras(d.body) + '</div></article>';
-  $('#back').onclick = showList;
-  var txt = d.title + '\n\n' + d.body;
-  $('#copy').onclick = function(){ navigator.clipboard.writeText(txt).then(function(){ $('#copy').textContent = '복사했습니다' }) };
-  var a = $('#dl'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/plain;charset=utf-8' })); a.download = '강론' + d.no + ' ' + d.title + '.txt';
-  $('#scripts').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
 /* ── 본문 찾기 (편마다 나눈 파일을 읽는다) ── */
 var PAPERS = {};
 function paper(p){ return PAPERS[p] ? Promise.resolve(PAPERS[p]) : fetch('text/p' + p + '.json').then(function(r){ if (!r.ok) throw 0; return r.json() }).then(function(j){ return PAPERS[p] = j }) }
@@ -202,16 +158,6 @@ function find(){ var r = $('#q').value.trim(); if (!r) return;
     function(e){ $('#found').innerHTML = '<div class="msg">' + esc(e) + '</div>' }) }
 $('#go').onclick = find; $('#q').onkeydown = function(e){ if (e.key === 'Enter') find() };
 
-/* ── 365일 제목 ── */
-var MON = ['', '1월 새로운 시작', '2월 아버지의 사랑', '3월 믿음의 용기', '4월 죽음 너머', '5월 가정과 형제애', '6월 내 안에 계신 아버지', '7월 인간 예수', '8월 기도와 예배', '9월 시련과 성장', '10월 진리·아름다움·선함', '11월 봉사와 감사', '12월 영원한 상승'];
-function drawPlan(){
-  if (!PLAN.length){ $('#plan').innerHTML = '<div class="msg">준비 중입니다.</div>'; return }
-  var done = {}; DATA.forEach(function(d){ if (d.day) done[d.day] = d.no });
-  var h = '', m = 0;
-  PLAN.forEach(function(p){ if (p.month !== m){ m = p.month; h += '<h4>' + MON[m] + '</h4>' }
-    h += '<div' + (done[p.day] ? ' class="done"' : '') + '><b>' + p.day + '일째</b>' + esc(p.title) + '<span>' + esc(p.ref) + '</span></div>' });
-  $('#plan').innerHTML = h;
-}
 </script>
 </body>
 </html>

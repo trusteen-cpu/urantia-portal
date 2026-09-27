@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>강론 작업실</title>
+<style>
+:root{--bg:#f4f1ea;--card:#fff;--ink:#23262d;--dim:#6b7280;--line:#e2dccf;--gold:#a8741a;--gold2:#d6a84a;--navy:#14213f;--bad:#c0392b;--ok:#2e7d32;--box:#fffdf8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#12151c;--card:#1a1f2a;--ink:#e7e9ee;--dim:#9aa3b2;--line:#2d3544;--box:#161b25}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+header{background:var(--navy);color:#eef2f8;border-bottom:3px solid var(--gold)}
+header .in{max-width:1280px;margin:0 auto;padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header h1{margin:0;font-size:19px}
+.grow{flex:1}
+.pill{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(214,168,74,.6);color:#f6e3b8;text-decoration:none;font-size:13.5px;background:rgba(255,255,255,.06);cursor:pointer}
+.pill.hot{background:var(--gold);color:#fff;border-color:var(--gold)}
+.wrap{max-width:1280px;margin:0 auto;padding:16px;display:grid;grid-template-columns:320px 1fr;gap:16px}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.side{order:2}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.side .card{margin-bottom:14px}
+.side h3{margin:0 0 8px;font-size:15px;color:var(--gold)}
+.tabs{display:flex;gap:4px;margin-bottom:8px}
+.tabs button{flex:1;border:1px solid var(--line);background:transparent;color:var(--dim);border-radius:8px;padding:6px;font:inherit;font-size:13.5px;cursor:pointer}
+.tabs button.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+.scroll{max-height:62vh;overflow:auto;margin:0 -6px;padding:0 6px}
+.item{padding:7px 8px;border-radius:8px;cursor:pointer;font-size:14px;line-height:1.4;border-bottom:1px dotted var(--line)}
+.item:hover{background:rgba(214,168,74,.12)}
+.item b{color:var(--gold);font-size:12px;margin-right:6px}
+.item small{display:block;color:var(--dim);font-size:12px}
+.item.done{opacity:.5}
+.item.cur{outline:2px solid var(--gold2)}
+.mon{font-weight:700;color:var(--gold);font-size:13px;margin:10px 0 2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input[type=text],input[type=password],select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--box);color:var(--ink)}
+#q{flex:1;min-width:240px;font-size:18px}
+.btn{border:1px solid var(--gold2);background:transparent;color:var(--ink);border-radius:10px;padding:9px 15px;font:inherit;font-size:15px;cursor:pointer}
+.btn.pri{background:var(--gold);border-color:var(--gold);color:#fff;font-weight:700}
+.btn:disabled{opacity:.5;cursor:default}
+.hint{color:var(--dim);font-size:13px;margin:6px 2px 0}
+.verses{background:var(--box);border-left:4px solid var(--gold);border-radius:8px;padding:10px 14px;margin:14px 0;font-size:15px;max-height:260px;overflow:auto}
+.verses p{margin:5px 0}.verses b{color:var(--gold);font-size:12.5px;margin-right:6px}
+#title{width:100%;font-size:22px;font-weight:700;border:0;border-bottom:2px solid var(--line);background:transparent;color:var(--ink);padding:6px 2px;margin:4px 0 10px}
+#out{width:100%;min-height:58vh;font:18px/1.95 "Malgun Gothic","맑은 고딕",sans-serif;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--box);color:var(--ink);resize:vertical}
+.status{display:flex;gap:14px;flex-wrap:wrap;font-size:13.5px;color:var(--dim);margin:8px 2px}
+.status .ok{color:var(--ok)}.status .bad{color:var(--bad)}
+.qs{font-size:13px;margin:4px 2px 0}.qs div{margin:2px 0}.qs .bad{color:var(--bad)}.qs .ok{color:var(--ok)}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);max-width:460px;width:92%}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <h1>강론 작업실</h1><span style="font-size:13px;color:#aebbd2">나만 쓰는 오늘의 강론 원고 만들기</span>
+  <span class="grow"></span>
+  <a class="pill hot" href="https://apps.scriptively.com/" target="_blank" rel="noopener">스크립티블리 열기 ↗</a>
+  <span class="pill" id="setBtn">설정</span>
+</div></header>
+
+<div class="wrap">
+  <aside class="side">
+    <div class="card">
+      <div class="tabs"><button data-t="plan" class="on">365일 제목</button><button data-t="saved">저장한 원고</button></div>
+      <div id="plan" class="scroll"></div>
+      <div id="saved" class="scroll" style="display:none"></div>
+      <div class="row" id="savedBar" style="display:none;margin-top:8px"><button class="btn" id="exp">백업 내려받기</button><label class="btn">백업 불러오기<input type="file" id="imp" accept=".json" hidden></label></div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="card">
+      <div class="row">
+        <input type="text" id="q" placeholder="편/장/절(120:2.3 · 123:2.3~5) 또는 강론 제목">
+        <button class="btn pri" id="gen">강론 쓰기</button>
+      </div>
+      <div class="hint">편장절만 넣으면 제목도 지어 줍니다. 제목만 넣으면 맞는 본문을 찾아 씁니다. 왼쪽 365일 제목을 누르면 제목과 본문이 함께 들어갑니다.</div>
+      <div id="verses"></div>
+      <input id="title" placeholder="강론 제목">
+      <textarea id="out" placeholder="여기에 강론 원고가 써집니다. 고쳐 써도 됩니다."></textarea>
+      <div class="status"><span id="len">0자</span><span id="st"></span></div>
+      <div class="qs" id="qs"></div>
+      <div class="row" style="margin-top:10px">
+        <button class="btn pri" id="copy">원고 복사</button>
+        <button class="btn" id="save">저장</button>
+        <button class="btn" id="dl">txt 내려받기</button>
+        <button class="btn" id="again">다시 쓰기</button>
+        <span class="grow"></span>
+        <a class="btn" href="https://apps.scriptively.com/" target="_blank" rel="noopener">스크립티블리로 ↗</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<dialog id="dlg"><form method="dialog">
+  <h3 style="margin-top:0">설정</h3>
+  <p style="font-size:14px;color:var(--dim)">Claude API 키는 이 기기의 브라우저에만 저장되고 다른 곳으로 가지 않습니다(요청은 이 브라우저에서 Anthropic으로 바로 갑니다).</p>
+  <label>API 키<br><input type="password" id="key" style="width:100%" placeholder="sk-ant-…"></label>
+  <p><label>모델<br><select id="model" style="width:100%">
+    <option value="claude-opus-5-5">Claude Opus 5.5 (가장 좋음)</option>
+    <option value="claude-sonnet-5">Claude Sonnet 5 (빠르고 저렴)</option>
+  </select></label></p>
+  <div class="row"><button class="btn pri" value="ok" id="saveKey">저장</button><button class="btn" value="cancel">닫기</button></div>
+</form></dialog>
+
+<script>
+var $ = function(s){ return document.querySelector(s) };
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
+function get(k, d){ try { var v = localStorage.getItem('st_' + k); return v == null ? d : v } catch (e) { return d } }
+function put(k, v){ try { localStorage.setItem('st_' + k, v) } catch (e) {} }
+
+/* ── 설정 ── */
+$('#setBtn').onclick = function(){ $('#key').value = get('key', ''); $('#model').value = get('model', 'claude-opus-5-5'); $('#dlg').showModal() };
+$('#saveKey').onclick = function(){ put('key', $('#key').value.trim()); put('model', $('#model').value) };
+if (!get('key', '')) setTimeout(function(){ $('#setBtn').click() }, 300);
+
+/* ── 본문 (편마다 나눈 한글 4차 교정판) ── */
+var PAPERS = {};
+function paper(p){ return PAPERS[p] ? Promise.resolve(PAPERS[p]) : fetch('/sermon/text/p' + p + '.json').then(function(r){ if (!r.ok) throw '없는 편'; return r.json() }).then(function(j){ return PAPERS[p] = j }) }
+var REF = /^(\d+):(\d+)(?:\.(\d+))?(?:\s*[~\-–]\s*(?:(\d+)\.)?(\d+))?$/;
+function lookup(ref){
+  var m = String(ref).replace(/\s/g, '').match(REF); if (!m) return Promise.reject('형식');
+  return paper(m[1]).then(function(P){
+    var keys = Object.keys(P), out;
+    if (!m[3]) out = keys.filter(function(k){ return k.indexOf(m[1] + ':' + m[2] + '.') === 0 });
+    else { var a = m[1] + ':' + m[2] + '.' + m[3], b = m[5] ? m[1] + ':' + (m[4] || m[2]) + '.' + m[5] : a, i = keys.indexOf(a), j = keys.indexOf(b);
+      if (i < 0 || j < i) throw '없는 절: ' + ref; out = keys.slice(i, j + 1) }
+    if (!out.length) throw '없는 장: ' + ref;
+    return out.slice(0, 12).map(function(k){ return [k, P[k]] });
+  });
+}
+function showVerses(v){ $('#verses').innerHTML = v.length ? '<div class="verses">' + v.map(function(x){ return '<p><b>' + x[0] + '</b>' + esc(x[1]) + '</p>' }).join('') + '</div>' : '' }
+
+/* ── 365일 제목 ── */
+var PLAN = [], MON = ['', '1월 새로운 시작', '2월 아버지의 사랑', '3월 믿음의 용기', '4월 죽음 너머', '5월 가정과 형제애', '6월 내 안에 계신 아버지', '7월 인간 예수', '8월 기도와 예배', '9월 시련과 성장', '10월 진리·아름다움·선함', '11월 봉사와 감사', '12월 영원한 상승'];
+var CUR = null;      // 지금 쓰는 제목표 항목
+fetch('plan.json').then(function(r){ return r.json() }).then(function(j){ PLAN = j; drawPlan() });
+function drawPlan(){
+  var done = {}; SAVED.forEach(function(s){ if (s.day) done[s.day] = 1 });
+  var h = '', m = 0;
+  PLAN.forEach(function(p){ if (p.month !== m){ m = p.month; h += '<div class="mon">' + MON[m] + '</div>' }
+    h += '<div class="item' + (done[p.day] ? ' done' : '') + (CUR && CUR.day === p.day ? ' cur' : '') + '" data-d="' + p.day + '"><b>' + p.day + '</b>' + esc(p.title) + '<small>' + esc(p.ref) + '</small></div>' });
+  $('#plan').innerHTML = h;
+  [].forEach.call(document.querySelectorAll('#plan .item'), function(el){ el.onclick = function(){
+    CUR = PLAN[+el.dataset.d - 1]; $('#q').value = CUR.title; $('#title').value = CUR.title; drawPlan();
+    lookup(CUR.ref).then(showVerses, function(){}) } });
+}
+function nextDay(){ var done = {}; SAVED.forEach(function(s){ if (s.day) done[s.day] = 1 });
+  for (var i = 0; i < PLAN.length; i++) if (!done[PLAN[i].day]) return PLAN[i]; return null }
+
+/* ── 저장 (이 브라우저의 IndexedDB) ── */
+var SAVED = [], db;
+(function(){ var rq = indexedDB.open('sermon-studio', 1);
+  rq.onupgradeneeded = function(){ rq.result.createObjectStore('s', { keyPath: 'id' }) };
+  rq.onsuccess = function(){ db = rq.result; reload() }; })();
+function reload(){ var t = db.transaction('s').objectStore('s').getAll(); t.onsuccess = function(){ SAVED = t.result.sort(function(a, b){ return b.id - a.id }); drawSaved(); drawPlan() } }
+function drawSaved(){
+  $('#saved').innerHTML = SAVED.length ? SAVED.map(function(s){ return '<div class="item" data-id="' + s.id + '"><b>' + esc(s.date) + '</b>' + esc(s.title) + '<small>' + esc(s.ref || '') + (s.day ? ' · ' + s.day + '일째' : '') + ' · ' + s.body.length + '자</small></div>' }).join('') : '<div class="hint">아직 저장한 원고가 없습니다.</div>';
+  [].forEach.call(document.querySelectorAll('#saved .item'), function(el){ el.onclick = function(){
+    var s = SAVED.filter(function(x){ return x.id === +el.dataset.id })[0]; if (!s) return;
+    $('#title').value = s.title; $('#out').value = s.body; $('#q').value = s.ref || s.title; CUR = s.day ? PLAN[s.day - 1] : null; EDIT = s.id; count();
+    if (s.ref) lookup(s.ref).then(showVerses, function(){}) } });
+}
+var EDIT = null;
+$('#save').onclick = function(){
+  var body = $('#out').value.trim(), title = $('#title').value.trim(); if (!body) return;
+  var s = { id: EDIT || Date.now(), date: new Date().toISOString().slice(0, 10), title: title || '제목 없음', ref: LAST_REF, day: CUR ? CUR.day : null, body: body };
+  var old = SAVED.filter(function(x){ return x.id === s.id })[0]; if (old){ s.date = old.date; s.ref = s.ref || old.ref; s.day = s.day || old.day }
+  db.transaction('s', 'readwrite').objectStore('s').put(s).onsuccess = function(){ EDIT = s.id; reload(); flash('저장했습니다', 'ok') };
+};
+$('#exp').onclick = function(){ var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(SAVED, null, 1)], { type: 'application/json' })); a.download = '강론 백업 ' + new Date().toISOString().slice(0, 10) + '.json'; a.click() };
+$('#imp').onchange = function(e){ var f = e.target.files[0]; if (!f) return; f.text().then(function(t){ var a = JSON.parse(t), st = db.transaction('s', 'readwrite').objectStore('s'); a.forEach(function(s){ st.put(s) }); st.transaction.oncomplete = reload }) };
+[].forEach.call(document.querySelectorAll('.tabs button'), function(b){ b.onclick = function(){
+  [].forEach.call(document.querySelectorAll('.tabs button'), function(x){ x.classList.toggle('on', x === b) });
+  $('#plan').style.display = b.dataset.t === 'plan' ? '' : 'none'; $('#saved').style.display = $('#savedBar').style.display = b.dataset.t === 'saved' ? '' : 'none' } });
+
+/* ── 글자 수·인용 확인 ── */
+function count(){ var n = $('#out').value.trim().length; $('#len').textContent = n + '자'; $('#len').className = n >= 1500 && n <= 1650 ? 'ok' : (n ? 'bad' : '') }
+$('#out').oninput = count;
+function flash(t, c){ $('#st').textContent = t; $('#st').className = c || '' }
+function checkQuotes(body, pool){
+  var res = [], re = /“([^”]{12,})”/g, m;
+  while ((m = re.exec(body))){ var q = m[1].trim().replace(/[.。]$/, ''); res.push({ q: m[1], ok: pool.indexOf(q) >= 0 }) }
+  $('#qs').innerHTML = res.map(function(r){ return '<div class="' + (r.ok ? 'ok' : 'bad') + '">' + (r.ok ? '✓ 본문과 일치: ' : '✗ 본문에 없음: ') + esc(r.q.slice(0, 60)) + (r.q.length > 60 ? '…' : '') + '</div>' }).join('');
+  return res;
+}
+
+/* ── Claude 호출 ── */
+function claude(system, user, maxTok, onText){
+  var key = get('key', ''); if (!key){ $('#setBtn').click(); return Promise.reject('API 키를 먼저 넣어 주세요') }
+  return fetch('https://api.anthropic.com/v1/messages', { method: 'POST',
+    headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
+    body: JSON.stringify({ model: get('model', 'claude-opus-5-5'), max_tokens: maxTok, stream: true, system: system, messages: [{ role: 'user', content: user }] })
+  }).then(function(r){
+    if (!r.ok) return r.text().then(function(t){ throw 'API 오류 ' + r.status + ': ' + t.slice(0, 200) });
+    var rd = r.body.getReader(), dec = new TextDecoder(), buf = '', all = '';
+    return (function pump(){ return rd.read().then(function(x){
+      if (x.done) return all;
+      buf += dec.decode(x.value, { stream: true });
+      var lines = buf.split('\n'); buf = lines.pop();
+      lines.forEach(function(l){ if (l.indexOf('data: ') !== 0) return; try { var e = JSON.parse(l.slice(6));
+        if (e.type === 'content_block_delta' && e.delta && e.delta.text){ all += e.delta.text; if (onText) onText(all) }
+        if (e.type === 'error') throw e.error.message } catch (err) { if (typeof err === 'string') throw err } });
+      return pump() }) })();
+  });
+}
+
+var STYLE = [
+'너는 한국 유란시아서 독자 모임 대표가 매일 유튜브에서 읽는 「오늘의 강론」 원고를 쓴다. 청중은 한국어를 쓰는 구도자들이다.',
+'분량: 공백 포함 1,500~1,600자(제목 제외). 반드시 지킨다.',
+'문체(시흥이 Shi Heng Yi의 동기부여 연설 방식): 첫머리는 듣는 이에게 던지는 질문 하나로 연다. 이어서 짧은 약속 한 줄. 몸통은 번호 붙인 깨달음 2~3개("첫째, …입니다."). 각 깨달음은 한 줄 선언 → 풀이 → 인용 → 삶의 장면. 짧고 단단한 문장, "~이 아닙니다. ~입니다." 대조, 같은 머리말 되풀이, 세 박자 나열을 쓴다. 다음 깨달음으로 넘어갈 때 다리 문장을 둔다. 끝은 오늘 할 구체적인 한 가지 권면과 짧은 결단의 부름.',
+'호칭은 "여러분"을 기본으로, 가장 깊은 대목에서 "당신". 존댓말 "~입니다/~십시오"체. 하나님은 "아버지", 예수는 "예수" 또는 "예수님"(\'주님\'은 쓰지 않는다).',
+'인용: 아래에 주는 유란시아서 본문에서만, 3~5곳을 “ ”(굽은 큰따옴표) 안에 한 글자도 바꾸지 말고 문장 또는 문장 일부를 그대로 옮긴다. 인용 앞에 "유란시아서는 이렇게 말합니다." 같은 말로 소개하고, 편장절 숫자나 괄호는 쓰지 않는다(소리 내어 읽는 원고).',
+'텔레프롬프터용: 문단은 3~5문장, 문단 사이에 빈 줄. 별표·샵·영어·괄호 설명을 쓰지 않는다.',
+'출력 형식: 첫 줄에 "제목: …"(12~26자, 가슴을 울리는 제목; 제목을 주면 그대로), 빈 줄, 그 다음 본문만.'
+].join('\n');
+
+var LAST_REF = '', BUSY = false, PCACHE = {};
+function isRef(s){ return REF.test(s.replace(/\s/g, '')) }
+
+function plan(q){
+  // 편장절이면 그대로, 제목이면 Claude가 중심 본문을 고른다. 관련 절 2~3개도 받는다.
+  var sys = '너는 유란시아서(The Urantia Book) 전문가다. JSON만 출력한다.';
+  var ask = isRef(q) ? '중심 본문 ' + q + ' 으로 강론을 쓴다. 이 주제를 함께 받쳐 줄 유란시아서의 다른 절 3개를 골라라. {"related":["편:장.절",…]}'
+    : '강론 제목: "' + q + '". 이 제목에 가장 알맞은 유란시아서 중심 본문(한 절 또는 같은 장 안 1~3절 범위)과, 함께 받쳐 줄 다른 절 3개를 골라라. {"anchor":"편:장.절 또는 편:장.절~절","related":["편:장.절",…]}';
+  return claude(sys, ask, 400).then(function(t){ var m = t.match(/\{[\s\S]*\}/); return m ? JSON.parse(m[0]) : {} });
+}
+
+function run(extra){
+  if (BUSY) return Promise.resolve(); var q = $('#q').value.trim(); if (!q) return Promise.resolve();
+  BUSY = true; $('#gen').disabled = $('#again').disabled = true; $('#qs').innerHTML = ''; EDIT = null;
+  var title = CUR && CUR.title === q ? CUR.title : (isRef(q) ? '' : q);
+  var anchorRef = CUR && CUR.title === q ? CUR.ref : (isRef(q) ? q : '');
+  if (!CUR || CUR.title !== q) CUR = null;
+  flash('본문을 고르는 중…');
+  var key = anchorRef || q, pl = PCACHE[key] ? Promise.resolve(PCACHE[key]) : plan(key).then(function(P){ return PCACHE[key] = P });
+  return pl.then(function(P){
+    anchorRef = anchorRef || P.anchor;
+    if (!anchorRef) throw '본문을 찾지 못했습니다. 편장절로 넣어 보세요.';
+    LAST_REF = anchorRef.replace(/\s/g, '');
+    return Promise.all([lookup(anchorRef)].concat((P.related || []).slice(0, 4).map(function(r){ return lookup(r).catch(function(){ return [] }) })));
+  }).then(function(parts){
+    var main = parts[0], rel = [].concat.apply([], parts.slice(1)).filter(function(v){ return !main.some(function(x){ return x[0] === v[0] }) });
+    showVerses(main);
+    var src = main.concat(rel), pool = src.map(function(v){ return v[1] }).join('\n');
+    var user = '중심 본문(' + LAST_REF + '):\n' + main.map(function(v){ return '(' + v[0] + ') ' + v[1] }).join('\n')
+      + (rel.length ? '\n\n함께 인용할 수 있는 본문:\n' + rel.map(function(v){ return '(' + v[0] + ') ' + v[1] }).join('\n') : '')
+      + '\n\n' + (title ? '제목: ' + title : '제목도 지어 줘.') + (extra || '');
+    flash('강론을 쓰는 중…');
+    $('#out').value = '';
+    return claude(STYLE, user, 4000, function(t){ var s = split(t); if (s.title) $('#title').value = s.title; $('#out').value = s.body; count() })
+      .then(function(t){ var s = split(t); $('#title').value = title || s.title; $('#out').value = s.body; count();
+        var r = checkQuotes(s.body, pool), bad = r.filter(function(x){ return !x.ok }), n = s.body.length;
+        if ((bad.length || n < 1450 || n > 1700) && !extra){
+          var fix = '\n\n[다시 쓰기] 앞 원고의 문제: ' + (bad.length ? '본문과 글자가 다른 인용 ' + bad.length + '곳(인용은 위 본문에서 글자 그대로만). ' : '') + (n < 1450 || n > 1700 ? '분량 ' + n + '자 → 1,500~1,600자로. ' : '') + '처음부터 다시 쓴다.';
+          BUSY = false; flash('인용·분량을 맞추려고 한 번 더 씁니다…'); return run(fix);
+        }
+        flash(bad.length ? '본문과 다른 인용이 있습니다 — 고치거나 다시 쓰기' : '완성 · 저장을 누르면 보관됩니다', bad.length ? 'bad' : 'ok');
+      });
+  }).catch(function(e){ flash(String(e), 'bad') }).then(function(){ BUSY = false; $('#gen').disabled = $('#again').disabled = false });
+}
+function split(t){ var m = t.match(/^\s*제목\s*[:：]\s*(.+)\n/); return m ? { title: m[1].trim(), body: t.slice(m[0].length).trim() } : { title: '', body: t.trim() } }
+$('#gen').onclick = function(){ run() };
+$('#again').onclick = function(){ PCACHE = {}; run() };
+$('#q').onkeydown = function(e){ if (e.key === 'Enter') run() };
+$('#q').oninput = function(){ var v = $('#q').value.trim(); if (isRef(v)) lookup(v).then(showVerses, function(){}) };
+
+/* ── 복사·내려받기 ── */
+function script(){ return ($('#title').value.trim() ? $('#title').value.trim() + '\n\n' : '') + $('#out').value.trim() }
+$('#copy').onclick = function(){ navigator.clipboard.writeText(script()).then(function(){ flash('복사했습니다 — 스크립티블리에 붙여 넣으세요', 'ok') }) };
+$('#dl').onclick = function(){ var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([script()], { type: 'text/plain;charset=utf-8' })); a.download = ($('#title').value.trim() || '강론') + '.txt'; a.click() };
+</script>
+</body>
+</html>
