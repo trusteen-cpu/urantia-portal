@@ -11,5 +11,11 @@ window.UST_CHAPTERS = [
   "title": "The Eternal Son",
   "ko": "영원 아들",
   "path": "ch02/"
+ },
+ {
+  "no": 3,
+  "title": "The Infinite Spirit",
+  "ko": "무한 영",
+  "path": "ch03/"
  }
 ];
