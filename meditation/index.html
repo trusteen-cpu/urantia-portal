@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>명상록 — 한국 유란시아서 독자회</title>
+<meta property="og:title" content="명상록 — 사진과 유란시아서 한 구절">
+<meta property="og:description" content="사진 위에 새긴 유란시아서 구절 — 한글·영어 명상 카드 모음">
+<style>
+:root{--navy:#12203f;--navy2:#1b2c52;--gold:#b7791f;--gold2:#d6a84a;--ink:#22262e;--dim:#6b7280;--line:#e4e7ec;--bg:#f6f7f9;--card:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink:#e6e8ec;--dim:#9aa3b2;--line:#2c3446;--bg:#10141c;--card:#171c27}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Malgun Gothic","맑은 고딕",system-ui,sans-serif}
+.top{background:linear-gradient(180deg,var(--navy),var(--navy2));color:#eef2f8;border-bottom:3px solid var(--gold)}
+.top .in{max-width:1280px;margin:0 auto;padding:15px 16px 15px 150px}
+@media (max-width:600px){.top .in{padding:52px 16px 14px}}
+.top h1{margin:0;font-size:20px}
+.crumb{font-size:13px;color:#aebbd2}.crumb a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+main{max-width:1280px;margin:0 auto;padding:14px 12px 40px}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:4px 2px 12px}
+.bar button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 13px;font:inherit;font-size:14px;cursor:pointer}
+.bar button.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.bar .cnt{margin-left:auto;font-size:13px;color:var(--dim)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+@media (max-width:520px){.grid{grid-template-columns:repeat(3,1fr);gap:4px}}
+.tile{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:8px;background:#dfe3ea;cursor:zoom-in}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+.tile:hover img{transform:scale(1.04)}
+.tile span{position:absolute;left:0;right:0;bottom:0;padding:14px 7px 5px;font-size:12px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb{position:fixed;inset:0;background:rgba(8,10,16,.94);display:none;align-items:center;justify-content:center;z-index:2147483000}
+.lb.on{display:flex}
+.lb img{max-width:96vw;max-height:88vh;object-fit:contain;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.lb .cap{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#ddd;font-size:14px}
+.lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:999px;width:46px;height:46px;font-size:24px;cursor:pointer}
+.lb .x{top:12px;right:12px}.lb .pv{left:10px;top:50%}.lb .nx{right:10px;top:50%}
+.lb a.dl{position:absolute;top:18px;left:16px;color:#f6e3b8;font-size:14px;text-decoration:none;border-bottom:1px solid rgba(246,227,184,.4)}
+</style>
+<script src="/home-button.js" data-pos="left" defer></script>
+<script src="/kakao-notice.js" defer></script>
+</head>
+<body>
+<header class="top"><div class="in">
+  <h1>명상록</h1><div class="crumb"><a href="/">홈</a> › 참여 게시판 › 명상록</div>
+</div></header>
+<main>
+  <div class="bar" id="bar">
+    <button data-f="all" class="on">전체</button>
+    <button data-f="ko">한글</button>
+    <button data-f="en">영어</button>
+    <button data-f="mota">모타</button>
+    <button data-f="photo">사진</button>
+    <span class="cnt" id="cnt"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+<div class="lb" id="lb">
+  <a class="dl" id="dl" download>내려받기</a>
+  <button class="x" id="x" aria-label="닫기">×</button>
+  <button class="pv" id="pv" aria-label="이전">‹</button>
+  <img id="big" alt="">
+  <button class="nx" id="nx" aria-label="다음">›</button>
+  <div class="cap" id="cap"></div>
+</div>
+<script>
+var $ = function(s){ return document.querySelector(s) }, ALL = [], SHOW = [], cur = -1;
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c] }) }
+function lab(it){ return it.label + (it.lang === 'ko' ? ' · 한글' : it.lang === 'en' ? ' · 영어' : '') }
+fetch('items.json?t=' + Date.now(), { cache: 'no-store' }).then(function(r){ return r.json() }).then(function(j){ ALL = j; filter('all') });
+function filter(f){
+  SHOW = ALL.filter(function(it){ return f === 'all' || (f === 'ko' || f === 'en' ? it.lang === f : it.kind === f) });
+  $('#cnt').textContent = SHOW.length + '장';
+  $('#grid').innerHTML = SHOW.map(function(it, i){
+    return '<div class="tile" data-i="' + i + '"><img loading="lazy" src="t/' + it.f + '" alt="' + esc(lab(it)) + '"><span>' + esc(lab(it)) + '</span></div>' }).join('');
+  [].forEach.call(document.querySelectorAll('.bar button'), function(b){ b.classList.toggle('on', b.dataset.f === f) });
+}
+[].forEach.call(document.querySelectorAll('.bar button'), function(b){ b.onclick = function(){ filter(b.dataset.f) } });
+$('#grid').onclick = function(e){ var t = e.target.closest('.tile'); if (t) open(+t.dataset.i) };
+function open(i){ cur = (i + SHOW.length) % SHOW.length; var it = SHOW[cur];
+  $('#big').src = 'img/' + it.f; $('#cap').textContent = lab(it) + '   (' + (cur + 1) + ' / ' + SHOW.length + ')';
+  $('#dl').href = 'img/' + it.f; $('#dl').setAttribute('download', it.label.replace(/[:.]/g, '-') + '.jpg');
+  $('#lb').classList.add('on') }
+function close(){ $('#lb').classList.remove('on'); $('#big').src = '' }
+$('#x').onclick = close; $('#pv').onclick = function(){ open(cur - 1) }; $('#nx').onclick = function(){ open(cur + 1) };
+$('#lb').onclick = function(e){ if (e.target.id === 'lb') close() };
+document.addEventListener('keydown', function(e){ if (!$('#lb').classList.contains('on')) return;
+  if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') open(cur - 1); if (e.key === 'ArrowRight') open(cur + 1) });
+var sx = null; $('#lb').addEventListener('touchstart', function(e){ sx = e.touches[0].clientX }, { passive: true });
+$('#lb').addEventListener('touchend', function(e){ if (sx == null) return; var d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 50) open(cur + (d < 0 ? 1 : -1)); sx = null });
+</script>
+</body>
+</html>
