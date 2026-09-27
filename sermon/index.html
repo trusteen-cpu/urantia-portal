@@ -88,7 +88,7 @@ main{max-width:1180px;margin:0 auto;padding:20px 16px}
 <script>
 /* 재생목록: 영상을 이 재생목록에 넣기만 하면 페이지에 자동으로 나타난다 */
 var LIST = "PL_uGHPc5SUrAYPz_sbSomPJd8jw4ndrl-";
-var PLAYLIST_IS_NEWEST_FIRST = false;     // 새 영상이 목록 끝에 붙는 재생목록 → 뒤집어 최신을 앞으로
+var PLAYLIST_IS_NEWEST_FIRST = true;      // 이 재생목록은 최신 영상이 맨 앞 — 그대로 보여 준다
 document.getElementById('ytlink').href = 'https://www.youtube.com/playlist?list=' + LIST;
 
 var $ = function(s){ return document.querySelector(s) };
