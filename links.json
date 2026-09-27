@@ -687,6 +687,21 @@
           "member": false,
           "name": "유란시아 계시 탐구",
           "url": "/books/exploring-revelation/index.html"
+        },
+        {
+          "member": false,
+          "name": "100 성경 업데이트 (워커 토마스)",
+          "url": "/books/bible-100-updates/index.html"
+        },
+        {
+          "member": false,
+          "name": "다가오는 개인적 종교의 시대 (폴 슈나이더)",
+          "url": "/books/personal-religion/index.html"
+        },
+        {
+          "member": false,
+          "name": "소피아와의 대화 (올가 로페즈)",
+          "url": "/books/dialogues-with-sofia/index.html"
         }
       ],
       "id": "transbook"
