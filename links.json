@@ -462,6 +462,22 @@
                   "url": "https://urantiareaders.com/learn/w16.html"
                 }
               ]
+            },
+            {
+              "member": false,
+              "name": "제 17강 유란시아의 기원과 생명의 정착",
+              "children": [
+                {
+                  "member": false,
+                  "name": "인터렉티브 페이지",
+                  "url": "https://urantiareaders.com/learn/w17.html"
+                },
+                {
+                  "member": false,
+                  "name": "오디오북",
+                  "url": "https://urantiareaders.com/audiobook/kr/ch36/"
+                }
+              ]
             }
           ]
         },
