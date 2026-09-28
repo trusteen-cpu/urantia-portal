@@ -17,5 +17,11 @@ window.UST_CHAPTERS = [
   "title": "The Infinite Spirit",
   "ko": "무한 영",
   "path": "ch03/"
+ },
+ {
+  "no": 4,
+  "title": "The Trinity",
+  "ko": "삼위일체",
+  "path": "ch04/"
  }
 ];
