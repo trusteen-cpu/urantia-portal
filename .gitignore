@@ -1,0 +1,5 @@
+
+# API keys — never commit
+eleven_key.txt
+r2_keys.json
+*.key
