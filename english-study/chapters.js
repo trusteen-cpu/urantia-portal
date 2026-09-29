@@ -65,5 +65,11 @@ window.UST_CHAPTERS = [
   "title": "The Supreme Being",
   "ko": "최상 존재",
   "path": "ch11/"
+ },
+ {
+  "no": 12,
+  "title": "The Creator Sons",
+  "ko": "창조자 아들들",
+  "path": "ch12/"
  }
 ];
