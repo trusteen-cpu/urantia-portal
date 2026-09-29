@@ -59,5 +59,11 @@ window.UST_CHAPTERS = [
   "title": "The Descending Sons of God",
   "ko": "하나님의 하강하는 아들들",
   "path": "ch10/"
+ },
+ {
+  "no": 11,
+  "title": "The Supreme Being",
+  "ko": "최상 존재",
+  "path": "ch11/"
  }
 ];
