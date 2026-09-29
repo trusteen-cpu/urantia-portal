@@ -47,5 +47,11 @@ window.UST_CHAPTERS = [
   "title": "The Seven Master Spirits",
   "ko": "일곱 주 영",
   "path": "ch08/"
+ },
+ {
+  "no": 9,
+  "title": "The Ancients of Days",
+  "ko": "옛적부터 늘 계신 이들",
+  "path": "ch09/"
  }
 ];
