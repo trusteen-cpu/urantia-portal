@@ -101,5 +101,11 @@ window.UST_CHAPTERS = [
   "title": "The Origin of Urantia and The Settlement of Life",
   "ko": "유란시아의 기원과 생명의 정착",
   "path": "ch17/"
+ },
+ {
+  "no": 18,
+  "title": "The Evolution of Life on Urantia",
+  "ko": "유란시아에서 생명의 진화",
+  "path": "ch18/"
  }
 ];
