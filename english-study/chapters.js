@@ -23,5 +23,11 @@ window.UST_CHAPTERS = [
   "title": "The Trinity",
   "ko": "삼위일체",
   "path": "ch04/"
+ },
+ {
+  "no": 6,
+  "title": "The Divine Central Universe",
+  "ko": "신성한 중앙 우주",
+  "path": "ch06/"
  }
 ];
