@@ -167,5 +167,11 @@ window.UST_CHAPTERS = [
   "title": "The World Religion",
   "ko": "세계의 종교",
   "path": "ch28/"
+ },
+ {
+  "no": 29,
+  "title": "The Evolution of Yahweh: From Tribal God to Universal Father",
+  "ko": "야훼의 진화: 부족 신에서 우주 아버지로",
+  "path": "ch29/"
  }
 ];
