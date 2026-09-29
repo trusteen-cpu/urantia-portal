@@ -37,6 +37,12 @@ window.UST_CHAPTERS = [
   "path": "ch06/"
  },
  {
+  "no": 7,
+  "title": "The Seven Superuniverses",
+  "ko": "일곱 초우주",
+  "path": "ch07/"
+ },
+ {
   "no": 8,
   "title": "The Seven Master Spirits",
   "ko": "일곱 주 영",
