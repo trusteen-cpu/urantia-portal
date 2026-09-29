@@ -161,5 +161,11 @@ window.UST_CHAPTERS = [
   "title": "The Nature of Religion, Religious Experience, and the Foundations of Faith",
   "ko": "종교의 본질과 종교 체험과 신앙의 기초",
   "path": "ch27/"
+ },
+ {
+  "no": 28,
+  "title": "The World Religion",
+  "ko": "세계의 종교",
+  "path": "ch28/"
  }
 ];
