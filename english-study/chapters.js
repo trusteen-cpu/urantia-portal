@@ -131,5 +131,11 @@ window.UST_CHAPTERS = [
   "title": "Personality Survival: Nature, Function, and Destiny",
   "ko": "인격 생존의 본성과 기능과 운명",
   "path": "ch22/"
+ },
+ {
+  "no": 24,
+  "title": "The Garden of Eden and Adam & Eve",
+  "ko": "에덴동산과 아담과 이브",
+  "path": "ch24/"
  }
 ];
