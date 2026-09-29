@@ -119,5 +119,11 @@ window.UST_CHAPTERS = [
   "title": "The Evolution and Dispersion of the Colored Races",
   "ko": "유색 인종의 진화와 확산",
   "path": "ch20/"
+ },
+ {
+  "no": 21,
+  "title": "Post-Adamic Dispersion of the Races",
+  "ko": "아담 이후 인종들의 분산",
+  "path": "ch21/"
  }
 ];
