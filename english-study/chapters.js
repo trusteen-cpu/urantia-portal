@@ -53,5 +53,11 @@ window.UST_CHAPTERS = [
   "title": "The Ancients of Days",
   "ko": "옛적부터 늘 계신 이들",
   "path": "ch09/"
+ },
+ {
+  "no": 10,
+  "title": "The Descending Sons of God",
+  "ko": "하나님의 하강하는 아들들",
+  "path": "ch10/"
  }
 ];
