@@ -125,5 +125,11 @@ window.UST_CHAPTERS = [
   "title": "Post-Adamic Dispersion of the Races",
   "ko": "아담 이후 인종들의 분산",
   "path": "ch21/"
+ },
+ {
+  "no": 22,
+  "title": "Personality Survival: Nature, Function, and Destiny",
+  "ko": "인격 생존의 본성과 기능과 운명",
+  "path": "ch22/"
  }
 ];
