@@ -35,5 +35,11 @@ window.UST_CHAPTERS = [
   "title": "The Divine Central Universe",
   "ko": "신성한 중앙 우주",
   "path": "ch06/"
+ },
+ {
+  "no": 8,
+  "title": "The Seven Master Spirits",
+  "ko": "일곱 주 영",
+  "path": "ch08/"
  }
 ];
