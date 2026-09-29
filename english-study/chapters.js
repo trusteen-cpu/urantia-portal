@@ -85,6 +85,12 @@ window.UST_CHAPTERS = [
   "path": "ch14/"
  },
  {
+  "no": 15,
+  "title": "The Development Process of Planetary Mortal Epochs",
+  "ko": "행성 필사자 시대의 발달 과정",
+  "path": "ch15/"
+ },
+ {
   "no": 16,
   "title": "Energy, Matter & Mind",
   "ko": "에너지와 물질 그리고 마음",
