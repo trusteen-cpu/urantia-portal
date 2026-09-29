@@ -133,6 +133,12 @@ window.UST_CHAPTERS = [
   "path": "ch22/"
  },
  {
+  "no": 23,
+  "title": "The Course, Nature, and Issues of the Lucifer Rebellion",
+  "ko": "루시퍼 반란의 경과와 본질과 쟁점",
+  "path": "ch23/"
+ },
+ {
   "no": 24,
   "title": "The Garden of Eden and Adam & Eve",
   "ko": "에덴동산과 아담과 이브",
