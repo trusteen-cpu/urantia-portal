@@ -95,5 +95,11 @@ window.UST_CHAPTERS = [
   "title": "Energy, Matter & Mind",
   "ko": "에너지와 물질 그리고 마음",
   "path": "ch16/"
+ },
+ {
+  "no": 17,
+  "title": "The Origin of Urantia and The Settlement of Life",
+  "ko": "유란시아의 기원과 생명의 정착",
+  "path": "ch17/"
  }
 ];
