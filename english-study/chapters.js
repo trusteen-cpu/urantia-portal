@@ -143,5 +143,17 @@ window.UST_CHAPTERS = [
   "title": "The Garden of Eden and Adam & Eve",
   "ko": "에덴동산과 아담과 이브",
   "path": "ch24/"
+ },
+ {
+  "no": 25,
+  "title": "The Five Epochal Revelations of Urantia",
+  "ko": "유란시아의 다섯 시대적 계시",
+  "path": "ch25/"
+ },
+ {
+  "no": 26,
+  "title": "The Appearance of Melchizedek and His Influence on Eastern and Western Religions",
+  "ko": "멜기세덱의 출현과 동서양 종교에 끼친 영향",
+  "path": "ch26/"
  }
 ];
