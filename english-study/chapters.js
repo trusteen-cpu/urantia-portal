@@ -155,5 +155,11 @@ window.UST_CHAPTERS = [
   "title": "The Appearance of Melchizedek and His Influence on Eastern and Western Religions",
   "ko": "멜기세덱의 출현과 동서양 종교에 끼친 영향",
   "path": "ch26/"
+ },
+ {
+  "no": 27,
+  "title": "The Nature of Religion, Religious Experience, and the Foundations of Faith",
+  "ko": "종교의 본질과 종교 체험과 신앙의 기초",
+  "path": "ch27/"
  }
 ];
