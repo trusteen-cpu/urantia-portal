@@ -77,5 +77,11 @@ window.UST_CHAPTERS = [
   "title": "Thought Adjuster",
   "ko": "생각 조절자",
   "path": "ch13/"
+ },
+ {
+  "no": 14,
+  "title": "The Process of Eternal Life",
+  "ko": "영생의 과정",
+  "path": "ch14/"
  }
 ];
