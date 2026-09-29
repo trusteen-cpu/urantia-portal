@@ -71,5 +71,11 @@ window.UST_CHAPTERS = [
   "title": "The Creator Sons",
   "ko": "창조자 아들들",
   "path": "ch12/"
+ },
+ {
+  "no": 13,
+  "title": "Thought Adjuster",
+  "ko": "생각 조절자",
+  "path": "ch13/"
  }
 ];
