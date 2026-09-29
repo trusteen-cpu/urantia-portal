@@ -113,5 +113,11 @@ window.UST_CHAPTERS = [
   "title": "The Emergence of Humankind and the First Human Family",
   "ko": "인류의 출현과 최초의 인간 가족",
   "path": "ch19/"
+ },
+ {
+  "no": 20,
+  "title": "The Evolution and Dispersion of the Colored Races",
+  "ko": "유색 인종의 진화와 확산",
+  "path": "ch20/"
  }
 ];
