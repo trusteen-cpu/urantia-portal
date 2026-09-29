@@ -107,5 +107,11 @@ window.UST_CHAPTERS = [
   "title": "The Evolution of Life on Urantia",
   "ko": "유란시아에서 생명의 진화",
   "path": "ch18/"
+ },
+ {
+  "no": 19,
+  "title": "The Emergence of Humankind and the First Human Family",
+  "ko": "인류의 출현과 최초의 인간 가족",
+  "path": "ch19/"
  }
 ];
