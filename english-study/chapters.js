@@ -25,6 +25,12 @@ window.UST_CHAPTERS = [
   "path": "ch04/"
  },
  {
+  "no": 5,
+  "title": "The Differentiation of the I AM and the Relationship of Deities",
+  "ko": "스스로 계신 이의 분화와 신들의 관계",
+  "path": "ch05/"
+ },
+ {
   "no": 6,
   "title": "The Divine Central Universe",
   "ko": "신성한 중앙 우주",
