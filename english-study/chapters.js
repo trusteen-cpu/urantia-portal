@@ -209,5 +209,11 @@ window.UST_CHAPTERS = [
   "title": "The Origins, Differences, and Effective Practice of Prayer and Worship",
   "ko": "기도와 예배의 기원과 차이와 실천",
   "path": "ch35/"
+ },
+ {
+  "no": 36,
+  "title": "The Universal Unity: From the Infinite Source to the Trinity of Trinities",
+  "ko": "우주의 통일성: 무한한 근원에서 삼위일체들의 삼위일체까지",
+  "path": "ch36/"
  }
 ];
