@@ -257,5 +257,11 @@ window.UST_CHAPTERS = [
   "title": "Jesus’ Trip to Rome",
   "ko": "예수의 로마 여행",
   "path": "ch43/"
+ },
+ {
+  "no": 44,
+  "title": "The Public Ministry of Jesus",
+  "ko": "예수의 공생애",
+  "path": "ch44/"
  }
 ];
