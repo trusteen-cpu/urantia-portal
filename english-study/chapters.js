@@ -175,6 +175,12 @@ window.UST_CHAPTERS = [
   "path": "ch29/"
  },
  {
+  "no": 30,
+  "title": "The Development of Modern Civilization and Evolution of Marriage",
+  "ko": "현대 문명의 발달과 결혼의 진화",
+  "path": "ch30/"
+ },
+ {
   "no": 31,
   "title": "Evolution of the concept of Trinity,  Triunity, and Triodite",
   "ko": "삼위일체와 삼자일체와 삼극일체 개념의 진화",
