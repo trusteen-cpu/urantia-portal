@@ -203,5 +203,11 @@ window.UST_CHAPTERS = [
   "title": "The Universe Power System",
   "ko": "우주의 권능 체계",
   "path": "ch34/"
+ },
+ {
+  "no": 35,
+  "title": "The Origins, Differences, and Effective Practice of Prayer and Worship",
+  "ko": "기도와 예배의 기원과 차이와 실천",
+  "path": "ch35/"
  }
 ];
