@@ -245,5 +245,11 @@ window.UST_CHAPTERS = [
   "title": "The Youth and Young Adulthood of Jesus",
   "ko": "예수의 청소년기와 젊은 시절",
   "path": "ch41/"
+ },
+ {
+  "no": 42,
+  "title": "Jesus’ Early and Later Manhood",
+  "ko": "예수의 청년기와 장년기",
+  "path": "ch42/"
  }
 ];
