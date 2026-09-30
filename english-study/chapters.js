@@ -251,5 +251,11 @@ window.UST_CHAPTERS = [
   "title": "Jesus’ Early and Later Manhood",
   "ko": "예수의 청년기와 장년기",
   "path": "ch42/"
+ },
+ {
+  "no": 43,
+  "title": "Jesus’ Trip to Rome",
+  "ko": "예수의 로마 여행",
+  "path": "ch43/"
  }
 ];
