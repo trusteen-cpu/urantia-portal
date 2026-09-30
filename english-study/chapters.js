@@ -233,5 +233,11 @@ window.UST_CHAPTERS = [
   "title": "The Status and Bestowal Process of Christ Michael",
   "ko": "그리스도 미가엘의 지위와 증여 과정",
   "path": "ch39/"
+ },
+ {
+  "no": 40,
+  "title": "The Birth and Childhood of Jesus",
+  "ko": "예수의 탄생과 어린 시절",
+  "path": "ch40/"
  }
 ];
