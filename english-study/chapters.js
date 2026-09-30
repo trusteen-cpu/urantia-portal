@@ -269,5 +269,11 @@ window.UST_CHAPTERS = [
   "title": "The Kingdom of Heaven of Jesus",
   "ko": "예수가 가르친 하늘나라",
   "path": "ch45/"
+ },
+ {
+  "no": 46,
+  "title": "The Christology of the Urantia Book",
+  "ko": "유란시아서의 그리스도론",
+  "path": "ch46/"
  }
 ];
