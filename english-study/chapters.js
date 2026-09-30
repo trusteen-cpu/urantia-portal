@@ -227,5 +227,11 @@ window.UST_CHAPTERS = [
   "title": "Finaliters: Origin, Composition, and Universal Destiny",
   "ko": "최종자: 기원과 구성과 우주적 운명",
   "path": "ch38/"
+ },
+ {
+  "no": 39,
+  "title": "The Status and Bestowal Process of Christ Michael",
+  "ko": "그리스도 미가엘의 지위와 증여 과정",
+  "path": "ch39/"
  }
 ];
