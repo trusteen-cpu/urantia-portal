@@ -239,5 +239,11 @@ window.UST_CHAPTERS = [
   "title": "The Birth and Childhood of Jesus",
   "ko": "예수의 탄생과 어린 시절",
   "path": "ch40/"
+ },
+ {
+  "no": 41,
+  "title": "The Youth and Young Adulthood of Jesus",
+  "ko": "예수의 청소년기와 젊은 시절",
+  "path": "ch41/"
  }
 ];
