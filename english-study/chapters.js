@@ -191,5 +191,11 @@ window.UST_CHAPTERS = [
   "title": "The Seraphic planetary Government and Guardians of Destiny",
   "ko": "행성의 세라핌 정부와 운명 수호자",
   "path": "ch32/"
+ },
+ {
+  "no": 34,
+  "title": "The Universe Power System",
+  "ko": "우주의 권능 체계",
+  "path": "ch34/"
  }
 ];
