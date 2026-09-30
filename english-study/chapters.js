@@ -221,5 +221,11 @@ window.UST_CHAPTERS = [
   "title": "Deity and Reality: Origin, Dimensions, and Integration",
   "ko": "신과 실체: 기원과 차원과 통합",
   "path": "ch37/"
+ },
+ {
+  "no": 38,
+  "title": "Finaliters: Origin, Composition, and Universal Destiny",
+  "ko": "최종자: 기원과 구성과 우주적 운명",
+  "path": "ch38/"
  }
 ];
