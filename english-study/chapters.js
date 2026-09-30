@@ -173,5 +173,11 @@ window.UST_CHAPTERS = [
   "title": "The Evolution of Yahweh: From Tribal God to Universal Father",
   "ko": "야훼의 진화: 부족 신에서 우주 아버지로",
   "path": "ch29/"
+ },
+ {
+  "no": 31,
+  "title": "Evolution of the concept of Trinity,  Triunity, and Triodite",
+  "ko": "삼위일체와 삼자일체와 삼극일체 개념의 진화",
+  "path": "ch31/"
  }
 ];
