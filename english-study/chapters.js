@@ -281,5 +281,11 @@ window.UST_CHAPTERS = [
   "title": "The Twelve Apostles of Jesus",
   "ko": "예수의 열두 사도",
   "path": "ch47/"
+ },
+ {
+  "no": 48,
+  "title": "Jesus' Three Preaching Tours",
+  "ko": "예수의 세 차례 전도 여행",
+  "path": "ch48/"
  }
 ];
