@@ -263,5 +263,11 @@ window.UST_CHAPTERS = [
   "title": "The Public Ministry of Jesus",
   "ko": "예수의 공생애",
   "path": "ch44/"
+ },
+ {
+  "no": 45,
+  "title": "The Kingdom of Heaven of Jesus",
+  "ko": "예수가 가르친 하늘나라",
+  "path": "ch45/"
  }
 ];
