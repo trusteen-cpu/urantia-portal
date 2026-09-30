@@ -185,5 +185,11 @@ window.UST_CHAPTERS = [
   "title": "Evolution of the concept of Trinity,  Triunity, and Triodite",
   "ko": "삼위일체와 삼자일체와 삼극일체 개념의 진화",
   "path": "ch31/"
+ },
+ {
+  "no": 32,
+  "title": "The Seraphic planetary Government and Guardians of Destiny",
+  "ko": "행성의 세라핌 정부와 운명 수호자",
+  "path": "ch32/"
  }
 ];
