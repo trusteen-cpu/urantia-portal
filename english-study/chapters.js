@@ -215,5 +215,11 @@ window.UST_CHAPTERS = [
   "title": "The Universal Unity: From the Infinite Source to the Trinity of Trinities",
   "ko": "우주의 통일성: 무한한 근원에서 삼위일체들의 삼위일체까지",
   "path": "ch36/"
+ },
+ {
+  "no": 37,
+  "title": "Deity and Reality: Origin, Dimensions, and Integration",
+  "ko": "신과 실체: 기원과 차원과 통합",
+  "path": "ch37/"
  }
 ];
