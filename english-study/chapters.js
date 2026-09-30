@@ -275,5 +275,11 @@ window.UST_CHAPTERS = [
   "title": "The Christology of the Urantia Book",
   "ko": "유란시아서의 그리스도론",
   "path": "ch46/"
+ },
+ {
+  "no": 47,
+  "title": "The Twelve Apostles of Jesus",
+  "ko": "예수의 열두 사도",
+  "path": "ch47/"
  }
 ];
