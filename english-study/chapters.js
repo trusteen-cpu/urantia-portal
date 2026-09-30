@@ -193,6 +193,12 @@ window.UST_CHAPTERS = [
   "path": "ch32/"
  },
  {
+  "no": 33,
+  "title": "The Ministering Spirits",
+  "ko": "사역하는 영들",
+  "path": "ch33/"
+ },
+ {
   "no": 34,
   "title": "The Universe Power System",
   "ko": "우주의 권능 체계",
