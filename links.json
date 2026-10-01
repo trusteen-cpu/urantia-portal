@@ -189,6 +189,10 @@
         {
           "name": "영어 자료실",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/105"
+        },
+        {
+          "member": false,
+          "name": "유란시아서 인포그래픽"
         }
       ]
     },
@@ -834,6 +838,11 @@
           "url": "english-study/"
         }
       ]
+    },
+    {
+      "color": "teal",
+      "preview": 40,
+      "id": "유란시아서 인포그래픽"
     }
   ]
 }
