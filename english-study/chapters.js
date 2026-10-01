@@ -287,5 +287,23 @@ window.UST_CHAPTERS = [
   "title": "Jesus' Three Preaching Tours",
   "ko": "예수의 세 차례 전도 여행",
   "path": "ch48/"
+ },
+ {
+  "no": 49,
+  "title": "Jesus' Last Week",
+  "ko": "예수의 마지막 한 주",
+  "path": "ch49/"
+ },
+ {
+  "no": 50,
+  "title": "The Meaning of the Cross",
+  "ko": "십자가의 의미",
+  "path": "ch50/"
+ },
+ {
+  "no": 51,
+  "title": "The Teachings of Jesus",
+  "ko": "예수의 가르침",
+  "path": "ch51/"
  }
 ];
