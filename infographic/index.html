@@ -43,6 +43,14 @@
     nav select{display:block}
     .bar h2{font-size:17px}
   }
+  @media print{
+    @page{size:A4;margin:6mm}
+    body{background:#fff}
+    header,nav,.bar,.ur-home-btn{display:none!important}
+    .wrap{display:block;padding:0;max-width:none}
+    .img{border:none;border-radius:0;min-height:0}
+    .img img{width:auto;max-width:100%;max-height:283mm;margin:0 auto}
+  }
 </style>
 </head>
 <body>
@@ -59,6 +67,7 @@
       <button id="prev" aria-label="이전 편">◀</button>
       <button id="next" aria-label="다음 편">▶</button>
       <a id="full" target="_blank" rel="noopener">원본 크기</a>
+      <button id="prt">🖨 인쇄</button>
     </div>
     <div class="img" id="view"></div>
   </main>
@@ -82,10 +91,10 @@
     var v = document.getElementById('view'), full = document.getElementById('full');
     if (x[2]) {
       v.innerHTML = '<a href="' + src(n) + '" target="_blank" rel="noopener"><img src="' + src(n) + '" alt="' + label(n) + ' ' + x[1] + ' 인포그래픽"></a>';
-      full.href = src(n); full.style.visibility = 'visible';
+      full.href = src(n); full.style.visibility = 'visible'; document.getElementById('prt').style.visibility = 'visible';
     } else {
       v.innerHTML = '<div class="soon">' + label(n) + ' 인포그래픽은 준비 중입니다.<br>머리말부터 차례로 올리고 있습니다.</div>';
-      full.style.visibility = 'hidden';
+      full.style.visibility = 'hidden'; document.getElementById('prt').style.visibility = 'hidden';
     }
     var as = list.querySelectorAll('a');
     for (var i = 0; i < as.length; i++) as[i].className = (+as[i].getAttribute('data-n') === n ? 'on' : (L[+as[i].getAttribute('data-n')][2] ? '' : 'off'));
@@ -98,6 +107,7 @@
   function fromHash(){ var m = /^#p(\d+)$/.exec(location.hash); show(m ? Math.min(+m[1], L.length - 1) : 0); }
   function go(n){ location.hash = '#p' + n; window.scrollTo(0, 0); }
   sel.onchange = function(){ go(+sel.value); };
+  document.getElementById('prt').onclick = function(){ window.print(); };
   document.getElementById('prev').onclick = function(){ if (cur > 0) go(cur - 1); };
   document.getElementById('next').onclick = function(){ if (cur < L.length - 1) go(cur + 1); };
   document.getElementById('q').oninput = function(){
