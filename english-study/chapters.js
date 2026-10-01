@@ -305,5 +305,11 @@ window.UST_CHAPTERS = [
   "title": "The Teachings of Jesus",
   "ko": "예수의 가르침",
   "path": "ch51/"
+ },
+ {
+  "no": 52,
+  "title": "The Religion of Jesus and the Religion About Jesus",
+  "ko": "예수의 종교와 예수에 관한 종교",
+  "path": "ch52/"
  }
 ];
