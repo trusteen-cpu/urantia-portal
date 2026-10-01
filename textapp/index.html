@@ -60,6 +60,8 @@ html[data-dark="1"] h3.st{color:#cfe0ff}
  #body{padding:18px 16px 90px}
  header h1{font-size:14px}
 }
+.pa.hl{background:#fff4c9;box-shadow:inset 4px 0 0 #d9a520;border-radius:6px}
+[data-dark="1"] .pa.hl{background:#4a3f1c}
 </style><script src="/home-button.js" data-top="120" defer></script>
 </head><body>
 <script>
@@ -324,13 +326,32 @@ function showNote(){
   };
   $('#hidenote').onclick=function(){save('ub_note','off');var n=$('#vnote');if(n)n.remove()};
 }
+/* 주소 끝 #107:0.2 처럼 절 번호가 있으면 그 절로 바로 간다 */
+function jumpRef(h){
+  var m=/^#?(\d+):(\d+)\.(\d+)/.exec(decodeURIComponent(h||''));
+  if(!m||!BOOK)return false;
+  var ref=m[1]+':'+m[2]+'.'+m[3], pi=-1, si=-1;
+  BOOK.papers.forEach(function(p,i){if(p.no===+m[1])pi=i});
+  if(pi<0)return false;
+  BOOK.papers[pi].sections.forEach(function(x,i){if(x.sec===+m[2])si=i});
+  if(si<0)return false;
+  go(pi,si);
+  var paras=BOOK.papers[pi].sections[si].paras;
+  for(var i=0;i<paras.length;i++){if(paras[i].cit===ref){
+    var el=document.getElementById('q'+i);
+    if(el){el.classList.add('hl');setTimeout(function(){window.scrollTo(0,el.getBoundingClientRect().top+window.pageYOffset-110)},60)}
+    break}}
+  return true;
+}
+window.addEventListener('hashchange',function(){jumpRef(location.hash)});
 function UB_BOOK(d){
   if(window._t)clearTimeout(window._t);
   BOOK=d;
   var pos=load('ub_pos','0,0').split(',');
   var p=Math.min(+pos[0]||0,BOOK.papers.length-1);
   var s=Math.min(+pos[1]||0,BOOK.papers[p].sections.length-1);
-  CUR={p:p,s:s};renderTOC('');renderBody();
+  CUR={p:p,s:s};
+  if(!jumpRef(location.hash)){renderTOC('');renderBody()}
   if(!VOICES.length){setTimeout(fillVoices,700)}
   showNote();
 }

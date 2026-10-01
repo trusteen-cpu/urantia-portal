@@ -40,6 +40,9 @@
   ul.items li.q{background:var(--q);border-radius:8px;padding:9px 14px 9px 30px;margin:6px 0;font-size:15.5px;color:#3d342a}
   ul.items li.q:before{content:"“";background:none;width:auto;height:auto;top:2px;left:10px;font-size:26px;color:var(--gold);font-family:Georgia,serif}
   .r{color:var(--sub);font-size:12.5px;white-space:nowrap;margin-left:4px;font-family:-apple-system,"Malgun Gothic",sans-serif}
+  a.rl{color:var(--sub);text-decoration:none;border-bottom:1px dotted #b9ab95}
+  a.rl:hover{color:var(--brand);border-bottom-color:var(--brand)}
+  @media print{a.rl{border:none;color:var(--sub)}}
   .see{margin-top:26px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px}
   .see b{color:var(--sub);margin-right:6px}
   .see a{display:inline-block;margin:3px 4px 3px 0;padding:3px 10px;border-radius:14px;background:#eef2f7;color:var(--brand);text-decoration:none}
@@ -87,6 +90,7 @@
 (function(){
   var L = window.TOPICS || [], cur = 0;
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function lk(r){ return '<a class="rl" href="/textapp/index.html#' + esc(r) + '" target="_blank" rel="noopener" title="본문에서 ' + esc(r) + ' 보기">' + esc(r) + '</a>'; }
   function idx(name){ for (var i = 0; i < L.length; i++) if (L[i].t === name) return i; return -1; }
   var list = document.getElementById('list'), sel = document.getElementById('sel');
   list.innerHTML = L.map(function(x, i){ return '<li><a href="#' + encodeURIComponent(x.t) + '" data-i="' + i + '">' + esc(x.t) + '<small>' + esc(x.en) + '</small></a></li>'; }).join('');
@@ -98,13 +102,13 @@
     x.sections.forEach(function(s, k){
       h += '<h3><b>' + (k + 1) + '</b>' + esc(s.h) + '</h3><ul class="items">';
       s.items.forEach(function(it){
-        if (it.q) h += '<li class="q">' + esc(it.q) + ' <span class="r">(' + esc(it.r) + ')</span></li>';
-        else h += '<li>' + esc(it.x) + (it.r && it.r.length ? ' <span class="r">(' + it.r.map(esc).join(', ') + ')</span>' : '') + '</li>';
+        if (it.q) h += '<li class="q">' + esc(it.q) + ' <span class="r">(' + lk(it.r) + ')</span></li>';
+        else h += '<li>' + esc(it.x) + (it.r && it.r.length ? ' <span class="r">(' + it.r.map(lk).join(', ') + ')</span>' : '') + '</li>';
       });
       h += '</ul>';
     });
     if (x.see && x.see.length) h += '<div class="see"><b>관련 주제</b>' + x.see.map(function(n){ return idx(n) >= 0 ? '<a href="#' + encodeURIComponent(n) + '">' + esc(n) + '</a>' : ''; }).join('') + '</div>';
-    h += '<div class="note">괄호 안은 유란시아서 편:장.절입니다. 인용은 본문 그대로입니다.</div>';
+    h += '<div class="note">괄호 안은 유란시아서 편:장.절입니다. 누르면 새 창에서 그 절의 본문이 열립니다.</div>';
     document.getElementById('view').innerHTML = h;
     var as = list.querySelectorAll('a');
     for (var j = 0; j < as.length; j++) as[j].className = (+as[j].getAttribute('data-i') === i ? 'on' : '');
