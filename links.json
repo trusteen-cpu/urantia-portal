@@ -711,6 +711,31 @@
           "member": false,
           "name": "예수의 체계적 가르침 (워커 토마스)",
           "url": "/books/teachings-of-jesus/index.html"
+        },
+        {
+          "member": false,
+          "name": "영적 거듭남을 위한 21 단계 (해리 맥멀란)",
+          "url": "/books/spiritual-awakening-21/index.html"
+        },
+        {
+          "member": false,
+          "name": "거주 우주 (사스키아 프람스마)",
+          "url": "/books/inhabited-universe/index.html"
+        },
+        {
+          "member": false,
+          "name": "우주 상승 계획 (워커 토마스)",
+          "url": "/books/ascension-plan/index.html"
+        },
+        {
+          "member": false,
+          "name": "유란시아서 요약 (미셸 클리메시)",
+          "url": "/books/urantia-synopsis/index.html"
+        },
+        {
+          "member": false,
+          "name": "유란시아서의 빛 (번역·편집)",
+          "url": "/books/light-of-urantia/index.html"
         }
       ],
       "id": "transbook"
