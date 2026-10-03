@@ -467,8 +467,192 @@
           ]
         },
         {
+          "member": false,
           "name": "UUI 교사 훈련 프로그램",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/114"
+          "url": "",
+          "children": [
+            {
+              "member": false,
+              "name": "전체 목차 · 프로그램 소개",
+              "url": "/school/uui-tep/"
+            },
+            {
+              "member": false,
+              "name": "1학기 (유란시아서 1·2부)",
+              "url": "",
+              "children": [
+                {
+                  "member": false,
+                  "name": "1.1 계획이 있다",
+                  "url": "/school/uui-tep/3001_01.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.2 우주 아버지",
+                  "url": "/school/uui-tep/3001_02.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.3 영원 아들의 가족",
+                  "url": "/school/uui-tep/3001_03.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.4 무한 영의 가족",
+                  "url": "/school/uui-tep/3001_04.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.6 상승 계획",
+                  "url": "/school/uui-tep/3001_06.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.7 인격의 통합과 해체",
+                  "url": "/school/uui-tep/3001_07.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.8 악의 문제",
+                  "url": "/school/uui-tep/3001_08.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.9 통일",
+                  "url": "/school/uui-tep/3001_09.html"
+                },
+                {
+                  "member": false,
+                  "name": "1.10 학기말 발표",
+                  "url": "/school/uui-tep/3001_10.html"
+                }
+              ]
+            },
+            {
+              "member": false,
+              "name": "2학기 (유란시아서 3부)",
+              "url": "",
+              "children": [
+                {
+                  "member": false,
+                  "name": "2.1 유란시아서를 관통하는 진화의 주제(물질-마음-영-신)",
+                  "url": "/school/uui-tep/3002_01.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.2 생명의 여명, 인류의 진화, 문명의 시작과 행성 반란",
+                  "url": "/school/uui-tep/3002_02.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.3 아담과 이브의 유산, 그리고 행성 문명과 사회의 발달",
+                  "url": "/school/uui-tep/3002_03.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.4 멜기세덱 사명과 그것이 진화 종교에 남긴 지속적 영향",
+                  "url": "/school/uui-tep/3002_04.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.5 종교 문화의 (계속되는) 진화",
+                  "url": "/school/uui-tep/3002_05.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.6 참된 종교: 종교 체험의 실재",
+                  "url": "/school/uui-tep/3002_06.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.7 내주하는 영, 혼, 그리고 우리의 수호 세라핌",
+                  "url": "/school/uui-tep/3002_07.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.8 필사의 삶과 죽음: 일곱 정신 원과 인격의 생존",
+                  "url": "/school/uui-tep/3002_08.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.9 경험적 신: 최상의 시대에 일어나는 개인과 우주의 진화",
+                  "url": "/school/uui-tep/3002_09.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.10 여정의 통합",
+                  "url": "/school/uui-tep/3002_10.html"
+                },
+                {
+                  "member": false,
+                  "name": "2.M 사역 기술(2학기 동반 과정)",
+                  "url": "/school/uui-tep/3002_11.html"
+                }
+              ]
+            },
+            {
+              "member": false,
+              "name": "3학기 (유란시아서 4부)",
+              "url": "",
+              "children": [
+                {
+                  "member": false,
+                  "name": "3.1 예수의 생애 - 증여 - 청년기 (1/3)",
+                  "url": "/school/uui-tep/3003_01.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.2 예수의 생애 - 사람에서 하나님께로 (2/3)",
+                  "url": "/school/uui-tep/3003_02.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.3 하나님에서 사람에게로 - 예수의 공생애, 십자가 처형과 부활 (3/3)",
+                  "url": "/school/uui-tep/3003_03.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.4 영생 / 신앙에 의한 구원",
+                  "url": "/school/uui-tep/3003_04.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.5 하나님의 뜻",
+                  "url": "/school/uui-tep/3003_05.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.6 내주하는 하나님의 임재",
+                  "url": "/school/uui-tep/3003_06.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.7 하나님의 가족 (하나님의 왕국, 사람의 형제단)",
+                  "url": "/school/uui-tep/3003_07.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.8 왕국의 가치",
+                  "url": "/school/uui-tep/3003_08.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.9 하나님의 사랑",
+                  "url": "/school/uui-tep/3003_09.html"
+                },
+                {
+                  "member": false,
+                  "name": "3.10 수강생 심포지엄",
+                  "url": "/school/uui-tep/3003_10.html"
+                }
+              ]
+            },
+            {
+              "member": false,
+              "name": "네이버 카페 TEP 게시판",
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/114"
+            }
+          ]
         }
       ]
     },
