@@ -314,7 +314,19 @@
         },
         {
           "name": "신규 독자 강의 (10주)",
-          "url": "https://urantiareaders.com/newcomer"
+          "url": "",
+          "children": [
+            {
+              "member": false,
+              "name": "교안 (PDF)",
+              "url": "/newcomer/"
+            },
+            {
+              "member": false,
+              "name": "동영상 강의 (유튜브 재생목록)",
+              "url": "/newcomer/videos.html"
+            }
+          ]
         },
         {
           "name": "유란시아서 통합 강의 (80강)",
