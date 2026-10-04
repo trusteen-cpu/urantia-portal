@@ -323,8 +323,8 @@
             },
             {
               "member": false,
-              "name": "동영상 강의 (유튜브 재생목록)",
-              "url": "/newcomer/videos.html"
+              "name": "동영상 강의 (오디오북)",
+              "url": "/newcomer/audiobook.html"
             }
           ]
         },
