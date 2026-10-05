@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신규 독자 강의 (10주) — 한국 유란시아서 독자 모임</title>
+<meta name="description" content="유란시아서를 처음 읽는 분들을 위한 10주 과정 — 교안 PDF와 슬라이드 오디오북 강의">
+<style>
+:root{--navy:#14213D;--navy2:#1C2E4A;--gold:#B8925A;--gold2:#D9BF8C;--ink:#23272F;--dim:#6b7280;--line:#e3dccb;--bg:#FBF9F4;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#12141a;--card:#181b22;--ink:#dfe3ea;--dim:#98a0ae;--line:#2b3040}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Malgun Gothic","맑은 고딕",system-ui,sans-serif;word-break:keep-all}
+a{color:inherit;text-decoration:none}
+header{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--navy2));color:#F7F3EA;border-bottom:3px solid var(--gold)}
+header:after{content:"";position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(217,191,140,.22),rgba(217,191,140,0) 62%);pointer-events:none}
+header .ring{position:absolute;right:40px;top:30px;width:200px;height:200px;border:1px solid rgba(217,191,140,.35);border-radius:50%}
+header .ring:before{content:"";position:absolute;inset:28px;border:1px solid rgba(217,191,140,.25);border-radius:50%}
+header .ring:after{content:"";position:absolute;inset:86px;background:var(--gold);border-radius:50%;box-shadow:0 0 30px rgba(217,191,140,.8)}
+header .in{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:52px 20px 34px}
+.crumb{font-size:13px;color:#aebbd2}.crumb a{border-bottom:1px solid rgba(255,255,255,.25)}
+.kicker{margin-top:14px;font:600 12.5px/1 Georgia,serif;letter-spacing:3px;color:var(--gold2)}
+header h1{margin:10px 0 8px;font-size:32px;letter-spacing:-.5px}header p{margin:0;max-width:640px;color:#d3d8e2;font-size:15.5px}
+main{max-width:1100px;margin:0 auto;padding:34px 20px 56px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  box-shadow:0 6px 22px rgba(20,33,61,.08);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(20,33,61,.18)}
+.pic{position:relative;aspect-ratio:30/17;overflow:hidden}
+.pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}.card:hover .pic img{transform:scale(1.04)}
+.tag{position:absolute;left:16px;top:16px;font:700 12.5px/1 "맑은 고딕",sans-serif;letter-spacing:.5px;padding:7px 12px;border-radius:999px;background:rgba(20,33,61,.86);color:var(--gold2)}
+.play{position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;background:rgba(184,146,90,.95);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 10px rgba(217,191,140,.25),0 10px 30px rgba(0,0,0,.4);transition:transform .2s}
+.play:after{content:"";margin-left:7px;border-left:26px solid #14213D;border-top:16px solid transparent;border-bottom:16px solid transparent}
+.card:hover .play{transform:scale(1.08)}
+.wave{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:5px;height:34px;align-items:flex-end}
+.wave i{display:block;width:5px;border-radius:3px;background:var(--gold2);opacity:.85;animation:w 1.4s ease-in-out infinite}
+@keyframes w{0%,100%{height:8px}50%{height:32px}}
+.body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#f4efe4;color:var(--gold);flex:none}
+@media (prefers-color-scheme:dark){.ico{background:#20242e}}
+.ttl{display:flex;gap:14px;align-items:center}.ttl h2{margin:0;font-size:24px;color:var(--navy);line-height:1.3}
+@media (prefers-color-scheme:dark){.ttl h2{color:var(--gold2)}}
+.ttl small{display:block;font:600 12px Georgia,serif;letter-spacing:2px;color:var(--gold)}
+.desc{margin:4px 0 0;color:var(--ink);font-size:15.5px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;padding:0;list-style:none}
+.facts li{font-size:13px;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--dim)}
+.go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-weight:700;font-size:15px;padding:11px 20px;border-radius:999px;background:var(--navy);color:var(--gold2)}
+.card:hover .go{background:var(--gold);color:var(--navy)}
+.weeks{margin-top:34px;padding:18px 22px;border:1px dashed var(--line);border-radius:14px;font-size:14px;color:var(--dim);line-height:1.9}
+.weeks b{color:var(--gold);margin-right:6px}
+</style>
+<script src="/home-button.js" data-pos="left" defer></script>
+</head><body>
+<header><span class="ring"></span><div class="in">
+  <div class="crumb"><a href="/">홈</a> › 유란시아서 강의실</div>
+  <div class="kicker">NEW READERS · 10 WEEKS</div>
+  <h1>신규 독자 강의 (10주)</h1>
+  <p>유란시아서를 처음 펼치는 분들을 위한 10주 과정입니다. 교안을 읽으며 공부하거나, 슬라이드와 낭독으로 편안하게 들어 보세요.</p>
+</div></header>
+<main>
+  <div class="cards">
+    <a class="card" href="/newcomer/">
+      <div class="pic"><img src="card-pdf.jpg" alt="신규 독자 과정 교안 표지들"><span class="tag">읽으며 공부하기</span></div>
+      <div class="body">
+        <div class="ttl"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h11l3 3v13.5"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+          <div><small>STUDY GUIDE</small><h2>교안 (PDF)</h2></div></div>
+        <p class="desc">주차별 교안 열 권. 그 주에 읽을 편과 핵심 개념, 생각해 볼 질문이 정리되어 있어 혼자서도, 모임에서도 공부하기 좋습니다.</p>
+        <ul class="facts"><li>10주 · 교안 10권</li><li>내려받기 · 인쇄</li><li>모임 교재</li></ul>
+        <span class="go">교안 보기 <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="card" href="/newcomer/audiobook.html">
+      <div class="pic"><img src="card-audio.jpg" alt="오디오북 강의 슬라이드"><span class="tag">들으며 공부하기</span><span class="play" aria-hidden="true"></span>
+        <span class="wave" aria-hidden="true"><i style="animation-delay:0s"></i><i style="animation-delay:.2s"></i><i style="animation-delay:.4s"></i><i style="animation-delay:.1s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.5s"></i><i style="animation-delay:.15s"></i></span></div>
+      <div class="body">
+        <div class="ttl"><span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="1.5"/><rect x="16.5" y="14" width="5" height="7" rx="1.5"/></svg></span>
+          <div><small>AUDIOBOOK LECTURES</small><h2>동영상 강의 (오디오북)</h2></div></div>
+        <p class="desc">주마다 슬라이드 스무 장이 저절로 넘어가며 강의를 읽어 드립니다. 화면을 한 번 누르면 시작되고, 출퇴근길이나 쉬는 시간에 편하게 들을 수 있습니다.</p>
+        <ul class="facts"><li>10주 · 슬라이드 200장</li><li>낭독 강의</li><li>휴대폰에서도</li></ul>
+        <span class="go">강의 듣기 <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+  </div>
+  <div class="weeks"><b>10주 과정</b>1주 새로운 세계로의 초대 · 2주 아버지의 집으로 가는 길 · 3주 우리 우주의 집, 네바돈 · 4주 죽음 너머, 우주의 학교로 · 5주 행성의 새벽, 인류의 아침 · 6주 잃어버린 동산, 다시 찾는 길 · 7주 내 안에 계신 하나님 · 8주 창조자가 사람의 아들이 되다 · 9주 십자가 너머의 아침 · 10주 현재 위치에서 앞으로</div>
+</main>
+</body></html>
