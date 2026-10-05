@@ -86,7 +86,7 @@ function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:v}catch(e
 function flash(t){var w=$('#warn');w.textContent=t;w.style.display='block';clearTimeout(w._t);w._t=setTimeout(function(){w.style.display='none'},2600)}
 
 /* ---------- 무단 복제 억제 ---------- */
-var LIMIT=600;
+var LIMIT=300;
 document.addEventListener('copy',function(e){
   var s=(window.getSelection()||'').toString();
   if(s.length>LIMIT){e.preventDefault();flash('인용은 되지만 한 번에 '+LIMIT+'자를 넘겨 복사할 수는 없습니다.')}
