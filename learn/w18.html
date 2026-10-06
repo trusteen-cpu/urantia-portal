@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제18강 유란시아의 진화 과정 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 59편·60편·61편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 88개">
+<meta property="og:image" content="https://urantiareaders.com/learn/og-w18.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://urantiareaders.com/learn/w18.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아의 진화 과정 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 18</p>
+    <h1>유란시아의 진화 과정</h1>
+    <p class="papers">유란시아서 59 · 60 · 61편</p>
+    <div class="lead">유란시아서 59편부터 61편까지는 네바돈의 생명 운반자가 발표하거나 후원한 세 편의 연대기로, 오억 오천만 년 전 생명 이식 이후 이 행성의 생명이 바다에서 육지로, 다시 포유류와 인간으로 나아간 과정을 지질학과 생물학의 두 축으로 기술한다. 59편은 이억 오천만 년에 걸친 해양 생물 시대를 삼엽충, 무척추동물, 산호와 완족류, 물고기, 개구리, 생물학적 시련의 여섯 시기로 나누고, 바다를 생명의 요람으로 그린다. 60편은 파충류와 공룡의 정점과 쇠퇴, 꽃 피는 식물과 진정한 새의 출현, 대륙 표류의 종식과 현대 산맥의 형성을 다루며, 진화가 이제 몸의 크기가 아니라 두뇌의 성장을 따른다는 원리를 제시한다. 61편은 태반 포유류의 출현과 확장, 여섯 차례의 빙하, 그리고 백만 년 전 두 명의 원시 인간이 태어나기까지를 서술한다. 세 편에는 새로운 유형의 갑작스러운 출현, 살아남지 못한 계통의 실험과 실패, 그리고 마음을 담을 그릇을 향한 두뇌의 방향이라는 원리가 반복해서 나타난다. 이 페이지는 세 편을 일곱 마디로 나누어 요약과 배경 설명, 소그룹 질문과 모범답안, 본문 인용을 함께 제시한다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 다섯 시대와 삼엽충의 바다</a></li><li><a href="#s2">2. 무척추동물에서 물고기까지</a></li><li><a href="#s3">3. 개구리의 시대와 생물학적 시련</a></li><li><a href="#s4">4. 파충류의 시대 — 크기에서 두뇌로</a></li><li><a href="#s5">5. 꽃 피는 식물과 새, 산맥의 탄생</a></li><li><a href="#s6">6. 포유류의 확장</a></li><li><a href="#s7">7. 빙하기와 원시 인류</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>다섯 시대와 삼엽충의 바다</h2><p class="sub">유란시아 연대기의 틀과 캄브리아기 (59편 서문·1장)</p></div></div>
+  <p class="summary">생명 운반자는 유란시아의 역사를 약 십억 년으로 계산하고 생명체 이전, 생명 여명, 해양 생물, 초기 육상 생물, 포유류의 다섯 시대로 나눈다. 해양 생물 시대는 이억 오천만 년, 곧 행성 역사의 사분의 일을 차지하며 여섯 시기로 세분된다. 첫 시기인 약 사억 년 전에는 점진적인 조상 계통 없이 최초의 다세포 동물인 삼엽충이 갑자기 출현해 여러 시대 동안 바다를 지배했다. 퇴적층은 역암, 사암, 셰일, 석회암의 네 종류로 쌓였고, 이 기록이 위대한 돌 책의 첫 장이 되었다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>59편 서문은 현대 지질학의 시생대, 원생대, 고생대, 중생대, 신생대를 생명 운반자의 시대 구분과 나란히 놓는다. 이 대응은 계시가 당시 과학의 용어를 빌려 쓰면서도 자체의 연대를 제시한다는 점을 보여 준다. 해양 생물 시대의 각 시기는 지질학적 변화와 생물학적 발달이라는 두 축으로 규정되며, 이후 세 편 전체가 이 두 축을 따라 서술된다. 삼엽충 서술에서 눈여겨볼 점은 갑작스러운 출현이라는 표현이다. 59편은 삼엽충이 점진적인 조상의 계통 없이 나타났다고 기술하는데, 이 표현은 어류, 파충류, 태반 포유류, 영장류의 출현에서도 되풀이된다. 또 하나의 관찰은 서반구, 유라시아, 오스트랄라시아의 삼엽충이 서로 약간 달랐다는 점이다. 이는 지난 강에서 살핀 세 곳의 최초 생명 이식이 이후 생물상의 지역적 차이로 이어졌다는 해석을 가능하게 한다. 진흙을 먹는 삼엽충이 무기물로 살 수 있었던 마지막 다세포 동물이었다는 설명은 그들의 오랜 번성을 생태적으로 설명한다. 이 시기의 땅은 극적인 변동 없이 수백만 년에 걸쳐 느리게 오르내렸고, 그린란드는 걸프 해류 덕분에 열대 낙원이었다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>유란시아서가 제시하는 다섯 시대는 무엇이며, 해양 생물 시대는 전체에서 어느 정도의 비중을 차지합니까?</span></button><div class="answer">생명체 이전 시대 사억 오천만 년, 생명 여명 시대 일억 오천만 년, 해양 생물 시대 이억 오천만 년, 초기 육상 생물 시대 일억 년, 포유류 시대 오천만 년입니다. 해양 생물 시대는 행성 역사의 약 사분의 일을 차지하며, 현대 지질학의 고생대에 해당합니다. 이 시대는 다시 여섯 시기로 나뉘는데, 각 시기는 지질 변화와 생물 발달 양쪽에서 뚜렷한 특징을 가집니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>삼엽충이 갑자기 출현했다는 서술은 이 세 편 전체에서 어떤 의미를 가집니까?</span></button><div class="answer">삼엽충은 점진적인 조상 계통 없이 나타난 최초의 다세포 동물로 기술됩니다. 같은 표현이 어류, 파충류, 꽃 피는 식물, 진정한 새, 태반 포유류, 영장류에도 반복됩니다. 따라서 진화가 느린 점진적 변화만이 아니라 새로운 유형이 돌연히 나타나는 단계를 포함한다는 것이 세 편을 관통하는 서술 원리라고 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>삼엽충 화석의 지역적 차이는 어떤 배경과 연결됩니까?</span></button><div class="answer">59편은 서반구, 유라시아, 오스트랄라시아의 동물들이 약간씩 달랐다고 기술하며, 그 원인을 세 개의 최초 생명 이식에서 찾습니다. 생명 운반자들이 서로 다른 세 곳에 생명을 이식했기 때문에, 초기 동물들이 기본적인 균일성을 지니면서도 지역별 변이를 보였다는 해석입니다. 이는 58편의 생명 이식 서술과 59편의 화석 서술이 서로 맞물린다는 점을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">59:0.1</div><div class="qtext">우리는 유란시아의 역사가 약 십억 년 전에 시작되었으며 다섯 개의 주요 시대를 거쳐서 이어졌다고 계산한다.</div></div><div class="quote"><div class="ref">59:0.7</div><div class="qtext">해양 생물 시대는 따라서 너희 행성 역사의 약 사분의 일을 차지한다. 이 시대는 여섯 개의 긴 시기로 세분될 수 있으며, 각 시기는 지질학적 영역과 생물학적 영역 양쪽에서 잘 규정된 특정 발달들로 특징지어진다.</div></div><div class="quote"><div class="ref">59:0.8</div><div class="qtext">그럼에도 불구하고, 그 이후의 시대들 동안 그토록 체계적으로 기록될 생명 기록 보존의 그 위대한 “돌 책”의 첫 장을 열기 위한 무대가 마련되었다.</div></div><div class="quote"><div class="ref">59:1.1</div><div class="qtext">아메바는 이 동물 생명체의 초기 단계의 전형적인 생존자이며, 이전 전환기의 끝 무렵에 출현했다.</div></div><div class="quote"><div class="ref">59:1.3</div><div class="qtext">초목이 이제 처음으로 육지 위로 기어 나오고 곧 비해양 서식지에 적응하는 데 상당한 진전을 이룬다.</div></div><div class="quote"><div class="ref">59:1.4</div><div class="qtext">갑자기, 그리고 점진적인 조상의 계통 없이, 최초의 다세포 동물들이 출현한다. 삼엽충이 진화했고, 여러 시대 동안 그들은 바다를 지배한다. 해양 생명의 관점에서 볼 때, 이것이 바로 삼엽충 시대이다.</div></div><div class="quote"><div class="ref">59:1.14</div><div class="qtext">세 개의 최초의 생명 이식으로부터 발달한 초기 동물들은 특징적이었다. 서반구에서 나타난 동물들은 유라시아 집단의 동물들과, 오스트랄라시아, 곧 오스트레일리아-남극 유형의 동물들과 약간 달랐다.</div></div><div class="quote"><div class="ref">59:1.15</div><div class="qtext">그리고 땅이 침하하고 땅이 솟아오르는 이 모든 현상은 수백만 년에 걸쳐 느리게 일어났으며, 극적이지 않았다.</div></div><div class="quote"><div class="ref">59:1.17</div><div class="qtext">걸프 해류는 북아메리카의 중앙부를 가로질러 흐르다가 동쪽으로 방향을 틀어 그린란드 해안을 적시고 따뜻하게 하여, 지금은 얼음으로 뒤덮인 대륙을 진정한 열대 낙원으로 만들었다.</div></div><div class="quote"><div class="ref">59:1.18</div><div class="qtext">이 시기가 끝날 무렵 삼천 종의 완족류가 출현했는데, 그중 이백 종만이 생존했다. 이 동물들은 현재까지 사실상 변하지 않고 내려온 다양한 초기 생명체를 대표한다.</div></div><div class="quote"><div class="ref">59:1.19</div><div class="qtext">후자 집단이 무기물로 주로 생존할 수 있었던 능력, 곧 그렇게 할 수 있는 마지막 다세포 동물이었다는 점이 그들의 큰 번성과 오랜 생존을 설명한다.</div></div><div class="quote"><div class="ref">59:1.20</div><div class="qtext">이것은 지구 역사에서 오천만 년이라는 긴 시기가 끝날 때 유란시아의 생물지질학적 모습이었다. 너희 지질학자들에 의해 캄브리아기라고 지정된 시기이다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>무척추동물에서 물고기까지</h2><p class="sub">오르도비스기 · 실루리아기 · 데본기 (59편 2~4장)</p></div></div>
+  <p class="summary">두 번째 시기는 세 번의 대홍수와 함께 개별 동물 유기체가 크게 진화한 무척추동물의 시대였다. 공기 중 이산화탄소가 많아 아직 육상 동물은 없었다. 세 번째 시기에는 거대한 석회암층이 쌓였고, 삼엽충이 쇠퇴하는 대신 두족류가 바다의 주인이 되었으며, 끝 무렵 최초의 공기 호흡 동물인 전갈이 나타났다. 네 번째 시기인 이억 오천만 년 전, 인간 이전 진화에서 가장 중요한 단계 가운데 하나인 척추동물, 곧 어류가 북쪽에서 갑자기 출현했고, 땅은 잎 없는 양치류의 침묵의 숲으로 덮였다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>이 세 시기의 서술은 땅과 바다의 오랜 투쟁이라는 틀로 읽을 수 있다. 오르도비스기와 실루리아기에는 바다가 대륙을 거듭 덮었고, 데본기에 이르러 육지가 승리하는 시대가 시작된다. 이 투쟁의 결과는 오늘날의 자원으로도 남아 있다. 59편은 실루리아기 퇴적물에서 가스, 석유, 아연, 납, 암염이 많이 나온다고 기술하는데, 이는 물에 잠긴 막대한 동식물 물질이 변한 것이다. 생물 쪽에서는 지배 집단이 교체되는 양상이 분명하다. 삼엽충이 수만 가지 원형으로 번성하다 쇠퇴하고, 길이 십오 피트에 이르는 두족류가 그 자리를 차지하며, 산호와 완족류가 늘어난다. 어류의 출현은 이 흐름의 정점이다. 본문은 절지동물, 곧 갑각류를 척추동물의 조상으로 지목하고, 머리와 꼬리가 연결된 유형과 턱 없는 선어류라는 두 예비 유형이 진짜 물고기의 출현과 함께 빠르게 사라졌다고 기술한다. 여기서도 예비 형태가 먼저 나타나고 이어 완성된 유형이 돌연히 등장하는 패턴이 반복된다. 데본기 끝의 침묵의 숲은 동물의 소리도 나뭇잎 소리도 없는 세계로 묘사되며, 생명이 아직 육지에서 목소리를 갖기 전의 풍경을 인상적으로 보여 준다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>두 번째 시기에 육상 동물이 아직 출현할 수 없었던 이유는 무엇입니까?</span></button><div class="answer">본문은 공기 중에 여전히 너무 많은 이산화탄소가 있어 공기 호흡 동물이 존재할 수 없었다고 설명합니다. 해안선을 따라 굴을 파는 몇몇 벌레를 제외하면 모든 동물이 해양 유기체였고, 육상 식물도 아직 대륙에 퍼지지 않았습니다. 대기 조성이라는 환경 조건이 생명의 다음 단계를 결정했다는 점을 확인할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>어류의 출현이 인간 이전 진화에서 특히 중요한 까닭은 무엇입니까?</span></button><div class="answer">어류는 동물계 최초의 척추동물이기 때문입니다. 등뼈를 가진 몸의 설계는 이후 양서류, 파충류, 포유류, 그리고 인간에게까지 이어집니다. 59편은 이 출현을 모든 인간 이전 진화에서 가장 중요한 단계 가운데 하나라고 부르며, 갑각류가 그 조상이었고 두 예비 유형은 진짜 물고기가 나타나자 빠르게 절멸했다고 기술합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>침묵의 숲이라는 표현은 데본기 육지의 어떤 모습을 보여 줍니까?</span></button><div class="answer">대륙이 융기하고 대기에 산소가 풍부해지면서 백 피트 높이의 양치류 숲이 땅을 덮었지만, 그 나무들에는 잎이 없었습니다. 그래서 동물의 소리는 물론 나뭇잎이 바스락거리는 소리조차 없었습니다. 식물은 이미 육지를 차지했으나 동물은 아직 올라오지 않은, 육상 생명의 준비 단계를 보여 주는 장면으로 읽을 수 있습니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">59:2.9</div><div class="qtext">식물에서 동물로의 전환과 같은 기본적인 변화들 중 다수는 이전에 발생했지만, 이 시기는 개별 동물 유기체 진화의 큰 시대였다.</div></div><div class="quote"><div class="ref">59:2.9</div><div class="qtext">공기 호흡 동물의 존재를 허용하기에는 공기 중에 여전히 너무 많은 이산화탄소가 있었다. 근본적으로, 일부 더 원시적인 동물들을 제외한 모든 동물들은 그들의 존재를 위해 직간접적으로 식물 생명체에 의존한다.</div></div><div class="quote"><div class="ref">59:2.10</div><div class="qtext">삼엽충은 여전히 두드러졌다. 이 작은 동물들은 수만 가지 원형으로 존재했고 현대 갑각류의 전신이었다. 일부 삼엽충은 스물다섯 개에서 사천 개의 작은 눈들을 가졌고, 다른 것들은 퇴화된 눈을 가졌다.</div></div><div class="quote"><div class="ref">59:3.4</div><div class="qtext">이 시대의 퇴적물에서 가스, 석유, 아연, 납이 많이 발견된다. 가스와 석유는 이전 땅이 물에 잠겼을 때 운반된 엄청난 양의 식물과 동물성 물질에서 유래한 것이며, 광물 퇴적물은 느린 수역의 퇴적을 나타낸다.</div></div><div class="quote"><div class="ref">59:3.5</div><div class="qtext">삼엽충은 급속히 쇠퇴했다. 그리고 무대의 중심은 더 큰 연체동물, 즉 두족류가 차지했다. 이 동물들은 길이가 십오 피트, 지름이 일 피트까지 자라서 바다의 주인이 되었다.</div></div><div class="quote"><div class="ref">59:3.11</div><div class="qtext">이 시대에 더 유리한 위치에서 원시 물 전갈이 처음으로 진화한다. 그 후 얼마 지나지 않아, 그리고 갑자기, 진정한 전갈, 곧 실제 공기 호흡 동물이 출현한다.</div></div><div class="quote"><div class="ref">59:4.1</div><div class="qtext">육지와 물 사이의 오랜 투쟁에서 오랜 기간 동안 바다가 비교적 승리를 거두었지만, 육지가 승리하는 시대가 막 앞에 있다.</div></div><div class="quote"><div class="ref">59:4.2</div><div class="qtext">지구에 새로운 시대의 새벽이 밝는다. 이전 시대의 헐벗고 황량했던 풍경이 무성한 초록으로 뒤덮여간다. 그리고 최초의 웅장한 숲이 곧 나타난다.</div></div><div class="quote"><div class="ref">59:4.3</div><div class="qtext">하지만 가장 큰 사건은 어류의 갑작스러운 출현이었다. 이 시기는 세계 역사에서 척추동물 유형의 동물로 특징지어지는 물고기의 시대가 되었다.</div></div><div class="quote"><div class="ref">59:4.9</div><div class="qtext">이억 오천만 년 전은 모든 인간 이전 진화에서 가장 중요한 단계 중 하나인 척추동물, 즉 어류의 출현을 목격했다.</div></div><div class="quote"><div class="ref">59:4.10</div><div class="qtext">절지동물, 곧 갑각류는 최초의 척추동물의 조상이었다. 어류의 선구자는 두 종류의 변형된 절지동물 조상이었다. 하나는 머리와 꼬리가 연결된 긴 몸체를 가졌고, 다른 하나는 등뼈가 없고 턱이 없는 선어류였다. 그러나 동물계 최초의 척추동물인 물고기가 북쪽에서 갑자기 출현하자, 이 예비 유형들은 빠르게 절멸했다.</div></div><div class="quote"><div class="ref">59:4.11</div><div class="qtext">오늘날의 상어는 이 고대 물고기의 생존자이다. 폐어와 갑옷 물고기는 진화의 정점에 이르렀고, 이 시대가 끝나기 전에 물고기들은 민물과 바닷물 모두에 적응했다.</div></div><div class="quote"><div class="ref">59:4.17</div><div class="qtext">땅은 백 피트 높이의 광대한 양치류 숲과 그 당시의 특이한 나무들, 즉 침묵의 숲으로 뒤덮였다. 소리도 들리지 않았으며, 심지어 나뭇잎의 바스락거리는 소리도 들리지 않았다. 그런 나무들은 잎이 없었기 때문이다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>개구리의 시대와 생물학적 시련</h2><p class="sub">석탄기와 페름기 (59편 5~6장)</p></div></div>
+  <p class="summary">다섯 번째 시기는 양치류 숲과 석탄의 시대이자 개구리의 시대였다. 부레가 폐로 진화한 절지동물에서 공기 호흡 양서류가 나와, 달팽이, 전갈, 개구리가 바다에서 육지로 기어 나왔다. 곤충도 처음 나타났다. 여섯 번째 시기는 생물학적 시련의 시대였다. 바다의 제약과 육지 융기가 겹치며 온화한 해양성 기후가 가혹한 대륙성 기후로 바뀌었고, 십만 종이 넘던 생물이 오백 종 미만으로 줄었다. 해양 생물은 세 피난처로 물러났다가 다시 바다를 채웠고, 아프리카에서 개구리가 파충류로 가는 첫 단계가 일어났다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>석탄기 서술은 오늘날 인류가 쓰는 석탄이 어떻게 생겼는지를 구체적으로 설명한다. 석탄은 늪지대의 무성한 초목이 물에 보존되고 압력으로 변형된 잔해이며, 석탄층 밑 점토에 나무뿌리가 자라던 그대로 남아 있다는 사실이 그 자리에서 형성되었음을 보여 준다. 일리노이에서 열 번, 캐나다에서 일흔다섯 번에 이르는 석탄층의 반복은 땅이 그만큼 오르내렸다는 기록이다. 그러나 이 장의 핵심은 페름기의 시련이다. 본문은 이 위기의 원인을 지각 냉각이나 화산 같은 특별한 사건이 아니라, 이미 존재하던 영향들의 이례적인 조합에서 찾는다. 빙하 작용과 건조성이라는 새로운 기후 요인이 나타났고, 생명은 지구 표면과 바다 깊은 곳에서 거의 사라졌다. 그러나 본문은 이 시기를 단순한 파괴로 보지 않는다. 생존 가치를 지닌 것만 남기고, 그 생존자들이 다음 시대의 더 빠르게 발달하는 생명의 선조가 될 자격을 얻었다고 해석한다. 종자 식물과 곤충의 휴면기, 말라 가는 웅덩이에서 버틴 개구리는 모두 역경에 대한 적응의 예로 읽힌다. 시련이 선별과 준비의 기능을 했다는 이 관점은 61편 끝에서 인류의 첫 조상이 빙하기의 어려운 환경에서 태어났다는 서술과 이어진다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>최초의 육상 동물은 어떻게 출현했으며, 왜 이 시기를 개구리의 시대라고 부릅니까?</span></button><div class="answer">바다가 최고조에 달했을 때 갑자기 육지와 물 양쪽에서 살 수 있는 공기 호흡 양서류가 나타났습니다. 이들은 부레가 폐로 진화한 절지동물에서 발달했습니다. 달팽이, 전갈, 개구리가 바다에서 육지로 기어 나왔고, 개구리는 지금도 물에 알을 낳아 올챙이로 자랍니다. 개구리와 그 사촌들의 갑작스러운 출현이 이 시기의 중요한 특징이어서 개구리의 시대라고 부릅니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>페름기 생물학적 시련의 원인은 무엇이었습니까?</span></button><div class="answer">본문은 지각 냉각이나 화산 활동의 장기 부재 같은 특별한 사건이 아니라, 바다의 제약과 거대한 육지의 증가하는 융기라는 평범한 영향들의 이례적인 조합을 원인으로 듭니다. 그 결과 온화한 해양성 기후가 가혹한 대륙성 기후로 바뀌었고, 빙하 작용과 건조성이 나타났으며, 해양수의 냉각이 해양 생명의 파괴에 크게 기여했습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>유란시아서는 이 대멸종을 어떤 의미로 해석합니까?</span></button><div class="answer">생존 가치를 지닌 생명만 남긴 선별의 시간으로 해석합니다. 십만 종 이상이 오백 종 미만으로 줄었지만, 살아남은 생명은 다음 행성 진화 시대의 더 빠르게 발달하고 고도로 분화된 생명의 선조가 될 자격을 얻었다고 기술합니다. 세 피난처에서 역경 속에 태어난 새 해양 종들이 다시 바다를 채웠다는 서술도 같은 관점을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">59:5.1</div><div class="qtext">앞선 시기의 물고기의 출현은 해양 생물 진화의 정점을 표시한다. 이 시점부터 육상 생물의 진화가 점점 더 중요해진다.</div></div><div class="quote"><div class="ref">59:5.5</div><div class="qtext">바다가 최고조에 달했을 때 갑자기 새로운 진화 발전이 일어났다. 갑자기 최초의 육상 동물들이 나타났다. 이 동물들은 육지나 물에서 살 수 있는 수많은 종이 있었다. 이 공기 호흡 양서류들은 절지동물에서 발달했는데, 그 절지동물의 부레가 폐로 진화한 것이었다.</div></div><div class="quote"><div class="ref">59:5.6</div><div class="qtext">바다의 소금기 있는 물에서 달팽이, 전갈, 개구리가 육지로 기어 나왔다. 오늘날 개구리는 여전히 물속에 알을 낳고, 그 새끼들은 처음에는 작은 물고기, 올챙이로서 존재한다. 이 시기는 개구리의 시대라고 불릴 만하다.</div></div><div class="quote"><div class="ref">59:5.16</div><div class="qtext">석탄은 이 먼 시대의 늪지대와 늪지 해안에서 자란 무성한 초목의 물에 의해 보존되고 압력에 의해 변형된 잔해이다.</div></div><div class="quote"><div class="ref">59:5.23</div><div class="qtext">그러나 이 시기의 중요한 특징은 개구리와 개구리의 많은 사촌들이 갑자기 출현했다는 것이다. 석탄 시대의 생명 특징은 양치류와 개구리였다.</div></div><div class="quote"><div class="ref">59:6.2</div><div class="qtext">이것은 생물학적 시련의 시기였으며, 생명이 지구 표면과 대양의 깊은 곳에서 거의 사라졌던 시대였다. 장구한 해양 생물 시대가 끝날 무렵, 지구상에는 십만 종 이상의 살아 있는 것들이 있었다. 이 전환기가 끝날 무렵에는 오백 종 미만이 생존했다.</div></div><div class="quote"><div class="ref">59:6.3</div><div class="qtext">이 새로운 시기의 독특한 양상은 지각 냉각이나 화산 활동의 장기 부재 때문이 아니라, 평범하고 이미 존재하는 영향들, 곧 바다의 제약과 거대한 육지 덩어리의 증가하는 융기의 이례적인 조합 때문이었다.</div></div><div class="quote"><div class="ref">59:6.6</div><div class="qtext">빙하 작용과 건조성이라는 두 가지 새로운 기후 요인이 출현했다. 지구의 많은 고지대는 건조하고 황량하게 되었다.</div></div><div class="quote"><div class="ref">59:6.7</div><div class="qtext">종자 식물들이 처음 출현했고, 그들은 이어서 증가된 육상 동물 생명체에게 더 나은 식량 공급을 제공했다. 곤충들은 근본적인 변화를 겪었다. 휴면기는 겨울과 가뭄 동안의 활동 중단 요구를 충족시키기 위해 진화했다.</div></div><div class="quote"><div class="ref">59:6.8</div><div class="qtext">이 쇠퇴하는 개구리 시대 동안, 아프리카에서 개구리가 파충류로 진화하는 첫 번째 단계가 발생했다.</div></div><div class="quote"><div class="ref">59:6.9</div><div class="qtext">그 시대의 해양 동물들은 유리한 세 피난처, 곧 현재의 멕시코 만 지역, 인도의 갠지스 만, 지중해 분지의 시칠리아 만으로 일시 피신했다. 그리고 이 세 지역으로부터 역경 속에서 태어난 새로운 해양 종들이 훗날 바다를 다시 채우기 위해 나아갔다.</div></div><div class="quote"><div class="ref">59:6.10</div><div class="qtext">이리하여 해양 생물 위축의 시기 그리고 생존 가치를 지닌 것들을 제외한 모든 형태의 생명체를 제거하고, 따라서 뒤이은 행성 진화 시대의 더 빠르게 발달하고 고도로 분화된 생명체의 선조로 기능할 자격을 갖게 된, 생물학적 역경의 시련의 시간들이 끝난다.</div></div><div class="quote"><div class="ref">59:6.12</div><div class="qtext">유란시아의 광대한 해양 생명체 요람은 그 목적을 완수했다. 육지가 생명을 지탱하기에 부적합했던 장구한 시대 동안, 대기가 고등 육상 동물들을 지탱하기에 충분한 산소를 함유하기 전에, 바다는 그 영역의 초기 생명을 어머니처럼 보살피고 양육했다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>파충류의 시대 — 크기에서 두뇌로</h2><p class="sub">트라이아스기와 쥐라기 (60편 서문·1~2장)</p></div></div>
+  <p class="summary">약 일억 사천만 년 전, 아프리카의 두 전파충류 조상에 대한 암시만 남긴 채 파충류가 완전히 발달된 형태로 갑자기 출현했다. 공룡은 곧 시대의 군주가 되었지만, 사십 톤의 몸을 일 파운드 미만의 뇌로 다스렸다. 최초의 비태반 포유류는 빠른 실패로 끝났다. 공룡은 커질수록 약해졌고, 거대한 몸을 먹일 식량을 구할 지성이 부족해 굶어 멸종했다. 바다로 간 어룡도, 하늘로 간 익룡도 같은 한계를 넘지 못했다. 일억 년 전, 진화는 이제 신체의 크기가 아니라 두뇌의 성장을 따르게 된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>60편의 공룡 서술은 하나의 일관된 원리로 수렴한다. 그것은 크기와 두뇌의 불균형이 멸종을 부른다는 원리다. 공룡은 사십 톤에 달하는 몸에 일 파운드 미만의 뇌를 가졌고, 어룡은 길이 오십 피트에 뇌가 이 온스 미만이었다. 이 동물들은 모두 상황에 대처할 지성이 부족했다는 같은 이유로 사라졌다고 기술된다. 이 서술은 공룡 멸종을 단일한 외부 재난으로 설명하는 오늘날의 일반적 이해와 다르다는 점에서 주목할 만하다. 계시는 멸종을 생물 자체의 설계 한계와 생존 경쟁의 결과로 그린다. 또 하나의 관찰은 진화의 후퇴다. 두 종의 공룡이 먹이를 찾아 바다로 돌아가 바다뱀이 된 일을 본문은 진화의 후퇴라고 부르며, 어떤 계통은 진보하고 어떤 계통은 정체하거나 이전 상태로 되돌아간다고 설명한다. 익룡 역시 진정한 새의 조상이 아니라 비생존 계통이었다. 실패한 실험이 기록에 정직하게 남아 있다는 점은 진화를 목적 없는 우연으로도, 처음부터 완벽한 설계로도 보지 않는 유란시아서의 관점을 보여 준다. 그리고 이 모든 실패 끝에 나온 결론이 두뇌의 원리, 곧 이후의 모든 시대가 두뇌의 발달로 특징지어진다는 선언이다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>60편은 공룡의 멸망 원인을 어떻게 설명합니까?</span></button><div class="answer">공룡은 커질수록 덜 활동적이고 약해졌으며, 엄청난 양의 식량이 필요했지만 그 상황에 대처할 지성이 부족해 말 그대로 굶어 죽어 멸종했다고 설명합니다. 사십 톤의 몸에 일 파운드 미만의 뇌라는 대비가 이 설명의 핵심입니다. 일억 년 전 절에서는 공룡을 거대한 몸을 양육할 식량을 제공할 지성이 부족한, 거의 뇌가 없는 동물이었다고 정리합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>바다뱀과 익룡의 사례는 진화에 대해 무엇을 보여 줍니까?</span></button><div class="answer">진화가 언제나 앞으로만 나아가지는 않는다는 점입니다. 육지를 버리고 바다로 간 두 종의 공룡은 진화의 후퇴로 기술되며, 결국 몸에 비해 뇌가 너무 작아 멸망했습니다. 익룡은 한동안 성공한 듯 보였지만 생존 가능한 계통을 따라 진화하지 못해 새 조상의 비생존 계통으로 남았습니다. 실험과 실패가 진화 기록의 일부라는 점을 확인할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>이제부터 진화는 두뇌의 성장을 따른다는 선언이 이후 서술과 어떻게 연결됩니까?</span></button><div class="answer">61편에서 몸집이 크고 뇌가 작은 포유류가 곧 멸망하고, 두뇌와 민첩성이 갑옷과 크기를 대체했다는 서술로 이어집니다. 큰 뇌를 가진 코끼리가 오랫동안 번성한 것, 그리고 몸에 비해 뇌가 큰 여명 포유류에서 영장류와 인간이 나온 것도 같은 원리의 연장입니다. 결국 진화의 방향은 마음을 담을 그릇의 발달로 읽을 수 있습니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">60:0.1</div><div class="qtext">오로지 해양 생물만 있던 시대는 끝났다.</div></div><div class="quote"><div class="ref">60:0.2</div><div class="qtext">아주 소수의 유형만이 선행 생물학적 시련 시기의 가혹한 시련을 견뎌냈다. 심지어 포자를 품은 식물들조차 거의 멸종되었다.</div></div><div class="quote"><div class="ref">60:1.9</div><div class="qtext">1억 4,000만 년 전, 갑자기 그리고 선행 시대 동안 아프리카에서 발달했던 두 전파충류 조상에 대한 암시만 가진 채, 파충류는 완전히 발달된 형태로 출현했다.</div></div><div class="quote"><div class="ref">60:1.10</div><div class="qtext">이 급속히 진화하는 파충류 공룡들은 곧 이 시대의 군주가 되었다. 그들은 알을 낳는 동물이었으며, 나중에 사십 톤에 달하는 몸을 통제하기 위해 일 파운드 미만의 뇌를 가졌다는 점에서 모든 동물과 구별된다.</div></div><div class="quote"><div class="ref">60:1.11</div><div class="qtext">수백만 년 후 최초의 포유류가 출현했다. 그들은 비태반성이었고 빠른 실패로 판명되었으며, 어느 것도 생존하지 못했다. 이것은 포유류 유형을 개량하려는 실험적인 노력이었지만, 유란시아에서는 성공하지 못했다.</div></div><div class="quote"><div class="ref">60:1.13</div><div class="qtext">이 시기의 생명 변화는 그들이 전환적이고 점진적이었음에도 불구하고 참으로 혁명적이었다.</div></div><div class="quote"><div class="ref">60:2.1</div><div class="qtext">이 시기의 가장 커다란 사건은 공룡의 진화와 쇠퇴였다. 육상 동물 생명체는 크기 면에서 가장 커다란 발달을 이루었고, 이 시대가 끝날 무렵에는 지구 표면에서 실질적으로 멸망했다.</div></div><div class="quote"><div class="ref">60:2.3</div><div class="qtext">이 거대한 생물들은 점점 더 커짐에 따라 덜 활동적이고 약해졌다. 하지만 그들은 엄청난 양의 식량을 필요로 했고, 육지는 그들로 너무 뒤덮여 그들은 말 그대로 굶어 죽어 멸종했는데, 상황에 대처할 지성이 부족했기 때문이다.</div></div><div class="quote"><div class="ref">60:2.10</div><div class="qtext">이 바다뱀들은 진화에서 후퇴를 나타낸다. 일부 새로운 종들은 진보하는 동안, 특정 계통들은 정체 상태로 남아있고 다른 것들은 뒤로 끌려가 이전 상태로 되돌아간다.</div></div><div class="quote"><div class="ref">60:2.11</div><div class="qtext">이 거대한 어룡들은 때때로 길이가 오십 피트에 달했고 대다수가 삼십오 피트를 넘었는데도, 그들의 뇌는 이 온스 미만이었다.</div></div><div class="quote"><div class="ref">60:2.12</div><div class="qtext">한동안 이 비행 파충류들은 성공적인 것처럼 보였으나, 공중 항해자로서 생존할 수 있게 하는 계통을 따라 진화하는 데 실패했다. 그들은 새 조상의 비생존 계통을 대표한다.</div></div><div class="quote"><div class="ref">60:2.14</div><div class="qtext">일억 년 전, 파충류 시대는 끝나고 있었다. 공룡들은 그들의 거대한 덩치에도 불구하고, 그러한 거대한 몸을 양육하기에 충분한 식량을 제공할 지성이 부족한 거의 뇌가 없는 동물이었다. 그리하여 이 둔중한 육상 파충류들은 점점 증가하는 수로 멸망했다. 이제부터 진화는 신체적 체적이 아닌 두뇌의 성장을 따를 것이며, 두뇌의 발달은 동물 진화와 행성 진보의 각 후속 시대를 특징지을 것이다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>꽃 피는 식물과 새, 산맥의 탄생</h2><p class="sub">백악기와 중생대의 끝 (60편 3~4장)</p></div></div>
+  <p class="summary">백악기에 대륙 표류가 태평양 바닥에 부딪히며 알래스카에서 케이프 혼에 이르는 산맥이 솟기 시작했고, 팔천만 년 전에는 이만 오천 마일이 넘는 환태평양 융기가 일어났다. 칠천오백만 년 전 대륙 표류가 끝났다. 구천만 년 전에는 속씨식물이 갑자기 출현해 대륙을 덮었고, 과일과 풀과 곡식이 풍부해졌다. 본문은 이 씨앗 식물을 진화적 중요성에서 인간의 출현 다음이라고 평가한다. 오천오백만 년 전에는 비둘기 같은 진정한 새가 파충류에서 직접 나왔다. 이 시기의 끝에서 무대는 포유류를 위해 완전히 준비된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>60편 3장과 4장은 지질과 생물 두 방향에서 현대 세계의 골격이 놓이는 과정을 보여 준다. 지질 쪽에서는 대륙 표류의 종식과 현대 산맥의 형성이 핵심이다. 본문은 산맥의 위치를 정하는 가장 근본적인 요인이 선재하는 저지대, 곧 침식 퇴적물로 채워진 가벼운 함몰대라고 설명하며, 지각이 압력을 받을 때 이 가벼운 지역이 먼저 구겨지고 솟는다고 기술한다. 로키 산맥이 침식으로 평탄해졌다가 다시 융기한 산맥이라는 설명도 흥미롭다. 생물 쪽에서는 꽃 피는 식물의 돌연한 출현이 가장 중요하다. 본문은 씨앗을 품은 풀과 나무들이 식물 세계에서 인간의 조상들이 동물 세계에서 지닌 것과 같은 의미를 가졌다고 말한다. 곡식과 과일은 훗날 포유류와 인류의 식량이 되므로, 이 평가는 생명 계획의 장기적 설계를 시사하는 대목으로 읽을 수 있다. 새의 출현도 같은 패턴을 따른다. 물속을 걷던 선조류와 비행 공룡이라는 두 번의 시도가 실패한 뒤, 셋째 유형의 비행 생물인 진정한 새가 파충류 집단에서 직접 솟아났다. 북아메리카가 스물네 번의 커다란 침수를 겪었다는 기록과 육지와 바다의 율동적인 승강 운동이 점차 줄어들며 계속될 것이라는 전망도 이 장의 특징이다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>꽃 피는 식물의 출현을 본문은 왜 그렇게 높이 평가합니까?</span></button><div class="answer">과일, 풀, 곡식이 풍부해지면서 이 씨앗을 품은 식물들이 식물 세계에서 인간의 조상들이 동물 세계에서 지녔던 것과 같은 의미를 지녔다고 보기 때문입니다. 본문은 이들의 진화적 중요성이 오직 인간 자신의 출현에만 뒤진다고 기술합니다. 이 식물들은 초식 동물과 포유류의 번성을 가능하게 했고, 훗날 인류의 식량이 되었습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>진정한 새는 어떻게 출현했으며, 앞선 비행 생물들과 무엇이 다릅니까?</span></button><div class="answer">오천오백만 년 전 작고 비둘기 같은 진정한 새가 갑자기 출현했습니다. 이 새는 비행 공룡이나 이빨 달린 육상 조류가 아니라 파충류 집단에서 직접 솟아났으며, 지구상에 출현한 셋째 유형의 비행 생물이었습니다. 앞선 선조류와 비행 공룡은 몸에 비해 뇌가 너무 적어 실패했지만, 진정한 새는 모든 조류의 조상이 되었습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>본문은 산맥이 어디에 생기는지를 어떻게 설명합니까?</span></button><div class="answer">대륙의 압력과 표류의 좌절된 운동량도 원인이지만, 가장 근본적인 요인은 선재하는 저지대, 곧 함몰대라고 설명합니다. 이 함몰대는 침식과 해양 퇴적의 가벼운 물질로 채워져 있어서, 지각이 압력을 받으면 가장 먼저 구겨지고 접히고 솟아오릅니다. 오늘날의 로키 산맥은 이렇게 솟았다가 침식으로 평탄해진 뒤 다시 융기한 산맥의 잔해라고 기술됩니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">60:3.1</div><div class="qtext">이 시기는 유란시아를 장구한 파충류 지배의 끝 가까이로 데려오며, 육상에는 꽃 피는 식물과 조류 생명이 출현하는 것을 목격한다.</div></div><div class="quote"><div class="ref">60:3.2</div><div class="qtext">이 지질학적 힘들의 충돌은 알래스카에서 멕시코를 거쳐 케이프 혼에 이르는 거대한 남북 산맥 전체의 형성에 추진력을 주었다.</div></div><div class="quote"><div class="ref">60:3.3</div><div class="qtext">따라서 이 시기는 지질학적 역사에서 현대적인 산맥 건설 단계가 된다. 이 시기 이전에는 산봉우리가 드물었고, 단지 커다란 폭을 가진 융기된 육지 능선들뿐이었다.</div></div><div class="quote"><div class="ref">60:3.7</div><div class="qtext">9,000만 년 전, 속씨식물이 이 초기 백악기 바다에서 출현했고 곧 대륙들을 뒤덮었다. 이 육상 식물들은 무화과나무, 목련, 그리고 튤립나무와 함께 갑자기 출현했다.</div></div><div class="quote"><div class="ref">60:3.11</div><div class="qtext">현재의 산맥들로 절정에 달한 이 환태평양 육지 융기는 길이가 이만 오천 마일이 넘는다. 그리고 그 탄생에 수반된 융기들은 유란시아에 생명이 출현한 이래 발생한 가장 커다란 표면 왜곡이었다.</div></div><div class="quote"><div class="ref">60:3.12</div><div class="qtext">7,500만 년 전은 대륙 표류의 종식을 표시한다.</div></div><div class="quote"><div class="ref">60:3.19</div><div class="qtext">과일, 풀, 그리고 곡식이 풍부했고, 이 씨앗을 품은 풀과 나무들은 식물 세계에서, 인간의 조상들이 동물 세계에서 지녔던 것과 같은 의미를 지녔다. 그들은 진화적 중요성에서 오직 인간 자신의 출현에만 뒤지는 두 번째였다. 갑자기 그리고 이전의 점진적 변화 없이, 꽃 피는 식물의 커다란 계통이 돌연변이했다.</div></div><div class="quote"><div class="ref">60:3.21</div><div class="qtext">그들 역시 몸 크기에 비해 뇌 물질이 너무 적었기 때문에, 공룡의 운명, 곧 멸망을 겪었다. 대기를 항해할 수 있는 동물을 만들려는 이 두 번째 시도는, 이 시대와 선행 시대 동안 포유류를 만들려던 실패한 시도와 마찬가지로 실패했다.</div></div><div class="quote"><div class="ref">60:3.22</div><div class="qtext">5,500만 년 전, 진화의 행진은 모든 조류 생명의 조상이었던 작고 비둘기 같은 생물인 진정한 새가 갑자기 출현하는 것으로 표시되었다. 이것은 지구상에 출현한 셋째 유형의 비행 생물이었으며, 그것은 당대의 비행 공룡이나 초기 유형의 이빨 달린 육상 조류가 아닌, 파충류 집단에서 직접적으로 솟아 나왔다.</div></div><div class="quote"><div class="ref">60:4.1</div><div class="qtext">해저와 대륙 육지 수준의 승강과 관련된 오랜 지속적인 리듬이 존재해왔다. 그리고 이러한 동일한 율동적인 지각 운동은 이 시점부터 지구 역사 전체에 걸쳐 계속될 것이나 점차 줄어드는 빈도와 범위로 그러할 것이다.</div></div><div class="quote"><div class="ref">60:4.2</div><div class="qtext">산맥 위치를 결정하는 가장 중요하고 근본적인 요인은 선재하는 저지대, 곧 함몰대이다.</div></div><div class="quote"><div class="ref">60:4.5</div><div class="qtext">이 시기가 끝날 무렵, 태반성 포유류는 아직 진화하지 않았으나, 생물학적 무대는 후속 시대에 미래 포유류 유형의 초기 조상들이 출현하도록 완전히 설정되어 있다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>포유류의 확장</h2><p class="sub">에오세에서 플라이오세까지 (61편 1~4장)</p></div></div>
+  <p class="summary">오천만 년 전 북아메리카에서 태반 포유류가 갑자기 출현했다. 그 아버지는 작고 민첩한 육식성 도약 공룡이었다. 포유류는 성숙한 새끼, 애정 어린 양육, 뛰어난 뇌, 민첩성, 적응하는 지능이라는 다섯 가지 생존 이점을 가졌다. 삼천오백만 년 전부터 포유류가 세계를 지배했고, 원시 포유류 백여 종이 사라지며 두뇌와 민첩성이 갑옷과 크기를 대체했다. 이천만 년 전은 포유류의 황금기였고, 큰 뇌를 가진 코끼리와 말이 번성했다. 고대 여우원숭이의 초기 조상도 이때 북아메리카 서부에 나타났다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>61편은 포유류 시대를 다섯 시기로 나누어 서술하며, 각 시기마다 지배적인 동물과 대륙의 연결 상태를 함께 기록한다. 베링 해협 육교와 파나마 지협이 여러 번 오르내리면서 동물들이 대륙 사이를 이주했고, 마지막 대규모 이주 이후 동반구와 서반구가 각자의 생명 유형을 발달시켰다. 이 서술에서 가장 분명한 원리는 60편에서 선언된 두뇌의 원리가 포유류 시대에 실제로 작동하는 모습이다. 몸집이 크고 뇌가 작은 포유류는 곧 멸망했고, 큰 몸집과 함께 큰 두뇌를 가진 코끼리는 오랫동안 세계를 지배했다. 본문은 지능과 적응에서 코끼리에 근접하는 것은 말뿐이고 코끼리를 능가하는 것은 인간뿐이라고 비교한다. 다섯 가지 생존 이점 가운데 애정 어린 관심으로 새끼를 먹이고 보호하는 특성은 훗날 인간 가족의 토대가 되는 특성으로 읽을 수 있다. 말에 대한 대목은 특이하다. 본문은 잠시 멈추어 말이 인류에게 어떤 의미였는지 생각해 보라고 권하는데, 이는 생명 운반자가 연대기 서술 중에 인류 문명과의 관계를 직접 언급하는 드문 장면이다. 또한 중앙아시아의 원시 원숭이와 고릴라는 인류의 조상 계통과 관련이 없다고 명시해, 인간의 계보가 여우원숭이 계통에서 따로 이어진다는 점을 미리 밝혀 둔다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>태반 포유류는 어디에서 왔으며, 그 출현은 왜 중요합니까?</span></button><div class="answer">태반 포유류는 오천만 년 전 북아메리카에서 갑자기 출현했으며, 그 아버지는 작고 매우 활동적인 육식성 도약 공룡이었습니다. 앞선 비태반 포유류는 실패했지만, 이 새로운 유형은 공룡 쇠퇴기에도 살아남은 파충류 조상에서 직접 솟아났습니다. 본문은 이것을 그때까지 가장 중요한 진화적 발달이라고 부르는데, 이 계통이 결국 영장류와 인간으로 이어지기 때문입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>포유류의 다섯 가지 생존 이점은 무엇이며, 그중 어떤 것이 인간과 연결됩니까?</span></button><div class="answer">비교적 성숙한 새끼를 낳는 것, 애정 어린 관심으로 새끼를 먹이고 양육하고 보호하는 것, 뛰어난 뇌 능력, 적에게서 벗어나는 민첩성, 환경에 적응하는 지능입니다. 특히 애정 어린 양육은 가족과 공동체의 기초가 되고, 뇌와 지능은 인간 마음의 생물학적 토대가 된다는 점에서 인간과 직접 연결된다고 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>코끼리와 말에 대한 본문의 비교는 무엇을 보여 줍니까?</span></button><div class="answer">코끼리는 큰 몸집뿐 아니라 큰 두뇌를 가져, 오랜만에 세계가 충분히 큰 뇌를 가진 거대한 동물에 의해 지배되었다고 기술됩니다. 말의 뇌는 코끼리 다음이지만 겁먹으면 도망치려는 성향을 극복하지 못해 감정 조절이 부족하고, 코끼리는 크기 때문에 민첩성이 떨어집니다. 지능이 생존의 핵심이 되었고, 그 정점에 인간이 있다는 흐름을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">61:0.2</div><div class="qtext">새들이 나무에 가득했으며, 진화하는 동물 종들의 끊임없는 우위 다툼에도 불구하고 전 세계는 동물의 낙원이었다.</div></div><div class="quote"><div class="ref">61:1.2</div><div class="qtext">이 시기 초기에 북아메리카에서 태반 포유류가 갑자기 출현했고, 그들은 이때까지 가장 중요한 진화적 발달을 구성했다. 이전의 비태반 포유류 계층들이 존재했었으나, 이 새로운 유형은 공룡 쇠퇴 시대를 거쳐서도 후손이 존속했던 선재하는 파충류 조상으로부터 직접적으로 그리고 갑자기 솟아 나왔다. 태반 포유류의 아버지는 작고, 매우 활동적이며, 육식성이며, 도약하는 유형의 공룡이었다.</div></div><div class="quote"><div class="ref">61:1.3</div><div class="qtext">기본적인 포유류 본능이 이 원시 포유류 유형에서 나타나기 시작했다. 포유류는 다음과 같은 점에서 다른 모든 형태의 동물 생명체보다 엄청난 생존 이점을 가진다.</div></div><div class="quote"><div class="ref">61:1.5</div><div class="qtext">2. 애정 어린 관심으로 그들의 새끼를 먹이고, 양육하고, 보호한다.</div></div><div class="quote"><div class="ref">61:1.9</div><div class="qtext">커다란 타조 같은 육상 조류가 십 피트 높이까지 자랐고 구 인치에 십삼 인치 크기의 알을 낳았다. 이들은 매우 지능이 높았으며 한때 인간들을 공중으로 수송했던 후대 거대한 승객 조류들의 조상이었다.</div></div><div class="quote"><div class="ref">61:2.3</div><div class="qtext">3천5백만 년 전은 태반 포유류의 세계 지배 시대의 시작을 표시한다.</div></div><div class="quote"><div class="ref">61:2.5</div><div class="qtext">육상에서 이 시기는 포유류 혁신과 확장의 탁월한 시대였다. 더 초기의 그리고 더 원시적인 포유류 중 백 종이 넘는 종이 이 시기가 끝나기 전에 멸종되었다. 심지어 몸집이 크고 뇌가 작은 포유류도 곧 멸망했다. 동물의 생존 진보에서 두뇌와 민첩성이 갑옷과 크기를 대체했다.</div></div><div class="quote"><div class="ref">61:2.10</div><div class="qtext">이 무렵 북아메리카 서부에서 주목할 만한 일이 발생했다. 고대 여우원숭이들의 초기 조상이 처음으로 출현했다.</div></div><div class="quote"><div class="ref">61:3.4</div><div class="qtext">2,000만 년 전은 참으로 포유류의 황금기였다.</div></div><div class="quote"><div class="ref">61:3.6</div><div class="qtext">모처럼 세계는 계속해 나갈 수 있을 만큼 충분히 큰 뇌를 가진 거대한 동물에 의해 지배되었다. 이 시대의 고도로 지능적인 생명체와 직면했을 때, 코끼리 크기의 동물은 큰 크기와 우수한 품질의 뇌를 소유하지 않았다면 살아남을 수 없었을 것이다. 지능과 적응에서 코끼리에 근접하는 것은 오직 말뿐이며, 코끼리를 능가하는 것은 오직 인간 자신뿐이다.</div></div><div class="quote"><div class="ref">61:3.11</div><div class="qtext">인류는 처음에는 말을 식용으로 사용했고, 그다음에는 여행용으로, 나중에는 농업과 전쟁에 사용했다. 말은 오랫동안 인류에게 봉사해왔으며 인간 문명의 발전에 중요한 역할을 해왔다.</div></div><div class="quote"><div class="ref">61:3.12</div><div class="qtext">중앙아시아에서 원시 원숭이와 고릴라의 진정한 유형이 진화했고, 지금은 멸종된 공통의 조상을 가졌다. 그러나 이 종들 중 어느 것도 나중에 인류의 조상이 될 생명체 계통과는 관련되지 않는다.</div></div><div class="quote"><div class="ref">61:4.6</div><div class="qtext">이 시점부터 동반구와 서반구에서 각각 독특한 유형의 생명체가 발달하기 시작했다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>빙하기와 원시 인류</h2><p class="sub">플라이스토세와 인류의 출현 (61편 5~7장)</p></div></div>
+  <p class="summary">이백만 년 전 첫 북아메리카 빙하가 남쪽으로 전진하며 빙하기가 시작되었고, 여섯 차례의 뚜렷한 빙하 침입이 이어졌다. 이 시기의 중요한 사건은 원시 인류의 진화였다. 여우원숭이 계통의 자손에서 여명 포유류가, 그 일흔째 세대에서 중간 포유류가, 이어 영장류가 갑자기 나타났다. 백만 년 전, 영장류 계통의 돌연변이로 두 명의 원시 인간이 태어나 유란시아는 사람이 사는 세계로 등록되었다. 이 일은 셋째 빙하 전진 무렵의 어려운 환경에서 일어났다. 오십만 년 전에는 여섯 유색 인종이 나타나고 행성 영주가 도착했다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>61편 후반부는 빙하의 지질학과 인류의 기원을 하나의 연대기 안에 엮는다. 빙하기 서술은 매우 구체적이다. 빙상은 오늘날 산악 지역이 아니라 융기된 고지대에 있었고, 빙하 얼음의 절반은 북아메리카에, 사분의 일은 유라시아에 있었다. 오대호는 마지막 빙하의 후퇴 동안 생겼고, 삼만 칠천 년 전에야 나이아가라 경로로 흐르기 시작했다. 극지방이 얼음으로 덮여 있는 한 또 다른 빙하기는 거의 없을 것이라는 전망도 제시된다. 인류 기원 서술의 특징은 세 번의 돌연한 분화다. 여명 포유류, 중간 포유류, 영장류가 차례로 갑자기 나타나고, 같은 시기 중간 포유류 계통의 퇴행적 발달에서 유인원 조상이 갈라져 나간다. 본문은 인간 가지는 진보하고 유인원 무리는 정체하거나 퇴보했다고 기술해, 인간이 현생 유인원에서 나왔다는 통념과 선을 긋는다. 또 하나 주목할 점은 빙하기 연대와 인류사의 대응이다. 셋째 빙하 전진 때 첫 인간이, 다섯째 전진 때 여섯 유색 인종과 행성 영주가, 마지막 빙하 때 루시퍼 반란이, 빙하기 종결 무렵 물질 아들과 딸이 등장한다. 이 대응은 다음 강들에서 다룰 인류 역사의 연대 틀을 미리 보여 준다. 첫 인간이 혹독한 환경에서 태어났다는 서술은 페름기의 시련과 마찬가지로 역경이 생명을 걸러 내고 단련한다는 관점을 다시 확인시킨다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>원시 인류는 어떤 단계를 거쳐 출현했습니까?</span></button><div class="answer">인도 서쪽의 지금은 물에 잠긴 땅에서, 북아메리카 여우원숭이 유형의 아시아 이주민 자손들 사이에 여명 포유류가 갑자기 출현했습니다. 이 계층의 일흔째 세대에 중간 포유류가 분화되었고, 이어서 셋째 돌연변이인 영장류가 나타났습니다. 그리고 백만 년 전 진보하는 영장류 계통의 돌연변이로 인류의 실제 조상인 두 명의 원시 인간이 태어났습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>유란시아서는 인간과 유인원의 관계를 어떻게 설명합니까?</span></button><div class="answer">중간 포유류 계통 안의 퇴행적 발달에서 유인원 조상이 기원했다고 설명합니다. 그날부터 인간 가지는 진보적인 진화를 통해 앞으로 나아갔고, 유인원 무리는 정체되거나 실제로 퇴보했다고 기술합니다. 또 중앙아시아의 원시 원숭이와 고릴라는 인류 조상 계통과 관련이 없다고 밝힙니다. 따라서 인간은 현생 유인원에서 나온 것이 아니라 갈라진 다른 가지로 이해됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>빙하기의 연대는 인류 역사의 주요 사건과 어떻게 대응합니까?</span></button><div class="answer">셋째 빙하 전진이 시작될 무렵 첫 두 인간이 태어났고, 다섯째 전진 동안인 오십만 년 전 여섯 유색 인종이 나타나며 행성 영주가 도착했습니다. 마지막 빙하가 전진하던 이십만 년 전에는 루시퍼 반란이 일어났고, 삼만 오천 년 전 대빙하기가 끝날 무렵 물질 아들과 딸이 도착했습니다. 지질 연대가 인류사와 영적 역사의 시간 틀이 되는 것입니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">61:5.4</div><div class="qtext">이 세계의 북부 지역은 각 개별 빙상의 활동과 연관된 수십 번의 전진과 후퇴가 있었지만, 여섯 차례의 개별적이고 뚜렷한 빙하 침입을 체험해왔다.</div></div><div class="quote"><div class="ref">61:5.5</div><div class="qtext">200만 년 전, 첫째 북아메리카 빙하가 남쪽 전진을 시작했다.</div></div><div class="quote"><div class="ref">61:6.1</div><div class="qtext">이 빙하기의 중요한 사건은 원시 인류의 진화였다. 인도 서쪽, 현재 물에 잠긴 땅에서, 그리고 더 오래된 북아메리카 여우원숭이 유형의 아시아 이주민들의 자손들 중에서, 여명 포유류가 갑자기 출현했다.</div></div><div class="quote"><div class="ref">61:6.1</div><div class="qtext">이 생명 계층의 일흔째 세대에 새롭고 더 고등한 동물 집단이 갑자기 분화되었다.</div></div><div class="quote"><div class="ref">61:6.1</div><div class="qtext">(이와 동시에, 중간 포유류 계통 내의 퇴행성 발달이 유인원 조상의 기원을 낳았으며, 그날부터 오늘날까지 인간 가지는 진보적인 진화를 통해 앞으로 나아갔지만, 반면에 유인원 무리들은 정체되거나 실제로 퇴보했다.)</div></div><div class="quote"><div class="ref">61:6.2</div><div class="qtext">100만 년 전, 유란시아는 사람이 사는 세계로 등록되었다. 진보하는 영장류의 계통 내의 돌연변이가 갑자기 두 명의 원시 인간을 생산했으며, 그들은 인류의 실제 조상이었다.</div></div><div class="quote"><div class="ref">61:6.3</div><div class="qtext">이 사건은 셋째 빙하 전진이 시작될 무렵에 발생했다. 따라서 너희의 초기 조상들이 자극적이고, 활기차며, 어려운 환경에서 태어나고 양육되었음을 알 수 있다. 그리고 이 유란시아 원주민들의 유일한 생존자들인 에스키모는 심지어 지금도 혹한의 북부 기후에서 거주하기를 선호한다.</div></div><div class="quote"><div class="ref">61:7.4</div><div class="qtext">갑자기 그리고 한 세대 만에 여섯 유색 인종이 원주민 인류 계통에서 돌연변이로 나타났다. 이것은 또한 행성 영주의 도래를 표시하기 때문에 이중으로 중요한 날짜이다.</div></div><div class="quote"><div class="ref">61:7.8</div><div class="qtext">20만 년 전, 마지막 빙하의 전진 동안, 유란시아에서 사건의 전개와 많은 관련이 있는 한 사건, 곧 루시퍼 반란이 발생했다.</div></div><div class="quote"><div class="ref">61:7.10</div><div class="qtext">연결된 대호수 체계가 현재의 나이아가라 경로를 통해 흘러나오기 시작한 것은 삼만 칠천 년 전이다.</div></div><div class="quote"><div class="ref">61:7.11</div><div class="qtext">그리고 극지방이 계속 얼음으로 덮여 있는 한, 미래의 육지 융기나 해류의 변형과는 상관없이 또 다른 빙하기가 발생할 가능성은 거의 없다.</div></div><div class="quote"><div class="ref">61:7.13</div><div class="qtext">혹독한 빙하기는 많은 종들을 멸종시켰고 수많은 다른 종들을 근본적으로 변화시켰다. 많은 종들이 전진하고 후퇴하는 얼음에 의해 불가피해진 앞뒤로의 이주에 의해 심하게 걸러졌다.</div></div><div class="quote"><div class="ref">61:7.18</div><div class="qtext">이 날짜는 또한 물질 아들과 딸의 도착과 아담 섭리 시대의 시작에 대략 일치하며, 홀로세 또는 빙하기 이후 시기의 시작과 대략 상응한다는 점에서 중요하다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 59~61편 본문 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
