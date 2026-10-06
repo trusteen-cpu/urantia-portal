@@ -40,6 +40,8 @@ html[data-dark="1"] h3.sh{color:#cfe0ff}
 .pa .t{flex:1;font-size:var(--fs);line-height:1.95;text-align:justify;word-break:keep-all}
 .pa .s{flex:0 0 auto;background:none;border:0;color:var(--dim);cursor:pointer;font-size:14px;opacity:.3;padding:3px}
 .pa:hover .s{opacity:.9}
+.pa.q .t{background:#faf6ee;border-left:3px solid #b8925a;border-radius:4px;padding:10px 14px;font-size:calc(var(--fs) - 1px)}
+html[data-dark="1"] .pa.q .t{background:#221f19;border-left-color:#9a743a}
 .pa.now .t{background:rgba(201,162,39,.16);border-radius:5px}
 .nav{display:flex;justify-content:space-between;gap:10px;margin-top:44px;border-top:1px solid var(--line);padding-top:15px}
 .nav button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;font-size:14px}
@@ -167,7 +169,7 @@ function step(){
   speak(Q[QI].t,step);
 }
 function play(){stop();PLAYING=true;$('#play').textContent='⏸ 멈춤';
-  Q=[];CH.blocks.forEach(function(b,i){if(b[0]==='p')Q.push({i:i,t:b[1]})});QI=-1;step()}
+  Q=[];CH.blocks.forEach(function(b,i){if(b[0]==='p'||b[0]==='q')Q.push({i:i,t:b[1]})});QI=-1;step()}
 $('#play').onclick=function(){PLAYING?stop():play()};
 $('#stopb').onclick=stop;
 $('#scope').value=load('bk_scope','ch');
@@ -193,7 +195,7 @@ function renderBody(jump){
        +(t.part?' · '+esc(t.part):'')+'</div>';
   CH.blocks.forEach(function(b,i){
     if(b[0]==='h'){h+='<h3 class="sh" id="p'+i+'">'+esc(b[1])+'</h3>'}
-    else{h+='<div class="pa" id="p'+i+'"><div class="t">'+esc(b[1])+'</div>'
+    else{h+='<div class="pa'+(b[0]==='q'?' q':'')+'" id="p'+i+'"><div class="t">'+esc(b[1])+'</div>'
         +'<button class="s" data-i="'+i+'" title="이 문단 듣기">🔊</button></div>'}
   });
   h+='<div class="nav"><button id="prev">← 이전 장</button><button id="next">다음 장 →</button></div>';
