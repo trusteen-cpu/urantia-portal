@@ -216,7 +216,7 @@ function bring(src,ok){
   if(PTIMER)clearTimeout(PTIMER);
   PEND=ok||function(){};
   var sc=document.createElement('script');
-  sc.src=src;
+  sc.src=src+'?v=20261006';   // 내용을 바꾸면 이 날짜를 올린다(브라우저에 4시간 남는 옛 파일 대신 새 파일)
   sc.onerror=function(){fail()};
   document.head.appendChild(sc);
   PTIMER=setTimeout(function(){if(PEND)fail()},15000);
