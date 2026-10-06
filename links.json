@@ -439,6 +439,17 @@
                   "url": "https://urantiareaders.com/audiobook/kr/ch36/"
                 }
               ]
+            },
+            {
+              "member": false,
+              "name": "제 18강 유란시아의 진화 과정",
+              "children": [
+                {
+                  "member": false,
+                  "name": "오디오북",
+                  "url": "https://urantiareaders.com/audiobook/kr/ch37/"
+                }
+              ]
             }
           ]
         },
