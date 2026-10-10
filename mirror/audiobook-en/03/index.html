@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salvation in the Urantia Revelation — Audiobook</title>
+
+<!-- Share card (Facebook / KakaoTalk / Twitter auto-unfurl) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loquacious-gecko-2b90bc.netlify.app/">
+<meta property="og:title" content="SALVATION — A Scholarly Audiobook">
+<meta property="og:description" content="Salvation in the Urantia Revelation · a scholarly audiobook in twenty movements. Edited and made by Jay Han.">
+<meta property="og:image" content="https://loquacious-gecko-2b90bc.netlify.app/share-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SALVATION — A Scholarly Audiobook">
+<meta name="twitter:description" content="Salvation in the Urantia Revelation · a scholarly audiobook in twenty movements.">
+<meta name="twitter:image" content="https://loquacious-gecko-2b90bc.netlify.app/share-card.png">
+<link rel="image_src" href="https://loquacious-gecko-2b90bc.netlify.app/share-card.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0b0f1c"/><text x="50" y="44" font-family="Georgia,serif" font-size="13" fill="#c9a86a" text-anchor="middle" letter-spacing="2">SALV</text><text x="50" y="62" font-family="Georgia,serif" font-size="13" fill="#c9a86a" text-anchor="middle" letter-spacing="2">ATION</text></svg></template>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#080b14;overflow:hidden;font-family:'Spectral',Georgia,serif;-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#0b0f1c; --bg2:#10162b;
+  --ink:#ece6da; --ink2:#cdd2e0; --muted:#8c95ac;
+  --gold:#c9a86a; --gold-dim:rgba(201,168,106,.5);
+  --blue:#8198c9;
+  --line:rgba(201,168,106,.16);
+  --panel:rgba(255,255,255,.035);
+  --panel-line:rgba(201,168,106,.18);
+}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse 120% 90% at 50% -10%, #16203c 0%, #0b0f1c 55%, #070a12 100%);}
+#stage{position:relative;width:1280px;height:720px;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;padding:50px 60px 64px;display:flex;flex-direction:column;
+  color:var(--ink);opacity:0;visibility:hidden;transition:opacity .7s ease;background:
+  radial-gradient(ellipse 100% 70% at 50% 0%, rgba(129,152,201,.05), transparent 60%);overflow:hidden}
+.slide.active{opacity:1;visibility:visible}
+
+/* header */
+.hd{margin-bottom:18px;flex:none}
+.kick{font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+  font-weight:600;margin-bottom:11px;font-family:'IBM Plex Mono',monospace}
+.hd h1{font-size:33px;line-height:1.08;font-weight:600;letter-spacing:.01em;color:var(--ink);
+  text-wrap:balance}
+.hd .sub{font-size:16px;color:var(--muted);margin-top:9px;font-style:italic;font-weight:300}
+.lead{font-size:17px;line-height:1.5;color:var(--ink2);font-weight:300;margin-bottom:18px;
+  max-width:1020px;text-wrap:pretty}
+
+/* quote */
+.quote{position:relative;padding:14px 22px;margin:4px 0 18px;border-left:2px solid var(--gold);
+  background:linear-gradient(90deg, rgba(201,168,106,.06), transparent 80%)}
+.quote p{font-size:17px;line-height:1.45;font-style:italic;color:var(--ink);font-weight:300;text-wrap:pretty}
+.quote cite{display:block;margin-top:8px;font-style:normal;font-size:12px;letter-spacing:.12em;
+  color:var(--gold);font-family:'IBM Plex Mono',monospace;text-transform:uppercase}
+.quote-lg p{font-size:21px;line-height:1.4}
+
+/* cards grid */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--panel);border:1px solid var(--panel-line);border-radius:3px;
+  padding:15px 16px;display:flex;flex-direction:column;gap:6px}
+.card-kick{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--gold-dim);line-height:1}
+.card-title{font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.25}
+.card-body{font-size:13px;line-height:1.45;color:var(--muted);font-weight:300;text-wrap:pretty}
+.ref{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--gold);letter-spacing:.04em;
+  white-space:nowrap;font-weight:500}
+
+/* TITLE slide */
+.title-slide{align-items:center;justify-content:center;text-align:center;padding-top:0}
+.title-orn{color:var(--gold);font-size:24px;margin-bottom:24px;opacity:.8}
+.title-kick{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+.big-title{font-size:96px;font-weight:300;letter-spacing:.18em;color:var(--ink);line-height:1;
+  text-indent:.18em}
+.title-script{font-size:25px;font-style:italic;font-weight:300;color:var(--blue);margin-top:14px}
+.title-rule{width:78px;height:1px;background:var(--gold);margin:30px auto 24px;opacity:.7}
+.title-desc{font-size:16px;line-height:1.55;color:var(--ink2);max-width:660px;font-weight:300}
+.title-foot{margin-top:34px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.title-credit{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:10px;
+  letter-spacing:.12em;color:rgba(140,149,172,.65);font-style:normal}
+
+/* OVERVIEW */
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px 18px;flex:1;align-content:center}
+.ov-cell{display:flex;gap:10px;align-items:flex-start}
+.ov-n{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--gold-dim);
+  line-height:1.25;flex:none}
+.ov-t{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.2}
+.ov-d{font-size:11px;color:var(--muted);font-weight:300;line-height:1.3;margin-top:2px}
+
+/* TIMELINE */
+.tl{display:flex;align-items:stretch;gap:8px;flex:1}
+.tl-step{flex:1;background:var(--panel);border:1px solid var(--panel-line);border-top:2px solid var(--gold);
+  border-radius:3px;padding:16px 14px;display:flex;flex-direction:column;gap:7px}
+.tl-badge{width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;color:var(--gold);
+  font-size:14px;font-weight:600}
+.tl-era{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
+.tl-t{font-size:16px;font-weight:600;color:var(--ink);line-height:1.18}
+.tl-d{font-size:12px;line-height:1.42;color:var(--muted);font-weight:300}
+.tl-arrow{align-self:center;color:var(--gold-dim);font-size:18px;flex:none}
+
+/* two-col (slide 7) */
+.two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;flex:1;min-height:0}
+.col-h{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:13px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.center-h{text-align:center;border-bottom:none;margin-bottom:11px}
+.teach{margin-bottom:12px}
+.teach-t{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.25}
+.teach-b{font-size:12.5px;line-height:1.4;color:var(--muted);font-weight:300;margin-top:3px;font-style:italic}
+.mini-q{margin-bottom:11px;padding-left:13px;border-left:2px solid var(--gold-dim)}
+.mini-q p{font-size:13px;line-height:1.4;font-style:italic;color:var(--ink2);font-weight:300}
+.mini-q cite{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.08em}
+
+/* SEVENFOLD */
+.sev{display:grid;grid-template-columns:1fr 1fr;gap:9px 26px;flex:1;align-content:center}
+.sev-row{display:flex;gap:13px;align-items:flex-start}
+.sev-n{width:30px;height:30px;border:1px solid var(--gold);color:var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;
+  font-size:14px;font-weight:600;flex:none}
+.sev-t{font-size:14px;font-weight:600;color:var(--ink);line-height:1.2}
+.sev-b{font-size:11.5px;line-height:1.38;color:var(--muted);font-weight:300;margin-top:2px}
+.sev-foot{margin-top:14px;text-align:center;font-size:13px;font-style:italic;color:var(--blue);font-weight:300}
+
+/* FAITH hero */
+.faith-hero{text-align:center;font-size:46px;font-weight:300;letter-spacing:.42em;color:var(--gold);
+  text-indent:.42em;margin:2px 0 18px}
+
+/* VS */
+.vs-banner{display:flex;align-items:stretch;margin-bottom:18px;border:1px solid var(--panel-line);border-radius:3px;overflow:hidden}
+.vs-side{flex:1;padding:13px;text-align:center;font-size:15px;font-weight:600;letter-spacing:.04em}
+.vs-no{background:rgba(160,90,90,.12);color:#d79a9a}
+.vs-yes{background:rgba(110,150,120,.12);color:#9fcdb0}
+.vs-mid{display:flex;align-items:center;justify-content:center;padding:0 18px;font-family:'IBM Plex Mono',monospace;
+  color:var(--muted);font-size:13px;background:rgba(255,255,255,.02)}
+
+/* FEATURE */
+.feature{background:linear-gradient(120deg,rgba(201,168,106,.08),rgba(129,152,201,.05));
+  border:1px solid var(--panel-line);border-left:2px solid var(--gold);border-radius:3px;padding:16px 20px;margin-bottom:15px}
+.feature-t{font-size:16px;font-weight:600;color:var(--gold);margin-bottom:7px}
+.feature p{font-size:12.5px;line-height:1.45;color:var(--ink2);font-weight:300;margin-bottom:6px}
+.feature p:last-child{margin-bottom:0}
+
+/* two-group (slide12) */
+.two-group{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:14px}
+.grp-h{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:11px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+/* CROSS */
+.cross-cols{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;flex:1;margin-bottom:14px}
+.cross-h{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.cross-h-no{color:#d79a9a}.cross-h-yes{color:#9fcdb0}
+.cross-not ul{list-style:none}
+.cross-not li{font-size:13px;line-height:1.35;color:var(--ink2);font-weight:300;padding:9px 0 9px 20px;
+  border-bottom:1px solid rgba(255,255,255,.05);position:relative}
+.cross-not li:before{content:'✗';position:absolute;left:0;color:#c77;font-size:12px}
+
+/* PERSONAL kicker letters via card-kick already */
+
+/* CHIPS (fruits) */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:4px 0 16px}
+.chip{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--panel-line);
+  border-radius:30px;padding:9px 18px 9px 13px;font-size:14px;color:var(--ink);font-weight:400}
+.chip-n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold);font-weight:600}
+.warn{font-size:13px;line-height:1.45;color:var(--ink2);font-weight:300;background:rgba(160,90,90,.08);
+  border:1px solid rgba(180,110,110,.22);border-radius:3px;padding:13px 18px;text-wrap:pretty}
+.warn-l{color:#d79a9a;font-weight:600;font-style:italic}
+
+/* COSMIC */
+.paradise{display:flex;align-items:center;gap:18px;background:linear-gradient(90deg,rgba(201,168,106,.16),rgba(201,168,106,.03));
+  border:1px solid var(--gold-dim);border-radius:3px;padding:13px 20px;margin-bottom:14px}
+.par-l{font-size:15px;font-weight:600;color:var(--gold);white-space:nowrap}
+.par-d{font-size:12.5px;color:var(--ink2);font-weight:300}
+.tiers{display:flex;align-items:stretch;gap:7px;flex:1;margin-bottom:14px}
+.tier{flex:1;background:var(--panel);border:1px solid var(--panel-line);border-radius:3px;padding:14px 13px;
+  display:flex;flex-direction:column;gap:7px}
+.tier-t{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:var(--blue);
+  text-transform:uppercase;font-weight:500;line-height:1.2}
+.tier p{font-size:11.5px;line-height:1.4;color:var(--muted);font-weight:300}
+.tier-up{align-self:center;color:var(--gold-dim);font-size:18px;flex:none}
+
+/* SYNTHESIS */
+.syn{flex:1;display:flex;flex-direction:column;justify-content:center;gap:9px;margin-bottom:6px}
+.syn-row{display:grid;grid-template-columns:165px 1fr;gap:20px;align-items:baseline;
+  padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.06)}
+.syn-l{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--gold);text-transform:uppercase;font-weight:600}
+.syn-v{font-size:14.5px;line-height:1.4;color:var(--ink2);font-weight:300;text-wrap:pretty}
+
+/* ---- player chrome ---- */
+#bar{position:fixed;left:0;right:0;bottom:0;height:54px;display:flex;align-items:center;gap:18px;
+  padding:0 26px;background:linear-gradient(0deg,rgba(8,11,20,.95),rgba(8,11,20,.55) 70%,transparent);
+  z-index:40;transition:opacity .4s;font-family:'IBM Plex Mono',monospace}
+#bar.hidden{opacity:0;pointer-events:none}
+.pbtn{background:none;border:none;color:var(--ink);cursor:pointer;font-size:17px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;transition:.2s}
+.pbtn:hover{color:var(--gold);background:rgba(201,168,106,.1)}
+#play{border:1px solid var(--gold-dim);color:var(--gold)}
+#counter{font-size:12px;letter-spacing:.1em;color:var(--muted);min-width:64px}
+#prog-wrap{flex:1;height:3px;background:rgba(255,255,255,.12);border-radius:3px;cursor:pointer;position:relative}
+#prog{height:100%;width:0;background:var(--gold);border-radius:3px}
+#chapter{font-size:11px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+
+/* start overlay */
+#overlay{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;background:radial-gradient(ellipse at 50% 40%,#141d36,#080b14 70%);cursor:pointer;
+  transition:opacity .6s}
+#overlay.gone{opacity:0;pointer-events:none}
+#overlay .o-orn{color:var(--gold);font-size:26px;margin-bottom:22px}
+#overlay h2{font-size:20px;font-weight:300;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  font-family:'IBM Plex Mono',monospace;margin-bottom:14px}
+#overlay .o-title{font-size:62px;font-weight:300;letter-spacing:.16em;color:var(--ink);text-indent:.16em}
+#overlay .o-sub{font-size:17px;font-style:italic;color:var(--blue);margin-top:10px;font-weight:300}
+#begin{margin-top:42px;display:flex;align-items:center;gap:13px;border:1px solid var(--gold);color:var(--gold);
+  padding:14px 34px;border-radius:40px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;transition:.25s;background:rgba(201,168,106,.05)}
+#overlay:hover #begin{background:var(--gold);color:#0b0f1c}
+.o-note{margin-top:22px;font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+<section class="slide title-slide" data-screen-label="Slide 01">
+  <div class="title-orn">✦</div>
+  <div class="title-kick">A Scholarly Presentation  |  Based on The Urantia Book</div>
+  <h1 class="big-title">SALVATION</h1>
+  <div class="title-script">in the Urantia Revelation</div>
+  <div class="title-rule"></div>
+  <p class="title-desc">A Comprehensive Scholarly Analysis of the Doctrine of Human Salvation as Presented in The Urantia Book</p>
+  <div class="title-foot">Reference: Salvation Passages — The Urantia Book</div>
+  <div class="title-credit">Edited and made by Jay Han with help of AI</div>
+</section>
+<section class="slide" data-screen-label="Slide 02">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 02</div>
+    <h1>PRESENTATION OVERVIEW</h1>
+    <div class="sub">A structured roadmap of Salvation in the Urantia Revelation</div>
+  </div>
+    <div class="ov-grid"><div class="ov-cell">
+    <span class="ov-n">01</span>
+    <div><div class="ov-t">Defining Salvation</div><div class="ov-d">Six dimensions of what salvation means</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">02</span>
+    <div><div class="ov-t">Historical Evolution</div><div class="ov-d">From primitive atonement to Melchizedek</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">03</span>
+    <div><div class="ov-t">World Religions</div><div class="ov-d">Comparative salvation doctrines (5:4.5)</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">04</span>
+    <div><div class="ov-t">Melchizedek Gospel</div><div class="ov-d">Salvation by faith — the original proclamation</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">05</span>
+    <div><div class="ov-t">Jesus &amp; Salvation</div><div class="ov-d">The supreme revelation of sonship</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">06</span>
+    <div><div class="ov-t">The Seven Dimensions</div><div class="ov-d">101:6.9–15 — sevenfold salvation analysis</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">07</span>
+    <div><div class="ov-t">Faith as Mechanism</div><div class="ov-d">How faith justifies, reconciles, and saves</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">08</span>
+    <div><div class="ov-t">Salvation vs. Works</div><div class="ov-d">The critical theological distinction</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">09</span>
+    <div><div class="ov-t">Grace &amp; Free Gift</div><div class="ov-d">Unconditional divine bestowal</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">10</span>
+    <div><div class="ov-t">Repentance &amp; Forgiveness</div><div class="ov-d">God's love and the process of return</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">11</span>
+    <div><div class="ov-t">The Cross Re-examined</div><div class="ov-d">What Jesus' death really means for salvation</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">12</span>
+    <div><div class="ov-t">Personal Experience</div><div class="ov-d">Inner transformation of sonship</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">13</span>
+    <div><div class="ov-t">Salvation &amp; the Kingdom</div><div class="ov-d">Entering the Father's kingdom</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">14</span>
+    <div><div class="ov-t">Salvation &amp; Truth</div><div class="ov-d">Liberty through truth (141:7.6)</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">15</span>
+    <div><div class="ov-t">Salvation &amp; Service</div><div class="ov-d">Bearing the fruits of the spirit</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">16</span>
+    <div><div class="ov-t">Cosmic Dimensions</div><div class="ov-d">Morontia progress and eternal ascent</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">17</span>
+    <div><div class="ov-t">Salvation for All</div><div class="ov-d">Universal scope — no exclusions</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">18</span>
+    <div><div class="ov-t">The New Religion</div><div class="ov-d">Salvation from self — Jesus' unique gift</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">19</span>
+    <div><div class="ov-t">Modern Challenges</div><div class="ov-d">Outworn thought patterns (89:10.1)</div></div>
+  </div><div class="ov-cell">
+    <span class="ov-n">20</span>
+    <div><div class="ov-t">Synthesis</div><div class="ov-d">The integrated vision of Urantia salvation</div></div>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 03">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 03</div>
+    <h1>DEFINING SALVATION IN THE URANTIA BOOK</h1>
+    <div class="sub">A radical redefinition beyond traditional religious categories</div>
+  </div>
+    <p class="lead">The Urantia Book presents salvation not as a legal transaction or ritual event, but as a multidimensional living experience of divine sonship — the progressive spiritualization of the self through genuine faith.</p>
+    <div class="grid g3"><div class="card">
+    
+    <div class="card-title">Salvation from SELF <span class="ref">5:4.5</span></div>
+    <p class="card-body">Deliverance from creature isolation — the religion of Jesus' unique contribution</p>
+  </div><div class="card">
+    
+    <div class="card-title">Salvation by FAITH <span class="ref">93:6.4</span></div>
+    <p class="card-body">Not works, not ritual: received by sincere belief — the Melchizedek covenant principle</p>
+  </div><div class="card">
+    
+    <div class="card-title">Salvation as SONSHIP <span class="ref">150:5.3</span></div>
+    <p class="card-body">Recognition of one's status as a son or daughter of the Universal Father</p>
+  </div><div class="card">
+    
+    <div class="card-title">Salvation as PROCESS <span class="ref">103:7.2</span></div>
+    <p class="card-body">Progressive morontia transformation — not a single moment but an ongoing evolution</p>
+  </div><div class="card">
+    
+    <div class="card-title">Salvation as GIFT <span class="ref">150:5.5</span></div>
+    <p class="card-body">Freely bestowed by God; cannot be bought, earned, or coerced — only received</p>
+  </div><div class="card">
+    
+    <div class="card-title">Salvation as SURVIVAL <span class="ref">133:6.6</span></div>
+    <p class="card-body">Personality survival after mortal death — the continuation of identity</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 04">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 04</div>
+    <h1>HISTORICAL EVOLUTION OF SALVATION</h1>
+    <div class="sub">From primitive ghost fear to the gospel of sonship (89:0.1 → 5:4.5)</div>
+  </div>
+    <div class="tl"><div class="tl-step">
+    <div class="tl-badge">1</div>
+    <div class="tl-era">Pre-Melchizedek</div>
+    <div class="tl-t">Primitive Era</div>
+    <p class="tl-d">Sin as 'debt to the spirits'; sacrifice as ransom; the soul 'born under forfeit.' Concept of original sin emerges from ghost fear (89:0.1).</p>
+  </div><div class="tl-arrow">→</div><div class="tl-step">
+    <div class="tl-badge">2</div>
+    <div class="tl-era">c. 1973 BC</div>
+    <div class="tl-t">Melchizedek Epoch</div>
+    <p class="tl-d">Revolutionary proclamation: salvation is a free gift by faith alone, not works or sacrifice. Abraham believed 'halfheartedly' — counted for righteousness (93:4.5).</p>
+  </div><div class="tl-arrow">→</div><div class="tl-step">
+    <div class="tl-badge">3</div>
+    <div class="tl-era">900–400 BC</div>
+    <div class="tl-t">Hebrew Prophets</div>
+    <p class="tl-d">Isaiah's vision of a God of salvation; Elihu of Ur proclaimed divine favor by faith (96:7.7). Alternating between faith and reversion to sacrifice and ritual.</p>
+  </div><div class="tl-arrow">→</div><div class="tl-step">
+    <div class="tl-badge">4</div>
+    <div class="tl-era">300 BC–100 AD</div>
+    <div class="tl-t">Mystery Cults</div>
+    <p class="tl-d">Promise of individual salvation through sacramental ritual; blood sacrifice transformed into symbolic form (89:9.4). Spiritual hunger without saving truth.</p>
+  </div><div class="tl-arrow">→</div><div class="tl-step">
+    <div class="tl-badge">5</div>
+    <div class="tl-era">7 BC–30 AD</div>
+    <div class="tl-t">Jesus' Revelation</div>
+    <p class="tl-d">The supreme proclamation: salvation by faith in sonship with God. Deliverance from self. The sevenfold salvation (101:6.9–15). The fullness of divine grace.</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 05">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 05</div>
+    <h1>SALVATION ACROSS WORLD RELIGIONS</h1>
+    <div class="sub">The Urantia Book's comparative analysis — Paper 5:4.5</div>
+  </div>
+    <div class="quote ">
+    <p>All religions teach the worship of Deity and some doctrine of human salvation.</p>
+    <cite>The Urantia Book, 5:4.5</cite>
+  </div>
+    <div class="grid g3"><div class="card">
+    <div class="card-kick">From: Salvation from suffering</div>
+    <div class="card-title">Buddhism</div>
+    <p class="card-body">Nirvana; later Amida faith comes nearest to grace-salvation (94:12.3). But 'human effort apart from divine help' (94:8.17).</p>
+  </div><div class="card">
+    <div class="card-kick">From: Salvation from difficulties</div>
+    <div class="card-title">Judaism</div>
+    <p class="card-body">Prosperity through righteousness; national covenant; prophets added inner transformation and universal salvation.</p>
+  </div><div class="card">
+    <div class="card-kick">From: Salvation from disharmony</div>
+    <div class="card-title">Greek Religion</div>
+    <p class="card-body">'Philosophies for the strong and wise, not religions of salvation for the poor and weak' (121:4.6).</p>
+  </div><div class="card">
+    <div class="card-kick">From: Salvation from sin</div>
+    <div class="card-title">Christianity</div>
+    <p class="card-body">Faith in Christ; but Paul's version was heavily shaped by Greek philosophy and atonement theology (195:2).</p>
+  </div><div class="card">
+    <div class="card-kick">From: Deliverance from moral rigidity</div>
+    <div class="card-title">Islam</div>
+    <p class="card-body">Divine mercy for the faithful; moral framework with accountability. The Melchizedek message of free grace partially obscured.</p>
+  </div><div class="card">
+    <div class="card-kick">From: Salvation from SELF</div>
+    <div class="card-title">Jesus' Religion</div>
+    <p class="card-body">Deliverance from creature isolation — time and eternity. Sonship by faith. No ritual, no priest, no works required.</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 06">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 06</div>
+    <h1>THE MELCHIZEDEK GOSPEL OF SALVATION</h1>
+    <div class="sub">The first proclamation of salvation by faith — 1,973 BC (93:4.5 / 93:6.4)</div>
+  </div>
+    <div class="quote ">
+    <p>This covenant of Melchizedek with Abraham represents the great Urantian agreement between divinity and humanity whereby God agrees to do everything; man only agrees to believe God's promises and follow his instructions.</p>
+    <cite>The Urantia Book, 93:6.4</cite>
+  </div>
+    <div class="grid g3"><div class="card">
+    
+    <div class="card-title">The Revolutionary Message</div>
+    <p class="card-body">Melchizedek proclaimed that salvation — divine favor — is a FREE GIFT to all who believe, not earned through sacrifice, priestly mediation, or ritual. 'Good news' of radical grace.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Global Missionary Reach</div>
+    <p class="card-body">Salem missionaries spread this gospel throughout Asia, India, China, and the Levant. Every major civilization received this teaching, though often later distorted (94:5.1; 95:2.5).</p>
+  </div><div class="card">
+    
+    <div class="card-title">The Salem Creed (93:4.8)</div>
+    <p class="card-body">Only two articles: (1) Believe in God the Father and maker of all things. (2) 'You shall not doubt that faith is the only requirement for eternal salvation.' Faith alone — nothing else.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Abraham's Response</div>
+    <p class="card-body">Abraham 'believed halfheartedly, and even that was counted for righteousness' (93:4.5). Even imperfect faith receives the gift — grace is not conditional on spiritual perfection.</p>
+  </div><div class="card">
+    
+    <div class="card-title">The Persistent Reversion</div>
+    <p class="card-body">Each time this gospel was proclaimed, people reverted to sacrifice: 'The Semitic tribesmen preferred to go back to the older sacrifices' (93:6.4). Grace is always the hardest truth.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Gautama's Near-Miss</div>
+    <p class="card-body">Siddhartha came 'surprisingly near to being a revival of the Salem gospel' (94:7.7) — proclaiming free salvation — but lost sight of the personal Father-God and thus the foundation.</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 07">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 07</div>
+    <h1>JESUS AND THE SUPREME REVELATION OF SALVATION</h1>
+    <div class="sub">The Master's proclamation — Papers 140, 141, 143, 150, 188</div>
+  </div>
+    <p class="lead">Jesus embodied the fullest revelation of salvation on Urantia, transcending all prior conceptions by presenting God as a loving Father whose children need only accept their divine inheritance by faith.</p>
+    <div class="two-col">
+      <div class="col"><div class="col-h">Key Salvation Teachings</div><div class="teach">
+     <div class="teach-t">Sonship by Faith <span class="ref">141:6.4</span></div>
+     <p class="teach-b">'This is the kingdom of heaven — God is your Father and you are his sons... if you wholeheartedly believe it, is your eternal salvation.'</p></div><div class="teach">
+     <div class="teach-t">Belief, Not Works <span class="ref">140:10.1</span></div>
+     <p class="teach-b">'In the kingdom you must be righteous in order to do the work' — righteousness flows FROM salvation, not toward it.</p></div><div class="teach">
+     <div class="teach-t">The Two Truths <span class="ref">141:7.6</span></div>
+     <p class="teach-b">'Salvation by faith, and faith alone, associated with the attainment of human liberty through the sincere recognition of truth.'</p></div><div class="teach">
+     <div class="teach-t">Salvation is Free <span class="ref">150:5.5</span></div>
+     <p class="teach-b">'You cannot buy salvation; you cannot earn righteousness. Salvation is the gift of God.'</p></div><div class="teach">
+     <div class="teach-t">Simple Formula <span class="ref">150:5.2</span></div>
+     <p class="teach-b">'Believe this gospel; accept divine forgiveness; recognize the indwelling spirit of God — this makes you a son of God.'</p></div></div>
+      <div class="col"><div class="col-h">Jesus in His Own Words</div><div class="mini-q"><p>"Salvation is the gift of the Father and is revealed by his Sons. Acceptance by faith on your part makes you a partaker of the divine nature, a son or a daughter of God."</p><cite>150:5.3</cite></div><div class="mini-q"><p>"You cannot buy salvation; you cannot earn righteousness. Salvation is the gift of God, and righteousness is the natural fruit of the spirit-born life of sonship in the kingdom."</p><cite>150:5.5</cite></div><div class="mini-q"><p>"It is your faith that saves your souls. Salvation is the gift of God to all who believe they are his sons."</p><cite>193:1.2</cite></div><div class="mini-q"><p>"Salvation is by the regeneration of the spirit and not by the self-righteous deeds of the flesh. You are justified by faith and fellowshipped by grace."</p><cite>143:2.6</cite></div></div>
+    </div>
+  </section>
+<section class="slide" data-screen-label="Slide 08">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 08</div>
+    <h1>THE SEVENFOLD DIMENSIONS OF SALVATION</h1>
+    <div class="sub">Paper 101:6.9–15 — The most systematic analysis in the Urantia Book</div>
+  </div>
+    <div class="quote ">
+    <p>The faith of Jesus pointed the way to finality of human salvation, to the ultimate of mortal universe attainment, since it provided for...</p>
+    <cite>The Urantia Book, 101:6.8</cite>
+  </div>
+    <div class="sev"><div class="sev-row">
+    <div class="sev-n">1</div>
+    <div class="sev-main"><div class="sev-t">Salvation from MATERIAL FETTERS <span class="ref">101:6.9</span></div>
+    <p class="sev-b">Personal realization of sonship with God, who is spirit. Liberation from domination by the physical and material.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">2</div>
+    <div class="sev-main"><div class="sev-t">Salvation from INTELLECTUAL BONDAGE <span class="ref">101:6.10</span></div>
+    <p class="sev-b">'Man shall know the truth, and the truth shall set him free.' Freedom from coercion of prejudice and fear.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">3</div>
+    <div class="sev-main"><div class="sev-t">Salvation from SPIRITUAL BLINDNESS <span class="ref">101:6.11</span></div>
+    <p class="sev-b">Human realization of the fraternity of mortals and morontia awareness of the brotherhood of universe creatures.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">4</div>
+    <div class="sev-main"><div class="sev-t">Salvation from INCOMPLETENESS <span class="ref">101:6.12</span></div>
+    <p class="sev-b">Attainment of spirit levels and realization of the harmony of Havona and perfection of Paradise.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">5</div>
+    <div class="sev-main"><div class="sev-t">Salvation from SELF <span class="ref">101:6.13</span></div>
+    <p class="sev-b">Deliverance from limitations of self-consciousness through attainment of cosmic levels of the Supreme Mind.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">6</div>
+    <div class="sev-main"><div class="sev-t">Salvation from TIME <span class="ref">101:6.14</span></div>
+    <p class="sev-b">The achievement of an eternal life of unending progression in God-recognition and God-service.</p></div>
+  </div><div class="sev-row">
+    <div class="sev-n">7</div>
+    <div class="sev-main"><div class="sev-t">Salvation from the FINITE <span class="ref">101:6.15</span></div>
+    <p class="sev-b">Perfected oneness with Deity in and through the Supreme — transcendental discovery of the Ultimate.</p></div>
+  </div></div>
+    <div class="sev-foot">101:6.16  Such a sevenfold salvation is the equivalent of the completeness and perfection of the realization of the ultimate experience of the Universal Father.</div>
+  </section>
+<section class="slide" data-screen-label="Slide 09">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 09</div>
+    <h1>FAITH AS THE MECHANISM OF SALVATION</h1>
+    <div class="sub">The nature, function, and dynamics of saving faith</div>
+  </div>
+    <div class="faith-hero">FAITH</div>
+    <div class="grid g3"><div class="card">
+    
+    <div class="card-title">Justifies <span class="ref">143:2.6</span></div>
+    <p class="card-body">'You are justified by faith and fellowshipped by grace, not by fear and self-denial of the flesh.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Saves the Soul <span class="ref">193:1.2</span></div>
+    <p class="card-body">'It is your faith that saves your souls. Salvation is the gift of God to all who believe they are his sons.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Advances Eternally <span class="ref">150:5.3</span></div>
+    <p class="card-body">'By faith you are justified; by faith are you saved; and by this same faith are you eternally advanced.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Recognizes Sonship <span class="ref">101:2.14</span></div>
+    <p class="card-body">Religion is 'the faith act of recognition of the inner urge to divine attainment'; 'assurance of salvation' follows.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Opens the Kingdom <span class="ref">166:3.3</span></div>
+    <p class="card-body">'The door is wide enough to admit all who sincerely seek to enter, for I am that door.' — Jesus</p>
+  </div><div class="card">
+    
+    <div class="card-title">Connects to Reality <span class="ref">101:9.9</span></div>
+    <p class="card-body">'Faith becomes the connection between moral consciousness and the spiritual concept of enduring reality.'</p>
+  </div></div>
+    <div class="quote ">
+    <p>The consciousness of sin persists in the mortal mind, but the thought patterns of salvation therefrom have become outworn and antiquated.</p>
+    <cite>The Urantia Book, 89:10.1</cite>
+  </div>
+  </section>
+<section class="slide" data-screen-label="Slide 10">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 10</div>
+    <h1>SALVATION VERSUS WORKS</h1>
+    <div class="sub">The critical theological distinction throughout the Urantia Book</div>
+  </div>
+    <div class="vs-banner">
+      <div class="vs-side vs-no">WORKS EARN SALVATION</div>
+      <div class="vs-mid">VS</div>
+      <div class="vs-side vs-yes">FAITH RECEIVES SALVATION</div>
+    </div>
+    <div class="grid g4"><div class="card">
+    
+    <div class="card-title">Rejected at Salem <span class="ref">93:4.5</span></div>
+    <p class="card-body">'They could not grasp the idea of getting divine favor for nothing — by faith.' People preferred sacrifice and priestly mediation over free grace.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Brahman Priesthood <span class="ref">94:1.5</span></div>
+    <p class="card-body">Salem missionaries 'ran directly counter to the dogmas of the Brahman priesthood' who refused the teaching of salvation through faith apart from ceremony.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Self-Righteousness <span class="ref">167:5.1</span></div>
+    <p class="card-body">'Works of self-righteousness cannot buy the favor of God, and much praying in public will not atone for lack of living faith in the heart.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Pharisaic Error <span class="ref">167:5.1</span></div>
+    <p class="card-body">The Pharisee catalogued his virtues — fasting, tithing — and was rejected. The publican's simple plea — 'God, be merciful to me, a sinner' — was accepted.</p>
+  </div><div class="card">
+    
+    <div class="card-title">The Covenant <span class="ref">93:6.4</span></div>
+    <p class="card-body">'God agrees to do everything; man only agrees to believe God's promises and follow his instructions.' The purest statement of grace ever recorded.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Jesus' Teaching <span class="ref">150:5.5</span></div>
+    <p class="card-body">'You are not to be saved because you live a righteous life; rather is it that you live a righteous life because you have already been saved.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Fruit, Not Root <span class="ref">150:5.5</span></div>
+    <p class="card-body">'Righteousness is the natural fruit of the spirit-born life of sonship' — it flows from, not toward, salvation. The causal order matters profoundly.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Universal Access <span class="ref">166:3.3</span></div>
+    <p class="card-body">'Entrance into the Father's kingdom is wholly free' — the door is wide enough for all sincere seekers. No merit system. No qualifying standard.</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 11">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 11</div>
+    <h1>GRACE AND THE FREE GIFT OF SALVATION</h1>
+    <div class="sub">Salvation as unconditional divine bestowal — Papers 150, 167, 169</div>
+  </div>
+    <div class="feature">
+      <div class="feature-t">The Parable of the Prodigal Son — The Supreme Illustration of Grace (169:1)</div>
+      <p>Jesus told the parable of the prodigal son to illustrate the unconditional love and grace of God toward erring children. The father runs to meet the returning son — not waiting for explanation or proof of reform — and immediately restores him to full sonship. This is the grace model of salvation: the initiative of the Father, the free restoration of status, and joy at the return.</p>
+      <p>169:1.4 also presents the lost coin: 'there is always joy in the presence of the angels of heaven over one sinner who repents.' God actively searches for the lost — the sheep that wandered, the coin covered by the dust of time.</p>
+    </div>
+    <div class="grid g3"><div class="card">
+    
+    <div class="card-title">Unconditional Offer <span class="ref">139:12.7</span></div>
+    <p class="card-body">'The door of eternal life is wide open to all; whosoever will may come; there are no restrictions or qualifications save the faith of the one who comes.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">God's Initiative <span class="ref">169:1.4</span></div>
+    <p class="card-body">The Father himself goes out to seek the lost sheep. Salvation is not merely available — it is actively pursued by a God who runs to meet the returning child.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Freely Received <span class="ref">150:5.2</span></div>
+    <p class="card-body">'Entrance into the Father's kingdom is wholly free.' The only price is sincere desire and wholehearted faith — nothing more.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Grace With Limits <span class="ref">146:2.5</span></div>
+    <p class="card-body">'Even the infinite love of God cannot force the salvation of eternal survival upon any mortal creature who does not choose to survive.' Grace never coerces.</p>
+  </div><div class="card">
+    
+    <div class="card-title">The Terms <span class="ref">167:5.1</span></div>
+    <p class="card-body">Jesus: 'The Father gives salvation to the children of men, and this salvation is a free gift to all who have the faith to receive sonship in the divine family.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Active Acceptance</div>
+    <p class="card-body">Grace is free but not automatic. The soul must choose. Love that compels is not love. The Father offers everything and forces nothing — freedom is honored.</p>
+  </div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 12">
+    <div class="hd">
+    <div class="kick">The Urantia Revelation · 12</div>
+    <h1>REPENTANCE, FORGIVENESS &amp; THE LOVE OF GOD</h1>
+    <div class="sub">The divine response to human error — Papers 2, 54, 188</div>
+  </div>
+    <div class="two-group">
+      <div><div class="grp-h">The Nature of Repentance</div><div class="grid g2"><div class="card">
+    
+    <div class="card-title">Goodness Leads <span class="ref">2:6.3</span></div>
+    <p class="card-body">'The richness of the goodness of God leads erring man to repentance.' Love draws repentance; fear only forces compliance.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Not Self-Punishment</div>
+    <p class="card-body">True repentance is a turning of the heart toward the Father — a change of direction, not self-condemnation or groveling.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Time Given <span class="ref">54:5.3</span></div>
+    <p class="card-body">'Time to accept salvation is vouchsafed every evildoer.' God's patient love gives sufficient opportunity for genuine repentance.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Voluntary <span class="ref">150:5.5</span></div>
+    <p class="card-body">'When men believe this gospel, they will be led to voluntary repentance of all known sin.' Repentance follows gospel belief naturally.</p>
+  </div></div></div>
+      <div><div class="grp-h">The Nature of Forgiveness</div><div class="grid g2"><div class="card">
+    
+    <div class="card-title">Not Condemnation <span class="ref">188:5.2</span></div>
+    <p class="card-body">The attitude of Jesus toward sinners was 'neither condemnation nor condonation, but rather eternal and loving salvation.'</p>
+  </div><div class="card">
+    
+    <div class="card-title">Destroys Sin <span class="ref">188:5.2</span></div>
+    <p class="card-body">'Divine love does not merely forgive wrongs; it absorbs and actually destroys them.' Love transforms, not just pardons.</p>
+  </div><div class="card">
+    
+    <div class="card-title">Rehabilitation <span class="ref">188:5.2</span></div>
+    <p class="card-body">'The Master's love implies rehabilitation, eternal survival.' Forgiveness is not mere pardon but full restoration to sonship.</p>
+  </div><div class="card">
+    
+    <div class="card-title">The Model <span class="ref">188:4.13</span></div>
+    <p class="card-body">'Forgive us our debts, even as we forgive our debtors.' The logic of divine forgiveness creates a corresponding human ethic.</p>
+  </div></div></div>
+    </div>
+    <div class="quote ">
+    <p>Salvation does not slight wrongs; it makes them right. True love does not compromise nor condone hate; it destroys it.</p>
+    <cite>The Urantia Book, 188:5.3</cite>
+  </div>
+  </section>
+<section class="slide" data-screen-label="Slide 13">
+    <div class="hd"><div class="kick">The Urantia Revelation · 13</div><h1>THE CROSS RE-EXAMINED</h1><div class="sub">What Jesus' death means — and does not mean — for salvation (Paper 188)</div></div>
+    <div class="quote "><p>Although Jesus did not die this death on the cross to atone for the racial guilt of mortal man nor to provide some sort of effective approach to an otherwise offended and unforgiving God... there are significances attached to this death which should not be overlooked.</p><cite>The Urantia Book, 188:4.1</cite></div>
+    <div class="cross-cols">
+      <div class="cross-not">
+        <div class="cross-h cross-h-no">What the Cross is NOT (188:4.1)</div>
+        <ul><li>Atonement for the racial guilt of mortal man</li><li>A sacrifice to appease an 'offended and unforgiving God'</li><li>A ransom paid to satisfy divine justice or wrath</li><li>A propitiatory offering to make God's forgiveness possible</li></ul>
+      </div>
+      <div class="cross-is">
+        <div class="cross-h cross-h-yes">What the Cross IS — The Urantia Interpretation</div>
+        <div class="grid g2"><div class="card"><div class="card-title">A Savior's Love <span class="ref">188:4.7</span></div><p class="card-body">Jesus is 'a savior in the sense that his life and death do win men over to goodness and righteous survival.'</p></div><div class="card"><div class="card-title">Illuminates Salvation <span class="ref">188:4.6</span></div><p class="card-body">His death 'greatly illuminated the way of salvation' and made 'forever plain the certainty of mortal survival after death.'</p></div><div class="card"><div class="card-title">Symbol of Service <span class="ref">188:5.9</span></div><p class="card-body">'The cross is that high symbol of sacred service, the devotion of one's life to the welfare and salvation of one's fellows.'</p></div><div class="card"><div class="card-title">Destroys Sin by Love <span class="ref">188:5.2</span></div><p class="card-body">'A love sufficiently strong and divine to forgive sin and swallow up all evil-doing.' Love is more powerful than evil.</p></div></div>
+      </div>
+    </div>
+    <div class="quote "><p>The salvation of God for the mortals of Urantia would have been just as effective and unerringly certain if Jesus had not been put to death by the cruel hands of ignorant mortals.</p><cite>The Urantia Book, 186:5.9</cite></div>
+  </section>
+<section class="slide" data-screen-label="Slide 14">
+    <div class="hd"><div class="kick">The Urantia Revelation · 14</div><h1>THE PERSONAL EXPERIENCE OF SALVATION</h1><div class="sub">Inner transformation, spiritual rebirth, and soul certainty</div></div>
+    <p class="lead">Salvation in the Urantia Book is not a doctrine to be accepted intellectually but a living experience to be undergone — a genuine spiritual rebirth that transforms the inner life from the center outward.</p>
+    <div class="grid g3"><div class="card"><div class="card-kick">A</div><div class="card-title">Spirit-Born Life <span class="ref">141:6.4</span></div><p class="card-body">Jesus said: 'When you enter the kingdom, you are reborn.' Not reformed — reborn. A new way of perceiving, relating, and existing begins from the first moment of genuine faith.</p></div><div class="card"><div class="card-kick">B</div><div class="card-title">God-Consciousness <span class="ref">156:5.20</span></div><p class="card-body">'The God-conscious mortal is certain of salvation; he is unafraid of life; he is honest and consistent.' Certainty replaces anxiety. This is the portrait of genuine spiritual experience.</p></div><div class="card"><div class="card-kick">C</div><div class="card-title">Peace with God <span class="ref">143:2.6</span></div><p class="card-body">'When you know that you are saved by faith, you have real peace with God.' Not the truce of a debtor, but the deep settledness of a soul that knows it is loved without condition.</p></div><div class="card"><div class="card-kick">D</div><div class="card-title">Soul Transformation <span class="ref">133:6.6</span></div><p class="card-body">'Salvation is the spiritualization of the self-realization of the moral consciousness, which thereby becomes possessed of survival value.' The soul literally develops new capacity.</p></div><div class="card"><div class="card-kick">E</div><div class="card-title">Joy &amp; Liberty <span class="ref">139:11.3</span></div><p class="card-body">Souls were born into the 'liberty of faith and the joy of salvation.' Joy and liberty — not obligation and anxiety — are the hallmarks of the genuinely saved life in The Urantia Book.</p></div><div class="card"><div class="card-kick">F</div><div class="card-title">Truth-Liberation <span class="ref">141:7.6</span></div><p class="card-body">'The attainment of human liberty through the sincere recognition of truth.' Jesus was truth made manifest, and sends his Spirit of Truth to continue this liberating work in every believer.</p></div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 15">
+    <div class="hd"><div class="kick">The Urantia Revelation · 15</div><h1>SALVATION AND THE KINGDOM OF HEAVEN</h1><div class="sub">The relationship between sonship, kingdom entrance, and eternal life</div></div>
+    <div class="quote quote-lg"><p>The kingdom of heaven consists in these three essentials: first, recognition of the fact of the sovereignty of God; second, belief in the truth of sonship with God; and third, faith in the effectiveness of the supreme human desire to do the will of God. And this is the good news of the gospel: that by faith every mortal may have all these essentials of salvation.</p><cite>Jesus, The Urantia Book, 140:10.9</cite></div>
+    <div class="col-h center-h">Entry, Growth &amp; the Kingdom Life</div>
+    <div class="grid g3"><div class="card"><div class="card-title">Kingdom Entry — Free for All <span class="ref">166:3.3</span></div><p class="card-body">'Salvation is first a matter of your personal choosing. The door is wide enough to admit all who sincerely seek to enter, for I am that door.' No religious, racial, or social barriers.</p></div><div class="card"><div class="card-title">Growth Required After Entry <span class="ref">150:5.2</span></div><p class="card-body">'Entrance into the Father's kingdom is wholly free, but progress — growth in grace — is essential to continuance therein.' Entry is free; remaining requires development.</p></div><div class="card"><div class="card-title">Kingdom as Present Reality <span class="ref">137:8.12</span></div><p class="card-body">'There is an interval between the establishment of the kingdom in the soul of man and that hour when the kingdom ripens into everlasting righteousness.' The kingdom begins NOW in the soul.</p></div><div class="card"><div class="card-title">Spiritual vs. Material Kingdom <span class="ref">176:2.3</span></div><p class="card-body">Jesus corrected apostles who expected a material kingdom: 'My kingdom is not of this world.' The kingdom is the inner transformation of the soul, spreading outward.</p></div><div class="card"><div class="card-title">The Kingdom Gospel <span class="ref">141:6.4</span></div><p class="card-body">'God is your Father and you are his sons, and this good news, if you wholeheartedly believe it, is your eternal salvation.' Salvation = sonship fully believed.</p></div><div class="card"><div class="card-title">Warning Against Postponement <span class="ref">166:3.4</span></div><p class="card-body">Those who postpone entrance while pursuing 'pleasures of immaturity' may find the door shut when glory is finally revealed. The time of opportunity must not be squandered.</p></div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 16">
+    <div class="hd"><div class="kick">The Urantia Revelation · 16</div><h1>SALVATION, TRUTH, AND HUMAN LIBERTY</h1><div class="sub">The revolutionary liberating dimension of Jesus' salvation (141:7.6 / 101:6.10)</div></div>
+    <div class="quote "><p>Jesus laid great emphasis upon what he called the two truths of first import in the teachings of the kingdom: the attainment of salvation by faith, and faith alone, associated with the revolutionary teaching of the attainment of human liberty through the sincere recognition of truth.</p><cite>The Urantia Book, 141:7.6</cite></div>
+    <div class="grid g3"><div class="card"><div class="card-title">Truth Sets Free <span class="ref">101:6.10</span></div><p class="card-body">The second dimension of salvation: 'Salvation from intellectual bondage: man shall know the truth, and the truth shall set him free.' Intellectual liberation IS a component of salvation.</p></div><div class="card"><div class="card-title">Jesus as Truth Manifest</div><p class="card-body">'Jesus was the truth made manifest in the flesh, and he promised to send his Spirit of Truth into the hearts of all his children' (141:7.6). The liberating work of truth continues after the incarnation.</p></div><div class="card"><div class="card-title">Conversion Through Truth <span class="ref">155:1.4</span></div><p class="card-body">When men become 'misled into accepting a narrow and confused disintegration of truth, their only hope of salvation is to become truth-co-ordinated — converted.' Truth-coordination IS a form of salvation.</p></div><div class="card"><div class="card-title">Liberty in the Kingdom <span class="ref">137:8.15</span></div><p class="card-body">'All who enter therein shall find abundant liberty and joyous salvation.' Liberty — from fear, from tradition, from prejudice — is a gift of the kingdom, not merely a byproduct.</p></div><div class="card"><div class="card-title">Sincerity as Condition <span class="ref">132:3.4</span></div><p class="card-body">'The eternal salvation of this truth-discerning soul is assured by that hunger and thirst for goodness which leads this mortal to develop a singleness of purpose to do the Father's will.'</p></div><div class="card"><div class="card-title">Revelation Validates <span class="ref">101:2.7</span></div><p class="card-body">'Science ends its reason-search in a First Cause. Religion does not stop until it is sure of a God of salvation.' Revelation affirms these are one and the same Deity. Truth unifies all reality.</p></div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 17">
+    <div class="hd"><div class="kick">The Urantia Revelation · 17</div><h1>SALVATION AND THE FRUITS OF THE SPIRIT</h1><div class="sub">The lived evidence of genuine salvation — Paper 193:2.2</div></div>
+    <div class="quote "><p>The fruits of the divine spirit which are yielded in the lives of spirit-born and God-knowing mortals are: loving service, unselfish devotion, courageous loyalty, sincere fairness, enlightened honesty, undying hope, confiding trust, merciful ministry, unfailing goodness, forgiving tolerance, and enduring peace.</p><cite>The Urantia Book, 193:2.2</cite></div>
+    <div class="col-h center-h">Eleven Fruits of the Spirit-Saved Life</div>
+    <div class="chips"><div class="chip"><span class="chip-n">01</span>Loving Service</div><div class="chip"><span class="chip-n">02</span>Unselfish Devotion</div><div class="chip"><span class="chip-n">03</span>Courageous Loyalty</div><div class="chip"><span class="chip-n">04</span>Sincere Fairness</div><div class="chip"><span class="chip-n">05</span>Enlightened Honesty</div><div class="chip"><span class="chip-n">06</span>Undying Hope</div><div class="chip"><span class="chip-n">07</span>Confiding Trust</div><div class="chip"><span class="chip-n">08</span>Merciful Ministry</div><div class="chip"><span class="chip-n">09</span>Unfailing Goodness</div><div class="chip"><span class="chip-n">10</span>Forgiving Tolerance</div><div class="chip"><span class="chip-n">11</span>Enduring Peace</div></div>
+    <div class="warn"><span class="warn-l">Warning (193:2.2):</span> 'If professed believers bear not these fruits of the divine spirit in their lives, they are dead; the Spirit of Truth is not in them; they are useless branches on the living vine.' Fruits are the living evidence of genuine salvation — not optional additions.</div>
+  </section>
+<section class="slide" data-screen-label="Slide 18">
+    <div class="hd"><div class="kick">The Urantia Revelation · 18</div><h1>COSMIC DIMENSIONS OF SALVATION</h1><div class="sub">From mortal death to Paradise — the morontia ascent (Papers 45, 53, 101, 103)</div></div>
+    <div class="quote "><p>True salvation is the technique of the divine evolution of the mortal mind from matter identification through the realms of morontia liaison to the high universe status of spiritual correlation.</p><cite>The Urantia Book, 103:7.2</cite></div>
+    <div class="paradise"><span class="par-l">✦ PARADISE DESTINATION — Corps of Mortal Finality</span><span class="par-d">'Proof against evil and secure against sin' — Destined for outer space service <span class="ref">31:0.13</span></span></div>
+    <div class="tiers"><div class="tier"><div class="tier-t">MORTAL LIFE</div><p>Thought Adjuster arrives at first moral choice. Soul forms through mind-Adjuster co-operation. Salvation initiated by faith during earthly life.</p></div><div class="tier-up">↑</div><div class="tier"><div class="tier-t">MORONTIA TRANSITION</div><p>After death, personality is re-personalized on mansion worlds. The soul — preserved by the Adjuster — continues its career (45:1.11).</p></div><div class="tier-up">↑</div><div class="tier"><div class="tier-t">LOCAL UNIVERSE</div><p>Constellation and local universe studies. 570 morontia transformations from material to pure spirit status — the great training ground of ascendant beings.</p></div><div class="tier-up">↑</div><div class="tier"><div class="tier-t">SUPERUNIVERSE &amp; HAVONA</div><p>Superuniverse circuits and the billion perfect worlds of the central creation. Attainment of 'the harmony of Havona and the perfection of Paradise' (101:6.12).</p></div></div>
+    <div class="quote "><p>Religion becomes the avenue of man's escape from the material limitations of the temporal world to the supernal realities of the eternal and spiritual world by and through the technique of salvation, the progressive morontia transformation.</p><cite>The Urantia Book, 101:9.9</cite></div>
+  </section>
+<section class="slide" data-screen-label="Slide 19">
+    <div class="hd"><div class="kick">The Urantia Revelation · 19</div><h1>THE UNIVERSAL SCOPE OF SALVATION</h1><div class="sub">No exclusions — salvation for Jew and gentile, rich and poor, all peoples</div></div>
+    <div class="quote "><p>God is no respecter of persons, and salvation is for the Jew as well as for the gentile.</p><cite>The Urantia Book, 175:2.3</cite></div>
+    <div class="col-h center-h">Explicit Inclusions Stated in the Text</div>
+    <div class="grid g4"><div class="card"><div class="card-title">Jews &amp; Gentiles <span class="ref">175:2.3 / 185:3.3</span></div><p class="card-body">Jesus told Pilate: 'this salvation is for the gentile as well as for the Jew.' Explicitly and repeatedly stated.</p></div><div class="card"><div class="card-title">Rich &amp; Poor <span class="ref">69:9.4</span></div><p class="card-body">'The poor could have salvation on equal terms with the rich.' Revealed religion first broke this ancient barrier.</p></div><div class="card"><div class="card-title">Male &amp; Female <span class="ref">191:6.2</span></div><p class="card-body">The post-resurrection commission: 'to Jew and gentile, to rich and poor, to free and bond, to male and female, even to the little children.'</p></div><div class="card"><div class="card-title">All Races &amp; Nations <span class="ref">190:4.1</span></div><p class="card-body">'In the kingdom of my Father there shall be neither Jew nor gentile; you will all be brethren — the sons of God.'</p></div><div class="card"><div class="card-title">Samaritans <span class="ref">143:5.8</span></div><p class="card-body">Jesus' first explicit proclamation of his divinity was to a Samaritan woman of 'questionable character' — 'she desired salvation sincerely and wholeheartedly, and that was enough.'</p></div><div class="card"><div class="card-title">The Dying Thief <span class="ref">187:4.1–2</span></div><p class="card-body">'When this thief reached out for salvation, he found deliverance.' A last-moment faith honored. The door is open until the final breath.</p></div><div class="card"><div class="card-title">Those Who Never Heard <span class="ref">186:5.9</span></div><p class="card-body">Salvation depends on sincerely seeking the Father. The Adjuster responds to genuine moral aspiration regardless of formal religious knowledge.</p></div><div class="card"><div class="card-title">Even Former Rebels <span class="ref">53:9.1</span></div><p class="card-body">Michael offered salvation to ALL rebels at the start of the Lucifer rebellion. Thousands who repented were rehabilitated — grace extends to celestial beings.</p></div></div>
+  </section>
+<section class="slide" data-screen-label="Slide 20">
+    <div class="hd"><div class="kick">The Urantia Revelation · 20</div><h1>THE INTEGRATED VISION</h1><div class="sub">Salvation in the Urantia Revelation — A Final Synthesis</div></div>
+    <div class="syn"><div class="syn-row"><div class="syn-l">Definition:</div><div class="syn-v">Salvation = progressive spiritualization of the self; deliverance from creature isolation; divine sonship by faith</div></div><div class="syn-row"><div class="syn-l">Source:</div><div class="syn-v">God the Father — freely given, never coerced; the initiative is always divine, the love always unconditional</div></div><div class="syn-row"><div class="syn-l">Mechanism:</div><div class="syn-v">Faith alone — sincere belief in God's fatherhood and one's own sonship; neither ritual nor works required</div></div><div class="syn-row"><div class="syn-l">Scope:</div><div class="syn-v">Universal — no racial, social, gender, or moral barriers; open to all sincere seekers of any background</div></div><div class="syn-row"><div class="syn-l">Dimensions:</div><div class="syn-v">Sevenfold (101:6.9–15): from material fetters through intellectual, spiritual, self, temporal, and finite liberation</div></div><div class="syn-row"><div class="syn-l">Evidence:</div><div class="syn-v">Fruits of the spirit (193:2.2): loving service, unselfish devotion, enduring peace — lived transformation in daily life</div></div><div class="syn-row"><div class="syn-l">Cosmic Destiny:</div><div class="syn-v">Progressive morontia career from mansion worlds to Paradise — the eternal adventure of God-finding never ends</div></div></div>
+    <div class="quote quote-lg"><p>The God-conscious mortal is certain of salvation; he is unafraid of life; he is honest and consistent.</p><cite>The Urantia Book, 156:5.20</cite></div>
+  </section>
+  </div>
+</div>
+
+<div id="bar" class="hidden">
+  <button class="pbtn" id="prev" title="Previous">‹</button>
+  <button class="pbtn" id="play" title="Play / Pause">▶</button>
+  <button class="pbtn" id="next" title="Next">›</button>
+  <span id="counter">01 / 20</span>
+  <div id="prog-wrap"><div id="prog"></div></div>
+  <span id="chapter">Salvation · Chapter 3</span>
+</div>
+
+<div id="overlay">
+  <div class="o-orn">✦</div>
+  <h2>The Urantia Revelation</h2>
+  <div class="o-title">SALVATION</div>
+  <div class="o-sub">A scholarly audiobook in twenty movements</div>
+  <div id="begin">▶ &nbsp; Begin Listening</div>
+  <div class="o-note">Auto-advances through all 20 slides · returns to the start when complete</div>
+</div>
+
+<audio id="aud" preload="auto"></audio>
+<script>
+const TOTAL=20;
+const stage=document.getElementById('stage');
+const slides=[...document.querySelectorAll('.slide')];
+const audio=document.getElementById('aud');
+const overlay=document.getElementById('overlay');
+const bar=document.getElementById('bar');
+const playBtn=document.getElementById('play');
+const counter=document.getElementById('counter');
+const prog=document.getElementById('prog');
+const progWrap=document.getElementById('prog-wrap');
+const chapterEl=document.getElementById('chapter');
+const LABELS=["Slide 01","Slide 02","Slide 03","Slide 04","Slide 05","Slide 06","Slide 07","Slide 08","Slide 09","Slide 10","Slide 11","Slide 12","Slide 13","Slide 14","Slide 15","Slide 16","Slide 17","Slide 18","Slide 19","Slide 20"];
+let idx=0, started=false, fallbackTimer=null;
+
+try{const sv=localStorage.getItem('salv_idx'); if(sv!==null) idx=Math.min(TOTAL-1,Math.max(0,parseInt(sv,10)||0));}catch(e){}
+
+function fit(){const s=Math.min(innerWidth/1280, innerHeight/720);stage.style.transform='scale('+s+')';}
+addEventListener('resize',fit);fit();
+
+function audioSrc(i){return 'https://audio.urantiareaders.com/mirror/audiobook-en/03/audio/slide-'+String(i+1).padStart(2,'0')+'.mp3';}
+
+function render(){
+  slides.forEach((s,i)=>s.classList.toggle('active',i===idx));
+  counter.textContent=String(idx+1).padStart(2,'0')+' / '+TOTAL;
+  chapterEl.textContent='Salvation · Chapter 3';
+  prog.style.width='0%';
+  try{localStorage.setItem('salv_idx',idx);}catch(e){}
+}
+
+function loadAndPlay(){
+  clearTimeout(fallbackTimer);
+  audio.src=audioSrc(idx);
+  audio.currentTime=0;
+  const pr=audio.play();
+  if(pr&&pr.catch)pr.catch(()=>{ /* may need gesture */ });
+  setPlayIcon(true);
+}
+function setPlayIcon(playing){playBtn.textContent=playing?'❚❚':'▶';}
+
+function go(i){idx=(i+TOTAL)%TOTAL;render();if(started)loadAndPlay();}
+function next(){go(idx+1);}        // loops 20 -> 1 via modulo
+function prev(){go(idx-1);}
+
+// Fallback: if audio can't load (mp3 not generated yet) auto-advance so the
+// visual flow still works. Real mp3s override this with their true duration.
+function armFallback(){
+  clearTimeout(fallbackTimer);
+  fallbackTimer=setTimeout(()=>{ if(started) next(); }, 7000);
+}
+
+audio.addEventListener('ended',()=>{ next(); });           // auto-advance + loop
+audio.addEventListener('error',()=>{ if(started){ setPlayIcon(true); armFallback(); }});
+audio.addEventListener('timeupdate',()=>{
+  if(audio.duration){prog.style.width=(audio.currentTime/audio.duration*100)+'%';}
+});
+audio.addEventListener('play',()=>{clearTimeout(fallbackTimer);setPlayIcon(true);});
+audio.addEventListener('pause',()=>{ if(started && !audio.ended) setPlayIcon(false);});
+
+function begin(){
+  if(started)return;started=true;
+  overlay.classList.add('gone');
+  render();loadAndPlay();
+}
+overlay.addEventListener('click',begin);
+
+playBtn.addEventListener('click',()=>{
+  if(!started){begin();return;}
+  if(audio.paused){const p=audio.play();if(p&&p.catch)p.catch(()=>{});}else{audio.pause();}
+});
+document.getElementById('next').addEventListener('click',next);
+document.getElementById('prev').addEventListener('click',prev);
+progWrap.addEventListener('click',e=>{
+  if(!audio.duration)return;const r=progWrap.getBoundingClientRect();
+  audio.currentTime=((e.clientX-r.left)/r.width)*audio.duration;
+});
+
+addEventListener('keydown',e=>{
+  if(e.code==='Space'){e.preventDefault(); if(!started){begin();return;} audio.paused?audio.play():audio.pause();}
+  else if(e.code==='ArrowRight')next();
+  else if(e.code==='ArrowLeft')prev();
+});
+
+// auto-hide bottom bar
+let hideT;
+function poke(){bar.classList.remove('hidden');clearTimeout(hideT);hideT=setTimeout(()=>{if(started&&!audio.paused)bar.classList.add('hidden');},2800);}
+addEventListener('mousemove',poke);poke();
+
+render();
+</script>
+</body>
+</html>

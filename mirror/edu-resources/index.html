@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Urantia Book Educational Resources</title>
+<meta name="description" content="A curated gateway for students, scholars and seekers of eternal truth — 12 resource categories.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Urantia Book Educational Resources">
+<meta property="og:description" content="A curated gateway for students, scholars and seekers of eternal truth — 12 resource categories.">
+<meta property="og:image" content="/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Urantia Book Educational Resources">
+<meta name="twitter:description" content="12 curated resource categories for students and scholars.">
+<meta name="twitter:image" content="/og.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#faf9f7">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:       #b8923a;
+  --gold-light: #d4a84b;
+  --gold-pale:  #f9f2e3;
+  --blue:       #2c5f8a;
+  --blue-light: #3a7ab5;
+  --blue-pale:  #eef4fa;
+  --brown:      #6b4c2a;
+  --text:       #222222;
+  --text-mid:   #555555;
+  --text-soft:  #888888;
+  --border:     #e0ddd8;
+  --sidebar-w:  270px;
+  --bg:         #ffffff;
+  --sidebar-bg: #faf9f7;
+  --hover-bg:   #f4f0e8;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', 'Cormorant Garamond', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════
+   HERO
+══════════════════════ */
+#hero {
+  width:100%; min-height:100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  background: linear-gradient(160deg, #fffdf8 0%, #f5ede0 50%, #eef4fa 100%);
+  position:relative; overflow:hidden;
+  padding:40px 20px;
+}
+
+/* Subtle decorative circles */
+#hero::before {
+  content:'';
+  position:absolute;
+  width:600px; height:600px;
+  border-radius:50%;
+  border:1px solid rgba(184,146,58,.12);
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+#hero::after {
+  content:'';
+  position:absolute;
+  width:420px; height:420px;
+  border-radius:50%;
+  border:1px solid rgba(44,95,138,.1);
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+
+.hero-inner {
+  position:relative; z-index:2;
+  text-align:center;
+  animation:fadeUp 1.2s ease both;
+}
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(24px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+
+/* Ornament ring */
+.ornament {
+  position:relative;
+  width:140px; height:140px;
+  margin:0 auto 32px;
+}
+.orn-ring {
+  position:absolute; border-radius:50%;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  border:1px solid var(--gold);
+}
+.orn-ring:nth-child(1){width:140px;height:140px;opacity:.2;animation:slowSpin 60s linear infinite;}
+.orn-ring:nth-child(2){width:108px;height:108px;opacity:.3;animation:slowSpin 40s linear infinite reverse;}
+.orn-ring:nth-child(3){width:78px; height:78px; opacity:.45;animation:slowSpin 25s linear infinite;}
+.orn-ring::before {
+  content:''; position:absolute;
+  width:6px; height:6px;
+  background:var(--gold); border-radius:50%;
+  top:-3px; left:50%; transform:translateX(-50%);
+}
+@keyframes slowSpin {
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to  {transform:translate(-50%,-50%) rotate(360deg);}
+}
+.orn-star {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:30px; color:var(--gold);
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1);}
+  50%     {opacity:1; transform:translate(-50%,-50%) scale(1.1);}
+}
+
+/* Hero text */
+.hero-eyebrow {
+  font-family:'Cinzel',serif;
+  font-size:11px; letter-spacing:6px;
+  color:var(--gold); text-transform:uppercase;
+  margin-bottom:14px;
+  animation:fadeUp 1.2s ease .2s both;
+}
+.hero-title {
+  font-family:'Cinzel',serif;
+  font-size:clamp(24px,5vw,52px);
+  font-weight:700; line-height:1.2;
+  color:var(--brown);
+  animation:fadeUp 1.2s ease .35s both;
+}
+.hero-title em {
+  display:block; font-style:normal;
+  font-size:clamp(13px,2.5vw,24px);
+  font-weight:400; color:var(--blue);
+  margin-top:8px; letter-spacing:1px;
+}
+.hero-rule {
+  width:130px; height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:20px auto;
+  animation:fadeUp 1.2s ease .5s both;
+}
+.hero-sub {
+  font-size:15px; color:var(--text-mid);
+  font-style:italic; letter-spacing:.5px;
+  animation:fadeUp 1.2s ease .65s both;
+}
+
+/* 12 category tiles */
+.cat-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:44px;
+  max-width:720px;
+  animation:fadeUp 1.2s ease .8s both;
+}
+.cat-tile {
+  display:flex; flex-direction:column;
+  align-items:center; gap:7px;
+  padding:16px 10px 14px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background .22s, border-color .22s, box-shadow .22s, transform .22s;
+  color:inherit;
+}
+.cat-tile:hover {
+  background:var(--hover-bg);
+  border-color:var(--gold-light);
+  box-shadow:0 4px 18px rgba(184,146,58,.15);
+  transform:translateY(-3px);
+}
+.tile-num {
+  font-family:'Cinzel',serif;
+  font-size:9.5px; letter-spacing:2px;
+  color:var(--gold);
+}
+.tile-ico  { font-size:22px; }
+.tile-name {
+  font-family:'Cinzel',serif;
+  font-size:9.5px; text-align:center;
+  line-height:1.35; color:var(--blue);
+  letter-spacing:.2px;
+}
+
+.scroll-cue {
+  margin-top:40px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  opacity:.4; animation:fadeUp 1.2s ease 1.2s both;
+}
+.scroll-cue span {
+  font-family:'Cinzel',serif; font-size:8.5px;
+  letter-spacing:4px; color:var(--text-mid);
+}
+.scroll-bar {
+  width:1px; height:34px;
+  background:linear-gradient(180deg,var(--gold),transparent);
+  animation:dropBar 2.4s ease-in-out infinite;
+}
+@keyframes dropBar {
+  0%  {transform:scaleY(0);transform-origin:top;}
+  49% {transform:scaleY(1);transform-origin:top;}
+  50% {transform:scaleY(1);transform-origin:bottom;}
+  100%{transform:scaleY(0);transform-origin:bottom;}
+}
+
+/* ══════════════════════
+   APP LAYOUT
+══════════════════════ */
+#app {
+  display:flex;
+  min-height:100vh;
+  background:var(--bg);
+}
+
+/* ── SIDEBAR ── */
+#sidebar {
+  width:var(--sidebar-w);
+  min-width:var(--sidebar-w);
+  background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  position:sticky; top:0;
+  height:100vh; overflow-y:auto;
+  flex-shrink:0;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(184,146,58,.25) transparent;
+}
+#sidebar::-webkit-scrollbar{width:4px;}
+#sidebar::-webkit-scrollbar-thumb{background:rgba(184,146,58,.25);border-radius:4px;}
+
+.sb-logo {
+  padding:20px 16px 14px;
+  border-bottom:1px solid var(--border);
+  text-align:center;
+}
+.sb-logo-title {
+  font-family:'Cinzel',serif;
+  font-size:11px; letter-spacing:2px;
+  color:var(--brown); line-height:1.6;
+}
+.sb-logo-sub {
+  font-size:11px; color:var(--text-soft);
+  font-style:italic; margin-top:3px;
+}
+
+/* Nav section = one of the 12 categories */
+.nav-sec {
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.nav-sec-btn {
+  width:100%; display:flex; align-items:center; gap:10px;
+  padding:11px 16px;
+  background:none; border:none;
+  cursor:pointer;
+  text-align:left;
+  transition:background .18s;
+  position:relative;
+}
+.nav-sec-btn:hover { background:var(--hover-bg); }
+.nav-sec-btn.active { background:#edf3f9; }
+.nav-sec-btn.active::before {
+  content:'';
+  position:absolute; left:0; top:0; bottom:0;
+  width:3px; background:var(--blue);
+  border-radius:0 3px 3px 0;
+}
+.ns-num {
+  font-family:'Cinzel',serif; font-size:9px;
+  color:var(--gold); letter-spacing:2px;
+  min-width:24px;
+}
+.ns-ico { font-size:16px; }
+.ns-title {
+  font-family:'Cinzel',serif; font-size:11.5px;
+  color:var(--blue); flex:1; letter-spacing:.3px;
+}
+.ns-arrow {
+  font-size:10px; color:var(--text-soft);
+  transition:transform .2s;
+}
+.nav-sec-btn.active .ns-arrow { transform:rotate(90deg); }
+
+/* Sub-links inside nav section */
+.nav-sub {
+  display:none;
+  padding:4px 0 8px 0;
+  background:#f7f5f2;
+}
+.nav-sub.open { display:block; }
+.nav-sub a {
+  display:block;
+  padding:6px 16px 6px 50px;
+  font-size:12px; color:var(--text-mid);
+  text-decoration:none;
+  line-height:1.4;
+  transition:background .15s, color .15s;
+  border-left:2px solid transparent;
+  margin-left:0;
+}
+.nav-sub a:hover {
+  background:var(--hover-bg);
+  color:var(--blue);
+  border-left-color:var(--gold-light);
+}
+.nav-sub-label {
+  padding:8px 16px 3px 50px;
+  font-family:'Cinzel',serif;
+  font-size:8.5px; letter-spacing:2.5px;
+  color:var(--gold); text-transform:uppercase;
+  opacity:.7;
+}
+
+/* ── MAIN CONTENT ── */
+#main {
+  flex:1; padding:48px 44px 80px;
+  max-width:900px;
+}
+
+/* Welcome / default panel */
+.panel { display:none; }
+.panel.active { display:block; }
+
+.welcome-panel {
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  min-height:60vh; text-align:center;
+  color:var(--text-soft);
+}
+.welcome-panel h2 {
+  font-family:'Cinzel',serif;
+  font-size:22px; color:var(--brown);
+  margin-bottom:12px;
+}
+.welcome-panel p { font-size:16px; font-style:italic; }
+
+/* Section header in main */
+.sec-header {
+  display:flex; align-items:center; gap:14px;
+  padding-bottom:16px;
+  border-bottom:2px solid var(--gold-pale);
+  margin-bottom:28px;
+}
+.sec-num {
+  font-family:'Cinzel',serif; font-size:11px;
+  color:var(--gold); letter-spacing:3px;
+  background:var(--gold-pale); padding:4px 10px;
+  border-radius:20px;
+}
+.sec-ico { font-size:26px; }
+.sec-title {
+  font-family:'Cinzel',serif;
+  font-size:clamp(18px,3vw,26px);
+  color:var(--brown); letter-spacing:.5px;
+}
+
+/* Sub-section label */
+.group-label {
+  font-family:'Cinzel',serif;
+  font-size:10px; letter-spacing:3px;
+  color:var(--gold); text-transform:uppercase;
+  margin:24px 0 10px 0;
+  padding-bottom:5px;
+  border-bottom:1px solid var(--gold-pale);
+}
+
+/* Link cards */
+.link-list { display:flex; flex-direction:column; gap:6px; }
+.lnk {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:11px 16px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:#fefefe;
+  text-decoration:none;
+  color:var(--text);
+  transition:background .2s, border-color .2s, box-shadow .2s, transform .2s;
+}
+.lnk:hover {
+  background:var(--blue-pale);
+  border-color:rgba(44,95,138,.3);
+  box-shadow:0 3px 12px rgba(44,95,138,.08);
+  transform:translateX(4px);
+}
+.lnk-dot {
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--gold-light);
+  flex-shrink:0; margin-top:6px;
+  transition:background .2s;
+}
+.lnk:hover .lnk-dot { background:var(--blue); }
+.lnk-body { flex:1; }
+.lnk-name {
+  font-size:15px; color:var(--blue);
+  font-weight:500; line-height:1.3;
+}
+.lnk-desc {
+  display:block;
+  font-size:12px; color:var(--text-soft);
+  font-style:italic; margin-top:2px;
+}
+.lnk-ext {
+  font-size:11px; color:var(--text-soft);
+  opacity:.5; margin-top:4px;
+  flex-shrink:0; align-self:center;
+}
+
+/* Featured link (TUB Text) */
+.feat-lnk {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:18px 24px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#eef6ff,#fdf6e8);
+  border:2px solid var(--gold-light);
+  text-decoration:none;
+  color:var(--brown);
+  font-family:'Cinzel',serif; font-size:15px; letter-spacing:1px;
+  transition:all .3s;
+  margin-bottom:20px;
+  box-shadow:0 4px 20px rgba(184,146,58,.12);
+}
+.feat-lnk:hover {
+  background:linear-gradient(135deg,#ddeeff,#fbefd5);
+  border-color:var(--gold);
+  box-shadow:0 6px 28px rgba(184,146,58,.22);
+  transform:scale(1.02);
+}
+
+/* Mobile toggle */
+#mob-toggle {
+  display:none;
+  position:fixed; bottom:20px; right:20px; z-index:200;
+  width:48px; height:48px; border-radius:50%;
+  background:var(--blue); color:#fff;
+  border:none; font-size:20px; cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+
+
+@media(max-width:768px){
+  #sidebar{
+    position:fixed;left:0;top:0;bottom:0;
+    width:82vw;max-width:300px;z-index:200;
+    transform:translateX(-110%);
+    transition:transform .3s ease;
+    box-shadow:4px 0 24px rgba(0,0,0,.15);
+    height:100%;
+  }
+  #sidebar.open{transform:translateX(0);}
+  #mob-overlay{display:block !important;}
+}
+@media(max-width:768px){
+  .cat-grid { grid-template-columns:repeat(3,1fr); }
+  #sidebar {
+    position:fixed; left:-var(--sidebar-w); top:0; bottom:0;
+    width:var(--sidebar-w); z-index:100;
+    transform:translateX(calc(-1 * var(--sidebar-w)));
+    transition:transform .3s ease;
+    box-shadow:4px 0 20px rgba(0,0,0,.1);
+  }
+  #sidebar.open { transform:translateX(0); }
+  #main { padding:28px 18px 60px; }
+  #mob-toggle { display:flex; align-items:center; justify-content:center; }
+}
+@media(max-width:480px){
+  .cat-grid { grid-template-columns:repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<div id="mob-overlay" style="display:none;position:fixed;inset:0;z-index:199;background:rgba(0,0,0,.35);" onclick="document.getElementById('sidebar').classList.remove('open');this.style.display='none';"></div>
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="hero-inner">
+
+    <div class="ornament">
+      <div class="orn-ring"></div>
+      <div class="orn-ring"></div>
+      <div class="orn-ring"></div>
+      <div class="orn-star">✦</div>
+    </div>
+
+    <p class="hero-eyebrow">Truth · Beauty · Goodness</p>
+
+    <h1 class="hero-title">
+      Urantia Book
+      <em>Educational Resources</em>
+    </h1>
+
+    <div class="hero-rule"></div>
+    <p class="hero-sub">A curated gateway for students, scholars &amp; seekers of eternal truth</p>
+
+    <!-- 12 Category Tiles -->
+    <div class="cat-grid">
+      <a class="cat-tile" href="#app" onclick="openSection('s1')">
+        <span class="tile-num">01</span>
+        <span class="tile-ico">🔍</span>
+        <span class="tile-name">TUB Search Engines</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s2')">
+        <span class="tile-num">02</span>
+        <span class="tile-ico">🏛️</span>
+        <span class="tile-name">TUB Organizations</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s3')">
+        <span class="tile-num">03</span>
+        <span class="tile-ico">🎧</span>
+        <span class="tile-name">TUB Audio Files</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s4')">
+        <span class="tile-num">04</span>
+        <span class="tile-ico">🎬</span>
+        <span class="tile-name">TUB Videos</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s5')">
+        <span class="tile-num">05</span>
+        <span class="tile-ico">🎨</span>
+        <span class="tile-name">TUB Paintings</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s6')">
+        <span class="tile-num">06</span>
+        <span class="tile-ico">📖</span>
+        <span class="tile-name">Bible</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s7')">
+        <span class="tile-num">07</span>
+        <span class="tile-ico">🗺️</span>
+        <span class="tile-name">Maps</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s8')">
+        <span class="tile-num">08</span>
+        <span class="tile-ico">✝️</span>
+        <span class="tile-name">Teachings of Jesus</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s9')">
+        <span class="tile-num">09</span>
+        <span class="tile-ico">📚</span>
+        <span class="tile-name">Dr. Sadler Workbooks</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s10')">
+        <span class="tile-num">10</span>
+        <span class="tile-ico">🌐</span>
+        <span class="tile-name">TUB Websites</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s11')">
+        <span class="tile-num">11</span>
+        <span class="tile-ico">📜</span>
+        <span class="tile-name">TUB Text</span>
+      </a>
+      <a class="cat-tile" href="#app" onclick="openSection('s12')">
+        <span class="tile-num">12</span>
+        <span class="tile-ico">📗</span>
+        <span class="tile-name">Books</span>
+      </a>
+    </div>
+
+    <div class="scroll-cue">
+      <span>SELECT A CATEGORY</span>
+      <div class="scroll-bar"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ APP ════════ -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <div class="sb-logo">
+      <div class="sb-logo-title">URANTIA BOOK<br>Educational Resources</div>
+      <div class="sb-logo-sub">TEP T3 Resource Hub</div>
+    </div>
+
+    <!-- nav items generated by JS -->
+    <div id="nav-list"></div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- Default welcome -->
+    <div id="welcome" class="welcome-panel active">
+      <div>
+        <h2>Welcome</h2>
+        <p>Please select a category from the left sidebar<br>or from the tiles above.</p>
+      </div>
+    </div>
+
+    <!-- s1: Search Engines -->
+    <div id="s1" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">01</span><span class="sec-ico">🔍</span>
+        <span class="sec-title">TUB Search Engines</span>
+      </div>
+      <div class="group-label">USGNY Tools</div>
+      <div class="link-list">
+        <a class="lnk" href="http://urantia.nyc/ubss/eng01-server.html?24768f&24768f" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Book Super Search (UBSS)</span><span class="lnk-desc">USGNY Discovery Tool – powerful full-text search</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://urantia.nyc/ubsmart/smarteng01.html?24768f&24768f" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">SMARTAid Search &amp; Compare App</span><span class="lnk-desc">Multi-lingual side-by-side search engine</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantia.nyc/ubsmart/doc/SmartAidTutorial.m4v" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">▶ SMARTAid Video Tutorial</span><span class="lnk-desc">How to use the Search &amp; Compare App</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Other Search Engines</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/urantia-book/search" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Foundation Search</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiabook.org/Research-Resources" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Fellowship Research Resources</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/search/urantia-book-search-engine" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">TruthBook Search Engine</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiaassociation.org/search/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">UAI – Urantia Association International</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Glossary</div>
+      <div class="link-list">
+        <a class="lnk" href="https://urantiabook.wildapricot.org/English-Glossary-for-TheUrantia-Book" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">English Glossary for The Urantia Book</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s2: Organizations -->
+    <div id="s2" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">02</span><span class="sec-ico">🏛️</span>
+        <span class="sec-title">TUB Organizations</span>
+      </div>
+      <div class="group-label">Major Organizations</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Foundation</span><span class="lnk-desc">Primary publisher of The Urantia Book</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://www.urantiabook.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Fellowship</span><span class="lnk-desc">Community &amp; outreach organization</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantia-association.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Association International (UAI)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">TruthBook</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Study &amp; Education</div>
+      <div class="link-list">
+        <a class="lnk" href="https://squarecircles.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Square Circles</span><span class="lnk-desc">Study aids by Saskia Raevouri &amp; Matthew Block</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://masteruniverse.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Master Universe – David Neufer</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiauniversity.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia University Institute (UUI)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://new.ubis.urantia.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Book Internet School (UBIS)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Outreach</div>
+      <div class="link-list">
+        <a class="lnk" href="https://askseekandknock.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Christ Experiment</span><span class="lnk-desc">Audio/Visual/Text – Part IV of TUB</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.thecenterforunity.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Center for Unity</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.DiscoverJesus.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">DiscoverJesus.com</span><span class="lnk-desc">Available in Spanish and French</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s3: Audio -->
+    <div id="s3" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">03</span><span class="sec-ico">🎧</span>
+        <span class="sec-title">TUB Audio Files</span>
+      </div>
+      <div class="group-label">The Urantia Book – Full Audio</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/urantia-book/listen-urantia-book" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Foundation – Listen Online</span><span class="lnk-desc">Official audio recordings</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiabook.org/urantia-book-table-of-contents" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Fellowship – Audio by Paper</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/urantia-book/audio-downloads" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">TruthBook – Audio Downloads</span><span class="lnk-desc">Downloadable MP3 audio files</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Podcast</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.UrantiaBookpod.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">UrantiaBookPod.com</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://www.UrantiaBookpod.com/es" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">UrantiaBookPod – Español</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Music</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.youtube.com/watch?v=GYMLMj-SibU" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Il Divo – Amazing Grace (Live)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=7n145-J8ejg" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Home Free – Amazing Grace</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s4: Videos -->
+    <div id="s4" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">04</span><span class="sec-ico">🎬</span>
+        <span class="sec-title">TUB Videos</span>
+      </div>
+      <div class="group-label">Introductions to TUB</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.youtube.com/watch?v=F0843OkB20g" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Introduction to TUB – Paula Thompson</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=s0ezEbwlqcY" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">General Overview Vol.1 – Andre Radatus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=aYLo8XQaOIA" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">General Overview Vol.2 – Andre Radatus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=eMlwhqrZKuU" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Overview of Part 1 – David Glass</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=5JKuhbzRzhw" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Overview of Part 2 Vol.1 – Andre Radatus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=PCESC8uW6qA" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Overview of Part 2 Vol.2</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=oOmAHewIiiU" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Overview of Part 3 – Elisabeth Callahan</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=ZqVdAc_FoMQ" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Overview of Part 4 – Paula Thompson</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Cosmology – Nigel Nunn</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.youtube.com/watch?v=jbutiy-vCKc" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Universe Frames</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=s8w8pK44JAM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Personal Universe</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=SB7GB_isujM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">A Family Affair</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=ZerrvI4dLTQ" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Cosmology 4A – Foundations</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=-ZurF1V81W8" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Cosmology 4B1 – Mass &amp; Matter</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=q8nAUKE0-OM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Cosmology 4C – Exploding Dark Islands</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=7zUIgZF0f_U" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Cosmology 4D – Ancient Orvonton</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Universe Art – Gary Tonge</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.visionafar.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">VisionAfar.com</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://m.youtube.com/watch?v=KzA6ua37ILk" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Architectural Spheres of Ascension (13:11)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://m.youtube.com/watch?v=d9eZEHKGEHQ" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">A Journey Through the Universe (5:03)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Melchizedek</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.youtube.com/watch?v=NxH7dRLpg08" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Melchizedek – A Hero on Earth/Urantia</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=hKPqNgCI5F4" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Who Was Melchizedek? – Prof. Peter Gentry</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=wZll-jNtC9U" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">History of Melchizedek – Chopin ALea (1)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=9XwzQ92NfsA" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">History of Melchizedek – Chopin ALea (2)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=0PosZp9moiM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Mystery of Melchizedek – Brian Scott</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Life of Jesus – The Christ Experiment</div>
+      <div class="link-list">
+        <a class="lnk" href="https://askseekandknock.org/video-productions/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Weekly Videos – Life &amp; Teachings of Jesus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://whatdoyousayofme.org/videos/a-journey-beyond/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">A Journey Beyond – Life After Death</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://whatdoyousayofme.org/videos/the-presence-within/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Presence Within</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://whatdoyousayofme.org/videos/machiventa-melchizedek/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Machiventa Melchizedek</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/Cn1vHyJn7Ts" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus: An Introduction</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=qv4tMe39vd4" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">My Journey with Jesus – The Missing Years (5:11)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=xv6-Dmf5nEE" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">My Journey with Jesus – Mary's Walk (6:52)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Other Notable Videos</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.youtube.com/watch?v=Z0746kZqC9o" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia, Nebadon &amp; the Master Universe – R. Jernigan</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=UeFUccAV5Nk" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">What is Revelation?</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=eDmwAV0CX3o" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Our Cosmic Neighborhood</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=KsVW2BuLLKs" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Hope in the Storm (5:03)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://www.urantia-book-films.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">"Re-Imagining Jesus" – David Kantor</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=w6qYjisp51M" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Civilization – Kenneth Clarke, Ep.1</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://discoveryofatlantis.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Quest for Atlantis – Robert Sarmast</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s5: Paintings -->
+    <div id="s5" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">05</span><span class="sec-ico">🎨</span>
+        <span class="sec-title">TUB Paintings</span>
+      </div>
+      <div class="group-label">Jesus – The Untold Story Collection</div>
+      <div class="link-list">
+        <a class="lnk" href="https://youtu.be/kV7qTDdHszE" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Introduction – Mo &amp; Jen Siegel Collection</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/PeOLg8YSdC4" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">All Paintings from "The Untold Story of Jesus"</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/w3MLMy1XEFc" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus &amp; Joseph Hiking Above Nazareth – Mike Malm</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/yyBSNjTnZwo" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The 13th Resurrection Appearance – Del Parson</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/906aR7GJl4Y" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Two Courtesans</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/mdYE_Vqvsfg" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Two Brothers from Emmaus – Mike Malm</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/fSuCiHTmzyM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Drawing on the School Room Floor</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/HbWO1Vf3los" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Living Water – Michael Dudash</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/9Fc4dKQlzR0" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Chinese Merchant – Slawa Radziszewska</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/35BRnwqkfS4" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Peter's Confession – Michael Dudash</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/MVjCFo-zg5I" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">My Hour Has Come – Russ Docken</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://youtu.be/OaGFiuNFHOk" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Come Unto Me – Harold Copping</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=XAyCAWdXsKM" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Divine Love – Gary Deinstadt</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.youtube.com/watch?v=kLFPr2sjP50" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Gift of Mastery – Gary Deinstadt</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">TruthBook Jesus Gallery</div>
+      <div class="link-list">
+        <a class="lnk" href="https://truthbook.com/jesus-pictures-more/untold-story" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus the Untold Story – Paintings</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus-pictures-more/jesus-pictures" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus Pictures Collection</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s6: Bible -->
+    <div id="s6" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">06</span><span class="sec-ico">📖</span>
+        <span class="sec-title">Bible Resources</span>
+      </div>
+      <div class="group-label">Bible Verses</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.biblestudytools.com/topical-verses/the-25-most-read-bible-verses/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">25 Most-Read Bible Verses</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.theknot.com/content/bible-verses-about-marriage" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Love &amp; Marriage – Bible Verses</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.biblestudytools.com/topical-verses/love-bible-verses/#2" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">God's Love – Bible Verses</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">TUB &amp; Bible Cross-Reference</div>
+      <div class="link-list">
+        <a class="lnk" href="http://www.urantiabook.org/urantiabook/paramony/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Paramony</span><span class="lnk-desc">Complete cross-reference index between TUB and the Bible</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Contemplative Prayer</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.contemplativeoutreach.org/contact/center-contemplative-living" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Contemplative Outreach</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s7: Maps -->
+    <div id="s7" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">07</span><span class="sec-ico">🗺️</span>
+        <span class="sec-title">Maps</span>
+      </div>
+      <div class="group-label">Maps of Jesus' Travels</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/in-his-steps" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">In His Steps – Maps of Jesus' Travels</span><span class="lnk-desc">Urantia Foundation</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/where-jesus-walked-maps-index" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Where Jesus Walked – Maps Index</span><span class="lnk-desc">TruthBook</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Study Charts &amp; Diagrams</div>
+      <div class="link-list">
+        <a class="lnk" href="https://squarecircles.com/wp-content/uploads/2018/08/1983evolutionchart.pdf" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Evolution Chart (1983) – Square Circles</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://squarecircles.com/wp-content/uploads/2019/06/TheFamilyTreeOfHumanity_large.jpg" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Family Tree of Humanity – Square Circles</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://squarecircles.com/study-aids" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">All Square Circles Study Aids</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s8: Teachings of Jesus -->
+    <div id="s8" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">08</span><span class="sec-ico">✝️</span>
+        <span class="sec-title">Teachings of Jesus</span>
+      </div>
+      <div class="group-label">Urantia Foundation</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/jesus/part-i-sayings-jesus" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Part I – The Sayings of Jesus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/jesus/part-ii-miracles" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Part II – The Miracles</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/jesus/part-iii-parables" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Part III – The Parables</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/jesus/part-iv-sermons-jesus" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Part IV – The Sermons of Jesus</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">TruthBook Jesus Studies</div>
+      <div class="link-list">
+        <a class="lnk" href="https://truthbook.com/jesus-studies" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus Study Aids</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/jesus-of-nazareth-a-character-study" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus of Nazareth – A Character Study</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/the-lost-years-of-jesus-life" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Lost Years of Jesus' Life</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/illustrated-great-jesus-stories" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Illustrated Great Jesus Stories</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/jesus-and-women" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus and Women</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/jesus-timeline" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus Timeline</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/jesus/jesus-in-the-synagogue" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus in the Synagogue</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/urantia-book/paper-186-just-before-the-crucifixion" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Just Before the Crucifixion (Paper 186)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Other Resources</div>
+      <div class="link-list">
+        <a class="lnk" href="http://www.urantiabook.org/index-urantia-book-jesus-studies.htm" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">New Biography of Jesus – Urantia Fellowship</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.DiscoverJesus.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">DiscoverJesus.com (Spanish &amp; French)</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.AskJesuschatbot.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">AskJesus Chatbot (Nearly all languages)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s9: Sadler Workbooks -->
+    <div id="s9" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">09</span><span class="sec-ico">📚</span>
+        <span class="sec-title">Dr. William Sadler Workbooks</span>
+      </div>
+      <div class="group-label">Workbooks Online</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/study/urantia-book-workbooks" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Book Workbooks – Urantia Foundation</span><span class="lnk-desc">Complete set of Sadler Workbooks online</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/urantiabook/study" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Dr. Sadler Workbooks – Study Page</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Sermons, Parables &amp; Sayings</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/jesus/part-i-sayings-jesus" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Sayings of Jesus – Dr. Sadler</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/jesus/part-iii-parables" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Parables – Dr. Sadler</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/jesus/part-iv-sermons-jesus" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Sermons of Jesus – Dr. Sadler</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Hara Davis Study Aids</div>
+      <div class="link-list">
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Soul Evolution: Delving Deeper into Divinity</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Urantia Ascenders' Handbook</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Divine Love: The Religion of Jesus</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Sincere Prayer &amp; True Worship</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s10: Websites -->
+    <div id="s10" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">10</span><span class="sec-ico">🌐</span>
+        <span class="sec-title">TUB Websites</span>
+      </div>
+      <div class="group-label">Main Portals</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">urantia.org – Urantia Foundation</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiabook.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">urantiabook.org – Urantia Fellowship</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">truthbook.com</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantia-association.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">urantia-association.org – UAI</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Outreach &amp; Education</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.UrantiaBookTutor.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">UrantiaBookTutor.com</span><span class="lnk-desc">Available in nearly all languages</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://www.UrantiaBookTrivia.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">UrantiaBookTrivia.com</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.DivineMotherProductions.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">DivineMotherProductions.com</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://www.urantiabook.org/outreach/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Available Outreach Materials – Fellowship</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Writings &amp; Essays</div>
+      <div class="link-list">
+        <a class="lnk" href="http://urantia-book-films.org/education/evolutionary-biology-and-the-kingdom-of-heaven.htm" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Race, Evolutionary Biology &amp; Kingdom of Heaven – David Kantor</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.urantia.org/study/seminar-presentations/our-educational-imperatives" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Our Educational Imperative – David Elders</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Science &amp; Institutions</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.si.edu" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Smithsonian Institution</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.mpg.de/11741001/research_page" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Max Planck Institute</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.nationalgeographic.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">National Geographic</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.bbc.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">BBC</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.templeton.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Templeton Foundation</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s11: TUB Text -->
+    <div id="s11" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">11</span><span class="sec-ico">📜</span>
+        <span class="sec-title">TUB Text – Read Online</span>
+      </div>
+      <a class="feat-lnk" href="https://friendly-zabaione-f4e4b5.netlify.app/" target="_blank">
+        ✦ &nbsp; Open The Urantia Book Reader &nbsp; ✦
+      </a>
+      <div class="group-label">Official Text Sources</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org/urantia-book/read-urantia-book-online" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Read Online – Urantia Foundation</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiabook.org/urantia-book-table-of-contents" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Table of Contents – Urantia Fellowship</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com/urantia-book" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">TruthBook – TUB Online</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- s12: Books -->
+    <div id="s12" class="panel">
+      <div class="sec-header">
+        <span class="sec-num">12</span><span class="sec-ico">📗</span>
+        <span class="sec-title">Books</span>
+      </div>
+      <div class="group-label">About Melchizedek</div>
+      <div class="link-list">
+        <a class="lnk" href="https://urantiabook.org/Daniel-Love-Glazer/7550348" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Melchizedek in Ancient Texts – Berosus Vendidad</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="http://blog.adw.org/2019/01/who-was-melchizedek/" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Who Was Melchizedek? – Msgr. Charles Pope</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://urantiabook.org/resources/Documents/outreach/pdfs/Melchizedek_Mormon.pdf" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Melchizedek – TUB &amp; Mormonism's Understanding</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://www.churchofjesuschrist.org/study/ensign/1998/02/none-were-greater-a-restoration-view-of-melchizedek?lang=eng" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">None Were Greater – Mormon (Restoration) Perspective</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://eom.byu.edu/index.php/Melchizedek" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Melchizedek – LDS Sources (Brigham Young University)</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+      <div class="group-label">Recommended Reading</div>
+      <div class="link-list">
+        <a class="lnk" href="https://www.urantia.org" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Jesus, the Untold Story – Urantia Foundation</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Courage to Teach – Parker Palmer</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Love Wins – Rob Bell</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">What is the Bible – Rob Bell</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">Caballo de Troya – JJ Benitez</span></div><span class="lnk-ext">↗</span>
+        </a>
+        <a class="lnk" href="https://truthbook.com" target="_blank">
+          <span class="lnk-dot"></span><div class="lnk-body"><span class="lnk-name">The Fallacy of Race – Ashley Montagu</span></div><span class="lnk-ext">↗</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div><!-- #app -->
+
+<button id="mob-toggle" onclick="toggleSidebar()" title="Menu">☰</button>
+
+<script>
+// ─── Data for sidebar nav ───
+const sections = [
+  { id:'s1',  num:'01', ico:'🔍', title:'TUB Search Engines',
+    subs:['USGNY Tools','Other Search Engines','Glossary'] },
+  { id:'s2',  num:'02', ico:'🏛️', title:'TUB Organizations',
+    subs:['Major Organizations','Study & Education','Outreach'] },
+  { id:'s3',  num:'03', ico:'🎧', title:'TUB Audio Files',
+    subs:['Full Audio','Podcast','Music'] },
+  { id:'s4',  num:'04', ico:'🎬', title:'TUB Videos',
+    subs:['Introductions','Cosmology – Nigel Nunn','Universe Art – Gary Tonge','Melchizedek','Life of Jesus','Other Videos'] },
+  { id:'s5',  num:'05', ico:'🎨', title:'TUB Paintings',
+    subs:['Untold Story Collection','TruthBook Gallery'] },
+  { id:'s6',  num:'06', ico:'📖', title:'Bible',
+    subs:['Bible Verses','TUB & Bible Cross-Ref','Contemplative Prayer'] },
+  { id:'s7',  num:'07', ico:'🗺️', title:'Maps',
+    subs:["Jesus' Travels",'Study Charts'] },
+  { id:'s8',  num:'08', ico:'✝️', title:'Teachings of Jesus',
+    subs:['Urantia Foundation','TruthBook Studies','Other Resources'] },
+  { id:'s9',  num:'09', ico:'📚', title:'Dr. Sadler Workbooks',
+    subs:['Workbooks Online','Sermons & Parables','Hara Davis Aids'] },
+  { id:'s10', num:'10', ico:'🌐', title:'TUB Websites',
+    subs:['Main Portals','Outreach & Education','Writings & Essays','Institutions'] },
+  { id:'s11', num:'11', ico:'📜', title:'TUB Text',
+    subs:['Custom Reader','Official Sources'] },
+  { id:'s12', num:'12', ico:'📗', title:'Books',
+    subs:['About Melchizedek','Recommended Reading'] },
+];
+
+// Build sidebar
+const navList = document.getElementById('nav-list');
+sections.forEach(sec => {
+  const wrap = document.createElement('div');
+  wrap.className = 'nav-sec';
+  wrap.id = 'nav-' + sec.id;
+
+  const btn = document.createElement('button');
+  btn.className = 'nav-sec-btn';
+  btn.innerHTML = `
+    <span class="ns-num">${sec.num}</span>
+    <span class="ns-ico">${sec.ico}</span>
+    <span class="ns-title">${sec.title}</span>
+    <span class="ns-arrow">›</span>`;
+  btn.onclick = () => openSection(sec.id);
+
+  const sub = document.createElement('div');
+  sub.className = 'nav-sub';
+  sub.id = 'sub-' + sec.id;
+  sec.subs.forEach(label => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.textContent = label;
+    a.onclick = e => { e.preventDefault(); openSection(sec.id); };
+    sub.appendChild(a);
+  });
+
+  wrap.appendChild(btn);
+  wrap.appendChild(sub);
+  navList.appendChild(wrap);
+});
+
+// ─── Switch section ───
+let current = null;
+function openSection(id) {
+  // Hide welcome
+  document.getElementById('welcome').style.display = 'none';
+
+  // Deactivate previous
+  if (current) {
+    document.getElementById(current).classList.remove('active');
+    const prevBtn = document.querySelector(`#nav-${current} .nav-sec-btn`);
+    const prevSub = document.getElementById('sub-' + current);
+    if (prevBtn) prevBtn.classList.remove('active');
+    if (prevSub) prevSub.classList.remove('open');
+  }
+
+  // Activate new
+  current = id;
+  document.getElementById(id).classList.add('active');
+  const btn = document.querySelector(`#nav-${id} .nav-sec-btn`);
+  const subEl = document.getElementById('sub-' + id);
+  if (btn) btn.classList.add('active');
+  if (subEl) subEl.classList.add('open');
+
+  // Scroll app into view & to top of main
+  document.getElementById('app').scrollIntoView({ behavior:'smooth' });
+  document.getElementById('main').scrollTo({ top:0, behavior:'smooth' });
+
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('mob-overlay');
+  sb.classList.toggle('open');
+  ov.style.display = sb.classList.contains('open') ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
