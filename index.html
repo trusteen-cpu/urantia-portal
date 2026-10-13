@@ -72,6 +72,27 @@ body{top:0!important;position:static!important}
 .card .hd .nb{margin-left:4px}
 @keyframes nbpop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
 .nb{animation:nbpop .28s ease-out}
+
+/* ── 월회비 & 기부금 이체 단추·안내창 (2026-10-14 추가) ─────────── */
+.searchbar .getbook.give{color:#f4fbf9;background:linear-gradient(180deg,#2f7d76,#1e5f66);
+  border-color:rgba(30,95,102,.6);cursor:pointer;font-family:inherit}
+.searchbar .getbook.give:hover{box-shadow:0 3px 8px rgba(30,95,102,.3)}
+.givebg{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;
+  padding:16px;background:rgba(10,16,30,.55)}
+.givebg.on{display:flex}
+.givebox{width:100%;max-width:380px;background:#fffdf8;border-radius:14px;padding:22px 22px 18px;
+  box-shadow:0 12px 40px rgba(0,0,0,.28);border-top:4px solid #b8925a;color:#2a2a2a;position:relative}
+.givebox h3{margin:0 0 4px;font-size:18px;color:#1f3a5f}
+.givebox .gsub{margin:0 0 14px;font-size:13px;color:#6a6a6a}
+.givebox dl{margin:0;display:grid;grid-template-columns:72px 1fr;row-gap:9px;font-size:15px}
+.givebox dt{color:#777}
+.givebox dd{margin:0;font-weight:700}
+.givebox .acct{font-size:17px;letter-spacing:.02em;color:#1e5f66}
+.givebox .gbtns{display:flex;gap:8px;margin-top:16px}
+.givebox .gbtns button{flex:1;padding:10px;border-radius:8px;font:700 14px/1 inherit;cursor:pointer;border:1px solid #1e5f66}
+.givebox .gcopy{background:#1e5f66;color:#fff}
+.givebox .gclose{background:#fff;color:#1e5f66}
+.givebox .gx{position:absolute;right:10px;top:8px;border:0;background:none;font-size:22px;line-height:1;color:#999;cursor:pointer}
 </style>
 <meta property="og:title" content="한국 유란시아서 독자회 — 진리를 함께 걷는 자리">
 <meta property="og:description" content="유란시아서 본문, 52주·100강 강의, 인터랙티브 학습, 매일의 아침·취침 묵상까지 — 한 곳에서 만나는 유란시아서 여정.">
@@ -111,6 +132,12 @@ body{top:0!important;position:static!important}
         <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 21h16"/>
       </svg><span>유란시아서 전문 내려받기</span>
     </a>
+    <button type="button" class="getbook give" id="giveBtn" aria-haspopup="dialog" aria-controls="giveBg">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/>
+      </svg><span>월회비 &amp; 기부금 이체</span>
+    </button>
     <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
   </div>
 </div>
@@ -130,6 +157,42 @@ body{top:0!important;position:static!important}
   <div id="fMail" style="margin-top:4px"></div>
 </footer>
 <a href="#" class="totop" id="totop" title="맨 위로">▲</a>
+
+<div class="givebg" id="giveBg" role="dialog" aria-modal="true" aria-labelledby="giveTitle">
+  <div class="givebox">
+    <button type="button" class="gx" id="giveX" aria-label="닫기">&times;</button>
+    <h3 id="giveTitle">월회비 &amp; 기부금 이체 안내</h3>
+    <p class="gsub">아래 계좌로 보내 주시면 감사하겠습니다.</p>
+    <dl class="notranslate" translate="no">
+      <dt>은행</dt><dd>중소기업은행</dd>
+      <dt>계좌번호</dt><dd class="acct" id="giveAcct">994-009221-01-010</dd>
+      <dt>예금주</dt><dd>이도순</dd>
+    </dl>
+    <div class="gbtns">
+      <button type="button" class="gcopy" id="giveCopy">계좌번호 복사</button>
+      <button type="button" class="gclose" id="giveClose">닫기</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var bg=document.getElementById('giveBg'), btn=document.getElementById('giveBtn'), cp=document.getElementById('giveCopy');
+  function open(){bg.className='givebg on';}
+  function close(){bg.className='givebg';cp.textContent='계좌번호 복사';}
+  btn.onclick=open;
+  document.getElementById('giveClose').onclick=close;
+  document.getElementById('giveX').onclick=close;
+  bg.onclick=function(e){if(e.target===bg)close();};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  cp.onclick=function(){
+    var t=document.getElementById('giveAcct').textContent;
+    function done(){cp.textContent='복사되었습니다';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,fallback);}else{fallback();}
+    function fallback(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();
+      try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(a);}
+  };
+})();
+</script>
 
 <script src="app.js"></script>
 <script>
