@@ -298,7 +298,7 @@ function renderList(){
 }
 
 function openDetail(id){
-  const item = DATA.find(d => d.id === id);
+  const item = DATA.find(d => String(d.id) === String(id));
   if(!item) return;
   setQuery({page: qs('page') || '1', q: id});
   document.getElementById('listView').hidden = true;
