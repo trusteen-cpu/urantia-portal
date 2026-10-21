@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제20강 유색인종의 진화와 진화의 총괄 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 64편·65편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 80개">
+<meta property="og:image" content="https://urantiareaders.com/learn/og-w20.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://urantiareaders.com/learn/w20.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유색인종의 진화와 진화의 총괄 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 20</p>
+    <h1>유색인종의 진화와 진화의 총괄</h1>
+    <p class="papers">유란시아서 64 · 65편</p>
+    <div class="lead">64편은 거의 백만 년 전 안돈족의 등장부터 폭스홀 족과 바도난 부족, 네안데르탈 인종을 거쳐, 50만 년 전 인도 북서부 고지대의 산긱 가족에서 여섯 유색 인종이 태어나 빙하와 해안선을 따라 세계로 흩어지기까지의 역사를 기술한다. 홍인, 황인, 청인은 북쪽 온대로, 오렌지색, 녹색, 남색 인종은 아프리카로 향했고, 각 인종은 퇴보와 부흥을 거치며 위대한 영, 하나의 진리, 최고 우두머리, 신들의 신이라는 이름으로 하나의 최고 존재를 예배했다. 65편은 이 역사의 배후를 설명한다. 생명은 물리적 통제자, 보조 영, 생명 운반자의 통합된 기능으로 진화하므로 진화는 언제나 목적을 지니며, 생명 운반자의 육성이 끝난 뒤 진화의 운명은 인간의 손에 넘어간다. 64편이 무엇이 일어났는지를 연대기로 기록한다면, 65편은 왜 그렇게 일어났는지를 원리로 설명하며, 두 편은 모두 유란시아에 상주하는 한 생명 운반자의 증언이다. 이 페이지는 두 편을 일곱 마디로 정리하고, 마디마다 더 알아보기, 소그룹 질문과 모범답안, 본문 인용을 덧붙였다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 안돈족 원주민과 빙하기의 시험</a></li><li><a href="#s2">2. 바도난 부족과 네안데르탈 인종</a></li><li><a href="#s3">3. 산긱 가족과 여섯 유색 인종의 출현</a></li><li><a href="#s4">4. 여섯 인종의 특성과 지도자들</a></li><li><a href="#s5">5. 유색 인종의 분산과 정착</a></li><li><a href="#s6">6. 생명 운반자와 진화의 상위통제</a></li><li><a href="#s7">7. 생명 실험 세계와 마음·시간의 진화</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>안돈족 원주민과 빙하기의 시험</h2><p class="sub">막힌 길 앞에서 북쪽을 택한 최초의 인류 (64편 서문·1장·2장)</p></div></div>
+  <p class="summary">64편은 거의 백만 년 전 안돈과 폰타의 시대부터 빙하기 끝까지 유란시아 진화 인종들의 역사를 기술한다. 안돈족은 동쪽의 티베트 고지대, 남쪽과 서쪽의 지중해, 북쪽의 빙하에 둘러싸였지만 남쪽의 열등한 친족에게 돌아가지 않았다. 95만 년 전 그 후손은 영국에서 자바까지 퍼졌으나, 동쪽 집단이 열등한 사촌들과 섞이며 여명기 문명은 소멸의 위기에 놓였다. 90만 년 전 문화가 최저점에 이르렀을 때, 영국의 폭스홀 족이 안돈 전통의 일부를 지켜 냈다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 11개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 마디에서 눈여겨볼 첫째 주제는 환경과 진보의 관계다. 본문은 인간이 언제나 숲에서 퇴보해 왔고 트인 땅과 높은 위도에서만 진보했다고 말한다. 개방된 땅의 추위와 굶주림이 활동과 발명, 기지를 자극했다는 설명이다. 이는 안락한 환경이 오히려 발달을 늦춘다는 관점으로, 65편이 빙하기의 혹독함을 강인한 인간 유형을 낳기 위한 계획된 조건으로 해석하는 대목과 그대로 이어진다. 둘째 주제는 종교 감정의 기원이다. 산과 물과 얼음 사이에서 느낀 무력감이 가장 초기 종교 감정의 많은 부분을 낳았다는 진술은, 종교를 처음부터 고상한 통찰로 보지 않고 인간의 한계 체험에서 출발한 것으로 본다. 셋째는 연대와 지리의 정밀함이다. 본문은 이 사건들이 셋째 빙하 시대, 곧 지질학자들의 계산으로는 첫째 빙하 동안에 일어났다고 번호를 직접 조정해 주며, 영국이 프랑스와 육지로 이어져 있었고 영국에서 자바까지 연속된 육로가 있었다고 기술한다. 넷째는 문화의 보존이다. 하이델베르크 인종이 퍼지던 장기 쇠퇴기에 폭스홀 족은 부싯돌 세공 기술을 지켜 후대에 전했고, 그 후손이 에스키모의 조상이 되었다. 문화는 다수가 아니라 소수의 보존자를 통해 이어진다는 점을 보여 주는 사례다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>본문은 왜 인간이 숲이 아니라 트인 땅과 높은 위도에서 진보했다고 말합니까?</span></button><div class="answer">숲은 먹을 것과 은신처가 쉬워 새로운 시도를 요구하지 않았지만, 개방된 땅의 추위와 굶주림은 끊임없이 활동과 발명, 기지를 요구했기 때문입니다. 안돈족이 북방의 고난 속에서 인류의 선구자들을 길러 내는 동안, 남쪽 열대 우림의 사촌들은 안락하게 지내며 진보하지 않았습니다. 어려움이 발달의 조건이 된다는 관점으로 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>가장 초기의 종교 감정이 무력감에서 비롯되었다는 설명을 어떻게 이해할 수 있습니까?</span></button><div class="answer">오른쪽의 산, 왼쪽의 물, 앞의 얼음에 둘러싸인 상황에서 인간은 자신을 넘어서는 힘을 체험했습니다. 종교가 처음부터 정교한 신관에서 시작된 것이 아니라 인간의 한계를 자각하는 데서 싹텄다는 뜻입니다. 이후 네안데르탈인의 두려움의 종교를 거쳐 지도자들의 가르침으로 정화되는 흐름의 출발점이기도 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>폭스홀 족의 이야기는 문화가 이어지는 방식에 대해 무엇을 알려 줍니까?</span></button><div class="answer">90만 년 전 기예와 종교, 부싯돌 기술까지 최저 수준으로 떨어졌을 때, 가장 서쪽의 폭스홀 족은 안돈 문화를 비교적 많이 보존했습니다. 그들은 부싯돌 세공 기술을 후대에 전했고 그 후손은 에스키모의 조상이 되었습니다. 쇠퇴기에도 작은 집단이 전통을 지키면 문화의 맥이 끊기지 않는다는 점을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">64:0.1</div><div class="qtext">이것은 거의 백만 년 전 안돈과 폰타의 시대로부터 행성 영주의 시대를 거쳐 빙하기의 끝에 이르기까지, 유란시아의 진화 인종들에 관한 이야기이다.</div></div><div class="quote"><div class="ref">64:1.2</div><div class="qtext">인간의 가장 초기 종교 감정 가운데 많은 부분은 이러한 지리적 상황 속에서 느낀 무력감에서 비롯되었다. 오른쪽에는 산, 왼쪽에는 물, 앞에는 얼음이 있었다.</div></div><div class="quote"><div class="ref">64:1.3</div><div class="qtext">인간은 언제나 숲에서 퇴보해왔으며, 인간 진화는 오직 트인 땅과 높은 위도에서만 진보해 왔다.</div></div><div class="quote"><div class="ref">64:1.3</div><div class="qtext">개방된 땅의 추위와 굶주림은 활동과 발명, 그리고 기지를 자극했다.</div></div><div class="quote"><div class="ref">64:1.4</div><div class="qtext">이러한 사건들은 셋째 빙하 시대, 곧 지질학자들의 계산으로는 첫째 빙하 동안에 일어났다.</div></div><div class="quote"><div class="ref">64:1.6</div><div class="qtext">95만 년 전, 안돈과 폰타의 후손들은 동쪽과 서쪽으로 광범위하게 이동했다.</div></div><div class="quote"><div class="ref">64:1.7</div><div class="qtext">숨을 주시는 분을 예배하는 원시 정착지들은 점점 줄어들었고, 이 여명기의 문명은 소멸의 위기에 놓였다.</div></div><div class="quote"><div class="ref">64:2.1</div><div class="qtext">90만 년 전, 안돈과 폰타의 기예와 오나가르의 문화가 지구 지면에서 사라져 가고 있었으며, 문화, 종교, 심지어 부싯돌 제작 기술까지도 가장 낮은 수준에 이르렀다.</div></div><div class="quote"><div class="ref">64:2.3</div><div class="qtext">이 부족들은 이른바 하이델베르크 인종으로 알려지게 되었다.</div></div><div class="quote"><div class="ref">64:2.5</div><div class="qtext">폭스홀 족은 가장 서쪽에 자리하며 안돈 문화를 비교적 많이 보존하는 데 성공했다. 그들은 부싯돌 세공 기술에 대한 지식을 후대에 전수했으며, 그 후손들이 바로 고대 에스키모인의 조상이 되었다.</div></div><div class="quote"><div class="ref">64:2.6</div><div class="qtext">폭스홀 족의 유적은 영국에서 가장 늦게 발견되었으나, 실제로 이 안돈족은 그 지역의 최초 인간 거주자들이었다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>바도난 부족과 네안데르탈 인종</h2><p class="sub">고지대의 보루와 50만 년의 지배 (64편 3장·4장)</p></div></div>
+  <p class="summary">동쪽 인도 북서부 고지대의 바도난 부족은 인간 제물을 절대로 바치지 않은 유일한 안돈 후손이었다. 85만 년 전 이들이 동물형 이웃들과 멸절 전쟁을 벌인 뒤, 향상된 혈통의 혼합 후손이 네안데르탈 인종으로 나타났다. 네안데르탈인은 뛰어난 전사이자 사냥꾼으로 프랑스, 중국, 북아프리카까지 퍼져 거의 50만 년 동안 세상을 지배했다. 그러나 문화는 낮았고, 구름과 어둠을 두려워하는 미신 속에서 인간 제물의 관습이 생겨났다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 11개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>바도난 부족에 관한 서술은 두 가지 점에서 흥미롭다. 첫째, 이들은 북쪽 부족들이 빙하를 두려워한 것과 달리 물을 두려워했다. 메소포타미아 반도가 바다에 잠기고 다시 드러나는 과정을 지켜본 체험이 바다의 위험과 주기적 침몰에 대한 전승을 낳았고, 이것이 고지대를 거주지로 고른 이유라고 본문은 설명한다. 후대 여러 민족에게 남은 홍수 전승의 뿌리를 구체적인 지리 체험에서 찾는 시각이다. 둘째, 네안데르탈 인종의 기원에 관한 설명은 현대 고인류학과 다르다. 본문은 85만 년 전 우수한 바도난 부족이 열등한 이웃 집단을 거의 파괴하거나 남쪽 숲으로 몰아낸 뒤, 그 향상된 혈통의 혼합 후손이 마치 새로운 인종처럼 나타났다고 말한다. 네안데르탈인의 생활은 사냥감이 풍부했던 환경과 맞물려 있었다. 순록은 식량과 의복, 도구의 재료가 되었고, 부싯돌 세공은 안돈 시대 수준에 가까워졌으며, 얼음에 구멍을 뚫어 물고기를 잡는 방법도 고안했다. 그러나 종교 면에서 본문의 평가는 엄격하다. 네안데르탈인은 수치스러운 미신 외에 종교가 없었고, 자연의 보이지 않는 힘을 달래려다 인간 제물에까지 이르렀다. 생명 운반자는 거의 25만 년 동안의 이 정체를 두고, 새로운 유형의 지적 생명을 탄생시키려는 시도가 거의 실패한 듯 보였다고 적는다. 진화가 직선적인 진보가 아니라 긴 정체와 후퇴를 포함한다는 점을 보여 주는 대목이다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>바도난 부족이 고지대를 거주지로 고른 이유는 무엇이며, 그것은 어떤 전승과 연결됩니까?</span></button><div class="answer">그들은 메소포타미아 반도가 점차 바다에 잠기는 과정을 지켜보며 물에 대한 깊은 두려움을 갖게 되었습니다. 바다의 위험과 주기적 침몰에 대한 공포가 그들의 전승을 이루었고, 이 공포와 홍수 체험이 고지대를 안전한 거주지로 선택하게 했습니다. 여러 민족의 홍수 이야기가 이런 실제 체험에서 비롯되었을 가능성을 생각해 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>네안데르탈 인종은 어떤 점에서 성공했고, 어떤 점에서 정체했습니까?</span></button><div class="answer">그들은 뛰어난 전사이자 사냥꾼으로 넓은 지역에 퍼져 거의 50만 년 동안 세상을 지배했고, 순록을 다양하게 활용하며 부싯돌 기술을 안돈 시대 수준 가까이 끌어올렸습니다. 그러나 문화와 종교는 낮은 수준에 머물렀고, 전체적으로는 초기 안돈 혈통과 비교할 때 꾸준히 퇴보했습니다. 물질적 성공과 문화적 정체가 함께 있었던 시대로 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>두려움의 종교가 인간 제물로 이어진 과정을 본문은 어떻게 설명합니까?</span></button><div class="answer">네안데르탈인은 구름과 안개, 특히 어둠을 두려워했습니다. 달이 지는 어두운 밤에 공포에 빠져 가장 뛰어난 남녀를 제물로 바쳤고, 달이 다시 돌아온 것을 그 제물 덕분이라고 추측했습니다. 보이지 않는 자연의 힘을 달래려는 시도가 이렇게 끔찍한 관습으로 발전했으며, 본문은 이 풍습이 20세기까지 일부 민족에게 이어졌다고 말합니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">64:3.1</div><div class="qtext">이들은 인간 제물을 절대로 바치지 않은 유일한 안돈의 후손들이었다.</div></div><div class="quote"><div class="ref">64:3.3</div><div class="qtext">이러한 공포와 홍수 체험은 이들이 왜 고지대를 안전한 거주지로 선택했는지를 설명해 준다.</div></div><div class="quote"><div class="ref">64:3.4</div><div class="qtext">바도난 사람들의 동쪽, 오늘날 인도 북부의 시왈릭 구릉 지대에서는 인간과 여러 전(前)인간 집단 사이의 전환형에 지구상 어느 것보다 더 가까운 화석들이 발견된다.</div></div><div class="quote"><div class="ref">64:3.5</div><div class="qtext">이 향상된 바도난 혈통의 혼합 후손들이 마치 새로운 인종처럼 나타났으니, 그들이 바로 네안데르탈 인종이었다.</div></div><div class="quote"><div class="ref">64:4.1</div><div class="qtext">네안데르탈인은 뛰어난 전사들이었고, 광범위하게 이동하였다.</div></div><div class="quote"><div class="ref">64:4.1</div><div class="qtext">이들은 진화 유색 인종들이 이주할 때까지 거의 오십만 년 동안 세상을 지배했다.</div></div><div class="quote"><div class="ref">64:4.3</div><div class="qtext">순록은 네안데르탈인에게 매우 유익한 동물이었다. 식량, 의복, 도구 제작에 모두 사용되었다.</div></div><div class="quote"><div class="ref">64:4.5</div><div class="qtext">그러나 이때 인류는 이미 충분히 분화되어 있었기에, 더 이상 진보하지 않는 유인원 친척들과 섞일 위험은 거의 사라졌다.</div></div><div class="quote"><div class="ref">64:4.11</div><div class="qtext">그러나 진보가 거의 없어, 유란시아에서 새롭고 변형된 유형의 지적 생명을 탄생시키려는 시도가 거의 실패한 듯 보였다.</div></div><div class="quote"><div class="ref">64:4.12</div><div class="qtext">네안데르탈인은 수치스러운 미신 외에 어떠한 종교도 갖고 있지 않았다.</div></div><div class="quote"><div class="ref">64:4.13</div><div class="qtext">초기 네안데르탈인은 태양 예배자라고 보기 어렵다. 이들은 오히려 어둠을 두려워하며 살아갔다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>산긱 가족과 여섯 유색 인종의 출현</h2><p class="sub">50만 년 전, 한 부부에게서 나온 열아홉 자녀 (64편 5장·6장 서두, 65편 4장)</p></div></div>
+  <p class="summary">50만 년 전 바도난 부족 사이의 인종 전쟁이 백 년 넘게 이어진 끝에 약 백 가구만 남았다. 그 생존자 가운데 고지대 북동쪽의 한 남자와 여자가 유달리 지능이 뛰어난 자녀들을 낳기 시작했으니, 이들이 산긱 가족이다. 열아홉 자녀는 햇빛을 받으면 피부가 적색 다섯, 오렌지색 둘, 황색 넷, 녹색 둘, 청색 넷, 남색 둘로 서로 다른 색을 띠었다. 보통 여섯 인종은 한 번에 하나씩 차례로 나타나므로, 한 가족에서 동시에 나온 것은 매우 이례적인 일이었다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 11개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>산긱 가족의 출현을 본문은 새롭고 이상한 일이라고 부를 뿐, 그 기제를 64편 안에서 설명하지 않는다. 설명은 65편에서 온다. 65편 4장은 유란시아 생명 실험의 독특한 사건 두 가지로 여섯 유색 인종에 앞서 안돈족이 나타난 일과 여섯 산긱 인종이 한 가문에서 동시에 기원한 일을 꼽는다. 평균적인 세계에서 유색 인종들은 인류 이전의 동물 계통 안에서 독립적인 돌연변이로 각각 생겨나, 홍인에서 시작해 남색에 이르기까지 오랜 시간에 걸쳐 차례로 나타난다. 유란시아가 여섯 유색 인종이 같은 인간 가족에서 나온 사타니아의 첫 세계라는 진술은, 64편의 역사 서술과 65편의 원리 설명이 같은 사건을 서로 다른 층위에서 다루고 있음을 보여 준다. 두 편의 발표자가 같은 생명 운반자라는 점도 이 정합성을 뒷받침한다. 시기도 주목할 만하다. 64편은 바로 이 무렵 행성 영주가 도착했다고 언급하고, 65편은 보통이라면 영주가 안돈과 폰타의 생애 중에 왔을 것인데 거의 50만 년 늦게 산긱 인종의 출현과 함께 도착했다고 설명한다. 그 사이 열두 명의 멜기세덱 참관자가 행성 감독을 맡았다. 또 하나의 관찰은 자녀 수의 분포다. 이후 1차 산긱으로 분류되는 홍인, 황인, 청인이 다섯, 넷, 넷이고, 2차 산긱인 오렌지색, 녹색, 남색 인종이 각각 둘이라는 점은 본문이 직접 해석하지는 않지만 비교해 볼 만한 자료다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>산긱 가족의 출현이 평균적인 진화 세계와 어떻게 다른지 설명해 보십시오.</span></button><div class="answer">평균적인 세계에서는 여섯 유색 인종이 동물 계통 안의 독립적인 돌연변이로 각각 생겨나 홍인부터 남색까지 한 번에 하나씩 오랜 시간에 걸쳐 나타납니다. 유란시아에서는 여섯 인종의 조상이 한 부부의 자녀로 동시에 태어났습니다. 본문은 유란시아가 이런 일이 일어난 사타니아의 첫 세계라고 기록합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>64편과 65편이 같은 사건을 서로 다른 층위에서 다룬다는 것은 무슨 뜻입니까?</span></button><div class="answer">64편은 무엇이 일어났는지를 연대기로 기술하고 그 사건을 새롭고 이상한 일이라고만 부릅니다. 65편은 같은 사건을 생명 실험 세계로서 유란시아가 지닌 특이점으로 설명합니다. 사건의 기록과 그 배후의 설계가 한 관찰자인 생명 운반자에게서 나왔기 때문에, 두 편을 함께 읽으면 역사와 원리가 맞물리는 것을 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>행성 영주가 늦게 도착한 것은 어떤 의미가 있습니까?</span></button><div class="answer">보통 행성 영주는 인간 의지가 막 발현될 무렵, 곧 안돈과 폰타의 시대에 옵니다. 유란시아는 생명 수정 행성으로 지정되어 있었기 때문에, 영주가 오기 전까지 열두 명의 멜기세덱 참관자가 조언자이자 감독관으로 일했습니다. 칼리가스티아는 거의 50만 년 뒤 여섯 산긱 인종의 출현과 함께 도착했습니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">64:5.1</div><div class="qtext">50만 년 전, 인도 북서부 고지대의 바도난 부족들 사이에 또 하나의 대규모 인종 전쟁이 일어났다.</div></div><div class="quote"><div class="ref">64:5.1</div><div class="qtext">그러나 이 생존자들은 당시 존재했던 안돈과 폰타의 후손들 가운데 가장 지능적이고 바람직한 사람들이었다.</div></div><div class="quote"><div class="ref">64:5.2</div><div class="qtext">이제 이 고지대 바도난 족 사이에서 새롭고 이상한 일이 일어났다.</div></div><div class="quote"><div class="ref">64:5.2</div><div class="qtext">이들이 바로 유란시아의 여섯 유색 인종의 조상이 된 산긱 가족이었다.</div></div><div class="quote"><div class="ref">64:5.3</div><div class="qtext">이 열아홉 명의 자녀 중 다섯 명은 적색, 두 명은 오렌지색, 네 명은 황색, 두 명은 녹색, 네 명은 청색, 두 명은 남색이었다.</div></div><div class="quote"><div class="ref">64:6.1</div><div class="qtext">여섯 인종이 동시에 출현하고, 또 한 가족에서 모두 태어난 것은 매우 이례적인 일이었다.</div></div><div class="quote"><div class="ref">64:6.2</div><div class="qtext">지역 체계 내의 어떤 다른 세계에서도 진화 유색 인종에 앞서 그런 의지 창조체 인종이 진화한 적은 없었다.</div></div><div class="quote"><div class="ref">65:4.7</div><div class="qtext">유란시아는 여섯 유색 인종이 같은 인간 가족에서 나온, 사타니아의 첫 세계이다.</div></div><div class="quote"><div class="ref">65:4.8</div><div class="qtext">또 하나의 두드러진 차이는 행성 영주의 늦은 도착이었다.</div></div><div class="quote"><div class="ref">65:4.9</div><div class="qtext">이들은 안돈과 폰타가 생각 조절자가 내주할 수 있는 결정을 내렸을 때 도착하였다.</div></div><div class="quote"><div class="ref">65:4.11</div><div class="qtext">유란시아는 유색 이전 인종에서 인간 유형의 의지가 나타난 사타니아의 유일한 행성이다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>여섯 인종의 특성과 지도자들</h2><p class="sub">1차·2차 산긱 인종, 그리고 어두운 시대의 교사들 (64편 6장)</p></div></div>
+  <p class="summary">홍인은 최초의 부족 문명과 정부를 세운 지능적인 인종이었고, 황인은 처음으로 사냥을 버리고 농업에 정착하며 형제애로 비교적 평화롭게 살았다. 청인은 창을 발명하고 현대 기예의 기초 원리를 발전시킨 위대한 민족이었다. 오렌지색 인종은 무엇이든 짓는 충동을 지녔고, 녹색 인종은 분산되며 약화되었으며, 남색 인종은 가장 늦게 고향을 떠나 아프리카를 차지했다. 오나모날론톤, 싱랑톤, 올란도프, 오르보논 같은 지도자들은 각 인종의 예배를 되살렸다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>64편 6장은 여섯 인종을 하나씩 기술하면서 두 가지를 함께 기록한다. 하나는 각 인종의 생물학적·문화적 특성이고, 다른 하나는 그 인종 전체를 고무한 지도자다. 홍인에게는 약 6만 5천 년 전 오나모날론톤이 나타나 위대한 영에 대한 예배를 부활시켰고, 오렌지색 인종에게는 약 30만 년 전 포르슌타가, 녹색 인종에게는 약 35만 년 전 판타드가 있었다. 황인에게는 약 10만 년 전 싱랑톤이 하나의 진리에 대한 예배를 선포했고, 청인에게는 칼리가스티아 몰락 약 500년 뒤 올란도프가 최고 우두머리라는 이름으로 참 하나님 예배를 회복했다. 남색 인종은 오르보논이 선포한 신들의 신 아래 큰 영적 각성을 체험했다. 이름은 다르지만 모두 하나의 최고 존재를 향한다는 점이 공통적이다. 6장은 또 여섯 인종을 진화시키는 계획의 이유를 다섯 가지로 든다. 다양성은 자연 선택에, 우수 혈통의 융합은 더 강건한 인종에, 다양성은 건강한 경쟁에, 지위 차이는 관용과 이타심에 기여하며, 동질성은 높은 영적 수준 이전에는 바람직하지 않다는 것이다. 여기서 본문은 오늘날의 조건에서 인종 혼합 실험을 시도하는 것은 매우 파멸적일 것이라고 단서를 단다. 이 장을 읽을 때 놓치지 말아야 할 문장은 남색 민족에 관한 진술이다. 본문은 그들의 후진성을 기술하면서도, 천상의 권능들 앞에서 그들이 다른 어떤 지상 인종과도 정확히 같은 지위를 가진다고 분명히 말한다. 생물학적 평가와 영적 지위를 엄격히 구분하는 것이 이 장의 기본 관점이다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>1차 산긱 인종인 홍인, 황인, 청인의 특성을 비교해 보십시오.</span></button><div class="answer">홍인은 여러 면에서 안돈과 폰타보다 우수했고 최초의 부족 문명과 정부를 세웠지만, 내부 투쟁으로 약해져 북아메리카로 밀려났습니다. 황인은 지적으로는 홍인보다 다소 열등했으나 사회 조직과 협력이 뛰어나 가장 많은 수로 생존했습니다. 청인은 홍인의 두뇌력과 황인의 혼과 정서를 겸비한 인종으로, 아담의 후손이 가장 선호했으며 후대 백인의 조상이 되었습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>인종별 지도자들의 가르침에서 공통점을 찾는다면 무엇입니까?</span></button><div class="answer">오나모날론톤의 위대한 영, 싱랑톤의 하나의 진리, 올란도프의 최고 우두머리, 오르보논의 신들의 신은 표현은 달라도 모두 하나의 최고 존재에 대한 예배를 가리킵니다. 각 인종이 퇴보와 혼란 속에 있을 때 이 지도자들이 예배를 회복시켰고, 본문은 작은 교사들도 많이 일어나 문명의 완전한 붕괴를 막았다고 평가합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>남색 민족이 천상의 권능들 앞에서 정확히 같은 지위를 가진다는 진술은 이 장을 읽는 데 어떤 역할을 합니까?</span></button><div class="answer">이 장은 인종들의 진보 정도를 비교하는 표현이 많기 때문에 자칫 우열의 서열로 읽힐 수 있습니다. 이 진술은 생물학적·문화적 발달 단계에 대한 평가와 하나님 앞에서의 영적 지위를 분명히 구분합니다. 진화적 차이가 존엄의 차이가 아니라는 기준을 본문 스스로 제시하는 것으로 읽을 수 있습니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">64:6.3</div><div class="qtext">매우 지능적인 집단으로, 산긱 자손들 가운데 최초로 부족 문명과 정부를 발전시켰다.</div></div><div class="quote"><div class="ref">64:6.7</div><div class="qtext">이 중대한 퇴보로 인해 홍인은 멸망할 운명처럼 보였는데, 약 육만 오천 년 전 오나모날론톤이 그들의 지도자이자 영적 구원자로 등장하여 아메리카 홍인 사이에 일시적인 평화를 가져왔고, “위대한 영”에 대한 예배를 부활시켰다.</div></div><div class="quote"><div class="ref">64:6.10</div><div class="qtext">이 인종의 두드러진 특성은 무엇이든 짓고자 하는 독특한 충동이었는데, 어느 부족이 가장 큰 둔덕을 쌓는지 보기 위해 거대한 돌무더기를 쌓기까지 했다.</div></div><div class="quote"><div class="ref">64:6.14</div><div class="qtext">이들은 사냥을 포기하고 정착하며 농업에 기반한 가정생활을 발전시킨 최초의 인종이었다.</div></div><div class="quote"><div class="ref">64:6.15</div><div class="qtext">그러나 약 십만 년 전, 싱랑톤이 이 부족들의 지도력을 맡아 “하나의 진리”에 대한 예배를 선포했을 때 이 민족에게 한 찬란한 시대가 도래하였다.</div></div><div class="quote"><div class="ref">64:6.21</div><div class="qtext">이 인종은 위대한 민족이었다. 이들은 일찍이 창을 발명했고, 이후 현대 문명의 많은 기예들의 기초 원리를 발전시켰다.</div></div><div class="quote"><div class="ref">64:6.21</div><div class="qtext">홍인의 두뇌력에 황인의 혼과 정서를 겸비한 인종이었으며, 아담의 후손들은 후대에 존속한 모든 유색 인종 가운데 이들을 가장 선호하였다.</div></div><div class="quote"><div class="ref">64:6.23</div><div class="qtext">올란도프는 청인 사이에서 위대한 교사가 되어, 많은 부족을 “최고 우두머리”라는 이름 아래 참 하나님에 대한 예배로 되돌렸다.</div></div><div class="quote"><div class="ref">64:6.27</div><div class="qtext">그들의 후진성에도 불구하고, 이 남색 민족들은 천상의 권능들 앞에서 다른 어떤 지상 인종과도 정확히 같은 지위를 가진다.</div></div><div class="quote"><div class="ref">64:6.29</div><div class="qtext">시간이 흐르면서 여러 지역에서 더 작은 교사들이 많이 일어났고, 그들을 다 합하면 문화 문명의 완전한 붕괴를 막은 구원의 영향에 크게 이바지했으니, 특히 칼리가스티아 반란과 아담의 도착 사이의 길고 어두운 시대에 그러했다.</div></div><div class="quote"><div class="ref">64:6.31</div><div class="qtext">1. 다양성은 자연 선택이 폭넓게 작용할 기회, 곧 우수한 혈통이 살아남는 차별적 생존에 없어서는 안 된다.</div></div><div class="quote"><div class="ref">64:6.32</div><div class="qtext">오늘날의 인종 조건에서 그러한 실험을 시도하는 것은 매우 파멸적일 것이다.</div></div><div class="quote"><div class="ref">64:6.35</div><div class="qtext">5. 인류의 동질성은 진화하는 세계의 민족들이 비교적 높은 영적 수준에 도달하기 전까지는 바람직하지 않다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>유색 인종의 분산과 정착</h2><p class="sub">빙하와 해안선을 따라 흩어진 산긱 민족 (64편 7장)</p></div></div>
+  <p class="summary">다섯째 빙하가 동아시아 이주를 막고 지중해가 물러난 뒤에야 아프리카 진입이 가능했기에, 산긱 민족은 거의 10만 년 동안 산기슭 일대에서 섞여 살았다. 이후 홍인은 북동아시아로 갔다가 황인에게 밀려 북아메리카로 건너갔고, 청인은 안돈의 옛길을 따라 유럽에 들어가 네안데르탈인을 흡수했다. 2차 산긱인 오렌지색, 녹색, 남색 인종은 아프리카로 들어가 이집트에서 차례로 지배와 소멸을 겪었다. 이주가 끝났을 때 오렌지색과 녹색 인종은 사라지고 없었다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 11개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>7장은 인종의 이동을 지질 조건과 촘촘하게 연결한다. 다섯째 빙하가 아시아에 넓게 퍼져 수천 년 동안 동쪽 이주를 막았고, 아라비아의 융기로 지중해가 후퇴한 뒤에야 아프리카로 가는 길이 열렸다. 이 사이 인도는 그 어느 때보다 여러 민족이 모여 사는 곳이 되었지만, 본문은 그 혼합 속에 녹색, 오렌지색, 남색 인종의 비율이 너무 높았던 것을 불행한 일로 기록한다. 1차 산긱 민족은 열대를 피해 북쪽 온대로 향했고, 2차 산긱 민족은 남쪽의 쉬운 삶에 끌렸다. 홍인의 이동은 특히 자세하다. 비교적 순수한 홍인이 아시아를 떠날 때 열한 부족, 칠천 명이 조금 넘었고, 함께 간 혼혈 세 소집단은 남쪽으로 내려가 멕시코, 중앙아메리카, 남아메리카 문명의 기초가 되었다. 홍인과 황인이 아시아에서 섞여 생긴 후손은 반도와 섬으로 밀려 갈색 인종이 되었다. 청인은 유럽에서 네안데르탈인과 섞이며 그들을 향상시켰다. 이집트의 역사는 오렌지색, 녹색, 남색 인종의 지배를 차례로 거친 뒤 혼혈 인종을 거쳐, 아담 도착 훨씬 이전에 청인과 아라비아 혼합 인종이 남색 인종을 아프리카 심부로 몰아냈다고 정리된다. 또한 안돈족의 서쪽 끝 집단은 빙하에 밀려 최초의 해양 모험가가 되었고, 그 후손 에스키모는 그린란드를 거쳐 북미에 들어왔다. 본문은 현대 민족의 산긱 혈통을 규명할 때 이후에 더해진 아담 혈통의 혼입을 반드시 고려해야 한다고 경고한다. 장의 끝에서 생명 운반자는 초기 조상들의 끈기와 헌신을 그리워한다고 덧붙이는데, 기술적 서술 속에 드물게 드러나는 관찰자의 감정이다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>빙하와 지중해의 변화는 산긱 민족의 분산에 어떤 영향을 미쳤습니까?</span></button><div class="answer">다섯째 빙하가 아시아에 넓게 퍼져 수천 년 동안 동아시아 이주를 막았고, 지중해가 아라비아의 융기로 물러난 뒤에야 아프리카에 갈 수 있었습니다. 그 결과 산긱 민족은 거의 10만 년 동안 산기슭 일대에서 섞여 살았습니다. 인종의 이동 경로와 시기가 지질 조건에 따라 결정되었다는 점을 보여 줍니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>홍인이 북아메리카로 건너간 과정과 그 결과를 정리해 보십시오.</span></button><div class="answer">홍인은 후퇴하는 빙하를 따라 북동아시아 전역을 차지했지만, 뒤따라온 황인에게 밀려 열한 부족 칠천여 명이 북아메리카로 건너갔습니다. 함께 간 혼혈 소집단은 남쪽으로 내려가 멕시코와 중남미 문명을 세웠습니다. 베링 육교가 침강하면서 홍인은 고립되었고, 아담 혈통의 향상을 받을 기회를 거의 놓쳤습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>현대 민족의 혈통을 이해할 때 본문이 반드시 고려하라고 하는 요소는 무엇입니까?</span></button><div class="answer">산긱 혈통만으로 현대 민족을 설명하려 해서는 안 되고, 이후에 더해진 아담 혈통의 혼입으로 인한 인종적 향상을 반드시 고려해야 한다고 합니다. 예를 들어 백인은 청인이 황인, 홍인과 약간 혼합된 뒤 보라색 인종을 동화하여 크게 향상된 후손으로 설명됩니다. 인종의 역사는 여러 층의 혼합이 겹친 결과라는 뜻입니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">64:7.2</div><div class="qtext">이로 말미암아 산긱 민족들은 거의 십만 년 동안 산기슭 일대에 퍼져 살며 어느 정도 섞여 살게 되었는데, 서로 다른 인종들 사이에는 이른 시기부터 특이하지만 자연스러운 반감이 나타났다.</div></div><div class="quote"><div class="ref">64:7.3</div><div class="qtext">1차 산긱 민족들, 곧 우수한 인종들은 열대를 피했으며, 홍인은 북동쪽으로 아시아로, 그 뒤를 황인이 바짝 따랐고, 청인은 북서쪽으로 유럽으로 향했다.</div></div><div class="quote"><div class="ref">64:7.5</div><div class="qtext">비교적 순수 혈통의 홍인 잔존 집단이 아시아를 떠날 때, 그들은 열한 부족으로 이루어졌고 인원은 남녀노소 합해 칠천 명이 조금 넘었다.</div></div><div class="quote"><div class="ref">64:7.5</div><div class="qtext">오천 년 안에 이 혼합 인종은 세 갈래로 나뉘어 각각 멕시코, 중앙아메리카, 남아메리카의 문명을 수립했다.</div></div><div class="quote"><div class="ref">64:7.6</div><div class="qtext">이들이 오늘날의 갈색 인종이다.</div></div><div class="quote"><div class="ref">64:7.7</div><div class="qtext">여섯 유색 인종 중에서도 가장 많은 수로 생존해 왔다.</div></div><div class="quote"><div class="ref">64:7.10</div><div class="qtext">산긱과 네안데르탈의 혼합은 곧바로 그 오래된 인종의 향상으로 이어졌다.</div></div><div class="quote"><div class="ref">64:7.12</div><div class="qtext">현대 민족들의 산긱 혈통을 규명하려는 모든 시도에서는, 이후에 더해진 아담 혈통의 혼입으로 인한 인종적 향상을 반드시 고려해야 한다.</div></div><div class="quote"><div class="ref">64:7.16</div><div class="qtext">산긱 이주가 막바지에 이르자, 오렌지색 인종과 녹색 인종은 사라지고, 홍인은 북아메리카를, 황인은 동아시아를, 청인은 유럽을, 남색 인종은 아프리카를 차지하고 있다.</div></div><div class="quote"><div class="ref">64:7.17</div><div class="qtext">그들은 최초의 해양 모험가였다.</div></div><div class="quote"><div class="ref">64:7.20</div><div class="qtext">진보하는 문명의 여러 세련됨을 높이 평가하면서도, 때로는 장엄과 숭고에 이르렀던 너희 조상들의 빼어난 끈기와 탁월한 헌신을 그리워한다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>생명 운반자와 진화의 상위통제</h2><p class="sub">세 단계, 세 존재 상태, 그리고 개입의 한계 (65편 서문·1장·2장·3장)</p></div></div>
+  <p class="summary">65편은 64편이 서술한 역사의 배후 구조를 설명한다. 생명은 물리적 통제자, 일곱 주 영, 생명 운반자의 협력으로 이루어지며, 물리적 에너지, 보조 영의 마음 사역, 생각 조절자의 증여라는 세 단계를 거친다. 그러므로 진화는 언제나 목적을 지니며 우연이 아니다. 생명 운반자는 세 존재 단계에서 기능하며, 의지가 나타나면 행성을 떠나거나 포기 서약을 한다. 생명 원형이 작동하면 이들은 자의적으로 개입할 수 없고, 이후 진화의 운명은 인간의 손에 넘어간다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 11개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>65편의 서문은 편 전체의 논지를 압축한다. 기계적이고 학습이 불가능한 반응은 물리적 통제자의 영역이고, 체험으로 배울 수 있는 적응적 반응은 보조 마음 영들이 활성화하며, 생명 운반자들은 인간의 의지가 나타나기 전까지 환경 조건을 조율한다. 이 세 기능이 통합되어 진화의 방향을 정하므로 진화는 결코 우연이 아니라는 결론이 나온다. 1장은 생명 운반자 자신에 관한 드문 자기 서술이다. 이들은 전기화학의 물리적 단계, 준모론시아 중간 단계, 반영적 단계의 셋에서 기능하며, 생명 이식 때에는 천사장 위원회가 이들을 물리적 단계로 변환시킨다. 발표자는 안돈과 폰타의 시대 이래 셋째 단계에서 유란시아에 머물러 왔다고 밝히고, 빛과 생명의 시대에 넷째 단계를 기대하지만 그 기법은 아직 밝혀지지 않았다고 말한다. 2장은 해조류에서 인간까지의 진화를 개관하며, 개구리를 살아 있는 유일한 종 조상으로, 파충류에서 조류로의 전환을 가장 큰 단일 도약으로 꼽고, 빙하기에 원시 인간이 출현한 것은 계획된 것이었다고 명시한다. 3장은 권한의 한계를 다룬다. 생명 운반자들은 자연 자원과 우연한 상황을 활용할 수 있지만 기계적으로 간섭하거나 자의적으로 조작할 수 없다. 인류의 계통이 한 개구리 안에서 멸종을 면했을 때에도 최소 천 개의 계통이 육성되고 있었고, 그 개구리는 셋째 선택이었다. 안돈과 폰타 이후에도 칠천 개의 유리한 계통이 있었다. 결론은 미래를 향한다. 생명 운반자가 은퇴한 이후 진화의 육성은 인간의 몫이며, 과학적 지성이 언젠가 통제되지 않은 자연 선택을 대신해야 한다는 것이다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>진화가 언제나 목적을 지니며 우연이 아니라는 결론은 어떤 근거에서 나옵니까?</span></button><div class="answer">본문은 유기적 진화의 방향이 생명 운반자, 물리적 통제자, 보조 영들의 통합된 기능으로 결정된다고 설명합니다. 기계적 반응, 학습 가능한 마음의 반응, 의지가 나타나기 전까지의 환경 조율이 각각 다른 주체에게 맡겨져 있고 서로 협력합니다. 이렇게 설계된 협력 구조가 진화 전체를 이끌기 때문에 진화는 우연이 아니라는 결론이 나옵니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>생명 운반자가 스스로 지식의 한계를 밝히는 대목은 어디이며, 어떤 의미가 있습니까?</span></button><div class="answer">발표자는 빛과 생명의 시대에 완전히 영적인 넷째 존재 단계에 도달하기를 기대하지만, 그 기법은 아직 자신들에게 밝혀지지 않았다고 말합니다. 고도의 지성을 지닌 계시자도 자기 미래를 모두 알지는 못한다는 고백입니다. 계시가 모든 것을 안다고 주장하지 않고 한계를 표시한다는 점에서 본문의 신뢰성을 생각해 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>진화의 운명이 인간의 손에 달려 있다는 말은 오늘날 우리에게 어떤 과제를 줍니까?</span></button><div class="answer">앞으로 인류 이전의 기원에서 새로운 인종은 진화하지 않으므로, 인류는 이미 가진 인간 계통으로 발전의 문제를 풀어야 합니다. 생명 운반자들이 의지 출현 이전에 하던 육성과 보존을 이제 인간이 지능적으로 해야 하며, 과학적 지성이 무작위적인 자연 선택을 대신해야 합니다. 이 책임을 어떤 윤리적 틀에서 감당할지는 스터디에서 함께 생각해 볼 열린 과제입니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">65:0.2</div><div class="qtext">따라서 생명의 생성과 진화에는 세 가지 뚜렷한 단계가 있다.</div></div><div class="quote"><div class="ref">65:0.7</div><div class="qtext">이 때문에 유란시아에서든 다른 어느 곳에서든, 진화는 언제나 목적을 지니며 결코 우연적으로 일어나지 않는다.</div></div><div class="quote"><div class="ref">65:1.1</div><div class="qtext">생명 운반자들은 소수의 창조체 계층만이 지닌 인격적 변환의 잠재력을 부여받았다.</div></div><div class="quote"><div class="ref">65:1.8</div><div class="qtext">그리고 나는 안돈과 폰타의 시대 이래로 이 셋째 존재 단계에서 유란시아에서 기능해 왔다.</div></div><div class="quote"><div class="ref">65:1.9</div><div class="qtext">그러나 우리가 이 바람직하고 진보된 상태에 도달할 수 있는 기법에 대해서는 아직 우리에게 밝혀진 적이 없다.</div></div><div class="quote"><div class="ref">65:2.7</div><div class="qtext">개구리는 오늘날 지구 지면에 살아 있는 초기 여명기 인종의 유일한 종(種) 조상이다.</div></div><div class="quote"><div class="ref">65:2.9</div><div class="qtext">아마도 모든 인류 이전 진화에서 가장 큰 단일 도약은 파충류가 조류가 되었을 때 이루어졌다.</div></div><div class="quote"><div class="ref">65:2.16</div><div class="qtext">빙하기 동안 지구에 원시 인간이 출현한 것은 단순한 우연이 아니었다. 이는 계획된 것이었다.</div></div><div class="quote"><div class="ref">65:3.2</div><div class="qtext">그러나 우리는 식물이나 동물의 진화 과정에 기계적으로 간섭하거나 자의적으로 조작하는 것은 허락되지 않는다.</div></div><div class="quote"><div class="ref">65:3.3</div><div class="qtext">이 특정한 조상 개구리는 우리의 셋째 선택이었으며, 이전의 두 생명 계통은 우리가 그것들을 보존하기 위해 모든 노력을 기울였음에도 멸절되었다.</div></div><div class="quote"><div class="ref">65:3.6</div><div class="qtext">대체로 말해서 인간의 진화 운명은 그 자신의 손에 달려 있으며, 과학적 지성이 통제되지 않은 자연 선택과 우연한 생존의 무작위적 작용을 언젠가는 대신해야 한다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>생명 실험 세계와 마음·시간의 진화</h2><p class="sub">유란시아 모험, 우여곡절, 보조 영, 그리고 시간의 지연 (65편 4장~8장)</p></div></div>
+  <p class="summary">유란시아는 네바돈 생명 설계를 수정하는 예순째 실험 세계였고, 최소 스물여덟 가지 생명 수정 요소가 이곳에서 완성되었다. 그러나 칼리가스티아의 배반과 아담의 불이행, 원시 식물의 기생성 세균 퇴행은 큰 실망을 남겼다. 보조 영들은 기계적 반응이 아니라 배움이 가능한 순간부터 마음에 작용하며, 영적 진보는 마음에, 마음은 물리적 조건에 의존해 지연된다. 그럼에도 진심으로 하나님을 찾는 개인의 생존은 시간의 장벽과 상관없이 보장된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>4장은 실험이라는 말의 뜻을 바로잡는다. 유란시아에서 생명 운반자들은 표준 생명 원형에 많은 유익한 변화를 이루었지만, 어떤 세계에서도 생명의 확립이 해 본 적 없는 것을 무작위로 시도한다는 뜻의 실험은 아니라고 강조한다. 그 예가 상처 치유의 화학이다. 손상된 세포가 인접 세포를 자극해 치유 물질을 분비하게 하는 이 공식은 십만 가지가 넘는 반응 가능성 가운데 오십만 회 이상의 실험을 거쳐 선택되었다. 동시에 4장은 인간 의지를 일찍 발현시키는 목표를 달성했다고 밝히면서, 그 대가로 혼란스러워 보이는 수많은 부산물이 생겼음을 인정한다. 5장은 실망을 기록한다. 가장 큰 실망은 원시 식물 생명이 기생성 세균으로 되돌아가 인간에게 수많은 질병을 가져온 일이었고, 아담 혈통이 면역을 강화하리라는 기대는 아담의 불이행으로 무너졌다. 그러나 발표자는 우주가 자신들의 편의를 위해 운영되지 않으며, 지혜의 통치에 인내로 협력하는 것이 마땅하다고 말한다. 6장과 7장은 마음의 층위를 구분한다. 원형질은 분석하려면 죽여야 하므로 생명의 비밀은 끝내 발견되지 않을 것이며, 학습과 기억과 차별적 반응은 물리학이 아니라 마음이 부여한 것이다. 보조 영들은 여섯째 예배의 영과 일곱째 지혜의 영에서 더 높은 영적 사역과 겹치며, 모든 변화는 점진적이다. 8장은 시간을 다룬다. 생명 운반자는 지질학적 진화를 통제할 수 없어 기다려야 하지만, 혼을 다한 의지의 선택은 어떤 장애로도 꺾이지 않는다는 것이 편의 마지막 결론이다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>본문이 유란시아를 생명 실험 세계라고 하면서도 무작위 실험이 아니라고 강조하는 이유는 무엇입니까?</span></button><div class="answer">생명 운반자들은 사타니아 생명 원형을 개선하려고 여러 수정을 시도했지만, 그것은 되는대로 하는 실험이 아니라 점진적이고 통제된 기법이었습니다. 상처 치유의 화학처럼 오십만 회 이상의 실험실 검토를 거친 공식이 그 예입니다. 실험이라는 말이 우연이나 무계획을 뜻하지 않는다는 점을 분명히 해, 진화가 목적을 지닌다는 편의 논지를 지키려는 것입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>생명 운반자들이 겪은 실망은 무엇이며, 그들은 그것을 어떤 태도로 받아들입니까?</span></button><div class="answer">칼리가스티아의 배반과 아담의 불이행이 지적 생명을 수정하려는 노력을 방해했고, 가장 큰 실망은 원시 식물이 기생성 세균으로 퇴행해 질병을 낳은 일이었습니다. 그럼에도 그들은 우주가 자신들의 마음에 들도록 운영되지 않으며, 현명하고 전능한 존재들이 자신들이 하는 일을 완벽히 안다고 말합니다. 실망을 인정하면서도 지혜의 통치에 인내로 협력하는 태도입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>영적 진보는 마음에 의존하지만 생존은 의지의 선택으로 보장된다는 설명을 어떻게 이해할 수 있습니까?</span></button><div class="answer">마음의 진화는 물리적 조건에, 영적 진보는 마음의 확장에 의존하므로 지연이 생길 수 있습니다. 그러나 혼은 교육이나 문화 수준과 무관하게 진화할 수 있고, 생존은 지식이 아니라 하나님을 알고 닮으려는 진실한 선택에 달려 있습니다. 진보에는 지식과 지혜가 필요하지만, 생존의 문은 누구에게나 의지의 선택으로 열려 있다는 뜻입니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">65:4.1</div><div class="qtext">유란시아가 우리에게 생명 실험 세계로 배정되었다는 사실을 간과하지 말라.</div></div><div class="quote"><div class="ref">65:4.2</div><div class="qtext">생명의 진화는 언제나 점진적이고 차별적이며 변화하는 기법이지만, 결코 되는대로이거나 통제되지 않거나, 우연이라는 뜻에서 전적으로 실험적이지는 않다.</div></div><div class="quote"><div class="ref">65:4.4</div><div class="qtext">생명 운반자들은 유란시아 생명 실험을 위한 이 공식을 최종 확정하기 전에 실험실에서 오십만 회 이상의 구체적 실험을 수행하였다.</div></div><div class="quote"><div class="ref">65:4.11</div><div class="qtext">우리는 인간 의지가 일찍 발현되도록 하는 것을 목표로 삼았고, 그 목적을 달성했다.</div></div><div class="quote"><div class="ref">65:5.1</div><div class="qtext">유란시아에서 지적 생명을 수정하려는 우리의 특별한 노력이, 우리의 통제를 벗어난 비극적 왜곡, 곧 칼리가스티아의 배반과 아담의 불이행으로 인해 그토록 방해받았다는 것은 생명 운반자들에게 유감의 근원이었다.</div></div><div class="quote"><div class="ref">65:5.3</div><div class="qtext">우주를 다스리는 현명하고 전능한 존재들은 자신들이 무엇을 하고 있는지를 완벽히 알고 있다.</div></div><div class="quote"><div class="ref">65:6.1</div><div class="qtext">죽은 원형질은 살아 있을 때와 무게는 같지만, 본질적으로 동일하지 않다.</div></div><div class="quote"><div class="ref">65:6.8</div><div class="qtext">학습 능력, 기억, 환경에 대한 차별적 반응은 마음이 부여한 것이다.</div></div><div class="quote"><div class="ref">65:7.6</div><div class="qtext">체험을 통해 배울 수 있는 가능성이 생기는 순간, 보조 영들의 활동이 시작된다.</div></div><div class="quote"><div class="ref">65:8.4</div><div class="qtext">생존은 지식과 지혜의 소유에 의존하지 않을 수도 있지만, 진보는 분명히 그에 의존한다.</div></div><div class="quote"><div class="ref">65:8.5</div><div class="qtext">그러나 어떤 개인이 진심으로 하나님을 알고, 그분을 찾고, 그분을 닮고자 한다면, 시간의 장벽에도 불구하고 생존은 보장된다.</div></div><div class="quote"><div class="ref">65:8.6</div><div class="qtext">영적 가치가 합당하게 인정되면, 그때 우주적 의미가 분명히 드러나며, 인격은 점차 시간의 제약에서 자유로워지고 공간의 한계를 초월하게 된다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 64~65편 본문 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
