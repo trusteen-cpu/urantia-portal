@@ -310,6 +310,10 @@ body{background:var(--bg);color:var(--text);
 .results-more{text-align:center;margin-top:16px;padding:12px;
   background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);
   color:var(--text-muted);font-size:13px;font-family:sans-serif}
+.results-btn{margin-top:10px;background:var(--surface2);border:1.5px solid var(--border);border-radius:6px;
+  padding:7px 14px;color:var(--gold);font-size:13px;font-family:sans-serif;cursor:pointer;transition:all .15s}
+.results-btn:hover{border-color:var(--gold)}
+.results-more .results-btn{margin:4px}
 
 /* 스크롤바 */
 /* 스크롤바 */
@@ -719,13 +723,20 @@ function renderPaper(pi,scrollSec){
     });
   });
   body.innerHTML=html;
+  clearTimeout(scrollTimer);
   if(scrollSec!==undefined&&scrollSec>0){
-    setTimeout(()=>{
-      const el=document.getElementById(`s-${pi}-${scrollSec}`);
-      if(el){el.scrollIntoView({behavior:'smooth',block:'start'});
-        setTimeout(()=>document.getElementById('main').scrollTop-=70,400);}
-    },60);
+    scrollTimer=setTimeout(()=>scrollToEl(document.getElementById(`s-${pi}-${scrollSec}`)),60);
   }else{document.getElementById('main').scrollTop=0;}
+}
+
+// Scroll #main so el sits right below the sticky header (one exact target, no follow-up nudges)
+let scrollTimer=null;
+function scrollToEl(el){
+  if(!el)return;
+  const main=document.getElementById('main');
+  const hdr=document.getElementById('content-header');
+  const top=el.getBoundingClientRect().top-main.getBoundingClientRect().top+main.scrollTop-hdr.offsetHeight-8;
+  main.scrollTo({top:Math.max(0,top),behavior:'smooth'});
 }
 
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\\/g,'').replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
@@ -944,10 +955,11 @@ function goToVerseInContext(){
   document.querySelectorAll('.paper-btn.active').forEach(el=>el.classList.remove('active'));
   document.getElementById(`sl-${e.pi}`).classList.add('open');
   const btn=document.querySelector(`#pi-${e.pi} .paper-btn`);if(btn)btn.classList.add('active');
-  setTimeout(()=>{
-    const vid=`v${currentPopupRef.replace(':','-').replace('.','-')}`;
+  const vid=`v${currentPopupRef.replace(':','-').replace('.','-')}`;
+  clearTimeout(scrollTimer);
+  scrollTimer=setTimeout(()=>{
     const el=document.getElementById(vid);
-    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});
+    if(el){scrollToEl(el);
       el.classList.add('highlighted');setTimeout(()=>el.classList.remove('highlighted'),3000);}
   },350);
 }
@@ -1015,7 +1027,6 @@ function showTextResults(query){
   const terms = isPhrase ? [searchTerm] : searchTerm.split(/\s+/).filter(t=>t.length>1);
 
   const matches = [];
-  const MAX_RESULTS = 200;
 
   for(const paper of PAPERS){
     for(const sec of paper.sections){
@@ -1030,42 +1041,82 @@ function showTextResults(query){
             secTitle: sec.title,
             paperNum: paper.num
           });
-          if(matches.length >= MAX_RESULTS) break;
         }
       }
-      if(matches.length >= MAX_RESULTS) break;
     }
-    if(matches.length >= MAX_RESULTS) break;
   }
 
   // Build results HTML
   const escQ = query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
   const highlightRe = new RegExp('(' + (isPhrase ? escQ.slice(1,-1) : terms.map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')) + ')', 'gi');
+  searchState = {query, matches, highlightRe, shown:0};
 
   let html = '<div class="results-header">' +
     '<div class="results-title">Search: "' + esc(query) + '"</div>' +
-    '<div class="results-count">' + matches.length + (matches.length>=MAX_RESULTS?' (showing first '+MAX_RESULTS+')':'') + ' result' + (matches.length!==1?'s':'') + ' found</div>' +
+    '<div class="results-count">' + matches.length + ' result' + (matches.length!==1?'s':'') + ' found<span id="results-shown"></span></div>' +
+    (matches.length ? '<button class="results-btn" id="results-copy" onclick="copyResults()">📋 Copy shown results</button>' : '') +
     '</div>';
 
   if(matches.length === 0){
     html += '<div class="results-none">No results found for "' + esc(query) + '".<br>Try a different keyword or shorter phrase.</div>';
   } else {
-    for(const m of matches){
-      const highlighted = esc(m.text).replace(highlightRe, '<mark>$1</mark>');
-      const context = (m.paperNum===0?'Foreword':'Paper '+m.paperNum) + (m.secTitle?' › '+esc(m.secTitle):'');
-      html += '<div class="result-item" onclick="goToResult(\''+m.ref+'\')">'+
-        '<div class="result-ref">'+m.ref+'</div>'+
-        '<div class="result-context">'+context+'</div>'+
-        '<div class="result-text">'+highlighted+'</div>'+
-        '</div>';
-    }
-    if(matches.length >= MAX_RESULTS){
-      html += '<div class="results-more">Showing first '+MAX_RESULTS+' results. Refine your search for more specific results.</div>';
-    }
+    html += '<div id="results-list"></div>' +
+      '<div class="results-more" id="results-more">' +
+      '<button class="results-btn" onclick="showMoreResults(RESULTS_BATCH)">Show next '+RESULTS_BATCH+'</button> ' +
+      '<button class="results-btn" onclick="showMoreResults(Infinity)">Show all</button>' +
+      '</div>';
   }
 
   resultsEl.innerHTML = html;
+  if(matches.length) showMoreResults(RESULTS_BATCH);
   document.getElementById('main').scrollTop = 0;
+}
+
+const RESULTS_BATCH = 200;
+let searchState = null;
+
+// Append the next batch of search results (n = Infinity shows everything)
+function showMoreResults(n){
+  const st = searchState; if(!st) return;
+  const end = Math.min(st.matches.length, st.shown + n);
+  let html = '';
+  for(const m of st.matches.slice(st.shown, end)){
+    const highlighted = esc(m.text).replace(st.highlightRe, '<mark>$1</mark>');
+    const context = (m.paperNum===0?'Foreword':'Paper '+m.paperNum) + (m.secTitle?' › '+esc(m.secTitle):'');
+    html += '<div class="result-item" onclick="goToResult(\''+m.ref+'\')">'+
+      '<div class="result-ref">'+m.ref+'</div>'+
+      '<div class="result-context">'+context+'</div>'+
+      '<div class="result-text">'+highlighted+'</div>'+
+      '</div>';
+  }
+  document.getElementById('results-list').insertAdjacentHTML('beforeend', html);
+  st.shown = end;
+  const total = st.matches.length;
+  document.getElementById('results-shown').textContent = st.shown < total ? ' (showing '+st.shown+')' : '';
+  const more = document.getElementById('results-more');
+  more.style.display = st.shown < total ? 'block' : 'none';
+  more.firstElementChild.textContent = 'Show next '+Math.min(RESULTS_BATCH, total-st.shown)+' ('+(total-st.shown)+' more)';
+}
+
+// Copy the results shown so far as "ref text" lines
+function copyResults(){
+  const st = searchState; if(!st) return;
+  const text = st.matches.slice(0, st.shown).map(m => m.ref+' '+m.text.replace(/\\/g,'')).join('\n\n');
+  const btn = document.getElementById('results-copy');
+  const done = ok => {
+    btn.textContent = ok ? '✓ Copied '+st.shown+' results' : 'Copy failed';
+    setTimeout(()=>{btn.textContent='📋 Copy shown results';}, 2000);
+  };
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try{ ok = document.execCommand('copy'); }catch(e){}
+    ta.remove(); done(ok);
+  };
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(()=>done(true), fallback);
+  }else fallback();
 }
 
 function goToResult(ref){
@@ -1080,11 +1131,12 @@ function goToResult(ref){
   const btn = document.querySelector('#pi-'+entry.pi+' .paper-btn');
   if(btn) btn.classList.add('active');
   // Highlight verse
-  setTimeout(function(){
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(function(){
     const vid = 'v'+ref.replace(':','-').replace('.','-');
     const el = document.getElementById(vid);
     if(el){
-      el.scrollIntoView({behavior:'smooth', block:'center'});
+      scrollToEl(el);
       el.classList.add('highlighted');
       setTimeout(()=>el.classList.remove('highlighted'), 3000);
     }
