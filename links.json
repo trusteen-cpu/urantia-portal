@@ -51,6 +51,10 @@
       "preview": 40,
       "items": [
         {
+          "name": "정회원 가입",
+          "url": "/join/"
+        },
+        {
           "name": "오늘의 강론",
           "url": "/sermon/",
           "member": true
