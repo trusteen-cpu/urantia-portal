@@ -34,18 +34,27 @@ nav{width:290px;flex:none;background:#fff;border-right:1px solid var(--line);dis
 .it:hover{background:#f6f1e6}
 .it.on{background:#eef3fa}
 .it.on span{color:var(--navy);font-weight:700}
-.view{flex:1;min-width:0;position:relative;background:#e9e5dd}
-#pdf{width:100%;height:100%;border:0;display:block}
-.hint{position:absolute;left:0;right:0;bottom:0;background:rgba(23,54,93,.92);color:#fff;font-size:11.5px;
- padding:7px 12px;display:none}
-.hint a{color:#ffd98a;text-decoration:underline}
+.view{flex:1;min-width:0;overflow-y:auto;background:var(--cream)}
+article{max-width:760px;margin:0 auto;padding:30px 28px 70px}
+article .no{font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--gold)}
+article h2{margin:6px 0 2px;font-size:25px;line-height:1.4;color:var(--navy);word-break:keep-all}
+article .en{margin:0 0 6px;font:italic 14px/1.5 Georgia,serif;color:var(--dim)}
+article .both{display:inline-block;margin:6px 0 0;font-size:12.5px;color:var(--navy);background:#eef3fa;border-radius:12px;padding:3px 10px}
+article .rule{height:2px;margin:16px 0 22px;background:linear-gradient(90deg,var(--gold),rgba(183,121,31,0))}
+article p.t{margin:0 0 16px;font-size:16.5px;line-height:1.95;text-align:justify;word-break:keep-all;color:#2b2b2b}
+article .msg{color:var(--dim);text-align:center;padding:60px 0}
+.pn{display:flex;gap:10px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line)}
+.pn a{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;font-size:13px;color:var(--dim);line-height:1.45}
+.pn a b{display:block;color:var(--navy);font-size:14px;margin-top:2px}
+.pn a.nx{text-align:right}.pn a:hover{border-color:var(--gold)}.pn .gap{flex:1}
+@media (max-width:760px){article{padding:22px 18px 60px}article h2{font-size:21px}article p.t{font-size:16px;text-align:left}}
+@media print{header,nav,.pn{display:none!important}body{overflow:visible;display:block}.view{overflow:visible}}
 @media (max-width:760px){
  #burger{display:block}
  nav{position:absolute;z-index:9;top:0;bottom:0;left:0;width:80%;max-width:320px;
   box-shadow:2px 0 14px rgba(0,0,0,.25);transform:translateX(-102%);transition:transform .2s}
  nav.open{transform:translateX(0)}
  header .sub{display:none}
- .hint{display:block}
 }
 </style>
 <script src="/home-button.js" data-top="40" defer></script>
@@ -55,9 +64,9 @@ nav{width:290px;flex:none;background:#fff;border-right:1px solid var(--line);dis
 <header>
  <button id="burger">☰ 목차</button>
  <h1>유란시아서 요약본</h1>
- <span class="sub">196편 요약 — 왼쪽에서 편을 고르십시오</span>
+ <span class="sub">196편 요약 — 왼쪽에서 편을 누르면 바로 읽을 수 있습니다</span>
  <span class="sp"></span>
- <a class="out" id="raw" href="summary.pdf" target="_blank" rel="noopener">새 창에서 열기 ↗</a>
+ <a class="out" id="raw" href="summary.pdf" target="_blank" rel="noopener">PDF 원본 ↗</a>
 </header>
 
 <main>
@@ -70,34 +79,39 @@ nav{width:290px;flex:none;background:#fff;border-right:1px solid var(--line);dis
 <div class="grp" style="--c:#9E3D35"><h3>제4부  예수의 생애와 가르침</h3><a class="it" data-p="151" data-n="120" href="#p120"><b>120</b><span>미가엘의 유란시아 증여</span></a><a class="it" data-p="152" data-n="121" href="#p121"><b>121</b><span>미가엘 증여의 시기</span></a><a class="it" data-p="154" data-n="122" href="#p122"><b>122</b><span>예수의 탄생과 유년기</span></a><a class="it" data-p="155" data-n="123" href="#p123"><b>123</b><span>예수의 어린 시절</span></a><a class="it" data-p="156" data-n="124" href="#p124"><b>124</b><span>예수의 후기 어린 시절</span></a><a class="it" data-p="158" data-n="125" href="#p125"><b>125</b><span>예루살렘에 온 예수</span></a><a class="it" data-p="160" data-n="126" href="#p126"><b>126</b><span>2년의 힘든 시기</span></a><a class="it" data-p="161" data-n="127" href="#p127"><b>127</b><span>청년기</span></a><a class="it" data-p="162" data-n="128" href="#p128"><b>128</b><span>예수의 성년 초기 시절</span></a><a class="it" data-p="163" data-n="129" href="#p129"><b>129</b><span>예수의 후기 성인 생활</span></a><a class="it" data-p="164" data-n="130" href="#p130"><b>130</b><span>로마로 가는 길에</span></a><a class="it" data-p="164" data-n="131" href="#p131"><b>131</b><span>세계의 종교</span></a><a class="it" data-p="166" data-n="132" href="#p132"><b>132</b><span>로마에서의 체류</span></a><a class="it" data-p="167" data-n="133" href="#p133"><b>133</b><span>로마에서의 귀환</span></a><a class="it" data-p="169" data-n="134" href="#p134"><b>134</b><span>과도기 시대</span></a><a class="it" data-p="170" data-n="135" href="#p135"><b>135</b><span>세례자 요한</span></a><a class="it" data-p="171" data-n="136" href="#p136"><b>136</b><span>세례와 40일</span></a><a class="it" data-p="172" data-n="137" href="#p137"><b>137</b><span>갈릴리에서 머문 시간</span></a><a class="it" data-p="174" data-n="138" href="#p138"><b>138</b><span>하늘 왕국의 메신저들을 훈련함</span></a><a class="it" data-p="176" data-n="139" href="#p139"><b>139</b><span>열두 사도</span></a><a class="it" data-p="178" data-n="140" href="#p140"><b>140</b><span>열두 사도의 임명</span></a><a class="it" data-p="179" data-n="141" href="#p141"><b>141</b><span>공적 활동의 시작</span></a><a class="it" data-p="180" data-n="142" href="#p142"><b>142</b><span>예루살렘에서의 유월절</span></a><a class="it" data-p="182" data-n="143" href="#p143"><b>143</b><span>사마리아를 지나며</span></a><a class="it" data-p="183" data-n="144" href="#p144"><b>144</b><span>길보아와 데카폴리스에서</span></a><a class="it" data-p="185" data-n="145" href="#p145"><b>145</b><span>사건이 많았던 가버나움에서의 4일</span></a><a class="it" data-p="186" data-n="146" href="#p146"><b>146</b><span>갈릴리에서의 첫 전도 여행</span></a><a class="it" data-p="187" data-n="147" href="#p147"><b>147</b><span>예루살렘으로의 막간 방문</span></a><a class="it" data-p="189" data-n="148" href="#p148"><b>148</b><span>벳세다에서의 전도사 훈련</span></a><a class="it" data-p="190" data-n="149" href="#p149"><b>149</b><span>두 번째 전도 여행</span></a><a class="it" data-p="191" data-n="150" href="#p150"><b>150</b><span>세 번째 전도 여행</span></a><a class="it" data-p="192" data-n="151" href="#p151"><b>151</b><span>바닷가에서의 머무름과 가르침</span></a><a class="it" data-p="194" data-n="152" href="#p152"><b>152</b><span>가버나움 위기로 이어지는 사건들</span></a><a class="it" data-p="196" data-n="153" href="#p153"><b>153</b><span>가버나움에서의 위기</span></a><a class="it" data-p="197" data-n="154" href="#p154"><b>154</b><span>가버나움에서의 마지막 날들</span></a><a class="it" data-p="198" data-n="155" href="#p155"><b>155</b><span>북부 갈릴리를 통해 피신</span></a><a class="it" data-p="200" data-n="156" href="#p156"><b>156</b><span>두로와 시돈에서의 체류</span></a><a class="it" data-p="201" data-n="157" href="#p157"><b>157</b><span>가이사랴 빌립보에서</span></a><a class="it" data-p="202" data-n="158" href="#p158"><b>158</b><span>변화산에서의 체험</span></a><a class="it" data-p="204" data-n="159" href="#p159"><b>159</b><span>데카폴리스 여행</span></a><a class="it" data-p="205" data-n="160" href="#p160"><b>160</b><span>알렉산드리아의 로단</span></a><a class="it" data-p="205" data-n="161" href="#p161"><b>161</b><span>로단과의 추가 토론</span></a><a class="it" data-p="207" data-n="162" href="#p162"><b>162</b><span>초막절에서</span></a><a class="it" data-p="209" data-n="163" href="#p163"><b>163</b><span>마가단에서 칠십인의 서임</span></a><a class="it" data-p="211" data-n="164" href="#p164"><b>164</b><span>봉헌절 축제에서</span></a><a class="it" data-p="213" data-n="165" href="#p165"><b>165</b><span>페레아 선교 시작</span></a><a class="it" data-p="214" data-n="166" href="#p166"><b>166</b><span>북페레아로의 마지막 방문</span></a><a class="it" data-p="216" data-n="167" href="#p167"><b>167</b><span>필라델피아 방문</span></a><a class="it" data-p="218" data-n="168" href="#p168"><b>168</b><span>나사로의 부활</span></a><a class="it" data-p="219" data-n="169" href="#p169"><b>169</b><span>펠라에서의 마지막 가르침</span></a><a class="it" data-p="220" data-n="170" href="#p170"><b>170</b><span>하늘 왕국</span></a><a class="it" data-p="222" data-n="171" href="#p171"><b>171</b><span>예루살렘으로 가는 길</span></a><a class="it" data-p="224" data-n="172" href="#p172"><b>172</b><span>예루살렘에 들어가면서</span></a><a class="it" data-p="226" data-n="173" href="#p173"><b>173</b><span>예루살렘에서의 월요일</span></a><a class="it" data-p="228" data-n="174" href="#p174"><b>174</b><span>성전에서의 화요일 아침</span></a><a class="it" data-p="229" data-n="175" href="#p175"><b>175</b><span>마지막 성전 강론</span></a><a class="it" data-p="230" data-n="176" href="#p176"><b>176</b><span>올리브 산에서의 화요일 저녁</span></a><a class="it" data-p="232" data-n="177" href="#p177"><b>177</b><span>수요일, 휴식의 날</span></a><a class="it" data-p="233" data-n="178" href="#p178"><b>178</b><span>야영지에서의 마지막 날</span></a><a class="it" data-p="235" data-n="179" href="#p179"><b>179</b><span>마지막 만찬</span></a><a class="it" data-p="237" data-n="180" href="#p180"><b>180</b><span>고별 강론</span></a><a class="it" data-p="239" data-n="181" href="#p181"><b>181</b><span>최종 권고와 경고</span></a><a class="it" data-p="241" data-n="182" href="#p182"><b>182</b><span>겟세마네에서</span></a><a class="it" data-p="244" data-n="183" href="#p183"><b>183</b><span>예수의 배반과 체포</span></a><a class="it" data-p="246" data-n="184" href="#p184"><b>184</b><span>산헤드린 법정 앞에서</span></a><a class="it" data-p="248" data-n="185" href="#p185"><b>185</b><span>빌라도 앞에서의 재판</span></a><a class="it" data-p="249" data-n="186" href="#p186"><b>186</b><span>십자가에 못 박히기 직전</span></a><a class="it" data-p="250" data-n="187" href="#p187"><b>187</b><span>십자가형</span></a><a class="it" data-p="251" data-n="188" href="#p188"><b>188</b><span>무덤에 있던 시간</span></a><a class="it" data-p="252" data-n="189" href="#p189"><b>189</b><span>부활</span></a><a class="it" data-p="254" data-n="190" href="#p190"><b>190</b><span>예수의 모론시아 출현</span></a><a class="it" data-p="255" data-n="191" href="#p191"><b>191</b><span>사도와 다른 지도자들에게 나타남</span></a><a class="it" data-p="257" data-n="192" href="#p192"><b>192</b><span>갈릴리에서의 출현</span></a><a class="it" data-p="258" data-n="193" href="#p193"><b>193</b><span>마지막 출현과 승천</span></a><a class="it" data-p="259" data-n="194" href="#p194"><b>194</b><span>진리의 영 증여</span></a><a class="it" data-p="260" data-n="195" href="#p195"><b>195</b><span>오순절 이후</span></a><a class="it" data-p="261" data-n="196" href="#p196"><b>196</b><span>예수의 신앙</span></a></div>
   </div>
  </nav>
- <div class="view">
-  <iframe id="pdf" src="summary.pdf#page=1" title="유란시아서 요약본"></iframe>
-  <div class="hint">휴대폰에서는 이 칸이 비어 보일 수 있습니다. 그때는 <a href="summary.pdf" target="_blank">새 창에서 열기</a>를 누르십시오.</div>
+ <div class="view" id="view">
+  <article id="art"><p class="msg">불러오는 중…</p></article>
  </div>
 </main>
 
 <script>
-var PDF='summary.pdf';
+// 왼쪽에서 편을 고르면 오른쪽에 그 편의 요약 본문을 바로 보여 준다 (본문은 summary-data.json)
 var items=[].slice.call(document.querySelectorAll('.it')),
     grps=[].slice.call(document.querySelectorAll('.grp')),
-    frame=document.getElementById('pdf'),
-    q=document.getElementById('q'),
-    nav=document.getElementById('nav');
-
-function go(el){
- items.forEach(function(i){i.classList.remove('on');});
- el.classList.add('on');
- var t=PDF+'#page='+el.getAttribute('data-p');
- frame.src='about:blank';
- setTimeout(function(){frame.src=t;},40);
+    view=document.getElementById('view'), art=document.getElementById('art'),
+    q=document.getElementById('q'), nav=document.getElementById('nav'),
+    DATA=null, BY={}, ORDER=[];
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return '&#'+c.charCodeAt(0)+';';});}
+function itemOf(n){return items.filter(function(i){return i.getAttribute('data-n')===String(n);})[0];}
+function show(n,noScroll){
+ var e=BY[n]; if(!e){art.innerHTML='<p class="msg">이 편의 요약이 없습니다.</p>';return;}
+ items.forEach(function(i){i.classList.toggle('on',e.n.indexOf(+i.getAttribute('data-n'))>-1);});
+ var k=ORDER.indexOf(e), pv=ORDER[k-1], nx=ORDER[k+1];
+ var lab=function(x){return '제'+x.n.join('·')+'편';};
+ art.innerHTML='<div class="no">'+lab(e)+'</div><h2>'+esc(e.ko)+'</h2>'+(e.en?'<p class="en">'+esc(e.en)+'</p>':'')+
+  (e.n.length>1?'<span class="both">'+e.n.join('편과 ')+'편을 함께 요약했습니다</span>':'')+'<div class="rule"></div>'+
+  e.p.map(function(s){return '<p class="t">'+esc(s)+'</p>';}).join('')+
+  '<div class="pn">'+(pv?'<a href="#'+pv.n[0]+'" data-go="'+pv.n[0]+'">← 이전 · '+lab(pv)+'<b>'+esc(pv.ko)+'</b></a>':'<span class="gap"></span>')+
+  (nx?'<a class="nx" href="#'+nx.n[0]+'" data-go="'+nx.n[0]+'">'+lab(nx)+' · 다음 →<b>'+esc(nx.ko)+'</b></a>':'<span class="gap"></span>')+'</div>';
+ view.scrollTop=0;
+ var on=itemOf(e.n[0]); if(on&&!noScroll) on.scrollIntoView({block:'nearest'});
+ history.replaceState(null,'','#'+n);
  if(window.innerWidth<=760) nav.classList.remove('open');
 }
-
 items.forEach(function(el){
- el.addEventListener('click',function(e){e.preventDefault();go(el);
-  history.replaceState(null,'','#'+el.getAttribute('data-n'));});
+ el.addEventListener('click',function(e){e.preventDefault();show(+el.getAttribute('data-n'));});
 });
-
+art.addEventListener('click',function(e){var a=e.target.closest('a[data-go]');if(a){e.preventDefault();show(+a.getAttribute('data-go'));}});
 q.addEventListener('input',function(){
  var v=q.value.trim().toLowerCase();
  items.forEach(function(i){
@@ -108,14 +122,12 @@ q.addEventListener('input',function(){
   g.style.display=any?'':'none';
  });
 });
-
 document.getElementById('burger').addEventListener('click',function(){nav.classList.toggle('open');});
-
-var h=(location.hash||'').replace('#','');
-if(h){
- var t=items.filter(function(i){return i.getAttribute('data-n')===h;})[0];
- if(t){go(t);t.scrollIntoView({block:'center'});}
-}
+fetch('summary-data.json').then(function(r){return r.json();}).then(function(d){
+ DATA=d; ORDER=d; d.forEach(function(e){e.n.forEach(function(n){BY[n]=e;});});
+ var h=parseInt((location.hash||'').replace(/\D/g,''),10);
+ show(BY[h]?h:1, !BY[h]);
+}).catch(function(){art.innerHTML='<p class="msg">요약 본문을 불러오지 못했습니다. <a href="summary.pdf" target="_blank">PDF 원본</a>으로 보십시오.</p>';});
 </script>
 </body>
 </html>
