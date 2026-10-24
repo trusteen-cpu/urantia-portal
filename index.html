@@ -138,7 +138,7 @@ body{top:0!important;position:static!important}
         <path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.6 12 21 12 21z"/>
       </svg><span>월회비 &amp; 기부금 이체</span>
     </button>
-    <a class="home" id="cafeLink" target="_blank" rel="noopener">카페 바로가기</a>
+    <a class="home" href="/join/admin.html" title="정회원 명단 (관리자 열쇠 필요)">관리자</a>
   </div>
 </div>
 
@@ -303,7 +303,6 @@ function render(){
   hBadge.textContent=s.badge||''; hTitle.textContent=s.title||'';
   hSub.textContent=s.subtitle||'';
   hQuote.textContent=s.quote?('“'+s.quote+'”'):''; hQref.textContent=s.quoteRef||'';
-  cafeLink.href=s.cafeUrl||'#';
   fNote.textContent=s.footerNote||'';
   if(s.email) fMail.innerHTML='문의 <a href="mailto:'+esc(s.email)+'">'+esc(s.email)+'</a>';
   if(s.summary){summary.style.display='flex'; sumText.textContent=s.summary;}
