@@ -77,7 +77,7 @@ function load() {
   return call('GET', '/api/members').then(function (j) {
     rows = j.rows; $('login').hidden = true; $('list').hidden = false; draw();
   }).catch(function (e) {
-    if (e.status === 401) { KEY = ''; try { sessionStorage.removeItem('memberKey'); } catch (x) {} $('login').hidden = false; $('list').hidden = true; $('lerr').textContent = e.message; }
+    if (e.status === 401 || e.status === 429) { KEY = ''; try { sessionStorage.removeItem('memberKey'); } catch (x) {} $('login').hidden = false; $('list').hidden = true; $('lerr').textContent = e.message; }
     else $('err').textContent = e.message === 'Failed to fetch' ? '연결이 되지 않습니다.' : e.message;
   });
 }
