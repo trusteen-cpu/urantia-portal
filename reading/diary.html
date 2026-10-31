@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매일 유란시아 일기</title>
+<style>
+:root{--ink:#1f2430;--dim:#6b7280;--bg:#f7f5f0;--card:#fffdf7;--line:#e8d9b0;--navy:#17365d;--gold:#b8862b;--ok:#2e7d4f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","Segoe UI",system-ui,sans-serif;line-height:1.6;word-break:keep-all}
+button,input,textarea{font:inherit}
+header.top{background:linear-gradient(160deg,#3a2a10 0%,#7a5c1e 50%,#b8862b 100%);color:#fff;text-align:center;padding:30px 16px 24px}
+header.top h1{margin:0;font-size:clamp(22px,5vw,28px)}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 50px}
+.nav{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;font-size:14px}
+.btn:hover{border-color:var(--gold)}.btn:disabled{opacity:.4;cursor:default}
+.nav input{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:#fff}
+.page{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(120,90,30,.08)}
+.dd{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:12px;text-align:center}
+h4{margin:14px 0 6px;font-size:14px;color:var(--navy)}
+.verse{background:#f3efe2;border-radius:10px;padding:12px 14px;font-size:16px;line-height:1.8}
+.verse .vh{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--dim);margin-bottom:4px}
+.verse a{color:var(--gold);text-decoration:none;font-weight:600}.verse button{border:none;background:none;color:var(--navy);cursor:pointer;font-size:12.5px}
+textarea{width:100%;min-height:260px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;resize:vertical;background:#fff;
+  background-image:repeating-linear-gradient(#fff 0 27px,#f0e8d4 27px 28px);line-height:28px}
+.saved{font-size:12px;color:var(--ok);margin-left:6px}
+.past{margin-top:18px}.past summary{cursor:pointer;color:var(--dim);font-size:14px}
+.past a{display:block;border-top:1px dashed #eee6d8;padding:7px 2px;color:inherit;text-decoration:none;font-size:14px}
+.past a:hover{background:#fbf6e9}.past b{color:var(--navy);font-size:13px}.past span{color:var(--dim);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hint{font-size:12.5px;color:var(--dim);text-align:center;margin-top:14px}
+</style>
+</head>
+<body>
+<header class="top"><h1 id="t_title"></h1></header>
+<div class="wrap">
+  <div class="nav">
+    <button class="btn" id="prev"></button>
+    <input type="date" id="pick">
+    <button class="btn" id="next"></button>
+    <button class="btn" id="todayBtn"></button>
+  </div>
+  <div class="page">
+    <div class="dd" id="dd"></div>
+    <h4 id="t_verse"></h4>
+    <div class="verse"><div class="vh"><a id="vref" target="_blank"></a><button id="vnext"></button></div><div id="vtext"></div></div>
+    <h4><span id="t_think"></span><span class="saved" id="saved" hidden></span></h4>
+    <textarea id="text"></textarea>
+  </div>
+  <details class="past" id="past"></details>
+  <p class="hint" id="t_hint"></p>
+</div>
+<script>
+/* 매일 유란시아 일기 — 일년 읽기(index.html)와 같은 저장소(ub-reading-v1)의 diary 칸을 쓴다: {"2026-10-30":{v:"48:3.6", text:"…"}} */
+var LANG = (new URLSearchParams(location.search).get('lang') === 'en') ? 'en' : 'ko';
+var T = {
+ ko: {title:'📔 매일 유란시아 일기', prev:'◀ 이전 날', next:'다음 날 ▶', today:'오늘', verse:'✦ 오늘의 구절', other:'다른 구절 ↻',
+      think:'✎ 오늘의 사건, 생각', ph:'오늘 생활하면서 어떤 일이 있었는지 적어 보세요', saved:'저장됨', past:'지난 일기',
+      hint:'일기는 이 기기의 브라우저에 저장됩니다. 일년 읽기 화면의 ‘내보내기’ 파일에 함께 저장됩니다.',
+      dfmt:function(d){ var x=new Date(d+'T00:00'); return x.getFullYear()+'년 '+(x.getMonth()+1)+'월 '+x.getDate()+'일 ('+'일월화수목금토'[x.getDay()]+')'; }},
+ en: {title:'📔 Daily Urantia Journal', prev:'◀ Previous day', next:'Next day ▶', today:'Today', verse:'✦ Passage for the day', other:'Another passage ↻',
+      think:'✎ Today’s events and thoughts', ph:'Write about what happened in your day', saved:'Saved', past:'Past entries',
+      hint:'Your journal is saved in this browser. It is included in the Export file of the One-Year Reading page.',
+      dfmt:function(d){ return new Date(d+'T00:00').toLocaleDateString('en-US',{weekday:'short',year:'numeric',month:'long',day:'numeric'}); }}
+}[LANG];
+document.documentElement.lang = LANG; document.title = T.title.replace('📔 ', '');
+var KEY = 'ub-reading-v1', VERSES = [], DAY;
+function iso(d){ d = new Date(d); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+function today(){ return iso(new Date()); }
+function shift(d, n){ var x = new Date(d + 'T00:00'); x.setDate(x.getDate() + n); return iso(x); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+/* 저장할 때마다 저장소를 새로 읽어 diary 칸만 고친다 — 일년 읽기 창이 같이 열려 있어도 서로 지우지 않게 */
+function readAll(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { return {}; } }
+function getEntry(d){ return (readAll().diary || {})[d] || {}; }
+function putEntry(d, e){ var S = readAll(); S.diary = S.diary || {};
+  if ((e.text || '').trim() || e.v) S.diary[d] = e; else delete S.diary[d];
+  if (!S.goal) S.goal = '260'; S.done = S.done || {}; S.quotes = S.quotes || {}; S.notes = S.notes || {};
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(x) {} }
+function pickVerse(old){ var c; do { c = VERSES[Math.floor(Math.random() * VERSES.length)][0]; } while (c === old && VERSES.length > 1); return c; }
+function verseOf(c){ for (var i = 0; i < VERSES.length; i++) if (VERSES[i][0] === c) return VERSES[i][1]; return ''; }
+
+function show(d){
+  DAY = d; history.replaceState(null, '', '?' + (LANG === 'en' ? 'lang=en&' : '') + 'd=' + d);
+  var e = getEntry(d);
+  if (!e.v) { e.v = pickVerse(); putEntry(d, e); }      // 그날 처음 열 때 구절을 골라 둔다
+  document.getElementById('dd').textContent = T.dfmt(d);
+  document.getElementById('pick').value = d;
+  document.getElementById('next').disabled = d >= today();
+  document.getElementById('todayBtn').disabled = d === today();
+  var a = document.getElementById('vref'); a.textContent = e.v; a.href = (LANG === 'en' ? '/en/book/#' : '/textapp/index.html#') + e.v;
+  document.getElementById('vtext').textContent = verseOf(e.v);
+  document.getElementById('text').value = e.text || '';
+  pastList();
+}
+function pastList(){
+  var D = readAll().diary || {}, ks = Object.keys(D).filter(function(k){ return (D[k].text || '').trim(); }).sort().reverse();
+  var box = document.getElementById('past'), was = box.open;
+  box.innerHTML = '<summary>' + T.past + ' (' + ks.length + ')</summary>' + ks.map(function(k){
+    return '<a href="#" data-d="' + k + '"><b>' + T.dfmt(k) + ' · ' + esc(D[k].v || '') + '</b><span>' + esc(D[k].text) + '</span></a>'; }).join('');
+  box.open = was; box.hidden = !ks.length;
+}
+
+var timer;
+document.getElementById('text').addEventListener('input', function(){
+  var v = this.value, d = DAY; clearTimeout(timer);
+  timer = setTimeout(function(){ var e = getEntry(d); e.text = v; putEntry(d, e); pastList();
+    var s = document.getElementById('saved'); s.hidden = false; setTimeout(function(){ s.hidden = true; }, 1200); }, 400);
+});
+function flush(){ clearTimeout(timer); var e = getEntry(DAY); var v = document.getElementById('text').value; if ((e.text || '') !== v) { e.text = v; putEntry(DAY, e); } }
+document.getElementById('prev').onclick = function(){ flush(); show(shift(DAY, -1)); };
+document.getElementById('next').onclick = function(){ flush(); if (DAY < today()) show(shift(DAY, 1)); };
+document.getElementById('todayBtn').onclick = function(){ flush(); show(today()); };
+document.getElementById('pick').onchange = function(){ if (!this.value) return; flush(); show(this.value > today() ? today() : this.value); };
+document.getElementById('vnext').onclick = function(){ var e = getEntry(DAY); e.v = pickVerse(e.v); putEntry(DAY, e); show(DAY); };
+document.getElementById('past').addEventListener('click', function(ev){ var a = ev.target.closest('a[data-d]'); if (!a) return; ev.preventDefault(); flush(); show(a.dataset.d); window.scrollTo(0, 0); });
+window.addEventListener('beforeunload', flush);
+
+(function(){
+  var set = function(id, v){ document.getElementById(id).textContent = v; };
+  set('t_title', T.title); set('prev', T.prev); set('next', T.next); set('todayBtn', T.today); set('t_verse', T.verse);
+  set('vnext', T.other); set('t_think', T.think); set('saved', T.saved); set('t_hint', T.hint);
+  document.getElementById('text').placeholder = T.ph; document.getElementById('pick').max = today();
+})();
+fetch('verses-' + LANG + '.json').then(function(r){ return r.json(); }).then(function(v){
+  VERSES = v; var d = new URLSearchParams(location.search).get('d');
+  show(/^\d{4}-\d{2}-\d{2}$/.test(d || '') && d <= today() ? d : today());
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>유란시아서 일년 읽기</title>
+<style>
+:root{--ink:#1f2430;--dim:#6b7280;--bg:#f7f5f0;--card:#fff;--line:#e5e0d5;--navy:#17365d;--gold:#b8862b;--ok:#2e7d4f;--warn:#b3541e;
+  --p0:#8a6d2b;--p1:#1f4e79;--p2:#2e6b5e;--p3:#7a5c1e;--p4:#8c3b2e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","Segoe UI",system-ui,sans-serif;line-height:1.6;word-break:keep-all}
+button,input,select,textarea{font:inherit}
+header.top{background:linear-gradient(160deg,#0d1730 0%,#17365d 46%,#2b4a78 100%);color:#fff;text-align:center;padding:40px 16px 30px}
+header.top h1{margin:0;font-size:clamp(24px,5vw,32px)}header.top p{margin:6px 0 0;color:#d5deee;font-size:14.5px}
+.wrap{max-width:860px;margin:0 auto;padding:18px 14px 60px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.plan{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:14.5px}
+.plan label{display:flex;gap:6px;align-items:center}
+.plan input,.plan select{border:1px solid var(--line);border-radius:8px;padding:5px 8px;background:#fff}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.cards div{background:#f3f1ea;border-radius:10px;padding:10px 12px}.cards b{display:block;font-size:22px;color:var(--navy)}.cards small{color:var(--dim);font-size:12.5px}
+.cards .ahead b{color:var(--ok)}.cards .behind b{color:var(--warn)}
+.btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;font-size:14px}
+.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}.btn:hover{border-color:var(--gold)}
+.parts{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}
+.parts button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13.5px}
+.paper{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:10px;margin-bottom:6px;scroll-margin-top:52px}
+.ph{display:flex;align-items:center;gap:10px;padding:9px 12px;cursor:pointer}
+.ph .no{min-width:2.6em;color:var(--c);font-weight:700;font-size:13.5px}
+.ph .tt{flex:1;min-width:0;font-weight:600}
+.ph .bar{width:90px;height:7px;background:#ece8de;border-radius:9px;overflow:hidden;flex:none}.ph .bar i{display:block;height:100%;background:var(--c)}
+.ph .cnt{font-size:12px;color:var(--dim);min-width:4.2em;text-align:right}
+.ph .when{font-size:12px;color:var(--ok);min-width:5.4em;text-align:right}
+input[type=checkbox]{width:19px;height:19px;accent-color:var(--navy);cursor:pointer;flex:none}
+.pb{display:none;border-top:1px solid var(--line);padding:6px 12px 12px}.paper.open .pb{display:block}
+.sec{display:flex;align-items:center;gap:10px;padding:5px 2px;border-bottom:1px dashed #eee6d8;font-size:14.5px}
+.sec .st{flex:1}.sec .n{color:var(--dim);font-size:12px;min-width:3.4em}
+.sec .d{font-size:12.5px;color:var(--ok);border:none;background:none;cursor:pointer;padding:0;min-width:6em;text-align:right}
+.sec .d:empty::before{content:"—";color:#ccc}
+.memo h4{margin:14px 0 6px;font-size:13.5px;color:var(--c)}
+.qadd{display:flex;gap:6px;flex-wrap:wrap}.qadd select{border:1px solid var(--line);border-radius:8px;padding:5px}
+.qadd input{flex:1;min-width:180px;border:1px solid var(--line);border-radius:8px;padding:6px 9px}
+.qlist{list-style:none;margin:8px 0 0;padding:0}.qlist li{background:#fbf6e9;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:7px 10px;margin:5px 0;font-size:14.5px;display:flex;gap:8px}
+.qlist li span{flex:1}.qlist li small{color:var(--dim)}.qlist li button{border:none;background:none;color:#b3261e;cursor:pointer}
+textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;resize:vertical}
+.saved{font-size:12px;color:var(--ok);margin-left:6px}
+.dbtn{margin-top:10px;background:#fbf6e9;border-color:var(--gold);color:#7a5c1e}
+#graph{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--dim);margin-top:6px;flex-wrap:wrap}.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:5px}
+.status{font-size:14.5px;margin-top:6px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:640px){.cards{grid-template-columns:repeat(2,1fr)}.ph .bar{width:50px}.ph .when{display:none}}
+</style>
+<script src="/home-button.js" defer></script>
+</head>
+<body>
+<header class="top"><h1 id="t_title"></h1><p id="t_sub"></p></header>
+<div class="wrap">
+  <div class="box">
+    <div class="plan">
+      <label><span id="t_start"></span> <input type="date" id="start"></label>
+      <label><span id="t_goal"></span>
+        <select id="goal"><option value="260"></option><option value="365"></option><option value="182"></option></select></label>
+      <button class="btn primary" id="nextBtn"></button>
+    </div>
+    <div class="cards">
+      <div><b id="c_pct">0%</b><small id="t_c1"></small></div>
+      <div><b id="c_sec">0</b><small id="t_c2"></small></div>
+      <div id="c_paceBox"><b id="c_pace">—</b><small id="c_paceTxt"></small></div>
+      <div><b id="c_left">—</b><small id="t_c4"></small></div>
+    </div>
+  </div>
+  <div class="parts" id="parts"></div>
+  <div id="list"></div>
+  <div class="box" style="margin-top:16px">
+    <h3 id="t_graph" style="margin:0 0 8px;font-size:16px"></h3>
+    <svg id="graph" viewBox="0 0 800 300" role="img"></svg>
+    <div class="legend"><span><i style="background:#17365d"></i><span id="t_l1"></span></span><span><i style="background:#b8862b;opacity:.7"></i><span id="t_l2"></span></span></div>
+    <div class="status" id="status"></div>
+  </div>
+  <div class="box tools">
+    <button class="btn" id="exportBtn"></button>
+    <label class="btn" style="display:inline-flex"><span id="t_import"></span><input type="file" id="importFile" accept=".json" hidden></label>
+    <button class="btn" id="resetBtn"></button>
+    <small id="t_store" style="color:var(--dim);flex-basis:100%"></small>
+  </div>
+</div>
+<script>
+/* 유란시아서 일년 읽기 — 설계안 시험판 (tools/reading_plan/DESIGN.md). 기록은 이 기기의 브라우저에 저장한다. */
+var LANG = (new URLSearchParams(location.search).get('lang') === 'en') ? 'en' : 'ko';
+var T = {
+ ko: {title:'유란시아서 일년 읽기', sub:'머리말부터 196편까지 차례대로 — 읽은 곳을 체크하면 날짜가 적힙니다', start:'시작일', goal:'목표',
+      g260:'1년 · 주 5일 (260일)', g365:'1년 · 매일 (365일)', g182:'6개월 (182일)', next:'다음 읽을 곳으로 ▶', c1:'달성률', c2:'읽은 장', c4:'남은 날',
+      ahead:'계획보다 앞섬', behind:'계획보다 뒤처짐', onpace:'계획대로', notyet:'시작 전', paper:'편', fore:'머리말',
+      parts:['머리말','제1부','제2부','제3부','제4부'], intro:'서론', quotes:'인상 깊은 구절', qph:'구절을 적어 주세요', add:'더하기', memo:'메모', mph:'이 편을 읽으며 든 생각을 적어 두세요',
+      saved:'저장됨', dbtn:'📔 매일 유란시아 일기 쓰기',
+      graph:'진도 그래프', l1:'나의 달성률', l2:'목표 (계획)', export:'내보내기 (파일로 저장)', import:'불러오기', reset:'모두 지우기',
+      store:'기록은 이 기기의 브라우저에 저장됩니다. 다른 기기로 옮기거나 잃지 않으려면 가끔 ‘내보내기’로 파일을 저장해 두세요.',
+      resetQ:'모든 체크·구절·메모를 지울까요? 되돌릴 수 없습니다.', editDate:'읽은 날짜 (예: 2026-10-30). 비우면 체크가 풀립니다.',
+      st:function(d,p){ return d>0 ? '계획보다 '+d+'일 앞서 있습니다.' : d<0 ? '계획보다 '+(-d)+'일 뒤처져 있습니다. 오늘 '+p+'%까지 읽으면 따라잡습니다.' : '계획대로 읽고 있습니다.'; },
+      days:function(n){return n+'일';}, secs:function(a,b){return a+' / '+b;}, done:'완료'},
+ en: {title:'One-Year Reading of The Urantia Book', sub:'From the Foreword through Paper 196 in order — check what you read and the date is recorded', start:'Start date', goal:'Goal',
+      g260:'1 year · 5 days a week (260 days)', g365:'1 year · every day (365 days)', g182:'6 months (182 days)', next:'Go to next reading ▶', c1:'Completed', c2:'Sections read', c4:'Days left',
+      ahead:'Ahead of plan', behind:'Behind plan', onpace:'On plan', notyet:'Not started', paper:'Paper', fore:'Foreword',
+      parts:['Foreword','Part I','Part II','Part III','Part IV'], intro:'Introduction', quotes:'Memorable passages', qph:'Write the passage', add:'Add', memo:'Notes', mph:'Write your thoughts on this paper',
+      saved:'Saved', dbtn:'📔 Daily Urantia Journal',
+      graph:'Progress', l1:'My progress', l2:'Goal (plan)', export:'Export (save to file)', import:'Import', reset:'Clear all',
+      store:'Your record is saved in this browser on this device. Export it to a file now and then to move it or keep it safe.',
+      resetQ:'Clear all checks, passages, and notes? This cannot be undone.', editDate:'Date read (e.g. 2026-10-30). Leave empty to uncheck.',
+      st:function(d,p){ return d>0 ? 'You are '+d+' day'+(d>1?'s':'')+' ahead of plan.' : d<0 ? 'You are '+(-d)+' day'+(d<-1?'s':'')+' behind. Reading to '+p+'% today catches you up.' : 'You are on plan.'; },
+      days:function(n){return n+(n===1?' day':' days');}, secs:function(a,b){return a+' / '+b;}, done:'Done'}
+}[LANG];
+document.documentElement.lang = LANG; document.title = T.title;
+var PART_OF = function(n){ return n===0?0 : n<=31?1 : n<=56?2 : n<=119?3 : 4; };
+var PART_COL = ['var(--p0)','var(--p1)','var(--p2)','var(--p3)','var(--p4)'];
+var KEY = 'ub-reading-v1', S, PLAN = [], TOTAL = 0, NSEC = 0;
+function load(){ try { S = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e) { S = {}; }
+  S.done = S.done || {}; S.quotes = S.quotes || {}; S.notes = S.notes || {}; S.diary = S.diary || {}; S.goal = S.goal || '260'; }
+function save(){ try { var cur = JSON.parse(localStorage.getItem(KEY) || '{}'); S.diary = cur.diary || {}; /* 일기는 diary.html 창이 따로 쓴다 */
+  localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function today(){ var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function fmt(d){ return d ? d.slice(5).replace('-', '.') : ''; }
+function W(n, s){ return PLAN.byKey[n+':'+s]; }
+
+/* 진도: 절 수 무게 */
+function pctAt(day){ var w = 0; for (var k in S.done) if (!day || S.done[k] <= day) w += PLAN.w[k] || 0; return w / TOTAL * 100; }
+function readingDays(a, b){ // a~b(포함) 사이 '읽는 날' 수
+  var n = 0, d = new Date(a + 'T00:00'), e = new Date(b + 'T00:00');
+  for (; d <= e; d.setDate(d.getDate() + 1)) { if (S.goal !== '260' || (d.getDay() % 6 !== 0)) n++; }
+  return n;
+}
+function endDate(){ var need = +S.goal, d = new Date(S.start + 'T00:00'), n = 0;
+  while (true) { if (S.goal !== '260' || d.getDay() % 6 !== 0) n++; if (n >= need) break; d.setDate(d.getDate() + 1); }
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+function targetAt(day){ if (!S.start || day < S.start) return 0; return Math.min(100, readingDays(S.start, day) / +S.goal * 100); }
+
+function render(){
+  var html = '', lastPart = -1;
+  PLAN.forEach(function(p){
+    var n = p[0], part = PART_OF(n), col = PART_COL[part];
+    if (part !== lastPart) { html += '<div id="part' + part + '"></div>'; lastPart = part; }
+    html += '<div class="paper" id="p' + n + '" style="--c:' + col + '"><div class="ph" data-n="' + n + '">' +
+      '<input type="checkbox" class="pchk" data-n="' + n + '"><span class="no">' + (n ? n + (LANG==='ko'?'편':'') : '·') + '</span>' +
+      '<span class="tt">' + esc(n ? p[1] : T.fore) + '</span><span class="bar"><i></i></span><span class="cnt"></span><span class="when"></span></div>' +
+      '<div class="pb"></div></div>';
+  });
+  document.getElementById('list').innerHTML = html;
+  PLAN.forEach(function(p){ paintPaper(p[0]); });
+}
+function paintPaper(n){
+  var p = PLAN.byNo[n], el = document.getElementById('p' + n), secs = p[2], c = 0, last = '';
+  secs.forEach(function(s){ var d = S.done[n+':'+s[0]]; if (d) { c++; if (d > last) last = d; } });
+  el.querySelector('.bar i').style.width = (c / secs.length * 100) + '%';
+  el.querySelector('.cnt').textContent = T.secs(c, secs.length);
+  el.querySelector('.when').textContent = c === secs.length ? '✓ ' + fmt(last) : (last ? fmt(last) : '');
+  var pc = el.querySelector('.pchk'); pc.checked = c === secs.length; pc.indeterminate = c > 0 && c < secs.length;
+  if (el.classList.contains('open')) fillBody(n);
+}
+function fillBody(n){
+  var p = PLAN.byNo[n], el = document.getElementById('p' + n), b = el.querySelector('.pb');
+  var rows = p[2].map(function(s){
+    var k = n + ':' + s[0], d = S.done[k] || '';
+    return '<div class="sec"><input type="checkbox" class="schk" data-k="' + k + '"' + (d ? ' checked' : '') + '>' +
+      '<span class="n">' + (s[0] ? n + ':' + s[0] : '') + '</span><span class="st">' + esc(s[1] || T.intro) + '</span>' +
+      '<button class="d" data-k="' + k + '" title="' + esc(T.editDate) + '">' + fmt(d) + '</button></div>';
+  }).join('');
+  var opts = p[2].map(function(s){ return '<option value="' + n + ':' + s[0] + '">' + n + ':' + s[0] + '</option>'; }).join('');
+  var q = (S.quotes[n] || []).map(function(x, i){ return '<li><span>“' + esc(x.text) + '”</span><small>' + esc(x.ref) + '</small><button data-del="' + i + '" title="✕">✕</button></li>'; }).join('');
+  b.innerHTML = rows + '<div class="memo"><h4>✦ ' + T.quotes + '</h4><div class="qadd"><select class="qref">' + opts + '</select>' +
+    '<input class="qtext" placeholder="' + esc(T.qph) + '"><button class="btn qbtn">' + T.add + '</button></div><ul class="qlist">' + q + '</ul>' +
+    '<h4>✎ ' + T.memo + '<span class="saved" hidden>' + T.saved + '</span></h4><textarea class="note" placeholder="' + esc(T.mph) + '">' + esc(S.notes[n] || '') + '</textarea>' +
+    '<button class="btn dbtn">' + T.dbtn + '</button></div>';
+}
+function stats(){
+  var pct = pctAt(), c = Object.keys(S.done).length, t = today();
+  document.getElementById('c_pct').textContent = pct.toFixed(1) + '%';
+  document.getElementById('c_sec').textContent = T.secs(c, NSEC);
+  var box = document.getElementById('c_paceBox'); box.className = '';
+  if (S.start) {
+    var tg = targetAt(t), diff = paceDays();
+    document.getElementById('c_pace').textContent = tg.toFixed(1) + '%';
+    document.getElementById('c_paceTxt').textContent = diff > 0 ? T.ahead : diff < 0 ? T.behind : T.onpace;
+    box.className = diff > 0 ? 'ahead' : diff < 0 ? 'behind' : '';
+    var end = endDate(), left = Math.max(0, Math.round((new Date(end) - new Date(t)) / 864e5));
+    document.getElementById('c_left').textContent = T.days(left);
+    document.getElementById('status').textContent = T.st(diff, tg.toFixed(1));
+  } else {
+    document.getElementById('c_pace').textContent = '—'; document.getElementById('c_paceTxt').textContent = T.notyet;
+    document.getElementById('c_left').textContent = '—'; document.getElementById('status').textContent = '';
+  }
+  graph();
+}
+function paceDays(){ // 실제 달성률이 목표선의 몇째 날과 같은지 → 오늘과의 차이(읽는 날 기준)
+  var pct = pctAt(), per = 100 / +S.goal, need = Math.round(pct / per), had = readingDays(S.start, today());
+  return need - had;
+}
+function graph(){
+  var svg = document.getElementById('graph'), Wd = 800, H = 300, L = 44, R = 12, Tp = 14, B = 34;
+  if (!S.start) { svg.innerHTML = '<text x="400" y="150" text-anchor="middle" fill="#999" font-size="15">' + esc(T.notyet) + '</text>'; return; }
+  var s = new Date(S.start + 'T00:00'), e = new Date(endDate() + 'T00:00'), span = Math.max(1, (e - s) / 864e5);
+  var X = function(d){ return L + (new Date(d + 'T00:00') - s) / 864e5 / span * (Wd - L - R); };
+  var Y = function(v){ return Tp + (100 - v) / 100 * (H - Tp - B); };
+  var g = '';
+  for (var v = 0; v <= 100; v += 25) g += '<line x1="' + L + '" x2="' + (Wd - R) + '" y1="' + Y(v) + '" y2="' + Y(v) + '" stroke="#ece8de"/><text x="' + (L - 6) + '" y="' + (Y(v) + 4) + '" text-anchor="end" font-size="11" fill="#888">' + v + '%</text>';
+  // 달 눈금
+  var m = new Date(s); m.setDate(1); m.setMonth(m.getMonth() + 1);
+  for (; m <= e; m.setMonth(m.getMonth() + 1)) { var ds = new Date(m - m.getTimezoneOffset() * 6e4).toISOString().slice(0,10);
+    g += '<text x="' + X(ds) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="11" fill="#888">' + (m.getMonth() + 1) + (LANG==='ko'?'월':'') + '</text>'; }
+  // 목표선 (주 5일이면 주말은 평평)
+  var pts = [], d = new Date(s), i = 0;
+  for (; d <= e; d.setDate(d.getDate() + 7)) { var ds2 = new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0,10); pts.push(X(ds2).toFixed(1) + ',' + Y(targetAt(ds2)).toFixed(1)); }
+  pts.push(X(endDate()).toFixed(1) + ',' + Y(100).toFixed(1));
+  g += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="#b8862b" stroke-width="2" stroke-dasharray="6 5" opacity=".8"/>';
+  // 실제 선: 체크한 날짜마다 누적
+  var days = {}; for (var k in S.done) days[S.done[k]] = 1;
+  var ds3 = Object.keys(days).sort(), ap = [X(S.start).toFixed(1) + ',' + Y(0).toFixed(1)];
+  ds3.forEach(function(x){ if (x < S.start) return; ap.push(X(x).toFixed(1) + ',' + Y(pctAt(x)).toFixed(1)); });
+  var t = today(); if (t >= S.start && t <= endDate()) ap.push(X(t).toFixed(1) + ',' + Y(pctAt()).toFixed(1));
+  g += '<polyline points="' + ap.join(' ') + '" fill="none" stroke="#17365d" stroke-width="3" stroke-linejoin="round"/>';
+  ap.slice(1).forEach(function(p){ var q = p.split(','); g += '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="3" fill="#17365d"/>'; });
+  // 오늘
+  if (t >= S.start && t <= endDate()) g += '<line x1="' + X(t) + '" x2="' + X(t) + '" y1="' + Tp + '" y2="' + (H - B) + '" stroke="#b3541e" stroke-dasharray="3 3"/><text x="' + X(t) + '" y="' + (Tp + 10) + '" font-size="11" fill="#b3541e" text-anchor="middle">' + (LANG==='ko'?'오늘':'today') + '</text>';
+  svg.innerHTML = g;
+}
+function setDone(k, d){ if (d) S.done[k] = d; else delete S.done[k];
+  if (d && (!S.start || d < S.start)) { S.start = d; document.getElementById('start').value = d; }
+  save(); }
+
+document.getElementById('list').addEventListener('click', function(e){
+  var t = e.target;
+  if (t.classList.contains('pchk')) {        // 편 전체 체크
+    var n = +t.dataset.n, all = t.checked, d = today();
+    PLAN.byNo[n][2].forEach(function(s){ var k = n + ':' + s[0]; if (all) { if (!S.done[k]) setDone(k, d); } else setDone(k, ''); });
+    paintPaper(n); stats(); return;
+  }
+  if (t.classList.contains('schk')) { setDone(t.dataset.k, t.checked ? today() : ''); var n2 = +t.dataset.k.split(':')[0]; paintPaper(n2); stats(); return; }
+  if (t.classList.contains('d')) { var v = prompt(T.editDate, S.done[t.dataset.k] || today());
+    if (v === null) return; v = v.trim(); if (v && !/^\d{4}-\d{2}-\d{2}$/.test(v)) return;
+    setDone(t.dataset.k, v); paintPaper(+t.dataset.k.split(':')[0]); stats(); return; }
+  if (t.classList.contains('qbtn')) { var pb = t.closest('.pb'), n3 = +t.closest('.paper').id.slice(1), tx = pb.querySelector('.qtext').value.trim();
+    if (!tx) return; (S.quotes[n3] = S.quotes[n3] || []).push({ref: pb.querySelector('.qref').value, text: tx, date: today()}); save(); fillBody(n3); return; }
+  if (t.dataset.del !== undefined) { var n4 = +t.closest('.paper').id.slice(1); S.quotes[n4].splice(+t.dataset.del, 1); save(); fillBody(n4); return; }
+  if (t.classList.contains('dbtn')) { window.open('diary.html' + (LANG === 'en' ? '?lang=en' : ''), 'ub-diary'); return; }
+  var ph = t.closest('.ph'); if (ph) { var el = ph.parentNode; el.classList.toggle('open'); if (el.classList.contains('open')) fillBody(+ph.dataset.n); }
+});
+var noteTimer;
+document.getElementById('list').addEventListener('input', function(e){
+  if (!e.target.classList.contains('note')) return;
+  var n = +e.target.closest('.paper').id.slice(1), lab = e.target.parentNode.querySelector('.saved');
+  S.notes[n] = e.target.value; clearTimeout(noteTimer);
+  noteTimer = setTimeout(function(){ save(); lab.hidden = false; setTimeout(function(){ lab.hidden = true; }, 1200); }, 400);
+});
+document.getElementById('start').onchange = function(){ S.start = this.value || ''; save(); stats(); };
+document.getElementById('goal').onchange = function(){ S.goal = this.value; save(); stats(); };
+document.getElementById('nextBtn').onclick = function(){
+  for (var i = 0; i < PLAN.length; i++) { var p = PLAN[i]; for (var j = 0; j < p[2].length; j++) if (!S.done[p[0] + ':' + p[2][j][0]]) {
+    var el = document.getElementById('p' + p[0]); if (!el.classList.contains('open')) { el.classList.add('open'); fillBody(p[0]); }
+    el.scrollIntoView({behavior: 'smooth'}); return; } }
+};
+document.getElementById('exportBtn').onclick = function(){
+  var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(S, null, 1)], {type: 'application/json'}));
+  a.download = 'urantia-reading-' + today() + '.json'; a.click();
+};
+document.getElementById('importFile').onchange = function(){
+  var f = this.files[0]; if (!f) return; var r = new FileReader();
+  r.onload = function(){ try { var x = JSON.parse(r.result); if (!x.done) throw 0; S = x; save(); load(); init2(); } catch(e) { alert('?'); } }; r.readAsText(f);
+};
+document.getElementById('resetBtn').onclick = function(){ if (!confirm(T.resetQ)) return; S = {}; save(); load(); init2(); };
+
+function texts(){
+  var set = function(id, v){ document.getElementById(id).textContent = v; };
+  set('t_title', T.title); set('t_sub', T.sub); set('t_start', T.start); set('t_goal', T.goal); set('nextBtn', T.next);
+  set('t_c1', T.c1); set('t_c2', T.c2); set('t_c4', T.c4); set('t_graph', T.graph); set('t_l1', T.l1); set('t_l2', T.l2);
+  set('exportBtn', T.export); set('t_import', T.import); set('resetBtn', T.reset); set('t_store', T.store);
+  var o = document.getElementById('goal').options; o[0].text = T.g260; o[1].text = T.g365; o[2].text = T.g182;
+  document.getElementById('parts').innerHTML = T.parts.map(function(x, i){ return '<button data-p="' + i + '" style="color:' + PART_COL[i] + '">' + x + '</button>'; }).join('');
+  document.getElementById('parts').onclick = function(e){ var b = e.target.closest('button'); if (b) document.getElementById('part' + b.dataset.p).nextElementSibling.scrollIntoView({behavior: 'smooth'}); };
+}
+function init2(){ document.getElementById('start').value = S.start || ''; document.getElementById('goal').value = S.goal; render(); stats(); }
+
+load(); texts();
+fetch('plan-' + LANG + '.json').then(function(r){ return r.json(); }).then(function(d){
+  PLAN = d; PLAN.byNo = {}; PLAN.w = {}; PLAN.byKey = {};
+  d.forEach(function(p){ PLAN.byNo[p[0]] = p; p[2].forEach(function(s){ PLAN.w[p[0] + ':' + s[0]] = s[2]; TOTAL += s[2]; NSEC++; }); });
+  init2();
+});
+</script>
+</body>
+</html>
