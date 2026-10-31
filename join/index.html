@@ -19,7 +19,7 @@ form,.done{background:#fff;border:1px solid var(--line);border-radius:12px;paddi
 label{display:block;font-weight:700;margin:16px 0 6px;font-size:14px}
 label:first-of-type{margin-top:0}
 label small{font-weight:400;color:var(--dim)}
-input[type=text],input[type=tel],input[type=number],textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;background:var(--paper);color:var(--ink)}
+input[type=text],input[type=tel],input[type=email],input[type=number],textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;background:var(--paper);color:var(--ink)}
 textarea{resize:vertical;min-height:64px}
 input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(183,121,31,.14)}
 .years{display:flex;align-items:center;gap:8px}.years input{width:110px}
@@ -112,6 +112,9 @@ form{scroll-margin-top:12px}
     <label for="phone">전화번호 <small>(예: 010-1234-5678)</small></label>
     <input type="tel" id="phone" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" required>
 
+    <label for="email">이메일 <small>(없으면 비워 두셔도 됩니다)</small></label>
+    <input type="email" id="email" name="email" maxlength="80" autocomplete="email" inputmode="email">
+
     <label for="address">주소</label>
     <textarea id="address" name="address" maxlength="200" autocomplete="street-address" required></textarea>
 
@@ -121,7 +124,7 @@ form{scroll-margin-top:12px}
     <div class="hp" aria-hidden="true"><label for="website">웹사이트</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
 
     <div class="agree">
-      적어 주신 이름·전화번호·주소·읽은 햇수는 정회원 관리와 연락에만 쓰며, 관리자만 볼 수 있고 바깥에 공개하거나 남에게 넘기지 않습니다. 지우기를 원하시면 언제든 trusteen@gmail.com 으로 알려 주세요.
+      적어 주신 이름·전화번호·이메일·주소·읽은 햇수는 정회원 관리와 연락에만 쓰며, 관리자만 볼 수 있고 바깥에 공개하거나 남에게 넘기지 않습니다. 지우기를 원하시면 언제든 trusteen@gmail.com 으로 알려 주세요.
       <label><input type="checkbox" id="agree"> 위 내용에 동의합니다.</label>
     </div>
 
@@ -229,10 +232,11 @@ var f = document.getElementById('f'), msg = document.getElementById('msg'), go =
 f.addEventListener('submit', function (e) {
   e.preventDefault();
   var v = function (id) { return document.getElementById(id).value.trim(); };
-  var d = { name: v('name'), phone: v('phone'), address: v('address'), years: v('years'),
+  var d = { name: v('name'), phone: v('phone'), email: v('email'), address: v('address'), years: v('years'),
             website: v('website'), agree: document.getElementById('agree').checked };
   if (!d.name) return say('이름을 적어 주세요.', 'name');
   if (d.phone.replace(/\D/g, '').length < 9) return say('전화번호를 확인해 주세요.', 'phone');
+  if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return say('이메일 주소를 확인해 주세요.', 'email');
   if (!d.address) return say('주소를 적어 주세요.', 'address');
   if (d.years === '' || isNaN(+d.years) || +d.years < 0 || +d.years > 100) return say('읽은 햇수를 숫자로 적어 주세요.', 'years');
   if (!d.agree) return say('개인 정보 수집에 동의해 주세요.', 'agree');

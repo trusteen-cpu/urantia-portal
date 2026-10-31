@@ -55,7 +55,7 @@ select.st{padding:4px 6px}select.st.ok{color:var(--teal);font-weight:700}
       <button class="ghost" id="out">닫기</button>
     </div>
     <div class="tw"><table>
-      <thead><tr><th>#</th><th>신청일</th><th>이름</th><th>전화번호</th><th>주소</th><th>읽은 햇수</th><th>상태</th><th></th></tr></thead>
+      <thead><tr><th>#</th><th>신청일</th><th>이름</th><th>전화번호</th><th>이메일</th><th>주소</th><th>읽은 햇수</th><th>상태</th><th></th></tr></thead>
       <tbody id="tb"></tbody>
     </table></div>
     <div class="err" id="err"></div>
@@ -83,16 +83,16 @@ function load() {
 }
 function draw() {
   var q = $('q').value.trim().toLowerCase();
-  var show = rows.filter(function (r) { return !q || (r.name + ' ' + r.phone + ' ' + r.address).toLowerCase().indexOf(q) >= 0; });
+  var show = rows.filter(function (r) { return !q || (r.name + ' ' + r.phone + ' ' + (r.email || '') + ' ' + r.address).toLowerCase().indexOf(q) >= 0; });
   var wait = rows.filter(function (r) { return r.status !== '승인'; }).length;
   $('count').textContent = '모두 ' + rows.length + '명 · 대기 ' + wait + '명' + (q ? ' · 찾은 ' + show.length + '명' : '');
   $('tb').innerHTML = show.length ? show.map(function (r, i) {
     return '<tr data-id="' + esc(r.id) + '"><td class="n">' + (rows.length - rows.indexOf(r)) + '</td><td class="at">' + day(r.at) + '</td><td>' + esc(r.name) +
-      '</td><td class="n"><a href="tel:' + esc(r.phone.replace(/[^0-9+]/g, '')) + '">' + esc(r.phone) + '</a></td><td class="addr">' + esc(r.address) +
+      '</td><td class="n"><a href="tel:' + esc(r.phone.replace(/[^0-9+]/g, '')) + '">' + esc(r.phone) + '</a></td><td>' + (r.email ? '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a>' : '') + '</td><td class="addr">' + esc(r.address) +
       '</td><td class="n">' + esc(r.years) + '년</td><td><select class="st' + (r.status === '승인' ? ' ok' : '') + '">' +
       ['대기', '승인', '보류'].map(function (s) { return '<option' + (s === r.status ? ' selected' : '') + '>' + s + '</option>'; }).join('') +
       '</select></td><td><button class="del">지우기</button></td></tr>';
-  }).join('') : '<tr><td colspan="8" class="empty">' + (rows.length ? '찾는 이름이 없습니다.' : '아직 받은 원서가 없습니다.') + '</td></tr>';
+  }).join('') : '<tr><td colspan="9" class="empty">' + (rows.length ? '찾는 이름이 없습니다.' : '아직 받은 원서가 없습니다.') + '</td></tr>';
 }
 $('lf').addEventListener('submit', function (e) {
   e.preventDefault(); KEY = $('key').value.trim(); if (!KEY) return;
@@ -119,8 +119,8 @@ $('tb').addEventListener('click', function (e) {
 });
 $('csv').addEventListener('click', function () {
   var q = function (s) { return '"' + String(s == null ? '' : s).replace(/"/g, '""') + '"'; };
-  var lines = [['신청일', '이름', '전화번호', '주소', '읽은 햇수', '상태'].map(q).join(',')].concat(rows.map(function (r) {
-    return [day(r.at), r.name, r.phone, r.address, r.years, r.status].map(q).join(',');
+  var lines = [['신청일', '이름', '전화번호', '이메일', '주소', '읽은 햇수', '상태'].map(q).join(',')].concat(rows.map(function (r) {
+    return [day(r.at), r.name, r.phone, r.email || '', r.address, r.years, r.status].map(q).join(',');
   }));
   var a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' }));
