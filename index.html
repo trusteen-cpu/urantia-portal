@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>한국 유란시아서 독자회</title>
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#17365D">
+<link rel="apple-touch-icon" href="/icon-192.png">
 <style>
 /* ── 아이콘·도형 장식 (2026-08-11 추가) ─────────────────────── */
 .card .hd{position:relative}
@@ -93,6 +96,23 @@ body{top:0!important;position:static!important}
 .givebox .gcopy{background:#1e5f66;color:#fff}
 .givebox .gclose{background:#fff;color:#1e5f66}
 .givebox .gx{position:absolute;right:10px;top:8px;border:0;background:none;font-size:22px;line-height:1;color:#999;cursor:pointer}
+
+/* ── 공유하기·바탕화면 저장 단추 (2026-10-31 추가) ─────────────── */
+.actions{position:relative;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}
+.actions button{display:inline-flex;align-items:center;gap:6px;font:600 14px/1 inherit;font-family:inherit;cursor:pointer;
+  padding:8px 16px;border-radius:999px;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);
+  transition:background .16s}
+.actions button:hover{background:rgba(255,255,255,.2)}
+.actions #installBtn{color:#2a1e06;background:#d6a84a;border-color:#d6a84a;font-weight:700}
+.actions #installBtn:hover{background:#e4bd6c}
+.hero .inhelp{position:relative;max-width:480px;margin:10px auto 0;padding:8px 12px;font-size:13px;line-height:1.6;color:#e8edf6;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:10px}
+.sharelist{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.sharelist a,.sharelist button{display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px;border-radius:9px;
+  font:700 14px/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer;border:1px solid transparent;color:#fff}
+.sharelist .all{grid-column:1/-1;background:#fee500;color:#191600}
+.sharelist .fb{background:#1877f2}.sharelist .x{background:#14171a}.sharelist .band{background:#26b24b}.sharelist .line{background:#06c755}
+.sharelist .copy{grid-column:1/-1;background:#fff;color:#1e5f66;border-color:#1e5f66}
 </style>
 <meta property="og:title" content="한국 유란시아서 독자회 — 진리를 함께 걷는 자리">
 <meta property="og:description" content="유란시아서 본문, 52주·100강 강의, 인터랙티브 학습, 매일의 아침·취침 묵상까지 — 한 곳에서 만나는 유란시아서 여정.">
@@ -119,6 +139,11 @@ body{top:0!important;position:static!important}
     <div class="sub" id="hSub"></div>
     <div class="quote" id="hQuote"></div>
     <div class="qref" id="hQref"></div>
+    <div class="actions">
+      <button type="button" id="shareBtn" aria-haspopup="dialog" aria-controls="shareBg">🔗 공유하기</button>
+      <button type="button" id="installBtn">📲 바탕화면 저장</button>
+    </div>
+    <p class="inhelp" id="installHelp" hidden></p>
     <div class="rule"></div>
   </div>
 </header>
@@ -194,6 +219,61 @@ body{top:0!important;position:static!important}
 })();
 </script>
 
+<div class="givebg" id="shareBg" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+  <div class="givebox">
+    <button type="button" class="gx" id="shareX" aria-label="닫기">&times;</button>
+    <h3 id="shareTitle">홈페이지 공유하기</h3>
+    <p class="gsub">한국 유란시아서 독자회 홈페이지를 알려 주세요.</p>
+    <div class="sharelist">
+      <button type="button" class="all" id="shareAll" hidden>카카오톡·문자 등으로 보내기</button>
+      <a class="fb" id="shareFb" target="_blank" rel="noopener">페이스북</a>
+      <a class="x" id="shareTw" target="_blank" rel="noopener">X (트위터)</a>
+      <a class="band" id="shareBand" target="_blank" rel="noopener">네이버 밴드</a>
+      <a class="line" id="shareLine" target="_blank" rel="noopener">라인</a>
+      <button type="button" class="copy" id="shareCopy">주소 복사 (카톡·문자에 붙여 넣기)</button>
+    </div>
+  </div>
+</div>
+<script>
+/* 공유하기: 휴대폰은 기기의 공유 창(카톡·문자 등)도 함께, 컴퓨터는 SNS 단추와 주소 복사 */
+(function(){
+  var url='https://urantiareaders.com/', title=document.title,
+      text='한국 유란시아서 독자회 — 유란시아서 본문과 강의, 매일의 묵상을 한곳에서 만나 보세요.',
+      bg=document.getElementById('shareBg'), cp=document.getElementById('shareCopy'), all=document.getElementById('shareAll'),
+      cpText=cp.textContent, u=encodeURIComponent(url), t=encodeURIComponent(text);
+  document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;
+  document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+t+'&url='+u;
+  document.getElementById('shareBand').href='https://band.us/plugin/share?body='+encodeURIComponent(text+'\n'+url)+'&route='+u;
+  document.getElementById('shareLine').href='https://social-plugins.line.me/lineit/share?url='+u;
+  if(navigator.share) all.hidden=false;
+  function close(){bg.className='givebg';cp.textContent=cpText;}
+  document.getElementById('shareBtn').onclick=function(){bg.className='givebg on';};
+  document.getElementById('shareX').onclick=close;
+  bg.onclick=function(e){if(e.target===bg)close();};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  all.onclick=function(){navigator.share({title:title,text:text,url:url}).catch(function(){});};
+  cp.onclick=function(){
+    function done(){cp.textContent='복사되었습니다. 카톡이나 문자에 붙여 넣으세요.';}
+    function fallback(){var a=document.createElement('textarea');a.value=url;document.body.appendChild(a);a.select();
+      try{document.execCommand('copy');done();}catch(e){prompt('',url);}document.body.removeChild(a);}
+    if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(url).then(done,fallback);else fallback();
+  };
+})();
+/* 바탕화면 저장: 브라우저가 설치를 허락하면 설치 창, 아니면(아이폰 등) 방법 안내 */
+(function(){
+  var evt=null, help=document.getElementById('installHelp');
+  function say(t){help.textContent=t;help.hidden=false;}
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();evt=e;});
+  window.addEventListener('appinstalled',function(){evt=null;say('이 기기에 저장되었습니다.');});
+  document.getElementById('installBtn').onclick=function(){
+    if(evt){evt.prompt();evt.userChoice.finally(function(){evt=null;});return;}
+    if(matchMedia('(display-mode: standalone)').matches||navigator.standalone){say('이 기기에 이미 저장되어 있습니다.');return;}
+    var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    say(ios?'아이폰·아이패드: Safari 아래쪽의 공유 단추(□↑)를 누른 뒤 ‘홈 화면에 추가’를 고르세요.'
+           :'브라우저 메뉴(⋮)에서 ‘앱 설치’ 또는 ‘홈 화면에 추가’를 고르세요. 카카오톡 안에서 여셨다면 먼저 ‘다른 브라우저로 열기’를 눌러 주세요.');
+  };
+})();
+</script>
 <script src="app.js"></script>
 <script>
 (function(){
