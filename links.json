@@ -78,6 +78,10 @@
           "name": "공지 사항",
           "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/10",
           "member": true
+        },
+        {
+          "name": "365일 유란시아서와 함께",
+          "url": "/365days/"
         }
       ]
     },
