@@ -1,5 +1,8 @@
 {
 "paths": {
+"365days": "2026-11-04",
+"365days/days.json": "2026-11-04",
+"365days/index.html": "2026-11-04",
 "Claude outputs": "2026-09-12",
 "Claude outputs/2026-09-13 thumbnail.png": "2026-09-12",
 "Claude outputs/updates.yml": "2026-09-12",
@@ -15418,7 +15421,7 @@
 "learn/w8.html": "2026-08-16",
 "learn/w9.html": "2026-08-16",
 "lectures-en.html": "2026-09-27",
-"links.json": "2026-11-01",
+"links.json": "2026-11-04",
 "list.html": "2026-08-09",
 "lists": "2026-10-25",
 "lists/data.json": "2026-10-25",
