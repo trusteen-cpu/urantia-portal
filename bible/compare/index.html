@@ -63,7 +63,8 @@ h2.pt .en{display:block;font-size:14px;font-weight:400;color:var(--dim);font-fam
  .bi{border-left:none;border-top:1px dashed var(--line);padding:10px 0 0}
  header .by{display:none}
 }
-</style></head><body>
+</style><script src="/home-button.js" data-into="header" defer></script>
+</head><body>
 <header>
  <button class="btn" id="burger">☰ 편</button>
  <h1 id="ht">성경 vs 유란시아서</h1><span class="by" id="hb">편별 핵심 구절 평행 대조</span>
@@ -71,7 +72,6 @@ h2.pt .en{display:block;font-size:14px;font-weight:400;color:var(--dim);font-fam
  <button class="btn" id="lko">한국어</button><button class="btn" id="len">English</button>
  <button class="btn" id="fs">가</button>
  <button class="btn" id="dark">◐</button>
- <button class="btn" id="home">⌂</button>
 </header>
 <main>
  <aside id="side"><input id="q"><div id="toc"></div></aside>
@@ -143,7 +143,6 @@ $('#len').onclick=function(){if(L!=='en')setLang('en')};
 $('#q').oninput=renderTOC;
 $('#toc').addEventListener('click',function(e){var c=e.target.closest('.c[data-n]');if(c)go(+c.dataset.n)});
 $('#burger').onclick=function(){$('#side').classList.toggle('open')};
-$('#home').onclick=function(){location.href='/'};
 var F=['15px','16.5px','18.5px','21px'],fi=+load('cmp_fs','1');
 function af(){document.documentElement.style.setProperty('--fs',F[fi]);save('cmp_fs',fi)}
 $('#fs').onclick=function(){fi=(fi+1)%F.length;af()};af();

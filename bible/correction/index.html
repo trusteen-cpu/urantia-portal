@@ -61,7 +61,9 @@ html[data-dark="1"] .bib{background:rgba(120,160,220,.10);color:#cfe0ff;border-l
 .qt .r{font-family:"맑은 고딕",sans-serif;font-size:12.5px;font-weight:700;color:#9a743a;white-space:nowrap}
 .qh{margin:18px 0 8px;font-size:12.5px;letter-spacing:.1em;color:#9a743a;font-weight:700;font-family:"맑은 고딕",sans-serif}
 .intro{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:14px;line-height:1.8;color:var(--dim)}
-</style></head><body>
+</style><script src="/bible/ubref.js" data-src="ub.js"></script>
+<script src="/home-button.js" data-into="header" defer></script>
+</head><body>
 <header>
  <button class="btn" id="burger">☰ 목차</button>
  <h1 id="btitle">…</h1><span class="by" id="bby"></span>
@@ -76,7 +78,6 @@ html[data-dark="1"] .bib{background:rgba(120,160,220,.10);color:#cfe0ff;border-l
  <button class="btn" id="wide">↔ 폭</button>
  <button class="btn" id="fs">가</button>
  <button class="btn" id="dark">◐</button>
- <button class="btn" id="home">⌂</button>
 </header>
 <main>
  <aside id="side"><input id="q" placeholder="장·소제목 찾기"><div id="toc"></div></aside>
@@ -202,8 +203,8 @@ function renderBody(jump){
     if(b[0]==='h'){inq=false;h+='<h3 class="sh" id="p'+i+'">'+esc(b[1])+'</h3>'}
     else if(b[0]==='b'){h+='<div class="bib" id="p'+i+'">'+esc(b[1])+(b[2]?'<span class="r">— '+esc(b[2])+'</span>':'')+'</div>'}
     else if(b[0]==='q'){if(!inq){h+='<div class="qh">유란시아서 본문</div>';inq=true}
-      h+='<div class="qt" id="p'+i+'">'+esc(b[1])+' <span class="r">('+esc(b[2])+')</span></div>'}
-    else{h+='<div class="pa" id="p'+i+'"><div class="t">'+esc(b[1])+'</div>'
+      h+='<div class="qt" id="p'+i+'">'+esc(b[1])+' <span class="r">('+UBLINK(esc(b[2]))+')</span></div>'}
+    else{h+='<div class="pa" id="p'+i+'"><div class="t">'+UBLINK(esc(b[1]))+'</div>'
         +'<button class="s" data-i="'+i+'" title="이 문단 듣기">🔊</button></div>'}
   });
   h+='<div class="nav"><button id="prev">← 이전</button><button id="next">다음 →</button></div>';
@@ -253,7 +254,6 @@ $('#toc').addEventListener('click',function(e){
 });
 $('#q').oninput=function(){renderTOC(this.value)};
 $('#burger').onclick=function(){$('#side').classList.toggle('open')};
-$('#home').onclick=function(){location.href='/'};
 $('#spd').onclick=function(){si=(si+1)%SPEEDS.length;applySpeed()};
 AUD.addEventListener('loadedmetadata',function(){AUD.playbackRate=rate()});
 applySpeed();

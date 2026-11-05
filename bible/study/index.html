@@ -73,7 +73,9 @@ html[data-dark="1"] .card b{color:#e9d99a}
  p.t,.qt{text-align:left}
 }
 @media print{header,#side,.nav{display:none}#body{padding:0}.qa .a{display:block}.qa button:after{content:""}}
-</style></head><body>
+</style><script src="/bible/ubref.js" data-src="data/ub.js"></script>
+<script src="/home-button.js" data-into="header" defer></script>
+</head><body>
 <header>
  <button class="btn" id="burger">☰ 목차</button>
  <h1>Bible Study</h1><span class="by">유란시아서와 함께하는 성경 공부</span>
@@ -81,7 +83,6 @@ html[data-dark="1"] .card b{color:#e9d99a}
  <button class="btn" id="pr" title="이 과 인쇄">🖨</button>
  <button class="btn" id="fs">가</button>
  <button class="btn" id="dark">◐</button>
- <button class="btn" id="home">⌂</button>
 </header>
 <main>
  <aside id="side"><input id="q" placeholder="과 제목·책 이름 찾기"><div id="toc"></div></aside>
@@ -127,16 +128,16 @@ function render(d){
   var h='<div class="kick">'+esc(d.group)+'</div><h2 class="ut">'+esc(d.title)+'</h2>'
    +(d.subtitle?'<div class="sub">'+esc(d.subtitle)+'</div>':'')
    +'<div class="en">Sadler Workbook: '+esc(d.en)+' (pp. '+d.wb[0]+'–'+d.wb[1]+')</div>'
-   +'<div class="sum">'+esc(d.summary)+'</div>';
-  if(d.facts&&d.facts.length){h+='<div class="facts">';d.facts.forEach(function(f){h+='<div class="fact"><b>'+esc(f[0])+'</b>'+esc(f[1])+'</div>'});h+='</div>'}
+   +'<div class="sum">'+UBLINK(esc(d.summary))+'</div>';
+  if(d.facts&&d.facts.length){h+='<div class="facts">';d.facts.forEach(function(f){h+='<div class="fact"><b>'+esc(f[0])+'</b>'+UBLINK(esc(f[1]))+'</div>'});h+='</div>'}
   if(d.outline&&d.outline.length){h+='<h3>간추린 개요</h3><table class="ol">';
     d.outline.forEach(function(o,i){h+='<tr><td>'+(i+1)+'</td><td>'+esc(o[0])+'</td><td>'+esc(o[1])+'</td></tr>'});h+='</table>'}
-  d.sections.forEach(function(s){h+='<h3>'+esc(s.h)+'</h3>';s.paras.forEach(function(p){h+='<p class="t">'+esc(p)+'</p>'})});
+  d.sections.forEach(function(s){h+='<h3>'+esc(s.h)+'</h3>';s.paras.forEach(function(p){h+='<p class="t">'+UBLINK(esc(p))+'</p>'})});
   h+='<div class="ub"><h3>유란시아서의 빛으로</h3>';
-  d.ub.paras.forEach(function(p){h+='<p class="t">'+esc(p)+'</p>'});
-  d.ub.quotes.forEach(function(q){h+='<div class="qt">'+esc(q[1])+' <span class="r">('+esc(q[0])+')</span></div>'});
+  d.ub.paras.forEach(function(p){h+='<p class="t">'+UBLINK(esc(p))+'</p>'});
+  d.ub.quotes.forEach(function(q){h+='<div class="qt">'+esc(q[1])+' <span class="r">('+UBLINK(esc(q[0]))+')</span></div>'});
   h+='</div><h3>함께 생각해 볼 질문</h3><div class="qs">';
-  d.questions.forEach(function(q){h+='<div class="qa"><button>'+esc(q.q)+'</button><div class="a">'+esc(q.a)+'</div></div>'});
+  d.questions.forEach(function(q){h+='<div class="qa"><button>'+esc(q.q)+'</button><div class="a">'+UBLINK(esc(q.a))+'</div></div>'});
   h+='</div>';return h}
 function show(h){$('#wrap').innerHTML=h+navHtml();window.scrollTo(0,0)}
 function go(id){CUR=id;save('bs_u',id);history.replaceState(null,'','?u='+id);renderTOC();
@@ -150,7 +151,6 @@ document.addEventListener('click',function(e){
   var b=e.target.closest('.qa button');if(b)b.parentNode.classList.toggle('open')});
 $('#q').oninput=renderTOC;
 $('#burger').onclick=function(){$('#side').classList.toggle('open')};
-$('#home').onclick=function(){location.href='/'};
 $('#pr').onclick=function(){window.print()};
 var F=['15.5px','17px','19px','21.5px'],fi=+load('bs_fs','1');
 function af(){document.documentElement.style.setProperty('--fs',F[fi]);save('bs_fs',fi)}
