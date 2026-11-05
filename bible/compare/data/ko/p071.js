@@ -1,0 +1,1 @@
+CMP({"n": 71, "title": "국가의 발전", "en": "Development of the State", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

@@ -698,4 +698,90 @@ buildChapterList();
 <script src="./index_files/html2canvas.min.js.다운로드"></script>
 
 
+<!-- hl-erase-patch -->
+
+<style>
+#hlEraseTip{position:absolute;z-index:9999;display:none;background:#1b1f2a;color:#fff;border:none;border-radius:999px;
+  padding:6px 12px;font:600 13px/1 system-ui,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:pointer}
+#hlEraseTip:hover{background:#b3261e}
+#chapterContent mark{cursor:pointer}
+</style>
+<button id="hlEraseTip" type="button"></button>
+<script>
+/* 칠한 형광펜을 누르면 그 자리에 '지우기' 단추를 띄운다 */
+(function(){
+  var tip = document.getElementById('hlEraseTip'), target = null;
+  function hide(){ tip.style.display = 'none'; target = null; }
+  document.addEventListener('click', function(e){
+    if (e.target === tip) return;
+    var m = e.target.closest && e.target.closest('#chapterContent mark');
+    var sel = window.getSelection();
+    if (!m || (sel && !sel.isCollapsed)) { hide(); return; }
+    target = m;
+    tip.textContent = window.HL_ERASE_LABEL || 'Remove';
+    var r = m.getBoundingClientRect();
+    tip.style.left = (window.scrollX + r.left + r.width / 2 - 40) + 'px';
+    tip.style.top = (window.scrollY + r.top - 38) + 'px';
+    tip.style.display = 'block';
+  }, true);
+  tip.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (target) window.hlRemoveMark(target);
+    hide();
+  });
+  window.addEventListener('scroll', hide, true);
+})();
+function hlUnwrap(m){ var p = m.parentNode; while (m.firstChild) p.insertBefore(m.firstChild, m); p.removeChild(m); p.normalize(); }
+</script>
+
+<script>
+window.HL_ERASE_LABEL = '✕ 형광펜 지우기';
+/* 한 개 지우기: 화면에서 벗기고, 이 장의 저장본을 다시 쓴다 */
+window.hlRemoveMark = function(m){
+  hlUnwrap(m);
+  if (currentIdx >= 0) {
+    var num = CHAPTERS[currentIdx].num, wrap = document.getElementById('chapterContent');
+    if (wrap.querySelector('mark')) saveHighlights(num); else localStorage.removeItem('hl_' + num);
+  }
+};
+/* '지우기' 단추는 지우개: 켠 뒤 칠해진 곳을 끌어 고르면 그 안의 형광펜이 지워진다 */
+function clearHighlight(){
+  currentHLColor = (currentHLColor === 'erase') ? null : 'erase';
+  document.querySelectorAll('.hl-btn').forEach(function(b){ b.style.outline = ''; });
+  if (currentHLColor) document.querySelector('.hl-btn.hl-clear').style.outline = '2px solid #8B6914';
+}
+window.addEventListener('mouseup', function(e){
+  if (currentHLColor !== 'erase') return;
+  e.stopPropagation();                                   // 원래의 '칠하기' 처리가 돌지 않게
+  var sel = window.getSelection();
+  if (!sel || sel.isCollapsed) return;
+  var range = sel.getRangeAt(0), wrap = document.getElementById('chapterContent');
+  if (!wrap || !wrap.contains(range.commonAncestorContainer)) return;
+  Array.prototype.slice.call(wrap.querySelectorAll('mark')).forEach(function(m){
+    if (range.intersectsNode(m)) hlUnwrap(m);
+  });
+  sel.removeAllRanges();
+  if (currentIdx >= 0) {
+    var num = CHAPTERS[currentIdx].num;
+    if (wrap.querySelector('mark')) saveHighlights(num); else localStorage.removeItem('hl_' + num);
+  }
+}, true);
+/* '모두 지우기': 이 장의 형광펜을 전부 지운다 */
+function clearAllHighlights(){
+  if (currentIdx < 0) return;
+  if (!confirm('이 장의 형광펜을 모두 지울까요?')) return;
+  var wrap = document.getElementById('chapterContent');
+  Array.prototype.slice.call(wrap.querySelectorAll('mark')).forEach(hlUnwrap);
+  localStorage.removeItem('hl_' + CHAPTERS[currentIdx].num);
+}
+(function(){
+  var c = document.querySelector('.hl-btn.hl-clear');
+  if (!c) return;
+  c.textContent = '지우개'; c.title = '켠 뒤 칠해진 곳을 끌어 고르면 지워집니다. 칠한 곳을 눌러도 지울 수 있습니다.';
+  var all = document.createElement('button');
+  all.className = 'hl-btn hl-clear'; all.type = 'button'; all.textContent = '모두 지우기';
+  all.title = '이 장의 형광펜을 모두 지웁니다'; all.onclick = clearAllHighlights; all.style.marginLeft = '2px';
+  c.parentNode.insertBefore(all, c.nextSibling);
+})();
+</script>
 </body></html>

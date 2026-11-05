@@ -1,0 +1,1 @@
+CMP({"n": 115, "title": "The Supreme Being", "en": "", "info": "Paramony: 0 references", "rows": [], "none": "The Paramony lists no Bible parallels for this paper."});

@@ -1,0 +1,1 @@
+CMP({"n": 94, "title": "The Melchizedek Teachings in the Orient", "en": "", "info": "Paramony: 0 references", "rows": [], "none": "The Paramony lists no Bible parallels for this paper."});

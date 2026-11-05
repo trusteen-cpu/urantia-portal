@@ -1,0 +1,1 @@
+CMP({"n": 71, "title": "Development of the State", "en": "", "info": "Paramony: 0 references", "rows": [], "none": "The Paramony lists no Bible parallels for this paper."});

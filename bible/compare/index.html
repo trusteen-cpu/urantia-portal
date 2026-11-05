@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>성경 vs 유란시아서 — 편별 핵심 구절 평행 대조</title>
+<meta name="description" content="유란시아서 196편과 머리말의 핵심 단락을 대응하는 성경 구절과 나란히 읽는 대조본 (한국어·영어)">
+<style>
+:root{--navy:#0f2244;--gold:#c9a227;--accent:#7a2e1f;--bib:#24466b;--bg:#f7f5f0;--card:#fff;--ink:#20242c;--dim:#6b7280;--line:#e3ded3;--tint:#f3efe6;--fs:16.5px}
+html[data-dark="1"]{--bg:#12141a;--card:#181b22;--ink:#dfe3ea;--dim:#98a0ae;--line:#2b3040;--tint:#1f232c;--accent:#e79b84;--bib:#9cc0ea}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,"맑은 고딕",serif}
+header{background:linear-gradient(180deg,#132a55,#0d1c3a);border-bottom:3px solid var(--gold);color:#fff;padding:9px 15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:30}
+header h1{font-size:15.5px;margin:0;font-weight:600}
+header .by{font-size:12px;opacity:.72}
+header .sp{flex:1}
+.btn{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.btn:hover{background:rgba(255,255,255,.2)}
+.btn.on{background:var(--gold);color:#20242c;border-color:var(--gold);font-weight:700}
+#burger{display:none}
+main{display:flex;align-items:flex-start}
+#side{width:300px;flex:0 0 300px;height:calc(100vh - 51px);position:sticky;top:51px;overflow-y:auto;background:var(--card);border-right:1px solid var(--line);padding:10px}
+#q{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font-size:13.5px;font-family:inherit}
+.part{margin:14px 0 5px;padding:0 8px;font-size:11.5px;letter-spacing:.1em;color:var(--gold);font-weight:700}
+.c{display:flex;gap:8px;align-items:baseline;padding:5px 8px;border-radius:8px;cursor:pointer;font-size:13.5px}
+.c:hover{background:rgba(15,34,68,.06)}
+.c.on{background:rgba(201,162,39,.18)}
+.c b{color:var(--accent);font-size:12px;min-width:30px;font-weight:700;font-family:"맑은 고딕",sans-serif}
+.c i{margin-left:auto;font-style:normal;font-size:11px;color:var(--dim)}
+#body{flex:1;min-width:0;padding:24px 26px 80px}
+.wrap{max-width:1180px;margin:0 auto}
+h2.pt{font-size:25px;margin:0;color:var(--ink);font-family:"맑은 고딕",sans-serif;border-bottom:2px solid var(--accent);padding-bottom:8px}
+h2.pt .pn{color:var(--accent)}
+h2.pt .en{display:block;font-size:14px;font-weight:400;color:var(--dim);font-family:Georgia,serif;font-style:italic;margin-top:4px}
+.info{font-size:12.5px;color:var(--dim);margin:8px 0 14px;font-family:"맑은 고딕",sans-serif}
+.cols,.row{display:grid;grid-template-columns:1fr 1fr;gap:0 22px}
+.cols{position:sticky;top:51px;z-index:5;background:var(--tint);padding:7px 12px;font-size:13px;font-weight:700;font-family:"맑은 고딕",sans-serif;border-radius:8px 8px 0 0}
+.cols div:last-child{color:var(--bib)}
+.row{padding:14px 12px;border-bottom:1px solid var(--line);background:var(--card)}
+.ub{font-size:var(--fs);line-height:1.85;text-align:justify;word-break:keep-all}
+.cit{font-family:"맑은 고딕",sans-serif;font-weight:700;color:var(--accent);font-size:13.5px}
+.kw{font-family:Georgia,serif;font-style:italic;color:var(--dim);font-size:12.5px}
+.bi{border-left:2px solid var(--line);padding-left:16px;font-size:calc(var(--fs) - 1px);line-height:1.8;color:var(--bib);word-break:keep-all}
+.bv+.bv{margin-top:9px}
+.br{font-family:"맑은 고딕",sans-serif;font-weight:700;font-size:13px;color:var(--bib)}
+.cl{display:inline-block;font-family:"맑은 고딕",sans-serif;font-size:10px;font-weight:700;border:1px solid currentColor;border-radius:4px;padding:0 4px;margin:0 3px;color:var(--dim);vertical-align:2px}
+.bi sup{font-size:10px;color:var(--dim);margin-right:1px}
+.more{display:block;margin-top:6px;font-size:12px;color:var(--dim);font-family:"맑은 고딕",sans-serif}
+.none{padding:20px;color:var(--dim);background:var(--card);border:1px dashed var(--line);border-radius:10px}
+.guide{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:18px;font-size:14.5px;line-height:1.85}
+.guide h3{margin:0 0 6px;font-size:16px;color:var(--accent);font-family:"맑은 고딕",sans-serif}
+.guide p{margin:6px 0}
+.nav{display:flex;justify-content:space-between;margin-top:26px}
+.nav button{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:14px}
+.copy{margin-top:26px;font-size:12px;color:var(--dim);text-align:center;line-height:1.8}
+.dl{color:var(--accent)}
+@media (max-width:900px){
+ #burger{display:inline-block}
+ #side{position:fixed;left:0;top:51px;z-index:40;transform:translateX(-105%);transition:transform .2s;box-shadow:4px 0 18px rgba(0,0,0,.2)}
+ #side.open{transform:none}
+ #body{padding:16px 14px 70px}
+ .cols{display:none}
+ .row{grid-template-columns:1fr;gap:10px}
+ .ub{text-align:left}
+ .bi{border-left:none;border-top:1px dashed var(--line);padding:10px 0 0}
+ header .by{display:none}
+}
+</style></head><body>
+<header>
+ <button class="btn" id="burger">☰ 편</button>
+ <h1 id="ht">성경 vs 유란시아서</h1><span class="by" id="hb">편별 핵심 구절 평행 대조</span>
+ <span class="sp"></span>
+ <button class="btn" id="lko">한국어</button><button class="btn" id="len">English</button>
+ <button class="btn" id="fs">가</button>
+ <button class="btn" id="dark">◐</button>
+ <button class="btn" id="home">⌂</button>
+</header>
+<main>
+ <aside id="side"><input id="q"><div id="toc"></div></aside>
+ <section id="body"><div class="wrap" id="wrap"><p style="color:var(--dim)">불러오는 중…</p></div></section>
+</main>
+<script>
+var $=function(s){return document.querySelector(s)};
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function save(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k,d){try{var v=localStorage.getItem(k);return v===null?d:v}catch(e){return d}}
+var qs=new URLSearchParams(location.search);
+var L=qs.get('lang')||load('cmp_lang','ko'); if(L!=='en')L='ko';
+var CUR=+(qs.get('p')||load('cmp_p','0'))||0, T=null, D=null, PEND=null;
+var TX={ko:{t:'성경 vs 유란시아서',b:'편별 핵심 구절 평행 대조',q:'편 번호·제목 찾기',ub:'유란시아서',bi:'성경 (개역한글)',fw:'머리말',pp:function(n){return '제'+n+'편'},
+  prev:'← 이전 편',next:'다음 편 →',loading:'불러오는 중…',fail:'자료를 불러오지 못했습니다. 연결을 확인하고 다시 열어 주세요.',
+  parts:['머리말','제1부 중앙 우주와 초우주','제2부 지역 우주','제3부 유란시아의 역사','제4부 예수의 삶과 가르침'],
+  guide:'<h3>이 대조본에 대하여</h3><p>『파라모니(The Paramony)』는 유란시아서 단락과 성경 구절의 대응 약 1만 3천 건을 정리한 색인입니다. 이 대조본은 그것을 편 순서로 다시 묶어, 편마다 대응이 뚜렷한 핵심 단락을 골라 <b>왼쪽에 유란시아서</b>, <b>오른쪽에 대응 성경 구절(개역한글)</b>을 나란히 실었습니다.</p><p><span class="cit">143:1.4</span> 같은 붉은 번호는 편:장.절이고, 옆의 기울인 영어는 파라모니의 주제어입니다. 성경 참조 옆 S·R·C는 파라모니 원본의 분류 기호이며, 한 단락에 대응이 많으면 대표 3건만 싣고 나머지는 「외 N건」으로 적었습니다. 긴 단락은 성경과 겹치는 문장을 중심으로 발췌해 생략을 「…」로 표시했습니다.</p><p style="color:var(--dim);font-size:13px">대응 목록: Duane L. Faw, <i>The Paramony</i> (Urantia Book Fellowship 공개본) · 성경: 개역한글판 · 유란시아서: 유란시아 극동 한글 번역 · 한종인 엮음 (2026)</p>',
+  copy:'유란시아서와 성경 — 편별 핵심 구절 평행 대조 · 한종인 엮음 · 2026'},
+ en:{t:'The Urantia Book & the Bible',b:'Key parallel passages, paper by paper',q:'Find paper number or title',ub:'The Urantia Book',bi:'The Bible (KJV)',fw:'Foreword',pp:function(n){return 'Paper '+n},
+  prev:'← Previous',next:'Next →',loading:'Loading…',fail:'Could not load the data. Please check your connection and reopen this page.',
+  parts:['Foreword','Part I · The Central and Superuniverses','Part II · The Local Universe','Part III · The History of Urantia','Part IV · The Life and Teachings of Jesus'],
+  guide:'<h3>About this edition</h3><p><i>The Paramony</i> indexes roughly 13,000 correspondences between paragraphs of The Urantia Book and verses of the Bible. This edition regroups that index in paper order and, for each paper, shows the paragraphs with the strongest parallels: <b>the Urantia Book on the left</b>, <b>the corresponding Bible text (KJV) on the right</b>.</p><p>The red number (e.g. <span class="cit">143:1.4</span>) is paper:section.paragraph; the italic phrase is the Paramony’s key-word label. S·R·C are the Paramony’s classification codes. When a paragraph has many parallels the three strongest are shown and the rest counted as “+ N more”. Long paragraphs are excerpted around the matching sentences; omissions are marked “…”.</p><p style="color:var(--dim);font-size:13px">Cross-references: Duane L. Faw, <i>The Paramony</i> (Urantia Book Fellowship) · Bible: King James Version · Urantia Book: English text (1955) · compiled by Jongin Han (2026)</p>',
+  copy:'The Urantia Book & the Bible — Key parallel passages, paper by paper · compiled by Jongin Han · 2026'}};
+function partOf(n){return n===0?0:n<=31?1:n<=56?2:n<=119?3:4}
+function bring(src,cb){PEND=cb;var s=document.createElement('script');s.src=src;s.onerror=function(){$('#wrap').innerHTML='<div class="none">'+TX[L].fail+'</div>'};document.head.appendChild(s)}
+function TOC(d){T=d;var f=PEND;PEND=null;f&&f()}
+function CMP(d){var f=PEND;PEND=null;f&&f(d)}
+function label(n){return n?TX[L].pp(n):TX[L].fw}
+function renderTOC(){
+  var f=($('#q').value||'').trim().toLowerCase(),h='',last=-1;
+  T.forEach(function(t){
+    var lab=label(t[0]);
+    if(f&&(lab+' '+t[1]+' '+t[2]+' '+t[0]).toLowerCase().indexOf(f)<0)return;
+    var p=partOf(t[0]);if(p!==last){h+='<div class="part">'+TX[L].parts[p]+'</div>';last=p}
+    h+='<div class="c'+(t[0]===CUR?' on':'')+'" data-n="'+t[0]+'"><b>'+(t[0]||'序')+'</b><span>'+esc(t[1])+'</span><i>'+t[3]+'</i></div>'});
+  $('#toc').innerHTML=h;
+  var on=$('#toc .c.on');if(on&&!f)on.scrollIntoView({block:'nearest'});
+}
+function vtext(t){return esc(t).replace(/⁽(\d+)⁾/g,'<sup>$1</sup>')}
+function render(d){
+  D=d;var x=TX[L];
+  var h=(d.n===0?'<div class="guide">'+x.guide+'</div>':'');
+  h+='<h2 class="pt"><span class="pn">'+(d.n?esc(label(d.n)):'')+'</span> '+esc(d.n?d.title:x.fw)+(d.en&&L==='ko'?'<span class="en">'+esc(d.en)+'</span>':'')+'</h2>';
+  h+='<div class="info">'+esc(d.info)+(d.rows.length?' · '+(L==='ko'?'수록 '+d.rows.length+'개 단락':d.rows.length+' paragraphs shown'):'')+'</div>';
+  if(d.rows.length){
+    h+='<div class="cols"><div>'+x.ub+'</div><div>'+x.bi+'</div></div>';
+    d.rows.forEach(function(r){
+      h+='<div class="row"><div class="ub"><span class="cit">'+esc(r[0])+'</span> <span class="kw">'+esc(r[1])+'</span><br>'+esc(r[2])+'</div><div class="bi">';
+      r[3].forEach(function(v){h+='<div class="bv"><span class="br">'+esc(v[0])+'</span><span class="cl">'+esc(v[1])+'</span> '+vtext(v[2])+'</div>'});
+      if(r[4])h+='<span class="more">'+esc(r[4])+'</span>';
+      h+='</div></div>'});
+  }else{h+='<div class="none">'+esc(d.none||'—')+'</div>'}
+  h+='<div class="nav"><button id="prev">'+x.prev+'</button><button id="next">'+x.next+'</button></div><div class="copy">'+x.copy+'</div>';
+  $('#wrap').innerHTML=h;
+  $('#prev').onclick=function(){if(CUR>0)go(CUR-1)};
+  $('#next').onclick=function(){if(CUR<196)go(CUR+1)};
+  window.scrollTo(0,0);
+}
+function go(n){CUR=n;save('cmp_p',n);history.replaceState(null,'','?lang='+L+'&p='+n);renderTOC();
+  if(window.innerWidth<=900)$('#side').classList.remove('open');
+  $('#wrap').innerHTML='<p style="color:var(--dim)">'+TX[L].loading+'</p>';
+  bring('data/'+L+'/p'+('00'+n).slice(-3)+'.js',render)}
+function setLang(l){L=l;save('cmp_lang',l);document.documentElement.lang=l;var x=TX[l];
+  $('#ht').textContent=x.t;$('#hb').textContent=x.b;$('#q').placeholder=x.q;document.title=x.t+' — '+x.b;
+  $('#lko').classList.toggle('on',l==='ko');$('#len').classList.toggle('on',l==='en');
+  bring('data/'+l+'/toc.js',function(){go(CUR)})}
+$('#lko').onclick=function(){if(L!=='ko')setLang('ko')};
+$('#len').onclick=function(){if(L!=='en')setLang('en')};
+$('#q').oninput=renderTOC;
+$('#toc').addEventListener('click',function(e){var c=e.target.closest('.c[data-n]');if(c)go(+c.dataset.n)});
+$('#burger').onclick=function(){$('#side').classList.toggle('open')};
+$('#home').onclick=function(){location.href='/'};
+var F=['15px','16.5px','18.5px','21px'],fi=+load('cmp_fs','1');
+function af(){document.documentElement.style.setProperty('--fs',F[fi]);save('cmp_fs',fi)}
+$('#fs').onclick=function(){fi=(fi+1)%F.length;af()};af();
+function ad(){document.documentElement.setAttribute('data-dark',load('cmp_dark','0'))}
+$('#dark').onclick=function(){save('cmp_dark',load('cmp_dark','0')==='1'?'0':'1');ad()};ad();
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;
+  if(e.key==='ArrowRight'&&CUR<196)go(CUR+1);if(e.key==='ArrowLeft'&&CUR>0)go(CUR-1)});
+setLang(L);
+</script>
+</body></html>

@@ -1,0 +1,1 @@
+CMP({"n": 59, "title": "The Marine-Life Era on Urantia", "en": "", "info": "Paramony: 1 references · 1 Urantia Book paragraphs", "rows": [["59:4.9", "Vertebrates: fish", "250,000,000 years ago witnessed the appearance of the fish family, the vertebrates, one of the most important steps in all prehuman evolution.", [], ""]], "none": ""});

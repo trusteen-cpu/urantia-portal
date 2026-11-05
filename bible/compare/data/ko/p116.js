@@ -1,0 +1,1 @@
+CMP({"n": 116, "title": "전능 최상위", "en": "The Almighty Supreme", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

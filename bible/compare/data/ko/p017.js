@@ -1,0 +1,1 @@
+CMP({"n": 17, "title": "일곱 최상 영 집단", "en": "The Seven Supreme Spirit Groups", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

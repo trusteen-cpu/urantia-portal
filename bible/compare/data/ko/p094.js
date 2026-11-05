@@ -1,0 +1,1 @@
+CMP({"n": 94, "title": "동방에서의 멜기세덱 가르침", "en": "The Melchizedek Teachings in the Orient", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

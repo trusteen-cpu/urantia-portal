@@ -236,15 +236,15 @@
       "items": [
         {
           "name": "성경 보정",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/57"
+          "url": "/bible/correction/index.html"
         },
         {
           "name": "Bible Study",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/58"
+          "url": "/bible/study/index.html"
         },
         {
           "name": "성경 vs 유란시아서",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/59"
+          "url": "/bible/compare/index.html"
         }
       ]
     },

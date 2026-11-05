@@ -1,0 +1,1 @@
+CMP({"n": 72, "title": "Government on a Neighboring Planet", "en": "", "info": "Paramony: 0 references", "rows": [], "none": "The Paramony lists no Bible parallels for this paper."});

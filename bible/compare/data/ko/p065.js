@@ -1,0 +1,1 @@
+CMP({"n": 65, "title": "진화의 상위통제", "en": "The Overcontrol of Evolution", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

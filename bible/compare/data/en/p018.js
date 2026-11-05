@@ -1,0 +1,1 @@
+CMP({"n": 18, "title": "The Supreme Trinity Personalities", "en": "", "info": "Paramony: 0 references", "rows": [], "none": "The Paramony lists no Bible parallels for this paper."});

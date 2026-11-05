@@ -1,0 +1,1 @@
+CMP({"n": 23, "title": "단독 사자", "en": "The Solitary Messengers", "info": "Paramony 대응 0건", "rows": [], "none": "이 편에는 Paramony가 성경 대응 구절을 제시하지 않습니다."});

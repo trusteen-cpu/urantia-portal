@@ -1,0 +1,1 @@
+CMP({"n": 59, "title": "유란시아의 해양 생물 시대", "en": "The Marine-Life Era on Urantia", "info": "Paramony 대응 1건 · 유란시아서 1개 단락", "rows": [["59:4.9", "Vertebrates: fish", "이억 오천만 년 전은 모든 인간 이전 진화에서 가장 중요한 단계 중 하나인 척추동물, 즉 어류의 출현을 목격했다.", [], ""]], "none": ""});
