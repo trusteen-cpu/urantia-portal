@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>글</title>
 <link rel="stylesheet" href="style.css">
+<script>
+/* list.html 오른쪽 틀 안에 들어올 때(&embed=1)는 머리·바닥을 빼고 글만 보인다 */
+if(/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');
+</script>
+<style>
+html.embed #hero, html.embed .searchbar, html.embed footer, html.embed .backrow, html.embed .totop{display:none!important}
+html.embed main.wrap{padding-top:18px}
+</style>
+<script src="/home-button.js" data-pos="left" defer></script>
 </head>
 <body>
 

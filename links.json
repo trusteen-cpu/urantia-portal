@@ -416,88 +416,172 @@
               "name": "유란시아서 핵심",
               "children": [
                 {
-                  "name": "제1강 우주 아버지",
-                  "url": "/school/core52/core/?n=1"
+                  "name": "제1장 우주 아버지",
+                  "url": "/school/core52/book/?c=1"
                 },
                 {
-                  "name": "제2강 영원 아들",
-                  "url": "/school/core52/core/?n=2"
+                  "name": "제2장 영원 아들",
+                  "url": "/school/core52/book/?c=2"
                 },
                 {
-                  "name": "제3강 무한 영",
-                  "url": "/school/core52/core/?n=3"
+                  "name": "제3장 무한 영",
+                  "url": "/school/core52/book/?c=3"
                 },
                 {
-                  "name": "제5강 스스로 계신 이의 분화와 신들의 관계",
-                  "url": "/school/core52/core/?n=5"
+                  "name": "제4장 삼위일체",
+                  "url": "/school/core52/book/?c=4"
                 },
                 {
-                  "name": "제6강 신성한 중앙 우주",
-                  "url": "/school/core52/core/?n=6"
+                  "name": "제5장 스스로 계신 이의 분화와 신들의 관계",
+                  "url": "/school/core52/book/?c=5"
                 },
                 {
-                  "name": "제7강 일곱 초우주와 초우주 봉사의 영",
-                  "url": "/school/core52/core/?n=7"
+                  "name": "제6장 신성한 중앙 우주",
+                  "url": "/school/core52/book/?c=6"
                 },
                 {
-                  "name": "제8강 일곱 주 영과 최상 영 집단",
-                  "url": "/school/core52/core/?n=8"
+                  "name": "제7장 일곱 초우주",
+                  "url": "/school/core52/book/?c=7"
                 },
                 {
-                  "name": "제9강 옛적부터 늘 계신 이들",
-                  "url": "/school/core52/core/?n=9"
+                  "name": "제8장 일곱 주(主) 영",
+                  "url": "/school/core52/book/?c=8"
                 },
                 {
-                  "name": "제10강 하나님의 아들들",
-                  "url": "/school/core52/core/?n=10"
+                  "name": "제9장 옛적부터 늘 계신 이",
+                  "url": "/school/core52/book/?c=9"
                 },
                 {
-                  "name": "제11강 최상 존재",
-                  "url": "/school/core52/core/?n=11"
+                  "name": "제10장 하강하는 하나님의 아들들",
+                  "url": "/school/core52/book/?c=10"
                 },
                 {
-                  "name": "제12강 창조자 아들",
-                  "url": "/school/core52/core/?n=12"
+                  "name": "제11장 최상 존재",
+                  "url": "/school/core52/book/?c=11"
                 },
                 {
-                  "name": "제13강 생각조절자",
-                  "url": "/school/core52/core/?n=13"
+                  "name": "제12장 창조자 아들",
+                  "url": "/school/core52/book/?c=12"
                 },
                 {
-                  "name": "제14강 영생의 과정",
-                  "url": "/school/core52/core/?n=14"
+                  "name": "제13장 생각 조절자",
+                  "url": "/school/core52/book/?c=13"
                 },
                 {
-                  "name": "제15강 행성의 필사자 시대",
-                  "url": "/school/core52/core/?n=15"
+                  "name": "제14장 영생의 과정",
+                  "url": "/school/core52/book/?c=14"
                 },
                 {
-                  "name": "제16강 에너지와 물질 그리고 마음",
-                  "url": "/school/core52/core/?n=16"
+                  "name": "제15장 행성의 필사자 시대",
+                  "url": "/school/core52/book/?c=15"
                 },
                 {
-                  "name": "제17강 유란시아의 기원과 생명의 정착",
-                  "url": "/school/core52/core/?n=17"
+                  "name": "제16장 에너지와 물질 그리고 마음",
+                  "url": "/school/core52/book/?c=16"
                 },
                 {
-                  "name": "제18강 유란시아의 진화 과정",
-                  "url": "/school/core52/core/?n=18"
+                  "name": "제17장 유란시아의 기원과 생명의 정착",
+                  "url": "/school/core52/book/?c=17"
                 },
                 {
-                  "name": "제19강 인간의 탄생과 최초의 인간 가족",
-                  "url": "/school/core52/core/?n=19"
+                  "name": "제26장 멜기세덱의 출현과 동서양 종교에의 영향",
+                  "url": "/school/core52/book/?c=26"
                 },
                 {
-                  "name": "제20강 유색인종의 진화와 진화의 총괄",
-                  "url": "/school/core52/core/?n=20"
+                  "name": "제29장 야훼와 하나님 개념의 진화",
+                  "url": "/school/core52/book/?c=29"
                 },
                 {
-                  "name": "제21강 아담 시대 이후의 인종의 분산",
-                  "url": "/school/core52/core/?n=21"
+                  "name": "제30장 현대 문명의 발전과 결혼 제도의 발생과 진화",
+                  "url": "/school/core52/book/?c=30"
                 },
                 {
-                  "name": "제22강 인격의 본질, 기능, 생존",
-                  "url": "/school/core52/core/?n=22"
+                  "name": "제31장 삼위일체 개념의 성장과 삼자일체, 삼극 일체의 관계",
+                  "url": "/school/core52/book/?c=31"
+                },
+                {
+                  "name": "제32장 세라핌 행성 정부와 운명 수호 세라핌",
+                  "url": "/school/core52/book/?c=32"
+                },
+                {
+                  "name": "제33장 봉사의 영들",
+                  "url": "/school/core52/book/?c=33"
+                },
+                {
+                  "name": "제34장 우주 동력 체계",
+                  "url": "/school/core52/book/?c=34"
+                },
+                {
+                  "name": "제35장 기도와 예배의 기원, 차이점, 효과적 실행",
+                  "url": "/school/core52/book/?c=35"
+                },
+                {
+                  "name": "제36장 우주의 통일: 무한한 근원에서 삼위일체의 삼위일체까지",
+                  "url": "/school/core52/book/?c=36"
+                },
+                {
+                  "name": "제37장 신과 실체: 기원, 차원, 그리고 통합",
+                  "url": "/school/core52/book/?c=37"
+                },
+                {
+                  "name": "제38장 최종자 기원, 구성, 그리고 우주적 운명",
+                  "url": "/school/core52/book/?c=38"
+                },
+                {
+                  "name": "제39장 그리스도 미가엘의 지위와 증여 과정",
+                  "url": "/school/core52/book/?c=39"
+                },
+                {
+                  "name": "제40장 예수의 탄생과 어린시절",
+                  "url": "/school/core52/book/?c=40"
+                },
+                {
+                  "name": "제41장 예수의 소년, 청년기",
+                  "url": "/school/core52/book/?c=41"
+                },
+                {
+                  "name": "제42장 예수의 성년기 전 후반",
+                  "url": "/school/core52/book/?c=42"
+                },
+                {
+                  "name": "제43장 예수의 로마 여행",
+                  "url": "/school/core52/book/?c=43"
+                },
+                {
+                  "name": "제44장 예수의 공생애",
+                  "url": "/school/core52/book/?c=44"
+                },
+                {
+                  "name": "제45장 예수의 하늘 왕국",
+                  "url": "/school/core52/book/?c=45"
+                },
+                {
+                  "name": "제46장 유란시아서의 기독론",
+                  "url": "/school/core52/book/?c=46"
+                },
+                {
+                  "name": "제47장 예수의 12 사도",
+                  "url": "/school/core52/book/?c=47"
+                },
+                {
+                  "name": "제48장 예수의 세 번의 전도 여행",
+                  "url": "/school/core52/book/?c=48"
+                },
+                {
+                  "name": "제49장 예루살렘에서의 마지막 한주간",
+                  "url": "/school/core52/book/?c=49"
+                },
+                {
+                  "name": "제50장 십자가의 의미",
+                  "url": "/school/core52/book/?c=50"
+                },
+                {
+                  "name": "제51장 예수의 가르침",
+                  "url": "/school/core52/book/?c=51"
+                },
+                {
+                  "name": "제52장 예수의 종교와 예수에 관한 종교",
+                  "url": "/school/core52/book/?c=52"
                 }
               ]
             },

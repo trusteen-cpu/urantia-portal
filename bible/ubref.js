@@ -4,11 +4,12 @@
    - 본문은 data-src(UBREF({...}) 꼴)를 처음 누를 때 한 번만 불러온다. */
 (function () {
   var me = document.currentScript, SRC = (me && me.dataset.src) || 'ub.js', DATA = null, WAIT = [];
-  var PAT = /(^|[^\d:.])(\d{1,3}):(\d{1,2})\.(\d{1,3})(?:-(\d{1,3}))?(?![\d:])/g;
+  /* 74:8.1 · 74:8.1-3 · 74:8.1~3 · 74:8.1–3 · 74:8.9–9.2(장을 넘는 범위) */
+  var PAT = /(^|[^\d:.])(\d{1,3}):(\d{1,2})\.(\d{1,3})(?:\s?[-–~]\s?(?:(\d{1,2})\.)?(\d{1,3}))?(?![\d:])/g;
   window.UBLINK = function (h) {
-    return (h || '').replace(PAT, function (m, pre, p, c, a, b) {
-      var k = p + ':' + c + '.' + a + (b ? '-' + b : '');
-      return pre + '<button type="button" class="ubk" data-k="' + k + '" title="유란시아서 ' + k + ' 보기">' + k + '</button>';
+    return (h || '').replace(PAT, function (m, pre, p, c, a, c2, b) {
+      var k = p + ':' + c + '.' + a + (b ? '-' + (c2 ? c2 + '.' : '') + b : '');
+      return pre + '<button type="button" class="ubk" data-k="' + k + '" title="유란시아서 ' + k + ' 보기">' + m.slice(pre.length) + '</button>';
     });
   };
   window.UBREF = function (d) { DATA = d; var w = WAIT; WAIT = []; w.forEach(function (f) { f(); }); };
@@ -38,9 +39,18 @@
   function esc(t) { return (t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function close() { pop.classList.remove('on'); }
   function keys(k) {
-    var m = k.match(/^(\d+):(\d+)\.(\d+)(?:-(\d+))?$/), out = [];
+    var m = k.match(/^(\d+):(\d+)\.(\d+)(?:-(?:(\d+)\.)?(\d+))?$/), out = [];
     if (!m) return out;
-    for (var v = +m[3]; v <= +(m[4] || m[3]) && out.length < 20; v++) out.push(m[1] + ':' + m[2] + '.' + v);
+    var c1 = +m[2], c2 = m[4] ? +m[4] : c1, a = +m[3], b = m[5] ? +m[5] : a;
+    if (c2 < c1) c2 = c1;
+    for (var c = c1; c <= c2 && out.length < 20; c++) {
+      var lo = c === c1 ? a : 0, hi = c === c2 ? b : 999;
+      for (var v = lo; v <= hi && out.length < 20; v++) {
+        var key = m[1] + ':' + c + '.' + v;
+        if (DATA && !DATA[key]) { if (c !== c2 && v > 0) break; if (c === c1 && v === a) out.push(key); continue; }
+        out.push(key);
+      }
+    }
     return out;
   }
   function show(k) {

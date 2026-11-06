@@ -4,6 +4,8 @@
    머리 띠 안에 넣기: data-into="header"(그 요소의 맨 앞에 떠 있지 않은 단추로 넣는다) */
 (function () {
   if (window.__urHomeBtn) return; window.__urHomeBtn = 1;
+  /* 목차·내용 두 칸 화면(list.html)의 오른쪽 틀 안에서는 바깥 화면에 단추가 있으니 그리지 않는다 */
+  try { if (window.self !== window.top && window.top.location.host === location.host) return; } catch (e) {}
   var s = document.currentScript || document.querySelector('script[src*="home-button.js"]');
   var pos = (s && s.dataset.pos) === 'left' ? 'left' : 'right';
   var top = (s && s.dataset.top) || '10';

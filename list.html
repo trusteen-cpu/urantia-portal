@@ -5,128 +5,168 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>목록</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* 하위 페이지: 왼쪽 목차 · 오른쪽 내용 */
+html,body{height:100%}
+body{display:flex;flex-direction:column;background:#f4f1ea}
+.top{display:flex;align-items:center;gap:12px;padding:9px 16px;background:var(--gc,#17365D);color:#fff;flex:0 0 auto;position:sticky;top:0;z-index:30;min-height:54px}
+.top .ttl{font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.top .crumb{font-size:12px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+.top .crumb a{text-decoration:underline;text-underline-offset:2px}
+.top .tg{display:none;margin-left:auto;font:inherit;font-weight:700;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;padding:6px 10px;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+.ur-home-btn.inline{font-size:13.5px!important;padding:8px 14px!important}
+.lay{flex:1;display:grid;grid-template-columns:300px 1fr;min-height:0}
+aside{background:#fffdf8;border-right:1px solid var(--line);overflow:auto;height:calc(100vh - 54px);position:sticky;top:54px}
+aside .q{position:sticky;top:0;background:#fffdf8;padding:12px 12px 8px;border-bottom:1px solid var(--line);z-index:2}
+aside .q input{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff}
+aside h2{font-size:13px;color:var(--gc);margin:12px 14px 4px;letter-spacing:.02em}
+.tree,.tree ul{list-style:none;margin:0;padding:0}
+.tree{padding:0 6px 30px}
+.tree a{display:flex;gap:6px;align-items:baseline;padding:7px 10px;border-radius:7px;font-size:14px;line-height:1.45;color:#2a2e38;cursor:pointer}
+.tree a:hover{background:#f1ece0}
+.tree a .ar{flex:0 0 12px;color:#b3aa98;font-size:11px;transition:transform .15s}
+.tree li.open>a .ar{transform:rotate(90deg)}
+.tree a .nm{flex:1;min-width:0}
+.tree a .ext{color:#9a927f;font-size:11px}
+.tree ul{display:none;padding-left:14px;border-left:1px dashed #ddd5c4;margin-left:15px}
+.tree li.open>ul{display:block}
+.tree a.cur{background:var(--gc);color:#fff}.tree a.cur .ar,.tree a.cur .ext{color:#fff}
+.tree li.hide{display:none}
+section.pane{min-width:0;display:flex;flex-direction:column}
+.ph{display:flex;align-items:center;gap:10px;padding:12px 20px;background:#fff;border-bottom:1px solid var(--line);min-height:51px}
+.ph h1{margin:0;font-size:18px;color:var(--gc);flex:1;min-width:0}
+.ph a{font-size:13px;font-weight:700;color:var(--gc);border:1px solid currentColor;border-radius:999px;padding:5px 12px;white-space:nowrap}
+.body{flex:1;min-height:0}
+.body iframe{display:block;width:100%;height:calc(100vh - 54px - 51px);border:0;background:#fff}
+.card{max-width:760px;margin:28px auto;padding:26px 28px;background:#fffdf8;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.card h2{margin:0 0 6px;font-size:20px;color:var(--gc)}
+.card p{color:#5c5f69;margin:0 0 16px;font-size:15px}
+.card .go{display:inline-block;background:var(--gc);color:#fff;font-weight:800;font-size:15px;padding:11px 20px;border-radius:999px}
+.card ol{margin:0;padding-left:22px;font-size:15px;line-height:2}
+.card ol a{color:var(--gc);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (max-width:820px){
+  .top .tg{display:inline-block}
+  .top .crumb{display:none}
+  .lay{display:block}
+  aside{position:static;height:auto;max-height:70vh;border-right:0;border-bottom:1px solid var(--line);display:none}
+  body.toc aside{display:block}
+  .body iframe{height:calc(100vh - 110px)}
+  .card{margin:16px;padding:20px}
+}
+</style>
+<script src="/home-button.js" data-into=".top" defer></script>
 </head>
 <body>
-
-<header class="hero sub" id="hero">
-  <canvas id="stars"></canvas>
-  <div class="glow"></div>
-  <div class="inner">
-    <nav class="crumb" id="crumb"></nav>
-    <div class="bigico" id="bigico"></div>
-    <h1 id="hTitle"></h1>
-    <div class="sub" id="hSub"></div>
-    <div class="rule"></div>
-  </div>
-</header>
-
-<div class="searchbar">
-  <div class="wrap row">
-    <input id="q" type="search" placeholder="이 안에서 찾기" autocomplete="off">
-    <a class="home" href="index.html">← 첫 화면</a>
-  </div>
+<div class="top" id="top">
+  <span class="ttl" id="ttl"></span>
+  <span class="crumb" id="crumb"></span>
+  <button class="tg" id="tg">☰ 목차</button>
 </div>
-
-<main class="wrap">
-  <div class="tiles" id="tiles"></div>
-  <div class="backrow" id="backrow"></div>
-</main>
-
-<footer><a href="index.html">첫 화면으로 돌아가기</a></footer>
-<a href="#" class="totop" id="totop" title="맨 위로">▲</a>
+<div class="lay">
+  <aside>
+    <div class="q"><input id="q" type="search" placeholder="목차에서 찾기" autocomplete="off"></div>
+    <h2 id="gtitle"></h2>
+    <ul class="tree" id="tree"></ul>
+  </aside>
+  <section class="pane">
+    <div class="ph"><h1 id="ptitle"></h1><span id="pact"></span></div>
+    <div class="body" id="body"></div>
+  </section>
+</div>
 
 <script src="app.js"></script>
 <script>
-(function(){
-  const c=document.getElementById('stars'), x=c.getContext('2d');
-  function draw(){const w=c.width=c.offsetWidth,h=c.height=c.offsetHeight;x.clearRect(0,0,w,h);
-    for(let i=0;i<80;i++){const px=Math.random()*w,py=Math.random()*h*.95,r=Math.random()*1.2+.25,
-      a=(1-py/h)*(Math.random()*.6+.15);x.fillStyle='rgba(255,253,244,'+a.toFixed(2)+')';
-      x.beginPath();x.arc(px,py,r,0,6.284);x.fill();}}
-  draw();window.addEventListener('resize',draw);
-})();
-
 const P=new URLSearchParams(location.search);
-const GID=P.get('g')||'', I=P.get('i'), K=P.get('k');
-let D=null, G=null, ITEM=null, KID=null, LIST=[], COLOR='#17365D', CAFE='#';
+const GID=P.get('g')||'';
+let D=null, G=null, CAFE='#';
+
+/* 경로(i,k,j) → 항목 */
+function nodeAt(p){ let o={children:G.items}; for(const x of p){ o=(o.children||[])[x]; if(!o) return null; } return o; }
+function pathKey(p){ return p.join('.'); }
+/* 틀 안에 띄울 때 embed=1 을 붙인다 — 이를 아는 페이지는 자기 머리·목차를 숨기고 내용만 보인다 */
+function withEmbed(u){ const h=u.indexOf('#'), a=h<0?u:u.slice(0,h), b=h<0?'':u.slice(h); return a+(a.indexOf('?')<0?'?':'&')+'embed=1'+b; }
+function isSame(u){ return /^\//.test(u) || /^https?:\/\/(www\.)?urantiareaders\.com/i.test(u); }
+/* 항목이 오른쪽에 무엇을 띄우는지 */
+function targetFor(o,p){
+  if((o.children||[]).length) return {kind:'list'};
+  if(hasPage(o)) { const u=page(G.id,p[0],p[1],p[2]); return {kind:'frame', href:u+'&embed=1', open:u}; }
+  const u=cleanUrl(o.url);
+  if(!u) return {kind:'none'};
+  if(isSame(u)) return {kind:'frame', href:withEmbed(u), open:u};
+  return {kind:'ext', href:u};
+}
+
+function treeHtml(items, base){
+  return items.map((o,n)=>{
+    const p=base.concat(n), kids=(o.children||[]).length, t=kids?null:targetFor(o,p);
+    return '<li data-p="'+pathKey(p)+'"><a data-p="'+pathKey(p)+'"><span class="ar">'+(kids?'▶':'•')+'</span>'
+      +'<span class="nm">'+esc(o.name)+'</span>'+(t&&t.kind==='ext'?'<span class="ext">↗</span>':'')+'</a>'
+      +(kids?'<ul>'+treeHtml(o.children,p)+'</ul>':'')+'</li>';
+  }).join('');
+}
+
+function select(p, push){
+  const o = p.length? nodeAt(p) : {name:G.title, children:G.items};
+  if(!o) return;
+  tree.querySelectorAll('a.cur').forEach(a=>a.classList.remove('cur'));
+  for(let n=1;n<=p.length;n++){
+    const li=tree.querySelector('li[data-p="'+pathKey(p.slice(0,n))+'"]');
+    if(li && (n<p.length || (o.children||[]).length)) li.classList.add('open');
+  }
+  const a=tree.querySelector('a[data-p="'+pathKey(p)+'"]');
+  if(a){ a.classList.add('cur'); if(a.scrollIntoViewIfNeeded) a.scrollIntoViewIfNeeded(); }
+  ptitle.textContent=o.name; document.title=o.name+(p.length?' · '+G.title:'');
+  crumb.innerHTML='› '+p.slice(0,-1).map((x,n)=>esc(nodeAt(p.slice(0,n+1)).name)).join(' › ');
+  const t = p.length? targetFor(o,p) : {kind:'list'};
+  pact.innerHTML='';
+  if(t.kind==='list'){
+    body.innerHTML='<div class="card"><h2>'+esc(o.name)+'</h2><p>목차나 아래 목록에서 고르세요.</p><ol>'
+      +(o.children||[]).map((c,n)=>'<li><a data-p="'+pathKey(p.concat(n))+'">'+esc(c.name)+'</a></li>').join('')+'</ol></div>';
+  }else if(t.kind==='frame'){
+    pact.innerHTML='<a href="'+esc(t.open)+'" target="_blank" rel="noopener">새 창에서 열기 ↗</a>';
+    body.innerHTML='<iframe src="'+esc(t.href)+'" title="'+esc(o.name)+'" allow="autoplay; fullscreen; clipboard-write" allowfullscreen></iframe>';
+  }else if(t.kind==='ext'){
+    body.innerHTML='<div class="card"><h2>'+esc(o.name)+'</h2><p>이 자료는 다른 사이트(네이버 카페 등)에 있어 이 화면 안에 띄울 수 없습니다. 아래 단추를 누르면 새 창에서 열립니다.</p>'
+      +'<a class="go" href="'+esc(t.href)+'" target="_blank" rel="noopener">새 창에서 열기 ↗</a></div>';
+  }else{
+    body.innerHTML='<div class="card"><h2>'+esc(o.name)+'</h2><p>아직 주소가 없습니다.</p></div>';
+  }
+  const qs='?g='+encodeURIComponent(G.id)+(p.length?'&i='+p[0]:'')+(p.length>1?'&k='+p[1]:'')+(p.length>2?'&j='+p[2]:'');
+  if(push) history.pushState({p:p},'',qs); else history.replaceState({p:p},'',qs);
+  document.body.classList.remove('toc');
+  if(push && innerWidth<=820) window.scrollTo(0,0);
+}
+
+function clickP(e){
+  const a=e.target.closest('a[data-p]'); if(!a) return;
+  const p=a.dataset.p.split('.').map(Number), o=nodeAt(p);
+  const li=tree.querySelector('li[data-p="'+a.dataset.p+'"]');
+  if((o.children||[]).length && li && li.classList.contains('open') && a.closest('#tree')){ li.classList.remove('open'); return; }
+  select(p,true);
+}
+tree.addEventListener('click',clickP);
+body.addEventListener('click',clickP);
+tg.onclick=()=>document.body.classList.toggle('toc');
+window.addEventListener('popstate',e=>select((e.state&&e.state.p)||[],false));
+q.addEventListener('input',()=>{
+  const v=q.value.trim().toLowerCase();
+  tree.querySelectorAll('li').forEach(li=>{
+    const hit=!v||li.textContent.toLowerCase().includes(v);
+    li.classList.toggle('hide',!hit); if(v&&hit&&li.querySelector('ul')) li.classList.add('open');
+  });
+});
 
 loadData().then(d=>{
   D=d; CAFE=(d.site||{}).cafeUrl||'#';
   G=(d.groups||[]).find(g=>g.id===GID);
-  if(!G){ tiles.innerHTML='<div class="empty">목록을 찾을 수 없습니다.</div>'; return; }
-  COLOR=colorOf(G);
-  document.getElementById('hero').style.setProperty('--gc',COLOR);
-
-  let title=G.title, sub='', crumbs='<a href="index.html">홈</a>';
-  if(I!==null && G.items[+I]){
-    ITEM=G.items[+I];
-    crumbs+=' › <a href="'+href(G.id)+'">'+esc(G.title)+'</a>';
-    if(K!==null && (ITEM.children||[])[+K]){
-      KID=ITEM.children[+K];
-      crumbs+=' › <a href="'+href(G.id,+I)+'">'+esc(ITEM.name)+'</a> › <b>'+esc(KID.name)+'</b>';
-      title=KID.name; sub=G.title+' › '+ITEM.name;
-      LIST=(KID.children||[]).map((o,ji)=>{
-        const has=hasPage(o);
-        return {o:o, to: has? page(G.id,+I,+K,ji) : (o.url||CAFE), ext:!has, kind: has?'text':'url'};
-      });
-    }else{
-      crumbs+=' › <b>'+esc(ITEM.name)+'</b>';
-      title=ITEM.name; sub=G.title;
-      LIST=(ITEM.children||[]).map((o,ki)=>{
-        const t=targetOf(o,CAFE,G.id,+I,ki);
-        return {o:o, to:t.href, ext:t.ext, kids:(o.children||[]).length, kind:t.kind};
-      });
-    }
-  }else{
-    crumbs+=' › <b>'+esc(G.title)+'</b>';
-    sub=(G.items||[]).length+'개';
-    LIST=(G.items||[]).map((o,ii)=>{
-      const t=targetOf(o,CAFE,G.id,ii);
-      return {o:o, to:t.href, ext:t.ext, kids:(o.children||[]).length, kind:t.kind};
-    });
-  }
-  document.title=title;
-  crumb.innerHTML=crumbs;
-  bigico.textContent=G.icon||'';
-  hTitle.textContent=title;
-  hSub.textContent=sub;
-  paint('');
-  backrow.innerHTML = (I!==null)
-    ? '<a class="back" href="'+ (K!==null? href(G.id,+I) : href(G.id)) +'">← '
-      + esc(K!==null? ITEM.name : G.title) +' 목록으로</a>'
-      + '<a class="back" href="index.html">← 첫 화면</a>'
-    : '<a class="back" href="index.html">← 첫 화면</a>';
-}).catch(()=>{ tiles.innerHTML='<div class="empty">links.json 을 읽지 못했습니다.</div>'; });
-
-function paint(f){
-  f=(f||'').trim().toLowerCase();
-  const qs=(D.site||{}).quotes||[];
-  const hit=LIST.filter(x=>!f||x.o.name.toLowerCase().includes(f));
-  if(!hit.length){ tiles.innerHTML='<div class="empty">결과가 없습니다.</div>'; return; }
-  let html='', on=0;
-  hit.forEach((x,n)=>{
-    /* 여섯 칸마다 그림 판을 끼워 넣는다 */
-    if(!f && n && n%6===0 && hit.length>8){
-      html+=ornamentTile(on, COLOR, qs[on%Math.max(qs.length,1)]); on++;
-    }
-    const o=x.o;
-    const tag = x.kids          ? '<span class="tag sub">'+x.kids+'</span>'
-              : x.kind==='text' ? '<span class="tag doc">글</span>'
-              : o.member        ? '<span class="tag mem">회원</span>'
-              : (o.url?'':'<span class="tag todo">주소</span>');
-    html+='<a class="tile'+(x.kids?' has':'')+'" href="'+esc(x.to)+'"'
-        + (x.ext?' target="_blank" rel="noopener"':'')+' style="--tc:'+COLOR+'">'
-        + '<span class="no">'+String(n+1).padStart(2,'0')+'</span>'
-        + '<span class="tn">'+esc(o.name)+'</span>'
-        + tag + ((x.kids||x.kind==='text')?'<span class="go">›</span>':'')
-        + '</a>';
-  });
-  tiles.innerHTML=html;
-}
-q.addEventListener('input',()=>paint(q.value));
-window.addEventListener('scroll',()=>{
-  document.getElementById('totop').classList.toggle('on', window.scrollY>500);
-});
+  if(!G){ body.innerHTML='<div class="card">목록을 찾을 수 없습니다.</div>'; return; }
+  document.documentElement.style.setProperty('--gc',colorOf(G));
+  ttl.textContent=(G.icon?G.icon+' ':'')+G.title; gtitle.textContent=G.title;
+  tree.innerHTML=treeHtml(G.items||[],[]);
+  const p=['i','k','j'].map(x=>P.get(x)).filter(x=>x!==null).map(Number);
+  select(p.length&&nodeAt(p)?p:[],false);
+  if(!p.length && innerWidth<=820) document.body.classList.add('toc');
+}).catch(()=>{ body.innerHTML='<div class="card">links.json 을 읽지 못했습니다.</div>'; });
 </script>
 </body>
 </html>
