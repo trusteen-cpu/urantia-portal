@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 핵심 52강 · PPT 슬라이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1726;--panel:#172238;--ink:#e9edf4;--mute:#9aa7bd;--gold:#e0b45a;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"맑은 고딕","Malgun Gothic",sans-serif}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:#0b1220;border-bottom:1px solid var(--line)}
+header h1{margin:0;font-size:16px;font-weight:700;color:var(--gold);white-space:nowrap}
+header .sp{flex:1}
+select,.btn{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 10px;cursor:pointer}
+select{max-width:min(420px,100%)}
+.btn:hover{border-color:var(--gold)}
+.btn.on{background:var(--gold);color:#1b1404;border-color:var(--gold)}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.ttl{font-family:"Noto Serif KR",serif;font-size:clamp(19px,3.2vw,26px);margin:4px 0 2px}
+.sub{color:var(--mute);font-size:13px;margin:0 0 12px}
+.sub a{color:var(--gold)}
+.stage{position:relative;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.4);aspect-ratio:16/9;user-select:none}
+.stage img{display:block;width:100%;height:100%;object-fit:contain}
+.nav{position:absolute;top:0;bottom:0;width:22%;border:0;background:transparent;cursor:pointer;color:#fff;font-size:42px;opacity:0;transition:opacity .2s}
+.nav:hover,.nav:focus-visible{opacity:.85;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent)}
+.nav.r{right:0}.nav.r:hover,.nav.r:focus-visible{background:linear-gradient(270deg,rgba(0,0,0,.35),transparent)}
+.nav.l{left:0}
+.bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0}
+.bar .cnt{font-weight:700;min-width:70px}
+.bar .st{flex:1;min-width:180px;color:var(--mute);font-size:14px}
+.notes{display:none;background:#fbf8f0;color:#24262b;border-radius:12px;padding:18px 22px;font-family:"Noto Serif KR",serif;font-size:17px;line-height:1.95;white-space:pre-wrap;word-break:keep-all}
+.notes.on{display:block}
+.strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:14px}
+.strip button{all:unset;cursor:pointer;border-radius:6px;overflow:hidden;border:2px solid transparent;position:relative;aspect-ratio:16/9;background:#000}
+.strip button img{width:100%;height:100%;object-fit:cover;display:block}
+.strip button i{position:absolute;left:4px;top:3px;font-style:normal;font-size:11px;background:rgba(0,0,0,.6);padding:0 5px;border-radius:4px}
+.strip button.cur{border-color:var(--gold)}
+.stage:fullscreen{border-radius:0;aspect-ratio:auto}
+@media (max-width:600px){header h1{font-size:14px}.nav{opacity:.0}}
+</style>
+<script src="/home-button.js" data-into="header" defer></script>
+</head>
+<body>
+<header>
+  <h1>유란시아서 핵심 52강 · PPT 슬라이드</h1>
+  <span class="sp"></span>
+  <select id="pick" aria-label="강 고르기"></select>
+</header>
+<main>
+  <h2 class="ttl" id="ttl"></h2>
+  <p class="sub" id="sub"></p>
+  <div class="stage" id="stage">
+    <img id="img" alt="">
+    <button class="nav l" id="prev" aria-label="이전 슬라이드">‹</button>
+    <button class="nav r" id="next" aria-label="다음 슬라이드">›</button>
+  </div>
+  <div class="bar">
+    <button class="btn" id="b1" aria-label="처음">⏮</button>
+    <button class="btn" id="b2" aria-label="이전">◀</button>
+    <span class="cnt" id="cnt"></span>
+    <button class="btn" id="b3" aria-label="다음">▶</button>
+    <span class="st" id="st"></span>
+    <button class="btn" id="nt">📝 강의 원고</button>
+    <button class="btn" id="fs">⛶ 전체 화면</button>
+  </div>
+  <div class="notes" id="notes"></div>
+  <div class="strip" id="strip"></div>
+</main>
+<script>
+var P=new URLSearchParams(location.search), N=+(P.get('n')||0), L=null, I=0, TOCD=[], V=Math.floor(Date.now()/36e5);
+function pad(n){return (n<10?'0':'')+n;}
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function load(src){var s=document.createElement('script');s.src=src+'?v='+V;document.head.appendChild(s);}
+window.TOC=function(t){
+  TOCD=t.filter(function(x){return x[2]>0;});
+  if(!TOCD.some(function(x){return x[0]===N;})) N=TOCD[0][0];
+  pick.innerHTML=TOCD.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===N?' selected':'')+'>제'+x[0]+'강 '+esc(x[1])+'</option>';}).join('');
+  load('../data/'+pad(N)+'.js');
+};
+window.LECTURE=function(d){
+  L=d; document.title='제'+d.n+'강 '+d.title+' · 슬라이드';
+  ttl.textContent='제'+d.n+'강 '+d.title;
+  var links=['<a href="../core/?n='+d.n+'">📖 핵심 원고 읽기</a>'];
+  if(d.interactive) links.push('<a href="'+d.interactive+'">🧭 인터렉티브 스터디</a>');
+  if(d.audiobook) links.push('<a href="'+d.audiobook+'">🎧 오디오북</a>');
+  sub.innerHTML='유란시아서 핵심 52강 · 슬라이드 '+d.slides.length+'장 · '+links.join(' · ');
+  strip.innerHTML=d.slides.map(function(s,k){return '<button data-k="'+k+'" title="'+esc(s.t)+'"><img loading="lazy" src="'+pad(d.n)+'/'+pad(k+1)+'.jpg" alt=""><i>'+(k+1)+'</i></button>';}).join('');
+  var h=+(location.hash.replace('#','')||1); go(Math.min(Math.max(h-1,0),d.slides.length-1));
+};
+function go(k){
+  if(!L) return; I=(k+L.slides.length)%L.slides.length;
+  img.src=pad(L.n)+'/'+pad(I+1)+'.jpg'; img.alt=L.slides[I].t||('슬라이드 '+(I+1));
+  cnt.textContent=(I+1)+' / '+L.slides.length;
+  st.textContent=L.slides[I].t||'';
+  notes.textContent=L.slides[I].x||'(이 슬라이드에는 원고가 없습니다)';
+  [].forEach.call(strip.children,function(b,j){b.classList.toggle('cur',j===I);});
+  history.replaceState(null,'','?n='+L.n+'#'+(I+1));
+  var nx=new Image(); nx.src=pad(L.n)+'/'+pad((I+1)%L.slides.length+1)+'.jpg';
+}
+pick.onchange=function(){location.href='?n='+pick.value;};
+prev.onclick=b2.onclick=function(){go(I-1);};
+next.onclick=b3.onclick=function(){go(I+1);};
+b1.onclick=function(){go(0);};
+strip.onclick=function(e){var b=e.target.closest('button[data-k]'); if(b){go(+b.dataset.k); stage.scrollIntoView({behavior:'smooth',block:'center'});}};
+nt.onclick=function(){notes.classList.toggle('on'); nt.classList.toggle('on');};
+fs.onclick=function(){ if(document.fullscreenElement) document.exitFullscreen(); else stage.requestFullscreen&&stage.requestFullscreen(); };
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='SELECT') return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(I+1);}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(I-1);}
+  else if(e.key==='Home') go(0);
+});
+var tx=null; stage.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+stage.addEventListener('touchend',function(e){ if(tx===null) return; var dx=e.changedTouches[0].clientX-tx; if(Math.abs(dx)>40) go(I+(dx<0?1:-1)); tx=null; });
+load('../data/toc.js');
+</script>
+</body>
+</html>

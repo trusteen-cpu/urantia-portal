@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>영생의 과정 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 14</p>
+    <h1>영생의 과정</h1>
+    <p class="papers">유란시아서 47 · 48 · 112편 (보조 30 · 49 · 111 · 113편)</p>
+    <div class="lead">유란시아서는 죽음이 필사 마음을 곧바로 완전한 영으로 바꾼다는 통념을 부정하고, 필사 상태와 영 지위 사이에 언제나 모론시아 과도기가 개입한다고 기술한다. 영생은 죽음의 순간에 완성되는 사건이 아니라 죽음 이후에 시작되는 하나의 긴 과정이다. 이 페이지는 그 과정을 47편 일곱 맨션 세계, 48편 모론시아 삶, 112편 인격의 생존을 중심으로 하고 30편, 49편, 111편, 113편을 보조 삼아 일곱 마디로 정리한다. 먼저 모론시아 과도기가 왜 필요한지, 무엇이 사라지고 무엇이 남는지를 확인하고, 이어서 죽음의 순간 세 요소가 어디로 가는지와 부활의 시기·장소·절차를 본문대로 재구성한다. 그 다음 일곱 맨션 세계의 단계별 훈련 내용과 상승자를 돕는 존재들, 그리고 불멸이 확정되는 조절자 융합을 다루고, 마지막으로 예루셈 시민권이 영생의 길로 들어서는 입구임을 밝힌 뒤 그 이후의 상승 단계를 조망한다. 마디마다 요약과 배경 설명, 소그룹 질문과 모범답안, 본문 그대로의 인용을 함께 두었다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 점진적 설계 — 모론시아 과도기는 왜 필요한가</a></li><li><a href="#s2">2. 무엇이 남는가 — 필사 마음, 불멸의 조절자, 진화하는 혼</a></li><li><a href="#s3">3. 죽음 — 세 종류의 죽음과 세 요소의 행방</a></li><li><a href="#s4">4. 부활 — 시기, 부활 전당, 재인격화의 절차</a></li><li><a href="#s5">5. 일곱 맨션 세계 — 단계별 훈련의 내용</a></li><li><a href="#s6">6. 동행하는 존재들과 조절자 융합</a></li><li><a href="#s7">7. 예루셈 시민권과 그 이후 — 영생의 길로 들어서다</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>점진적 설계 — 모론시아 과도기는 왜 필요한가</h2><p class="sub">48편 머리말과 1장, 8장</p></div></div>
+  <p class="summary">유란시아서는 죽음이 필사 마음을 곧바로 완전한 영으로 바꾼다는 통념을 명시적으로 부정한다. 창조자들은 완전한 존재를 직접 창조하지만 동물 기원의 진화 창조체를 한 걸음에 완전하게 만드는 일은 시도하지 않으며, 그 대신 물질 상태와 영 지위 사이에 모론시아 과도기를 둔다. 이 과도기는 지역 우주의 56개 모론시아 세계에 걸쳐 있고, 상승자는 샐빙턴에서 1단계 영이 되기까지 570번의 형태 변형을 거친다. 본문은 이 긴 훈련이 단지 살아남아 안락을 누리기 위한 것이 아니라 대우주의 운영을 배우게 하려는 명확한 목적을 지닌다고 밝힌다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>48편 머리말은 세 문단으로 모론시아 생명의 존재 이유를 논증한다. 첫째 문단은 창조의 두 방식을 대비한다. 완전한 존재는 직접적인 기원 창조로 만들어지지만, 동물 기원의 물질 창조체를 단 한 걸음에 완전한 존재로 바꾸는 일은 결코 시도되지 않는다. 둘째 문단은 그 논리를 죽음에 적용한다. 죽음은 물질 육체의 자연적 해체일 뿐이므로, 그 한 걸음에 마법적 변화를 기대하는 것은 미신이라는 것이다. 셋째 문단이 결론으로, 필사 상태와 영 지위 사이에는 언제나 모론시아 과도기가 개입한다고 선언한다. 1장은 이 과도기의 물리적 기반을 설명한다. 모론시아 세계들은 진화된 행성의 두 배인 1백 개의 물리적 원소와 1백 가지 형태의 모론시아 물질을 갖춘 건축 구체이며, 모론시아 동력 감독자들이 물질 에너지와 영 에너지를 결합하여 이 형태를 만든다. 상승자는 체계에서 8번, 별자리에서 71번, 샐빙턴에서 491번, 합계 570번의 변형을 거친다. 주목할 점은 바울의 히브리서 구절을 인용하여 그가 모론시아 물질의 실체를 알았다고 해석하는 대목이다. 8장은 목적을 다룬다. 우주 전체가 거대한 실습 학교로 조직되고 천상 창조계의 상당 부분이 교사로 징발된 사실 자체가, 상승이 단순한 유람이 아니라 봉사를 위한 훈련임을 증명한다는 논증이다. 이 관점에서 영생은 상태가 아니라 과정이며, 그 과정은 처음부터 실용적 목표를 향해 설계되어 있다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>유란시아서가 사후 즉시 완성이라는 믿음을 미신이라고 부르는 근거는 무엇인가?</span></button><div class="answer">창조자들이 완전한 존재를 만들 때는 직접 창조하고, 동물 기원의 진화 창조체를 한 걸음에 완전하게 바꾸는 일은 하지 않는다는 창조 원리 때문이다. 죽음은 물질 육체의 자연적 해체일 뿐이므로 그 사건 자체에 변형의 힘이 있다고 보지 않는다. 따라서 필사 마음과 완전해진 영 사이에는 반드시 단계적 과정이 있어야 하며, 그것이 모론시아 생명이다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>570번의 모론시아 변형이라는 숫자는 무엇을 말해 주는가?</span></button><div class="answer">체계에서 8번, 별자리에서 71번, 샐빙턴에서 491번이라는 분포는 변화의 비중이 위로 갈수록 커진다는 것을 보여 준다. 맨션 세계의 일곱 번은 전체의 시작에 불과하다. 또한 변형이 형태의 문제로 기술되어 있어, 상승은 인격이 바뀌는 것이 아니라 인격을 담는 그릇이 점차 물질에서 영으로 옮겨 가는 과정임을 알 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>8장이 밝히는 상승 훈련의 목적을 스터디 모임의 말로 정리해 본다면?</span></button><div class="answer">본문은 신들이 우리를 그저 영원한 유람에 태울 작정이었다면 온 우주를 실습 학교로 만들지 않았을 것이라고 논증한다. 목적은 대우주 운영의 세부를 통달하여 앞으로 봉사할 준비를 갖추는 것이다. 즉 영생은 보상이라기보다 교육이며, 살아남는 것 자체보다 무엇을 위해 살아남는가가 강조된다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">48:0.1</div><div class="qtext">신들은 조잡한 동물 본성의 창조체를 어떤 신비로운 창조적 마법 행위로 완전해진 영으로 변화시킬 수 없다. 적어도 그렇게 하지 않는다.</div></div><div class="quote"><div class="ref">48:0.1</div><div class="qtext">창조자들이 완전한 존재를 만들고자 할 때, 그들은 직접적인 기원 창조로써 그렇게 한다. 그러나 그들은 동물 기원의 물질 창조체를 단 한 걸음에 완전한 존재로 바꾸는 일은 결코 시도하지 않는다.</div></div><div class="quote"><div class="ref">48:0.2</div><div class="qtext">지역 우주 생애의 다양한 단계에 걸쳐 뻗어 있는 모론시아 생명은, 물질 필사자가 영 세계의 문턱에 이를 수 있는 유일하게 가능한 접근 방식이다.</div></div><div class="quote"><div class="ref">48:0.2</div><div class="qtext">죽음, 곧 물질 육체의 자연적 해체가 어떤 마법을 지녔기에, 그러한 단순한 한 걸음이 필사적이고 물질적인 마음을 즉시 불멸하고 완전해진 영으로 변화시킬 수 있겠는가? 그러한 믿음은 무지한 미신이며 듣기 좋은 우화에 지나지 않는다.</div></div><div class="quote"><div class="ref">48:0.3</div><div class="qtext">필사 상태와, 생존한 인간이 뒤이어 도달하는 영 지위 사이에는 언제나 이 모론시아 과도기가 개입한다.</div></div><div class="quote"><div class="ref">48:1.1</div><div class="qtext">모론시아 영역은 창조체 존재의 물질 수준과 영적 수준 사이를 연결하는 지역 우주의 구체들이다.</div></div><div class="quote"><div class="ref">48:1.3</div><div class="qtext">이 세계들은 모두 건축 구체이며, 진화된 행성이 지닌 원소 수의 꼭 두 배를 가지고 있다.</div></div><div class="quote"><div class="ref">48:1.5</div><div class="qtext">물질 세계를 떠날 때부터 샐빙턴에서 1단계 영으로 구성될 때까지, 너희는 꼭 570번의 독립된 상승 모론시아 변화를 겪을 것이다. 이들 중 8개는 체계에서, 71개는 별자리에서, 491개는 샐빙턴의 구체들에 체류하는 동안 일어난다.</div></div><div class="quote"><div class="ref">48:1.6</div><div class="qtext">모론시아 생명에서 영은 너희 인격의 실제적인 일부가 되며, 너희가 570번의 점진적 변형을 잇달아 통과함에 따라 창조체 생명의 물질 상태에서 영 상태로 상승하게 된다.</div></div><div class="quote"><div class="ref">48:8.1</div><div class="qtext">그것은 영 생명으로 가는 진화적 관문이며, 상승자들이 시간의 목표, 곧 파라다이스에서 하나님을 발견하는 일을 이루게 하는 창조체 완전함의 종국적 성취로 가는 관문이다.</div></div><div class="quote"><div class="ref">48:8.2</div><div class="qtext">시간의 창조체들에게 대우주의 운영과 행정의 세부를 통달할 단계적 기회를 주는 것이 창조자들의 설계이며</div></div><div class="quote"><div class="ref">48:8.3</div><div class="qtext">필사자 생존 계획에는 실제적이고 유용한 목표가 있다. 너희가 이 모든 신성한 수고와 공들인 훈련을 받는 것은 단지 살아남아 끝없는 지복과 영원한 안락을 누리기 위함만이 아니다.</div></div><div class="quote"><div class="ref">48:8.3</div><div class="qtext">필사자 진보 계획을 진척시키는 일은 현재 조직된 우주의 주요 사업 중 하나로 보이며</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>무엇이 남는가 — 필사 마음, 불멸의 조절자, 진화하는 혼</h2><p class="sub">111편 1장·3장, 112편 5장, 49편 4장</p></div></div>
+  <p class="summary">생존을 논하려면 인간을 이루는 요소 가운데 무엇이 사라지고 무엇이 남는지를 먼저 구분해야 한다. 본문은 인간의 마음을 물질 일생 동안 빌려준 일시적 지적 체계로 규정하고, 오직 수여된 영인 생각 조절자만이 불멸하다고 말한다. 그러나 마음은 결정이 내려지는 무대이며, 그 결정의 결실로 마음과 조절자의 협력 속에서 새로운 실체인 모론시아 혼이 자라난다. 죽음 뒤에 살아남는 지상 기원의 요소는 바로 이 혼이며, 인격은 아버지가 부여한 것으로서 영원하지만 그 정체성의 자리를 물질 마음에서 혼으로 옮기는 것은 인간 자신의 선택에 달려 있다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>111편 1장은 마음을 배, 조절자를 항해사, 인간 의지를 선장에 비유한다. 이 비유는 세 요소의 역할을 정확히 배분한다. 조절자는 방향을 알고 인도하지만 결코 인간의 의지를 거슬러 지배하지 않으며, 인간은 수동적으로 굴복하는 것이 아니라 능동적이고 협동적으로 그 인도를 따르기로 선택한다. 본문이 마음이 무엇을 이해하는가보다 무엇을 이해하기를 원하는가가 생존을 보장한다고 말하는 것도 같은 맥락이다. 생존의 기준은 성취가 아니라 지향이다. 112편 5장은 이 구조를 인격과 정체성의 관점에서 다시 서술한다. 인격은 우주 아버지가 부여한 영원한 실체이지만, 정체성은 그 인격이 자리 잡은 체계에 의존한다. 인간은 물질적 의미에서만 정체성을 가지며 우주적 관점에서 태어나고 살고 죽는 데 순간적이다. 그러나 필사 인격은 자신의 정체성의 자리를 물질-지성 체계에서 모론시아-혼 체계로 옮길 능력을 지닌다. 이 능력이 곧 자유 의지이며, 본문은 이를 인간에게 가장 큰 기회이자 최고 수준의 우주적 책임이라고 부른다. 111편 3장은 혼의 지위를 보완한다. 혼은 처음에는 전적으로 모론시아 본성이지만 발전하여 영과 융합할 가치가 있는 수준으로 상승하며, 죽음 후 맨션 세계의 부활에 뒤이어 인간 인격은 완전히 모론시아 자아와 동일시된다. 혼은 미래 모론시아 운반체의 배아라는 표현이 이를 요약한다. 한 가지 분석적 관찰을 덧붙이면, 이 세 요소의 구분은 죽음이 왜 인격의 소멸이 아닌지를 설명하는 동시에, 왜 생존이 자동적이지 않은지도 설명한다. 조절자는 불멸이지만 혼이 자라지 않으면 살아남을 것이 없기 때문이다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>마음은 필사적이라는데, 그렇다면 필사 생애의 결정은 어떤 의미를 갖는가?</span></button><div class="answer">마음은 일시적이지만 그 안에서 내린 결정의 결실은 혼에 반영되어 남는다. 본문은 혼이 필사 자아가 현세에서 내린 결정의 결실을 충실히 반영한다고 말한다. 따라서 마음이 사라져도 마음으로 이룬 것은 사라지지 않는다. 오늘 무엇을 하는가보다 날마다 무엇이 되어 가는가가 중요하다는 서술이 그 의미를 압축한다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>배·항해사·선장의 비유에서 조절자가 인간 의지를 지배하지 않는다는 점은 왜 중요한가?</span></button><div class="answer">생존이 강제될 수 없고 오직 선택으로만 이루어진다는 원리 때문이다. 조절자는 마음을 조종하지만 뜻에 어긋나게 지배하지 않으며, 인간의 의지를 최상으로 여긴다. 그러므로 상승은 하나님이 일방적으로 베푸는 것도, 인간이 홀로 이루는 것도 아닌 협동의 결과다. 이 원리는 융합이 최종 선택의 확인이라는 뒤의 서술로 이어진다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>인격과 정체성의 구분을 일상의 말로 설명해 본다면?</span></button><div class="answer">인격은 나를 나이게 하는 것, 아버지가 준 변하지 않는 것이다. 정체성은 그 인격이 지금 어디에 자리 잡고 있는가, 곧 어떤 체계 위에서 작동하는가이다. 물질 마음 위에 있던 정체성이 죽음으로 흩어져도 인격은 남고, 맨션 세계에서 혼이라는 새 자리 위에 다시 세워진다. 그래서 죽음은 정체성의 일시적 상실이지 인격의 소멸이 아니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">49:4.9</div><div class="qtext">인간의 마음은 필사적이며, 오직 수여된 영만이 불멸한다. 생존은 생각 조절자의 사역을 통한 영적 변화, 곧 불멸하는 혼의 탄생과 진화에 달려 있다.</div></div><div class="quote"><div class="ref">111:1.1</div><div class="qtext">마음은 인간의 토양이요, 그로부터 영 관찰자는 그가 깃들어 있는 인격의 협조를 얻어서 모론시아 혼을 진화시켜야 한다.</div></div><div class="quote"><div class="ref">111:1.3</div><div class="qtext">물질 마음은 인간 인격이 살고 자각하며, 결정을 내리고 하나님을 택하거나 버리며, 스스로를 영원하게 만들거나 파멸시키는 무대이다.</div></div><div class="quote"><div class="ref">111:1.4</div><div class="qtext">이 마음 안에서, 이 마음을 가지고 너는 조절자와 같아지게 하는 도덕적 결정을 내리며, 조절자와 같아짐은 곧 하나님과 같아지는 것이다.</div></div><div class="quote"><div class="ref">111:1.5</div><div class="qtext">필사자의 마음은 물질 일생 동안 사용하도록 인간에게 빌려준 일시적 지적 체계이며, 인간이 이 마음을 사용함에 따라 그들은 영원한 존재 가능성을 받아들이거나 물리친다.</div></div><div class="quote"><div class="ref">111:1.5</div><div class="qtext">마음이 무엇을 이해하는가보다 마음이 무엇을 이해하기를 원하는가, 이것이 생존을 보장한다.</div></div><div class="quote"><div class="ref">111:1.8</div><div class="qtext">조절자들은 사람의 마음을 조종하지만 그의 뜻에 어긋나게 결코 지배하지 않는다. 조절자들에게 인간의 의지는 최상이다.</div></div><div class="quote"><div class="ref">111:1.9</div><div class="qtext">마음은 너희의 배요, 조절자는 항해사, 인간의 의지는 선장이다.</div></div><div class="quote"><div class="ref">111:3.2</div><div class="qtext">죽음 후 맨션 세계의 부활에 뒤이어, 인간 인격은 완전히 모론시아 자아와 동일시된다. 따라서 혼은 인격 정체성의 미래 모론시아 운반체의 배아(胚芽)이다.</div></div><div class="quote"><div class="ref">111:3.7</div><div class="qtext">너희가 시간 속에서 시작한 것은—만약 끝낼 가치가 있다면—영원 속에서 반드시 완성될 것이다.</div></div><div class="quote"><div class="ref">112:5.2</div><div class="qtext">인간의 인격은 영원하지만, 정체성에 관한 한 조건적인 영원 실체이다.</div></div><div class="quote"><div class="ref">112:5.4</div><div class="qtext">그러나 필사적 인격은 자신의 선택에 따라 일시적인 물질-지성 체계에서 진화하는 인격 표현을 위한 새로운 매체로 창조된 더 높은 모론시아-혼 체계로 자신의 정체성의 자리를 옮길 수 있는 능력을 소유하고 있다.</div></div><div class="quote"><div class="ref">112:5.5</div><div class="qtext">바로 이 선택의 힘, 즉 자유 의지를 가진 창조체의 우주적 표지는 인간에게 가장 큰 기회를 제공하며, 동시에 최고 수준의 우주적 책임을 부여한다.</div></div><div class="quote"><div class="ref">112:5.12</div><div class="qtext">이 실체는 인간인 너희와 신성한 너희, 즉 조절자와의 연합을 통해 함께하는 삶과 노력의 결합체로서, 지상 기원의 생존 요소를 구성한다. 이것이 모론시아 자아, 즉 불멸의 혼이다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>죽음 — 세 종류의 죽음과 세 요소의 행방</h2><p class="sub">112편 3장·4장, 113편 6장</p></div></div>
+  <p class="summary">유란시아인은 죽음을 생명 에너지가 멈추는 한 가지 현상으로 보지만, 본문은 인격 생존의 관점에서 영적 죽음, 지적 죽음, 물리적 죽음을 구분한다. 어느 경우든 조절자는 필사 생애의 기억 기록을 지니고 디비닝턴으로 떠나고, 혼은 운명의 수호자인 세라핌의 보호 아래 남으며, 인격 구성의 기록은 천사장들이 보존한다. 조절자는 인격을 일시적으로 잃지만 정체성은 잃지 않고, 인간은 정체성을 잃지만 인격은 유지한다는 대칭이 핵심이다. 조절자가 없는 혼은 완전히 무의식이며 지상과 소통하지 않는다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>112편 3장의 세 가지 죽음은 각각 다른 원인과 절차를 갖는다. 영적 죽음은 필사자가 생존을 최종적으로 거부한 경우로, 조절자와 세라핌의 공동 판단이 유버사에 기록되고 검열자들이 확인한 뒤 오르본톤의 통치자들이 조절자의 해방을 명령한다. 이때 육체가 살아 있어도 우주적 관점에서는 이미 죽은 것이다. 지적 죽음은 뇌 구조의 파괴로 의지적 행동을 가능하게 하는 마음 회로가 돌이킬 수 없이 끊어진 경우이며, 이때 조절자는 즉시 떠나지만 이전 선택에 따라 혼은 생존할 수 있다. 물리적 죽음에서 조절자는 마음이 지적 기구로서 기능을 멈출 때까지 머문다. 4장은 죽음 직후 조절자의 행로를 적는다. 조절자는 등록에서 해제되어 디비닝턴으로 가며, 필사 동반자가 섭리 시대의 끝에 부활할 집단에 속하면 그동안 여러 임시 임무 가운데 하나를 택한다. 이 대기 기간에 다른 마음에 내주하지 않는다는 점이 49편에서 확인된다. 113편 6장은 같은 순간을 세라핌의 눈으로 서술한다. 조절자의 임재를 나타내던 영적 광채가 사라지는 순간 수호 천사는 지휘 계통에 보고하고, 인증을 받아 첫째 맨션 세계로 나아가 피보호자가 깨어나기를 기다린다. 세 편의 서술은 역할 분담에서 정확히 일치한다. 조절자는 정체성을, 세라핌은 생존 가치를, 천사장은 인격 구성 기록을 맡는다. 다만 계시자는 죽음과 생존 사이에 인격이 정확히 어디 있는지는 알지 못한다고 밝힌다. 사후 교신에 대한 부정도 이 구조에서 나온다. 조절자가 없는 혼은 의식이 없으므로, 죽은 이가 산 자에게 메시지를 보낼 수 없다는 것이다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>육체가 살아 있어도 우주적 관점에서 이미 죽었다고 보는 경우가 있다는 서술을 어떻게 이해할 것인가?</span></button><div class="answer">본문이 말하는 죽음은 생명 에너지의 정지가 아니라 인격 생존의 가능성이 끝나는 것이다. 영적 죽음은 필사자가 생존을 최종적으로 거부하여 조절자가 해방된 상태로, 이후의 육체적 생명은 우주 에너지의 관성일 뿐이라고 본다. 이 관점은 생존의 기준이 몸의 존속이 아니라 의지의 선택에 있음을 보여 준다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>죽음 직후 조절자, 혼, 인격 기록이 세 곳으로 나뉘는 구조는 무엇을 보장하는가?</span></button><div class="answer">어느 한 요소도 홀로 인격을 재구성할 수 없게 하여 정체성의 안전을 보장한다. 조절자는 다른 이가 그 형태를 차지하지 않으리라는 보증이고, 세라핌은 혼의 신탁자이며, 천사장은 기록의 수탁자다. 세 편이 서로 다른 발표자를 통해 같은 분담을 기술한다는 점도 이 구조의 일관성을 뒷받침한다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>유란시아서가 사후 교신을 금지된 것으로 서술하는 근거는 무엇인가?</span></button><div class="answer">조절자가 떠난 혼은 완전히 무의식 상태이며, 생존이 완료될 때까지 어떤 인격의 징후나 소통 능력도 나타날 수 없기 때문이다. 조절자 역시 이전에 내주했던 존재로서 지구로 돌아오지 않는다. 따라서 맨션 세계로 간 이들은 사랑하는 이에게 메시지를 보낼 수 없으며, 현재 섭리 시대 동안 그런 소통은 금지된다고 본문은 기술한다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:3.1</div><div class="qtext">유란시아인들은 보통 죽음을 생명의 에너지가 물리적으로 멈추는 한 가지 현상으로만 인식하지만, 인격 생존과 관련해서는 실제로 세 가지 종류의 죽음이 있다.</div></div><div class="quote"><div class="ref">112:3.2</div><div class="qtext">우주적 관점에서 그 필사자는 이미 죽은 것이다. 계속되는 생명은 단지 우주 에너지의 물질적 관성이 지속되고 있음을 나타낼 뿐이다.</div></div><div class="quote"><div class="ref">112:3.3</div><div class="qtext">의지적 마음이 없는 몸은 더 이상 인간이 아니지만, 인간 의지의 이전 선택에 따라 그 혼은 생존할 수 있다.</div></div><div class="quote"><div class="ref">112:3.4</div><div class="qtext">죽음이 인간에게 다가올 때, 조절자는 마음이 지적 메커니즘으로서의 기능을 멈출 때까지 마음의 성채에 머문다.</div></div><div class="quote"><div class="ref">112:3.5</div><div class="qtext">선재하는 생각 조절자는 필사 생애의 기억 기록을 지닌 채 디비닝턴으로 가고, 죽은 인간의 불멸의 모론시아 혼은 운명의 수호자의 보호 아래 남는다.</div></div><div class="quote"><div class="ref">112:3.6</div><div class="qtext">세라핌은 인격의 재조립에 절대적으로 필요한 존재들이다.</div></div><div class="quote"><div class="ref">112:3.7</div><div class="qtext">죽음이 오면 생각 조절자는 인격을 일시적으로 잃지만 정체성은 잃지 않는다. 인간 대상자는 정체성을 일시적으로 잃지만 인격은 유지된다. 맨션 세계에서 둘은 영원한 현현으로 다시 결합한다.</div></div><div class="quote"><div class="ref">112:3.7</div><div class="qtext">맨션 세계로 간 자들은 사랑하는 이들에게 메시지를 보낼 수 없으며, 모든 우주에서 현재 섭리 시대 동안 그러한 소통은 금지된다.</div></div><div class="quote"><div class="ref">112:4.1</div><div class="qtext">물질적, 지적, 또는 영적 성질의 죽음이 일어나면, 조절자는 필사자 숙주에게 작별을 고하고 디비닝턴으로 떠난다.</div></div><div class="quote"><div class="ref">112:5.13</div><div class="qtext">이 지속되는 의미와 생존 가치를 지닌 자녀는 죽음에서 재인격화에 이르는 기간 동안 완전히 무의식 상태에 있으며, 이 기다림의 기간 동안 세라핌 운명의 수호자의 보호 아래 있다.</div></div><div class="quote"><div class="ref">112:5.15</div><div class="qtext">죽음과 생존 사이의 시간 동안 필사적 인격이 정확히 어디에 있는지에 대해서는 알지 못한다.</div></div><div class="quote"><div class="ref">113:6.1</div><div class="qtext">단, 떠나는 조절자가 대표하는 지속적 존재의 정체성과 인격의 실제성을 제외하고, 그 사람의 미래 존재와 관련된 모든 가치―즉 진정한 ‘너 자신’을 구성하는 모든 것―이 온전히 수호자에게 맡겨진다.</div></div><div class="quote"><div class="ref">113:6.2</div><div class="qtext">그러한 운명의 수호자는 첫째 맨션 세계로 나아가, 육신에 있던 자기의 옛 피보호자가 의식을 되찾기를 그곳에서 기다린다.</div></div><div class="quote"><div class="ref">49:6.5</div><div class="qtext">이 대기 상태의 생각 조절자들은 그들의 창조물들이 잠자는 동안 디비닝톤에서 봉사하며, 이 기간 동안 다른 필사 마음속에 결코 내주하지 않는다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>부활 — 시기, 부활 전당, 재인격화의 절차</h2><p class="sub">49편 6장, 30편 4장, 47편 3장, 112편 5장</p></div></div>
+  <p class="summary">부활에는 두 경로가 있다. 필사자 성취의 셋째 원에 이르러 개인 운명 수호자를 배정받은 이는 죽음 뒤 셋째 날에 재인격화될 수 있고, 그렇지 못한 생존자는 새 섭리 시대의 소환 때까지 의식 없이 잠든다. 그러나 잠자는 이에게 시간의 흐름은 의미가 없으며, 오천 년 잠잔 이와 닷새 쉰 이가 다르게 반응하지 않는다. 부활은 첫째 맨션 세계의 부활 전당에서 일어난다. 조절자의 영 마음 신탁과 세라핌의 모론시아 혼 신탁이 새로 마련된 모론시아 형태 위에서 재결합할 때 인격이 재조립되며, 생존자는 죽음으로 중단된 바로 그 자리에서 다시 시작한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 16개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>112편 4장은 셋째 날 부활의 조건을 절차적으로 적는다. 조절자가 제출한 생존 성격 요약을 운명의 수호자가 무조건 인증하고, 세라핌과 조절자가 기록과 권고의 모든 항목에서 본질적으로 일치하며, 유버사의 검열자와 반사적 동료들이 이를 주저 없이 확인하면, 옛적부터 늘 계신 이들이 샐빙턴으로 고급 지위의 명령을 발령하고 네바돈의 법정이 즉시 부활을 판결한다. 이 조건에 이르지 못한 이들은 집단 수호자의 보호 아래 섭리 시대의 소환을 기다리며, 특별 부활은 적어도 1천 년마다 선포된다. 30편 4장은 이 지연이 불이익이 아님을 분명히 한다. 잠자는 필사자는 휴식 기간을 전혀 의식하지 못하므로 오천 년 잠잔 이와 닷새 쉰 이가 똑같이 반응하며, 시간 지연을 제외하면 상승 체제도 같다. 112편 5장은 판단이 모호할 때 우주 정부가 항상 개인의 이익에 따라 결정하며, 한 필사자의 상승 기회를 박탈할 위험보다 차라리 체계 반란의 위험을 감수하겠다고까지 말한다. 부활 전당의 구조는 47편 3장에 있다. 첫째 맨션 세계 모든 활동의 중심에 있는 이 성전은 운명의 수호자와 조절자와 부활의 천사장들의 회합소이며, 시간의 일곱 종족에 배정된 일곱 날개가 부챗살처럼 뻗고 날개마다 10만 개의 개인 부활실이 있다. 재인격화의 절차는 112편 5장이 세 단계로 정리한다. 감독 당국이 모론시아 에너지 패턴을 구성하고, 조절자가 돌아오며, 세라핌이 혼을 그 형태에 부여한다. 이로써 기억과 통찰과 의식, 곧 정체성의 재조립이 완료된다. 깨어난 생존자는 죽음으로 중단된 바로 그 수준에서 시작하며, 필사 삶의 많은 부분이 처음에는 막연한 꿈처럼 보이지만 인격 관계의 기억은 발판이 아니어서 지속된다. 열흘의 개인적 자유 뒤에 훈련이 시작된다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>셋째 날 부활과 섭리 시대 소환의 차이는 무엇이며, 후자가 불리한 것인가?</span></button><div class="answer">차이는 개인 운명 수호자가 배정되었는가, 곧 셋째 원에 이르렀는가에 있다. 개인 수호자가 있으면 조절자와 세라핌의 기록이 일치하고 검열자가 확인하는 절차를 거쳐 곧바로 부활하고, 그렇지 않으면 집단 수호자 아래 섭리 시대까지 잠든다. 그러나 잠자는 이는 시간을 의식하지 못하므로 본문은 이 지연이 상승에 아무런 불이익이 아니라고 분명히 말한다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>재인격화에 왜 세 존재가 모두 필요한가?</span></button><div class="answer">조절자는 영적 수준으로 변환된 마음 기록과 기억을 보관하고, 세라핌은 마음 모체와 정체성의 잠재력을 담은 혼을 보관하며, 천사장과 감독 당국은 인격 기록과 모론시아 형태를 마련한다. 어느 하나도 홀로 인격을 재구성할 수 없다. 47편은 두 신탁의 재결합으로, 112편은 세 단계의 순서로, 113편은 조절자는 식별하고 세라핌은 재인격화한다는 한 문장으로 같은 절차를 기술한다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>깨어난 생존자가 지상의 삶을 어디까지 기억하는가?</span></button><div class="answer">가치 있고 생존 가치가 있던 모든 것은 조절자가 보존하여 기억으로 되살아나지만, 영적 의미도 모론시아 가치도 없는 기억은 물질 뇌와 함께 사라진다. 다만 인격과 인격 사이의 관계는 결코 발판이 아니어서 지속되며, 옛 동료를 알고 기억하고 그들에게서 기억된다. 처음에는 많은 것이 막연한 꿈처럼 보이나 시간이 지나면 연관성이 뚜렷해진다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">49:6.8</div><div class="qtext">일곱 번째 원에서 시작하는 필사자들은 첫 번째 원을 향해 노력하며, 세 번째 원에 이른 모든 필사자들은 즉시 개인 운명 수호자를 배정받는다.</div></div><div class="quote"><div class="ref">49:6.2</div><div class="qtext">그러한 부활은 적어도 행성 시간으로 1천 년마다 발생하며</div></div><div class="quote"><div class="ref">30:4.11</div><div class="qtext">개인 운명 수호자의 보호 아래, 생존 지위를 가진 모든 필사자는 자연사의 문을 통과하고, 셋째 기간에 맨션 세계에서 인격화된다.</div></div><div class="quote"><div class="ref">30:4.12</div><div class="qtext">시간의 흐름은 잠자는 필사자에게 중요하지 않다. 그들은 자신의 휴식 기간을 전혀 의식하지 못하고 알지 못한다. 한 시대의 끝에 인격이 다시 조립될 때, 오천 년 동안 잠잤던 이들은 닷새 동안 쉬었던 이들과 다르게 반응하지 않을 것이다.</div></div><div class="quote"><div class="ref">112:5.7</div><div class="qtext">만약 인간 정체성을 맨션 세계로 진급시키는 것이 타당한지에 대한 의문이 제기될 경우, 우주 정부는 항상 그 개인의 이익에 따라 결정한다.</div></div><div class="quote"><div class="ref">112:5.8</div><div class="qtext">우리는 어느 진화 세계의 고투하는 한 필사자에게서 상승 경력을 추구하는 영원한 기쁨을 박탈할 위험을 무릅쓰느니 차라리 체계 반란의 위험을 감수하겠다.</div></div><div class="quote"><div class="ref">47:3.2</div><div class="qtext">첫째 맨션 세계 모든 활동의 바로 그 중심에는 인격 조립의 거대한 성전인 부활의 전당이 있다.</div></div><div class="quote"><div class="ref">47:3.3</div><div class="qtext">그리고 세라핌의 모론시아 혼 신탁과 조절자의 영 마음 신탁이 재결합됨으로써 창조체 인격이 재조립되고 잠자는 생존자의 부활이 이루어진다.</div></div><div class="quote"><div class="ref">47:3.5</div><div class="qtext">이 일곱 개의 날개 각각에는 10만 개의 개인 부활실이 있으며, 이것들은 최대 100만 명의 개인들이 각성하는 공간인 원형 학급 집회장으로 이어진다.</div></div><div class="quote"><div class="ref">47:3.5</div><div class="qtext">온 영원을 통하여 너희는 이 부활의 아침을 처음 목격했을 때의 깊은 기억 인상을 회상할 것이다.</div></div><div class="quote"><div class="ref">47:3.6</div><div class="qtext">그런 다음 너희에게는 열흘간의 개인적 자유가 주어진다.</div></div><div class="quote"><div class="ref">47:3.7</div><div class="qtext">너희는 여기 아래에서 그만둔 바로 그 자리에서 저기서 시작한다.</div></div><div class="quote"><div class="ref">112:5.18</div><div class="qtext">너희의 관찰자는 너희 자신이 아니라 다른 사람이 너희의 인격 각성을 위해 창조된 모론시아 형태를 차지하지 않으리라는 절대적인 보증이다.</div></div><div class="quote"><div class="ref">112:5.19</div><div class="qtext">그리고 이것으로 재인격화, 곧 기억과 통찰과 의식 — 정체성 — 의 재조립이 완료된다.</div></div><div class="quote"><div class="ref">112:5.22</div><div class="qtext">그러나 인격과 인격 간의 관계는 결코 발판이 아니다. 인격 관계에 대한 필사적 기억은 우주적 가치를 지니며 지속될 것이다.</div></div><div class="quote"><div class="ref">113:6.6</div><div class="qtext">조절자는 너희를 식별할 것이다. 수호 세라핌은 너희를 재인격화하고, 그런 다음 너희를 너희 지상 시절의 신실한 관찰자에게 다시 소개할 것이다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>일곱 맨션 세계 — 단계별 훈련의 내용</h2><p class="sub">47편 3장~9장</p></div></div>
+  <p class="summary">생존자는 세계를 옮길 때마다 수송 세라핌과 함께 잠들고 새 몸으로 깨어나며, 구체에서 구체로 갈수록 물질성이 줄고 지적·영적 요소가 늘어난다. 첫째 세계는 결핍의 보충과 치유, 둘째 세계는 지적 갈등의 제거와 사회 조직의 시작, 셋째 세계는 모론시아 모타와 인간 철학의 조화, 넷째 세계는 이기심에 근거하지 않은 참된 사회 생활, 다섯째 세계는 우주 의식의 탄생, 여섯째 세계는 대개 조절자 융합, 일곱째 세계는 짐승의 표식의 마지막 흔적 근절이 과제다. 본문은 영적 진보가 마지막 세 세계에서 가장 크다고 밝힌다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>47편은 각 맨션 세계의 문화 수준을 정상적인 진화 행성의 섭리 시대에 대응시킨다. 첫째 세계는 아담 이후, 둘째는 치안 아들 이후, 셋째는 증여 아들 이후, 넷째는 교사 아들 이후, 다섯째는 빛과 생명의 이른 시대에 해당한다. 이 대응은 맨션 세계의 훈련이 유란시아처럼 정상 경로를 밟지 못한 행성의 생존자에게 무엇을 보충하는지를 보여 준다. 진보한 세계의 주민이 맨션 세계의 일부 또는 전부를 면제받는 이유도 여기서 설명된다. 처음 두 세계의 훈련은 소극적, 곧 결핍을 채우는 성격이고 셋째 세계부터 적극적 교육이 시작된다는 구분도 본문에 명시되어 있다. 첫째 세계의 구체적 요건으로 부모 경험이 제시된다. 모든 생존자는 고향 행성의 부모 위원회가 요구하는 조건을 통과해야 하며, 자격을 갖추지 못한 이는 물질 아들의 집이나 시험 보육원에서 봉사한다. 본문은 아버지도 어머니만큼 이 경험이 필요하다고 못 박는다. 각 세계에서는 같은 번호의 과도기 세계를 방문할 권한이 주어지므로 훈련은 점차 예루셈 전체로 확장된다. 첫째 세계에서 최종자 세계와 시험 보육원을, 둘째에서 모론시아 감독자 본부를, 셋째에서 천사 계층 본부를, 넷째에서 초천사와 찬란한 저녁별의 본부를, 다섯째에서 아들들의 본부를, 일곱째에서 우주 아버지의 세계를 방문한다. 다섯째 세계에서는 학습이 자발적이 되고 봉사가 자연스러워지며 예배가 저절로 우러난다고 하여 참된 모론시아 성품이 싹트는 시점으로 기술된다. 일곱째 세계에서는 고립되고 낙후된 세계 출신과 계몽된 세계 출신의 차이가 사실상 완전히 지워지며, 큰 고난을 통해 올라온 이들이 오히려 친절하고 관대해진다는 관찰이 덧붙는다. 일곱 세계 전체를 두고 본문은 물질해체 세계, 곧 필사 상태를 벗어나는 구체라고 부른다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>첫째 맨션 세계에서 부모 경험이 필수 요건으로 명시된 이유를 어떻게 이해할 것인가?</span></button><div class="answer">본문은 상승하는 필사자가 누구도 아이를 기르는 체험을 피할 수 없다고 하며, 물질 세계에서 못했다면 최종자 세계나 예루셈에서라도 거쳐야 한다고 말한다. 이 경험은 이기심 없는 봉사와 책임의 기초 훈련으로 보인다. 아버지도 어머니만큼 필요하다는 서술은 양육을 한쪽의 몫으로 보는 관념을 바로잡는다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>셋째 세계의 모론시아 모타와 인간 철학의 조화는 무엇을 뜻하는가?</span></button><div class="answer">모타는 모론시아 수준의 통찰로, 인간의 논리와 철학이 도달하려 했으나 이르지 못한 우주적 의미와 상호 관계를 파악하는 능력이다. 본문은 이를 참된 형이상학에 대한 실질적 통찰이라고 부른다. 지상의 철학이 무의미해지는 것이 아니라 더 높은 수준에서 상관관계가 밝혀지는 것이므로, 지상에서 진리를 탐구한 노력은 이 단계의 기초가 된다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>영적 진보가 마지막 세 세계에서 가장 크다는 서술은 앞의 네 세계의 의미를 어떻게 규정하는가?</span></button><div class="answer">앞의 네 세계는 결핍을 채우고 지성과 사회성을 정리하는 준비 단계다. 우주 의식, 조절자 융합, 최종 정화라는 결정적 변화는 그 준비 위에서만 가능하다. 즉 영적 성장은 지적·사회적 성숙과 분리되지 않으며, 본문이 다섯째 세계에서 예배가 저절로 우러난다고 한 것은 앞선 훈련의 자연스러운 열매로 읽을 수 있다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">47:3.8</div><div class="qtext">첫째 맨션 세계에서의 거의 모든 경험은 결핍 사역과 관련된다.</div></div><div class="quote"><div class="ref">47:1.6</div><div class="qtext">상승하는 필사자는 누구도 자기 자녀든 남의 자녀든 아이를 기르는 체험을, 물질 세계에서든 아니면 나중에 최종자 세계나 예루셈에서든 피할 수 없다.</div></div><div class="quote"><div class="ref">47:4.4</div><div class="qtext">너희는 세라핌 수송자와 함께 잠들고 부활 전당에서 새롭지만 아직 발달되지 않은 몸으로 깨어난다.</div></div><div class="quote"><div class="ref">47:4.6</div><div class="qtext">구체에서 구체로 갈수록 너희는 물질적인 면이 줄어들고, 더욱 지적으로 되며, 약간 더 영적으로 된다. 영적 진보는 이 일곱 개의 나아가는 세계 중 마지막 세 세계에서 가장 크다.</div></div><div class="quote"><div class="ref">47:4.8</div><div class="qtext">둘째 맨션 세계에서는 특히 모든 국면의 지적 갈등이 제거되고 온갖 종류의 정신적 부조화가 치유된다.</div></div><div class="quote"><div class="ref">47:5.3</div><div class="qtext">이 셋째 맨션 세계에서 생존자들은 참으로 그들의 나아가는 모론시아 문화를 시작한다. 이 훈련의 주된 목적은 모론시아 모타와 필사자 논리의 상관관계, 모론시아 모타와 인간 철학의 조화에 대한 이해를 높이는 것이다.</div></div><div class="quote"><div class="ref">47:6.3</div><div class="qtext">넷째 세계에서의 훈련 기간 동안 상승 필사자들은 모론시아 창조체들의 참된 사회 생활이 지닌 요구와 즐거움에 참으로 처음 소개된다.</div></div><div class="quote"><div class="ref">47:6.3</div><div class="qtext">상승자들은 모두 하나님을 아는 것, 하나님을 드러내는 것, 하나님을 찾는 것, 하나님을 발견하는 것을 스스로 자각하게 된다.</div></div><div class="quote"><div class="ref">47:7.5</div><div class="qtext">우주 의식의 참된 탄생이 다섯째 맨션 세계에서 일어난다. 너희는 우주적 마음을 지니게 되고 있다. 지금은 참으로 시야가 넓어지는 때이다.</div></div><div class="quote"><div class="ref">47:7.5</div><div class="qtext">학습은 자발적이 되고, 이기심 없는 봉사는 자연스러워지며, 예배는 저절로 우러난다. 참된 모론시아 성품이 싹트고 있다.</div></div><div class="quote"><div class="ref">47:8.3</div><div class="qtext">이것은 상승 필사자들에게 찬란한 시대이며, 대개 인간 마음과 신성한 조절자의 완전한 융합을 목격한다.</div></div><div class="quote"><div class="ref">47:8.7</div><div class="qtext">“큰 고난을 통해 올라가는 것”은 영화롭게 된 필사자들을 매우 친절하고 이해심 많으며, 매우 동정적이고 관대하게 만드는 역할을 한다.</div></div><div class="quote"><div class="ref">47:9.1</div><div class="qtext">여기서 너희는 불행한 유전, 건강하지 못한 환경, 비영적인 행성 경향의 모든 잔재로부터 정화될 것이다. “짐승의 표식”의 마지막 흔적들이 이곳에서 근절된다.</div></div><div class="quote"><div class="ref">47:9.2</div><div class="qtext">너희는 이 과도 문화 세계에서 아버지의 성전을 발견하지만, 아버지를 보지는 못한다.</div></div><div class="quote"><div class="ref">47:9.5</div><div class="qtext">너희는 일곱 개의 물질해체 세계를 통과하는 진보를 크게 즐길 것이다. 그것들은 실로 필사 상태를 벗어나는 구체이다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>동행하는 존재들과 조절자 융합</h2><p class="sub">113편 7장, 47편 3장·8장, 48편 6장, 112편 7장, 111편 3장</p></div></div>
+  <p class="summary">맨션 세계의 여정은 혼자 걷는 길이 아니다. 지상에서 보이지 않던 두 세라핌 수호자가 공개된 동반자가 되고, 모론시아 동반자가 유람과 여가를 함께하며, 영화롭게 된 체루빔인 맨션 세계 교사와 과도기 봉사자들이 이행을 돕는다. 이 여정의 정점이 조절자 융합이다. 융합은 창조체가 아버지의 뜻을 영원히 행하기로 한 최종 선택을 초우주가 확인한 뒤에만 일어나며, 대개 여섯째 맨션 세계에서 이루어지고 세라핌 수호자가 이를 증언한다. 융합 이후에는 영원한 생애에 더 이상 위험이 없고, 어떤 사건도 인간과 조절자를 다시 분리할 수 없다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>113편 7장은 맨션 세계에서의 첫 깨어남을 지상에서 오랫동안 곁에 있던 천사 동반자를 처음 보고 내주하던 조절자의 정체성을 참으로 인식하는 순간으로 묘사한다. 두 세라핌 수호자는 이후 예루셈과 에덴시아와 샐빙턴을 지나 유버사까지 동행하며 하보나행 세코나핌에 실릴 때까지 떠나지 않는다. 일부는 하보나까지 함께 가고, 다른 이들은 세라핑턴의 원을 돌아 파라다이스 해안에서 필사 동반자를 다시 맞이한다. 인간 기원의 세계에서 맺은 유대는 결코 잊히지 않으며 완전히 끊어지지도 않는다는 서술은 이 관계의 영속성을 말한다. 47편 3장의 모론시아 동반자는 지역 우주 어머니 영의 후손으로 처음에는 1천 명 중대에 한 명이 배정되며, 48편 6장의 과도기 봉사자는 세라핌의 여섯째 계층으로 육신의 삶에서 모론시아 존재로 건너가는 것을 돕는다. 48편은 모론시아 생명이 실제로는 혼이 잉태되는 순간 지상에서 이미 시작된다고 하여 이 과정의 연속성을 강조한다. 조절자 융합의 서술은 세 편에 걸쳐 일관된다. 47편 8장은 융합이 대개 여섯째 세계에서 목격되며 초천사의 세라핌 소환이나 기록의 천사장의 소환으로 확인되고, 이는 내가 기뻐하는 사랑하는 아들이라는 선언과 함께 새 이름이 주어지고 40일의 은둔 동안 하보나로 가는 경로를 선택한다고 적는다. 111편 3장은 융합 전까지는 언제라도 아버지의 뜻을 저버릴 수 있으며 융합은 영원히 전적으로 그 뜻을 행하기로 선택했다는 사실을 의미한다고 규정한다. 112편 7장은 융합이 인간 본성의 최종적이고 돌이킬 수 없는 선택을 초우주가 선언하기 전에는 결코 일어나지 않는다고 하여 같은 원리를 절차의 관점에서 확인한다. 융합의 장소는 태어난 행성에서 지역 우주 수도까지 폭이 넓지만 대개 지역 체계 거주 중이다. 융합 이후 조절자의 번호는 초우주 기록에서 말소되고 융합된 존재의 본부는 디비닝턴이 아닌 어센딩턴이 되며, 인격에 관한 모든 문제에서 인간이 조절자를 능가한다. 본문은 융합을 우주 아버지가 물질 창조체에게 자신을 선물하겠다는 약속의 완성이라고 부른다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>조절자 융합이 외부에서 주어지는 사건이 아니라 선택의 확인이라는 관점은 어디서 나오는가?</span></button><div class="answer">111편은 융합 전까지 상승자가 언제라도 아버지의 뜻을 저버릴 수 있다고 하고, 112편은 초우주가 인간 본성의 최종적이고 돌이킬 수 없는 선택을 선언하기 전에는 융합이 결코 일어나지 않는다고 한다. 즉 융합의 시점을 정하는 것은 창조체의 선택이 완결되었는가이며, 우주는 그것을 확인하고 인가한다. 그래서 융합은 상급이 아니라 최종 선택의 봉인이다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>융합 이후 영원한 생애에 더 이상 위험이 없다는 서술은 어떤 의미인가?</span></button><div class="answer">융합 전에는 진화 세계와 모론시아 세계에서 비교적 짧고 강도 높은 시험을 거치며 생존을 거부할 특권이 남아 있다. 융합은 그 선택이 취소 불가능하게 되었음을 뜻하므로 이후에는 인격이 길을 잃을 가능성이 사라진다. 본문은 이를 시간이나 영원의 어떤 사건도 인간과 조절자를 다시 분리할 수 없다고 표현한다. 안전은 외적 보호가 아니라 선택의 완결에서 온다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>세라핌 수호자와 상승자의 관계가 하보나 이후까지 이어진다는 서술에서 무엇을 읽을 수 있는가?</span></button><div class="answer">본문은 세라핌에게 파라다이스에 이르는 가장 확실한 길이 진화 기원의 혼을 파라다이스 문까지 인도하는 것이라고 한다. 상승자와 수호자는 서로의 운명에 참여하는 동반자이며, 일부 수호자는 상승자와 함께 최종자 군단에 편입된다. 지상의 인간이 자기 성장만이 아니라 천사의 성취에도 기여한다는 상호성이 이 서술의 핵심이다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">113:7.1</div><div class="qtext">그곳에서 너는 지상에서 오랫동안 사랑하고 늘 곁에 있던 천사 동반자들을 실제로 처음 보게 되며, 또한 지상 생애 내내 네 마음에 내주했던 신성한 조절자의 정체성과 임재를 진정으로 인식하게 된다.</div></div><div class="quote"><div class="ref">113:7.2</div><div class="qtext">모론시아 구체들에서 두 명의 세라핌 수호자는 너의 공개된 동반자가 된다.</div></div><div class="quote"><div class="ref">113:7.4</div><div class="qtext">너희가 모론시아 구체들을 따라 상승할 때, 마침내 너희가 생각 조절자와 영원히 연합한다는 명령을 증언하고 인증하는 것은 바로 이 세라핌 수호자들이다.</div></div><div class="quote"><div class="ref">113:7.6</div><div class="qtext">인간 기원의 세계에서 맺은 친밀한 관계와 애정 어린 유대는 결코 잊히지 않으며, 완전히 끊어지지도 않는다.</div></div><div class="quote"><div class="ref">113:7.7</div><div class="qtext">세라핌에게 파라다이스 신들에 도달하는 가장 확실한 길은 진화적 기원의 한 혼을 파라다이스의 문까지 성공적으로 인도하는 것이다.</div></div><div class="quote"><div class="ref">47:3.12</div><div class="qtext">너희가 첫째 맨션 세계에서 시작할 때, 1천 명의 상승 필사자로 구성된 각 중대에 한 명의 모론시아 동반자가 배정되지만</div></div><div class="quote"><div class="ref">48:6.2</div><div class="qtext">너희는 상승 필사자의 모론시아 생명이 실제로는 사람이 사는 세계에서, 혼이 잉태되는 때에, 곧 도덕적 지위를 지닌 창조체 마음에 영 조절자가 내주하는 그 순간에 시작된다는 것을 이해해야 한다.</div></div><div class="quote"><div class="ref">47:8.4</div><div class="qtext">“이는 내가 기뻐하는 사랑하는 아들이다.” 이 간단한 의식은 상승하는 필사자가 파라다이스 봉사의 영원한 생애에 들어감을 나타낸다.</div></div><div class="quote"><div class="ref">47:8.5</div><div class="qtext">조절자 융합이 확인되자마자 새로운 모론시아 존재는 그의 새 이름으로 동료들에게 처음으로 소개되고, 모든 일상 활동에서 벗어나 40일간의 영적 은둔을 허락받는다.</div></div><div class="quote"><div class="ref">111:3.1</div><div class="qtext">조절자와 융합하기 전까지, 진화하고 상승하는 존재는 언제라도 파라다이스 아버지의 뜻을 저버리기로 선택할 수 있다. 조절자와의 융합은 상승하는 필사자가 아버지의 뜻을 영원히, 그리고 전적으로 행하기로 선택했다는 사실을 의미한다.</div></div><div class="quote"><div class="ref">112:7.4</div><div class="qtext">조절자와의 융합이 이루어지면 그러한 인격의 영원한 경력에 더 이상 위험은 없다.</div></div><div class="quote"><div class="ref">112:7.5</div><div class="qtext">조절자와의 융합은 인간 본성이 영원한 생애를 위해 최종적이고 돌이킬 수 없는 선택을 했다고 초우주의 명령이 선언하기 전에는 결코 일어나지 않는다.</div></div><div class="quote"><div class="ref">112:7.10</div><div class="qtext">이제 이 두 정체성은 하나가 되었으며, 시간이나 영원의 어떤 사건도 인간과 조절자를 다시 분리할 수 없다. 그들은 영원히 융합되었으며, 분리될 수 없다.</div></div><div class="quote"><div class="ref">112:7.14</div><div class="qtext">조절자와의 융합으로, 우주 아버지는 물질적 창조체에게 자신을 선물하겠다는 약속을 완성했다.</div></div><div class="quote"><div class="ref">40:7.1</div><div class="qtext">조절자는 불멸의 영이며, 그 영과의 융합은 합쳐진 필사 혼에 영원한 생명을 선사한다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>예루셈 시민권과 그 이후 — 영생의 길로 들어서다</h2><p class="sub">47편 9장·10장, 30편 4장, 31편 3장, 112편 7장</p></div></div>
+  <p class="summary">일곱째 맨션 세계를 마친 상승자는 처음으로 손님이 아닌 시민으로 예루셈에 들어간다. 이때부터 문자 그대로의 부활은 더 이상 없으며, 부여된 모론시아 형태는 지역 우주 체험의 끝까지 유지되고 형태 변화는 의식의 단절 없이 이루어진다. 조절자와 융합한 상승자는 참으로 필사 상태에서 불멸의 지위로 넘어가며, 예루셈 생애를 마칠 때쯤 온전한 모론시아 존재가 된다. 30편은 이후의 길을 모론시아 진보자, 초우주 피보호자, 하보나 순례자, 파라다이스 도착자로 이어지는 단계로 정리하고, 현재 알려진 운명은 최종자 군단이라고 밝힌다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>47편 10장은 예루셈 도착을 온 예루셈이 환영 위원회로 모이는 사건으로 묘사하며, 요한계시록의 유리 바다 환상과 히브리서의 하늘의 예루살렘 구절을 이 장면에 대한 환상으로 해석한다. 여기서 본문은 하나님의 하프가 모론시아 감각 기관을 보완하는 공간 통신 수신 장치라고 설명하는데, 계시가 성서의 상징을 구체적 사물로 풀이하는 사례다. 예루셈 시민의 지위는 세 가지로 요약된다. 형태의 안정, 곧 더 이상의 부활과 의식 단절이 없다는 것, 융합에 의한 불멸의 지위, 그리고 에덴시아행 허가와 함께 네바돈 모론시아 군단의 참된 구성원으로 선포되는 공적 지위다. 본문은 이 시점에서야 필사 인격이 완전히 동원되고 실현되며 통합된다고 말한다. 30편 4장은 그 이후를 조망한다. 모론시아 진보자는 체계와 별자리와 우주의 구체를 거치며, 지역 우주를 떠나기 전 창조자 아들과 어머니 영에게서 영 확인을 받아 지위가 영원히 확정된다. 마지막 모론시아 단계에서 첫 영 지위로 넘어가는 것은 사소한 전환이며 마음과 인격과 성품은 영향을 받지 않고 형체만 수정된다. 초우주에서는 옛적부터 늘 계신 이들의 피보호자로 훈련받고, 하보나부터는 집단 교육이 끝나고 개인 교육이 시작되며, 파라다이스에서 하나님을 발견한 이는 최종자 군단에 소집된다. 31편 3장은 유버사의 주민조차 상승 필사자의 최종 운명을 알지 못한다고 밝히면서도, 그토록 긴 훈련이 더 큰 봉사를 위한 것임에 틀림없다고 추론한다. 112편 7장은 융합 필사자가 최종자 동료와 함께 첫째 외부 공간 수준의 우주들에서 행정 기능을 맡으리라는 믿음을 적는다. 정리하면, 영생의 과정이라는 제목이 가리키는 것은 하나의 종착점이 아니라 예루셈에서 시작되는 끝없는 여정의 입구이며, 본문은 죽음이 끝없는 모험 생애의 시작일 뿐이라고 표현한다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>예루셈 시민권을 영생의 길로 들어서는 지점으로 볼 수 있는 근거는 무엇인가?</span></button><div class="answer">본문은 예루셈 거주 이후 더 이상 문자 그대로의 부활이 없고 형태 변화가 의식의 소멸이나 기억의 단절을 요구하지 않는다고 말한다. 또한 융합으로 불멸의 지위에 들어간 상승자가 이때 네바돈 모론시아 군단의 참된 구성원으로 선포된다. 죽음과 잠이 반복되는 과도기가 끝나고 연속적인 의식 속에서 상승이 이어지는 출발점이라는 점에서 영생의 길의 입구라 할 수 있다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>모론시아에서 영으로 넘어가는 것이 사소한 전환이라는 서술은 무엇을 뜻하는가?</span></button><div class="answer">형체만 수정되고 마음과 인격과 성품은 영향을 받지 않는다는 뜻이다. 570번의 변형과 마찬가지로 상승의 본질은 그릇이 바뀌는 것이지 인격이 바뀌는 것이 아니다. 지상에서 시작된 그 인격이 모론시아 존재와 진화하는 영을 거쳐 완전해진 영에 이르기까지 연속성을 잃지 않는다는 점이 영생 개념의 핵심이다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>계시자들이 최종 운명을 알지 못한다고 밝히는 대목을 어떻게 받아들일 것인가?</span></button><div class="answer">31편은 유버사 주민도 상승 필사자의 최종 운명을 모른다고 하고, 최종자가 여섯째 단계의 영으로만 기록되어 있어 한 단계가 더 남았다고 추론한다. 이런 서술은 계시가 아는 것과 추정하는 것을 구분한다는 신뢰의 근거가 된다. 동시에 영생이 정해진 종착점이 아니라 열린 모험임을 보여 주며, 본문은 죽음을 끝없는 발견의 항해의 시작이라고 표현한다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">47:9.4</div><div class="qtext">너희는 곧 본부 세계의 접수장에서 예루셈 시민으로 환영받을 것이다.</div></div><div class="quote"><div class="ref">47:9.5</div><div class="qtext">너희는 조절자와 융합할 때 참으로 필사 상태에서 불멸의 지위로 넘어가며, 예루셈 생애를 마칠 때쯤에는 온전한 모론시아 존재가 될 것이다.</div></div><div class="quote"><div class="ref">47:10.1</div><div class="qtext">맨션 세계 졸업생의 새 학급을 맞이하는 것은 온 예루셈이 환영 위원회로 모이라는 신호이다.</div></div><div class="quote"><div class="ref">47:10.4</div><div class="qtext">필사자들이 체계 본부에 거주하게 된 후에는, 더 이상 문자 그대로의 부활을 체험하지 않을 것이다. 맨션 세계 생애를 떠날 때 너희에게 부여된 모론시아 형태는 지역 우주 체험의 끝까지 너희를 데려다 줄 것이다.</div></div><div class="quote"><div class="ref">47:10.5</div><div class="qtext">더 이상 형태 변화가 의식의 소멸이나 개인 기억의 연속성 단절을 필요로 하지 않을 것이다.</div></div><div class="quote"><div class="ref">47:10.7</div><div class="qtext">필사자의 죽음은 육신으로 사는 물질적 생애로부터의 탈출 기법이다.</div></div><div class="quote"><div class="ref">30:4.20</div><div class="qtext">마지막 모론시아 단계로부터 첫째, 곧 가장 낮은 영 지위로 지나가는 것은 사소한 전환일 뿐이다. 마음·인격·성품은 그러한 진보에 영향을 받지 않는다. 오로지 형체만 수정을 거칠 뿐이다.</div></div><div class="quote"><div class="ref">30:4.21</div><div class="qtext">이 시점부터 상승 필사자의 지위는 영원히 확정된다. 초우주 피보호자는 길을 벗어난 것으로 알려진 적이 없다.</div></div><div class="quote"><div class="ref">30:4.26</div><div class="qtext">땅에서 너는 살과 피를 가진 창조체였고, 지역 우주를 통해서 너는 모론시아 존재였으며, 초우주를 통해서 너는 진화하는 영이었다.</div></div><div class="quote"><div class="ref">30:4.27</div><div class="qtext">초우주 본부로부터 하보나의 영접 구체들까지 가는 여행은 언제나 혼자 한다. 이제부터는 더 이상 학급이나 집단 교육이 실시되지 않을 것이다.</div></div><div class="quote"><div class="ref">30:4.31</div><div class="qtext">파라다이스에서 네가 사는 것은 네가 하나님을 발견했고 네가 필사 최종자 군단에 소집되리라는 것을 뜻한다.</div></div><div class="quote"><div class="ref">31:3.2</div><div class="qtext">우리 유버사 주민들은 시간 세계에서 온 상승 필사자들의 "최종 운명"을 알지 못한다.</div></div><div class="quote"><div class="ref">112:7.15</div><div class="qtext">살아남은 필사자들의 현재 알려진 운명은 파라다이스 최종자 군단이다.</div></div><div class="quote"><div class="ref">14:5.10</div><div class="qtext">죽음은 단지 끝없는 모험 생애의 시작, 영원한 기대의 삶, 영원한 발견의 항해일 뿐임을 너희에게 시사하기 위함이다.</div></div><div class="quote"><div class="ref">112:7.19</div><div class="qtext">참으로 너희 필사자들은 지상의 동물적 기원을 지녔으며, 너희의 몸은 실로 흙이다. 그러나 너희가 실제로 뜻한다면, 너희가 참으로 원한다면, 시대들의 유산이 분명 너희의 것이 될 것이며</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 본문 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>

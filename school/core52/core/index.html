@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 핵심 52강</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e6;--paper:#fffdf7;--ink:#23262d;--mute:#76706a;--navy:#17365D;--gold:#B7791F;--line:#e4dccb}
+html[data-dark="1"]{--bg:#12161e;--paper:#1a1f29;--ink:#dfe3ea;--mute:#98a0ad;--navy:#9cc0ea;--gold:#e9c46a;--line:#2b3240}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"맑은 고딕","Malgun Gothic",sans-serif}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 16px;background:var(--navy);color:#fff}
+html[data-dark="1"] header{background:#0b1220}
+header h1{margin:0;font-size:16px;font-weight:700;white-space:nowrap}
+header .sp{flex:1}
+select,.btn{font:inherit;font-size:14px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:7px 10px;cursor:pointer}
+select option{color:#222}
+select{max-width:min(420px,100%)}
+main{max-width:860px;margin:0 auto;padding:18px 16px 60px}
+.hero{background:var(--paper);border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:14px;padding:22px 24px;margin-bottom:18px}
+.hero small{color:var(--gold);font-weight:700;letter-spacing:.04em}
+.hero h2{font-family:"Noto Serif KR",serif;font-size:clamp(23px,4vw,32px);margin:6px 0 14px;color:var(--navy)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.acts a{font-size:14px;font-weight:700;text-decoration:none;color:#fff;background:var(--navy);padding:8px 14px;border-radius:999px}
+html[data-dark="1"] .acts a{background:#24466b}
+.acts a.doc{background:var(--gold)}
+.toc{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 20px;margin-bottom:18px}
+.toc summary{cursor:pointer;font-weight:700;color:var(--navy)}
+.toc ol{margin:10px 0 0;padding-left:22px;columns:2;column-gap:28px;font-size:14px;line-height:1.8}
+.toc a{color:inherit;text-decoration:none}.toc a:hover{color:var(--gold)}
+@media (max-width:640px){.toc ol{columns:1}}
+section{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:14px}
+section h3{font-family:"Noto Serif KR",serif;font-size:19px;color:var(--navy);margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
+section h3 i{font-style:normal;font-family:"맑은 고딕",sans-serif;font-size:12px;color:#fff;background:var(--gold);border-radius:999px;padding:1px 9px;flex:none}
+section img{width:100%;border-radius:8px;margin:2px 0 12px;display:block;aspect-ratio:16/9;object-fit:contain;background:#000;cursor:zoom-in}
+section p{font-family:"Noto Serif KR",serif;font-size:17.5px;line-height:1.95;margin:0 0 12px;word-break:keep-all}
+body.noimg section img{display:none}
+.empty{color:var(--mute);text-align:center;padding:30px}
+@media print{header,.acts,.toc,#homeBtn{display:none!important}section,.hero{border:0;break-inside:avoid-page}body{background:#fff}section img{max-height:9cm}}
+</style>
+<script src="/bible/ubref.js" data-src="../data/ub.js"></script>
+<script src="/home-button.js" data-into="header" defer></script>
+</head>
+<body class="noimg">
+<header>
+  <h1>유란시아서 핵심 52강</h1>
+  <span class="sp"></span>
+  <select id="pick" aria-label="강 고르기"></select>
+  <button class="btn" id="im" title="슬라이드 그림 함께 보기">🖼</button>
+  <button class="btn" id="pr" title="인쇄 / PDF">🖨</button>
+  <button class="btn" id="dk" title="밤 모드">◐</button>
+</header>
+<main id="main"><div class="empty">불러오는 중…</div></main>
+<script>
+var P=new URLSearchParams(location.search), N=+(P.get('n')||0), V=Math.floor(Date.now()/36e5);
+function pad(n){return (n<10?'0':'')+n;}
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function load(src){var s=document.createElement('script');s.src=src+'?v='+V;document.head.appendChild(s);}
+try{ if(localStorage.getItem('c52dark')==='1') document.documentElement.dataset.dark='1';
+     if(localStorage.getItem('c52img')==='1') document.body.classList.remove('noimg'); }catch(e){}
+window.TOC=function(t){
+  if(!t.some(function(x){return x[0]===N;})) N=t[0][0];
+  pick.innerHTML=t.map(function(x){return '<option value="'+x[0]+'"'+(x[0]===N?' selected':'')+'>제'+x[0]+'강 '+esc(x[1])+'</option>';}).join('');
+  load('../data/'+pad(N)+'.js');
+};
+window.LECTURE=function(d){
+  document.title='제'+d.n+'강 '+d.title+' · 유란시아서 핵심 52강';
+  var a=[];
+  if(d.audiobook) a.push('<a href="'+d.audiobook+'">🎧 오디오북으로 듣기</a>');
+  if(d.interactive) a.push('<a href="'+d.interactive+'">🧭 인터렉티브 스터디</a>');
+  if(d.slides.length) a.push('<a href="../slides/?n='+d.n+'">🖼 슬라이드로 보기</a>');
+  d.docs.forEach(function(x){a.push('<a class="doc" href="'+x.url+'" target="_blank" rel="noopener">📄 '+esc(x.name)+'</a>');});
+  var h='<div class="hero"><small>유란시아서 핵심 52강 · 제'+d.n+'강</small><h2>'+esc(d.title)+'</h2><div class="acts">'+a.join('')+'</div></div>';
+  if(d.slides.length){
+    h+='<details class="toc"><summary>차례 ('+d.slides.length+')</summary><ol>'+d.slides.map(function(s,k){return '<li><a href="#s'+(k+1)+'">'+esc(s.t||('슬라이드 '+(k+1)))+'</a></li>';}).join('')+'</ol></details>';
+    h+=d.slides.map(function(s,k){
+      var ps=(s.x||'').split(/\n+/).filter(Boolean).map(function(p){return '<p>'+UBLINK(esc(p))+'</p>';}).join('');
+      return '<section id="s'+(k+1)+'"><h3><i>'+(k+1)+'</i>'+esc(s.t||'')+'</h3>'
+        +'<img loading="lazy" src="../slides/'+pad(d.n)+'/'+pad(k+1)+'.jpg" alt="" data-k="'+(k+1)+'">'+ps+'</section>';
+    }).join('');
+  } else h+='<div class="empty">이 강은 원고 대신 위의 자료로 공부합니다.</div>';
+  main.innerHTML=h;
+  if(location.hash){var el=document.querySelector(location.hash); if(el) el.scrollIntoView();}
+};
+main.onclick=function(e){var im=e.target.closest('section img'); if(im) location.href='../slides/?n='+N+'#'+im.dataset.k;};
+pick.onchange=function(){location.href='?n='+pick.value;};
+pr.onclick=function(){window.print();};
+im.onclick=function(){var on=document.body.classList.toggle('noimg'); try{localStorage.setItem('c52img',on?'0':'1');}catch(e){}};
+dk.onclick=function(){var r=document.documentElement; if(r.dataset.dark==='1') delete r.dataset.dark; else r.dataset.dark='1'; try{localStorage.setItem('c52dark',r.dataset.dark?'1':'0');}catch(e){}};
+load('../data/toc.js');
+</script>
+</body>
+</html>

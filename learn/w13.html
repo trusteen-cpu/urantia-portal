@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>생각조절자의 기원과 그 역할 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 13</p>
+    <h1>생각조절자의 기원과 그 역할</h1>
+    <p class="papers">유란시아서 107 · 108 · 109 · 110 · 111편</p>
+    <div class="lead">생각 조절자는 창조된 존재가 아니라 우주 아버지에게서 직접 나온 단편이며, 유란시아서는 이를 두고 하나님에게서 나오며 우리가 아는 한 곧 하나님이라고 기술한다. 파라다이스에 거주하는 아버지가 동시에 인간의 마음 안에 실제로 현존한다는 이중 진술이 107편부터 111편까지 다섯 편의 출발점이다. 이 다섯 편은 오르본톤의 단독 사자가 발표한 연속 문헌으로, 조절자의 기원과 본성, 일곱 계층과 디비닝턴, 인격이 아닌 실체라는 규정, 자원과 배정의 절차, 사명의 범위, 체험적 발달과 행성 유형별 차이, 그리고 인간 의지와 정신 원과 혼의 진화를 차례로 다룬다. 특징은 두 가지다. 첫째, 문헌 스스로 지식의 한계를 반복해 명시하여 확정된 진술과 추정을 구분한다. 둘째, 신적 현존을 신비로만 남기지 않고 배정 절차와 도착 조건과 협동 방법을 절차적으로 기술한다. 이 페이지는 다섯 편을 일곱 마디로 나누어, 각 마디마다 요약과 배경 설명, 소그룹 질문과 모범답안, 그리고 본문 인용을 함께 제시한다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 아버지의 단편</a></li><li><a href="#s2">2. 일곱 계층과 디비닝턴</a></li><li><a href="#s3">3. 인격이 아닌 실체</a></li><li><a href="#s4">4. 자원과 배정</a></li><li><a href="#s5">5. 조절자의 사명</a></li><li><a href="#s6">6. 체험적 발달과 세 계열의 세계</a></li><li><a href="#s7">7. 인간 의지와 일곱 정신 원</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>아버지의 단편</h2><p class="sub">조절자는 무엇이며 어디서 오는가</p></div></div>
+  <p class="summary">생각 조절자는 창조된 존재가 아니라 우주 아버지, 곧 첫째 근원 중심에서 직접 나온 단편이다. 본문은 이들을 희석되지 않고 섞이지 않은 신성이라 부르며, 하나님에게서 나오며 우리가 아는 한 곧 하나님이라고 진술한다. 파라다이스에 거주하는 아버지가 동시에 공간의 세계에서 무수한 자녀의 마음속에 실제로 현존한다는 이 이중 진술이 다섯 편 전체의 출발점이다. 단편화는 아버지의 고유한 방식이어서, 무한 영은 전마음 영의 일부를 개별화하지만 영원 아들의 본성은 이런 방식으로 나뉘지 않는다. 조절자는 범위에서 유한하되 본질에서 절대에 가까운, 제한된 절대 단편으로 규정된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>조절자의 위치를 신 계열 안에서 확인하면 개념이 분명해진다. 융합 계열은 세 갈래다. 아버지의 단편과 융합하는 조절자 융합자, 무한 영의 개별화된 부분과 융합하는 영 융합자, 창조자 아들이 부여한 개별화된 영과 결합하는 아들 융합자다. 유란시아의 필사자는 첫째 계열에 속한다. 조절자의 본성에 관해서는 세 가지 진술이 반복된다. 첫째, 보편성에서는 제한되지만 본질에서는 제한되지 않는다는 것. 그래서 아버지의 제한된 절대 단편이라 불린다. 둘째, 조절자는 순수 영이면서도 순수 영 실체만은 아니어서 마음성이 가정되고 에너지 요소도 함께 지닌다. 물질 중력 회로를 이용해 대우주를 순간에 이동하지만 그 회로에 종속되지는 않는데, 중력의 결과물이 아니라 중력의 근원에서 나온 단편이기 때문이라고 설명된다. 셋째, 반란의 긴 역사에서 조절자가 불충했던 사례는 단 한 건도 기록되지 않았다. 또 하나 눈여겨볼 것은 명칭의 변화다. 도착부터 상대적 성장까지는 생각 변화자, 판단력의 연령까지는 생각 조절자, 그 이후 육체에서 해방될 때까지는 생각 통제자라 불린다. 이 세 단계는 마음 복제와 혼 진화에서의 조절자 자신의 세 진보 단계와는 무관하다고 본문은 분명히 구분한다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>조절자를 수호천사나 일반적인 영적 영향과 같은 범주로 묶을 수 없는 이유는 무엇입니까?</span></button><div class="answer">기원이 다르기 때문입니다. 천사는 창조된 존재이지만 조절자는 창조되지 않은, 첫째 근원 중심의 단편입니다. 본문이 조절자를 두고 우리가 아는 한 그들은 곧 하나님이라고 표현한 것은 이 기원의 차이를 가리킵니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>'제한된 절대 단편'이라는 규정은 무엇을 뜻합니까?</span></button><div class="answer">범위와 본질을 구분한 표현입니다. 조절자는 우주 전체에 두루 미치지 않는다는 점에서 제한되지만, 의미와 가치와 사실의 심도에서는 절대적입니다. 신성을 크기가 아니라 심도의 문제로 다루는 이 문헌의 특징이 드러나는 대목입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>아버지만 단편으로 나뉜다는 진술은 신학적으로 어떤 함의를 갖습니까?</span></button><div class="answer">인간 안의 신적 현존이 삼위일체 일반의 사역이 아니라 아버지의 고유한 방식이라는 뜻입니다. 그 결과 인간과 하나님의 관계는 중개자를 거치지 않는 직접적 관계로 서술되며, 이후 배정과 융합 논의도 이 전제 위에서 전개됩니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">107:0.1</div><div class="qtext">영원한 아버지는 동시에 가장 멀리 떨어져 있으면서도 그의 행성 필사 아들들과 가장 밀접하게 연합되어 있다.</div></div><div class="quote"><div class="ref">107:0.3</div><div class="qtext">인간의 마음속에 내주하는 하나님의 단편은 인간이 이 신성한 조절자와 연합하여 우주 아버지를 찾을 수 있다는 절대적이고 무조건적인 확신이다.</div></div><div class="quote"><div class="ref">107:0.4</div><div class="qtext">조절자의 임재를 의식하는 것은 곧 하나님의 임재를 의식하는 것이다.</div></div><div class="quote"><div class="ref">107:0.6</div><div class="qtext">조절자는 인간의 절대 무오한 우주적 나침반으로, 항상 그리고 오류 없이 혼을 하나님을 향해 가리킨다.</div></div><div class="quote"><div class="ref">107:0.7</div><div class="qtext">조절자가 도착한 때부터 상대적으로 완전한 성장이 이루어질 때까지(유란시아에서는 약 스무 살 정도), 조절자는 때때로 생각 변화자라 불린다.</div></div><div class="quote"><div class="ref">107:1.1</div><div class="qtext">생각 조절자가 원초적 신성의 본질을 가지고 있기 때문에, 그들의 본성과 기원에 대해 누구도 권위 있게 단언할 수 없다.</div></div><div class="quote"><div class="ref">107:1.2</div><div class="qtext">그들은 창조된 존재가 아니며, 무한한 하나님의 단편화된 실체들로서 하나님의 실제적 임재를 구성한다.</div></div><div class="quote"><div class="ref">107:1.2</div><div class="qtext">그들은 하나님에게서 나오며, 우리가 아는 한, 그들은 곧 하나님이다.</div></div><div class="quote"><div class="ref">107:1.5</div><div class="qtext">조절자는 단순히 그리고 영원히 신성한 선물이며, 하나님께 속하고 하나님으로부터 나오며, 하나님과 같다.</div></div><div class="quote"><div class="ref">107:1.7</div><div class="qtext">그러나 영원 아들의 본성은 이러한 방식으로 단편화될 수 없다.</div></div><div class="quote"><div class="ref">107:4.2</div><div class="qtext">보편성에서는 제한되지만 본질에서는 제한되지 않는다.</div></div><div class="quote"><div class="ref">107:4.3</div><div class="qtext">어떤 조절자도 파라다이스 아버지께 불충한 적이 없다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>일곱 계층과 디비닝턴</h2><p class="sub">분류의 기준과 알려지지 않은 영역</p></div></div>
+  <p class="summary">조절자는 처녀 존재로 개별화되어 일곱 계층으로 구분된다. 처녀, 진보, 최상, 사라진, 해방된, 융합된, 인격화된 조절자다. 주목할 점은 이 구분이 신성의 등급이 아니라 체험의 누적을 기준으로 삼는다는 것이다. 최상 조절자는 처녀 조절자보다 더 신성하지 않으며, 다만 더 많은 경험 덕분에 처녀 조절자가 할 수 없는 기능을 수행한다. 네 번째 단계인 사라진 조절자에 대해서는 멜기세덱과 단독 사자의 견해가 서로 다르다는 사실까지 기록되어 있다. 이들의 본거지 디비닝턴은 파라다이스의 일곱 비밀 구체 가운데 가장 알려지지 않은 곳이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>디비닝턴에 관한 서술은 이 문헌의 인식론적 태도를 잘 보여 준다. 발표자는 고위 영적 존재들이 받는 세 가지 신성한 명령을 소개하는데, 그 셋째가 디비닝턴의 해안에 착륙하려는 시도를 절대 하지 말라는 것이다. 그러면서도 그는 금지를 불만으로 다루지 않는다. 자신에게 진정한 가치가 되는 것이 그곳에 없기에 금지되었으리라고 담담히 적는다. 결론은 명확하다. 디비닝턴을 통해서는 조절자의 본성과 기원에 대해 거의 아무것도 배울 수 없으므로, 수천 가지 출처에서 정보를 모아 연결하고 통합해야 한다는 것이다. 인격화된 조절자에 관한 서술도 흥미롭다. 이들만이 이름으로 불리며 숫자로 불리지 않는다. 인격의 획득과 명명이 연결되어 있음을 시사한다. 디비닝턴의 조절자 훈련 학교의 핵심 인력이 인격화된 조절자들이며, 그 중앙 감독단의 우두머리가 자기 우주 영역에서 칠중 증여를 완료한 첫 번째 미가엘 계열 아들의 인격화된 조절자라는 기록도 남아 있다. 조절자의 비가시성 역시 하나의 논거로 제시된다. 단독 사자는 영 반응 현상으로 임재를 감지할 수 있고 세라핌은 때때로 영 광채를 식별하지만, 누구도 조절자의 실제 현존을 직접 파악하지는 못한다. 이 보편적 비가시성이 그들의 독특한 기원을 강하게 시사한다고 본문은 해석한다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>계층 구분이 '신성의 등급'이 아니라는 사실은 어떤 오해를 막아 줍니까?</span></button><div class="answer">더 오래된 조절자가 더 거룩하다는 오해입니다. 신성 본성은 디비닝턴을 떠날 때 모두 동일하며, 차이는 오직 실제 사역에서 쌓인 체험에서 생깁니다. 등급이 아니라 이력의 문제입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>계시 문헌이 내부의 견해 불일치를 그대로 남겨 둔 것을 어떻게 평가하십니까?</span></button><div class="answer">권위의 약화가 아니라 서술의 정직성으로 읽을 수 있습니다. 사라진 조절자에 대해 멜기세덱과 단독 사자의 견해가 갈린다고 밝힘으로써, 확정된 지식과 추정을 구분해 읽으라는 신호를 독자에게 줍니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>'디비닝턴에 가도 소용이 없을 것'이라는 발표자의 서술에서 무엇을 배울 수 있습니까?</span></button><div class="answer">알 수 없는 영역 앞에서의 태도입니다. 접근이 금지된 것을 결핍으로 여기지 않고, 자신의 성장에 필요한 것은 이미 주어졌다고 판단합니다. 무지의 인정과 신뢰가 함께 가는 사례입니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">107:2.1</div><div class="qtext">생각 조절자는 처녀적 존재로 개별화되며, 모두가 해방되거나 융합되거나 인격화된 관찰자가 될 운명을 가지고 있다.</div></div><div class="quote"><div class="ref">107:2.1</div><div class="qtext">우리는 생각 조절자가 일곱 계층으로 구분된다는 것을 이해하지만, 이 구분을 완전히 이해하는 것은 아니다.</div></div><div class="quote"><div class="ref">107:2.4</div><div class="qtext">비록 처녀 조절자보다 더 신성하지는 않지만, 더 많은 경험을 지녀, 경험이 적은 조절자가 할 수 없는 기능을 인간 마음 속에서 수행할 수 있다.</div></div><div class="quote"><div class="ref">107:2.5</div><div class="qtext">여기서 신비의 관찰자의 경력을 추적하는 데 단절이 발생한다.</div></div><div class="quote"><div class="ref">107:2.7</div><div class="qtext">생각 조절자는 일반적으로 시간의 상승하는 필사자들과 융합되며, 그러한 생존 필사자들과 함께 어센딩턴 출입이 등록된다.</div></div><div class="quote"><div class="ref">107:3.1</div><div class="qtext">내가 아는 한, 그 구체를 방문한 존재는 조절자들과 아버지의 다른 실체들뿐이다.</div></div><div class="quote"><div class="ref">107:3.6</div><div class="qtext">디비닝턴의 해안에 착륙하려는 시도를 절대 하지 말 것.</div></div><div class="quote"><div class="ref">107:3.8</div><div class="qtext">그러므로 우리는 디비닝턴을 통해 조절자의 본성과 기원에 대해 거의 아무것도 배울 수 없다.</div></div><div class="quote"><div class="ref">107:3.9</div><div class="qtext">생각 조절자들이 드러낸 용기와 지혜는 그들이 매우 광범위하고 심오한 훈련을 받았음을 시사한다.</div></div><div class="quote"><div class="ref">107:3.10</div><div class="qtext">이들은 디비닝턴에서 이름을 받으며, 항상 숫자가 아닌 이름으로 불린다.</div></div><div class="quote"><div class="ref">107:4.4</div><div class="qtext">조절자의 보편적 비가시성은 그들의 높고 독특한 신성한 기원과 본성을 강하게 시사한다.</div></div><div class="quote"><div class="ref">107:4.6</div><div class="qtext">우주 아버지께 도달한 모든 존재는 인격화된 생각 조절자를 볼 수 있다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>인격이 아닌 실체</h2><p class="sub">전(前)인격이라는 규정과 그 난제</p></div></div>
+  <p class="summary">조절자는 인격이 아니지만 실재하는 존재이며, 완전하게 개별화되어 있으나 내주 기간에는 인격화되지 않는다. 그럼에도 조절자는 내주를 자원하고, 인간의 영원 경력을 설계하며, 상황에 따라 그 계획을 조정하고 수정한다. 필사자를 사랑하고 우주적 위기에 반응한다. 이 모든 행위는 진정한 의지 작용을 함축한다. 인격이 아닌 존재가 어떻게 의지와 선택과 사랑을 지니는가 하는 물음에 대해, 발표자는 자기 계층조차 이를 온전히 이해하지 못한다고 적는다. 하위 인격도 초인격도 정확한 명칭이 아니며, 전인격 존재라는 명칭만이 완전히 허용 가능하다고 결론짓는다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>이 규정은 단순한 용어 선택이 아니라 전체 논지를 떠받치는 장치다. 조절자의 의지는 본질적으로 절대적이지만 표현의 차원에서는 인격 이전 단계에 머문다. 그리고 우주 전역에서 비인격적인 것은 언제나 존재하는 인격의 의지와 행위에 반응한다. 이 두 명제를 결합하면, 절대적 의지를 지닌 조절자가 왜 유한한 인간의 의지에 순응하는지가 논리적으로 설명된다. 조절자의 마음성에 관한 서술도 같은 맥락에 있다. 조절자는 에너지와 영의 분화 이전 수준에 존재하므로 마음의 중개 기능이 성립하지 않는다. 그럼에도 계획하고 일하고 사랑하므로 마음에 상응하는 자아 능력을 지닌다고 기술되며, 처녀 집단 위의 모든 조절자는 서로 무제한으로 소통할 수 있다고 덧붙여진다. 조절자가 순수 영인 동시에 에너지 요소를 지닌다는 진술도 여기에 연결된다. 하나님이 순수 에너지와 순수 영의 근원이라면 그 단편이 두 속성을 모두 지니는 것은 이상하지 않다는 논법이다. 융합 이후에는 관계가 달라진다. 조절자의 마음은 상승자가 영적 수준에 도달할 때까지 창조체의 마음과 구별된 상태로 지속되며, 최종자 단계에 이르면 두 마음의 어떤 요소가 전이되어 최상 존재의 체험적 자질을 증강시키는 것으로 보인다고 기록된다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>'전인격'이라는 용어가 필요한 이유는 무엇입니까?</span></button><div class="answer">관찰된 사실과 개념의 한계를 동시에 담기 위해서입니다. 의지와 사랑을 나타내므로 무인격이라 할 수 없고, 인격의 특권인 자기 결정의 주권을 행사하지 않으므로 인격이라 할 수도 없습니다. 그 사이를 가리키는 절충적 규정입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>조절자가 인간 의지에 순응한다는 사실이 실천적으로 뜻하는 바는 무엇입니까?</span></button><div class="answer">협동 없이는 아무 일도 일어나지 않는다는 것입니다. 조절자는 강제하지 않으므로, 변화의 속도와 방향은 결국 인간의 결정에 달려 있습니다. 이는 책임의 소재를 인간 쪽에 두는 서술이기도 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>조절자가 '갇힌 영적 희망의 포로'로 표현된 것은 어떤 의미입니까?</span></button><div class="answer">조절자의 인격 성취가 인간의 생존에 달려 있다는 뜻입니다. 관계가 일방적이지 않고 상호적이라는 점을 보여 주는 표현이며, 조절자 쪽에도 걸린 것이 있다는 사실을 드러냅니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">107:5.1</div><div class="qtext">그러므로 인간이 생각 조절자에게 마음이 있다는 것을 이해하기는 매우 어렵다.</div></div><div class="quote"><div class="ref">107:5.2</div><div class="qtext">조절자가 계획하고, 일하고, 사랑할 수 있으므로, 그들은 마음에 상응하는 자아 능력을 지니고 있다.</div></div><div class="quote"><div class="ref">107:5.5</div><div class="qtext">생각 조절자가 생존하는 인간의 진화하는 불멸의 모론시아 혼과 융합할 때, 조절자의 마음은 상승하는 필사자가 우주 진보의 영적 수준에 도달할 때까지, 피조물의 마음과 구별되는 상태로 지속된다.</div></div><div class="quote"><div class="ref">107:6.1</div><div class="qtext">조절자는 참으로 영, 곧 순수한 영이지만, 영 그 이상이다.</div></div><div class="quote"><div class="ref">107:6.2</div><div class="qtext">조절자는 인간의 영원성 가능성이며, 인간은 조절자의 인격 가능성이다.</div></div><div class="quote"><div class="ref">107:6.2</div><div class="qtext">인간 마음 속에 갇힌 영적 희망의 포로들이다.</div></div><div class="quote"><div class="ref">107:6.6</div><div class="qtext">그들은 중력의 결과물이 아니라 중력의 근원(선조)의 단편이다.</div></div><div class="quote"><div class="ref">107:6.7</div><div class="qtext">조절자는 에너지 섭취를 필요로 하지 않는다. 그들은 에너지, 그것도 가장 높고 신성한 차원의 에너지이다.</div></div><div class="quote"><div class="ref">107:7.1</div><div class="qtext">생각 조절자는 인격이 아니지만 실재하는 존재이다.</div></div><div class="quote"><div class="ref">107:7.3</div><div class="qtext">그들은 내주를 자원하고, 인간의 영원 경력을 설계하고, 상황에 따라 조정·수정·대체한다.</div></div><div class="quote"><div class="ref">107:7.4</div><div class="qtext">그것은 조절자의 의지가 본질적으로는 절대적이지만, 표현은 전(前)인격 단계이기 때문이다.</div></div><div class="quote"><div class="ref">107:7.5</div><div class="qtext">그러나 그들을 전(前)인격(prepersonal) 존재라 부르는 것은 완전히 허용 가능하다.</div></div><div class="quote"><div class="ref">107:7.7</div><div class="qtext">신비의 관찰자를 모시는 것을 기뻐하지 않을 창조된 존재는 없다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>자원과 배정</h2><p class="sub">내주에 이르는 절차와 전제 조건</p></div></div>
+  <p class="summary">배정은 네 단계로 기술된다. 먼저 후보자에 관한 예측 자료가 반영성 기법을 통해 디비닝턴에 전달된다. 유전적 선행 조건뿐 아니라 지적 재능과 영적 수용력의 평가가 포함된다. 다음으로 조절자가 자원한다. 본문은 모든 조절자가 자원자라는 믿음을 강하게 가진다고 표현하며 단정하지 않는다. 둘 이상이 자원하면 인격화된 계층이 가장 적합한 조절자를 선택하고, 디비닝턴 학교에서 접근 계획을 교육받는 것으로 추정된다. 마지막이 파견이다. 이동 시간은 초 단위까지 제시되며, 그 시간의 사실상 전부가 유버사 등록에 쓰인다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>자원한 조절자가 검토하는 자격 요건은 세 가지다. 지적 능력, 곧 마음이 정상인지와 지능의 잠재력이 어느 정도인지. 영적 인식, 곧 경건의 발전 가능성과 혼의 잠재력. 그리고 이 두 부여가 결합해 인간 성품의 힘을 만들어 내고 생존 가치를 지닌 혼의 진화에 기여할 수 있는 정도다. 배정에서 창조체의 성별은 고려되지 않는다고 괄호로 명시된다. 자원 이후에도 조절자는 곧바로 오지 않는다. 인간이 첫 번째 도덕적 결정을 내려야 한다. 그 결정은 일곱째 보조 마음-영에서 자동으로 나타나 우주적 마음 회로를 거쳐 주 영의 임재에 순간적으로 기록되고 즉시 디비닝턴으로 발송된다. 유란시아의 평균은 다섯 해 열 달 나흘, 곧 지구 생애의 2,134일째다. 진리의 영이 부어진 이후에는 도덕적 상태의 모든 정상적 마음에 조절자가 보편적으로 부여되지만, 그 이전 시대에는 여섯 가지 조건이 관찰되었다고 기록된다. 개인 세라핌 수호자의 배정, 셋째 원의 도달, 위기에서의 최상 결정, 형제애의 영에 지배되는 상태, 하나님의 뜻을 행하겠다는 조용한 결심, 그리고 이해를 넘어서는 최상 존재의 영향이다. 이 가운데 다섯째 조건이 특히 주목할 만하다. 종교적 형식이나 성취가 아니라 내적 결심이 파견의 계기로 기록되어 있기 때문이다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>배정 절차에서 확정적으로 기술된 것과 추정으로 남은 것을 구분해 보십시오.</span></button><div class="answer">확정적인 것은 도착에 걸리는 평균 시간과 첫 도덕적 결정이라는 전제 조건입니다. 자원 여부, 디비닝턴에서의 교육 내용, 선택의 정확한 기준은 모두 믿는다거나 추정한다는 표현과 함께 제시됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>첫 도덕적 결정이 내주의 조건이라는 서술은 어린이 이해에 어떤 함의를 줍니까?</span></button><div class="answer">도덕적 선택 능력이 생기기 전에는 조절자가 오지 않는다는 뜻입니다. 신적 현존이 출생과 함께 자동으로 주어지는 것이 아니라, 선택하는 존재가 되었을 때 시작된다는 점에서 인격과 책임의 문제로 연결됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>'하나님과 인간은 직접적으로 관계된다'는 진술의 무게는 어디에 있습니까?</span></button><div class="answer">중개자가 없다는 데 있습니다. 도덕적 결정이 내려지면 조절자는 디비닝턴에서 직접 관할권을 받으며, 그 사이에 어떤 권위나 힘도 개입하지 않습니다. 종교 제도의 매개 없이 성립하는 관계를 서술한 것입니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">108:1.1</div><div class="qtext">더 경험이 많은 조절자가 더 높은 유형의 인간 마음에 내주하는 경우가 종종 관찰되므로, 인간의 유전적 특성이 선택과 배정에 중요한 요소일 것이라고 본다.</div></div><div class="quote"><div class="ref">108:1.2</div><div class="qtext">우리는 정확히 알 수 없지만, 모든 생각 조절자가 자원자라는 믿음을 강하게 가지고 있다.</div></div><div class="quote"><div class="ref">108:1.7</div><div class="qtext">조절자의 배정과 봉사에서 창조체의 성별은 고려되지 않는다.</div></div><div class="quote"><div class="ref">108:1.9</div><div class="qtext">디비닝턴에서 유란시아까지 조절자의 평균 이동 시간은 117시간 42분 7초이다.</div></div><div class="quote"><div class="ref">108:2.1</div><div class="qtext">조절자는 평균적으로 여섯 번째 생일 직전에 유란시아의 인간 대상에게 도달한다.</div></div><div class="quote"><div class="ref">108:2.2</div><div class="qtext">인간의 마음이 조절자를 받아들일 자격을 갖추려면 모든 일곱 보조 영의 협동된 기능이 필요하다.</div></div><div class="quote"><div class="ref">108:2.4</div><div class="qtext">신성한 조절자와 인간 대상 사이에서 기능하는 어떠한 중재자나 다른 개입하는 권위나 힘도 존재하지 않는다. 하나님과 인간은 직접적으로 관계된다.</div></div><div class="quote"><div class="ref">108:2.6</div><div class="qtext">조절자의 사역과 개인 세라핌 수호자의 사역 사이에는 매우 명확하지만 아직 알려지지 않은 관계가 존재한다.</div></div><div class="quote"><div class="ref">108:2.9</div><div class="qtext">진화하는 필사자가 동료 사랑에 지배되고 육신 안에 있는 형제들에 대한 이타적 사역에 헌신하게 될 때, 기다리던 조절자는 어김없이 내려와 그러한 필사 봉사자의 마음에 내주한다.</div></div><div class="quote"><div class="ref">108:2.10</div><div class="qtext">그런 창조체들이 날마다 살아가는 동안 조용히, 거의 무의식적으로 하늘에 계신 아버지의 뜻을 행하기를 시작하겠다는 결정을 내리는 순간을 보며, 그러면 즉시 생각 조절자가 파견되는 것을 관찰한다.</div></div><div class="quote"><div class="ref">108:3.2</div><div class="qtext">조절자의 전체 번호의 실제 의미는 디비닝턴에서만 알려져 있다.</div></div><div class="quote"><div class="ref">108:3.3</div><div class="qtext">인간 대상은 종종 자신의 조절자 번호로 알려지며, 필사자는 조절자와 융합된 후에야 비로소 실제 우주 이름을 받는다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>조절자의 사명</h2><p class="sub">무엇을 하고 무엇을 하지 않는가</p></div></div>
+  <p class="summary">사명은 인류에게 우주 아버지를 대표하고 바로 그 아버지가 되어 주는 것, 그리고 필사자의 마음을 고양시켜 불멸의 혼을 파라다이스 완전의 수준으로 이주시키는 것이다. 작업의 실질은 모든 정신적 창조물을 영적 대응물로 복제하여 모론시아 혼 안에 보존하는 일로 기술된다. 그러나 본문은 조절자가 무엇을 하지 않는지도 분명히 밝힌다. 삶을 쉽게 만들지 않고, 상한 감정을 어루만지거나 다친 자존심을 위로하지 않는다. 오히려 결정을 자극하기 위해 삶을 적절히 어렵게 만드는 데 관심이 있다고 진술된다. 조절자가 주는 것은 상황의 개선이 아니라 마음의 평화와 영의 고요다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>108편은 조절자의 사명을 신학적으로 설명하는 근거를 하나 제시한다. 하나님은 무오하며 잘못을 저지를 수 없고, 개인적으로 경험한 적이 없는 것을 체험적으로 알 수 없다. 그러므로 아버지의 영이 파라다이스에서 내려와 필사자와 함께 상승 생애의 모든 체험에 참여한다는 것이다. 이 논법에서 조절자는 은혜의 전달자이기 이전에 아버지의 체험적 참여 방식이다. 사명의 신뢰성도 반복해서 강조된다. 천사와 아들 계층조차 때때로 신성한 길에서 벗어날 수 있으나 조절자는 결코 흔들리지 않으며, 대상자가 생존하지 못해도 조절자는 조사받지 않는다. 책임의 소재가 인간의 선택에 있음을 함축하는 서술이다. 여기서 눈여겨볼 대목이 두려움에 관한 진술이다. 조절자는 두려움을 사랑과 신뢰로 바꾸고 싶어 하지만 기계적으로 그렇게 할 수 없고, 그것은 인간의 과제라고 못 박는다. 인간이 두려움에서 벗어나는 결정을 실행할 때 비로소 조절자가 영적 지렛대를 적용할 심리적 받침점이 생긴다는 것이다. 마지막으로 108편 3장에는 타바만티아가 조절자들에게 전한 이례적인 경의의 진술이 실려 있다. 반란으로 혼란한 행성에서 자원해 봉사하는 조절자들에게 상급 감독자가 존경을 표하는 장면으로, 이 문헌에서 보기 드문 형식의 기록이다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>조절자를 현세의 문제 해결자로 기대하는 것이 왜 본문과 어긋납니까?</span></button><div class="answer">관심의 배분이 다르기 때문입니다. 조절자는 순전히 일시적인 복지에 대해서는 수동적이고, 영원한 미래와 관련된 문제에서는 능동적입니다. 다만 일상의 세부도 그것이 중요한 선택을 좌우하는 한도에서는 관여합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>'삶을 적절히 어렵게 만드는 데 관심이 있다'는 진술을 어떻게 이해해야 할까요?</span></button><div class="answer">고난 자체를 목적으로 삼는다는 뜻이 아니라, 결정을 자극하고 늘리는 것이 성장의 조건이라는 뜻입니다. 안락은 선택을 요구하지 않으므로 성품을 만들지 못한다는 판단이 깔려 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>두려움의 극복이 '너희의 과제'라고 규정된 이유는 무엇입니까?</span></button><div class="answer">조절자가 인간 의지를 침해하지 않기 때문입니다. 결정을 대신해 줄 수 없으므로, 인간이 결정을 실행해야 조절자가 작용할 지점이 생깁니다. 협동의 구조가 여기서도 동일하게 적용됩니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">108:0.1</div><div class="qtext">인류에 대한 생각 조절자의 사명은 시간과 공간의 필사 창조체들에게 우주 아버지를 대표하고, 바로 그 우주 아버지가 되어 주는 것이다.</div></div><div class="quote"><div class="ref">108:0.2</div><div class="qtext">하나님은 개인적으로 경험한 적이 없는 것을 체험적으로 알 수 없다.</div></div><div class="quote"><div class="ref">108:3.6</div><div class="qtext">당신들은 이 혼란스러운 행성에서 일하는 모든 이들의 실수를 조정하고, 부족함을 보완하는 데 도움을 주었습니다.</div></div><div class="quote"><div class="ref">108:5.1</div><div class="qtext">그들은 파라다이스 상승에 필수적이다.</div></div><div class="quote"><div class="ref">108:5.3</div><div class="qtext">우리는 이 영적 도우미들이 실패하는 것을 결코 알지 못했다.</div></div><div class="quote"><div class="ref">108:5.5</div><div class="qtext">신비의 관찰자들은 생각을 돕는 자가 아니라 생각을 조절하는 자이다.</div></div><div class="quote"><div class="ref">108:5.5</div><div class="qtext">그들은 필사자의 삶을 쉽게 만들려 하지 않는다.</div></div><div class="quote"><div class="ref">108:5.6</div><div class="qtext">조절자의 임무는 너희를 영원한 모험에 준비시키고, 너희의 생존을 보장하는 것이다.</div></div><div class="quote"><div class="ref">108:5.8</div><div class="qtext">생각 조절자들은 너희의 두려움의 감정을 사랑과 신뢰의 확신으로 바꾸고 싶어 하지만, 그들은 기계적으로나 임의로 그렇게 할 수 없다. 그것은 너희의 과제이다.</div></div><div class="quote"><div class="ref">108:5.10</div><div class="qtext">너희에게는 완전한 안내자가 있다. 그러므로 완전의 목표는 확실히 달성할 수 있다.</div></div><div class="quote"><div class="ref">108:6.1</div><div class="qtext">고귀하고 완전한 조절자들이 자원한 것은 신성한 겸손의 경이로움이다.</div></div><div class="quote"><div class="ref">108:6.5</div><div class="qtext">너희가 실제로 있는 그대로(영적으로만) 너희를 천천히 그러나 확실하게 재창조하고 있다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>체험적 발달과 세 계열의 세계</h2><p class="sub">조절자도 성장한다</p></div></div>
+  <p class="summary">109편의 핵심 논점은 신성의 완전성과 체험의 획득이 서로 다른 범주라는 것이다. 새로 개별화된 조절자의 신성한 완전성은 그에게 경험된 사역 능력을 부여하지 않는다. 그래서 조절자도 낮고 체험이 적은 집단에서 높고 체험이 많은 집단으로 진화해야 한다. 인간의 존재 자체가 조절자에게는 다음 단계를 준비하는 연습 기간이 된다. 인간이 안에서 위로 진화하는 동안 조절자는 하나님에게서 인간을 향해 밖으로 확장한다는 대칭 구도가 제시된다. 한편 내주의 성격은 행성 유형에 따라 다르며, 유란시아는 융합을 전제한 약혼 관계가 성립하는 셋째 계열에 속한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>세 계열의 구분은 유란시아 독자가 자기 세계의 조건을 일반화하지 않도록 막는 장치이기도 하다. 첫째 계열의 원시 세계에서 조절자는 주로 자기 개발과 진보적 발전을 위한 체험적 훈련으로서 마음에 내주한다. 둘째 계열에서는 조절자가 한 생애 동안 대여되며 융합 인격을 얻지 못하지만, 오히려 유란시아에서보다 대상자에게 훨씬 더 큰 도움을 줄 수 있다고 기록된다. 융합 가능성과 현세적 유용성이 반드시 비례하지 않는다는 뜻이다. 셋째 계열인 유란시아에서만 생사를 건 언약이 성립한다. 체험 분류와 별개로 기능에 따른 분류도 하나 제시된다. 자율 조절자다. 성립 조건은 진보나 최상 단계의 체험, 셋째 원 도달과 개인 수호자 배정, 최상 결정과 약혼 관계, 운명 예비단 소집, 수면 중 일시 분리의 경험 등이다. 자율 조절자는 자신이 내주한 인격과 무관한 사안에서 뚜렷한 의지를 나타내며 영역의 여러 활동에 참여한다. 행정적으로 중요한 진술도 여기 있다. 반란으로 행성이 회로에서 차단되어도 조절자들 사이의 소통은 영향을 받지 않으며, 이 경로가 고립을 우회하는 수단으로 사용된다는 것이다. 가치의 보존에 관한 원칙도 분명하다. 대상자가 생존하지 못해도 그 삶에서 진화된 생존 가치는 조절자가 다른 세계로 가져가며, 어떠한 가치 있는 경험도 헛되지 않는다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>조절자에게도 체험이 필요하다는 서술은 신 개념에 어떤 조정을 요구합니까?</span></button><div class="answer">정적인 완전성이라는 통념을 조정합니다. 본문은 완전성과 체험을 구분하고, 실제로 살아가는 경험에는 우주적 대체물이 없다고 진술합니다. 신적 단편조차 체험을 통해서만 얻는 능력이 있다는 것입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>융합이 없는 세계의 조절자가 더 큰 도움을 줄 수 있다는 서술을 어떻게 읽어야 할까요?</span></button><div class="answer">융합의 유무가 관계의 질을 결정하지 않는다는 뜻입니다. 진화 유형에 따라 조절자의 활동 범위가 달라지며, 각 세계에는 그 세계에 맞는 방식이 마련되어 있다고 이해할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>생존하지 못한 삶의 가치가 보존된다는 원칙은 무엇을 함의합니까?</span></button><div class="answer">개인의 실패가 우주적 손실로 곧장 이어지지 않는다는 것입니다. 발견되고 평가된 의미는 인격의 생존 여부와 무관하게 보존되며, 조절자가 그것을 다른 마음에 전달합니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">109:0.1</div><div class="qtext">생각 조절자는 우주 생애의 자녀이며, 참으로 처녀 조절자들은 필사 창조체들이 성장하고 발달하는 동안 체험을 쌓아야 한다.</div></div><div class="quote"><div class="ref">109:1.3</div><div class="qtext">실제로 살아가는 경험에는 우주적 대체물이 없다.</div></div><div class="quote"><div class="ref">109:1.3</div><div class="qtext">체험은 살아있는 존재와 분리될 수 없다.</div></div><div class="quote"><div class="ref">109:1.4</div><div class="qtext">조절자들은 생존 가치를 가진 불멸 혼의 진화를 촉진하는 데 있어 인간 마음과 동등한 동반자이다.</div></div><div class="quote"><div class="ref">109:1.5</div><div class="qtext">너희가 본성적으로 인간에서 하나님으로 내면적·상향적으로 진화하는 동안, 조절자들은 본성적으로 하나님에서 인간으로 밖으로 확장하며 내려오고 있다.</div></div><div class="quote"><div class="ref">109:2.10</div><div class="qtext">내주자들은 필사 생명의 유기적·생물학적 일부가 아니라 그 위에 신성하게 부가된 존재이다.</div></div><div class="quote"><div class="ref">109:3.2</div><div class="qtext">생존 가치가 있는 것은 아무것도 이 넓은 우주에서 결코 사라지지 않는다.</div></div><div class="quote"><div class="ref">109:3.4</div><div class="qtext">유란시아와 같은 세계들(세 번째 계열 그룹)에서는 신성한 선물들과의 진정한 약혼, 곧 생사를 건 언약이 이루어진다.</div></div><div class="quote"><div class="ref">109:4.3</div><div class="qtext">조절자의 유형은 인간 인격이 표현될 수 있는 잠재력에 크게 영향을 미친다.</div></div><div class="quote"><div class="ref">109:4.4</div><div class="qtext">신성한 관찰자들은 문명이 앞으로 나아가는 데 있어 실제적인 잠재력 중 하나이다.</div></div><div class="quote"><div class="ref">109:6.1</div><div class="qtext">조절자는 절대 실패하지 않으며, 생존할 가치가 있는 것은 결코 잃어버리지 않는다.</div></div><div class="quote"><div class="ref">109:6.5</div><div class="qtext">이 조절자는 참으로 예수의 인간 마음에서 승리했다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>인간 의지와 일곱 정신 원</h2><p class="sub">협동의 방법과 오류 개념</p></div></div>
+  <p class="summary">110편의 중심 논점은 인간 의지의 우위다. 조절자는 인격화된 조절자들이 결정한 이상적 삶의 모범 경력을 가지고 오지만, 어떤 인간도 그 계획을 받아들여야 할 의무는 없다. 모두가 예정의 대상이나 그 예정을 반드시 받아들이도록 정해지지는 않았다는 것이 본문의 표현이다. 협동의 방법으로는 네 항목이 제시된다. 신성한 인도에 응답하는 선택, 하나님을 사랑하고 닮으려는 열망, 사람에 대한 사랑과 봉사, 우주 시민권의 수용이다. 필사 성숙은 일곱 정신 원으로 측정되며, 셋째 원에서 수호 세라핌이 배정되고 첫째 원에 이르러서야 직접 소통이 가능해진다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>110편 5장은 조절자 인도에 관한 오해를 세 가지로 정리한다. 첫째는 양심과의 혼동이다. 양심은 인간적이고 순전히 심리적인 반응이며, 조절자의 사역과 직접 관련이 없다고 못 박는다. 양심은 바르게 행하라고 권고하고 조절자는 무엇이 참으로 옳은지를 말하려 한다는 구분이 제시된다. 둘째는 꿈에 대한 단정이다. 조절자가 수면 중에도 일하지만 일상의 꿈은 생리적이고 심리적인 현상이며, 꿈의 조절자 내용을 단정하는 것은 극도로 위험하다고 경고한다. 셋째는 과잉 해석이다. 조절자의 음성이라고 받아들인 것이 실제로는 자기 지성의 발산일 때가 더 많다고 기술하며, 인간의 반응을 신성의 영역으로 높이는 오류보다 조절자의 표현을 인간적 경험으로 여기는 오류가 차라리 낫다고 덧붙인다. 일곱 원에 관해서도 단서가 붙는다. 원의 정복은 융합과 동일하지 않으며, 하나님 의식과는 상대적으로만 관련된다. 일곱째 원에 있는 사람도 첫째 원에 있는 사람만큼 참으로 하나님을 알 수 있으나, 최상 존재와의 경험적 관계, 곧 우주 시민권에 대해서는 훨씬 덜 의식한다는 것이다. 결정의 최상성뿐 아니라 결정의 수와 반복도 원의 전진에 필수적이라고 기록된 점도 실천적으로 중요하다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>예정과 강제를 구분한 서술은 자유의지 논쟁에 어떤 답을 줍니까?</span></button><div class="answer">계획은 존재하되 강제되지 않는다는 답입니다. 조절자는 이상적 경력을 가지고 오지만 인간은 그 전부 또는 일부를 거부할 완전한 자유가 있습니다. 예정은 준비된 설계이지 확정된 결과가 아닙니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>양심과 조절자의 인도를 구분하는 실천적 기준은 무엇입니까?</span></button><div class="answer">본문은 확실한 식별법을 제시하지 않고 개인의 분별에 맡깁니다. 다만 방향은 분명합니다. 조절자의 활동은 대부분 초의식적이므로, 의식 차원에서 그 내용을 확정하려는 시도 자체가 오류의 주요 원인이 됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>결정의 반복이 원의 전진에 필수적이라는 서술은 무엇을 시사합니까?</span></button><div class="answer">한 번의 큰 결단만으로는 성숙이 이루어지지 않는다는 것입니다. 반복이 반응을 습관으로 굳히며, 그 습관이 조절자가 작용할 안정된 기반을 만듭니다. 성장이 사건이 아니라 과정으로 서술되는 이유입니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">110:2.1</div><div class="qtext">조절자들은 너희의 인격적 주권을 존중하며, 언제나 너희의 의지에 순응한다.</div></div><div class="quote"><div class="ref">110:2.2</div><div class="qtext">어떤 인간도 자신의 의지에 반하여 신성한 관찰자에 의해 영적으로 변화되지는 않는다.</div></div><div class="quote"><div class="ref">110:2.3</div><div class="qtext">조절자는 너희 사고 자체를 통제하려는 것이 아니라, 그것을 영성화하고 영원화하려 한다.</div></div><div class="quote"><div class="ref">110:3.5</div><div class="qtext">오직 조절자의 인도에 대한 의식적인 저항만이 진화하는 불멸의 혼의 생존을 막을 수 있다.</div></div><div class="quote"><div class="ref">110:5.1</div><div class="qtext">양심은 인간적이며 순전히 심리적인 반응이다.</div></div><div class="quote"><div class="ref">110:6.1</div><div class="qtext">일곱 번째 원에 진입하는 것은 참된 인간 인격 기능의 시작을 나타내며, 첫 번째 원을 완료하는 것은 필사 존재의 상대적 성숙을 나타낸다.</div></div><div class="quote"><div class="ref">110:6.6</div><div class="qtext">너희가 내리는 모든 결정은 조절자의 기능을 방해하거나 촉진한다.</div></div><div class="quote"><div class="ref">110:7.9</div><div class="qtext">조절자의 음성은 항상 너희 안에 있지만, 대부분의 사람들은 평생 동안 그것을 거의 듣지 못한다.</div></div><div class="quote"><div class="ref">111:1.3</div><div class="qtext">물질 마음은 인간 인격이 살고 자각하며, 결정을 내리고 하나님을 택하거나 버리며, 스스로를 영원하게 만들거나 파멸시키는 무대이다.</div></div><div class="quote"><div class="ref">111:1.5</div><div class="qtext">마음이 무엇을 이해하는가보다 마음이 무엇을 이해하기를 원하는가, 이것이 생존을 보장한다.</div></div><div class="quote"><div class="ref">111:1.9</div><div class="qtext">마음은 너희의 배요, 조절자는 항해사, 인간의 의지는 선장이다.</div></div><div class="quote"><div class="ref">111:2.7</div><div class="qtext">이 독특한 관계의 실체는 물질도 영도 아니며, 모론시아이다. 그것은 혼이다.</div></div><div class="quote"><div class="ref">111:5.5</div><div class="qtext">그것은 의지의 거룩한 봉헌이며, 의지의 확장이고, 의지의 영화이며, 의지의 완성이다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 107~111편 본문 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>

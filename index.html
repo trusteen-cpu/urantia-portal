@@ -428,7 +428,17 @@ function topLine(it,g,ii){
   const nb  = isNewItem(it.name, t.href) ? newBadge() : '';
   return '<li><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')
       +' data-name="'+esc(it.name)+'">'
-      +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+nb+tag+'</a></li>';
+      +'<span class="dot">'+dot+'</span><span class="nm">'+esc(it.name)+'</span>'+nb+tag+'</a></li>'
+      + (it.expand ? (it.children||[]).map((k,ki)=>subLine(k,g,ii,ki)).join('') : '');
+}
+
+/* expand:true 인 항목은 하위 메뉴를 한 칸 들여 첫 화면 카드에도 보여 준다 */
+function subLine(k,g,ii,ki){
+  const t = targetOf(k, (DATA.site||{}).cafeUrl||'#', g.id, ii, ki);
+  const n = (k.children||[]).length;
+  return '<li class="k"><a href="'+esc(t.href)+'"'+(t.ext?' target="_blank" rel="noopener"':'')
+      +' data-name="'+esc(k.name)+'"><span class="dot">└</span><span class="nm">'+esc(k.name)+'</span>'
+      +(n?'<span class="tag sub">'+n+'</span>':'')+'</a></li>';
 }
 
 /* 검색 */
