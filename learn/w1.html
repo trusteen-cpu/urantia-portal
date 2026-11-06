@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제1강 우주 아버지 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 1~5편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 91개">
+<meta property="og:url" content="https://urantiareaders.com/learn/w1.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>우주 아버지 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 1</p>
+    <h1>우주 아버지</h1>
+    <p class="papers">유란시아서 1~5편</p>
+    <div class="lead">유란시아서 1편부터 5편까지는 한 신성한 조언자가 연속해서 발표한 우주 아버지 이야기이다. 1편은 하나님이 누구신지를, 2편은 그분의 본성을, 3편은 속성을, 4편은 우주와 맺는 관계를, 5편은 개인과 맺는 관계를 다룬다. 이 강의는 그 다섯 편을 일곱 마디로 다시 묶어 읽는다. 먼저 하나님을 모든 사물과 존재의 첫째 근원이며 중심으로 소개하고, 그분이 논리로 증명되지 않고 체험 속에서 알려진다는 점과 그 체험의 근거인 생각 조절자를 살핀다. 이어서 “내가 완전한 것처럼 너희도 완전하라”는 명령이 유한한 인간에게 무엇을 요구하는지, 하나님이 왜 무한한 인격이셔야 하는지, 무소부재·전능·전지가 구체적으로 무엇을 뜻하는지를 정리한다. 끝으로 하나님의 사랑이 정의와 자비를 어떻게 하나로 묶는지, 그리고 하나님이 이미 메워 놓으신 간격을 따라 인간이 자유로운 선택으로 파라다이스까지 나아가는 영원한 모험을 다룬다. 다섯 편 전체를 관통하는 한 가지 결론은 우주 아버지가 실재하시며, 지금 우리 안에 그분의 영을 두고 우리와 함께 계시다는 것이다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 모든 창조의 첫째 근원이며 중심</a></li><li><a href="#s2">2. 체험으로 알려지는 하나님과 생각 조절자</a></li><li><a href="#s3">3. “너희도 완전하라”는 부르심</a></li><li><a href="#s4">4. 무한한 인격이신 하나님</a></li><li><a href="#s5">5. 어디에나 계시고 모든 것을 아시는 하나님</a></li><li><a href="#s6">6. 사랑이신 하나님, 정의와 자비의 조화</a></li><li><a href="#s7">7. 간격을 메우신 하나님과 영원한 모험</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>모든 창조의 첫째 근원이며 중심</h2><p class="sub">창조주·통제자·유지자이신 한 분 하나님 (1편 서문·1·2장, 2편 1·2장, 4편 1장)</p></div></div>
+  <p class="summary">1편은 우주 아버지를 모든 창조의 하나님이자 모든 사물과 존재의 첫째 근원이며 중심으로 소개하고, 그분을 창조주, 통제자, 무한한 유지자의 순서로 생각하라고 권한다. 수많은 행성 체계는 하나님을 알고 그분의 애정에 응답하여 사랑할 수 있는 창조체들이 살도록 지어졌다. 하나님은 사람 같지도 기계 같지도 않은 보편적 영, 영원한 진리, 무한한 실체, 아버지 인격이시다. 그분께는 과거도 미래도 없고, 그분의 목적은 그분 자신처럼 영원하며, 지금 이 순간에도 우주를 붙들고 새롭게 하신다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 마디에서 먼저 눈여겨볼 것은 하나님을 생각하는 순서다. 본문은 창조주, 통제자, 유지자를 차례로 떠올리라고 하는데, 이는 하나님을 과거에 한 번 세계를 만들고 물러난 존재로 보지 말라는 뜻이다. 4편은 같은 내용을 더 분명히 말한다. 우주는 태엽이 감긴 만큼만 돌다가 멈추는 시계가 아니며, 아버지가 유지자로서 물러나시면 즉시 우주적 붕괴가 일어난다고 한다. 둘째, 본문은 참된 하나님 이해가 다신이 아닌 한 하나님 개념에서 시작되었다고 정리한다. 하나님의 통일성이 먼저 파악되어야 인격적 하나님 개념이 종교적 성숙의 척도가 된다는 1편 후반의 설명과 이어지는 대목이다. 셋째, 창조의 목적이 분명히 제시된다. 행성들은 하나님을 알고 사랑할 수 있는 존재가 살도록 지어졌으므로, 인간은 우연한 부산물이 아니라 관계를 위해 창조된 존재로 읽힌다. 넷째, 이름의 문제다. 첫째 근원이며 중심은 스스로 이름을 밝히신 적이 없고, 세계마다 창조체가 지닌 개념에 따라 다른 이름으로 부른다. 우리가 그분을 아버지라 부르는 것은 그분과의 개인적 관계를 인식하는 데서 자연스럽게 자라난 이름이며, 본문은 어떤 이름이냐보다 그분을 알고 닮기를 열망하는 일이 중요하다고 말한다. 다섯째, 2편은 하나님의 무한성과 영원성을 다루면서, 그분께는 모든 시간이 현재이고 어떤 사건도 놀라움이 아니며 그분의 계획은 변하지 않는다고 설명한다. 다만 지역 우주는 아버지가 직접 만드신 것이 아니라 그의 아들 미가엘의 창조라는 구분도 함께 기억해 둘 필요가 있다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님을 창조주, 통제자, 유지자의 순서로 생각하라는 권고에는 어떤 의미가 담겨 있습니까?</span></button><div class="answer">하나님을 처음에 세계를 만들기만 하신 분으로 한정하지 말라는 뜻입니다. 그분은 만물을 존재하게 하셨고, 에너지와 질서를 주관하시며, 지금 이 순간에도 모든 것을 붙들고 계십니다. 4편이 우주를 태엽 감긴 시계에 비유하는 생각을 물리치고 모든 것이 끊임없이 새로워지고 있다고 말하는 것도 같은 맥락입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>본문은 무수한 행성 체계가 무엇을 위해 창조되었다고 말합니까? 이것은 인간 존재에 대해 무엇을 시사합니까?</span></button><div class="answer">하나님을 알고 그분의 애정을 받아들여 그분을 사랑할 수 있는 지성적 창조체들이 살도록 창조되었다고 말합니다. 따라서 인간은 우주의 우연한 산물이 아니라 하나님과의 관계를 위해 지어진 존재입니다. 우주가 하나님의 작품이자 그분의 창조체들이 사는 곳이라는 설명이 이를 뒷받침합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>하나님을 어떤 이름으로 부르느냐에 대해 본문은 어떤 태도를 보입니까?</span></button><div class="answer">첫째 근원이며 중심은 스스로 이름을 밝히신 적이 없고, 세계와 우주마다 창조체의 개념에 따라 여러 이름으로 불린다고 합니다. 우리가 아버지라 부르는 것도 그분의 자녀라는 인식에서 자연스럽게 생긴 이름입니다. 본문은 이름 자체보다 그분을 알고 그분처럼 되기를 열망하는 일이 중요하다고 강조합니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">1:0.1</div><div class="qtext">우주 아버지는 모든 창조의 하나님이시고, 모든 사물과 존재의 첫째 근원이며 중심이시다.</div></div><div class="quote"><div class="ref">1:0.1</div><div class="qtext">먼저 하나님을 창조주로 생각하고, 그리고 통제자로 생각하고, 마지막으로 무한한 유지자로 생각하라.</div></div><div class="quote"><div class="ref">1:0.1</div><div class="qtext">오직 우주 아버지의 개념, 곧 여러 신 대신 하나의 하나님 개념만이 필사 인간으로 하여금 아버지를 신성한 창조주와 무한한 통제자로 이해할 수 있게 했다.</div></div><div class="quote"><div class="ref">1:0.2</div><div class="qtext">무수히 많은 행성 체계들은 결국 하나님을 알고 신성한 애정을 받아들이고 그에 응답하여 그를 사랑할 수 있는, 여러 다른 유형의 지성적 창조체들이 거주하도록 창조되었다.</div></div><div class="quote"><div class="ref">1:1.1</div><div class="qtext">우리가 이 창조주의 자녀라 믿는다면, 결국 그를 아버지라 부르게 되는 것은 자연스러운 일이다.</div></div><div class="quote"><div class="ref">1:1.6</div><div class="qtext">그에게 어떤 이름을 부여하든, 그것은 크게 중요하지 않다. 중요한 것은 너희가 그를 알아야 하며, 또 그와 같이 되기를 열망해야 한다는 것이다.</div></div><div class="quote"><div class="ref">1:2.1</div><div class="qtext">하나님은 사람 같지도, 기계 같지도 않다. 첫째 아버지는 보편적 영이시며, 영원한 진리, 무한한 실체, 그리고 아버지 인격이시다.</div></div><div class="quote"><div class="ref">1:2.2</div><div class="qtext">하나님은 단순히 인간의 최고 소망이나 객관화된 필사자의 탐구가 아니며, 단순한 개념, 곧 의로움의 권능-잠재력도 아니다.</div></div><div class="quote"><div class="ref">1:2.9</div><div class="qtext">너희가 속한 이 우주는 그의 아들인 미가엘의 창조다.</div></div><div class="quote"><div class="ref">2:1.5</div><div class="qtext">하나님에게는 과거도, 현재도, 미래도 존재하지 않는다. 어느 순간이든, 모든 시간이 그분께는 현재다.</div></div><div class="quote"><div class="ref">2:2.1</div><div class="qtext">따라서 첫째 근원이며 중심의 계획과 목적은 그 자신처럼 영원하며, 완전하고, 영원히 변하지 않는다.</div></div><div class="quote"><div class="ref">4:1.6</div><div class="qtext">우주는 시계처럼 단지 태엽이 감긴 만큼 돌아가다가 멈추는 것이 아니다. 모든 것은 지속적으로 새로워지고 있다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>체험으로 알려지는 하나님과 생각 조절자</h2><p class="sub">증명을 넘어선 하나님과 신비 중의 신비 (1편 2·3·4장, 3편 1장, 5편 서문·2장)</p></div></div>
+  <p class="summary">본문은 하나님의 존재가 과학적 실험이나 순수한 논리로는 결코 입증될 수 없고, 오직 인간 체험의 영역에서만 실현된다고 말한다. 그 체험의 근거는 파라다이스에서 파송되어 인간 마음에 내주하는 생각 조절자다. 조절자의 현존은 하나님을 아는 능력, 하나님을 찾으려는 충동, 하나님을 닮으려는 갈망이라는 세 현상으로 드러난다. 그래서 필사자의 육신은 하나님의 성전이며, 이 내주는 신비 중의 신비로 불린다. 하나님을 찾으려면 자기 안의 영적 실체를 명상하는 것보다 더 멀리 갈 필요가 없다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>이 마디의 논리는 두 단계로 정리할 수 있다. 첫 단계는 증명의 한계다. 본문은 하나님의 존재가 실험이나 논리로 입증될 수 없다고 분명히 말하면서도, 하나님의 실체에 대한 참된 개념은 논리적으로 합리적이고 철학적으로 타당하며 종교적으로 본질적이고 인격 생존의 희망에 절대적으로 필요하다고 덧붙인다. 증명할 수 없다는 말이 근거가 없다는 뜻은 아니라는 점을 구별해야 한다. 둘째 단계는 체험의 근거다. 하나님을 아는 자는 그분의 현존을 체험한 자이며, 그 체험은 인간 마음의 하나님 의식과 내주하는 생각 조절자 사이의 접촉에서 생긴다. 본문은 이 조절자를 신비의 관찰자, 하나님의 단편, 신성의 일부라고 부르고, 그것이 우주 아버지의 값없는 선물이라고 설명한다. 조절자는 아직 소유권으로 인간의 것이 아니지만, 인간이 생존하면 그와 하나가 되도록 계획되어 있다. 셋째로, 1편은 마음의 방향을 문제 삼는다. 물질에 종속된 마음은 점점 물질화되어 인격 소멸에 이르고, 영에 자신을 내맡긴 마음은 점점 영적으로 되어 인도하는 영과 하나됨을 이룬다고 한다. 넷째, 조절자와의 교통을 의식하지 못한다고 해서 그 체험이 부정되지는 않는다. 5편은 그 증거가 삶에 맺히는 영의 열매에 있다고 말한다. 3편이 인용하는 옛 격언, 곧 친구가 자기 가슴속에 사는데도 친구를 찾아 나선다는 말은 이 마디의 요점을 잘 요약한다. 하나님을 멀리 하늘에서만 찾는 태도를 본문이 잘못이라고 부르는 이유도 여기에 있다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님의 존재가 논리로 증명될 수 없다는 진술은 신앙에 불리한 말입니까? 본문은 이를 어떻게 보완합니까?</span></button><div class="answer">불리한 말이 아닙니다. 본문은 증명의 한계를 인정하면서도 하나님의 실체에 대한 참된 개념이 논리적으로 합리적이고 철학적으로 타당하며 종교적으로 본질적이라고 말합니다. 하나님은 논증이 아니라 인간 체험의 영역에서 실현되며, 하나님을 아는 사람은 자기 체험 속에 다른 사람에게 줄 수 있는 유일하게 확실한 증거를 지닙니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>생각 조절자의 현존은 어떤 세 가지 체험적 현상으로 알 수 있습니까?</span></button><div class="answer">첫째는 하나님을 아는 지적 능력, 곧 하나님 의식입니다. 둘째는 하나님을 발견하려는 영적 충동, 곧 하나님 추구입니다. 셋째는 하나님과 같아지려는 인격의 갈망, 곧 전심으로 아버지의 뜻을 행하려는 소망입니다. 이 세 가지가 우리 안에서 일어난다는 사실 자체가 내주하는 현존을 가리킨다고 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>조절자와의 교통을 뚜렷이 의식하지 못하는 사람은 그 현존을 어떻게 확인할 수 있습니까?</span></button><div class="answer">5편은 내주하는 조절자와의 접촉을 지적으로 자각하지 못한다는 사실이 그 체험을 반증하지 않는다고 말합니다. 물질적 마음이 영의 활동을 뚜렷이 의식하기는 어렵기 때문입니다. 그 증거는 신자의 삶에서 맺히는 영의 열매의 본성과 범위에 있으며, 혼이 자라면서 그 현존을 인식하는 의식도 함께 자라납니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">1:2.3</div><div class="qtext">하나님의 존재에 대한 사실은, 파라다이스로부터 파송된 영 관찰자, 곧 필사 인간의 마음속에 살며 영원한 생존을 위한 불멸의 혼의 진화를 돕는 내주하는 신성한 현존을 통해 인간 체험 속에서 입증된다.</div></div><div class="quote"><div class="ref">1:2.4</div><div class="qtext">1. 하나님을 아는 지적 능력—하나님 의식.</div></div><div class="quote"><div class="ref">1:2.5</div><div class="qtext">2. 하나님을 발견하려는 영적 충동—하나님 추구.</div></div><div class="quote"><div class="ref">1:2.6</div><div class="qtext">3. 하나님과 같아지고자 하는 인격의 갈망—전심으로 아버지의 뜻을 행하려는 소망.</div></div><div class="quote"><div class="ref">1:2.7</div><div class="qtext">하나님의 존재는 과학적 실험이나 순수한 논리적 추론으로는 결코 입증될 수 없다. 하나님은 오직 인간 체험의 영역 안에서만 실현될 수 있다.</div></div><div class="quote"><div class="ref">1:2.8</div><div class="qtext">하나님을 아는 자는 그의 현존을 체험한 자이다.</div></div><div class="quote"><div class="ref">1:3.7</div><div class="qtext">물질에 종속된 필사자의 마음은 점점 더 물질화되어, 결국 인격 소멸을 겪게 되어 있다. 그러나 영에 자신을 내맡긴 마음은 점점 더 영적으로 되어, 생존하며 인도하는 신성한 영과 하나됨을 이루고, 이로써 인격 존재로서 생존과 영원을 달성하게 된다.</div></div><div class="quote"><div class="ref">1:4.1</div><div class="qtext">인간 마음 안에 거하시는 신성한 현존은 곧 신비 중의 신비이다.</div></div><div class="quote"><div class="ref">1:4.2</div><div class="qtext">필사자의 육신은 “하나님의 성전”이다.</div></div><div class="quote"><div class="ref">1:4.3</div><div class="qtext">이 행성에 사는 모든 도덕적 존재 안에는 하나님의 단편, 곧 신성의 일부가 함께 거주한다.</div></div><div class="quote"><div class="ref">3:1.4</div><div class="qtext">“사람은 바로 그 친구가 자기 가슴속에 살고 있는데도 친구를 찾아 나선다.”</div></div><div class="quote"><div class="ref">5:0.1</div><div class="qtext">인간은 하나님을 발견하고 그분과 교통을 시도하기 위해, 혼이 이 영적 실체의 현존을 명상하는 자신의 내적 체험보다 더 멀리 나아갈 필요가 없다.</div></div><div class="quote"><div class="ref">5:2.3</div><div class="qtext">우주 아버지의 영이 바로 너희의 마음속에 살고 있는데, 멀리 하늘에 계신 하나님을 꿈꾸는 것은 얼마나 잘못된 일인가!</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>“너희도 완전하라”는 부르심</h2><p class="sub">첫째 의무이자 최상의 모험 (1편 서문, 2편 2장, 3편 5장)</p></div></div>
+  <p class="summary">영원에 거하시는 우주 아버지는 “내가 완전한 것처럼 너희도 완전하라”는 최상의 명령을 내리셨다. 본문은 유한한 인간이 무한이라는 의미에서 완전할 수는 없지만, 하나님이 세워 주신 목표에 이르는 일은 전적으로 가능하다고 말한다. 그 완전은 의지의 신성함, 인격 동기의 완전함, 하나님 의식이라는 유한의 측면에서 최종적이다. 신성한 완전을 향한 노력은 창조체의 첫째 의무이자 가장 높은 열망이며, 하나님을 찾는 탐구는 모든 세계 거주민의 최상의 모험이다. 3편은 불확실한 세상이 이 성장을 위한 조건이라고 설명한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>이 명령은 쉽게 오해된다. 하나님처럼 흠 없이 행동하라는 요구로 들으면 좌절이나 포기로 이어지기 쉽다. 그러나 본문은 그 완전함이 물질적 의미에서 보편적이지 않고, 지성적 파악에서 무제한적이지 않으며, 영적 체험에서 최종적이지 않을 수도 있다고 먼저 한정한다. 대신 의지의 신성함, 동기의 완전함, 하나님 의식에서는 최종적이고 완전하다고 말한다. 곧 행위의 결과보다 방향과 의도의 문제로 읽을 수 있다. 1편 3장은 신성한 완전이 하늘 아버지의 뜻을 행하기로 선택한 결과로 얻는 체험적 변형을 통해 이루어진다고 덧붙인다. 둘째, 본문은 이것을 의무와 모험이라는 두 말로 동시에 표현한다. 의무라는 말은 무게를, 모험이라는 말은 기쁨과 매혹을 담는다. 그리고 신성한 완전에 도달할 가능성은 인간의 확실한 운명이라고 하여, 이 부르심이 막연한 이상이 아님을 밝힌다. 셋째, 3편 5장은 왜 진화 세계가 불확실하고 고통스러운지를 이 맥락에서 설명한다. 용기가 바람직하다면 역경이 있어야 하고, 신앙이 바람직하다면 믿는 것보다 아는 것이 늘 적어야 하며, 이타심이 바람직하다면 불평등과 마주쳐야 한다. 하보나의 완전한 존재들은 본래 선하지만, 인간은 신앙과 희망으로 자기 지위를 스스로 얻는다. 인간이 얻는 모든 신성한 것은 체험적 성취라는 말은 이 부르심의 독특한 가치를 보여 준다. 넷째, 1편 6장은 이 길에 반쪽짜리 헌신은 효력이 없다고 말하여 전심의 태도를 요구한다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>유한한 인간에게 “완전하라”는 명령은 어떤 의미에서 실현 가능한 목표입니까?</span></button><div class="answer">본문은 인간이 무한의 의미에서 완전할 수는 없다고 인정합니다. 그러나 의지의 신성함, 인격 동기의 완전함, 하나님 의식이라는 유한의 측면에서는 최종적이고 완전한 목표에 이를 수 있다고 말합니다. 완벽한 행동이 아니라 아버지의 뜻을 행하려는 전심의 선택과 방향을 요구하는 명령이라고 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>본문이 같은 일을 첫째 의무이면서 최상의 모험이라고 부르는 이유는 무엇이라고 생각합니까?</span></button><div class="answer">의무라는 표현은 이 일이 창조체에게 가장 근본적이고 마땅한 과제임을 보여 줍니다. 모험이라는 표현은 그 길이 억지로 지는 짐이 아니라 매혹적이고 기쁜 탐구임을 보여 줍니다. 더구나 신성한 완전에 이를 가능성이 확실한 운명이라고 하므로, 의무는 희망과 결합된 초청으로 읽힙니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>3편은 진화 세계의 불확실성과 고난을 완전을 향한 성장과 어떻게 연결합니까?</span></button><div class="answer">용기, 이타심, 희망, 신앙, 충성 같은 덕목이 바람직하다면 역경, 불평등, 불확실성, 앎의 한계, 배반의 가능성이 있는 환경이 필요하다고 설명합니다. 또 자유로우려면 오류를 범할 수 있어야 합니다. 하보나의 존재들이 본래 선한 것과 달리 인간은 이런 조건 속에서 선택하며 신성한 가치를 체험적으로 얻어 냅니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">1:0.3</div><div class="qtext">영원에 거하시는 우주 아버지로부터 최상의 명령이 내려졌다. “내가 완전한 것처럼 너희도 완전하라.”</div></div><div class="quote"><div class="ref">1:0.3</div><div class="qtext">시간의 자녀들의 초월적 목표는 영원한 하나님을 발견하고 신성한 본성을 이해하고 우주 아버지를 인식하는 것이다.</div></div><div class="quote"><div class="ref">1:0.4</div><div class="qtext">신성의 완전을 성취하려고 노력하라는 이 장엄하고 보편적인 권면은 완전하신 하나님께 속한 모든 분투하는 창조 존재들의 첫째 의무이며, 마땅히 가장 높은 열망이 되어야 한다.</div></div><div class="quote"><div class="ref">1:0.4</div><div class="qtext">신성한 완전에 도달할 가능성은 인간의 영원한 영적 진보의 최종적이고 확실한 운명이다.</div></div><div class="quote"><div class="ref">1:0.5</div><div class="qtext">그것은 의지 신성함, 인격 동기 완전함, 하나님 의식이라는 모든 유한의 측면에서는 최종적이고 완전하다.</div></div><div class="quote"><div class="ref">1:0.6</div><div class="qtext">우주들의 하나님을 찾는 이 숭고한 탐구는 시간과 공간 모든 세계 거주민들의 최상의 모험이다.</div></div><div class="quote"><div class="ref">1:3.6</div><div class="qtext">하늘 아버지의 뜻을 행하기로 창조체가 선택한 필연적 결과인, 영적 달성의 체험적 변형들을 성취함으로써 신성한 완전에 이르러야 한다.</div></div><div class="quote"><div class="ref">2:2.5</div><div class="qtext">공간 세계들에 있는 살아 있는 실존들의 전체 계획은, 모든 의지 창조체를 아버지의 파라다이스 완전함을 나누는 체험이라는 높은 운명으로 끌어올리려는 신성한 목적에 집중되어 있다.</div></div><div class="quote"><div class="ref">3:5.6</div><div class="qtext">1. 용기, 곧 품성의 강인함은 바람직한가? 그렇다면 사람은 역경과 씨름하고 실망에 반응해야 하는 환경에서 자라야 한다.</div></div><div class="quote"><div class="ref">3:5.9</div><div class="qtext">4. 신앙, 곧 인간 사고의 최상의 단언은 바람직한가? 그렇다면 사람의 마음은 자신이 믿을 수 있는 것보다 언제나 더 적게 아는 곤혹스러운 처지에 놓여야 한다.</div></div><div class="quote"><div class="ref">3:5.15</div><div class="qtext">진화하는 사람은 자유로우려면 오류를 범할 수 있어야 한다.</div></div><div class="quote"><div class="ref">3:5.16</div><div class="qtext">인간 마음이 파악하고 인간 혼이 얻는 모든 신성한 것은 체험적 성취이다.</div></div><div class="quote"><div class="ref">1:6.5</div><div class="qtext">마음이 반뿐인 부분적 헌신은 효력이 없다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>무한한 인격이신 하나님</h2><p class="sub">알 수 있고 사랑할 수 있는 창조주 인격 (1편 5·6·7장, 5편 6장)</p></div></div>
+  <p class="summary">본문은 하나님의 광대함이 그분의 인격을 가리지 않도록 하라고 당부한다. 하나님은 무한하시며 인격적인, 곧 무한한 인격이시고, 그분이 없으면 우주 어디에도 인격이 없다. 그분은 알고 알려질 수 있으며 사랑하고 사랑받을 수 있는 분, 우리의 친구가 되실 수 있는 분이다. 인간의 인격은 신성한 인격이 시간과 공간에 드리운 그림자이며, 교제는 오직 인격들 사이에서만 가능하다. 그래서 인간은 물방울이 바다에 녹듯 하나님과 합쳐지는 것이 아니라, 인격적 교제와 뜻의 일치를 통해 신성한 합일에 이른다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>하나님이 인격이시라는 주장은 이 다섯 편에서 가장 공들여 논증되는 주제 가운데 하나다. 첫째, 본문은 인격이 하나님의 여러 속성 가운데 하나가 아니라 그분의 조율된 무한한 본성과 통일된 의지의 총체라고 정의한다. 그래서 하나님은 인간의 인격 개념을 훨씬 초월하시지만, 동시에 인격 이하의 어떤 것도 될 수 없다고 말한다. 둘째, 인격을 부정하면 남는 길이 유물론과 범신론이라는 두 딜레마뿐이라고 지적한다. 두 입장은 인격에 물질적 몸이 필요하다는 같은 오류를 서로 반대 방향에서 범한다. 하나는 사람이 몸을 잃으면 인격도 끝난다고 보고, 다른 하나는 하나님께 몸이 없으니 인격이 아니라고 본다. 셋째, 1편 6장은 하나님이 과학에는 원인, 철학에는 관념, 종교에는 인격이자 사랑의 아버지라고 정리하면서, 인간은 유한에서 무한을 바라보고 하나님은 무한에서 유한을 바라보신다는 관점의 차이를 상기시킨다. 그래서 신성한 인격의 계시는 인간 인격의 향상, 특히 예수의 생애를 기다려야 했다. 넷째, 1편 7장은 이 교리의 실천적 의미를 밝힌다. 사물 사이에는 상호작용만 있고 교제는 없으며, 신성한 선함의 개념은 인격과의 관계 속에서만 이해된다. 오직 인격만이 사랑하고 사랑받을 수 있기 때문이다. 다섯째, 5편 6장은 아버지가 모든 인격의 증여자이자 보존자이며, 인격 회로를 통해 모든 인격과 직접 접촉하신다고 말한다. 하나님은 우리의 고통 가운데 함께 고통받고 승리 안에서 함께 승리하신다는 말이 문자 그대로 참이라는 진술도 이 인격 개념 위에서 이해된다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>왜 하나님이 인격이셔야 한다고 본문은 말합니까?</span></button><div class="answer">교제와 사랑은 오직 인격들 사이에서만 가능하기 때문입니다. 비인격적인 힘이나 법칙과는 상호작용은 있어도 교제는 없습니다. 또 신성한 선함은 인격과의 관계 속에서만 이해되며, 진리와 아름다움도 사랑의 아버지의 속성이 아니라면 생존의 희망과 분리된다고 본문은 설명합니다. 인격적 하나님이어야 우리를 알고 사랑하며 친구가 되실 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>하나님의 인격을 부정할 때 생기는 유물론과 범신론의 딜레마는 어떤 공통된 오류에서 나옵니까?</span></button><div class="answer">두 입장 모두 인격에는 물질적 형체가 있어야 한다는 형체성 오류를 범합니다. 유물론은 사람이 죽어 몸을 잃으면 인격이 끝난다고 보고, 범신론은 하나님께 몸이 없으므로 인격이 아니라고 봅니다. 본문은 물질적 육체가 인격에 필수적이지 않으며, 진보하는 인격은 마음과 영의 결합 안에서 기능한다고 바로잡습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>물방울이 바다에 녹는 비유를 본문은 왜 거부합니까? 그 대신 무엇을 제시합니까?</span></button><div class="answer">그 비유대로라면 인간의 인격은 하나님 안에서 사라지게 됩니다. 본문은 인간이 그런 방식으로 하나님과 연합하지 않는다고 말합니다. 대신 점진적이고 상호적인 영적 교감, 인격적 하나님과의 인격적 교류, 신성한 뜻에 대한 전심의 지성적 일치를 통해 점점 더 신성한 본성을 얻는 길을 제시합니다. 관계는 끝까지 아버지와 자녀의 관계로 남습니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">1:5.1</div><div class="qtext">하나님은 무한하시며 인격적이시다. 그는 무한한 인격이시다.</div></div><div class="quote"><div class="ref">1:5.7</div><div class="qtext">하나님 없이는, 그리고 그의 중심을 이루는 위대한 인격이 없이는, 그 광대한 우주들의 우주 전체 어디에도 인격이 없을 것이다. 하나님은 인격이시다.</div></div><div class="quote"><div class="ref">1:5.8</div><div class="qtext">그럼에도 그는 참으로 그리고 영원히 완전한 창조주 인격이시며, “알고 알려질 수 있으며,” “사랑할 수 있고 사랑받을 수 있는” 분이시며, 우리의 친구가 되실 수 있고, 다른 이들이 그러했듯이 너희도 하나님의 친구로 알려질 수 있다.</div></div><div class="quote"><div class="ref">1:5.11</div><div class="qtext">첫째 근원이며 중심의 인격을 부정하면, 남는 선택지는 유물론이나 범신론이라는 두 가지 철학적 딜레마뿐이다.</div></div><div class="quote"><div class="ref">1:5.16</div><div class="qtext">“너희 모든 고통 가운데 그가 고통받으시며,” “너희의 모든 승리에서 그는 너희 안에서 그리고 너희와 함께 승리하신다”는 말씀은 문자 그대로 참이다.</div></div><div class="quote"><div class="ref">1:6.1</div><div class="qtext">인간의 인격은 신성한 창조주 인격이 시간-공간에 드리운 형상-그림자이다.</div></div><div class="quote"><div class="ref">1:6.2</div><div class="qtext">하나님은 과학에는 원인이요, 철학에는 하나의 관념이며, 종교에는 한 인격, 더 나아가 사랑의 하늘 아버지이시다.</div></div><div class="quote"><div class="ref">1:6.8</div><div class="qtext">나사렛 예수는 인간 체험 안에서 이 영 인격 잠재력을 온전히 실현했다.</div></div><div class="quote"><div class="ref">1:7.1</div><div class="qtext">무인격적 사물들 사이에는 상호작용은 있을 수 있으나 교제는 불가능하다.</div></div><div class="quote"><div class="ref">1:7.2</div><div class="qtext">인간은 하나님과의 연합을, 마치 물방울이 바다에 녹아 하나가 되는 방식으로 달성할 수 없다.</div></div><div class="quote"><div class="ref">1:7.3</div><div class="qtext">오직 인격만이 사랑할 수 있고, 사랑받을 수 있다.</div></div><div class="quote"><div class="ref">1:7.5</div><div class="qtext">과학도, 철학도, 신학도 하나님의 인격을 증명할 수 없다.</div></div><div class="quote"><div class="ref">5:6.1</div><div class="qtext">아버지 하나님은 모든 인격의 증여자이자 보존자이시다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>어디에나 계시고 모든 것을 아시는 하나님</h2><p class="sub">무소부재·전능·전지와 섭리 (3편 1–4장, 4편 1·2장)</p></div></div>
+  <p class="summary">3편은 하나님의 속성을 차례로 다룬다. 오직 하나님만이 무수한 장소에 동시에 계실 수 있으며, 그분은 하늘과 땅을 채우시면서도 우주에 다 담기지 않으신다. 하나님의 권능은 결코 맹목적인 힘으로 작동하지 않고, 모든 행위는 지혜롭고 친절하며 전체의 최선을 고려한다. 하나님은 모든 것을 아시지만, 그 앎이 자녀들의 자유를 폐기하지는 않는다. 4편은 섭리를 천상 존재들의 맞물린 활동으로 설명하고, 자연은 하나님의 습성일 뿐 예배의 대상이 아니라고 말한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>속성에 관한 이 서술은 추상적 목록처럼 보이지만, 각 대목이 인간의 체험과 연결되어 있다는 점이 특징이다. 첫째, 무소부재는 공간을 가득 채운다는 뜻만이 아니다. 3편은 하나님이 창조체 안에 사신다고 말하며, 그분의 현존이 우리 안에서 얼마나 효과적인지는 내주하는 조절자에게 마음이 얼마나 협력하느냐에 달려 있다고 설명한다. 아버지는 경시당했다고 물러나지 않으시며, 그분의 영향력이 미치는 정도를 정하는 것은 자녀들의 선택이다. 둘째, 전능은 하나님답지 않은 일을 할 수 있는 능력을 뜻하지 않는다. 3편은 하나님의 권능이 그분의 본성, 곧 사랑과 진리와 아름다움과 선하심, 그리고 자비의 의지와 삼위일체의 정의에 의해 조율된다고 말한다. 인간에게 하나님의 많은 행위가 자의적이거나 잔인하게 보이는 것은 유한한 시야 때문이며, 그 행위는 한 개인이나 한 행성만이 아니라 관련된 모두의 최선을 위한 것이라고 설명한다. 셋째, 전지는 별의 수를 아는 데서 그치지 않고 참새 한 마리와 머리카락까지 아시는 앎이다. 동시에 본문은 미리 아심이 자유 의지를 없애지 않는다고 분명히 한다. 넷째, 3편 4장은 아버지가 자신을 아무리 나누어 주셔도 그 권능과 지혜와 사랑이 조금도 줄지 않는다고 말하고, 유한한 인간이 무한을 이해할 수는 없어도 그 사랑의 충격은 실제로 체험할 수 있다고 덧붙인다. 다섯째, 4편은 섭리를 유치하고 임의적인 기적으로 보지 말라고 하며, 자연은 파라다이스의 완전성과 진화 세계의 미완성이 겹친 결과이므로 하나님의 충실한 묘사가 될 수 없다고 정리한다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님이 어디에나 계신다면, 사람마다 그분의 현존을 다르게 체험하는 이유는 무엇입니까?</span></button><div class="answer">3편은 창조체 마음에 하나님의 현존이 있는지는 조절자의 내주로 결정되지만, 그 효과적 현존은 마음이 조절자에게 얼마나 협력하느냐에 따라 결정된다고 말합니다. 아버지는 변덕으로 가까워지거나 멀어지지 않으시며, 경시당했다고 물러나지도 않으십니다. 선택의 능력을 받은 자녀들이 스스로 그 영향력의 정도를 정하는 것입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>하나님의 행위가 때로 무정하거나 잔인하게 보이는 문제를 3편은 어떻게 설명합니까?</span></button><div class="answer">인간의 관점이 부분적이고 유한하며 지나치게 물질적이기 때문에 신성한 행위의 지혜와 친절을 보지 못한다고 설명합니다. 하나님의 모든 행위는 목적이 있고 지혜롭고 친절하며, 한 존재나 한 행성만이 아니라 관련된 모두의 최선을 고려합니다. 또 진화 세계에는 우주 아버지가 몸소 하신 일이 아닌 일도 많이 일어난다는 점을 함께 기억해야 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>하나님이 모든 것을 미리 아신다면 인간의 자유는 어떻게 됩니까?</span></button><div class="answer">본문은 하나님이 죄의 사건들을 미리 아시기로 선택하시는지는 단정할 수 없다고 조심스럽게 말합니다. 다만 하나님이 자녀들의 자유 의지에 따른 행위를 미리 아신다 해도 그 사전 지식이 그들의 자유를 조금도 폐기하지 않는다고 밝힙니다. 또 전지란 알 수 없는 것까지 아는 것을 뜻하지 않으며, 확실한 것은 하나님이 결코 놀라지 않으신다는 점입니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">3:1.1</div><div class="qtext">오직 하나님만이 동시에 두 장소에, 아니 무수히 많은 장소에 계실 수 있다.</div></div><div class="quote"><div class="ref">3:1.2</div><div class="qtext">“‘나는 가까이 있는 하나님일 뿐 아니라 멀리 있는 하나님이기도 하다’고 주께서 말씀하신다. ‘내가 하늘과 땅을 가득 채우지 않느냐?’”</div></div><div class="quote"><div class="ref">3:1.2</div><div class="qtext">하나님은 우주 전체에 걸쳐 계시되지만, 우주는 결코 하나님의 무한 전체를 담거나 포괄할 수 없다.</div></div><div class="quote"><div class="ref">3:1.12</div><div class="qtext">아버지는 경시당했다고 해서 은둔하여 물러나지 않으신다. 그의 사랑은 창조체의 잘못된 행동으로 멀어지지 않는다.</div></div><div class="quote"><div class="ref">3:2.6</div><div class="qtext">겉보기와 상관없이, 하나님의 권능은 결코 맹목적인 힘으로 작동하지 않는다.</div></div><div class="quote"><div class="ref">3:2.8</div><div class="qtext">하나님의 모든 행위는 목적이 있고 지성적이며 지혜롭고 친절하며, 영원히 최선의 선을 고려한다.</div></div><div class="quote"><div class="ref">3:3.1</div><div class="qtext">“하나님은 모든 것을 아신다.” 신성한 마음은 모든 창조계의 생각을 의식하고 그에 정통하다.</div></div><div class="quote"><div class="ref">3:3.2</div><div class="qtext">예수는 살아 계신 하나님을 두고 이렇게 말했다. “너희 아버지는 너희가 간구하기도 전에 너희에게 필요한 것이 무엇인지 아신다.”</div></div><div class="quote"><div class="ref">3:3.4</div><div class="qtext">그러나 설령 하나님이 그의 자녀들의 자유 의지에 따른 행위를 미리 아신다고 해도, 그러한 사전 지식은 그들의 자유를 조금도 폐기하지 않는다.</div></div><div class="quote"><div class="ref">3:3.5</div><div class="qtext">전능은 할 수 없는 일, 곧 하나님답지 않은 행위를 할 수 있는 능력을 뜻하지 않는다.</div></div><div class="quote"><div class="ref">3:4.6</div><div class="qtext">그러나 바로 이 유한한 인간이 그러한 무한한 아버지의 사랑이 주는 온전하고 줄어들지 않는 충격을 실제로 느낄 수, 곧 문자 그대로 체험할 수 있다.</div></div><div class="quote"><div class="ref">4:1.1</div><div class="qtext">하나님의 섭리는, 우주 법칙에 따라 하나님의 영예와 그의 우주 자녀들의 영적 진보를 위해 끊임없이 수고하는 천상 존재들과 신성한 영들의 서로 맞물린 활동들로 이루어진다.</div></div><div class="quote"><div class="ref">4:2.8</div><div class="qtext">아니다, 자연은 하나님이 아니다. 자연은 예배의 대상이 아니다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>사랑이신 하나님, 정의와 자비의 조화</h2><p class="sub">심판관을 초월하는 아버지 (2편 3–6장, 4편 3·5장)</p></div></div>
+  <p class="summary">2편은 “하나님은 사랑이시다”라는 선언을 중심에 두고, 우주에 대한 그분의 유일한 인격적 태도가 언제나 신성한 애정이라고 말한다. 그 사랑은 감상이 아니라 지혜와 하나로 작용하는, 멀리 내다보는 부모의 애정이다. 하나님은 정의로우시지만 그 정의는 늘 자비로 누그러지며, 영원한 정의와 신성한 자비가 함께 인간 체험에서 공정함이라 불리는 것을 이룬다. 하나님은 정의와 자비로 나뉜 분열된 인격이 아니며, 아버지로서의 하나님은 심판관으로서의 하나님을 초월하신다. 4편은 진노한 신을 피로 달래야 한다는 관념을 분명히 물리친다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>이 마디는 하나님의 사랑과 정의가 서로 충돌하는가라는 오래된 물음을 다룬다. 첫째, 본문은 사랑이 하나님 안에서 지혜와 통일되어 작용한다고 말하고, 하나님은 사랑이시지만 사랑이 곧 하나님은 아니라고 구분한다. 사랑이라는 개념을 하나님보다 앞세우면 하나님을 인간이 정한 사랑의 기준에 맞추려 들게 되기 때문이다. 같은 대목은 신성한 사랑의 가장 큰 현시가 생각 조절자의 증여이고, 그 사랑의 가장 큰 계시가 미가엘의 증여 생애라고 말한다. 둘째, 자비는 정의를 위반하는 것이 아니라, 유한한 창조체의 약점과 환경적 한계를 충분히 아는 지혜로 누그러진 정의라고 정의된다. 하나님은 자녀들을 다 아시기에 용서가 어렵지 않으며, 사람도 이웃을 깊이 이해할수록 용서하기 쉬워진다는 비유가 함께 나온다. 셋째, 2편 6장은 하나님을 왕이자 심판관으로만 보는 개념이 높은 도덕을 길렀지만 개인을 불안하게 했다고 진단한다. 예수는 하나님을 각 사람의 아버지로 계시했고, 하나님은 아버지처럼이 아니라 아버지로서 사랑하신다. 정의와 사랑이 화해할 수 없다는 가정은 하나님의 통일성을 부정하는 것이며, 본문은 속죄 교리를 이런 전제에서 나온 것으로 비판한다. 넷째, 죄에 대한 태도도 정리된다. 하나님은 죄인을 잠재적으로 영원한 인격이기에 사랑하시고, 죄는 인격이 아니므로 정의만이 그것을 인식한다. 다섯째, 4편은 하나님이 질투하거나 진노하신다는 관념, 그리고 희생 제물이나 피 흘림으로 하나님의 호의를 얻으려는 관념을 원시 종교의 유물로 보며, 그런 가르침을 하나님에 대한 모욕이라고까지 말한다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>“하나님은 사랑이시다. 그러나 사랑이 하나님은 아니다”라는 구분은 왜 중요합니까?</span></button><div class="answer">사랑이라는 개념을 하나님보다 높이 두면, 하나님이 인간이 생각하는 사랑의 기준에 맞춰야 하는 존재처럼 됩니다. 본문은 하나님의 사랑이 지혜와 그분의 완전한 본성 전체와 통일되어 작용하는, 지성적이고 멀리 내다보는 부모의 애정이라고 말합니다. 그래서 그 사랑은 때로 징계를 포함하면서도 언제나 자녀의 영원한 유익을 향합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>본문은 자비를 정의와 어떤 관계로 설명합니까?</span></button><div class="answer">자비는 정의를 깨뜨리는 것이 아니라, 완전한 지식과 창조체의 약점에 대한 충분한 인식에서 자라난 지혜로 누그러진 정의라고 설명합니다. 무한한 지혜가 주어진 상황에서 정의와 자비의 비율을 정하며, 하나님은 상충하는 태도로 찢기지 않으십니다. 영원한 정의와 신성한 자비가 함께 인간 체험에서 공정함을 이룹니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>4편이 피 흘림으로 하나님을 달래야 한다는 생각을 강하게 비판하는 근거는 무엇입니까?</span></button><div class="answer">하나님은 인간적 의미의 진노와 분노를 느끼시지 않으며, 그분의 사랑은 아들들의 희생이나 중재로 유도된 것이 아니라 본래 아버지의 애정이기 때문입니다. 본문은 그런 관념을 원시 종교의 유물로 보고, 죄 없는 피를 흘려야 하나님의 호의를 얻는다고 가르치는 것을 하나님에 대한 모욕이라고 말합니다. 미가엘의 증여도 하나님의 호의를 얻기 위해 필요했던 것이 아니라고 설명합니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">2:3.2</div><div class="qtext">실로, 잘못된 행동의 수확을 거두는 그 정의 안에서도, 이 신성한 정의는 언제나 자비로 누그러진다.</div></div><div class="quote"><div class="ref">2:4.1</div><div class="qtext">자비는, 완전한 지식과, 유한한 창조체의 본성적 약점과 환경적 한계에 대한 충분한 인식에서 자라난 지혜로 누그러진 정의일 뿐이다.</div></div><div class="quote"><div class="ref">2:4.2</div><div class="qtext">하나님께서는 자신의 자녀들을 모두 아시므로, 그들을 용서하시는 것이 어렵지 않다.</div></div><div class="quote"><div class="ref">2:4.4</div><div class="qtext">영원한 정의와 신성한 자비는 함께, 인간의 체험 속에서 공정함이라 불릴 것을 이룬다.</div></div><div class="quote"><div class="ref">2:5.1</div><div class="qtext">“하나님은 사랑이시다.” 그러므로 우주의 일들에 대한 그분의 유일한 인격적 태도는 언제나 신성한 애정의 반응이다.</div></div><div class="quote"><div class="ref">2:5.2</div><div class="qtext">하나님이 그분의 자녀들을 사랑하시게 된 것이, 그의 아들들의 희생이나 하위 창조체들의 중재로 유도된 것이라고 생각하는 것은 잘못이다.</div></div><div class="quote"><div class="ref">2:5.10</div><div class="qtext">그러나 하나님의 사랑은 지성적이며 멀리 내다보는 부모의 애정이다.</div></div><div class="quote"><div class="ref">2:5.10</div><div class="qtext">하나님은 사랑이시다. 그러나 사랑이 하나님은 아니다. 필사 존재를 향한 신성한 사랑의 가장 위대한 현시는 생각 조절자의 증여 안에 있다.</div></div><div class="quote"><div class="ref">2:6.4</div><div class="qtext">하나님은 아버지처럼 사랑하시는 것이 아니라, 아버지로서 사랑하신다.</div></div><div class="quote"><div class="ref">2:6.6</div><div class="qtext">아버지로서의 하나님은 심판관으로서의 하나님을 초월하신다.</div></div><div class="quote"><div class="ref">2:6.7</div><div class="qtext">하나님은 결코 분노하거나 복수하거나 화를 내지 않으신다.</div></div><div class="quote"><div class="ref">2:6.8</div><div class="qtext">하나님의 사랑은 죄인을 구원하고, 하나님의 법은 죄를 멸한다.</div></div><div class="quote"><div class="ref">4:5.4</div><div class="qtext">하나님의 호의를 얻거나 허구의 신성한 진노를 돌리기 위해 죄 없는 피를 흘려야 한다고 믿거나, 견지하거나, 가르치는 것은 하나님에 대한 모욕이다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>간격을 메우신 하나님과 영원한 모험</h2><p class="sub">선택, 예배, 그리고 파라다이스를 향한 상승 (2편 1·5장, 5편 1·3·5·6장)</p></div></div>
+  <p class="summary">무한하신 하나님과 유한한 인간 사이에는 큰 영적 간격이 있지만, 하나님은 자신만의 방식으로 이미 그 간격을 메우셨다. 아버지는 사랑으로 자신의 무한성을 낮추어 아들들의 증여와 천상 존재들의 사역, 그리고 내주하는 조절자를 통해 창조체에게 다가오신다. 5편은 하나님이 다가갈 수 있는 분이며 그 길이 모두에게 열려 있다고 말한다. 인간의 영원한 운명은 아버지의 뜻을 행하려는 선택에 달려 있고, 지성이나 교육의 부족도 그 길을 막지 못한다. 하나님은 사람과 함께 영원한 모험을 시작하셨으며, 그 인도를 따르는 자는 실패할 수 없다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>이 마디는 다섯 편의 결론에 해당한다. 첫째, 2편은 하나님의 무한성이 그 자체로 유한한 존재와의 직접 소통을 막는다고 인정한 뒤, 하나님이 마련하신 세 가지 길을 제시한다. 파라다이스 아들들이 살과 피의 본성에 참여하여 사람이 되는 증여, 무한 영의 인격들의 사역, 그리고 예고도 설명도 없이 보내지는 생각 조절자다. 하나님은 사랑으로 자신의 무한성을 낮추고 희석하여 자녀들의 유한한 마음에 다가오신다. 둘째, 5편 1장은 인간이 아버지께 곧바로 다가갈 수 없는 이유가 아버지의 거리 두기가 아니라 창조체의 유한성에 있다고 말한다. 그러면서도 영적 진보의 가능성은 모두에게 같고, 사회적·지적 차이와 무관하게 모두가 같은 신성한 현존을 누린다고 강조한다. 셋째, 선택의 무게가 분명히 제시된다. 인간의 최종 운명은 아버지의 뜻을 선택하는 권능을 잃기 전까지 확정되지 않으며, 조절자 융합은 그 선택이 최종적이고 돌이킬 수 없음을 선포한다. 5편 6장은 하나님이 필사 의지의 주권을 법령으로 정하셨고, 영원의 문은 자유 의지의 선택에만 응답해 열린다고 말한다. 넷째, 5편 3장은 예배와 기도를 구별한다. 예배는 자기 이익을 구하지 않고 하나님이 어떤 분이신지 때문에 드리는 자연스러운 응답이며, 자기 이익이 끼어들면 기도가 된다. 다섯째, 5편 5장은 마음이 하나님을 믿고 혼이 하나님을 알며 조절자와 함께 하나님을 갈망할 때 생존이 보장된다고 말한다. 조언자가 마지막에 남기는 말, 곧 하나님은 너희의 우주 아버지이시고 너희는 모두 그의 자녀라는 말보다 더 도움이 되는 것은 없다는 고백은 다섯 편 전체를 한 문장으로 요약한다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님과 인간 사이의 간격을 하나님은 어떤 방식들로 메우셨다고 본문은 말합니까?</span></button><div class="answer">2편은 세 가지를 듭니다. 파라다이스 아들들이 행성 종족의 살과 피의 본성에 참여하는 증여, 세라핌을 비롯한 무한 영의 인격들의 사역, 그리고 하나님이 몸소 주시는 선물인 생각 조절자의 내주입니다. 아버지는 사랑으로 자신의 무한성을 낮추고 조정하여 창조체의 유한한 마음에 다가오십니다. 인간이 올라가기 전에 하나님이 먼저 내려오신 것입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>5편은 지성이나 교육, 사회적 지위의 차이가 영적 진보에 어떤 영향을 준다고 말합니까?</span></button><div class="answer">그런 차이가 영적 진보의 가능성을 바꾸지 못한다고 말합니다. 모든 사람은 같은 신성한 현존을 누리고, 내주하는 영과 교통할 동등한 특권을 지니며, 그 인도를 받아들이기로 똑같이 선택할 수 있습니다. 지성의 한계나 교육과 문화의 결핍, 도덕 기준의 열등함도 믿는 사람 안의 신성한 영을 무효로 하지 못하며, 하나님을 믿고 알고 갈망할 때 생존은 보장됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>예배와 기도는 어떻게 다르며, 이 구분은 하나님과의 관계에 대해 무엇을 알려 줍니까?</span></button><div class="answer">예배는 자기 이익의 요소가 전혀 없이, 하나님이 어떤 분이신지 때문에 드리는 자연스럽고 자발적인 응답입니다. 기도는 자기나 창조체의 이익을 포함합니다. 예배에 자기 이익이 끼어들면 그것은 기도로 바뀝니다. 이 구분은 하나님과의 관계가 무언가를 얻으려는 거래가 아니라, 그분의 인격과 사랑스러운 본성을 알아본 자녀의 응답임을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">2:1.7</div><div class="qtext">이리하여 말하자면 하나님이 사람이 되신 것이니, 이는 미가엘의 증여에서 일어난 일이며, 그는 하나님의 아들과 사람의 아들이라는 이름으로 번갈아 불렸다.</div></div><div class="quote"><div class="ref">2:1.8</div><div class="qtext">파라다이스 아버지는 사랑으로 기꺼이 자신의 무한성을 낮추시고 또한 조정하시며 희석시키고 약화시키신다. 이는 그가 창조체 자녀들의 유한한 마음에 더 가까이 다가갈 수 있게 하려는 것이다.</div></div><div class="quote"><div class="ref">2:5.6</div><div class="qtext">그분은 자신만의 방식으로 이미 그 간극을 이어 놓으셨다. 그는 자신에게서 나온 자기 영을 보내 너희 안에 살게 하셨고, 너희가 영원한 우주 생애를 좇는 동안 너희와 함께 수고하게 하셨다.</div></div><div class="quote"><div class="ref">5:1.1</div><div class="qtext">유한한 창조체가 무한하신 아버지께 다가갈 수 없는 것은 아버지가 초연히 떨어져 계시기 때문이 아니라, 창조된 존재의 유한성과 물질적 한계 때문이다.</div></div><div class="quote"><div class="ref">5:1.5</div><div class="qtext">그들의 영적 자질이 동일하고 독특하다는 것을 잊지 말라.</div></div><div class="quote"><div class="ref">5:1.8</div><div class="qtext">너희 각자에게 그리고 우리 모두에게, 하나님은 다가갈 수 있는 분이시고, 아버지는 도달할 수 있는 분이시며, 그 길은 열려 있다.</div></div><div class="quote"><div class="ref">5:1.9</div><div class="qtext">그리고 의심하지 말라, 어느 날 너희는 신성한 중심의 현존 앞에 서서, 비유적으로 말해, 얼굴과 얼굴을 마주하여 그를 보게 될 것이다.</div></div><div class="quote"><div class="ref">5:1.11</div><div class="qtext">인간의 최종 운명은 그가 아버지의 뜻을 선택하는 권능을 잃을 때까지 확정되지 않는다.</div></div><div class="quote"><div class="ref">5:1.12</div><div class="qtext">하나님은 사람과 함께 영원한 모험을 시작하신 것이다.</div></div><div class="quote"><div class="ref">5:1.12</div><div class="qtext">너희는 공간의 진화 세계들로부터 상승하는 그의 창조체들을 위해 사랑이 많으신 하나님이 우주 목표로 설정하신 그 높은 운명에 도달하는 데 실패할 수 없다.</div></div><div class="quote"><div class="ref">5:3.3</div><div class="qtext">우리는 단지 우리가 이해하는 하나님의 모습 그대로 인해 하나님을 예배한다.</div></div><div class="quote"><div class="ref">5:5.13</div><div class="qtext">마음이 하나님을 믿고 혼이 하나님을 알며, 양육하는 조절자와 더불어 그들 모두가 하나님을 갈망할 때, 생존은 보장된다.</div></div><div class="quote"><div class="ref">5:6.12</div><div class="qtext">영원의 문은 오직 자유 의지의 하나님의 자유 의지 아들들이 행하는 자유 의지 선택에 응답해서만 열린다.</div></div><div class="quote"><div class="ref">5:6.13</div><div class="qtext">하나님은 너희의 우주 아버지이시며 너희는 모두 그의 행성 자녀들이라는 것을 다시 말하는 것보다 더 도움이 되는 일을 나는 할 수 없다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 1~5편 본문(새번역본) 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>

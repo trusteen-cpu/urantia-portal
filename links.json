@@ -347,6 +347,26 @@
               "name": "인터렉티브 스터디",
               "children": [
                 {
+                  "name": "제1강 우주 아버지",
+                  "url": "/learn/w1.html"
+                },
+                {
+                  "name": "제2강 영원 아들",
+                  "url": "/learn/w2.html"
+                },
+                {
+                  "name": "제3강 무한 영",
+                  "url": "/learn/w3.html"
+                },
+                {
+                  "name": "제4강 삼위일체",
+                  "url": "/learn/w4.html"
+                },
+                {
+                  "name": "제5강 스스로 계신 이의 분화와 신들의 관계",
+                  "url": "/learn/w5.html"
+                },
+                {
                   "name": "제6강 신성한 중앙 우주",
                   "url": "/learn/w6.html"
                 },
@@ -405,6 +425,14 @@
                 {
                   "name": "제20강 유색인종의 진화와 진화의 총괄",
                   "url": "/learn/w20.html"
+                },
+                {
+                  "name": "제21강 아담 시대 이후의 인종의 분산",
+                  "url": "/learn/w21.html"
+                },
+                {
+                  "name": "제22강 인격의 본질, 기능, 생존",
+                  "url": "/learn/w22.html"
                 },
                 {
                   "name": "제26강 루시퍼의 반란과 문제점",

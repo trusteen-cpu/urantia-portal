@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제22강 인격의 본질, 기능, 생존 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 112편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 88개">
+<meta property="og:url" content="https://urantiareaders.com/learn/w22.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인격의 본질, 기능, 생존 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 22</p>
+    <h1>인격의 본질, 기능, 생존</h1>
+    <p class="papers">유란시아서 112편</p>
+    <div class="lead">112편은 오르본톤의 한 단독 사자가 발표한 것으로, 진화 행성에서 시작해 최종자의 사명에 이르는 긴 생애 동안 몸과 마음과 혼이 모두 변해도 절대적으로 변하지 않는 한 요소, 곧 인격에 초점을 맞춘다. 저자는 인격을 정의하려 하지 않고 알려진 사실을 열거하는 데서 시작해, 인격이 기능하는 세 국면과 일곱 차원, 자아의 층위와 사랑의 정의, 과학과 철학과 종교의 관계를 차례로 다룬다. 이어 죽음을 영적, 지적, 물리적 죽음으로 나누고, 죽음 이후 조절자와 혼이 각각 어디로 가는지, 생존이 어떤 원칙으로 판정되는지를 설명한다. 인격은 영원하지만 정체성은 선택에 따라 조건 지어지며, 우주 정부는 의문이 있을 때 언제나 개인에게 유리하게 판정한다. 죽음을 넘어 생존하는 것은 인간과 조절자의 공동 자녀인 혼이며, 혼은 부활의 전당에서 재인격화되고 모론시아 자아로 깨어나 마침내 조절자와 영원히 융합한다. 이 페이지는 112편을 일곱 마디로 정리하고, 마디마다 더 알아보기, 소그룹 질문과 모범답안, 본문 인용을 덧붙였다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 변화 속의 변하지 않는 인격</a></li><li><a href="#s2">2. 인격의 국면, 차원, 체계</a></li><li><a href="#s3">3. 자아의 구조와 지배의 진화</a></li><li><a href="#s4">4. 세 가지 죽음과 죽음 이후의 조절자</a></li><li><a href="#s5">5. 선택하는 인격과 자비로운 판정</a></li><li><a href="#s6">6. 혼과 재인격화</a></li><li><a href="#s7">7. 모론시아 자아와 조절자 융합</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>변화 속의 변하지 않는 인격</h2><p class="sub">정의 대신 사실을 열거하는 출발점 (112편 서론)</p></div></div>
+  <p class="summary">112편은 진화 행성에서 시작된 생애가 조절자와의 영원한 결합을 거쳐 최종자의 사명으로 이어진다고 개관한 뒤, 그 모든 변화 속에서 절대적으로 변하지 않는 한 부분이 인격이라고 밝힌다. 저자는 인격을 정의하려는 시도가 주제넘다고 말하고, 대신 알려진 열네 가지 사실을 열거한다. 인격은 아버지나 공동 행위자가 부여하고, 비교적 창조적이며, 자체 정체성은 없지만 체계의 정체성을 통일하고, 절대적으로 유일하며, 혼 안에서 필사의 죽음을 넘어 생존할 수 있다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 서론에서 먼저 눈여겨볼 점은 서술 방식이다. 계시는 인격을 정의하지 않겠다고 스스로 한계를 정하고, 관찰 가능한 사실들을 나열하는 길을 택한다. 정의가 대상을 닫아 버린다면, 사실의 목록은 대상을 열어 둔 채 그 윤곽만 보여 준다. 열네 가지 사실은 몇 갈래로 묶어 읽을 수 있다. 첫째는 기원으로, 인격은 아버지가 직접 또는 공동 행위자를 통해 부여하며 마음이나 영을 지닌 살아 있는 에너지 체계 어디에나 주어질 수 있다. 둘째는 자유로, 인격은 선행 인과관계에 전적으로 묶이지 않아 비교적 창조적이며, 자유 의지를 하나님의 뜻에 헌신하는 선물을 드릴 수 있다. 셋째는 통일의 기능으로, 인격은 자체 정체성이 없으면서도 체계의 정체성을 하나로 묶는다. 넷째는 유일성으로, 인격은 시간과 영원에서 중복되지 않으며, 연합할 수는 있어도 총합될 수는 없다. 인격 회로가 양적 반응 없이 질적 반응만 보인다는 사실도 같은 맥락에서 이해된다. 다섯째는 관계성으로, 인격은 도덕성을 지니고 다른 인격의 현존에 직접 반응한다. 끝으로 열셋째 사실이 이 편 전체의 열쇠가 된다. 조절자와 인격은 둘 다 변하지 않지만 혼 안에서 그 둘의 관계는 지속적인 진화이며, 이 성장이 멈추면 혼도 존재를 멈춘다. 불변하는 두 요소 사이에서 성장하는 실체가 생겨난다는 이 구조는 뒤에서 생존과 재인격화를 설명하는 바탕이 된다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>저자가 인격을 정의하지 않고 사실을 열거하는 방식을 택한 이유는 무엇이라고 볼 수 있습니까?</span></button><div class="answer">본문은 인격을 정의하려는 시도 자체가 주제넘은 일이라고 말합니다. 인격은 아버지에게서 오는 선물이어서 유한한 개념으로 완전히 담아낼 수 없기 때문입니다. 그래서 정의 대신 알려진 사실을 나열해 인격의 윤곽만 보여 줍니다. 계시가 스스로 서술의 한계를 인정하는 태도로 읽을 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>인격들은 연합할 수 있으나 총합될 수는 없다는 진술은 무엇을 뜻합니까?</span></button><div class="answer">인격은 절대적으로 유일하므로 수량처럼 더하거나 합산할 수 없다는 뜻입니다. 여러 인격이 협력하고 결합할 수는 있어도 그 결과가 하나의 큰 인격으로 섞이지는 않습니다. 하나님이 인격들을 합산하지 않으신다는 표현과, 인격 회로가 질적 반응만 보인다는 사실이 같은 원리를 가리킵니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>조절자와 인격이 변하지 않는데도 혼이 성장한다는 설명을 어떻게 이해할 수 있습니까?</span></button><div class="answer">변하지 않는 것은 두 요소 자체이고, 변하는 것은 혼 안에서 맺어지는 그 둘의 관계입니다. 그 관계가 지속적으로 진화하는 과정이 곧 혼의 성장입니다. 그래서 성장이 멈추면 혼도 존재를 멈춘다고 합니다. 혼은 고정된 실체가 아니라 살아 있는 관계의 산물이라는 점을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:0.1</div><div class="qtext">진화 행성들은 인간이 기원하는 구체들이며, 상승하는 필사자의 생애가 시작되는 첫 세계들이다. 유란시아는 너희의 출발점이다.</div></div><div class="quote"><div class="ref">112:0.1</div><div class="qtext">그리고 이 모든 연속된 시대들과 진화적 성장의 단계들을 통하여, 너희 안에는 절대적으로 변하지 않는 한 부분이 있다. 그것은 변화 가운데서도 영속하는 인격이다.</div></div><div class="quote"><div class="ref">112:0.2</div><div class="qtext">인격을 정의하려는 시도는 주제넘은 일이겠지만, 인격에 관해 알려진 몇 가지 사실을 다시 서술하는 것이 도움이 될 수 있다.</div></div><div class="quote"><div class="ref">112:0.3</div><div class="qtext">인격은 우주 아버지 자신이, 또는 아버지를 대신하여 활동하는 공동 행위자가 부여하는 실체 속의 자질이다.</div></div><div class="quote"><div class="ref">112:0.5</div><div class="qtext">인격은 선행 인과관계의 족쇄에 전적으로 종속되지는 않는다. 그것은 비교적 창조적이거나 공동 창조적이다.</div></div><div class="quote"><div class="ref">112:0.7</div><div class="qtext">인격은 자체 정체성은 없지만, 어떤 살아 있는 에너지 체계의 정체성을 통일할 수 있다.</div></div><div class="quote"><div class="ref">112:0.9</div><div class="qtext">변화가 존재하는 가운데서도 인격은 변하지 않는다.</div></div><div class="quote"><div class="ref">112:0.10</div><div class="qtext">인격은 하나님께 선물을 드릴 수 있다. 즉, 자유 의지를 하나님의 뜻을 행하는 데 헌신하는 것이다.</div></div><div class="quote"><div class="ref">112:0.11</div><div class="qtext">인격은 도덕성으로 특징지어지며, 이는 다른 사람들과의 관계의 상대성을 인식하는 것이다.</div></div><div class="quote"><div class="ref">112:0.12</div><div class="qtext">인격은 유일하며 절대적으로 유일하다. 시간과 공간 속에서 유일하고, 영원과 파라다이스에서도 유일하다.</div></div><div class="quote"><div class="ref">112:0.12</div><div class="qtext">인격들은 연합할 수 있으나 총합될 수는 없다.</div></div><div class="quote"><div class="ref">112:0.15</div><div class="qtext">조절자와 인격은 변하지 않지만, 혼 안에서 그들 사이의 관계는 오직 변화, 곧 지속적인 진화일 뿐이다. 이 변화(성장)가 멈추면, 혼도 존재를 멈춘다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>인격의 국면, 차원, 체계</h2><p class="sub">인격이 기능하는 범위와 통일의 원리 (112편 1장)</p></div></div>
+  <p class="summary">1장은 인격이 잠재적으로 영원한 자질로 부여되어 위치, 의미, 가치의 세 우주 국면에서 수행된다고 설명한다. 유한 인격에는 길이, 깊이, 폭의 세 차원이 있어 각각 의미, 가치, 통찰에 대응하며, 필사자의 인격은 모두 일곱 차원의 잠재성을 지닌다. 이어 생명을 유기체와 환경 사이의 과정으로 보고, 관계와 체계를 구분한다. 집합체에서는 부분이 더해지지만 체계에서는 부분이 배열되며, 인간 체계에서 그 모든 활동을 통일하는 것이 인격이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>1장의 첫 문장에 들어 있는 '잠재적으로'라는 한정어는 가볍게 넘길 수 없다. 인격의 영원성은 처음부터 보장된 것이 아니라 조건 지어진 것이며, 이 조건은 5장에서 선택의 문제로 구체화된다. 세 우주 국면은 인격이 어디에서, 어떤 수준에서, 어떤 영역에서 기능하는지를 나눈 틀이다. 위치로 보면 지역 우주에서 중앙 우주까지, 의미로 보면 유한에서 절대에 맞닿는 수준까지, 가치로 보면 물질에서 모론시아와 영에 이르기까지 인격은 똑같이 작동한다. 차원에 관한 설명은 조금 더 추상적이다. 길이는 진행과 진화의 방향, 깊이는 충동과 자기실현의 수준, 폭은 조율과 조직의 영역을 가리키며, 본문은 이를 의미, 가치, 통찰에 연결한다. 일곱 차원은 유한에서 셋, 아절대에서 셋, 절대에서 하나로 실현된다고 하는데, 저자는 차원적 수준과 영적 수준이 서로 조율되지 않는다는 점을 기억하라고 덧붙인다. 인격 연구의 많은 혼란이 이 둘을 섞는 데서 생긴다는 방법론적 경고로 읽힌다. 후반부는 생명과 체계를 다룬다. 인격이 유기체와 환경의 관계에 정체성과 연속성을 부여하므로 자극과 반응은 단순한 기계 과정이 아니며, 기제는 수동적이고 유기체는 능동적이다. 또 부분들의 총합은 자아, 곧 개별성을 이루지만 그것은 인격과 관련이 없다고 분명히 구분한다. 자아는 구성 요소의 산물이고, 인격은 그 요소들을 배열하고 통일하는 상위의 원리라는 해석이 가능하다. 인격이 고립 속에서 잘 기능할 수 없다는 사회적 관점도 같은 장에서 제시된다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>인격이 '잠재적으로' 영원한 자질이라는 표현에서 '잠재적으로'가 중요한 이유는 무엇입니까?</span></button><div class="answer">인격의 영원성이 처음부터 확정된 것이 아니라 조건에 달려 있음을 알려 주기 때문입니다. 아버지가 영원할 수 있는 선물을 주셨지만, 그것이 개별 정체성의 영원한 생존으로 실현되려면 인간의 선택이 필요합니다. 이 조건은 5장에서 정체성에 관해 조건 지어진 영원 실체라는 설명으로 이어집니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>집합체와 체계의 차이를 본문은 어떻게 설명합니까?</span></button><div class="answer">집합체는 부분이 단순히 더해진 것이고, 체계는 부분이 배열되어 위치적 가치를 지닌 것입니다. 좋은 체계에서는 모든 요소가 제자리에 있고, 나쁜 체계에서는 무언가 빠지거나 자리를 벗어나 혼란이 생깁니다. 인간 체계에서는 인격이 모든 활동을 통일하여 정체성과 창의성을 부여한다고 본문은 설명합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>인격이 고립된 상태에서는 잘 기능할 수 없다는 말은 우리 삶에 어떤 의미를 줍니까?</span></button><div class="answer">인간은 본래 사회적 존재로서 소속감을 갈망하며, 인격은 다른 인격과의 관계 속에서 제대로 드러난다는 뜻입니다. 아무도 자기만을 위해 살지 않는다는 말이 문자 그대로 사실이라고 본문은 말합니다. 신앙 생활도 홀로 완성되기보다 관계 속에서 성숙한다는 점을 생각해 볼 수 있습니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:1.1</div><div class="qtext">인격은 우주 아버지에 의해서 잠재적으로 영원한 자질로서 그의 창조체에게 부여된다.</div></div><div class="quote"><div class="ref">112:1.1</div><div class="qtext">따라서 인격은 세 우주적 평면 또는 세 우주 국면에서 수행된다.</div></div><div class="quote"><div class="ref">112:1.2</div><div class="qtext">위치 상태. 인격은 지역 우주, 초우주, 중앙 우주에서 똑같이 효율적으로 기능한다.</div></div><div class="quote"><div class="ref">112:1.4</div><div class="qtext">가치 상태. 인격은 물질적, 모론시아적, 영적으로 진보하는 영역에서 체험적으로 실현될 수 있다.</div></div><div class="quote"><div class="ref">112:1.9</div><div class="qtext">이러한 차원 현상은 유한 수준에서 셋, 아절대 수준에서 셋, 그리고 절대 수준에서 하나로 실현 가능하다.</div></div><div class="quote"><div class="ref">112:1.10</div><div class="qtext">길이는 의미를, 깊이는 가치를, 폭은 통찰을 포함한다. 통찰은 우주 실체에 대한 도전받지 않는 의식을 체험할 수 있는 능력이다.</div></div><div class="quote"><div class="ref">112:1.12</div><div class="qtext">유한한 창조체가 체험적 인격 실현에서 차원적 수준과 영적 수준이 조율되지 않는다는 것을 기억한다면, 필사자가 인간 인격을 연구하면서 겪는 많은 어려움을 피할 수 있을 것이다.</div></div><div class="quote"><div class="ref">112:1.13</div><div class="qtext">생명은 실제로 유기체(자아)와 그 환경 사이에서 일어나는 과정이다. 인격은 이 유기체-환경 관계에 정체성의 가치와 연속성의 의미를 부여한다.</div></div><div class="quote"><div class="ref">112:1.13</div><div class="qtext">기제는 본래 수동적이지만, 유기체는 본래 능동적이다.</div></div><div class="quote"><div class="ref">112:1.16</div><div class="qtext">인격은 고립된 상태에서는 잘 기능할 수 없다. 인간은 본래 사회적 창조체이며, 소속감의 갈망에 지배된다.</div></div><div class="quote"><div class="ref">112:1.17</div><div class="qtext">관계는 두 대상 사이에 존재하지만, 셋 이상의 대상은 하나의 체계를 창발한다.</div></div><div class="quote"><div class="ref">112:1.19</div><div class="qtext">집합체에서는 부분이 더해지지만, 체계에서는 부분이 배열된다.</div></div><div class="quote"><div class="ref">112:1.19</div><div class="qtext">인간 체계에서 인격은 모든 활동을 통일하며, 그 결과 정체성과 창의성의 특성을 부여한다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>자아의 구조와 지배의 진화</h2><p class="sub">네 층위, 관찰의 단계, 정체성의 이전 (112편 2장)</p></div></div>
+  <p class="summary">2장은 자아를 연구할 때 물리적 체계는 종속적이고, 지성적 체계는 동격이며, 인격은 상위에 있고, 내주하는 영적 힘은 잠재적으로 지시적이라는 원칙을 제시한다. 하나님이 인간이 되신 사실은 인간 인격의 의미와 가치를 영원히 바꾸었고, 사랑은 전체 인격들 간의 상호 존중으로 정의된다. 인격을 지닌다는 사실 자체가 인간이 영적 존재임을 보여 주며, 과학과 철학과 종교는 관찰의 단계로 구분된다. 생존하는 자아는 정체성의 자리를 몸에서 혼으로 옮길 때 진화한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>2장의 네 원칙은 자아의 층위를 짧게 정리한 틀이다. 몸은 아래에서 떠받치고, 마음은 나란히 협력하며, 인격은 위에서 통일하고, 조절자는 앞에서 이끌 잠재력을 지닌다. 이어 본문은 생명의 사실이 먼저이고 그 해석은 나중이라고 말한다. 아이가 먼저 살고 나중에 삶에 대해 생각하듯, 체험이 이론보다 앞선다는 원리다. 이 장에서 가장 신학적인 진술은 성육신에 관한 것이다. 하나님이 인간이 되신 우주 사실이 인간 인격의 모든 의미와 가치를 바꾸었다는 말은, 미가엘의 증여가 인간 존재의 위상을 근본적으로 끌어올렸다는 뜻으로 읽힌다. 사랑을 감정이 아니라 전체 인격들 간의 상호 존중으로 정의한 점도 특징적이다. 자아의 일부는 따로 생각하고 느낄 수 있지만 지성적 행동은 전체 인격의 조율로만 이루어지며, 다른 존재와의 진정한 관계는 그 자체로 목적이라고 본문은 말한다. 중반에는 인격의 실재성에 대한 논증이 나온다. 유물론자가 초물질적 실체를 부인할 수 있다는 사실이 오히려 그 마음 안에 영 종합이 작용한다는 증거라는 논리이며, 의식은 어떤 기계론으로도 설명되지 않는다. 과학은 물질 세계를 관찰하고, 철학은 그 관찰을 관찰하며, 종교는 그 모든 관찰을 관찰하는 우주적 실체를 체험으로 실현한다. 관찰자는 관찰되는 것일 수 없다는 원리가 이 단계 구분을 뒷받침한다. 장의 결론은 지배의 진화다. 영의 지배는 강제가 아니라 조절자의 인도에 대한 의지적 반응으로 커지며, 생존하는 자아는 하나님을 찾는 결정의 성실함과 끈질김과 확고함으로 정체성의 자리를 몸에서 모론시아 혼으로 옮긴다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>사랑을 전체 인격들 간의 상호 존중으로 정의하는 것은 어떤 점에서 특별합니까?</span></button><div class="answer">사랑을 일시적인 감정이나 자아의 한 부분의 작용으로 보지 않고, 인격 전체가 다른 인격 전체를 존중하는 관계로 본다는 점입니다. 이 정의는 인간 사이의 관계뿐 아니라 하나님과 인간의 관계에도 똑같이 적용됩니다. 성실하고 비이기적인 사랑 속에서 자아의 모든 힘이 영적 부여물과 연합한다고 본문은 설명합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>과학, 철학, 종교를 관찰의 단계로 구분한 설명을 정리해 보십시오.</span></button><div class="answer">과학은 인간 자아가 물질 세계를 관찰하는 것이고, 철학은 그 관찰을 다시 관찰하는 것입니다. 종교는 그 모든 관찰을 관찰하는 우주적 실체를 체험으로 실현하는 것입니다. 관찰자는 관찰되는 대상일 수 없고 평가는 대상을 어느 정도 넘어서야 하므로, 물질만으로 우주 철학을 세울 수 없다는 결론이 따라옵니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>생존하는 자아가 진화하는 조건으로 본문이 제시하는 것은 무엇입니까?</span></button><div class="answer">정체성의 자리를 일시적인 물질적 몸에서 더 지속적인 모론시아 혼으로, 나아가 영 실체로 옮길 잠재적 이전을 확립하는 것입니다. 이 이전은 저절로 일어나지 않고, 하나님을 찾는 결정을 얼마나 성실하고 끈질기고 확고하게 내리느냐로 이루어집니다. 생존이 의지의 방향과 깊이 연결되어 있음을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:2.2</div><div class="qtext">물리적 체계는 종속적이다.</div></div><div class="quote"><div class="ref">112:2.4</div><div class="qtext">인격은 상위에 있다.</div></div><div class="quote"><div class="ref">112:2.5</div><div class="qtext">내주하는 영적 힘은 잠재적으로 지시적이다.</div></div><div class="quote"><div class="ref">112:2.6</div><div class="qtext">인간의 아이는 먼저 살고, 그 후에 자신의 삶에 대해 생각한다.</div></div><div class="quote"><div class="ref">112:2.7</div><div class="qtext">하나님이 인간이 되신 우주 사실은 인간 인격의 모든 의미를 영원히 바꾸었으며, 그 모든 가치를 변화시켰다. 진정한 의미에서 사랑은 전체 인격들 간의 상호 존중을 뜻하며</div></div><div class="quote"><div class="ref">112:2.8</div><div class="qtext">필사자가 다른 존재들과 맺는 모든 진정한 관계는, 인간과의 관계든 신성과의 관계든, 그 자체로 목적이다.</div></div><div class="quote"><div class="ref">112:2.9</div><div class="qtext">인격을 소유한다는 사실은 인간이 영적 존재임을 나타낸다.</div></div><div class="quote"><div class="ref">112:2.10</div><div class="qtext">의식은, 하물며 자의식은 더욱, 기계론적 전자 연합이나 유물론적 에너지 현상의 어떤 이론으로도 설명될 수 없다.</div></div><div class="quote"><div class="ref">112:2.12</div><div class="qtext">과학에서 인간 자아는 물질 세계를 관찰한다. 철학은 물질 세계에 대한 이 관찰을 관찰하는 것이다.</div></div><div class="quote"><div class="ref">112:2.12</div><div class="qtext">관찰자는 관찰되는 그것일 수 없다. 평가는 평가되는 그것에 대한 어느 정도의 초월을 요구한다.</div></div><div class="quote"><div class="ref">112:2.13</div><div class="qtext">시간 속에서 사고는 지혜로, 지혜는 예배로 이어진다. 영원 속에서 예배는 지혜로, 지혜는 사고의 최종성으로 이어진다.</div></div><div class="quote"><div class="ref">112:2.15</div><div class="qtext">우주 진화의 목적은 영의 지배가 증대되는 것, 곧 생각 조절자의 가르침과 인도에 대한 의지적 반응을 통해 인격의 통일을 이루는 것이다.</div></div><div class="quote"><div class="ref">112:2.20</div><div class="qtext">물질적 연합에서 모론시아 동일화로 옮겨 가는 이 실제 이전은 인간 창조체가 하나님을 찾는 결정을 내리는 그 성실함과 끈질김과 확고함으로 이루어진다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>세 가지 죽음과 죽음 이후의 조절자</h2><p class="sub">영적·지적·물리적 죽음, 그리고 조절자의 행로 (112편 3·4장)</p></div></div>
+  <p class="summary">3장은 인격 생존의 관점에서 죽음을 영적 죽음, 지적 죽음, 물리적 죽음의 세 가지로 나눈다. 기준은 몸의 생존이 아니라 의지의 기능이다. 죽음 이후 몸은 원소 세계로 돌아가고, 조절자는 기억 기록을 지닌 채 디비닝턴으로 가며, 혼은 운명의 수호자의 보호 아래 남는다. 조절자는 인격을, 인간은 정체성을 일시적으로 잃지만 둘은 맨션 세계에서 다시 결합한다. 4장은 조절자가 즉시 상승하는 대상자와 섭리 시대의 소환을 기다리는 대상자에 따라 다른 행로를 걷는다고 설명한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>세 가지 죽음의 분류는 이 편이 인간을 무엇으로 보는지 잘 드러낸다. 영적 죽음은 필사자가 생존을 최종적으로 거부했을 때 조절자와 세라핌의 공동 판단, 유버사의 확인을 거쳐 조절자가 해방되는 경우다. 몸과 마음이 계속 살아 있어도 우주적 관점에서 그는 이미 죽은 것이며, 계속되는 생명은 물질적 관성일 뿐이라고 본문은 말한다. 지적 죽음은 의지적 행동을 가능하게 하는 마음 회로가 돌이킬 수 없이 파괴된 경우로, 이때도 조절자는 곧바로 떠나지만 이전의 선택에 따라 혼은 생존할 수 있다. 물리적 죽음은 뇌 에너지의 율동이 멈출 때 조절자가 마음을 떠나는 경우다. 세 경우 모두에서 판단의 기준은 의지가 기능하는가에 있다. 죽음 이후에 대한 설명에서는 정체성과 인격의 구분이 핵심이다. 조절자는 정체성을 유지하되 인격을 일시적으로 잃고, 인간은 인격을 유지하되 정체성을 일시적으로 잃는다. 이 둘이 맨션 세계에서 다시 만날 때 생존 인격이 재조립된다. 같은 대목은 죽은 이와의 소통 문제도 다룬다. 조절자가 없는 혼은 죽음의 수면 동안 완전히 무의식 상태이며, 현재 섭리 시대에는 그러한 소통을 금지하는 것이 우주들의 방침이다. 4장은 조절자 쪽의 과정을 따라간다. 조절자는 처음 들어올 때 기록한 번호로 등록에서 해제되고, 검열자들은 조절자가 복제한 생애의 요약을 판결에 사용한다. 즉시 상승의 조건은 셋째 원 도달, 운명의 수호자의 무조건 인증, 세라핌과 조절자 기록의 일치, 유버사 검열자의 확인이며, 여러 독립된 증언이 일치하는지로 판정한다는 점이 눈에 띈다. 기다리는 경우 조절자는 일곱 가지 임시 임무 가운데 하나를 스스로 선택해 그 시간을 봉사와 배움으로 채운다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>세 가지 죽음을 구분하는 공통 기준은 무엇이라고 볼 수 있습니까?</span></button><div class="answer">몸이 살아 있는지가 아니라 인간의 의지가 기능하는지입니다. 영적 죽음은 의지가 생존을 최종적으로 거부한 경우이고, 지적 죽음은 의지를 가능하게 하는 마음 회로가 파괴된 경우이며, 물리적 죽음은 몸과 마음이 함께 멈춘 경우입니다. 인간을 인간이게 하는 것이 의지적 선택이라는 관점이 죽음의 정의에도 적용됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>죽음에서 조절자와 인간이 각각 무엇을 잃고 무엇을 유지하는지 설명해 보십시오.</span></button><div class="answer">조절자는 인격을 일시적으로 잃지만 정체성은 유지하고, 인간 대상자는 정체성을 일시적으로 잃지만 인격은 유지합니다. 그래서 어느 한쪽만으로는 생존 인격이 다시 나타날 수 없습니다. 둘이 맨션 세계에서 재결합할 때 비로소 생존한 그 사람이 깨어납니다. 정체성과 인격이 서로 다른 개념임을 보여 주는 대목입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>즉시 맨션 세계로 상승하는 경우의 판정 절차에서 눈에 띄는 특징은 무엇입니까?</span></button><div class="answer">운명의 수호자, 조절자, 세라핌, 유버사의 검열자 등 여러 독립된 존재의 기록과 판단이 일치해야 한다는 점입니다. 기록이 모든 항목에서 본질적으로 일치하고 검열자들이 주저 없이 확인할 때 고급 지위의 명령이 내려집니다. 한 존재의 판단에 의존하지 않고 여러 증언의 일치로 공정성을 확보하는 구조라고 볼 수 있습니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:3.1</div><div class="qtext">유란시아인들은 보통 죽음을 생명의 에너지가 물리적으로 멈추는 한 가지 현상으로만 인식하지만, 인격 생존과 관련해서는 실제로 세 가지 종류의 죽음이 있다.</div></div><div class="quote"><div class="ref">112:3.2</div><div class="qtext">우주적 관점에서 그 필사자는 이미 죽은 것이다. 계속되는 생명은 단지 우주 에너지의 물질적 관성이 지속되고 있음을 나타낼 뿐이다.</div></div><div class="quote"><div class="ref">112:3.3</div><div class="qtext">의지적 마음이 없는 몸은 더 이상 인간이 아니지만, 인간 의지의 이전 선택에 따라 그 혼은 생존할 수 있다.</div></div><div class="quote"><div class="ref">112:3.4</div><div class="qtext">이 해체가 일어난 후, 조절자는 수년 전 들어왔던 것처럼 격식 없이 사라지는 마음을 떠나 유버사를 거쳐 디비닝턴으로 향한다.</div></div><div class="quote"><div class="ref">112:3.5</div><div class="qtext">선재하는 생각 조절자는 필사 생애의 기억 기록을 지닌 채 디비닝턴으로 가고, 죽은 인간의 불멸의 모론시아 혼은 운명의 수호자의 보호 아래 남는다.</div></div><div class="quote"><div class="ref">112:3.6</div><div class="qtext">세라핌은 인격의 재조립에 절대적으로 필요한 존재들이다.</div></div><div class="quote"><div class="ref">112:3.7</div><div class="qtext">죽음이 오면 생각 조절자는 인격을 일시적으로 잃지만 정체성은 잃지 않는다. 인간 대상자는 정체성을 일시적으로 잃지만 인격은 유지된다. 맨션 세계에서 둘은 영원한 현시로 다시 결합한다.</div></div><div class="quote"><div class="ref">112:3.7</div><div class="qtext">맨션 세계로 간 자들은 사랑하는 이들에게 메시지를 보낼 수 없으며, 현재 섭리 시대 기간에 그러한 소통을 금지하는 것이 온 우주들의 방침이다.</div></div><div class="quote"><div class="ref">112:4.1</div><div class="qtext">그 관찰자는 시간의 영역들로 들어간 것을 기록했던 바로 그 번호로 등록에서 해제된다.</div></div><div class="quote"><div class="ref">112:4.3</div><div class="qtext">그 인간이 자신의 개별적 자격으로 맨션 세계로 상승할지, 아니면 행성 시대의 잠자는 생존자들을 위한 섭리 시대의 소환을 기다릴지에 따라 달라진다.</div></div><div class="quote"><div class="ref">112:4.4</div><div class="qtext">조절자는 이전의 봉사 체계의 맨션 세계로 즉시 돌아오지 않고, 자신의 선택에 따라 다음 임시 임무 중 하나에 착수한다.</div></div><div class="quote"><div class="ref">112:4.12</div><div class="qtext">그때 옛적부터 늘 계신 이들이 통신 회로를 통해 샐빙턴으로 고급 지위의 명령을 발령한다.</div></div><div class="quote"><div class="ref">112:4.13</div><div class="qtext">인간 개인이 지체 없이 생존한다면, 조절자는 디비닝턴에 등록되고, 우주 아버지의 파라다이스 현존으로 나아가며</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>선택하는 인격과 자비로운 판정</h2><p class="sub">조건 지어진 영원성과 생존 판정의 원칙 (112편 5장 전반)</p></div></div>
+  <p class="summary">5장은 생존의 원리를 선택으로 설명한다. 우주의 모든 단위는 전체의 운명에 종속되지만 인격적 존재만은 운명을 받아들이거나 거부할 실제 선택권을 받았다. 인격은 영원하지만 정체성에 관해서는 조건 지어진 영원 실체이며, 생존을 선택하지 않으면 인격은 최상 존재의 일부가 된다. 판정에는 세 원칙이 있다. 잘못 없이 원을 통달하지 못한 이에게는 보호 관찰 연장이 주어지고, 의문이 있으면 개인의 이익에 따라 결정하며, 모든 의지 창조체는 최종 선택을 할 한 번의 진정한 기회를 체험한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>이 마디의 첫 번째 핵심은 인격과 정체성의 구분이다. 아버지에게서 나온 것은 아버지처럼 영원하므로 인격 자체는 사라지지 않는다. 그러나 그 인격을 지닌 개별 정체성이 영원히 이어질지는 선택에 달려 있다. 생존을 선택하지 않으면 인격은 체험적 신에 직접 도달하여 최상 존재의 일부가 된다. 순환은 미리 정해져 있지만 거기에 인간이 참여하는 것은 선택적이고 인격적이며 체험적이라는 본문의 표현이 이 구조를 압축한다. 1장에서 본 '잠재적으로 영원한 자질'이라는 말이 여기서 구체적인 의미를 얻는다. 본문은 에너지 체계와 인간을 대비해, 에너지 체계는 계속될 수밖에 없지만 인간은 자기 운명을 결정하는 데 전적으로 관여한다고 말한다. 이 선택의 힘은 가장 큰 기회이자 최상의 책임이며, 조절자와 아버지와 최상 존재가 모두 인간 의지의 성실함과 충실함에 무언가를 의존한다는 진술은 인간 결정의 무게를 보여 준다. 두 번째 핵심은 판정의 태도다. 시간의 사고나 물질적 장애로 원을 통달하지 못한 이에게는 생존의 의도와 욕망이 있는 한 추가 시간이 주어지고, 진급에 의문이 있으면 정부는 항상 개인에게 유리하게 결정한다. 이는 둘째 기회를 뜻하지는 않지만, 누구나 의심할 여지 없는 자의식적 선택을 할 진정한 기회를 반드시 갖는다. 가장 이례적인 진술은 우주 정부가 절대적 완전성을 주장하지 않으면서, 한 필사자에게서 상승의 기쁨을 빼앗느니 차라리 체계 반란의 위험을 감수하겠다고 말하는 대목이다. 계시가 자기 행정의 한계를 인정하면서도 자비를 우선하는 원칙을 밝힌 드문 자리다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>인격은 영원하지만 정체성에 관해서는 조건 지어진 영원 실체라는 말은 무슨 뜻입니까?</span></button><div class="answer">아버지가 주신 인격 자체는 사라지지 않지만, 그 인격을 지닌 바로 그 개인이 영원히 존속할지는 자신의 선택에 달려 있다는 뜻입니다. 생존을 선택하지 않으면 인격은 체험적 신에 도달해 최상 존재의 일부가 되지만, 그 개인의 정체성은 이어지지 않습니다. 운명의 순환은 정해져 있되 거기에 참여하는 것은 선택이라는 구분입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>생존 판정에서 우주 정부가 취하는 세 가지 원칙을 정리해 보십시오.</span></button><div class="answer">첫째, 자기 잘못 없이 시간의 사고나 물질적 장애로 원을 통달하지 못했더라도 생존의 의도와 욕망이 있으면 보호 관찰 연장이 주어집니다. 둘째, 진급에 의문이 있으면 항상 개인의 이익에 따라 결정합니다. 셋째, 둘째 기회는 아니지만 모든 의지 창조체는 최종적인 선택을 할 한 번의 진정한 기회를 반드시 체험합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>체계 반란의 위험을 감수하겠다는 진술은 우주 정부의 어떤 태도를 보여 줍니까?</span></button><div class="answer">행정의 안정보다 한 개인의 영원한 기회를 더 소중히 여기는 태도입니다. 정부는 재인격화 계획의 세부에서 절대적 완전성을 주장하지 않지만 인내와 관용과 자비를 실제로 발휘한다고 말합니다. 실수의 가능성을 인정하면서 그 위험을 개인에게 불리한 쪽이 아니라 유리한 쪽으로 감수하겠다는 원칙으로 이해할 수 있습니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:5.1</div><div class="qtext">살아 있는 우주는 사실상 무한히 통합된 실제 단위들의 집합체이며, 이 모든 단위는 전체의 운명에 상대적으로 종속된다. 그러나 인격적 존재들은 운명을 받아들이거나 거부할 실제 선택권을 부여받았다.</div></div><div class="quote"><div class="ref">112:5.2</div><div class="qtext">아버지로부터 나오는 것은 아버지처럼 영원하다.</div></div><div class="quote"><div class="ref">112:5.2</div><div class="qtext">인간의 인격은 영원하지만, 정체성에 관한 한 조건 지어진 영원 실체이다.</div></div><div class="quote"><div class="ref">112:5.2</div><div class="qtext">그러한 선택을 하지 않으면, 인격은 체험적 신에 직접 도달하여 최상 존재의 일부가 된다. 이 순환은 미리 정해져 있으나, 거기에 인간이 참여하는 것은 선택적이며, 인격적이고, 체험적이다.</div></div><div class="quote"><div class="ref">112:5.3</div><div class="qtext">에너지 체계는 계속되어야 하며 선택의 여지가 없지만, 인간은 자신의 운명을 결정하는 데 전적으로 관여한다.</div></div><div class="quote"><div class="ref">112:5.3</div><div class="qtext">조절자는 진정으로 파라다이스로 가는 길이지만, 인간은 자신의 결정, 곧 자유 의지의 선택으로 그 길을 추구해야 한다.</div></div><div class="quote"><div class="ref">112:5.5</div><div class="qtext">바로 이 선택의 힘, 즉 자유 의지 창조체됨의 우주 표장은 인간에게 가장 큰 기회를 제공하며, 동시에 최상의 우주적 책임을 부여한다.</div></div><div class="quote"><div class="ref">112:5.5</div><div class="qtext">필사 자유 의지의 성실함에 신성한 조절자는 영원한 인격을 의존한다.</div></div><div class="quote"><div class="ref">112:5.6</div><div class="qtext">생존 가치가 있는 의도와 욕망이 있다면, 보호 관찰 연장의 법령이 내려진다. 너희는 자신을 증명할 추가적인 시간이 주어질 것이다.</div></div><div class="quote"><div class="ref">112:5.7</div><div class="qtext">만약 인간 정체성을 맨션 세계로 진급시키는 것이 타당한지에 대한 의문이 제기될 경우, 우주 정부는 항상 그 개인의 이익에 따라 결정한다.</div></div><div class="quote"><div class="ref">112:5.8</div><div class="qtext">우리는 어느 진화 세계의 고투하는 한 필사자에게서 상승 생애를 추구하는 영원한 기쁨을 박탈할 위험을 무릅쓰느니 차라리 체계 반란의 위험을 감수하겠다.</div></div><div class="quote"><div class="ref">112:5.9</div><div class="qtext">이는 인간이 첫째 기회를 거부한 후 둘째 기회를 누리게 된다는 의미는 전혀 아니다. 그러나 이는 모든 의지 창조체가 의심할 여지 없는, 자의식적이며 최종적인 선택을 할 수 있는 한 번의 진정한 기회를 체험하게 된다는 것을 의미한다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>혼과 재인격화</h2><p class="sub">인간과 신성의 공동 자녀, 부활의 전당 (112편 5장 후반)</p></div></div>
+  <p class="summary">저자는 물질과 모론시아의 경계에서 일어나는 일을 다 설명할 수 없고 천상 당국의 제한도 있다고 밝힌 뒤, 허락된 범위의 사실을 전한다. 죽음을 넘어 생존하는 것은 혼이며, 이는 인간과 조절자가 함께 이룬 삶의 공동 자녀다. 혼은 재인격화까지 무의식 상태로 운명의 수호자에게 맡겨진다. 재인격화는 부활의 전당에서 모론시아 형태의 구성, 조절자의 귀환, 세라핌의 혼 부여로 이루어지며, 영적 의미가 없는 기억은 사라지지만 인격 관계의 기억은 지속된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>이 마디는 저자가 스스로 밝히는 두 가지 어려움에서 시작한다. 하나는 물질과 모론시아 경계의 일을 인간의 이해 수준으로 충분히 설명할 수 없다는 점, 다른 하나는 행성 감독자들의 조언에 따라 흥미로운 세부를 생략한다는 점이다. 계시가 말할 수 있는 범위와 말하지 않는 범위를 분명히 구분해 둔 셈이다. 그 범위 안에서 제시되는 핵심이 혼이다. 혼은 처음부터 주어진 불멸의 영혼이 아니라, 인간의 노력과 조절자의 인도가 결합한 삶에서 새로 출현한 실체다. 인간과 신성을 부모로 둔 자녀라는 표현은 혼이 두 쪽 모두의 기여로 자란다는 점을 강조한다. 이는 선재하는 영혼을 상정하는 전통적 관념과 구별된다. 죽음의 순간 기능적 정체성은 붕괴하지만, 인격 구성의 기록은 천사장들이 보존하고 혼은 운명의 수호자가 맡는다. 다만 죽음과 생존 사이에 인격이 정확히 어디 있는지는 알지 못한다고 저자는 솔직히 밝힌다. 재인격화의 절차는 세 단계다. 먼저 새로운 생존자에게 맞는 모론시아 에너지 원형이 구성되고, 다음으로 조절자가 돌아와 다른 이가 아닌 바로 그 사람이 그 형태를 차지한다는 절대적 보증이 되며, 마지막으로 세라핌이 맡아 두었던 혼을 그 형태에 부여해 기억과 통찰과 의식의 재조립이 완료된다. 깨어난 직후에는 이전 삶이 희미한 꿈처럼 느껴질 수 있지만 시간이 지나면 명확해진다. 무엇이 기억으로 남는가의 기준도 분명하다. 영적 의미도 모론시아 가치도 없는 체험은 발판처럼 물질적 뇌와 함께 사라지지만, 인격과 인격 간의 관계는 결코 발판이 아니다. 보존의 기준이 사건이 아니라 관계에 있다는 점은 2장에서 진정한 관계를 그 자체로 목적이라 한 진술과 맞물린다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>혼을 인간과 조절자의 공동 자녀라고 부르는 이유는 무엇입니까?</span></button><div class="answer">혼은 처음부터 완성되어 주어진 것이 아니라, 인간이 조절자와 협력하여 살아간 삶과 노력에서 새로 생겨나는 실체이기 때문입니다. 인간 쪽의 선택과 노력, 신성한 조절자 쪽의 인도가 함께 있어야 혼이 자랍니다. 그래서 인간과 신성을 부모로 둔 이 자녀가 지상 기원의 생존 요소를 이룬다고 본문은 설명합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>재인격화의 세 요소를 순서대로 설명해 보십시오.</span></button><div class="answer">첫째, 새로운 생존자가 모론시아 실체와 접촉할 수 있는 모론시아 에너지 원형, 곧 형태가 구성됩니다. 둘째, 조절자가 돌아와 바로 그 사람이 그 형태를 차지한다는 절대적 보증이 됩니다. 셋째, 세라핌 수호자가 맡아 두었던 혼을 그 형태에 부여하면 기억과 통찰과 의식, 곧 정체성의 재조립이 완료됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>어떤 기억은 사라지고 어떤 기억은 남는다는 설명은 지금의 삶에 어떤 시사점을 줍니까?</span></button><div class="answer">영적 의미나 모론시아 가치가 없는 체험은 발판처럼 쓰임을 다하고 사라지지만, 인격과 인격 사이의 관계에 대한 기억은 우주적 가치를 지니고 지속됩니다. 맨션 세계에서 옛 동료들을 알아보고 기억한다는 약속도 여기에 근거합니다. 지금 맺는 관계와 그 안의 영적 의미가 영원히 남는 것이라는 점을 생각해 볼 수 있습니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:5.11</div><div class="qtext">하나는 물질과 모론시아 영역의 경계에서 일어나는 업무를 너희의 이해 수준으로 충분히 설명할 수 없다는 점이다. 또 다른 어려움은 유란시아의 천상 통치 당국이 진리의 계시자로서의 나의 임무에 부과한 제한 때문이다.</div></div><div class="quote"><div class="ref">112:5.12</div><div class="qtext">죽음을 넘어 생존하는 실제적인 무엇, 인간 진화에 속한 무엇, 신비의 관찰자에 더해지는 무엇이 있다. 이 새로 출현한 실체는 혼이며, 그것은 너희의 물질적 몸과 물질적 마음의 죽음 후에도 살아남는다.</div></div><div class="quote"><div class="ref">112:5.12</div><div class="qtext">인간과 신성의 부모를 둔 이 자녀가 지상 기원의 생존 요소를 이룬다. 이것이 모론시아 자아, 즉 불멸의 혼이다.</div></div><div class="quote"><div class="ref">112:5.13</div><div class="qtext">이 지속되는 의미와 생존 가치를 지닌 자녀는 죽음에서 재인격화에 이르는 기간 동안 완전히 무의식 상태에 있으며, 이 기다림의 기간 동안 세라핌 운명의 수호자의 보호 아래 있다.</div></div><div class="quote"><div class="ref">112:5.14</div><div class="qtext">인간 인격은 그 구성 요소들을 초월하지만, 기능적 정체성은 그들에게 의존한다.</div></div><div class="quote"><div class="ref">112:5.15</div><div class="qtext">죽음과 생존 사이의 시간 동안 필사 인격이 정확히 어디에 있는지에 대해서는 알지 못한다.</div></div><div class="quote"><div class="ref">112:5.16</div><div class="qtext">재인격화를 가능하게 하는 상황은 지역 우주의 모론시아 영접 행성의 부활 전당에서 발생한다.</div></div><div class="quote"><div class="ref">112:5.18</div><div class="qtext">너희의 관찰자는 다른 이가 아니라 너희 자신이 너희의 인격 각성을 위해 창조된 모론시아 형태를 차지하리라는 절대적인 보증이다.</div></div><div class="quote"><div class="ref">112:5.19</div><div class="qtext">그리고 이것으로 재인격화, 곧 기억과 통찰과 의식, 곧 정체성의 재조립이 완료된다.</div></div><div class="quote"><div class="ref">112:5.20</div><div class="qtext">인간 삶은 변하지 않는 인격의 안정성으로 통일된 생명의 요소들의 끝없는 변화이다.</div></div><div class="quote"><div class="ref">112:5.21</div><div class="qtext">인격적 자아의 연속성에도 불구하고, 필사 생애의 많은 부분이 처음에는 막연하고 희미한 꿈처럼 보일 것이다. 그러나 시간이 지나면 많은 필사 연관들이 명확해질 것이다.</div></div><div class="quote"><div class="ref">112:5.22</div><div class="qtext">그러나 인격과 인격 간의 관계는 결코 발판이 아니다. 인격 관계에 대한 필사 기억은 우주적 가치를 지니며 지속될 것이다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>모론시아 자아와 조절자 융합</h2><p class="sub">참된 인격의 출현에서 최종자의 길까지 (112편 6·7장)</p></div></div>
+  <p class="summary">6장은 나비가 애벌레에서 나오듯 인간의 참된 인격이 맨션 세계에서 처음 드러난다고 말한다. 모론시아 삶에서는 형태가 내면의 본성을 따르고, 보조 마음-영 대신 신성한 사역자가 변형한 우주 마음과 직접 접촉하며, 기억의 원형은 혼 안에 있으나 조절자가 있어야 되살아난다. 7장은 조절자 융합을 다룬다. 융합은 초우주가 최종 선택을 선언한 뒤에야 일어나며, 그 후로는 영원한 생애에 위험이 없고 인간과 조절자는 다시 분리되지 않는다. 흙에서 시작된 존재가 그 유산을 얻는 조건은 결국 의지다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>6장의 나비 비유는 모론시아 생애가 단순한 연장이 아니라 감추어졌던 것의 드러남임을 알려 준다. 물리적 삶에서는 속이 사랑스럽지 않아도 겉이 아름다울 수 있지만, 모론시아 삶에서는 높은 수준으로 갈수록 형태가 내면의 본성을 그대로 따른다. 영적 수준에 이르면 외적 형태와 내적 본성은 완전한 동일화에 가까워진다. 마음의 측면에서도 변화가 있다. 지역 우주 생애에는 일곱 보조 마음-영의 사역이 없고, 모론시아 마음은 신성한 사역자가 변형한 우주 마음과의 직접 접촉으로 진화한다. 의지는 마음 없이 존재할 수 없지만 물질적 지성을 잃어도 지속되며, 생존 직후에는 인간 생애에서 물려받은 성품 원형이 행동을 인도한다. 기억의 지속성은 원래 자아의 정체성이 보존되었다는 증거이며, 조절자 없이 상승하는 이들은 세라핌의 가르침으로 기억을 재구성해야 한다. 7장은 이 긴 과정의 정점인 조절자 융합을 설명한다. 융합은 불멸성과 과거 영원의 체험과 기억 같은 잠재적 실제성을 인격에 부여하며, 대개 지역 체계에서 일어나지만 초우주의 명령이 인간 본성의 최종 선택을 선언하기 전에는 결코 일어나지 않는다. 진화적 세계에서 생존 결정이 이루어지고, 모론시아 상태에서 그 결정이 확증되며, 영적 수준에서 융합으로 증명된다는 세 단계 정리가 이 흐름을 요약한다. 융합된 존재의 본부는 디비닝턴이 아니라 어쎈딩톤이고, 인격을 먼저 누린 인간이 인격 문제에서는 조절자를 앞선다는 진술도 주목할 만하다. 그 길은 하보나를 거쳐 파라다이스와 최종자 군단에 이르며, 외부 공간에서의 미래 임무에 대해서는 저자가 추측한다, 믿는다는 표현으로 확정된 계시와 구별해 둔다. 편의 마지막 절은 흙에서 난 몸을 지닌 존재라도 참으로 원하면 시대들의 유산을 얻는다고 말하며, 의지를 생존의 일관된 조건으로 확인한다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>모론시아 삶에서 형태가 내면의 본성을 따른다는 설명은 무엇을 시사합니까?</span></button><div class="answer">물질적 삶에서는 겉모습과 속사람이 일치하지 않을 수 있지만, 모론시아 삶에서는 점점 더 내면의 성품이 그대로 외형으로 드러난다는 뜻입니다. 영적 수준에서는 둘이 거의 완전히 같아집니다. 지금 가꾸는 내면의 성품이 다음 삶의 모습 자체가 된다는 점에서, 성품 형성의 중요성을 다시 생각하게 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>조절자 융합이 일어나기 위한 조건과 그 결과를 정리해 보십시오.</span></button><div class="answer">융합은 초우주의 명령이 인간 본성이 영원한 생애를 위해 최종적이고 돌이킬 수 없는 선택을 했다고 선언한 뒤에야 일어납니다. 융합이 이루어지면 그 인격의 영원한 생애에 더 이상 위험이 없고, 시간이나 영원의 어떤 사건도 인간과 조절자를 분리할 수 없습니다. 두 정체성이 하나가 되어 최종자 군단을 향해 함께 나아갑니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>편의 마지막 절이 흙의 기원과 영원한 유산을 함께 말하는 것은 어떤 의미가 있습니까?</span></button><div class="answer">인간은 지상의 동물적 기원을 지니고 몸은 흙이지만, 그 출발점이 운명을 제한하지 않는다는 뜻입니다. 조건은 실제로 뜻하고 참으로 원하는 것, 곧 의지입니다. 인격의 선물, 혼의 성장, 생존 판정, 융합에 이르는 이 편 전체의 논의가 결국 인간의 진실한 선택으로 모인다는 결론으로 읽을 수 있습니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">112:6.1</div><div class="qtext">나비가 애벌레에서 나오듯, 인간의 참된 인격은 맨션 세계에서 처음으로 나타날 것이다. 그곳에서 비로소 한때 물질 육체에 감추어졌던 인격이 드러난다.</div></div><div class="quote"><div class="ref">112:6.3</div><div class="qtext">물리적 삶에서 필사자는 속으로는 사랑스럽지 않으면서도 겉으로는 아름다울 수 있다. 그러나 모론시아 삶에서는, 그리고 그 높은 수준으로 갈수록 점점 더, 인격의 형태가 내면의 사람의 본성에 직접 따라 달라진다.</div></div><div class="quote"><div class="ref">112:6.5</div><div class="qtext">창조체의 의지는 마음 없이는 존재할 수 없지만, 물질적 지성을 잃어도 지속된다.</div></div><div class="quote"><div class="ref">112:6.6</div><div class="qtext">모론시아 마음은 지역 우주 지성의 창조적 근원인 신성한 사역자에 의해 수정되고 변형된 우주 마음과의 직접적인 접촉을 통해 진화해야 한다.</div></div><div class="quote"><div class="ref">112:6.8</div><div class="qtext">기억의 지속성은 원래 자아의 정체성 보존의 증거이다.</div></div><div class="quote"><div class="ref">112:6.8</div><div class="qtext">기억의 원형은 혼 안에 지속되지만, 그것이 즉시 자기실현 가능한 기억으로 되살아나려면 이전 조절자의 존재가 필요하다.</div></div><div class="quote"><div class="ref">112:7.1</div><div class="qtext">생각 조절자와의 융합은 이전에는 잠재적이기만 했던 영원한 실제성들을 인격에 부여한다.</div></div><div class="quote"><div class="ref">112:7.4</div><div class="qtext">조절자와의 융합이 이루어지면 그러한 인격의 영원한 생애에 더 이상 위험은 없다.</div></div><div class="quote"><div class="ref">112:7.5</div><div class="qtext">조절자와의 융합은 인간 본성이 영원한 생애를 위해 최종적이고 돌이킬 수 없는 선택을 했다고 초우주의 명령이 선언하기 전에는 결코 일어나지 않는다.</div></div><div class="quote"><div class="ref">112:7.6</div><div class="qtext">생존을 위한 결정은 이곳에서 이루어져야 한다.</div></div><div class="quote"><div class="ref">112:7.10</div><div class="qtext">이제 이 두 정체성은 하나가 되었으며, 시간이나 영원의 어떤 사건도 인간과 조절자를 다시 분리할 수 없다.</div></div><div class="quote"><div class="ref">112:7.12</div><div class="qtext">인간 구성원이 인격을 처음으로 누렸기 때문에, 인격에 대한 모든 문제에서 인간이 조절자를 능가한다. 이 융합된 존재의 파라다이스 본부는 디비닝턴이 아닌 어쎈딩톤이며</div></div><div class="quote"><div class="ref">112:7.19</div><div class="qtext">참으로 너희 필사자들은 지상의 동물적 기원을 지녔으며, 너희의 몸은 실로 흙이다. 그러나 너희가 실제로 뜻한다면, 너희가 참으로 원한다면, 시대들의 유산이 분명 너희의 것이 될 것이며</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 112편 본문(새번역본) 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+LECTURE({"n": 4, "title": "삼위일체", "slides": [], "docs": [], "interactive": "/learn/w4.html", "audiobook": null});

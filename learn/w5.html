@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제5강 스스로 계신 이의 분화와 신들의 관계 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 10 · 105 · 106편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 85개">
+<meta property="og:url" content="https://urantiareaders.com/learn/w5.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스스로 계신 이의 분화와 신들의 관계 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 5</p>
+    <h1>스스로 계신 이의 분화와 신들의 관계</h1>
+    <p class="papers">유란시아서 10 · 105 · 106편</p>
+    <div class="lead">105편과 106편은 유란시아서에서 가장 철학적인 두 편으로, 한 멜기세덱이 실체 전체의 기원과 운명을 하나의 지도로 그려 보인다. 출발점은 스스로 계신 이라는 철학적 가정이다. 아무런 분화도 없던 무한 안에서 최초의 의지적 표현이 일어났다고 가정하면, 스스로 계신 이는 일곱 국면의 자기 관계로 나뉘고, 그 관계들은 시작도 없이 공존하는 무한의 일곱 절대자로 영원화된다. 그 가운데 아버지·아들·영의 연합인 파라다이스 삼위일체는 신 통일의 영원한 기초이며, 10편은 이 삼위일체가 아버지의 자기 증여에서 비롯되었다고 설명한다. 유한 실체가 공표되자 시간 지연과 불완전이 생겨났고, 칠중 하나님은 그 간격을 메우며 시간 속 창조체를 찾아온다. 칠중 하나님의 성취는 최상 존재 안에서 권능과 인격으로 종합되고, 이어 궁극 삼위일체와 절대 삼위일체, 마침내 삼위일체들의 삼위일체라는 먼 지평이 제시된다. 이 강의는 그 흐름을 일곱 마디로 따라가며, 분화가 무한을 줄이지 않고 오히려 신성을 체험 가능하게 한다는 점, 그리고 하나님의 뜻을 사는 삶이 이 장대한 순환에 참여하는 길이라는 점을 함께 살핀다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 스스로 계신 이: 무한의 철학적 원점</a></li><li><a href="#s2">2. 칠중 자기 관계와 무한의 일곱 절대자</a></li><li><a href="#s3">3. 파라다이스 삼위일체: 신 통일의 영원한 기초</a></li><li><a href="#s4">4. 유한의 출현과 칠중 하나님</a></li><li><a href="#s5">5. 최상 존재: 함께 진화하는 체험적 신</a></li><li><a href="#s6">6. 궁극과 절대, 그리고 삼위일체들의 삼위일체</a></li><li><a href="#s7">7. 무한 앞의 우리: 분화의 의미와 하나님의 뜻을 사는 삶</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>스스로 계신 이: 무한의 철학적 원점</h2><p class="sub">유한한 마음이 무한을 생각하는 출발점 (105편 서문·1장)</p></div></div>
+  <p class="summary">105편은 무한이 높은 지성체에게도 부분적으로만 이해된다는 고백으로 시작한다. 우주 철학자들은 모든 실체의 원초적 원인을 스스로 계신 이로서 기능하는 우주 아버지께 돌린다. 스스로 계신 이는 신화되거나 비신화된 것, 실제적이거나 잠재적인 것 같은 어떤 범주로도 규정되지 않으며, 그가 존재한다는 진술 외에는 어떤 제한도 붙일 수 없다. 본문은 이 철학적 가정이 인격적 의미와 가치에서는 우리가 아는 아버지와 같은 분임을 분명히 하면서도, 아버지에 대한 체험은 언제나 그 가정보다 작다고 말한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 마디에서 먼저 볼 것은 저자의 조심스러운 태도다. 멜기세덱은 무한을 필사자의 언어로 옮기는 과정에서 심각한 왜곡이 생길 수밖에 없음을 알면서도, 유한한 존재에게 절대적 기원과 무한한 운명을 생각할 근거를 주기 위해 이 개념을 제시한다고 밝힌다. 둘째로 스스로 계신 이와 아버지의 관계가 중요하다. 스스로 계신 이는 철학적 가설이고, 아버지는 우리가 인격 안에서 실제로 체험하는 무한자의 국면이다. 본문은 이 둘을 대립시키지 않고, 인격적 의미에서는 동의어로 보되 비신화된 실체의 영역에서는 그 가정이 그리 명확히 식별되지 않는다고 구분한다. 셋째로 가상의 정적 순간이라는 사고 실험이 있다. 무한히 먼 과거 영원의 한 순간에는 어떤 분화도 없고, 무한은 무한자로 채워지며 실제들은 아직 잠재 속에 담겨 있다. 그러나 그 순간에도 자기 의지의 가능성은 가정되어야 한다고 본문은 덧붙인다. 이 한 문장이 이후 모든 분화의 열쇠다. 실체의 다양화는 기계적 유출이 아니라 의지의 표현이라는 뜻이기 때문이다. 넷째로 이 마디는 위로의 문장으로 끝난다. 무제한 무한은 유한한 창조체에게 의미가 없지만 무한은 스스로를 제한해 모든 수준에서 표현될 수 있고, 무한자가 모든 인격에게 돌리는 얼굴은 사랑의 아버지의 얼굴이라는 것이다. 가장 추상적인 개념에서 출발한 논의가 가장 인격적인 결론으로 이어지는 구조를 눈여겨볼 만하다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>스스로 계신 이를 어떤 범주로도 규정할 수 없다는 말은 무엇을 뜻합니까?</span></button><div class="answer">스스로 계신 이는 신화된 것과 비신화된 것, 실제와 잠재, 인격과 비인격, 정적인 것과 동적인 것이 아직 나뉘기 이전의 분화되지 않은 실체를 가리킵니다. 우리가 쓰는 모든 구분은 분화 이후에 생긴 것이므로 그 이전을 묘사하는 데는 쓸 수 없습니다. 그래서 본문은 그가 존재한다는 진술 외에는 어떤 제한도 붙일 수 없다고 말합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>스스로 계신 이와 우리가 아는 우주 아버지는 어떤 관계입니까?</span></button><div class="answer">인격적 의미와 가치에서 두 개념은 같은 분을 가리킵니다. 다만 아버지는 우리가 인격 안에서 실제로 체험하는 무한자의 국면이고, 스스로 계신 이는 첫째 근원이며 중심에 대해 우리가 알 수 없는 모든 것에 관한 철학적 가설입니다. 그러므로 아버지에 대한 우리의 예배 개념은 언제나 그 가설보다 작을 수밖에 없습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>아무 분화도 없던 가상의 순간에도 자기 의지의 가능성을 가정해야 하는 이유는 무엇입니까?</span></button><div class="answer">이후의 모든 실체가 무한 안에서 저절로 흘러나온 것이 아니라 의지의 표현으로 시작되었음을 설명하기 위해서입니다. 의지의 가능성이 없다면 정적인 무한에서 어떤 변화도 설명할 수 없습니다. 이 가정 덕분에 분화는 필연적 유출이 아니라 자유로운 자기 표현으로 이해되며, 뒤에 나오는 아버지의 자기 증여와도 자연스럽게 연결됩니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">105:0.1</div><div class="qtext">우주의 높은 계층의 지성체들에게조차 무한은 부분적으로만 이해될 수 있으며, 실체의 최종성은 상대적으로만 이해될 수 있다.</div></div><div class="quote"><div class="ref">105:0.2</div><div class="qtext">실체의 총체성은 무한이며, 따라서 개념 능력이 아(亞)무한인 어떤 마음도 이를 완전히 이해할 수 없다.</div></div><div class="quote"><div class="ref">105:1.1</div><div class="qtext">우주의 철학자들은 무한 안의 절대적 원초 인과를, 무한하고 영원하며 절대적인 스스로 계신 이로서 기능하는 우주 아버지께 돌린다.</div></div><div class="quote"><div class="ref">105:1.2</div><div class="qtext">스스로 계신 이에 대한 이 개념이 모든 인격적 의미와 가치에 있어서 신의 첫째 개인, 곧 모든 인격의 우주 아버지와 동의어임을 명확히 해 두자.</div></div><div class="quote"><div class="ref">105:1.3</div><div class="qtext">스스로 계신 이는 무한자이며, 스스로 계신 이는 또한 무한이다.</div></div><div class="quote"><div class="ref">105:1.3</div><div class="qtext">스스로 계신 이의 개념은 무제한 무한을 함축하며, 이는 모든 무한한 영원 속에서 존재할 수 있는 모든 것의 분화되지 않은 실체이다.</div></div><div class="quote"><div class="ref">105:1.4</div><div class="qtext">존재적 개념으로서 스스로 계신 이는 신화되지도 비신화되지도 않았으며, 실제적이지도 잠재적이지도 않고, 인격적이지도 비인격적이지도 않으며, 정적이지도 동적이지도 않다.</div></div><div class="quote"><div class="ref">105:1.5</div><div class="qtext">이 가상의 영원 순간에는 무한 전반에 걸쳐 어떠한 분화도 없다. 무한은 무한자로 채워지며, 무한자는 무한을 포괄한다.</div></div><div class="quote"><div class="ref">105:1.5</div><div class="qtext">그러나 이렇게 추측된 상황에서도 우리는 자기 의지의 가능성이 존재함을 가정해야 한다.</div></div><div class="quote"><div class="ref">105:1.6</div><div class="qtext">인간이 우주 아버지를 이해하는 것은 인격적 체험임을 항상 기억하라.</div></div><div class="quote"><div class="ref">105:1.6</div><div class="qtext">하나님, 곧 너희의 아버지요 나의 아버지는 우리가 우리의 인격 안에서 실제적인 체험적 실체로 지각하는 무한자의 국면이지만, 스스로 계신 이는 첫째 근원이며 중심에 대하여 우리가 알 수 없다고 느끼는 모든 것에 관한 우리의 가설로 언제나 남아 있다.</div></div><div class="quote"><div class="ref">105:1.8</div><div class="qtext">그리고 무한자가 모든 우주 인격들에게 돌리는 얼굴은 아버지의 얼굴, 곧 사랑의 우주 아버지의 얼굴이다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>칠중 자기 관계와 무한의 일곱 절대자</h2><p class="sub">하나가 일곱 국면으로 드러나 실체의 전제가 되다 (105편 2·3장)</p></div></div>
+  <p class="summary">본문은 스스로 계신 이 안에서 최초의 의지적 표현과 반향적 반응이 일어난 이론적 순간을 가정한다. 이 자기 변모는 신화된 실체와 비신화된 실체, 잠재와 실제의 다중적 분화로 이어지고, 스스로 계신 이는 우주 아버지, 우주 통제자, 우주 창조주, 무한한 유지자, 무한 잠재력, 무한 수용력, 무한의 우주적 하나라는 일곱 자기 관계를 이룬다. 이 일곱 관계가 영원화된 것이 세 신 개인과 파라다이스 섬, 세 절대자로 이루어진 무한의 일곱 절대자다. 이들은 순서대로 서술되지만 실제로는 모두 동격으로 영원하다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>이 마디의 핵심은 순서와 영원의 긴장이다. 본문은 실체의 기원을 연대기처럼 서술하면서도, 일곱 절대자가 시작이 없고 언제나 있어 왔다는 깨달음으로 그 서술을 늘 가려 읽으라고 당부한다. 순차적 묘사는 시간 속에 사는 우리를 위한 교육적 장치일 뿐이다. 일곱 국면을 살펴보면 인격적인 것과 비인격적인 것이 짝을 이룬다. 우주 아버지는 영원 아들의 아버지로서 실제들의 원초적 인격 관계이고, 우주 통제자는 파라다이스의 원인으로서 원초적 비인격 관계다. 본문은 이를 사랑으로서의 하나님과 원형으로서의 하나님이라고 대비한다. 우주 창조주는 아버지와 아들의 연합이 공동 인격과 하보나의 출현으로 완성되는 창조 순환이며, 나머지 세 국면은 각각 우주 절대자, 신 절대자, 무제한 절대자와 연결된다. 일곱째 국면인 무한의 우주적 하나는 스스로 계신 이가 스스로 계신 이 그대로인 자기 관계로서, 그 안에서 공간의 창조체부터 파라다이스 시민까지 모두 살고 움직이며 존재한다. 일곱 절대자 가운데 세 절대자의 역할도 정리해 둘 만하다. 신 절대자는 모든 신 잠재력의 총체이자 운명의 창시자이고, 무제한 절대자는 비신화된 실체의 총체로서 영원조차 소진시킬 수 없는 고요를 지닌다. 우주 절대자는 이 둘을 통일하며 이미 존재하는 것과 아직 완성되지 않은 것 사이의 긴장을 보상한다. 그리고 본문은 일곱 절대자를 다 합하면 무한과 같아지지만 아버지 자신은 실제로 무한하다고 말해, 분화가 근원을 소진하지 않음을 미리 보여 준다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>일곱 절대자를 순서대로 설명하면서도 모두 동격으로 영원하다고 강조하는 이유는 무엇입니까?</span></button><div class="answer">유한한 마음은 시작이 있어야 생각할 수 있으므로 본문은 시간 언어로 순서를 붙여 설명합니다. 그러나 실제로 일곱 절대자는 시작 없이 공존하며 실체 전체의 전제입니다. 순서는 이해를 돕는 틀일 뿐이고, 그것을 실제 시간상의 선후로 읽으면 아들과 영과 파라다이스의 영원한 공존이라는 진리를 놓치게 된다는 경고입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>사랑으로서의 하나님과 원형으로서의 하나님이라는 대비는 무엇을 보여 줍니까?</span></button><div class="answer">스스로 계신 이의 분화가 인격적 계열과 비인격적 계열로 함께 나아간다는 점입니다. 우주 아버지는 아들과의 관계 속에서 모든 인격의 아버지가 되고, 우주 통제자는 파라다이스를 통해 형태와 배열의 주 원형을 정합니다. 같은 근원이 영적·인격적 세계와 물리적·비인격적 세계를 모두 떠받친다는 뜻입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>세 절대자는 각각 어떤 역할을 하며, 왜 우주 절대자가 중요합니까?</span></button><div class="answer">신 절대자는 신화된 잠재력의 총체이고, 무제한 절대자는 비신화된 잠재력의 총체입니다. 우주 절대자는 이 둘을 통일하고 절대적인 것과 상대적인 것을 서로 관련시킵니다. 영적 가능성과 물리적 가능성이 분리된 채 남지 않고 하나의 우주 안에서 조화될 수 있는 것은 우주 절대자가 그 긴장을 보상하기 때문입니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">105:2.1</div><div class="qtext">실체의 기원을 생각할 때, 모든 절대 실체는 영원으로부터 있으며 존재의 시작이 없다는 점을 항상 명심하라. 절대 실체라 함은 신의 세 존재적 개인, 파라다이스 섬, 그리고 세 절대자를 가리킨다.</div></div><div class="quote"><div class="ref">105:2.2</div><div class="qtext">스스로 계신 이 안에서 “최초”의 의지적 표현과 “최초”의 반향적 반응이라는 이론적 순간이 가정되어야 한다.</div></div><div class="quote"><div class="ref">105:2.3</div><div class="qtext">스스로 계신 이의 이러한 자기 변모는 신화된 실체와 비신화된 실체, 잠재적 실체와 실제적 실체, 그리고 그렇게 분류하기 어려운 어떤 다른 실체들의 다중적 분화로 절정에 이른다.</div></div><div class="quote"><div class="ref">105:2.4</div><div class="qtext">이러한 내부적 변모에 의하여 스스로 계신 이는 칠중 자기 관계의 기초를 세우고 있다.</div></div><div class="quote"><div class="ref">105:2.5</div><div class="qtext">1. 우주 아버지. 스스로 계신 이는 영원 아들의 아버지이다. 이것은 실제들의 원초적 인격 관계이다.</div></div><div class="quote"><div class="ref">105:2.6</div><div class="qtext">우주 아버지는 사랑으로서의 하나님이요, 우주 통제자는 원형으로서의 하나님이다.</div></div><div class="quote"><div class="ref">105:2.11</div><div class="qtext">공간의 창조체로부터 파라다이스의 시민에 이르기까지 그 안에서 우리 모두는 살고 움직이며 존재한다.</div></div><div class="quote"><div class="ref">105:3.1</div><div class="qtext">스스로 계신 이 안의 일곱 근본 관계는 무한의 일곱 절대자로 영원화된다.</div></div><div class="quote"><div class="ref">105:3.1</div><div class="qtext">일곱 절대자는 실체의 전제이다.</div></div><div class="quote"><div class="ref">105:3.2</div><div class="qtext">일곱 절대자를 모두 합하면 무한과 같아지지만, 우주 아버지 자신은 실제로 무한하다.</div></div><div class="quote"><div class="ref">105:3.6</div><div class="qtext">신 절대자는 절대자를 제한하는 자요 제한된 것을 절대화하는 자, 곧 운명의 창시자이다.</div></div><div class="quote"><div class="ref">105:3.7</div><div class="qtext">영원조차도 이 비신 절대자의 가없는 고요를 소진시킬 수 없다.</div></div><div class="quote"><div class="ref">105:3.8</div><div class="qtext">7. 우주 절대자. 신화된 것과 비신화된 것의 통일자, 절대적인 것과 상대적인 것의 상관자.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>파라다이스 삼위일체: 신 통일의 영원한 기초</h2><p class="sub">아버지의 자기 증여가 이룬 아버지·아들·영의 연합 (10편, 105편 4장, 106편 5장)</p></div></div>
+  <p class="summary">105편은 시원적 관계를 통일성, 이중성, 삼자일체의 세 부류로 나누고, 삼자일체가 무한을 우주적 기능으로 실현한다고 설명한다. 그 가운데 아버지·아들·영의 연합인 파라다이스 삼위일체는 인격적 신만의 독특한 연합이다. 10편에 따르면 아버지는 자기 분배의 정책에 따라 무한의 인격을 아들에게 증여하셨고, 두 분은 공동 인격을 무한 영에게 증여하셨다. 세 분은 복제가 아닌 독특한 개인이면서 하나로 연합되어 있으며, 집합적으로 신의 모든 잠재성을 채우는 최소한의 존재들로 보인다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>이 마디는 세 갈래로 정리할 수 있다. 첫째는 삼위일체의 동기다. 10편은 신성한 인격이 자기중심적이지 않으며 자기 분배와 인격의 나눔이 신성한 자유 의지에 따른 자아됨을 특징짓는다고 말한다. 아버지는 아들에게 인격 절대성을 증여함으로써 인격 절대주의의 족쇄에서 벗어나지만, 그 대가로 다시는 홀로 인격-절대로 행동할 수 없게 된다. 삼위일체는 필연이면서도 사랑의 자발적 선택이라는 역설이 여기 있다. 저자인 우주 검열자가 우주의 일 가운데 피할 수 없는 필연은 삼위일체 하나뿐이라고 말하는 것도 같은 맥락이다. 둘째는 하나됨과 구별의 공존이다. 아버지, 아들, 영은 본성에서 동등하고 존재에서 동격이지만 우주 활동에서는 뚜렷이 구별된다. 아버지됨은 아들됨 없이는 실재하지 않으므로, 아들이 없는 아버지는 우주 아버지라 불릴 수 없다는 지적도 음미할 만하다. 셋째는 삼위일체의 성격이다. 106편은 삼위일체가 그 자체로 인격은 아니지만 인격을 부정하지도 않는 신 실체라고 정의하고, 개별 신들은 각자로서는 삼위일체가 아니며 오직 집합적으로만 삼위일체라고 말한다. 10편은 이를 아버지와 아들과 손자가 이루는 법인에 비유한다. 또한 신화된 것만이 삼위일체가 될 수 있으므로 세 절대자의 연합은 삼위일체가 아니라 삼자일체나 삼극일체로 불린다. 이 구분은 뒤에 나올 체험적 삼위일체들을 이해하는 바탕이 된다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>10편은 파라다이스 삼위일체가 어떻게 이루어졌다고 설명합니까?</span></button><div class="answer">아버지가 자기 분배의 정책에 따라 무한의 인격을 영원 아들에게 증여하시고, 아버지와 아들이 영원한 연합의 공동 인격을 무한 영에게 증여하심으로써 신의 존재적 인격화가 완성되었다고 설명합니다. 이 과정은 시간상의 사건이 아니라 영원한 관계이며, 그 동기는 자기중심적이지 않은 신성한 인격의 나눔에 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>삼위일체가 신 실체이지만 인격 실체는 아니라는 말은 무엇을 뜻합니까?</span></button><div class="answer">아버지, 아들, 영은 각각 인격이지만, 그 연합인 삼위일체는 한 사람의 인격처럼 행동하는 존재가 아니라는 뜻입니다. 삼위일체는 인격을 포괄하면서 비인격적 기능, 예컨대 정의의 행정과 연결합니다. 10편이 여러 사람이 이루는 법인에 비유하듯, 구성원의 인격적 의지에 따르되 그 자체는 인격이 아닌 연합체로 이해할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>세 분이 신의 모든 잠재성을 채우는 최소 수의 존재라는 진술은 어떤 의미가 있습니까?</span></button><div class="answer">어느 한 신도 홀로는 신의 모든 잠재성을 실제로 채우지 못하지만 세 분이 함께하면 채운다는 뜻입니다. 신성은 고립된 단일자가 아니라 관계 속에서 완전해진다는 점을 보여 줍니다. 10편은 세 개인이 최소한의 사회 집단을 이룬다고도 말하는데, 이는 사랑과 협력이 신성의 본질에 속함을 시사합니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">105:4.3</div><div class="qtext">때때로 통일성이 이중성을 낳고, 이중성이 삼자일체를 낳으며, 삼자일체가 모든 것의 영원한 조상이라고 말해져 왔다.</div></div><div class="quote"><div class="ref">105:4.8</div><div class="qtext">스스로 계신 이는 통일성으로서의 무제한 무한이다. 이중성들은 실체의 토대를 영원화한다. 삼자일체들은 우주적 기능으로서의 무한의 실현을 창발시킨다.</div></div><div class="quote"><div class="ref">10:0.1</div><div class="qtext">영원한 신들의 파라다이스 삼위일체는 인격 절대주의로부터 아버지가 벗어나는 것을 용이하게 한다.</div></div><div class="quote"><div class="ref">10:0.3</div><div class="qtext">나는 삼위일체가 필연적이었다고 여긴다.</div></div><div class="quote"><div class="ref">10:1.3</div><div class="qtext">신성한 인격은 자기중심적이지 않다. 자기 분배와 인격의 나눔은 신성한 자유 의지에 따른 자아됨을 특징짓는다.</div></div><div class="quote"><div class="ref">10:1.4</div><div class="qtext">이와 같이 아버지는 “무한의 인격”을 그의 독생 아들에게 증여하시고, 그 두 분은 영원한 연합의 “공동 인격”을 무한 영에게 증여하신다.</div></div><div class="quote"><div class="ref">10:2.6</div><div class="qtext">우주 아버지, 영원 아들, 무한 영은 독특한 개인들이다. 어느 누구도 복제가 아니며, 각자가 기원적이고, 모두가 연합되어 있다.</div></div><div class="quote"><div class="ref">10:3.5</div><div class="qtext">아버지됨은 아들됨 없이는 실재하지 않는다.</div></div><div class="quote"><div class="ref">10:4.3</div><div class="qtext">삼위일체는 무인격적 역할로, 그러나 인격에 어긋나지 않게 기능하는 무한한 개인들의 연합이다.</div></div><div class="quote"><div class="ref">10:8.4</div><div class="qtext">세 무한한 개인은 전체 신, 곧 신 절대자의 전(前)인격적이며 존재적인 잠재성을 활성화하는 데 필수적인 최소 수의 존재들로 보인다.</div></div><div class="quote"><div class="ref">106:5.3</div><div class="qtext">그러므로 삼위일체는 언제나 신 실체이지만 결코 인격 실체는 아니다.</div></div><div class="quote"><div class="ref">106:5.4</div><div class="qtext">오직 신화된 것만이 삼위일체가 될 수 있으며, 그 외의 모든 연합은 삼자일체 또는 삼극일체이다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>유한의 출현과 칠중 하나님</h2><p class="sub">시간의 장벽 너머로 찾아오는 신성 (105편 5·6장, 106편 1장, 10편 3장)</p></div></div>
+  <p class="summary">유한 실체의 공표는 아버지의 자유 의지에 돌려진다. 오직 아버지 의지의 무한성만이 절대 수준을 제한하여 유한한 것을 창조할 수 있었다. 유한은 본질적으로 완전한 하보나 유형과 진화적으로 완성되어 가는 초우주 유형으로 나타나며, 진화를 통해 완전에 이른다는 것은 출발점이 완전하지 않음을 뜻하므로 여기서 불완전과 잠재적 악의 가능성이 생긴다. 이 시간 지연에 대한 신성의 응답이 칠중 하나님이다. 칠중 하나님은 아무리 먼 공간에서 기원한 인격에게도 진리와 아름다움과 선하심의 사역을 펼친다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>이 마디에서 주목할 점은 불완전에 대한 본문의 해석이다. 진화적 창조에는 부적응, 부조화, 갈등이 내재하며 이것이 잠재적 악의 기원이라고 본문은 솔직하게 말한다. 그러나 같은 시간 지연이 창조체를 신의 동역자로 만든다. 완전성 도달이 늦춰지기 때문에 창조체는 자기 진화에 참여할 수 있고, 창조주와 동반 관계를 맺을 수 있다. 필사자의 물질적 마음조차 불멸의 혼을 이루는 일에서 조절자의 동역자가 된다는 진술은 이 원리를 개인의 차원으로 옮긴 것이다. 불완전은 결함이기 이전에 참여의 조건이라는 관점이다. 칠중 하나님은 이 간격을 메우는 신성의 체계다. 본문은 칠중 하나님이 진화 우주에 있는 시간의 장벽을 파라다이스 신이 인식함을 의미한다고 정의하고, 그 사역이 영원 아들을 거쳐 아버지께로 안으로 향하고 옛적부터 늘 계신 이들을 거쳐 창조자 아들들에게로 밖으로 향한다고 설명한다. 그 신성 측면은 지금 일곱 주 영과 공동 행위자의 연락 안에서 통합되어 있으나, 장차 최상 존재의 인격 안에서 영원히 통일될 운명이다. 10편이 전하는 아버지의 일곱 기능도 함께 볼 만하다. 아버지는 창조자 아들들을 통해 창조자로, 파라다이스를 통해 통제자로, 영원 아들을 통해 영으로, 공동 창조자를 통해 마음으로 기능하며, 한 개인으로서는 생각 조절자로 필사자 안에 직접 거한다. 분화된 신성이 결국 가장 가까운 자리까지 내려와 있다는 뜻이다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>본문은 진화적 창조에서 불완전과 잠재적 악이 생기는 이유를 어떻게 설명합니까?</span></button><div class="answer">진화를 통해 완전에 이른다는 것은 처음에는 완전하지 않은 상태에서 출발한다는 뜻이기 때문입니다. 그래서 물리적 우주부터 인격적 창조체까지 성장 과정에는 부적응과 부조화, 갈등이 따릅니다. 본문은 이것을 잠재적 악의 기원으로 보면서도, 그것이 성장과 참여를 가능하게 하는 시간 지연과 분리될 수 없다고 설명합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>시간 지연이 창조체에게 주는 긍정적 의미는 무엇입니까?</span></button><div class="answer">완전성이 곧바로 주어지지 않기 때문에 창조체가 자기 자신의 진화에 참여하고 창조주와 동반 관계를 맺을 수 있다는 점입니다. 완성된 상태로 만들어진 존재는 그 완성에 기여할 여지가 없지만, 성장하는 존재는 선택과 노력으로 결과에 함께합니다. 필사자의 마음이 불멸의 혼을 이루는 일에서 조절자의 동역자가 되는 것이 그 예입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>칠중 하나님은 우리에게 어떤 방식으로 다가옵니까?</span></button><div class="answer">칠중 하나님은 파라다이스 신이 진화 우주의 시간 장벽을 인식하고 그것을 넘어오는 체계입니다. 창조자 아들들, 옛적부터 늘 계신 이들, 일곱 주 영 등을 통해 신성이 단계적으로 전달되므로, 파라다이스에서 아무리 멀리 떨어진 곳의 창조체도 진리와 아름다움과 선하심의 사역을 받습니다. 인간은 인격적·영적 진보를 통해 상승하면서 이 칠중 신의 인격적 신성을 발견합니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">105:5.1</div><div class="qtext">스스로 계신 이의 원초적 다양화가 내재적이고 자족적인 의지에 돌려져야 하는 것처럼, 유한 실체의 공표도 파라다이스 신의 의지적 행위와 기능적 삼자일체의 반향적 조정에 돌려져야 한다.</div></div><div class="quote"><div class="ref">105:5.4</div><div class="qtext">오직 아버지 의지의 무한성만이 절대 존재 수준을 그렇게 제한하여 궁극적인 것을 창발시키거나 유한한 것을 창조할 수 있었다.</div></div><div class="quote"><div class="ref">105:5.5</div><div class="qtext">그것은 무한의 높이로부터 유한의 영역으로 내려오는 장엄한 하강이며, 언제나 파라다이스와 신을 향하여 안으로 선회하고, 무한한 근원에 걸맞은 저 높은 운명을 항상 추구한다.</div></div><div class="quote"><div class="ref">105:5.9</div><div class="qtext">그렇다면 이 둘은 원초적 현시들이니, 곧 본질적으로 완전한 것과 진화적으로 완성된 것이다.</div></div><div class="quote"><div class="ref">105:6.4</div><div class="qtext">이리하여 진화적 창조 안에 불완전이 발생한다. 그리고 이것이 잠재적 악의 기원이다.</div></div><div class="quote"><div class="ref">105:6.5</div><div class="qtext">진화의 시간 지연에 내재한 불완전에 대한 신성의 반응은 칠중 하나님의 보상하는 현존 안에 드러나며, 그의 활동을 통하여 완전해지고 있는 것이 완전한 것 및 완성된 것 모두와 통합된다.</div></div><div class="quote"><div class="ref">105:6.5</div><div class="qtext">필사 창조체의 물질적 마음조차 이렇게 하여 불멸의 혼의 이중화에서 신성한 조절자의 동역자가 된다.</div></div><div class="quote"><div class="ref">106:1.2</div><div class="qtext">이 초우주의 시간 지연, 즉 완전성 도달에 대한 장애는 진화 성장 과정에서 창조체의 참여를 가능하게 한다. 이로써 창조체는 자기 자신의 진화에 있어서 창조주와 동반 관계를 맺을 수 있게 된다.</div></div><div class="quote"><div class="ref">106:1.3</div><div class="qtext">칠중 하나님은 공간의 진화 우주들에 있는 시간의 장벽을 파라다이스 신이 인식함을 의미한다.</div></div><div class="quote"><div class="ref">106:1.3</div><div class="qtext">아무리 파라다이스에서 멀리 떨어져 있더라도, 아무리 깊은 공간 속에 있더라도, 물질적 생존 인격이 어디에서 기원하든, 칠중 하나님은 그곳에서 존재하며 그 불완전하고 분투하며 진화하는 창조체에게 진리, 아름다움, 선하심의 사랑과 자비의 사역을 펼치고 있다.</div></div><div class="quote"><div class="ref">106:1.4</div><div class="qtext">모든 국면에서 칠중 신은 현재 대우주에서 기능적 실체의 상대적 통일성의 원천이다.</div></div><div class="quote"><div class="ref">10:3.15</div><div class="qtext">6. 한 개인으로서, 그는 그의 배타적 단편들로 창조계 전역에서 직접 활동하는데, 필사 인간 안에서는 생각 조절자들로 활동한다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>최상 존재: 함께 진화하는 체험적 신</h2><p class="sub">칠중 하나님의 성취가 권능과 인격으로 종합되다 (106편 2장, 10편 5·7장)</p></div></div>
+  <p class="summary">칠중 하나님이 유한 진화를 기능적으로 조율한다면, 최상 존재는 그 운명 달성을 종합한다. 최상 존재는 대우주 진화의 신 정점으로, 하보나에 계신 최상 하나님의 영 인격과 칠중 하나님이 시간과 공간에서 이룬 체험적 권능이 결합해 권능-인격 종합을 이룬다. 이 권능은 획득되고 증명된 체험적 권능이라는 점에서 파라다이스 신들의 존재적 권능과 대조된다. 필사자도 이 장엄한 업무의 인격적 참여자이므로, 미가엘이 아버지의 완전을 나누었듯 언젠가 최상 존재의 진화적 완전을 함께 나누게 된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>최상 존재의 개념을 바르게 이해하려면 본문이 요구하는 세 가지 구별을 기억해야 한다. 영 개인, 진화적 권능, 그리고 그 권능이 영 인격과 통일되고 지배되는 권능-인격 종합이다. 영은 파라다이스로부터 하보나를 통해 오고, 에너지와 물질은 공간 깊은 곳에서 진화하며 창조자 아들들과 무한 영의 자녀들이 그것을 권능으로 조직한다. 조절자 증여에서 파라다이스 아들들의 생명 증여에 이르기까지 시간과 공간 속에서 신성이 이루는 모든 성취가 전능 권능으로 총합되고, 그 권능이 하보나 외곽에서 최상 하나님의 영 인격과 결합하는 것이다. 여기서 신이 창조체의 체험을 통해 실제로 성장한다는 독특한 관점이 나온다. 10편은 이를 삼위일체와 관련지어 설명한다. 삼위일체 자체는 개인이 아니고 최상 존재가 삼위일체의 배타적 인격화도 아니지만, 최상위는 유한 창조체가 파악할 수 있는 삼위일체의 권능-인격 집중에 가장 가깝다. 그래서 유한과 관련된 삼위일체를 최상위의 삼위일체라 부르고, 현재 우주 시대 동안 세 신은 인격적으로가 아니라 삼위일체로서 최상 존재와 협력한다. 또 10편은 최상위의 상위통제를 온전히 예측할 수 없다고 고백하는데, 이는 최상위가 아직 미완성이라는 표지로 읽힌다. 일곱 절대자의 존재적 실체는 체험으로 알 수 없지만 최상 하나님은 체험적 존재이므로 완전히 체험될 수 있다는 진술은, 인간에게 가장 가까운 신성이 바로 이 진화하는 신임을 알려 준다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>최상 존재의 권능이 파라다이스 신들의 권능과 다른 점은 무엇입니까?</span></button><div class="answer">파라다이스 신들의 권능은 영원하고 헤아릴 수 없는 존재적 권능입니다. 반면 최상 존재의 권능은 칠중 하나님이 시간과 공간에서 진화 우주를 조직하고 안정시키며 얻어 낸 획득된 권능, 증명된 권능, 체험적 권능입니다. 그 권능이 최상 하나님의 영 인격과 결합할 때 최상 존재의 권능-인격 종합이 이루어집니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>필사자가 최상 존재의 진화에 참여한다는 것은 어떤 의미입니까?</span></button><div class="answer">최상 존재는 시간과 공간에서 진화하는 모든 것을 포용하고 그것에 영 인격을 부여합니다. 창조체들의 성장과 성취가 그 진화의 재료가 되므로, 필사자도 이 업무의 인격적 참여자가 됩니다. 그래서 필사자는 최상위의 참된 자녀로서 그를 알게 되고, 미가엘이 아버지의 완전을 나누었듯 최상위의 진화적 완전을 함께 나누게 됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>최상위를 최상위의 삼위일체라는 말과 관련지어 어떻게 이해할 수 있습니까?</span></button><div class="answer">삼위일체가 유한을 향해 취하는 최대의 자기 제한된 태도를 최상위의 삼위일체라고 부릅니다. 최상 존재는 삼위일체 자체는 아니지만, 유한 창조체가 파악할 수 있는 삼위일체의 권능-인격 집중에 가장 가깝습니다. 즉 유한한 우리가 체험할 수 있는 범위 안에서 삼위일체를 가장 가깝게 대표하는 신이 최상 존재라는 뜻입니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">106:2.1</div><div class="qtext">칠중 하나님이 유한 진화를 기능적으로 조율하듯, 최상 존재는 궁극적으로 운명 달성을 종합한다. 최상 존재는 대우주 진화의 신 정점이다.</div></div><div class="quote"><div class="ref">106:2.2</div><div class="qtext">최상위의 개념은 영 개인, 진화적 권능, 그리고 권능-인격 종합, 곧 진화적 권능이 영 인격과 통일되고 영 인격에 의해 지배되는 것을 구별하여 인식하는 것을 포함해야 한다.</div></div><div class="quote"><div class="ref">106:2.3</div><div class="qtext">이것은 획득된 권능, 증명된 권능, 체험적 권능이다.</div></div><div class="quote"><div class="ref">106:2.4</div><div class="qtext">이로써 체험적 신은 오랜 진화 투쟁을 완성하며, 시간-공간의 권능 산물에 중앙 창조의 영 현존과 신성한 인격을 부여한다.</div></div><div class="quote"><div class="ref">106:2.5</div><div class="qtext">창조체들, 심지어 필사자들조차 이 장엄한 업무의 인격적 참여자들이므로, 그들은 최상위를 알고, 그러한 진화적 신의 참된 자녀로서 최상위를 인식할 능력을 확실히 얻는다.</div></div><div class="quote"><div class="ref">106:2.6</div><div class="qtext">네바돈의 미가엘이 파라다이스 아버지의 완전을 나누어 가짐으로써 아버지를 닮게 된 것처럼, 진화 필사자들도 언젠가 체험적 최상위와의 친족 관계에 이르게 될 것이며, 그들은 실제로 그의 진화적 완전을 함께 나누게 될 것이다.</div></div><div class="quote"><div class="ref">106:2.7</div><div class="qtext">최상 하나님은 체험적 존재이므로 완전히 체험될 수 있다.</div></div><div class="quote"><div class="ref">106:2.8</div><div class="qtext">그러나 이러한 최대 발달의 단계는 아마도 대우주 전체가 동격으로 빛과 생명에 정착할 때 비로소 달성될 것이다.</div></div><div class="quote"><div class="ref">105:6.2</div><div class="qtext">1. 신의 반응, 곧 체험적 최상위성의 세 수준의 출현.</div></div><div class="quote"><div class="ref">10:5.4</div><div class="qtext">삼위일체는 개인이 아니며, 최상 존재가 삼위일체의 배타적 인격화인 것도 아니지만, 최상위는 유한 창조체가 파악할 수 있는 삼위일체의 권능-인격 집중에 가장 가까운 것이다.</div></div><div class="quote"><div class="ref">10:7.3</div><div class="qtext">아버지, 아들, 영은 인격적으로 최상 존재와 함께 기능하지 않지만, 현재 우주 시대 동안, 그들은 삼위일체로서 그와 협력한다.</div></div><div class="quote"><div class="ref">10:7.4</div><div class="qtext">우리는 최상위의 상위통제를 온전히 예측할 수 없다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>궁극과 절대, 그리고 삼위일체들의 삼위일체</h2><p class="sub">체험적 삼위일체들이 그리는 실체 순환의 지평 (105편 7장, 106편 3~8장)</p></div></div>
+  <p class="summary">최상위가 유한과 연합되어 있듯 궁극위는 초월자들과 동일시된다. 최상 존재가 완성되면 최상 창조자들, 최상 존재, 주 우주 건축자들로 이루어진 첫째 체험적 삼위일체, 곧 궁극 삼위일체가 온전히 기능하고, 그 안에서 궁극 하나님이 주 우주에 방향을 부여하는 초월적 권능-인격화로 창발한다. 이어 최상 하나님, 궁극 하나님, 우주 운명 완성자의 연합인 절대 삼위일체가 잠재성의 절대자들을 활성화할 이론적 능력을 지닌다. 세 삼위일체가 연합한 삼위일체들의 삼위일체에서 체험적 무한은 존재적 무한과 하나가 된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>이 마디는 106편의 가장 먼 사변을 다루므로 본문 스스로 붙인 단서를 함께 읽어야 한다. 실체 수준들은 필사자의 시각에서 이해하기 위한 상징적 타협 개념이며 전적으로 상대적이라는 것이다. 그 전제 아래서 몇 가지 구조를 정리할 수 있다. 첫째, 궁극위는 최상위를 단순히 확대한 것이 아니다. 궁극위는 초월적 수준에 투영된 초최상위 이상의 것으로, 정도뿐 아니라 질에서 다르며 새로운 신 실체들의 창발이다. 둘째, 파라다이스 삼위일체와 체험적 삼위일체는 성격이 다르다. 본래의 삼위일체는 절대 신들만의 연합이지만, 궁극 삼위일체에는 주 창조자 아들들을 통해 실제 창조체의 체험이 포함된다. 그래서 파라다이스 삼위일체는 무한하고, 궁극 삼위일체는 아무한하며, 절대 삼위일체는 체험적 기원을 지니면서도 존재적 절대자들과 맞닿아 쉽게 분류되지 않는다. 절대 하나님은 체험적 신들 가운데 셋째이자 마지막이다. 셋째, 삼위일체들의 삼위일체는 세 삼위일체의 수준, 체험적 신의 수준, 스스로 계신 이의 수준이라는 세 단계로 제시된다. 본문은 이를 아버지-아들에서 아들-영, 영-최상위, 최상위-궁극위, 궁극위-절대자를 거쳐 아버지-무한에 이르는 실체 순환의 완결로 묘사한다. 넷째, 이 먼 개념에도 현재의 단서가 있다. 마제스톤의 신화 현상은 둘째 수준에서 세 체험적 신의 인격적 연합이 이미 우리 시대에 현시된 사례로 제시된다. 이 순환은 결국 알 수 없는 스스로 계신 이가 아버지-무한으로 체험될 수 있게 되는 방향을 가리킨다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>궁극위는 최상위와 어떻게 다릅니까?</span></button><div class="answer">최상위는 유한한 것들과 연합된 체험적 신이고, 궁극위는 초월자들과 동일시되는 신입니다. 본문은 궁극위가 최상위의 확대가 아니며 정도뿐 아니라 질에서도 다르다고 말합니다. 궁극위는 초월적 수준에 투영된 초최상위 이상의 것으로서, 그때까지 제한되지 않았던 것의 새로운 국면들이 제한되며 창발하는 새로운 신 실체입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>궁극 삼위일체가 파라다이스 삼위일체와 달리 창조체의 체험을 포함한다는 점은 어떤 의미가 있습니까?</span></button><div class="answer">파라다이스 삼위일체는 절대 신들만의 배타적 연합이어서 아절대적 존재들이 참여하지 않았습니다. 그러나 궁극 삼위일체의 구성원인 최상 창조자들 가운데는 주 창조자 아들들이 있어, 실제 창조체의 체험이 이 연합에 들어갑니다. 우주의 더 높은 통합이 위에서 주어지기만 하는 것이 아니라 창조체의 체험을 재료로 이루어진다는 뜻입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>삼위일체들의 삼위일체에서 두 무한이 하나가 된다는 것은 무엇을 가리킵니까?</span></button><div class="answer">파라다이스 삼위일체 안에 이미 존재하는 존재적 무한과, 끝없는 우주 체험을 통해 실현되어 가는 체험적 무한이 마침내 동일성에 이른다는 것입니다. 본문은 그 귀결을 알 수 없다고 하면서도, 그것이 스스로 계신 이를 체험적으로 달성 가능한 분, 곧 아버지-무한으로 체험하게 되는 방향으로 나아갈 것이라고 확신합니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">105:7.1</div><div class="qtext">초월자들은 아(亞)무한이고 아(亞)절대이지만 초(超)유한이고 초(超)창조체적이다.</div></div><div class="quote"><div class="ref">105:7.3</div><div class="qtext">궁극위는 초월적 수준에 투영된 초(超)최상위 이상의 어떤 것이다.</div></div><div class="quote"><div class="ref">106:3.2</div><div class="qtext">이 사건은 분명히 첫째 체험적 삼위일체, 곧 최상 창조자들과 최상 존재와 주(主) 우주 건축자들의 연합의 완전한 기능으로 이어질 것이다.</div></div><div class="quote"><div class="ref">106:3.3</div><div class="qtext">파라다이스 삼위일체는 진정으로 무한의 삼위일체이며, 이 본래의 삼위일체를 포함하지 않는 어떤 삼위일체도 결코 무한할 수 없다.</div></div><div class="quote"><div class="ref">106:3.4</div><div class="qtext">집단적 연합은 개인의 능력을 앞지르고, 심지어 초월할 수 있다.</div></div><div class="quote"><div class="ref">106:4.2</div><div class="qtext">궁극 삼위일체는 주(主) 창조를 조율하도록 예정되어 있지만, 궁극 하나님은 전체 주(主) 우주의 방향성을 부여하는 초월적 권능-인격화이다.</div></div><div class="quote"><div class="ref">106:5.1</div><div class="qtext">이것이 바로 절대 삼위일체로, 이는 최상 하나님, 궁극 하나님, 그리고 계시되지 않은 우주 운명 완성자의 연합이다. 이 삼위일체는 잠재성의 절대자들, 곧 신 절대자와 우주 절대자와 무제한 절대자를 활성화할 수 있는 이론적 능력을 지닌다.</div></div><div class="quote"><div class="ref">106:6.5</div><div class="qtext">존재적 파라다이스 삼위일체는 무한하고, 체험적 궁극 삼위일체는 아(亞)무한하지만, 절대 삼위일체는 그렇게 간단히 분류되지 않는다.</div></div><div class="quote"><div class="ref">106:6.6</div><div class="qtext">절대 하나님은 체험적 신들 가운데 셋째이자 마지막이다.</div></div><div class="quote"><div class="ref">106:8.1</div><div class="qtext">삼위일체들의 삼위일체 안에서 체험적 무한은 존재적 무한과 동일성에 도달하며, 두 무한은 전(前)체험적, 전(前)존재적 스스로 계신 이 안에서 하나가 된다.</div></div><div class="quote"><div class="ref">106:8.12</div><div class="qtext">아버지-아들 동반 관계는 아들-영이 되었고, 그다음 영-최상위, 그리고 최상위-궁극위와 궁극위-절대자로, 심지어 절대자와 아버지-무한에까지 이르렀으니, 곧 실체 순환의 완결이다.</div></div><div class="quote"><div class="ref">106:8.20</div><div class="qtext">마제스톤은 최상 존재의 초기 창조 명령에 응답하여 궁극위를 통해 작용하는 신 절대자에 의해 이 둘째 수준에서 실제화되었다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>무한 앞의 우리: 분화의 의미와 하나님의 뜻을 사는 삶</h2><p class="sub">끝없는 탐구와 영원한 여권 (106편 7~9장, 10편 8장)</p></div></div>
+  <p class="summary">106편의 끝부분은 이 장대한 지도를 우리 삶으로 돌려놓는다. 아버지를 아무리 많이 알게 되어도 그분의 무한성은 언제나 우리를 넘어서며, 하나님을 찾는 여정은 끝이 없다. 그러나 이것은 낙담의 이유가 아니라 끝없는 인격 발달과 신 연합의 가능성에 대한 최상의 확신이다. 체험적 통일은 먼 미래의 일이지만 실체 전체는 지금도 파라다이스 삼위일체 안에서 존재적으로 통일되어 있다. 그리고 모든 창조체의 성장은 아버지와의 동일화에 비례하므로, 하나님의 뜻을 사는 것이 무한으로 향한 영원한 여권이 된다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>이 마디는 두 편 전체의 결론을 세 가지로 정리해 준다. 첫째, 분화는 감소가 아니다. 본문은 무한자에게 실제 변화가 일어난 것이 아니며 모든 겉보기 발달은 실체를 받아들이는 수용력과 진가를 알아보는 인식이 커진 결과라고 말한다. 고독한 삼위일체 이전의 스스로 계신 이와 삼위일체들의 삼위일체 이후의 체험적 스스로 계신 이는 하나이자 같은 가설이다. 그러므로 스스로 계신 이로부터 일곱 절대자, 삼위일체, 칠중 하나님, 최상 존재로 이어지는 분화는 근원을 나누어 줄이는 일이 아니라, 무한이 유한한 존재들에게 체험될 수 있도록 자신을 표현하는 길이다. 둘째, 존재적 관점과 체험적 관점은 함께 붙들어야 한다. 시간 속의 우리는 통일이 점진적으로 이루어진다고 보지만, 영원의 관점에서는 이미 사실이다. 본문은 이 역설이 인간 관점의 제한과 체험에 의존하는 존재의 본성 때문에 생긴다고 설명한다. 셋째, 이 모든 사변은 실천으로 귀결된다. 신성하게 산다는 것은 하나님의 뜻을 사는 것이며, 그러한 삶은 진리에 기초하고 아름다움에 민감하며 선함에 의해 지배된다. 하나님을 아는 사람은 안으로는 예배로 빛나고 밖으로는 형제단을 향한 봉사에 헌신한다. 또한 본문은 상승하는 인격들이 스스로 계신 이의 자기 계시에 의지적으로 참여하는 존재가 될 것이라고 말한다. 가장 먼 우주론이 결국 오늘 하나님의 뜻을 행하는 평범한 선택과 이어져 있다는 것이 이 강의의 마지막 메시지다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님을 최종적으로 다 알 수 없다는 사실이 왜 낙담이 아니라 확신이 됩니까?</span></button><div class="answer">하나님의 무한성은 상승하는 인격 앞에 인격 발달과 신 연합의 가능성이 끝없이 열려 있다는 보증이기 때문입니다. 다 알 수 있는 신이라면 언젠가 탐구가 끝나겠지만, 무한한 아버지 앞에서 성장은 영원히 계속됩니다. 게다가 우리는 칠중, 최상위, 궁극위라는 신 수준들을 실제로 달성할 수 있으므로, 그 과정 자체가 충분한 의미를 지닙니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>통일은 먼 미래의 일이면서 지금 이미 사실이라는 역설을 어떻게 이해할 수 있습니까?</span></button><div class="answer">체험적 통일은 삼위일체들의 삼위일체 안에서 시간을 따라 실현되어 가지만, 존재적 통일은 파라다이스 삼위일체 안에서 지금도 완전하게 현존합니다. 우리가 이를 역설로 느끼는 것은 시간 감각과 체험에 의존해 실체를 인식하는 유한한 존재이기 때문입니다. 본문은 두 관점을 함께 받아들이라고 권합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>이 강의의 우주론은 우리의 일상적 신앙생활과 어떻게 연결됩니까?</span></button><div class="answer">모든 창조체의 성장은 아버지와의 동일화에 비례하고, 하나님의 뜻을 사는 것이 무한으로 향한 영원한 여권이라고 본문은 말합니다. 진리에 기초하고 아름다움에 민감하며 선함에 이끌리는 삶, 안으로는 예배하고 밖으로는 봉사하는 삶이 곧 최상 존재의 진화와 실체 순환에 참여하는 구체적인 방식입니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">106:7.5</div><div class="qtext">하나님을 찾는 여정은 끝이 없다!</div></div><div class="quote"><div class="ref">106:7.6</div><div class="qtext">하나님을 최종적인 의미로 달성하지 못한다고 해서 우주 창조체들이 낙담할 필요는 전혀 없다.</div></div><div class="quote"><div class="ref">106:7.6</div><div class="qtext">창조체를 괴롭히는 것이 아니라, 하나님의 무한성은 상승하는 인격이 끝없는 미래 내내 자신 앞에 있을 인격 발달과 신 연합의 가능성에 대한 최상의 확신이 되어야 한다.</div></div><div class="quote"><div class="ref">106:7.8</div><div class="qtext">그러한 미래의 영원한 순간에 주(主) 우주는 여전히 젊어 보일 것이며, 실로 끝없는 영원의 한계 없는 가능성 앞에서는 항상 젊을 것이다.</div></div><div class="quote"><div class="ref">106:8.22</div><div class="qtext">그러나 인격적 창조체로서 이러한 먼 가능성들을 바라볼 때, 우리는 모든 인격의 최종 운명이 이 인격들의 우주 아버지를 최종적으로 아는 것이라고 추론한다.</div></div><div class="quote"><div class="ref">106:8.23</div><div class="qtext">이는 스스로 계신 이의 자기 계시에 의지적 참여자가 된 저 한계 없는 인격들의 은하를 포함하며, 그들은 절대 아버지의 최종 아들들로서 무한 전체의 절대적 의지적 부분으로 영원히 남을 것이다.</div></div><div class="quote"><div class="ref">106:9.4</div><div class="qtext">그러나 전체 실체의 통합은 파라다이스 삼위일체 안에서 무제한적으로, 영원히, 존재적으로 현존하며, 바로 이 우주 순간에도 무한한 실체는 절대적으로 통일되어 있다.</div></div><div class="quote"><div class="ref">106:9.9</div><div class="qtext">무한자에게는 실제 변화가 일어난 것이 아니며, 모든 겉보기 발달은 실체 수용력과 우주적 진가 인식의 증가 때문이다.</div></div><div class="quote"><div class="ref">106:9.11</div><div class="qtext">조만간 우리는 모든 창조체의 성장이 아버지 동일화에 비례함을 깨닫는다. 하나님의 뜻을 사는 것이 무한 자체의 끝없는 가능성으로 향한 영원한 여권임을 이해하게 된다.</div></div><div class="quote"><div class="ref">106:9.11</div><div class="qtext">신성하게 산다는 것은 실제로 하나님의 뜻을 사는 것이다.</div></div><div class="quote"><div class="ref">106:9.12</div><div class="qtext">그러한 삶은 진리에 기초하고, 아름다움에 민감하며, 선함에 의해 지배된다.</div></div><div class="quote"><div class="ref">10:8.9</div><div class="qtext">오직 무한만이 아버지-무한을 드러낼 수 있다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 10 · 105 · 106편 본문(새번역본) 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>

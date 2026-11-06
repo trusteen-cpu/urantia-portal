@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta property="og:type" content="website">
+<meta property="og:title" content="제3강 무한 영 · 인터랙티브 학습 페이지">
+<meta property="og:description" content="유란시아서 8 · 9편을 일곱 마디로 정리한 학습 페이지 · 소그룹 질문과 모범답안 · 인용 86개">
+<meta property="og:url" content="https://urantiareaders.com/learn/w3.html">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>무한 영 · 유란시아서 52주 핵심 교리 해설</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 52주 핵심 교리 해설 · 3</p>
+    <h1>무한 영</h1>
+    <p class="papers">유란시아서 8 · 9편</p>
+    <div class="lead">8편과 9편은 신의 셋째 개인인 무한 영을 다룬다. 8편은 그의 기원과 본성, 그리고 사역의 성격을 밝히고, 9편은 그가 우주 안에서 실제로 행하는 일, 곧 에너지의 조종과 마음의 증여, 그리고 그의 방대한 영 가족을 설명한다. 무한 영은 아버지와 아들이 하나의 동일한 행동을 함께 품은 순간 완전한 모습으로 솟아난 분으로 묘사되지만, 본문은 이 순서가 인간의 이해를 돕기 위한 설명일 뿐이며 세 분 모두 영원부터 존재한다고 분명히 한다. 두 편을 관통하는 핵심 문장은 하나님은 사랑이시고 아들은 자비이시며 영은 사역이시라는 선언이다. 아버지의 사랑과 아들의 자비가 창조체에게 실제로 닿는 통로가 무한 영의 사역이라는 뜻이다. 그는 전재하는 영이며, 반중력과 에너지 조종의 권능을 지닌 우주 조종자이고, 모든 창조체 마음의 근원인 절대 마음이다. 동시에 그는 단순한 힘이 아니라 의지와 사랑을 지닌 참된 인격이며, 천사로까지 자신을 낮추어 인간 곁에 선다. 이 페이지는 두 편의 내용을 일곱 마디로 묶어, 기원에서 시작해 마음과 인격, 그리고 혼돈에서 영광으로 오르는 살아 있는 사다리까지 차례로 살펴본다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 영원의 순간, 무한 영의 기원</a></li><li><a href="#s2">2. 수많은 이름과 아버지·아들의 결합된 표현</a></li><li><a href="#s3">3. 사랑과 자비, 그리고 영의 사역</a></li><li><a href="#s4">4. 전재하는 영, 하나로 일하는 영적 현존들</a></li><li><a href="#s5">5. 우주 조종자, 행동의 하나님</a></li><li><a href="#s6">6. 절대 마음, 마음 인력 회로와 우주 반영력</a></li><li><a href="#s7">7. 참된 인격이신 영과 살아 있는 사다리</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>영원의 순간, 무한 영의 기원</h2><p class="sub">생각 하나님과 말씀 하나님이 함께 품은 행동 (8편 서문·1장)</p></div></div>
+  <p class="summary">아버지의 첫 번째 절대적 생각이 영원 아들 안에서 완전한 말씀을 발견하자, 두 분에게 연합된 행동을 위한 보편적 대리자에 대한 소망이 일어난다. 아버지와 아들이 하나의 동일하고 무한한 행동을 함께 품은 순간 무한 영이 완전한 모습으로 솟아난다. 그의 첫 행동은 신성한 부모를 인식하고, 자원하여 아버지께 충성을 맹세하며 아들에게 의존함을 인정하는 것이었다. 이와 함께 삼위일체가 존재하고, 죽어 있던 공간이 깨어나 하보나의 십억 구체가 나타난다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>이 마디를 읽을 때 가장 먼저 붙들어야 할 점은 기원의 순서가 하나의 설명 기법이라는 사실이다. 본문은 신들의 기원 순서를 말하는 것이 오직 인간이 그들의 관계를 생각할 수 있게 하려는 것뿐이며, 실제로 세 분은 모두 영원부터 존재해 왔다고 밝힌다. 이어서 시간과 공간에 묶인 필사 마음은 일관성을 위해 첫째 원인과 출발점을 필요로 하므로, 셋째 근원이며 중심의 연속적 기원을 하나의 해석상의 양보로 묘사한다고 덧붙인다. 그러므로 아버지, 아들, 영이라는 순서는 시간상의 선후가 아니라 관계의 논리적 순서로 읽어야 한다. 둘째로 주목할 점은 무한 영의 첫 행동이 지닌 성격이다. 그는 첫째와 둘째 개인과 동등함에도 불구하고 자원하여, 기꺼움과 자발성으로 아버지께 충성을 맹세하고 아들에게 의존함을 인정한다. 동등한 존재가 스스로 택한 충성과 의존이라는 점에서, 이는 강요된 위계가 아니라 사랑 안에서의 질서로 이해할 수 있다. 셋째로 이 순간은 우주 역사의 전통적 출발점이 된다. 행동의 하나님이 활동하자 공간이 꿈틀거리고 십억의 완전한 구체가 존재하게 되며, 물리적 중력과 영 인력이 함께 드러나 마음 의식을 위한 토양이 마련된다. 무한 영은 자신이 인격을 획득했을 때 중앙 우주도 동시에 영원하게 되었다고 증언할 뿐이며, 그 너머의 일은 절대 신비로 남는다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>본문은 무한 영의 기원을 순서대로 설명하면서도 왜 세 분이 모두 영원부터 존재한다고 강조합니까?</span></button><div class="answer">인간의 마음은 우주 역사를 그려 보기 위해 출발점과 첫째 원인을 필요로 하기 때문에, 계시자는 이해를 돕는 양보로서 기원을 차례대로 묘사합니다. 그러나 실제로 아버지, 아들, 영은 날의 시작도 끝도 없이 동격으로 존재해 왔습니다. 순서는 시간의 선후가 아니라 관계를 이해하기 위한 논리적 장치라는 점을 기억해야 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>무한 영의 첫 번째 행동이 아버지께 대한 충성과 아들에 대한 의존의 인정이었다는 점은 무엇을 보여 줍니까?</span></button><div class="answer">그는 첫째와 둘째 개인과 동등하지만 강요가 아니라 스스로의 기꺼움과 자발성으로 충성을 맹세했습니다. 신성한 질서가 힘의 우열이 아니라 자원하는 관계에서 비롯된다는 점을 보여 줍니다. 상승하는 인간이 아버지의 뜻을 행하기로 선택하는 일도 이와 같은 자발성 위에 서 있다고 생각해 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>무한 영의 출현과 하보나의 탄생은 어떤 관계에 있습니까?</span></button><div class="answer">행동의 하나님이 활동하자 죽어 있던 공간이 깨어나고 십억의 완전한 구체가 섬광처럼 존재하게 됩니다. 무한 영은 아버지와 아들의 연합된 개념에 순응하여 중앙 우주의 탄생과 더불어 영원하게 되고, 이 공동 창조 행위를 통해 공동 창조자가 됩니다. 그는 자신이 의식적인 존재가 되었을 때 중앙 우주도 동시에 영원하게 되었다고 증언하며, 이것이 우주 역사의 출발점이 됩니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">8:0.1</div><div class="qtext">영원으로 거슬러 올라가 보면, 우주 아버지의 “첫 번째” 무한하고 절대적인 생각이 영원 아들 안에서 그 신성한 표현을 위한 완전하고 적절한 말씀을 발견할 때, 생각 하나님과 말씀 하나님 두 분 모두에게서 상호 표현과 연합된 행동의 보편적이며 무한한 대리자에 대한 최상의 소망이 뒤따라 일어난다.</div></div><div class="quote"><div class="ref">8:0.2</div><div class="qtext">영원의 여명에, 아버지와 아들은 그들의 상호 의존성과 영원한 절대적 하나됨을 무한히 인식하게 된다. 그리하여 그들은 무한하고 영원한 신성한 동반자 관계의 언약으로 들어간다.</div></div><div class="quote"><div class="ref">8:0.3</div><div class="qtext">아버지 하나님과 아들 하나님이 공동으로 하나의 동일하고 무한한 행동, 곧 절대적 생각-계획의 실행을 품으신 바로 그 순간, 무한 영은 완전한 모습으로 존재 속에 솟아오른다.</div></div><div class="quote"><div class="ref">8:0.4</div><div class="qtext">신들의 기원 순서를 설명함에 있어서 나는 단지 너희가 그들의 관계에 대해 생각할 수 있도록 하려는 것뿐이다. 실제로는 이 세 분 모두가 영원부터 존재해 왔다.</div></div><div class="quote"><div class="ref">8:0.4</div><div class="qtext">그들은 존재하며, 언제나 존재해 왔고, 영원히 존재할 것이다.</div></div><div class="quote"><div class="ref">8:1.1</div><div class="qtext">행동의 하나님이 존재하며, 공간의 광대한 무대는 창조의 엄청난 드라마, 곧 우주적 모험이자 영원한 시대들의 신성한 파노라마를 위해 마련된다.</div></div><div class="quote"><div class="ref">8:1.2</div><div class="qtext">다음으로, 자원하여, 초월적인 기꺼움과 감동을 주는 자발성으로, 신의 셋째 개인은 첫째와 둘째 개인과 동등함에도 불구하고 아버지 하나님께 영원한 충성을 맹세하고, 아들 하나님께는 영원히 의존함을 인정하신다.</div></div><div class="quote"><div class="ref">8:1.3</div><div class="qtext">이러한 행위의 본질 안에, 그리고 각 인격의 독립성과 세 분 모두의 집행적 연합에 대한 상호 인식 안에 내재하여, 영원의 순환이 확립된다. 파라다이스 삼위일체가 존재한다.</div></div><div class="quote"><div class="ref">8:1.4</div><div class="qtext">행동의 하나님이 활동하시자 죽어 있던 공간의 궁창이 꿈틀거린다. 십억 개의 완전한 구체가 섬광처럼 존재하게 된다.</div></div><div class="quote"><div class="ref">8:1.7</div><div class="qtext">셋째 개인은 바로 이 공동 창조 행위를 통해 신격화되며, 이리하여 그는 영원히 공동 창조자가 된다.</div></div><div class="quote"><div class="ref">8:1.8</div><div class="qtext">그는 단지, 자신이 인격을 획득하고 의식적인 존재가 되었을 때, 중앙 우주와 그 안의 모든 것 역시 동시에 영원하게 되었다고 증언할 뿐이다.</div></div><div class="quote"><div class="ref">8:1.10</div><div class="qtext">그러므로 우리는 시간과 공간에 묶인 필사 창조체의 마음에 대한 해석상의 양보로서, 셋째 근원이며 중심의 연속적 기원을 묘사한다. 인간의 마음은 우주 역사의 시각화에 출발점을 필요로 한다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>수많은 이름과 아버지·아들의 결합된 표현</h2><p class="sub">공동 창조자, 아들에게 이르는 유일한 수단 (8편 2·3장, 9편 1·2장)</p></div></div>
+  <p class="summary">셋째 근원이며 중심은 우주 영, 최상 안내자, 공동 창조자, 무한 마음, 파라다이스 어머니 영, 공동 행위자, 전재 영 등 많은 이름으로 불리며, 각 이름은 그의 관계와 기능의 한 면을 드러낸다. 그는 아버지와 아들의 본성을 완전하게 반영하고, 아버지의 생각의 아름다움과 진리의 품성을 물려받는다. 영원 아들이 아버지께 나아가는 유일한 길이라면, 무한 영은 아들에게 도달하는 유일한 수단이며, 상승자가 파라다이스에서 처음 만나는 신이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>이름이 많다는 것은 한 존재가 여러 방향으로 관계를 맺고 있다는 뜻이다. 9편은 이를 정리하여, 영 하나님으로서 그는 아버지와 아들의 동등자이고, 무한 영으로서 전재하는 영향이며, 우주 조종자로서 공간의 힘들을 활성화하고, 공동 행위자로서 아버지-아들 동반자 관계의 집행자이며, 절대 마음으로서 지성을 증여하는 근원이고, 행동의 하나님으로서 운동과 변화의 조상이라고 설명한다. 이 정리는 이후 마디들의 지도 역할을 한다. 또 하나 흥미로운 점은 물질을 기본 실체로 여기는 경향의 사람들에게는 그를 무한 실체나 우주 조직자, 인격 조율자라 부르는 편이 더 이해하기 쉬울 것이라는 언급이다. 계시가 독자의 사고방식을 고려해 호칭을 제시한다는 점이 드러난다. 본성 면에서 무한 영은 아버지의 완전함과 의로움과 사랑을 공유하되, 아들의 자비 속성 쪽으로 기운다. 그는 아버지보다 더 많은 선을 가질 수는 없지만, 그의 활동을 통해 우리는 그 선함을 더 잘 이해하게 된다. 9편은 이를 한 문장으로 요약하는데, 아들이 아버지의 영성화된 인격화라면 무한 영은 아버지와 아들의 인격화된 영성화라는 것이다. 상승의 길에서 이 관계는 실제적이다. 아버지-아들 동반자 관계에 대한 모든 지식은 무한 영을 통해 얻어져야 하며, 그의 인내심 있는 사역을 통해서만 상승자는 아들을 발견한다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>무한 영에게 많은 이름이 붙는 까닭은 무엇이며, 그중 몇 가지는 어떤 기능을 가리킵니까?</span></button><div class="answer">본문은 이 이름들이 모두 그의 관계를 나타내고 기능을 인정한다고 말합니다. 무한 영이라는 이름은 전재하는 영적 영향을, 우주 조종자는 공간의 힘을 활성화하는 일을, 공동 행위자는 아버지와 아들의 동반자 관계를 집행하는 일을, 절대 마음은 지성을 증여하는 근원임을 가리킵니다. 한 분의 여러 이름은 그가 창조 전체와 맺는 다양한 관계를 보여 줍니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>아들은 아버지의 영성화된 인격화이고 무한 영은 아버지와 아들의 인격화된 영성화라는 표현을 어떻게 이해할 수 있습니까?</span></button><div class="answer">아들은 아버지의 생각을 말씀으로 표현하는 인격이고, 무한 영은 그 생각과 말씀이 결합되어 행동으로 실현되는 인격입니다. 그래서 무한 영은 아버지와 아들의 본성을 모두 완전하게 반영하며, 아버지의 생각의 아름다움과 진리의 품성을 함께 물려받습니다. 무한 영 안에서 우리는 아버지와 아들 두 분을 함께 만난다고 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>무한 영이 아들에게 도달하는 유일한 수단이라는 가르침은 상승하는 인간에게 어떤 의미가 있습니까?</span></button><div class="answer">상승자는 무한 영의 인내심 있는 사역을 통해서만 영원 아들을 발견하고, 아들을 통해 아버지께 나아갑니다. 셋째 개인이 둘째와 첫째 개인을 감싸고 있기 때문에 파라다이스에 이른 순례자가 가장 먼저 인식하는 신도 무한 영입니다. 가장 오랫동안 우리를 인도한 분이 도착하는 우리를 가장 먼저 맞이한다는 구조로 이해할 수 있습니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">8:2.1</div><div class="qtext">공동 창조자는 영원으로부터 계시며, 우주 아버지 및 영원 아들과 전적으로 그리고 제한 없이 하나이시다. 무한 영은 파라다이스 아버지의 본성뿐만 아니라 기원 아들의 본성도 완전하게 반영하신다.</div></div><div class="quote"><div class="ref">8:2.2</div><div class="qtext">셋째 근원이며 중심은 수많은 이름으로 알려져 있다. 곧 우주 영, 최상 안내자, 공동 창조자, 신성한 집행자, 무한 마음, 영들의 영, 파라다이스 어머니 영, 공동 행위자, 최종 조율자, 전재 영, 절대 지성, 신성한 행동이며, 유란시아에서는 때때로 우주 마음과 혼동되기도 한다.</div></div><div class="quote"><div class="ref">8:2.3</div><div class="qtext">신의 셋째 개인을 무한 영이라 부르는 것은 전적으로 적절하니, 하나님은 영이시기 때문이다.</div></div><div class="quote"><div class="ref">8:2.7</div><div class="qtext">모든 선의 기원은 아버지에게 있으므로, 무한 영이 아버지보다 더 많은 선을 소유할 수는 없다. 그러나 그 영의 활동을 통해 우리는 그 선함을 더 잘 이해할 수 있다.</div></div><div class="quote"><div class="ref">8:2.8</div><div class="qtext">공동 창조자는 아버지의 생각의 아름다움과 진리의 품성을 모두 물려받는다.</div></div><div class="quote"><div class="ref">8:3.2</div><div class="qtext">우주 아버지는 가능한 모든 것을 그의 영원 아들에게 위임하시며, 영원 아들은 마찬가지로 가능한 모든 권위와 권능을 공동 창조자에게 부여하신다.</div></div><div class="quote"><div class="ref">8:3.6</div><div class="qtext">아버지-아들 동반자 관계에 대한 모든 지식은, 신성한 생각과 말씀의 결합을 공동으로 대표하는 무한 영을 통해서 얻어져야 한다.</div></div><div class="quote"><div class="ref">8:3.7</div><div class="qtext">영원 아들은 우주 아버지께 나아가는 유일한 길이며, 무한 영은 영원 아들에게 도달하는 유일한 수단이다. 오직 무한 영의 인내심 있는 사역을 통해서만, 시간 속에서 상승하는 존재들은 영원 아들을 발견할 수 있다.</div></div><div class="quote"><div class="ref">8:3.8</div><div class="qtext">만물의 중심에서 무한 영은 상승하는 순례자들이 도달하는 첫 파라다이스 신이다.</div></div><div class="quote"><div class="ref">9:1.1</div><div class="qtext">셋째 근원이며 중심은 여러 이름으로 알려져 있으며, 이 모든 이름은 그의 관계를 나타내고 그의 기능을 인정한다.</div></div><div class="quote"><div class="ref">9:1.1</div><div class="qtext">공동 행위자로서 그는 아버지-아들의 연합 대표이며, 동반자 관계의 집행자이다. 절대 마음으로서 그는 우주들 전역에서 지성을 증여하는 근원이다.</div></div><div class="quote"><div class="ref">9:2.2</div><div class="qtext">영원 아들은 아버지의 영성화된 인격화이며, 무한 영은 우주 아버지와 영원 아들의 인격화된 영성화이다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>사랑과 자비, 그리고 영의 사역</h2><p class="sub">자신을 낮추어 너희 곁에 서는 영 (8편 2·4장, 9편 0·1장)</p></div></div>
+  <p class="summary">본문은 하나님은 사랑이시고 아들은 자비이시며 영은 사역이시라고 선언한다. 영은 아버지의 사랑과 아들의 자비의 인격화이며, 창조체 창조계에 적용된 사랑이다. 무한 영은 아들의 자비 속성 쪽으로 기울어 언제나 자비 사역자로 일한다. 지역 우주에서 그는 육신을 입지는 않지만, 연속적인 신성 약화를 기쁘게 겪으며 마침내 천사로 나타나 인간 곁에 서서 지상 존재의 낮은 길을 인도한다. 그의 영향과 인격들은 언제나 우리 가까이에 있다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>사랑, 자비, 사역이라는 세 단어는 세 분의 역할을 서로 대립시키는 것이 아니라 하나의 흐름으로 이어 준다. 사랑은 아버지에게서 시작되고, 자비는 아들 안에서 구체적인 모습을 띠며, 사역은 그 사랑과 자비가 실제로 지성 존재들에게 도달하는 방식이다. 본문은 마음에 대한 영원한 사역이 무한 영의 신성한 성품의 본질이며, 그의 모든 영 자손도 이 봉사의 충동을 함께 지닌다고 말한다. 여기서 눈여겨볼 대목은 신성 약화라는 표현이다. 하나님의 어떤 아들들은 필사 육신의 형태로 내려오지만, 영은 그렇게 하지 않는다. 대신 무한 영과 그의 동격 영들은 일련의 단계를 거쳐 스스로를 낮추고, 마침내 천사로 나타나 인간 곁에 선다. 본문은 이것을 기꺼이 겪는다고 표현하여, 이 낮아짐이 의무가 아니라 기쁨에서 나온 선택임을 보여 준다. 동시에 그는 이렇게 하면서도 만물의 중심에서 셋째 개인으로서 지니는 자신의 존재를 조금도 잃지 않는다. 9편은 이 사역의 성격을 정의와 연결한다. 그는 아들의 자비와 아버지의 사랑을 삼위일체의 의로운 정의와 조화를 이루며 사역하고, 자비로 정의를 무색하게 하는 데 탁월하게 유능하다. 우리 우주가 정의의 모루와 고난의 망치 사이에서 만들어지고 있으나 그 망치를 드는 이들이 자비의 자녀들이라는 비유는, 시련조차 자비의 손 안에 있다는 관점을 제시한다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>하나님은 사랑, 아들은 자비, 영은 사역이라는 선언에서 사역은 사랑과 자비와 어떤 관계에 있습니까?</span></button><div class="answer">본문은 영을 아버지의 사랑과 아들의 자비의 인격화로, 그리고 창조체 창조계에 적용된 사랑으로 설명합니다. 사역은 사랑과 자비와 별개의 것이 아니라, 그 사랑과 자비가 실제로 창조체에게 전달되는 형태입니다. 관념으로 머무는 사랑이 아니라 구체적인 봉사로 나타나는 사랑이라고 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>무한 영이 연속적인 신성 약화를 기쁘게 겪으며 천사로 나타난다는 구절에서 무엇을 배울 수 있습니까?</span></button><div class="answer">영은 아들들처럼 육신을 입지는 않지만, 단계적으로 자신을 낮추어 마침내 천사로서 인간 곁에 서서 지상의 낮은 길을 인도합니다. 그것을 기쁘게 겪는다는 표현은 이 낮아짐이 강요가 아니라 자원하는 사랑임을 보여 줍니다. 또한 그렇게 하면서도 셋째 개인으로서의 존재는 조금도 줄지 않는다는 점에서, 신성한 봉사는 자기 상실이 아니라는 점을 생각해 볼 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>우리 우주가 정의의 모루와 고난의 망치 사이에서 만들어진다는 비유는 무엇을 말하려 합니까?</span></button><div class="answer">진화 우주의 삶에는 정의의 요구와 고난의 체험이 분명히 존재한다는 것을 인정하는 비유입니다. 그러나 본문은 그 망치를 드는 이들이 자비의 자녀들, 곧 무한 영의 영 자손이라고 덧붙입니다. 시련 자체가 목적이 아니라 자비로운 손길 아래에서 인격을 빚어 가는 과정이라는 관점을 제시합니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">8:2.6</div><div class="qtext">언제나 그리고 항상—보편적으로 그리고 영원히—영은 자비 사역자이시다. 이는 신성한 아들들이 하나님의 사랑을 계시하는 것처럼, 신성한 영은 하나님의 자비를 묘사하기 때문이다.</div></div><div class="quote"><div class="ref">8:4.1</div><div class="qtext">마음에 대한 영원한 사역은 무한 영의 신성한 성품의 본질이다. 그리고 공동 행위자의 모든 영 자손은 사역하려는 이 소망, 봉사하려는 이 신성한 충동을 함께 지닌다.</div></div><div class="quote"><div class="ref">8:4.2</div><div class="qtext">하나님은 사랑이시고, 아들은 자비이시며, 영은 사역이시다. 곧 모든 지성적 창조계에 대한 신성한 사랑과 끝없는 자비의 사역이시다. 영은 아버지의 사랑과 아들의 자비의 인격화이다.</div></div><div class="quote"><div class="ref">8:4.2</div><div class="qtext">영은 창조체 창조계에 적용된 사랑이며, 아버지와 아들의 결합된 사랑이다.</div></div><div class="quote"><div class="ref">8:4.3</div><div class="qtext">유란시아에서 무한 영은 전재하는 영향력, 보편적 현존으로 알려져 있지만, 하보나에서 너희는 그를 실제 사역의 인격적 현존으로 알게 될 것이다.</div></div><div class="quote"><div class="ref">8:4.4</div><div class="qtext">특히 창조적 딸들, 곧 지역 우주 어머니 영들이라는 개인들 안에서, 우리는 무한 영이 물질 창조체들을 더욱더 높은 영적 달성 수준으로 상승하도록 육성하는 과업에 헌신하고 있음을 발견한다.</div></div><div class="quote"><div class="ref">8:4.5</div><div class="qtext">무한 영과 그의 동격 영들은 자신을 낮추어, 놀라운 일련의 신성 약화를 기쁘게 겪으며, 마침내 천사로 나타나 너희 곁에 서서 지상 존재의 낮은 길들을 지나도록 너희를 인도한다.</div></div><div class="quote"><div class="ref">8:4.6</div><div class="qtext">이러한 연속적인 하강 단계를 통해 무한 영은 실제로, 그리고 한 개인으로서 동물 기원의 세계에 사는 각 존재에 매우 가까이 다가가신다.</div></div><div class="quote"><div class="ref">8:4.7</div><div class="qtext">공동 창조자는 참으로 그리고 영원히 위대한 사역 인격이자 보편적 자비 사역자이시다.</div></div><div class="quote"><div class="ref">8:4.8</div><div class="qtext">이 영은 진실로 “의로운 자들 위에 항상 머무는 주의 눈이며” 또한 “그들의 기도에 항상 열려 있는 신성한 귀”이시다.</div></div><div class="quote"><div class="ref">9:0.3</div><div class="qtext">그의 영향력과 인격들은 항상 너희 가까이 있으며, 그들은 너희를 진정으로 알고, 참되게 이해한다.</div></div><div class="quote"><div class="ref">9:1.8</div><div class="qtext">너희가 기원한 우주는 정의의 모루와 고난의 망치 사이에서 만들어지고 있다. 그러나 그 망치를 드는 존재들은 자비의 자녀들, 곧 무한 영의 영 자손들이다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>전재하는 영, 하나로 일하는 영적 현존들</h2><p class="sub">하나님의 영과 성령, 생각 조절자의 협력 (8편 5장, 9편 0·2장)</p></div></div>
+  <p class="summary">무한 영의 가장 뛰어난 속성은 전재이다. 이 영은 온 우주 어디에나 스며 있으며, 아버지와 아들은 그 안에서, 그리고 그를 통해 활동하신다. 성경에서 하나님의 영이라는 말은 파라다이스의 무한 영과 지역 우주의 창조 영을 번갈아 가리키며, 성령은 그 창조적 딸의 영적 회로이다. 인간 안에서 작용하는 생각 조절자, 아들의 영 인력, 성령의 영향은 기원이 다르지만 분리되지 않고 하나의 영처럼 기능하며, 상승 계획 안에서 완전히 협력한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>전재라는 개념은 무한 영이 멀리 있는 존재가 아니라 지금 여기 있는 현존이라는 뜻이다. 본문은 그의 영이 우주들의 우주 어디에나 스며 있으며 이는 보편적이고 신성한 마음의 현존과 매우 흡사하다고 말한다. 9편 역시 그가 첫째 근원의 전재를 아무 제한 없이 공유하며 때로 전재 영이라 불린다고 확인한다. 이 마디에서 신중하게 구분해야 할 것은 하나님의 영이라는 표현의 쓰임이다. 본문에 따르면 전통적 기록은 이 말을 파라다이스의 무한 영과 지역 우주의 창조 영에 번갈아 사용한다. 성령은 무한 영의 창조적 딸의 회로로서 각 지역 우주에 고유하며, 무한 영 자신은 전재한다. 따라서 성령의 체험은 무한 영의 현존을 인간이 실제로 맛보는 통로라고 할 수 있다. 9편은 필사 인간조차 무한 영의 현존을 알 수 있는 까닭을 바로 이 성령의 은혜에서 찾는다. 한편 생각 조절자는 아버지의 비인격적 현존으로서 다른 영향들과 독립적으로 일하지만, 무한 영과 지역 우주 어머니 영의 사역과 변함없이 일치한다. 이 여러 영적 현존들이 인간의 마음과 혼 안에서 하나의 영으로 기능한다는 가르침은, 영적 체험을 출처별로 분해하기보다 하나의 연합된 사역으로 받아들이게 한다. 본문은 이 연합된 사역이 체험될 때 그것이 우리를 넘어지지 않게 지키시는 분의 영향이 된다고 표현한다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>무한 영의 전재와 지역 우주의 성령은 어떻게 구별되며, 서로 어떤 관계에 있습니까?</span></button><div class="answer">무한 영은 모든 우주에 두루 현존하는 반면, 성령은 무한 영의 창조적 딸인 지역 우주 어머니 영의 영적 회로로서 그 우주의 영적 영역에 국한됩니다. 둘은 별개의 존재이지만, 성령을 통해 필사 인간도 무한 영의 신성한 영향을 실제로 체험할 수 있습니다. 성령은 무한 영의 현존이 지역 우주에서 구체화된 통로라고 이해할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>여러 영적 영향이 인간 안에서 하나의 영으로 기능한다는 말은 무슨 뜻입니까?</span></button><div class="answer">생각 조절자, 영원 아들의 영 인력, 무한 영과 어머니 영의 영향은 기원이 서로 다릅니다. 그러나 유란시아인의 삶 속에서 이들은 분리되지 않고, 마음과 혼 안에서 한마음으로 협력하여 하나의 영처럼 작용합니다. 그래서 인간은 영적 체험의 출처를 일일이 가르기보다, 하나의 연합된 사역으로서 그것을 체험하게 됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>무한 영의 영 현존이 흔히 하나님의 영이라 불리는 이유는 무엇입니까?</span></button><div class="answer">본문은 무한 영이 공동 행위자이며, 아버지와 아들이 모두 그의 안에서 그리고 그를 통해 활동하신다고 설명합니다. 그는 자신으로서만이 아니라 아버지로서, 아들로서, 아버지-아들로서도 현존합니다. 이런 까닭에 그의 현존을 하나님의 영이라 부르는 것이 자연스럽고, 모든 영적 사역의 연계를 그렇게 부르는 것도 일관된 일입니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">8:5.1</div><div class="qtext">무한 영의 가장 뛰어난 속성은 전재이다. 온 우주들의 우주 어디에나 이 모든 것에 스며드는 영이 현존하며, 이는 보편적이고 신성한 마음의 현존과 매우 흡사하다.</div></div><div class="quote"><div class="ref">8:5.2</div><div class="qtext">아버지는 확실히 어디에나 현존하시며, 우리는 이 다양하지만 서로 연합된 힘들과 영향들과 현존들 모두를 통해 그의 현존을 분별한다.</div></div><div class="quote"><div class="ref">8:5.3</div><div class="qtext">성령은 파라다이스 무한 영의 창조적 딸의 영적 회로이다. 성령은 각 지역 우주에 고유한 회로이며, 그 창조계의 영적 영역에 국한되지만, 무한 영은 전재하신다.</div></div><div class="quote"><div class="ref">8:5.4</div><div class="qtext">많은 영적 영향들이 존재하지만, 그들은 모두 하나와 같다.</div></div><div class="quote"><div class="ref">8:5.4</div><div class="qtext">유란시아인의 삶 속에서 이 영적 현존들이 작용할 때, 그들은 분리되지 않는다. 그들의 다양한 기원에도 불구하고, 너희의 마음과 혼 안에서는 하나의 영으로서 기능한다.</div></div><div class="quote"><div class="ref">8:5.4</div><div class="qtext">“능히 너희를 넘어지지 않게 지키시며, 너희를 높은 곳에 계신 아버지 앞에 흠 없이 세우실 수 있는 분”의 영향이 된다.</div></div><div class="quote"><div class="ref">8:5.5</div><div class="qtext">무한 영이 공동 행위자이심을 항상 기억하라. 아버지와 아들은 모두 그의 안에서, 그리고 그를 통해 활동하신다.</div></div><div class="quote"><div class="ref">9:0.5</div><div class="qtext">무한 영은 모든 공간에 스며 있다. 그는 영원의 순환 안에 거하시며, 아버지와 아들과 마찬가지로 완전하고 변함없으며 절대적이다.</div></div><div class="quote"><div class="ref">9:1.5</div><div class="qtext">셋째 근원이며 중심은 완전하게, 그리고 아무 제한 없이 첫째 근원이며 중심의 전재를 공유하며, 때때로 전재 영이라 불린다.</div></div><div class="quote"><div class="ref">9:2.1</div><div class="qtext">하나님은 세 가지 의미에서 영이다. 그 자신이 영이며, 그의 아들 안에서 무제한적 영으로 나타나고, 공동 행위자 안에서는 마음과 연합된 영으로 나타난다.</div></div><div class="quote"><div class="ref">9:2.5</div><div class="qtext">신의 셋째 개인인 무한 영의 현존은 필사 인간조차 알 수 있으니, 물질 창조체들이 인류에게 지역 우주가 증여한 성령으로 기능하는 이 신성한 영향의 은혜를 실제로 체험할 수 있기 때문이다.</div></div><div class="quote"><div class="ref">9:2.5</div><div class="qtext">인간의 고양과 영성화를 위해 일하는 이 신성한 영들은 모두 한마음으로 완전한 협력 속에서 활동한다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>우주 조종자, 행동의 하나님</h2><p class="sub">반중력과 에너지 조종의 권능 (9편 서문·1장·3장)</p></div></div>
+  <p class="summary">무한 영은 영적 존재일 뿐 아니라 물질 우주에도 독특한 권능을 행사한다. 그의 대리자들은 우주 전역에서 공간의 힘과 에너지를 끊임없이 조종한다. 그는 아버지나 아들에게서는 관찰되지 않는 반중력의 권능을 지니며, 힘을 초월하고 에너지를 중화하는 권능도 나타낸다. 그는 에너지도 그 근원도 아니며 에너지의 조종자, 곧 운동, 변화, 조율, 평형이다. 그러나 그는 파라다이스를 위해서가 아니라 인격적으로 아버지와 아들을 위해 활동한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 12개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>9편 서문은 무한 영의 위치를 다른 근원들과 나란히 정리한다. 아버지는 우주의 유지자, 아들은 계시자, 파라다이스는 안정자이며, 공동 행위자는 모든 에너지와 영과 지성을 조율하는 종합의 특권을 지닌 통일자이다. 이 비교는 무한 영의 고유한 영역이 통합과 조율에 있음을 보여 준다. 반중력에 관한 서술은 특히 독특하다. 중력은 파라다이스에서 나오는 가장 신뢰할 만한 실체 중 하나이지만, 셋째 근원에게 맡겨진 힘과 에너지에 의해서만 수정되거나 폐기될 수 있다. 반중력은 국소적 틀 안에서 동등한 힘을 행사하여 중력을 무력화하며, 물질 중력에만 작동하고 마음의 작용은 아니다. 본문은 자이로스코프의 중력 저항을 적절한 예시로 들면서도, 그것이 원인을 설명하지는 못한다고 조심스럽게 덧붙인다. 또한 우주에는 물리적 통제자, 동력 감독자, 동력 중심 같은 셋째 근원의 동력-통제 창조체들이 충만하여 물질과 에너지의 평형을 세우는 일을 맡는다. 이 마디의 핵심은 무한 영의 물리적 활동이 기계적 반응이 아니라 의지적 행위라는 점이다. 파라다이스는 인격이 아니며, 무한 영은 파라다이스를 위해 일하지 않고 아버지와 아들을 위해 인격적으로 일한다. 그의 비인격적으로 보이는 행위조차 모두 그 자신의 의지적 행위라는 설명은, 물리 우주의 질서 뒤에도 인격적 목적이 있다는 관점을 제시한다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>9편은 아버지, 아들, 파라다이스, 공동 행위자의 역할을 어떻게 비교합니까?</span></button><div class="answer">아버지는 사랑과 의지에서 무한한 우주의 유지자, 아들은 지혜와 진리에서 무한한 우주의 계시자, 파라다이스는 에너지 지배에서 무한한 우주의 안정자로 설명됩니다. 공동 행위자는 모든 에너지, 영, 지성을 조율하는 종합의 특권을 지닌 우주적 통일자입니다. 무한 영의 고유한 자리가 여러 실체를 하나로 묶는 데 있음을 보여 주는 비교입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>반중력이란 무엇이며, 본문은 그것을 어떤 한계와 함께 설명합니까?</span></button><div class="answer">반중력은 물질적 중력의 당김에 맞서는 무한 영 고유의 권능으로, 아버지나 아들에게서는 관찰 가능한 형태로 존재하지 않습니다. 국소적 틀 안에서 동등한 힘을 행사하여 중력을 무력화하며, 물질 중력에만 작동하고 마음에는 작용하지 않습니다. 본문은 자이로스코프의 현상을 예로 들되 그 원인을 설명하는 데는 유용하지 않다고 하여, 비유의 한계를 분명히 합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>무한 영이 파라다이스를 위해서가 아니라 아버지와 아들을 위해 활동한다는 말은 왜 중요합니까?</span></button><div class="answer">그의 물질적 활동은 파라다이스 섬과 관련된 것처럼 보이지만, 파라다이스는 인격이 아니므로 그 활동의 동기가 될 수 없습니다. 무한 영은 인격적으로 아버지와 아들을 위해 일하며, 비인격적으로 보이는 행위들도 모두 그 자신의 의지적 행위입니다. 물리적 우주의 질서조차 인격적 의지와 목적 아래 있다는 점을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">9:0.2</div><div class="qtext">공동 행위자는 종합의 독특한 특권을 지니며, 존재하는 모든 우주 에너지, 모든 실제적 우주 영, 모든 실재하는 우주 지성을 조율하는 무한한 능력을 지닌다.</div></div><div class="quote"><div class="ref">9:0.4</div><div class="qtext">우주들 전역에서 공동 행위자의 대리자들은 모든 공간의 힘과 에너지를 끊임없이 조종하고 있다.</div></div><div class="quote"><div class="ref">9:0.4</div><div class="qtext">공동 행위자는 하나님의 통일성의 계시이며, 그 안에서 만물이 존립한다. 곧 사물과 의미와 가치, 그리고 에너지와 마음과 영이다.</div></div><div class="quote"><div class="ref">9:1.3</div><div class="qtext">공동 행위자는 모든 실제 실체들을 상호 연결시키는 존재이다.</div></div><div class="quote"><div class="ref">9:1.4</div><div class="qtext">그는 에너지와 영이 연합하고 상호작용하는 곳이면 어디든, 그리고 언제든 구체적으로 기능하며, 마음과 관련된 모든 반응을 지배하고, 영적 세계에서는 큰 권능을, 에너지와 물질에 대해서는 막강한 영향력을 발휘한다.</div></div><div class="quote"><div class="ref">9:3.1</div><div class="qtext">중력은 오직, 아버지와 아들이 공동으로 후원하며 셋째 근원이며 중심이라는 개인에게 맡겨지고 그와 기능적으로 연합된 힘들과 에너지들에 의해서만 수정되거나 폐기될 수 있다.</div></div><div class="quote"><div class="ref">9:3.2</div><div class="qtext">무한 영은 반중력이라는 독특하고 놀라운 권능을 소유하고 있다. 이 권능은 아버지나 아들 어디에도 기능적으로, 즉 관찰 가능한 형태로 존재하지 않는다.</div></div><div class="quote"><div class="ref">9:3.3</div><div class="qtext">반중력은 물질적 중력에만 작동하며 마음의 작용은 아니다.</div></div><div class="quote"><div class="ref">9:3.4</div><div class="qtext">나아가 공동 행위자는 힘을 초월하고 에너지를 중화시키는 권능도 나타낸다.</div></div><div class="quote"><div class="ref">9:3.5</div><div class="qtext">공동 창조자는 에너지도, 에너지의 근원도, 에너지의 운명도 아니다. 그는 에너지의 조종자이다. 공동 창조자는 행동이다. 곧 운동, 변화, 수정, 조율, 안정화, 평형이다.</div></div><div class="quote"><div class="ref">9:3.7</div><div class="qtext">그러나 공동 행위자는 파라다이스를 위해서 활동하거나 그것에 반응하여 활동하지 않는다. 그는 인격적으로 아버지와 아들을 위해 활동한다. 파라다이스는 인격이 아니다.</div></div><div class="quote"><div class="ref">9:3.8</div><div class="qtext">파라다이스는 무한의 원형이다. 행동의 하나님은 그 원형의 활성자이다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>절대 마음, 마음 인력 회로와 우주 반영력</h2><p class="sub">마음의 증여자와 우리가 마음을 쓰는 방식 (9편 4~7장)</p></div></div>
+  <p class="summary">무한 영은 마음의 영역에서 절대적이며, 창조체 마음의 기원은 그에게 독점적으로 있다. 아버지의 단편인 조절자조차 그의 마음 작용이 길을 마련하기 전에는 인간 안에 내주할 수 없다. 인간의 마음은 우주 마음의 개별화된 회로이므로 우리는 무한 영을 더 쉽게 이해한다. 그는 마음 인력 회로를 통해 모든 참된 지적 가치를 이끌고, 우주 반영력으로 모든 것을 동시에 안다. 그러나 마음의 근원이 신성하다고 해서 우리의 마음이 이미 신성한 것은 아니다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>이 마디는 무한 영과 인간의 가장 가까운 접점인 마음을 다룬다. 먼저 본문은 마음의 위치를 정리한다. 에너지는 사물이고, 마음은 의미이며, 영은 가치이다. 마음은 영의 가치들을 지성의 의미로 바꾸고, 의지는 그 의미를 물질적, 영적 영역에서 열매 맺게 한다. 이 도식은 생각과 선택이 영적 성장의 한복판에 있음을 보여 준다. 다음으로 마음 인력이 설명된다. 아버지가 모든 인격을, 아들이 모든 영적 실체를 끌어당기듯, 공동 행위자는 모든 마음 위에 인력을 행사하며, 모든 참된 지적 가치와 신성한 생각은 어김없이 절대 마음 회로로 이끌린다. 우주 반영력은 이 마음 회로 위에 영과 에너지가 결합된 독특한 현상으로, 초우주 통치자들이 먼 곳의 일을 일어나는 즉시 알게 한다. 본문은 그 작동에 최상 마음의 활동이 개입한다고 추측하며, 모르는 부분이 있음을 솔직히 인정한다. 이 마디에서 가장 실제적인 부분은 경고이다. 셋째 개인이 마음의 근원이라 해서 마음의 모든 현상이 신성한 것은 아니다. 인간의 지성은 동물적 기원에 뿌리를 두고 있으며, 우리는 너무 자주 마음을 불성실로 더럽히고 동물적 공포와 쓸데없는 근심에 내어 준다. 그러므로 미성숙한 인간 지성을 돌아볼 때 마땅한 반응은 자부심이 아니라 겸손이다. 신성한 기원과 신성한 운명 사이에서 마음을 어떻게 쓰느냐가 우리의 과제로 남는다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>인간이 아버지나 아들보다 무한 영에 대해 이해할 만한 개념을 더 쉽게 형성하는 이유는 무엇입니까?</span></button><div class="answer">무한 영이 마음의 근원이기 때문입니다. 인간의 마음은 그의 창조적 딸이 지역 우주에 증여한 우주 마음의 개별화된 회로이자 비인격적 일부이므로, 공동 창조자의 실체는 인간 마음의 존재 자체 안에 불완전하게나마 드러나 있습니다. 우리가 생각하고 이해하는 능력 자체가 그를 가리키는 단서가 됩니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>마음 인력 회로와 우주 반영력은 각각 무엇을 설명합니까?</span></button><div class="answer">마음 인력 회로는 공동 행위자가 모든 마음 위에 인력을 행사하여, 모든 참되고 진정한 지적 가치와 신성한 생각을 어김없이 절대 마음 회로로 이끄는 작용을 말합니다. 우주 반영력은 영, 에너지, 마음이 독특하게 통일되어 초우주 전역의 일을 일어나는 대로 보고 듣고 알게 하는 권능입니다. 앞의 것은 마음의 결집을, 뒤의 것은 우주적 동시 인식을 설명한다고 정리할 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>마음의 근원이 신성하다면서도 본문이 인간 마음에 대해 겸손을 요구하는 이유는 무엇입니까?</span></button><div class="answer">인간의 지성은 동물 종족의 물질적 기원에 뿌리를 두고 있어서, 마음은 신성한 기원과 신성한 운명을 지니면서도 아직 신성한 존엄에 이르지 못했습니다. 게다가 우리는 너무 자주 마음을 불성실과 불의, 동물적 공포와 쓸데없는 근심으로 훼손합니다. 그래서 공동 창조자는 마음의 근원이지만 마음이 곧 공동 창조자는 아니며, 미성숙한 지성에 대한 숙고는 겸손으로 이어져야 한다고 본문은 말합니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">9:4.3</div><div class="qtext">공동 창조자는 마음의 영역, 곧 우주적 지성의 영역에서만 절대적이다.</div></div><div class="quote"><div class="ref">9:4.5</div><div class="qtext">에너지는 사물이요, 마음은 의미이며, 영은 가치이다.</div></div><div class="quote"><div class="ref">9:4.6</div><div class="qtext">마음은 영의 가치들을 지성의 의미들로 변환시키며, 의지는 마음의 의미들을 물질적 및 영적 영역에서 열매 맺게 하는 권능을 지닌다.</div></div><div class="quote"><div class="ref">9:5.2</div><div class="qtext">창조체 마음의 기원은 셋째 근원이며 중심에 독점적으로 있다. 그는 마음의 증여자이다. 아버지의 단편조차도 무한 영의 마음 작용과 영적 기능에 의해 그 길이 적절히 마련되기 전에는 인간의 마음속에 내주할 수 없다.</div></div><div class="quote"><div class="ref">9:5.4</div><div class="qtext">신의 셋째 개인이 마음의 근원이므로, 진화 의지 창조체들이 영원 아들이나 우주 아버지보다 무한 영에 대해 이해할 수 있는 개념을 더 쉽게 형성한다는 것은 지극히 자연스러운 일이다.</div></div><div class="quote"><div class="ref">9:5.5</div><div class="qtext">공동 창조자는 마음의 근원이지만, 마음은 곧 공동 창조자가 아니다.</div></div><div class="quote"><div class="ref">9:5.6</div><div class="qtext">마음은 참으로 신성한 기원을 지니고 있으며, 실제로 신성한 운명을 향해 나아가지만, 너희의 필사 마음은 아직 신성한 존엄에 이르지 못했다.</div></div><div class="quote"><div class="ref">9:5.7</div><div class="qtext">너희는 너무 자주, 정말로 너무 자주, 너희 마음을 불성실로 더럽히고 불의로 그것에 낙인을 찍는다. 너희는 그것이 동물적 공포에 굴복하게 하고, 쓸데없는 근심으로 뒤틀리게 만든다.</div></div><div class="quote"><div class="ref">9:5.7</div><div class="qtext">미성숙하고 활동하지 않는 인간 지성에 대한 숙고는 오직 겸손의 반응으로 이어져야 한다.</div></div><div class="quote"><div class="ref">9:6.2</div><div class="qtext">아버지가 모든 인격을 자신에게 끌어들이고, 아들이 모든 영적 실체를 이끄는 것과 마찬가지로, 공동 행위자는 모든 마음 위에 인력을 행사한다.</div></div><div class="quote"><div class="ref">9:6.2</div><div class="qtext">모든 참되고 진정한 지적 가치들, 모든 신성한 생각과 완전한 관념들은 어김없이 이 절대 마음 회로로 이끌린다.</div></div><div class="quote"><div class="ref">9:6.9</div><div class="qtext">무한 영은 모든 창조체를 향한 창조주의 마음의 완전한 표현이며, 최상 존재는 그들의 창조주에 대한 모든 창조체의 마음의 진화적 표현이다.</div></div><div class="quote"><div class="ref">9:7.1</div><div class="qtext">이것이 바로 우주 반영력 현상이며, 초우주 전역에서 일어나는 대로 모든 것을 보고, 듣고, 느끼고, 알며, 이 모든 정보와 지식을 반영력에 의해 원하는 어느 지점에든 집중시키는, 독특하고 설명할 수 없는 권능이다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>참된 인격이신 영과 살아 있는 사다리</h2><p class="sub">의지와 사랑을 지닌 영, 그리고 그의 방대한 가족 (8편 6장, 9편 8장)</p></div></div>
+  <p class="summary">무한 영의 광범위한 증여가 그의 인격의 사실을 흐리게 해서는 안 된다. 그는 우주적 권능이자 보편적 마음이지만, 동시에 진실하고 신성한 인격이다. 그는 마음과 의지를 지니고, 사랑하고 슬퍼하며, 말씀하고, 우리를 위해 간구하신다. 그는 일곱 주 영과 창조 영들을 비롯한 방대한 영 가족을 낳았고, 이들은 최상 영들, 동력 감독자들, 무한 영의 인격들로 나뉜다. 이 영 존재들은 필사 인간이 혼돈에서 영광으로 상승하는 살아 있는 사다리를 이룬다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>8편의 마지막 장은 오해를 바로잡는 데서 시작한다. 무한 영이 어디에나 현존하고 수많은 존재를 통해 일하기 때문에, 사람들은 그를 비인격적인 힘이나 영향력으로만 생각하기 쉽다. 본문은 이것을 분명히 경계하며, 그가 우주 현존이고 권능이며 보편적 마음인 동시에 참된 인격이라고 말한다. 그 근거로 전통적 경전의 표현들이 인용된다. 영은 하나님의 깊은 것까지 살피고, 뜻하시는 대로 은사를 나누어 주며, 그의 사랑과 슬픔은 실제이고, 말씀하시며, 우리를 위해 간구하신다. 이러한 표현은 영이 우주에 한 개인으로서 반응한다는 확언으로 이어진다. 9편 마지막 장은 이 인격이 자신의 권능과 특권을 동격 및 하위 인격들에게 전달할 수 있다는 점에서 출발해 그의 가족을 소개한다. 첫 번째 신-창조 행위로 일곱 주 영이 인격화되었고, 창조자 아들이 생길 때마다 지역 우주의 창조 영이 그 동료로 태어난다. 또한 본문은 셋째 근원 인격이라는 범주를 제시하는데, 이들은 아버지의 인격 회로에 속하지 않지만 기억, 추론, 판단, 창조적 상상력, 결단과 선택을 지닌 마음을 갖춘 실제 존재들이다. 이 방대한 가족 전체가 하나님의 사랑과 아들의 자비를 사역하는 데 헌신한다는 결론은, 상승이 홀로 오르는 길이 아니라 수많은 인격의 도움 속에서 오르는 길임을 보여 준다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>무한 영을 단순한 힘이나 영향력이 아니라 인격으로 보아야 하는 근거는 무엇입니까?</span></button><div class="answer">본문은 그가 인격과 연관된 모든 속성을 지닌다고 말합니다. 그는 절대 마음으로 하나님의 깊은 것까지 살피고, 의지에 따라 은사를 나누어 주며, 그의 사랑과 슬픔은 실재합니다. 또한 그는 말씀하시고 우리를 위해 간구하시며, 창조된 존재들에게 직접적이고 인격적으로 영향을 미칩니다. 전재와 광범위한 증여가 이 인격의 사실을 가려서는 안 된다는 것이 본문의 강조점입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>무한 영의 기능적 가족은 어떤 세 집단으로 나뉩니까?</span></button><div class="answer">첫째는 최상 영들로, 파라다이스의 일곱 주 영, 초우주의 반영 영들, 지역 우주의 창조 영들을 포함합니다. 둘째는 모든 조직된 공간에서 기능하는 통제 창조체들인 동력 감독자들입니다. 셋째는 무한 영의 인격들로, 상급 인격들, 우주 공간의 사자 무리들, 시간의 봉사 영들로 나뉩니다. 이들은 파라다이스에서 행성에 이르기까지 모든 수준에서 봉사합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>영 존재들이 혼돈에서 영광으로 오르는 살아 있는 사다리를 이룬다는 비유는 우리에게 무엇을 말해 줍니까?</span></button><div class="answer">상승의 길이 차가운 기계 장치나 추상적 단계가 아니라, 하나님의 사랑과 아들의 자비를 사역하는 데 헌신한 실제 인격들로 이루어져 있다는 뜻입니다. 필사 인간은 각 단계마다 그 단계에 맞는 영적 동료들의 도움을 받으며 올라갑니다. 우리가 지금 보지 못하는 낮은 계층의 영적 동료들까지도 모론시아 형태를 입으면 보게 되리라는 약속도 이 사다리가 실제임을 보여 줍니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">8:6.1</div><div class="qtext">셋째 근원이며 중심의 광범위한 증여와 멀리까지 미치는 분배가, 그의 인격의 사실을 흐리거나 달리 손상시키도록 허용하지 말라.</div></div><div class="quote"><div class="ref">8:6.1</div><div class="qtext">그는 이 모든 것이며, 무한히 그 이상이지만, 동시에 그는 진실하고 신성한 인격이시다.</div></div><div class="quote"><div class="ref">8:6.3</div><div class="qtext">무한 영, 신의 셋째 개인은 너희가 인격과 연관 짓는 모든 속성들을 소유하고 계신다.</div></div><div class="quote"><div class="ref">8:6.3</div><div class="qtext">영은 마음뿐 아니라 의지도 지니신다.</div></div><div class="quote"><div class="ref">8:6.4</div><div class="qtext">“영의 사랑”은 실제이며, 그의 슬픔도 마찬가지로 실재한다. 그러므로 “하나님의 영을 슬프게 하지 말라.”</div></div><div class="quote"><div class="ref">8:6.4</div><div class="qtext">이 신성한 인격은 우주에 한 개인으로서 반응하신다.</div></div><div class="quote"><div class="ref">8:6.4</div><div class="qtext">“영 자신이 너희를 위해 간구하시느니라.” 영은 창조된 존재들에게 직접적이며 인격적으로 영향을 미친다.</div></div><div class="quote"><div class="ref">8:6.7</div><div class="qtext">무한 영이라는 개인 안에는 아버지와 아들이 상호적으로 현존하며, 항상 무제한적인 완전함 속에 계신다.</div></div><div class="quote"><div class="ref">9:8.1</div><div class="qtext">무한 영은 그의 많은 권능과 특권을 그의 동격 및 하위 인격들과 대리자들에게 전달할 수 있는 온전한 권능을 보유하고 있다.</div></div><div class="quote"><div class="ref">9:8.2</div><div class="qtext">무한 영의 첫 번째 신-창조 행위는, 삼위일체와는 별개로 기능하지만 아버지와 아들과의 어느 계시되지 않은 연합 안에서, 파라다이스 일곱 주(主) 영의 존재로 인격화되었다.</div></div><div class="quote"><div class="ref">9:8.4</div><div class="qtext">우주 아버지와 영원 아들이 창조자 아들의 부모가 될 때마다, 무한 영은 지역 우주 창조 영의 조상이 되며, 이 창조 영은 이후 모든 우주 체험에서 그 창조자 아들의 가까운 동료가 된다.</div></div><div class="quote"><div class="ref">9:8.12</div><div class="qtext">이들은 기억력, 추론력, 판단력, 창조적 상상력, 관념 연합, 결단, 선택, 그리고 필사자에게 전혀 알려지지 않은 수많은 추가적 지성 능력을 포괄하는 마음을 지닌다.</div></div><div class="quote"><div class="ref">9:8.25</div><div class="qtext">신성하고 무한한 영의 방대한 가족에 속한 영 인격들은 시간과 공간의 진화 세계에서 모든 지성적 창조체에게 하나님의 사랑과 아들의 자비를 사역하는 봉사에 영원히 헌신한다. 이 영 존재들은 필사 인간이 혼돈에서 영광으로 상승하는 살아 있는 사다리를 구성한다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 8 · 9편 본문(새번역본) 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
