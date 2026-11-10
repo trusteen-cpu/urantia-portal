@@ -431,8 +431,8 @@
                   "url": "/learn/w22.html"
                 },
                 {
-                  "name": "제26강 루시퍼의 반란과 문제점",
-                  "url": "/learn/w26.html"
+                  "name": "제23강 루시퍼의 반란의 경과, 본질 그리고 문제점",
+                  "url": "/learn/w23.html"
                 }
               ]
             },
@@ -695,6 +695,10 @@
                 {
                   "name": "제22강 인격의 본질, 기능, 생존",
                   "url": "/school/core52/slides/?n=22"
+                },
+                {
+                  "name": "제23강 루시퍼의 반란의 경과, 본질 그리고 문제점",
+                  "url": "/school/core52/slides/?n=23"
                 }
               ]
             }

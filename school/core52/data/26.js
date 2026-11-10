@@ -1,1 +1,0 @@
-LECTURE({"n": 26, "title": "루시퍼의 반란과 문제점", "slides": [], "docs": [], "interactive": "/learn/w26.html", "audiobook": null});
