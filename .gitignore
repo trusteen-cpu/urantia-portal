@@ -3,3 +3,13 @@
 eleven_key.txt
 r2_keys.json
 *.key
+
+
+# secrets - never commit
+.env
+.env.*
+.dev.vars
+*_key.txt
+*_keys.json
+.wrangler/
+node_modules/
