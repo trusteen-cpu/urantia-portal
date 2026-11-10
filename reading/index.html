@@ -49,6 +49,38 @@ textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:8
 .status{font-size:14.5px;margin-top:6px}
 .tools{display:flex;gap:8px;flex-wrap:wrap}
 @media(max-width:640px){.cards{grid-template-columns:repeat(2,1fr)}.ph .bar{width:50px}.ph .when{display:none}}
+/* 제목 = 본문 열기 */
+.ph .tt,.sec .st{cursor:pointer}
+.ph .tt span,.sec .st span{border-bottom:1px dotted #9fb0c8}
+.ph .tt:hover span,.sec .st:hover span{color:var(--navy);border-bottom-color:var(--navy)}
+.ph .tt span::after,.sec .st span::after{content:"\00a0📖";font-size:.8em;opacity:.55}
+.ph .tog{flex:none;width:26px;height:26px;border:none;background:none;color:var(--dim);cursor:pointer;font-size:13px;transition:transform .15s}
+.paper.open .ph .tog{transform:rotate(90deg)}
+.hint{font-size:13px;color:var(--dim);margin:0 2px 8px}
+/* 본문 패널 */
+#rd{position:fixed;inset:0;z-index:50;display:none}
+#rd.on{display:block}
+#rd .shade{position:absolute;inset:0;background:rgba(13,23,48,.35)}
+#rd .pane{position:absolute;top:0;right:0;bottom:0;width:min(760px,62vw);background:#fffdf8;display:flex;flex-direction:column;box-shadow:-8px 0 28px rgba(0,0,0,.18)}
+#rd .rh{flex:none;display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:calc(env(safe-area-inset-top,0px) + 10px);background:var(--navy);color:#fff;padding-right:165px}
+#rd .rh b{flex:1;min-width:0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#rd .rh button{border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;border-radius:999px;padding:4px 10px;cursor:pointer;font-size:13.5px;flex:none}
+#rd .rb{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 22px 40px;font-size:var(--fs,17px);line-height:1.85}
+#rd .rb h2{font-size:1.3em;color:var(--navy);margin:4px 0 4px;line-height:1.4}
+#rd .rb .ptop{color:var(--dim);font-size:13px;margin-bottom:6px}
+#rd .rs{scroll-margin-top:8px;margin-top:22px}
+#rd .rs h3{font-size:1.05em;color:var(--c,var(--navy));margin:0 0 8px;padding-top:12px;border-top:1px solid var(--line)}
+#rd .rs p{margin:0 0 .9em;text-align:justify}
+#rd .rs p sup{color:#a59a84;font-size:.62em;margin-right:4px;font-family:system-ui,sans-serif}
+#rd .mk{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 6px;padding:10px 12px;background:#f3f1ea;border-radius:10px;font-size:14.5px;line-height:1.4}
+#rd .mk button{border:1px solid var(--navy);background:#fff;color:var(--navy);border-radius:999px;padding:7px 16px;cursor:pointer;font-weight:600;font-size:14.5px}
+#rd .mk.done{background:#e6f2ea}#rd .mk.done button{background:var(--ok);border-color:var(--ok);color:#fff}
+#rd .mk small{color:var(--dim)}
+#rd .rf{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;margin-top:26px;padding-top:14px;border-top:2px solid var(--line)}
+#rd .rf .all{background:var(--navy);border-color:var(--navy);color:#fff}
+#rd .msg{color:var(--dim);padding:30px 0;text-align:center}
+@media(max-width:760px){#rd .pane{width:100%;box-shadow:none}#rd .rh{padding-right:160px}#rd .rh b{visibility:hidden}#rd .rb{padding:14px 16px 40px}#rd .rs p{text-align:left}}
+body.rd-open{overflow:hidden}
 </style>
 <script src="/home-button.js" defer></script>
 </head>
@@ -70,6 +102,7 @@ textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:8
     </div>
   </div>
   <div class="parts" id="parts"></div>
+  <p class="hint" id="t_hint"></p>
   <div id="list"></div>
   <div class="box" style="margin-top:16px">
     <h3 id="t_graph" style="margin:0 0 8px;font-size:16px"></h3>
@@ -84,6 +117,11 @@ textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:8
     <small id="t_store" style="color:var(--dim);flex-basis:100%"></small>
   </div>
 </div>
+<div id="rd" aria-hidden="true"><div class="shade"></div>
+  <div class="pane" role="dialog" aria-modal="true" aria-labelledby="rdTitle">
+    <div class="rh"><button id="rdClose"></button><b id="rdTitle"></b><button id="fsDown" title="A-">가-</button><button id="fsUp" title="A+">가+</button></div>
+    <div class="rb" id="rdBody"></div>
+  </div></div>
 <script>
 /* 유란시아서 일년 읽기 — 설계안 시험판 (tools/reading_plan/DESIGN.md). 기록은 이 기기의 브라우저에 저장한다. */
 var LANG = (new URLSearchParams(location.search).get('lang') === 'en') ? 'en' : 'ko';
@@ -93,6 +131,9 @@ var T = {
       ahead:'계획보다 앞섬', behind:'계획보다 뒤처짐', onpace:'계획대로', notyet:'시작 전', paper:'편', fore:'머리말',
       parts:['머리말','제1부','제2부','제3부','제4부'], intro:'서론', quotes:'인상 깊은 구절', qph:'구절을 적어 주세요', add:'더하기', memo:'메모', mph:'이 편을 읽으며 든 생각을 적어 두세요',
       saved:'저장됨', dbtn:'📔 매일 유란시아 일기 쓰기',
+      hint:'편이나 장 제목(📖)을 누르면 본문이 열리고, 읽은 뒤 그 자리에서 ‘읽음 표시’를 할 수 있습니다. ▸ 단추는 장 목록을 펼칩니다.',
+      close:'✕ 목록', mark:'읽음 표시', marked:'✓ 읽음', readOn:function(d){return d+'에 읽음 · 다시 누르면 취소';}, unread:'이 장을 다 읽었으면 눌러 주세요',
+      allMark:'✓ 이 편 모두 읽음', prevP:'◀ 앞 편', nextP:'다음 편 ▶', loading:'본문을 불러오는 중…', fail:'본문을 불러오지 못했습니다. 잠시 뒤 다시 열어 주세요.',
       graph:'진도 그래프', l1:'나의 달성률', l2:'목표 (계획)', export:'내보내기 (파일로 저장)', import:'불러오기', reset:'모두 지우기',
       store:'기록은 이 기기의 브라우저에 저장됩니다. 다른 기기로 옮기거나 잃지 않으려면 가끔 ‘내보내기’로 파일을 저장해 두세요.',
       resetQ:'모든 체크·구절·메모를 지울까요? 되돌릴 수 없습니다.', editDate:'읽은 날짜 (예: 2026-10-30). 비우면 체크가 풀립니다.',
@@ -103,6 +144,9 @@ var T = {
       ahead:'Ahead of plan', behind:'Behind plan', onpace:'On plan', notyet:'Not started', paper:'Paper', fore:'Foreword',
       parts:['Foreword','Part I','Part II','Part III','Part IV'], intro:'Introduction', quotes:'Memorable passages', qph:'Write the passage', add:'Add', memo:'Notes', mph:'Write your thoughts on this paper',
       saved:'Saved', dbtn:'📔 Daily Urantia Journal',
+      hint:'Tap a paper or section title (📖) to open the text, then mark it read right there. The ▸ button expands the section list.',
+      close:'✕ List', mark:'Mark as read', marked:'✓ Read', readOn:function(d){return 'Read on '+d+' · tap again to undo';}, unread:'Tap when you have finished this section',
+      allMark:'✓ Mark whole paper read', prevP:'◀ Previous', nextP:'Next ▶', loading:'Loading the text…', fail:'Could not load the text. Please try again shortly.',
       graph:'Progress', l1:'My progress', l2:'Goal (plan)', export:'Export (save to file)', import:'Import', reset:'Clear all',
       store:'Your record is saved in this browser on this device. Export it to a file now and then to move it or keep it safe.',
       resetQ:'Clear all checks, passages, and notes? This cannot be undone.', editDate:'Date read (e.g. 2026-10-30). Leave empty to uncheck.',
@@ -140,8 +184,8 @@ function render(){
     var n = p[0], part = PART_OF(n), col = PART_COL[part];
     if (part !== lastPart) { html += '<div id="part' + part + '"></div>'; lastPart = part; }
     html += '<div class="paper" id="p' + n + '" style="--c:' + col + '"><div class="ph" data-n="' + n + '">' +
-      '<input type="checkbox" class="pchk" data-n="' + n + '"><span class="no">' + (n ? n + (LANG==='ko'?'편':'') : '·') + '</span>' +
-      '<span class="tt">' + esc(n ? p[1] : T.fore) + '</span><span class="bar"><i></i></span><span class="cnt"></span><span class="when"></span></div>' +
+      '<button class="tog" aria-label="▸">▸</button><input type="checkbox" class="pchk" data-n="' + n + '"><span class="no">' + (n ? n + (LANG==='ko'?'편':'') : '·') + '</span>' +
+      '<span class="tt" data-open="' + n + '"><span>' + esc(n ? p[1] : T.fore) + '</span></span><span class="bar"><i></i></span><span class="cnt"></span><span class="when"></span></div>' +
       '<div class="pb"></div></div>';
   });
   document.getElementById('list').innerHTML = html;
@@ -161,7 +205,7 @@ function fillBody(n){
   var rows = p[2].map(function(s){
     var k = n + ':' + s[0], d = S.done[k] || '';
     return '<div class="sec"><input type="checkbox" class="schk" data-k="' + k + '"' + (d ? ' checked' : '') + '>' +
-      '<span class="n">' + (s[0] ? n + ':' + s[0] : '') + '</span><span class="st">' + esc(s[1] || T.intro) + '</span>' +
+      '<span class="n">' + (s[0] ? n + ':' + s[0] : '') + '</span><span class="st" data-open="' + n + '" data-s="' + s[0] + '"><span>' + esc(s[1] || T.intro) + '</span></span>' +
       '<button class="d" data-k="' + k + '" title="' + esc(T.editDate) + '">' + fmt(d) + '</button></div>';
   }).join('');
   var opts = p[2].map(function(s){ return '<option value="' + n + ':' + s[0] + '">' + n + ':' + s[0] + '</option>'; }).join('');
@@ -227,7 +271,8 @@ function setDone(k, d){ if (d) S.done[k] = d; else delete S.done[k];
   save(); }
 
 document.getElementById('list').addEventListener('click', function(e){
-  var t = e.target;
+  var t = e.target, op = t.closest('[data-open]');
+  if (op) { openReader(+op.dataset.open, op.dataset.s === undefined ? null : +op.dataset.s); return; }
   if (t.classList.contains('pchk')) {        // 편 전체 체크
     var n = +t.dataset.n, all = t.checked, d = today();
     PLAN.byNo[n][2].forEach(function(s){ var k = n + ':' + s[0]; if (all) { if (!S.done[k]) setDone(k, d); } else setDone(k, ''); });
@@ -255,7 +300,7 @@ document.getElementById('goal').onchange = function(){ S.goal = this.value; save
 document.getElementById('nextBtn').onclick = function(){
   for (var i = 0; i < PLAN.length; i++) { var p = PLAN[i]; for (var j = 0; j < p[2].length; j++) if (!S.done[p[0] + ':' + p[2][j][0]]) {
     var el = document.getElementById('p' + p[0]); if (!el.classList.contains('open')) { el.classList.add('open'); fillBody(p[0]); }
-    el.scrollIntoView({behavior: 'smooth'}); return; } }
+    el.scrollIntoView({behavior: 'smooth'}); openReader(p[0], p[2][j][0]); return; } }
 };
 document.getElementById('exportBtn').onclick = function(){
   var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(S, null, 1)], {type: 'application/json'}));
@@ -267,9 +312,74 @@ document.getElementById('importFile').onchange = function(){
 };
 document.getElementById('resetBtn').onclick = function(){ if (!confirm(T.resetQ)) return; S = {}; save(); load(); init2(); };
 
+/* ── 본문 패널: 목차 제목을 누르면 같은 화면에서 본문을 읽고 그 자리에서 읽음 표시 ──
+   한글 본문 = /sermon/text/pN.json (textapp/book.json과 같은 최신본, {"1:1.1": "…"})
+   영어 본문 = /bilingual/data/pNNN.js (UB_P(n, {s:[{n, v:[[cit, en, ko]]}]})) */
+var RD = {n: null, cache: {}, el: document.getElementById('rd'), body: document.getElementById('rdBody')};
+function loadPaper(n){
+  if (RD.cache[n]) return Promise.resolve(RD.cache[n]);
+  var group = function(pairs){ var g = {}; pairs.forEach(function(x){ var sn = +x[0].split(':')[1].split('.')[0]; (g[sn] = g[sn] || []).push(x); }); return g; };
+  if (LANG === 'ko') return fetch('/sermon/text/p' + n + '.json').then(function(r){ if (!r.ok) throw 0; return r.json(); })
+    .then(function(d){ return RD.cache[n] = group(Object.keys(d).map(function(k){ return [k, d[k]]; })); });
+  return new Promise(function(ok, no){
+    window.UB_P = function(pn, obj){ var pairs = []; obj.s.forEach(function(sec){ sec.v.forEach(function(v){ pairs.push([v[0], v[1]]); }); }); RD.cache[pn] = group(pairs); };
+    var sc = document.createElement('script'); sc.src = '/bilingual/data/p' + ('00' + n).slice(-3) + '.js';
+    sc.onload = function(){ sc.remove(); RD.cache[n] ? ok(RD.cache[n]) : no(); }; sc.onerror = function(){ sc.remove(); no(); };
+    document.head.appendChild(sc);
+  });
+}
+function markHtml(k){ var d = S.done[k];
+  return '<div class="mk' + (d ? ' done' : '') + '" data-mk="' + k + '"><button data-k="' + k + '">' + (d ? T.marked : T.mark) + '</button><small>' + (d ? T.readOn(d) : T.unread) + '</small></div>'; }
+function openReader(n, sec){
+  var p = PLAN.byNo[n]; if (!p) return;
+  RD.n = n; RD.el.style.setProperty('--c', PART_COL[PART_OF(n)]);
+  document.getElementById('rdTitle').textContent = n ? (LANG === 'ko' ? n + '편 ' : T.paper + ' ' + n + ' · ') + p[1] : T.fore;
+  RD.body.innerHTML = '<div class="msg">' + T.loading + '</div>';
+  if (!RD.el.classList.contains('on')) { RD.el.classList.add('on'); RD.el.setAttribute('aria-hidden', 'false'); document.body.classList.add('rd-open');
+    try { history.pushState({rd: 1}, ''); } catch(e) {} }
+  loadPaper(n).then(function(g){
+    if (RD.n !== n) return;
+    var h = '<div class="ptop">' + T.parts[PART_OF(n)] + '</div><h2>' + esc(n ? (LANG === 'ko' ? '제' + n + '편 ' : T.paper + ' ' + n + ': ') + p[1] : T.fore) + '</h2>';
+    p[2].forEach(function(s){
+      var paras = g[s[0]] || [];
+      h += '<section class="rs" id="rs' + s[0] + '"><h3>' + esc(s[1] || T.intro) + '</h3>' +
+        paras.map(function(x){ return '<p><sup>' + x[0] + '</sup>' + esc(x[1]) + '</p>'; }).join('') + markHtml(n + ':' + s[0]) + '</section>';
+    });
+    var i = PLAN.indexOf(p), pv = PLAN[i - 1], nx = PLAN[i + 1];
+    h += '<div class="rf">' + (pv ? '<button class="btn" data-go="' + pv[0] + '">' + T.prevP + '</button>' : '<span></span>') +
+      '<button class="btn all" data-all="' + n + '">' + T.allMark + '</button>' +
+      (nx ? '<button class="btn" data-go="' + nx[0] + '">' + T.nextP + '</button>' : '<span></span>') + '</div>';
+    RD.body.innerHTML = h;
+    var target = sec === null ? null : document.getElementById('rs' + sec);
+    if (target && sec !== p[2][0][0]) target.scrollIntoView(); else RD.body.scrollTop = 0;
+  }, function(){ if (RD.n === n) RD.body.innerHTML = '<div class="msg">' + T.fail + '</div>'; });
+}
+function hideReader(){ RD.el.classList.remove('on'); RD.el.setAttribute('aria-hidden', 'true'); document.body.classList.remove('rd-open'); RD.n = null; }
+function closeReader(){ if (history.state && history.state.rd) history.back(); else hideReader(); }
+window.addEventListener('popstate', function(){ if (RD.el.classList.contains('on')) hideReader(); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && RD.el.classList.contains('on')) closeReader(); });
+document.getElementById('rdClose').onclick = closeReader;
+RD.el.querySelector('.shade').onclick = closeReader;
+RD.body.addEventListener('click', function(e){
+  var b = e.target.closest('button'); if (!b) return;
+  var n = RD.n;
+  if (b.dataset.k) { var k = b.dataset.k;
+    if (S.done[k] && !confirm(T.readOn(S.done[k]).split(' · ')[0] + ' — ' + (LANG === 'ko' ? '읽음 표시를 지울까요?' : 'remove this mark?'))) return;
+    setDone(k, S.done[k] ? '' : today()); b.closest('.mk').outerHTML = markHtml(k); paintPaper(n); stats(); return; }
+  if (b.dataset.all !== undefined) { var d = today();
+    PLAN.byNo[n][2].forEach(function(s){ var k2 = n + ':' + s[0]; if (!S.done[k2]) setDone(k2, d); var m = RD.body.querySelector('[data-mk="' + k2 + '"]'); if (m) m.outerHTML = markHtml(k2); });
+    paintPaper(n); stats(); return; }
+  if (b.dataset.go !== undefined) openReader(+b.dataset.go, null);
+});
+var FS_KEY = 'ub-reading-fs';
+function setFs(v){ v = Math.max(14, Math.min(26, v)); RD.el.style.setProperty('--fs', v + 'px'); try { localStorage.setItem(FS_KEY, v); } catch(e) {} return v; }
+var FS = setFs(+(function(){ try { return localStorage.getItem(FS_KEY); } catch(e) { return 0; } })() || 17);
+document.getElementById('fsDown').onclick = function(){ FS = setFs(FS - 1); };
+document.getElementById('fsUp').onclick = function(){ FS = setFs(FS + 1); };
+
 function texts(){
   var set = function(id, v){ document.getElementById(id).textContent = v; };
-  set('t_title', T.title); set('t_sub', T.sub); set('t_start', T.start); set('t_goal', T.goal); set('nextBtn', T.next);
+  set('t_title', T.title); set('t_hint', T.hint); set('rdClose', T.close); if (LANG === 'en') { set('fsDown', 'A-'); set('fsUp', 'A+'); } set('t_sub', T.sub); set('t_start', T.start); set('t_goal', T.goal); set('nextBtn', T.next);
   set('t_c1', T.c1); set('t_c2', T.c2); set('t_c4', T.c4); set('t_graph', T.graph); set('t_l1', T.l1); set('t_l2', T.l2);
   set('exportBtn', T.export); set('t_import', T.import); set('resetBtn', T.reset); set('t_store', T.store);
   var o = document.getElementById('goal').options; o[0].text = T.g260; o[1].text = T.g365; o[2].text = T.g182;
