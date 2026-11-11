@@ -219,7 +219,236 @@
         },
         {
           "name": "예수의 삶과 가르침",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/69"
+          "children": [
+            {
+              "name": "책 소개와 머리말",
+              "url": "/jesus-book/"
+            },
+            {
+              "name": "프롤로그 하늘에서 내려온 결정",
+              "url": "/jesus-book/?c=0"
+            },
+            {
+              "name": "제1장 가브리엘의 방문",
+              "url": "/jesus-book/?c=1"
+            },
+            {
+              "name": "제2장 베들레헴의 밤",
+              "url": "/jesus-book/?c=2"
+            },
+            {
+              "name": "제3장 목수의 집 아이",
+              "url": "/jesus-book/?c=3"
+            },
+            {
+              "name": "제4장 질문 많은 소년",
+              "url": "/jesus-book/?c=4"
+            },
+            {
+              "name": "제5장 열두 살의 순례",
+              "url": "/jesus-book/?c=5"
+            },
+            {
+              "name": "제6장 내 아버지의 일",
+              "url": "/jesus-book/?c=6"
+            },
+            {
+              "name": "제7장 갑작스러운 이별",
+              "url": "/jesus-book/?c=7"
+            },
+            {
+              "name": "제8장 가장이 된 맏아들",
+              "url": "/jesus-book/?c=8"
+            },
+            {
+              "name": "제9장 레베카의 사랑",
+              "url": "/jesus-book/?c=9"
+            },
+            {
+              "name": "제10장 셉포리스의 대장간",
+              "url": "/jesus-book/?c=10"
+            },
+            {
+              "name": "제11장 집을 떠나는 날",
+              "url": "/jesus-book/?c=11"
+            },
+            {
+              "name": "제12장 요파에서 알렉산드리아까지",
+              "url": "/jesus-book/?c=12"
+            },
+            {
+              "name": "제13장 두려워하는 젊은이",
+              "url": "/jesus-book/?c=13"
+            },
+            {
+              "name": "제14장 로마에서 만난 사람들",
+              "url": "/jesus-book/?c=14"
+            },
+            {
+              "name": "제15장 고린도와 아테네",
+              "url": "/jesus-book/?c=15"
+            },
+            {
+              "name": "제16장 에베소에서 메소포타미아까지",
+              "url": "/jesus-book/?c=16"
+            },
+            {
+              "name": "제17장 카스피해 대상과 헤르몬산",
+              "url": "/jesus-book/?c=17"
+            },
+            {
+              "name": "제18장 광야에서 외치는 사람, 요한",
+              "url": "/jesus-book/?c=18"
+            },
+            {
+              "name": "제19장 요단강의 세례",
+              "url": "/jesus-book/?c=19"
+            },
+            {
+              "name": "제20장 사십 일과 여섯 가지 결정",
+              "url": "/jesus-book/?c=20"
+            },
+            {
+              "name": "제21장 첫 제자들과 가나의 혼인 잔치",
+              "url": "/jesus-book/?c=21"
+            },
+            {
+              "name": "제22장 열두 사람이 모이다",
+              "url": "/jesus-book/?c=22"
+            },
+            {
+              "name": "제23장 산 위의 임명",
+              "url": "/jesus-book/?c=23"
+            },
+            {
+              "name": "제24장 니고데모가 찾아온 밤",
+              "url": "/jesus-book/?c=24"
+            },
+            {
+              "name": "제25장 야곱의 우물가에서",
+              "url": "/jesus-book/?c=25"
+            },
+            {
+              "name": "제26장 기도를 가르치다",
+              "url": "/jesus-book/?c=26"
+            },
+            {
+              "name": "제27장 해 질 녘의 치유",
+              "url": "/jesus-book/?c=27"
+            },
+            {
+              "name": "제28장 갈릴리 전도 여행",
+              "url": "/jesus-book/?c=28"
+            },
+            {
+              "name": "제29장 벳세다의 병원",
+              "url": "/jesus-book/?c=29"
+            },
+            {
+              "name": "제30장 여인들이 함께 나서다",
+              "url": "/jesus-book/?c=30"
+            },
+            {
+              "name": "제31장 바닷가의 비유",
+              "url": "/jesus-book/?c=31"
+            },
+            {
+              "name": "제32장 오천 명을 먹인 날",
+              "url": "/jesus-book/?c=32"
+            },
+            {
+              "name": "제33장 가버나움의 위기",
+              "url": "/jesus-book/?c=33"
+            },
+            {
+              "name": "제34장 이방 땅으로 피하다",
+              "url": "/jesus-book/?c=34"
+            },
+            {
+              "name": "제35장 베드로의 고백",
+              "url": "/jesus-book/?c=35"
+            },
+            {
+              "name": "제36장 변모의 산",
+              "url": "/jesus-book/?c=36"
+            },
+            {
+              "name": "제37장 데가볼리와 로단",
+              "url": "/jesus-book/?c=37"
+            },
+            {
+              "name": "제38장 초막절의 예루살렘",
+              "url": "/jesus-book/?c=38"
+            },
+            {
+              "name": "제39장 칠십인과 선한 사마리아인",
+              "url": "/jesus-book/?c=39"
+            },
+            {
+              "name": "제40장 나사로야, 나오너라",
+              "url": "/jesus-book/?c=40"
+            },
+            {
+              "name": "제41장 잃었던 아들",
+              "url": "/jesus-book/?c=41"
+            },
+            {
+              "name": "제42장 예루살렘에 들어가다",
+              "url": "/jesus-book/?c=42"
+            },
+            {
+              "name": "제43장 사원에서 벌어진 논쟁",
+              "url": "/jesus-book/?c=43"
+            },
+            {
+              "name": "제44장 올리브산의 밤",
+              "url": "/jesus-book/?c=44"
+            },
+            {
+              "name": "제45장 마지막 만찬",
+              "url": "/jesus-book/?c=45"
+            },
+            {
+              "name": "제46장 고별 강론",
+              "url": "/jesus-book/?c=46"
+            },
+            {
+              "name": "제47장 겟세마네",
+              "url": "/jesus-book/?c=47"
+            },
+            {
+              "name": "제48장 재판",
+              "url": "/jesus-book/?c=48"
+            },
+            {
+              "name": "제49장 골고다",
+              "url": "/jesus-book/?c=49"
+            },
+            {
+              "name": "제50장 무덤 속의 안식일",
+              "url": "/jesus-book/?c=50"
+            },
+            {
+              "name": "제51장 빈 무덤",
+              "url": "/jesus-book/?c=51"
+            },
+            {
+              "name": "제52장 열아홉 번의 출현",
+              "url": "/jesus-book/?c=52"
+            },
+            {
+              "name": "제53장 승천과 오순절",
+              "url": "/jesus-book/?c=53"
+            },
+            {
+              "name": "에필로그 예수의 신앙",
+              "url": "/jesus-book/?c=54"
+            },
+            {
+              "name": "카페 게시판 · 예수의 삶과 가르침",
+              "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/69"
+            }
+          ]
         }
       ]
     },
