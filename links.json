@@ -1946,14 +1946,14 @@
     },
     {
       "id": "workbook",
-      "title": "분야별 워크북",
+      "title": "분야별 연구",
       "color": "teal",
       "icon": "📓",
       "preview": 40,
       "items": [
         {
-          "name": "foreword & Part 1",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/37"
+          "name": "Foreword (머리말)",
+          "url": "/foreword/"
         },
         {
           "name": "유란시아서 신학",
@@ -2090,7 +2090,7 @@
         },
         {
           "name": "Topical Doctrinal",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/41"
+          "url": "/topics/"
         },
         {
           "name": "The Teaching of Jesus",
@@ -2101,8 +2101,8 @@
           "url": "/glossary/"
         },
         {
-          "name": "Worship, Wisdom",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/44"
+          "name": "예배와 지혜",
+          "url": "/books/worship-wisdom/"
         }
       ]
     },
