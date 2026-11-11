@@ -313,8 +313,798 @@
           "url": "/newcomer/start.html"
         },
         {
-          "name": "유란시아서 통합 강의 (80강)",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/94"
+          "name": "유란시아서 196편 요약강의",
+          "url": "/class/summary196/",
+          "children": [
+            {
+              "name": "머리말",
+              "url": "/class/summary196/?n=0"
+            },
+            {
+              "name": "제1편 우주 아버지",
+              "url": "/class/summary196/?n=1"
+            },
+            {
+              "name": "제2편 하나님의 본성",
+              "url": "/class/summary196/?n=2"
+            },
+            {
+              "name": "제3편 하나님의 속성",
+              "url": "/class/summary196/?n=3"
+            },
+            {
+              "name": "제4편 우주에 대한 하나님의 관계",
+              "url": "/class/summary196/?n=4"
+            },
+            {
+              "name": "제5편 하나님과 개인의 관계",
+              "url": "/class/summary196/?n=5"
+            },
+            {
+              "name": "제6편 영원 아들",
+              "url": "/class/summary196/?n=6"
+            },
+            {
+              "name": "제7편 우주에 대한 영원 아들의 관계",
+              "url": "/class/summary196/?n=7"
+            },
+            {
+              "name": "제8편 무한 영",
+              "url": "/class/summary196/?n=8"
+            },
+            {
+              "name": "제9편 우주와 무한 영의 관계",
+              "url": "/class/summary196/?n=9"
+            },
+            {
+              "name": "제10편 파라다이스 삼위일체",
+              "url": "/class/summary196/?n=10"
+            },
+            {
+              "name": "제11편 영원한 섬 파라다이스",
+              "url": "/class/summary196/?n=11"
+            },
+            {
+              "name": "제12편 우주들의 우주",
+              "url": "/class/summary196/?n=12"
+            },
+            {
+              "name": "제13편 파라다이스의 신성한 구체들",
+              "url": "/class/summary196/?n=13"
+            },
+            {
+              "name": "제14편 신성한 중앙 우주",
+              "url": "/class/summary196/?n=14"
+            },
+            {
+              "name": "제15편 일곱 초우주",
+              "url": "/class/summary196/?n=15"
+            },
+            {
+              "name": "제16편 일곱 주(主) 영",
+              "url": "/class/summary196/?n=16"
+            },
+            {
+              "name": "제17편 일곱 최상 영 집단",
+              "url": "/class/summary196/?n=17"
+            },
+            {
+              "name": "제18편 최상 삼위일체 인격",
+              "url": "/class/summary196/?n=18"
+            },
+            {
+              "name": "제19편 동격의 삼위일체 기원 존재들",
+              "url": "/class/summary196/?n=19"
+            },
+            {
+              "name": "제20편 하나님의 파라다이스 아들들",
+              "url": "/class/summary196/?n=20"
+            },
+            {
+              "name": "제21편 파라다이스 창조자 아들들",
+              "url": "/class/summary196/?n=21"
+            },
+            {
+              "name": "제22편 삼위일체화 하나님의 아들",
+              "url": "/class/summary196/?n=22"
+            },
+            {
+              "name": "제23편 단독 사자",
+              "url": "/class/summary196/?n=23"
+            },
+            {
+              "name": "제24편 무한 영의 상급 인격",
+              "url": "/class/summary196/?n=24"
+            },
+            {
+              "name": "제25편 우주 공간의 사자 무리",
+              "url": "/class/summary196/?n=25"
+            },
+            {
+              "name": "제26편 중앙 우주의 봉사 영들",
+              "url": "/class/summary196/?n=26"
+            },
+            {
+              "name": "제27편 1차 수퍼나핌의 봉사",
+              "url": "/class/summary196/?n=27"
+            },
+            {
+              "name": "제28편 초우주의 봉사 영들",
+              "url": "/class/summary196/?n=28"
+            },
+            {
+              "name": "제29편 우주 동력 감독자",
+              "url": "/class/summary196/?n=29"
+            },
+            {
+              "name": "제30편 대우주의 인격",
+              "url": "/class/summary196/?n=30"
+            },
+            {
+              "name": "제31편 최종자 군단",
+              "url": "/class/summary196/?n=31"
+            },
+            {
+              "name": "제32편 지역 우주의 진화",
+              "url": "/class/summary196/?n=32"
+            },
+            {
+              "name": "제33편 지역 우주의 행정",
+              "url": "/class/summary196/?n=33"
+            },
+            {
+              "name": "제34편 지역 우주 어머니 영",
+              "url": "/class/summary196/?n=34"
+            },
+            {
+              "name": "제35편 하나님의 지역 우주 아들",
+              "url": "/class/summary196/?n=35"
+            },
+            {
+              "name": "제36편 생명 운반자",
+              "url": "/class/summary196/?n=36"
+            },
+            {
+              "name": "제37편 지역 우주의 인격",
+              "url": "/class/summary196/?n=37"
+            },
+            {
+              "name": "제38편 지역 우주의 봉사하는 영",
+              "url": "/class/summary196/?n=38"
+            },
+            {
+              "name": "제39편 천사 무리",
+              "url": "/class/summary196/?n=39"
+            },
+            {
+              "name": "제40편 상승하는 하나님의 아들",
+              "url": "/class/summary196/?n=40"
+            },
+            {
+              "name": "제41편 지역 우주의 물리적 모습",
+              "url": "/class/summary196/?n=41"
+            },
+            {
+              "name": "제42편 에너지—마음과 물질",
+              "url": "/class/summary196/?n=42"
+            },
+            {
+              "name": "제43편 별자리",
+              "url": "/class/summary196/?n=43"
+            },
+            {
+              "name": "제44편 천상의 예술가",
+              "url": "/class/summary196/?n=44"
+            },
+            {
+              "name": "제45편 지역 체계 행정",
+              "url": "/class/summary196/?n=45"
+            },
+            {
+              "name": "제46편 지역 체계 본부",
+              "url": "/class/summary196/?n=46"
+            },
+            {
+              "name": "제47편 일곱 맨션 세계",
+              "url": "/class/summary196/?n=47"
+            },
+            {
+              "name": "제48편 모론시아 삶",
+              "url": "/class/summary196/?n=48"
+            },
+            {
+              "name": "제49편 거주 세계들",
+              "url": "/class/summary196/?n=49"
+            },
+            {
+              "name": "제50편 행성 영주들",
+              "url": "/class/summary196/?n=50"
+            },
+            {
+              "name": "제51편 행성 아담들",
+              "url": "/class/summary196/?n=51"
+            },
+            {
+              "name": "제52편 행성 필사자 시대들",
+              "url": "/class/summary196/?n=52"
+            },
+            {
+              "name": "제53편 루시퍼 반란",
+              "url": "/class/summary196/?n=53"
+            },
+            {
+              "name": "제54편 루시퍼 반란의 문제들",
+              "url": "/class/summary196/?n=54"
+            },
+            {
+              "name": "제55편 빛과 생명의 구체",
+              "url": "/class/summary196/?n=55"
+            },
+            {
+              "name": "제56편 우주의 통일성",
+              "url": "/class/summary196/?n=56"
+            },
+            {
+              "name": "제57편 유란시아의 기원",
+              "url": "/class/summary196/?n=57"
+            },
+            {
+              "name": "제58편 유란시아에서 생명의 확립",
+              "url": "/class/summary196/?n=58"
+            },
+            {
+              "name": "제59편 유란시아의 해양 생물 시대",
+              "url": "/class/summary196/?n=59"
+            },
+            {
+              "name": "제60편 초기 육상 생물 시대의 유란시아",
+              "url": "/class/summary196/?n=60"
+            },
+            {
+              "name": "제61편 유란시아의 포유류 시대",
+              "url": "/class/summary196/?n=61"
+            },
+            {
+              "name": "제62편 초기 인간의 새벽 종족",
+              "url": "/class/summary196/?n=62"
+            },
+            {
+              "name": "제63편 최초의 인간 가족",
+              "url": "/class/summary196/?n=63"
+            },
+            {
+              "name": "제64편 유색 인종의 진화",
+              "url": "/class/summary196/?n=64"
+            },
+            {
+              "name": "제65편 진화의 상위통제",
+              "url": "/class/summary196/?n=65"
+            },
+            {
+              "name": "제66편 유란시아의 행성 영주",
+              "url": "/class/summary196/?n=66"
+            },
+            {
+              "name": "제67편 행성의 반란",
+              "url": "/class/summary196/?n=67"
+            },
+            {
+              "name": "제68편 문명의 시작",
+              "url": "/class/summary196/?n=68"
+            },
+            {
+              "name": "제69편 원시 인간의 제도들",
+              "url": "/class/summary196/?n=69"
+            },
+            {
+              "name": "제70편 인간 정부의 진화",
+              "url": "/class/summary196/?n=70"
+            },
+            {
+              "name": "제71편 국가의 발전",
+              "url": "/class/summary196/?n=71"
+            },
+            {
+              "name": "제72편 이웃 행성의 정부",
+              "url": "/class/summary196/?n=72"
+            },
+            {
+              "name": "제73편 에덴 동산",
+              "url": "/class/summary196/?n=73"
+            },
+            {
+              "name": "제74편 아담과 이브",
+              "url": "/class/summary196/?n=74"
+            },
+            {
+              "name": "제75편 아담과 이브의 불이행",
+              "url": "/class/summary196/?n=75"
+            },
+            {
+              "name": "제76편 둘째 동산",
+              "url": "/class/summary196/?n=76"
+            },
+            {
+              "name": "제77편 중도 창조체들",
+              "url": "/class/summary196/?n=77"
+            },
+            {
+              "name": "제78편 아담 이후 보라색 인종",
+              "url": "/class/summary196/?n=78"
+            },
+            {
+              "name": "제79편 안드족의 동방 확장",
+              "url": "/class/summary196/?n=79"
+            },
+            {
+              "name": "제80편 서방에서의 안드족 확장",
+              "url": "/class/summary196/?n=80"
+            },
+            {
+              "name": "제81편 현대 문명의 발전",
+              "url": "/class/summary196/?n=81"
+            },
+            {
+              "name": "제82편 결혼의 진화",
+              "url": "/class/summary196/?n=82"
+            },
+            {
+              "name": "제83편 결혼 제도",
+              "url": "/class/summary196/?n=83"
+            },
+            {
+              "name": "제84편 결혼과 가정생활",
+              "url": "/class/summary196/?n=84"
+            },
+            {
+              "name": "제85편 예배의 기원",
+              "url": "/class/summary196/?n=85"
+            },
+            {
+              "name": "제86편 종교의 초기 진화",
+              "url": "/class/summary196/?n=86"
+            },
+            {
+              "name": "제87편 귀신 제의",
+              "url": "/class/summary196/?n=87"
+            },
+            {
+              "name": "제88편 주물, 부적, 마법",
+              "url": "/class/summary196/?n=88"
+            },
+            {
+              "name": "제89편 죄, 희생, 속죄",
+              "url": "/class/summary196/?n=89"
+            },
+            {
+              "name": "제90편 샤먼주의—주술사와 사제",
+              "url": "/class/summary196/?n=90"
+            },
+            {
+              "name": "제91편 기도의 진화",
+              "url": "/class/summary196/?n=91"
+            },
+            {
+              "name": "제92편 종교의 후대 진화",
+              "url": "/class/summary196/?n=92"
+            },
+            {
+              "name": "제93편 마키벤타 멜기세덱",
+              "url": "/class/summary196/?n=93"
+            },
+            {
+              "name": "제94편 동방에서의 멜기세덱 가르침",
+              "url": "/class/summary196/?n=94"
+            },
+            {
+              "name": "제95편 레반트에서의 멜기세덱 가르침",
+              "url": "/class/summary196/?n=95"
+            },
+            {
+              "name": "제96편 야훼—히브리인들의 하나님",
+              "url": "/class/summary196/?n=96"
+            },
+            {
+              "name": "제97편 히브리인 하나님 개념의 진화",
+              "url": "/class/summary196/?n=97"
+            },
+            {
+              "name": "제98편 서방에서의 멜기세덱 가르침",
+              "url": "/class/summary196/?n=98"
+            },
+            {
+              "name": "제99편 종교의 사회적 문제들",
+              "url": "/class/summary196/?n=99"
+            },
+            {
+              "name": "제100편 인간 체험 안에서의 종교",
+              "url": "/class/summary196/?n=100"
+            },
+            {
+              "name": "제101편 종교의 참된 본질",
+              "url": "/class/summary196/?n=101"
+            },
+            {
+              "name": "제102편 종교적 신앙의 기초",
+              "url": "/class/summary196/?n=102"
+            },
+            {
+              "name": "제103편 종교적 체험의 실체",
+              "url": "/class/summary196/?n=103"
+            },
+            {
+              "name": "제104편 삼위일체 개념의 성장",
+              "url": "/class/summary196/?n=104"
+            },
+            {
+              "name": "제105편 신과 실체",
+              "url": "/class/summary196/?n=105"
+            },
+            {
+              "name": "제106편 실체의 우주 수준",
+              "url": "/class/summary196/?n=106"
+            },
+            {
+              "name": "제107편 생각 조절자의 기원과 본성",
+              "url": "/class/summary196/?n=107"
+            },
+            {
+              "name": "제108편 생각 조절자의 사명과 사역",
+              "url": "/class/summary196/?n=108"
+            },
+            {
+              "name": "제109편 생각 조절자와 우주 창조체의 관계",
+              "url": "/class/summary196/?n=109"
+            },
+            {
+              "name": "제110편 생각 조절자와 개별 필사자의 관계",
+              "url": "/class/summary196/?n=110"
+            },
+            {
+              "name": "제111편 조절자와 혼",
+              "url": "/class/summary196/?n=111"
+            },
+            {
+              "name": "제112편 인격의 생존",
+              "url": "/class/summary196/?n=112"
+            },
+            {
+              "name": "제113편 운명의 세라핌 수호자",
+              "url": "/class/summary196/?n=113"
+            },
+            {
+              "name": "제114편 세라핌의 행성 정부",
+              "url": "/class/summary196/?n=114"
+            },
+            {
+              "name": "제115편 최상 존재",
+              "url": "/class/summary196/?n=115"
+            },
+            {
+              "name": "제116편 전능 최상위",
+              "url": "/class/summary196/?n=116"
+            },
+            {
+              "name": "제117편 최상 하나님",
+              "url": "/class/summary196/?n=117"
+            },
+            {
+              "name": "제118편 최상위와 궁극위—시간과 공간",
+              "url": "/class/summary196/?n=118"
+            },
+            {
+              "name": "제119편 그리스도 미가엘의 증여",
+              "url": "/class/summary196/?n=119"
+            },
+            {
+              "name": "제120편 미가엘의 유란시아 증여",
+              "url": "/class/summary196/?n=120"
+            },
+            {
+              "name": "제121편 미가엘 증여의 시기",
+              "url": "/class/summary196/?n=121"
+            },
+            {
+              "name": "제122편 예수의 탄생과 유년기",
+              "url": "/class/summary196/?n=122"
+            },
+            {
+              "name": "제123편 예수의 어린 시절",
+              "url": "/class/summary196/?n=123"
+            },
+            {
+              "name": "제124편 예수의 후기 어린 시절",
+              "url": "/class/summary196/?n=124"
+            },
+            {
+              "name": "제125편 예루살렘에 온 예수",
+              "url": "/class/summary196/?n=125"
+            },
+            {
+              "name": "제126편 2년의 힘든 시기",
+              "url": "/class/summary196/?n=126"
+            },
+            {
+              "name": "제127편 청소년기",
+              "url": "/class/summary196/?n=127"
+            },
+            {
+              "name": "제128편 예수의 성년 초기 시절",
+              "url": "/class/summary196/?n=128"
+            },
+            {
+              "name": "제129편 예수의 후기 성인 생활",
+              "url": "/class/summary196/?n=129"
+            },
+            {
+              "name": "제130편 로마로 가는 길에",
+              "url": "/class/summary196/?n=130"
+            },
+            {
+              "name": "제131편 세계의 종교",
+              "url": "/class/summary196/?n=131"
+            },
+            {
+              "name": "제132편 로마에서의 체류",
+              "url": "/class/summary196/?n=132"
+            },
+            {
+              "name": "제133편 로마에서의 귀환",
+              "url": "/class/summary196/?n=133"
+            },
+            {
+              "name": "제134편 과도기 시대",
+              "url": "/class/summary196/?n=134"
+            },
+            {
+              "name": "제135편 세례자 요한",
+              "url": "/class/summary196/?n=135"
+            },
+            {
+              "name": "제136편 세례와 40일",
+              "url": "/class/summary196/?n=136"
+            },
+            {
+              "name": "제137편 갈릴리에서 머문 시간",
+              "url": "/class/summary196/?n=137"
+            },
+            {
+              "name": "제138편 하늘 왕국의 메신저들을 훈련함",
+              "url": "/class/summary196/?n=138"
+            },
+            {
+              "name": "제139편 열두 사도",
+              "url": "/class/summary196/?n=139"
+            },
+            {
+              "name": "제140편 열두 사도의 임명",
+              "url": "/class/summary196/?n=140"
+            },
+            {
+              "name": "제141편 공적 활동의 시작",
+              "url": "/class/summary196/?n=141"
+            },
+            {
+              "name": "제142편 예루살렘에서의 유월절",
+              "url": "/class/summary196/?n=142"
+            },
+            {
+              "name": "제143편 사마리아를 지나며",
+              "url": "/class/summary196/?n=143"
+            },
+            {
+              "name": "제144편 길보아와 데가볼리에서",
+              "url": "/class/summary196/?n=144"
+            },
+            {
+              "name": "제145편 사건이 많았던 가버나움에서의 4일",
+              "url": "/class/summary196/?n=145"
+            },
+            {
+              "name": "제146편 갈릴리에서의 첫 전도 여행",
+              "url": "/class/summary196/?n=146"
+            },
+            {
+              "name": "제147편 예루살렘으로의 막간 방문",
+              "url": "/class/summary196/?n=147"
+            },
+            {
+              "name": "제148편 벳세다에서의 전도사 훈련",
+              "url": "/class/summary196/?n=148"
+            },
+            {
+              "name": "제149편 두 번째 전도 여행",
+              "url": "/class/summary196/?n=149"
+            },
+            {
+              "name": "제150편 세 번째 전도 여행",
+              "url": "/class/summary196/?n=150"
+            },
+            {
+              "name": "제151편 바닷가에서의 머무름과 가르침",
+              "url": "/class/summary196/?n=151"
+            },
+            {
+              "name": "제152편 가버나움 위기로 이어지는 사건들",
+              "url": "/class/summary196/?n=152"
+            },
+            {
+              "name": "제153편 가버나움에서의 위기",
+              "url": "/class/summary196/?n=153"
+            },
+            {
+              "name": "제154편 가버나움에서의 마지막 날들",
+              "url": "/class/summary196/?n=154"
+            },
+            {
+              "name": "제155편 북부 갈릴리를 통해 피신",
+              "url": "/class/summary196/?n=155"
+            },
+            {
+              "name": "제156편 두로와 시돈에서의 체류",
+              "url": "/class/summary196/?n=156"
+            },
+            {
+              "name": "제157편 가이사랴-빌립보에서",
+              "url": "/class/summary196/?n=157"
+            },
+            {
+              "name": "제158편 변모의 산",
+              "url": "/class/summary196/?n=158"
+            },
+            {
+              "name": "제159편 데가볼리 순회",
+              "url": "/class/summary196/?n=159"
+            },
+            {
+              "name": "제160편 알렉산드리아의 로단",
+              "url": "/class/summary196/?n=160"
+            },
+            {
+              "name": "제161편 로단과의 추가 토론",
+              "url": "/class/summary196/?n=161"
+            },
+            {
+              "name": "제162편 초막절에서",
+              "url": "/class/summary196/?n=162"
+            },
+            {
+              "name": "제163편 마가단에서 칠십인의 임명",
+              "url": "/class/summary196/?n=163"
+            },
+            {
+              "name": "제164편 봉헌절에서",
+              "url": "/class/summary196/?n=164"
+            },
+            {
+              "name": "제165편 베레아 선교 시작",
+              "url": "/class/summary196/?n=165"
+            },
+            {
+              "name": "제166편 북베레아로의 마지막 방문",
+              "url": "/class/summary196/?n=166"
+            },
+            {
+              "name": "제167편 필라델피아 방문",
+              "url": "/class/summary196/?n=167"
+            },
+            {
+              "name": "제168편 나사로의 부활",
+              "url": "/class/summary196/?n=168"
+            },
+            {
+              "name": "제169편 펠라에서의 마지막 가르침",
+              "url": "/class/summary196/?n=169"
+            },
+            {
+              "name": "제170편 하늘 왕국",
+              "url": "/class/summary196/?n=170"
+            },
+            {
+              "name": "제171편 예루살렘으로 가는 길",
+              "url": "/class/summary196/?n=171"
+            },
+            {
+              "name": "제172편 예루살렘에 들어가면서",
+              "url": "/class/summary196/?n=172"
+            },
+            {
+              "name": "제173편 예루살렘에서의 월요일",
+              "url": "/class/summary196/?n=173"
+            },
+            {
+              "name": "제174편 사원에서의 화요일 아침",
+              "url": "/class/summary196/?n=174"
+            },
+            {
+              "name": "제175편 마지막 사원 강론",
+              "url": "/class/summary196/?n=175"
+            },
+            {
+              "name": "제176편 올리브산에서의 화요일 저녁",
+              "url": "/class/summary196/?n=176"
+            },
+            {
+              "name": "제177편 수요일, 휴식의 날",
+              "url": "/class/summary196/?n=177"
+            },
+            {
+              "name": "제178편 야영지에서의 마지막 날",
+              "url": "/class/summary196/?n=178"
+            },
+            {
+              "name": "제179편 마지막 만찬",
+              "url": "/class/summary196/?n=179"
+            },
+            {
+              "name": "제180편 고별 강론",
+              "url": "/class/summary196/?n=180"
+            },
+            {
+              "name": "제181편 최종 권고와 경고",
+              "url": "/class/summary196/?n=181"
+            },
+            {
+              "name": "제182편 겟세마네에서",
+              "url": "/class/summary196/?n=182"
+            },
+            {
+              "name": "제183편 예수의 배반과 체포",
+              "url": "/class/summary196/?n=183"
+            },
+            {
+              "name": "제184편 산헤드린 법정 앞에서",
+              "url": "/class/summary196/?n=184"
+            },
+            {
+              "name": "제185편 빌라도 앞에서의 재판",
+              "url": "/class/summary196/?n=185"
+            },
+            {
+              "name": "제186편 십자가에 못 박히기 직전",
+              "url": "/class/summary196/?n=186"
+            },
+            {
+              "name": "제187편 십자가형",
+              "url": "/class/summary196/?n=187"
+            },
+            {
+              "name": "제188편 무덤에 있던 시간",
+              "url": "/class/summary196/?n=188"
+            },
+            {
+              "name": "제189편 부활",
+              "url": "/class/summary196/?n=189"
+            },
+            {
+              "name": "제190편 예수의 모론시아 출현",
+              "url": "/class/summary196/?n=190"
+            },
+            {
+              "name": "제191편 사도들과 다른 지도자들에게 한 출현",
+              "url": "/class/summary196/?n=191"
+            },
+            {
+              "name": "제192편 갈릴리에서의 출현",
+              "url": "/class/summary196/?n=192"
+            },
+            {
+              "name": "제193편 마지막 출현과 승천",
+              "url": "/class/summary196/?n=193"
+            },
+            {
+              "name": "제194편 진리의 영 증여",
+              "url": "/class/summary196/?n=194"
+            },
+            {
+              "name": "제195편 오순절 이후",
+              "url": "/class/summary196/?n=195"
+            },
+            {
+              "name": "제196편 예수의 신앙",
+              "url": "/class/summary196/?n=196"
+            }
+          ]
         },
         {
           "member": false,
