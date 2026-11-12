@@ -55,6 +55,10 @@
           "url": "/join/"
         },
         {
+          "name": "자유게시판",
+          "url": "/board/"
+        },
+        {
           "name": "오늘의 강론",
           "url": "/sermon/",
           "member": true
