@@ -2153,27 +2153,6 @@
       "id": "transbook"
     },
     {
-      "id": "trans",
-      "title": "유란시아서 관련 번역",
-      "color": "purple",
-      "icon": "📚",
-      "preview": 40,
-      "items": [
-        {
-          "name": "번역 서적 구매",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/46"
-        },
-        {
-          "name": "유란시아서 POD 구매",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/47"
-        },
-        {
-          "name": "유란시아서 전자책 구매",
-          "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/48"
-        }
-      ]
-    },
-    {
       "id": "works",
       "title": "창작서 서재",
       "color": "gold",
