@@ -202,6 +202,10 @@
         {
           "name": "천문 천답",
           "url": "/qna/"
+        },
+        {
+          "name": "Terminology",
+          "url": "/glossary/"
         }
       ]
     },
@@ -464,6 +468,10 @@
         {
           "name": "예수의 행적 지도",
           "url": "/maps/"
+        },
+        {
+          "name": "The Teaching of Jesus",
+          "url": "https://effervescent-pika-b00240.netlify.app/"
         }
       ]
     },
@@ -1967,153 +1975,24 @@
       "preview": 40,
       "items": [
         {
-          "name": "Foreword (머리말)",
-          "url": "/foreword/"
-        },
-        {
           "name": "유란시아서 신학",
           "url": "/books/theology/"
+        },
+        {
+          "name": "유란시아서 과학",
+          "url": "/science-book/"
+        },
+        {
+          "name": "유란시아서 철학",
+          "url": "/philosophy-book/"
         },
         {
           "name": "Bible Study",
           "url": "/bible/study/index.html"
         },
         {
-          "name": "유란시아서 과학",
-          "children": [
-            {
-              "name": "책 소개와 차례",
-              "url": "/science-book/"
-            },
-            {
-              "name": "서문 계시는 왜 과학을 이야기하는가",
-              "url": "/science-book/?c=0"
-            },
-            {
-              "name": "제1장 계시된 우주론의 한계",
-              "url": "/science-book/?c=1"
-            },
-            {
-              "name": "제2장 과학·철학·종교의 자리",
-              "url": "/science-book/?c=2"
-            },
-            {
-              "name": "제3장 우주적 직관 — 과학을 가능하게 하는 마음",
-              "url": "/science-book/?c=3"
-            },
-            {
-              "name": "제4장 물질주의의 위기와 과학의 성숙",
-              "url": "/science-book/?c=4"
-            },
-            {
-              "name": "제5장 파라다이스 — 공간이 없는 공간의 원점",
-              "url": "/science-book/?c=5"
-            },
-            {
-              "name": "제6장 공간 호흡과 공간의 수준들",
-              "url": "/science-book/?c=6"
-            },
-            {
-              "name": "제7장 네 가지 붙듦 — 중력과 인력",
-              "url": "/science-book/?c=7"
-            },
-            {
-              "name": "제8장 운동과 시간 — 우주는 정적이지 않다",
-              "url": "/science-book/?c=8"
-            },
-            {
-              "name": "제9장 힘과 에너지의 수준 — 공간 힘에서 물질까지",
-              "url": "/science-book/?c=9"
-            },
-            {
-              "name": "제10장 극자와 전자 — 물질의 기본 단위",
-              "url": "/science-book/?c=10"
-            },
-            {
-              "name": "제11장 파동 에너지 백 옥타브와 빛",
-              "url": "/science-book/?c=11"
-            },
-            {
-              "name": "제12장 원자의 응집과 수의 법칙 — 일곱과 열",
-              "url": "/science-book/?c=12"
-            },
-            {
-              "name": "제13장 에너지 뒤의 존재들 — 동력 감독자와 물리적 통제자",
-              "url": "/science-book/?c=13"
-            },
-            {
-              "name": "제14장 기제와 마음 — 우주는 기계인가",
-              "url": "/science-book/?c=14"
-            },
-            {
-              "name": "제15장 대우주의 구조와 오르본톤",
-              "url": "/science-book/?c=15"
-            },
-            {
-              "name": "제16장 성운의 탄생과 공간 구체들의 분류",
-              "url": "/science-book/?c=16"
-            },
-            {
-              "name": "제17장 태양의 물리학",
-              "url": "/science-book/?c=17"
-            },
-            {
-              "name": "제18장 몬마시아의 기원 — 태양계와 유란시아의 탄생",
-              "url": "/science-book/?c=18"
-            },
-            {
-              "name": "제19장 생명 운반자와 생명 이식",
-              "url": "/science-book/?c=19"
-            },
-            {
-              "name": "제20장 생명은 기계론적이면서 생명론적이다",
-              "url": "/science-book/?c=20"
-            },
-            {
-              "name": "제21장 생명의 지질 연대기 — 바다 생명에서 포유류까지",
-              "url": "/science-book/?c=21"
-            },
-            {
-              "name": "제22장 진화의 상위통제",
-              "url": "/science-book/?c=22"
-            },
-            {
-              "name": "제23장 우주의 거주 세계들 — 호흡자와 비호흡자, 생명의 다양성",
-              "url": "/science-book/?c=23"
-            },
-            {
-              "name": "제24장 인간의 출현 — 날짜로 남은 사건",
-              "url": "/science-book/?c=24"
-            },
-            {
-              "name": "제25장 유색 인종과 생물학적 향상",
-              "url": "/science-book/?c=25"
-            },
-            {
-              "name": "제26장 뇌와 마음과 영 — 보조 마음-영에서 생각 조절자까지",
-              "url": "/science-book/?c=26"
-            },
-            {
-              "name": "제27장 예수의 삶에 나타난 과학, 그리고 빛과 생명의 과학",
-              "url": "/science-book/?c=27"
-            },
-            {
-              "name": "맺음말 과학과 신앙이 만나는 곳",
-              "url": "/science-book/?c=28"
-            }
-          ]
-        },
-        {
-          "name": "Topical Doctrinal",
+          "name": "주제별 교의",
           "url": "/topics/"
-        },
-        {
-          "name": "The Teaching of Jesus",
-          "url": "https://effervescent-pika-b00240.netlify.app/"
-        },
-        {
-          "name": "Terminology",
-          "url": "/glossary/"
         },
         {
           "name": "예배와 지혜",
