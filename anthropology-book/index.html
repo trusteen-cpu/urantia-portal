@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서의 인류학</title>
+<meta property="og:title" content="유란시아서의 인류학 — 계시와 인류 과학의 대화">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5efe8;--paper:#fdfdfb;--ink:#22262c;--mute:#6c737d;--wine:#8a3f22;--title:#8a3f22;--sub:#4f6b2a;--line:#e7ddd2;--tint:#f7efe7;--fs:18px}
+html[data-dark="1"]{--bg:#0f1318;--paper:#171c23;--ink:#e2e6ec;--mute:#98a2ae;--wine:#e0a789;--title:#ecc2a8;--sub:#b7cf8e;--line:#2c3540;--tint:#1d2530}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"맑은 고딕","Malgun Gothic",sans-serif}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;padding:9px 16px;min-height:54px;background:var(--wine);color:#fff}
+html[data-dark="1"] .top{background:#3a2318}
+.top b{font-family:"Noto Serif KR",serif;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .sp{flex:1}
+.top button{font:inherit;font-size:14px;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:6px 10px;cursor:pointer}
+.top #tg{display:none}
+.ur-home-btn.inline{font-size:13.5px!important;padding:8px 14px!important}
+.lay{display:grid;grid-template-columns:300px 1fr}
+aside{position:sticky;top:54px;height:calc(100vh - 54px);overflow:auto;background:var(--paper);border-right:1px solid var(--line);padding:10px 6px 40px}
+.toc,.toc ul{list-style:none;margin:0;padding:0}
+.toc .pt{font-family:"Noto Serif KR",serif;font-size:13px;font-weight:700;color:var(--wine);margin:16px 12px 6px;letter-spacing:.02em}
+.toc a{display:flex;gap:8px;padding:6px 10px;border-radius:7px;font-size:14px;line-height:1.45;color:inherit;text-decoration:none}
+.toc a i{font-style:normal;flex:0 0 52px;color:var(--mute);font-size:12.5px;padding-top:1px}
+.toc a:hover{background:rgba(31,63,102,.08)}
+.toc li.cur>a{background:var(--wine);color:#fff}.toc li.cur>a i{color:#f3dccd}
+.toc ul{display:none;margin:2px 0 8px 66px;border-left:2px solid var(--line)}
+.toc li.cur ul{display:block}
+.toc ul a{display:block;padding:3px 10px;font-size:13px;color:var(--mute)}
+main{min-width:0;padding:30px 34px 90px}
+article{max-width:760px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:46px 54px 40px;box-shadow:0 2px 14px rgba(60,40,20,.06)}
+.kick{text-align:center;color:var(--mute);font-size:13px;letter-spacing:.12em}
+h1{font-family:"Noto Serif KR",serif;text-align:center;font-size:clamp(26px,3.8vw,36px);color:var(--title);margin:8px 0 6px;line-height:1.35;font-weight:700}
+.src{text-align:center;color:var(--mute);font-size:13px;margin:0 0 22px}
+.orn{display:block;text-align:center;color:var(--wine);letter-spacing:.6em;margin:6px 0 22px;font-size:14px}
+figure{margin:0 0 30px}
+figure img{display:block;width:100%;height:auto;border-radius:4px}
+h3{font-family:"Noto Serif KR",serif;font-size:20px;color:var(--sub);margin:38px 0 14px;scroll-margin-top:70px;font-weight:700}
+p{font-family:"Noto Serif KR",serif;font-size:var(--fs);line-height:2;margin:0 0 14px;word-break:keep-all;text-align:justify;text-indent:1em}
+article.ch p.first{text-indent:0}
+article.ch p.first::first-letter{float:left;font-size:3.1em;line-height:.95;margin:.08em .12em 0 0;color:var(--wine);font-weight:700}
+blockquote{font-family:"Noto Serif KR",serif;font-size:calc(var(--fs) - 1px);line-height:1.95;margin:18px 0 20px;padding:12px 20px;border-left:3px solid var(--wine);background:var(--tint);color:var(--ink);word-break:keep-all}
+blockquote cite{display:block;text-align:right;font-style:normal;font-size:13px;color:var(--mute);margin-top:4px}
+.tw{overflow-x:auto;margin:20px 0 24px}
+.tw .cap{font-weight:700;font-size:14px;color:var(--title);margin-bottom:6px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.6}
+th,td{border:1px solid var(--line);padding:7px 9px;vertical-align:top;text-align:left;word-break:keep-all}
+th{background:var(--wine);color:#fff;font-weight:600}
+html[data-dark="1"] th{background:#4a2a1c}
+tr:nth-child(even) td{background:var(--tint)}
+.box{margin:30px 0 10px;padding:16px 22px;border:2px solid var(--wine);border-radius:8px}
+.box b{color:var(--wine)}
+.box ol{margin:8px 0 0;padding-left:1.4em;font-family:"Noto Serif KR",serif;line-height:1.9}
+.parts{margin:0;padding:0;list-style:none}
+.parts li{margin:0 0 16px}
+.parts a{color:var(--wine);font-weight:700;text-decoration:none}
+.parts .d{color:var(--mute);font-size:14.5px;line-height:1.7;margin:3px 0 4px}
+.parts .cs{font-size:14.5px;line-height:1.9}
+.parts .cs a{font-weight:400;color:var(--ink)}
+.note{background:var(--tint);border-radius:8px;padding:12px 16px;font-size:14.5px;line-height:1.8;color:var(--mute)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:44px;border-top:1px solid var(--line);padding-top:18px}
+.nav a{color:var(--wine);text-decoration:none;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 14px;max-width:48%}
+.cover{display:flex;gap:28px;align-items:flex-start;margin-bottom:26px}
+.cover img{width:230px;flex:0 0 230px;border-radius:3px;box-shadow:0 6px 20px rgba(0,0,0,.18)}
+.cover .one{font-family:"Noto Serif KR",serif;font-size:17px;line-height:1.8;color:var(--sub);margin:4px 0 14px;word-break:keep-all}
+.cover .meta{font-size:14px;color:var(--mute);line-height:1.8}
+.who{margin:0 0 10px;padding-left:1.2em;font-family:"Noto Serif KR",serif;line-height:1.9}
+.sig{text-align:right;text-indent:0}
+.cq{text-align:center;text-indent:0;color:var(--sub)}
+.empty{color:var(--mute);padding:40px;text-align:center}
+@media (max-width:860px){
+  .top #tg{display:inline-block}
+  .lay{display:block}
+  aside{display:none;position:static;height:auto;max-height:72vh;border-right:0;border-bottom:1px solid var(--line)}
+  body.toc aside{display:block}
+  main{padding:14px 10px 60px}
+  article{padding:28px 20px 28px}
+  .cover{flex-direction:column;align-items:center}
+}
+html.embed .top,html.embed aside{display:none!important}
+html.embed .lay{display:block}
+html.embed main{padding:18px 16px 60px}
+@media print{.top,aside,.nav{display:none!important}.lay{display:block}main{padding:0}body,article{background:#fff;border:0;box-shadow:none}}
+</style>
+<script>if(/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');</script>
+<script src="/home-button.js" data-into=".top" defer></script>
+</head>
+<body>
+<div class="top">
+  <b>유란시아서의 인류학</b>
+  <span class="sp"></span>
+  <button id="tg">☰ 목차</button>
+  <button id="fm" title="글자 작게">가−</button><button id="fp" title="글자 크게">가+</button>
+  <button id="dk" title="밤 모드">◐</button>
+</div>
+<div class="lay">
+  <aside><ul class="toc" id="toc"></ul></aside>
+  <main><article id="art"><div class="empty">불러오는 중…</div></article></main>
+</div>
+<script>
+var Q=new URLSearchParams(location.search), C=Q.has('c')?Q.get('c'):'intro', T=[], P=[], V=Math.floor(Date.now()/36e5);
+var EMB=document.documentElement.classList.contains('embed'), BOOK='유란시아서의 인류학';
+function pad(n){return (n<10?'0':'')+n;}
+function esc(t){return (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function load(src){var s=document.createElement('script');s.src=src+'?v='+V;document.head.appendChild(s);}
+function url(c,h){return '?c='+c+(EMB?'&embed=1':'')+(h||'');}
+var FS=18;
+try{ if(localStorage.getItem('pbdark')==='1') document.documentElement.dataset.dark='1'; FS=+(localStorage.getItem('pbfs')||18); }catch(e){}
+document.documentElement.style.setProperty('--fs',FS+'px');
+
+window.TOC=function(d){
+  T=d.toc; P=d.parts; var html='<li data-c="intro"><a href="'+url('intro')+'"><i>책 소개</i><span>차례</span></a></li>', part=null;
+  T.forEach(function(x){
+    if(x[3]!==part){part=x[3]; if(part) html+='<li class="pt">'+esc(part)+'</li>'; else if(x[0]>0) html+='<li class="pt">&nbsp;</li>';}
+    html+='<li data-c="'+x[0]+'"><a href="'+url(x[0])+'"><i>'+esc(x[1])+'</i><span>'+esc(x[2])+'</span></a>'
+      +(x[4].length?'<ul>'+x[4].map(function(h,k){return '<li><a href="'+url(x[0],'#h'+(k+1))+'">'+esc(h)+'</a></li>';}).join('')+'</ul>':'')+'</li>';
+  });
+  toc.innerHTML=html; open(C);
+};
+function mark(){[].forEach.call(toc.querySelectorAll('li[data-c]'),function(li){li.classList.toggle('cur',li.dataset.c===String(C));});
+  var c=toc.querySelector('li.cur'); if(c&&c.scrollIntoView&&!EMB) c.scrollIntoView({block:'nearest'});}
+function open(c){C=c; mark(); if(c==='intro') intro(); else load('data/ch'+pad(+c)+'.js');}
+function idx(c){return c==='intro'?-1:T.findIndex(function(x){return String(x[0])===String(c);});}
+function nav(){
+  var i=idx(C), pv=i<0?null:(i===0?['intro','책 소개','차례']:T[i-1]), nx=T[i+1];
+  return '<div class="nav">'+(pv?'<a href="'+url(pv[0])+'">← '+esc(pv[1])+' '+esc(pv[2])+'</a>':'<span></span>')
+    +(nx?'<a href="'+url(nx[0])+'">'+esc(nx[1])+' '+esc(nx[2])+' →</a>':'')+'</div>';
+}
+function body(b){
+  var h=0, first=true, s='';
+  b.forEach(function(x){
+    var k=x[0];
+    if(k==='h'){h++; s+='<h3 id="h'+h+'">'+esc(x[1])+'</h3>';}
+    else if(k==='q') s+='<blockquote>'+esc(x[1])+(x[2]?'<cite>('+esc(x[2])+')</cite>':'')+'</blockquote>';
+    else if(k==='t') s+='<div class="tw"><div class="cap">'+esc(x[1])+'</div><table><thead><tr>'+x[2][0].map(function(c){return '<th>'+esc(c)+'</th>';}).join('')
+      +'</tr></thead><tbody>'+x[2].slice(1).map(function(r){return '<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+    else if(k==='box') s+='<div class="box"><b>'+esc(x[1])+'</b><ol>'+x[2].map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ol></div>';
+    else {s+='<p'+(first?' class="first"':'')+'>'+esc(x[1])+'</p>'; first=false;}
+  });
+  return s;
+}
+function done(){
+  if(location.hash){var el=document.querySelector(location.hash); if(el){el.scrollIntoView(); return;}}
+  window.scrollTo(0,0);
+}
+function intro(){
+  document.title=BOOK;
+  art.className='intro';
+  var s='<div class="kick">연구서 · 초고</div><h1>'+BOOK+'</h1><div class="src">계시와 인류 과학의 대화 · 한종인 지음</div><span class="orn">✦ ✦ ✦</span>'
+    +'<div class="note">이 책은 행성의 탄생에서 첫 인간, 인종의 분산, 문명과 사회 제도, 종교의 진화, 그리고 중세와 현대의 제도 종교와 사람의 운명까지, 유란시아서가 전하는 인류 이야기를 오늘의 인류학·지질학·고생물학·유전학과 견주어 읽는 연구서입니다. 서문과 열 부 쉰 장, 맺음말과 부록 둘로 이루어지며, 인용은 유란시아서 새번역본을 따릅니다. 아직 다듬는 중인 초고입니다.</div>'
+    +'<h3>차례</h3><ul class="parts">';
+  var ch=function(x){return '<a href="'+url(x[0])+'">'+esc(x[1])+' '+esc(x[2])+'</a>';};
+  var pre=T.filter(function(x){return !x[3]&&x[0]===0;}), post=T.filter(function(x){return !x[3]&&x[0]>0;});
+  pre.forEach(function(x){s+='<li>'+ch(x)+'</li>';});
+  P.forEach(function(p){
+    var cs=T.filter(function(x){return x[3].indexOf(p[0]+' ')===0;});
+    s+='<li><a href="'+url(cs[0][0])+'">'+esc(cs[0][3])+'</a><div class="d">'+esc(p[1])+'</div><div class="cs">'+cs.map(ch).join('<br>')+'</div></li>';
+  });
+  post.forEach(function(x){s+='<li>'+ch(x)+'</li>';});
+  art.innerHTML=s+'</ul>'+nav(); done();
+}
+window.CH=function(c){
+  if(String(c.n)!==String(C)) return;
+  document.title=c.label+' '+c.title+' · '+BOOK;
+  art.className='ch';
+  var s='<div class="kick">'+esc(c.part?c.part+' · ':'')+esc(c.label)+'</div><h1>'+esc(c.title)+'</h1><span class="orn">✦ ✦ ✦</span>';
+  art.innerHTML=s+body(c.b)+nav(); done();
+};
+function go(href){
+  var m=href.match(/c=([^&#]+)[^#]*(#.*)?/); if(!m) return false;
+  var c=m[1];
+  if(c===String(C)&&m[2]){history.replaceState(null,'',href); var el=document.querySelector(m[2]); if(el) el.scrollIntoView({behavior:'smooth'}); return true;}
+  history.pushState(null,'',href); open(c); return true;
+}
+document.addEventListener('click',function(e){
+  var a=e.target.closest('.toc a,.nav a,.parts a'); if(!a) return;
+  if(go(a.getAttribute('href'))){e.preventDefault(); document.body.classList.remove('toc');}
+});
+window.addEventListener('popstate',function(){var q=new URLSearchParams(location.search); open(q.has('c')?q.get('c'):'intro');});
+tg.onclick=function(){document.body.classList.toggle('toc');};
+function setFs(d){FS=Math.min(24,Math.max(14,FS+d)); document.documentElement.style.setProperty('--fs',FS+'px'); try{localStorage.setItem('pbfs',FS);}catch(e){}}
+fm.onclick=function(){setFs(-1);}; fp.onclick=function(){setFs(1);};
+dk.onclick=function(){var r=document.documentElement; if(r.dataset.dark==='1') delete r.dataset.dark; else r.dataset.dark='1'; try{localStorage.setItem('pbdark',r.dataset.dark?'1':'0');}catch(e){}};
+load('data/toc.js');
+</script>
+</body>
+</html>
