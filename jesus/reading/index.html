@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유란시아서 낭독 — 제4부</title>
+<meta name="description" content="유란시아서 제4부 예수의 삶과 가르침(제120~196편)을 편마다 '듣기' 단추로 바로 들을 수 있습니다.">
+<link rel="stylesheet" href="../common.css?v=d373d4c8">
+<style>
+.pl{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:9px;font-size:13.5px}
+.pl:hover{background:rgba(15,34,68,.05)}
+html[data-dark="1"] .pl:hover{background:rgba(255,255,255,.05)}
+.pl.on{background:var(--soft)}
+.pl b{color:var(--navy);font-size:12px;min-width:28px;font-weight:700;font-variant-numeric:tabular-nums}
+html[data-dark="1"] .pl b{color:var(--gold)}
+.pl .nm{flex:1;cursor:pointer;line-height:1.4}
+.pl .go{flex:0 0 auto;border:0;background:var(--gold);color:#20242c;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:inherit}
+.pl .go.playing{background:#b23a48;color:#fff}
+.player{position:sticky;top:var(--hh,52px);z-index:5;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:-6px 0 18px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.player .big{border:0;background:var(--gold);color:#20242c;font-weight:800;border-radius:999px;padding:8px 18px;font-size:15px;cursor:pointer;font-family:inherit}
+.player .big.playing{background:#b23a48;color:#fff}
+.player .st{flex:1;min-width:140px;font-size:13px;color:var(--dim)}
+.player label{font-size:12.5px;color:var(--dim);display:flex;gap:4px;align-items:center;cursor:pointer}
+.player .lk{font-size:12.5px;color:var(--navy);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+html[data-dark="1"] .player .lk{color:#cfe0ff}
+h2.pt{font-size:24px;margin:0 0 4px;color:var(--navy)}
+html[data-dark="1"] h2.pt{color:#e9d99a}
+.pn{color:var(--gold);font-size:12.5px;letter-spacing:.12em;margin-bottom:14px}
+h3.sh{font-size:18px;margin:28px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line);color:var(--navy)}
+html[data-dark="1"] h3.sh{color:#cfe0ff}
+.pa{display:flex;gap:8px;align-items:flex-start;margin:0 0 12px;padding:2px 4px}
+.pa .t{flex:1;font-size:var(--fs);line-height:1.95;word-break:keep-all;font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif}
+.pa .ci{flex:0 0 auto;font-size:11px;color:var(--dim);margin-top:7px;font-variant-numeric:tabular-nums;min-width:52px}
+.pa .s{flex:0 0 auto;background:none;border:0;color:var(--dim);cursor:pointer;font-size:14px;opacity:.35;padding:4px}
+.pa:hover .s{opacity:.9}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:40px;border-top:1px solid var(--line);padding-top:14px}
+.nav button{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.grid .pl{background:var(--card);border:1px solid var(--line)}
+@media(max-width:600px){.pa .ci{display:none}.player .st{order:9;flex-basis:100%}}
+</style>
+<script src="/home-button.js" data-into="header" defer></script>
+<script src="../common.js?v=d373d4c8"></script>
+</head><body>
+<header>
+ <button class="btn" id="burger">☰ 편 목록</button>
+ <h1>유란시아서 낭독</h1><span class="by">제4부 예수의 삶과 가르침 · 제120~196편</span>
+ <span class="sp"></span>
+ <select id="voice" title="목소리"></select>
+ <button class="btn" id="spd" title="읽는 속도">1.0×</button>
+ <button class="btn" id="fs" title="글씨 크기">가</button>
+ <button class="btn" id="dark" title="밝기">◐</button>
+</header>
+<main>
+ <aside id="side"><input id="q" placeholder="편 제목 찾기"><div id="toc"></div></aside>
+ <section id="body"><div class="wrap" id="wrap"><p class="empty">불러오는 중…</p></div></section>
+</main>
+<div class="warn" id="warn"></div>
+<script src="papers.js?v=d373d4c8"></script>
+<script>
+var P = window.PART4 || [], CUR = null, CACHE = {}, PEND = {}, PLAYNO = null;
+function idx(no) { for (var i = 0; i < P.length; i++) if (P[i].no === no) return i; return -1 }
+function row(p) {
+  return '<div class="pl' + (CUR && CUR.no === p.no ? ' on' : '') + '" data-no="' + p.no + '"><b>' + p.no + '</b><span class="nm">' + esc(p.title)
+    + '</span><button class="go' + (PLAYNO === p.no ? ' playing' : '') + '" data-play="' + p.no + '">' + (PLAYNO === p.no ? '■ 멈춤' : '▶ 듣기') + '</button></div>';
+}
+function renderTOC() {
+  var f = $('#q').value.trim();
+  $('#toc').innerHTML = P.filter(function (p) { return !f || p.title.indexOf(f) >= 0 || String(p.no).indexOf(f) >= 0 }).map(row).join('')
+    || '<div class="empty" style="font-size:12.5px">찾은 편이 없습니다.</div>';
+}
+function home() {
+  CUR = null; save('jz_read', '');
+  $('#wrap').innerHTML = '<div class="lead"><h2>유란시아서 낭독 — 제4부</h2><p>예수의 삶과 가르침(제120~196편, 77편)을 편마다 <b>▶ 듣기</b> 단추 하나로 처음부터 들을 수 있습니다. 듣는 동안 읽고 있는 문단이 노랗게 표시되고, 한 편이 끝나면 다음 편으로 이어 갈 수 있습니다. 목소리와 빠르기는 위 띠에서 고릅니다.</p></div>'
+    + '<div class="grid">' + P.map(row).join('') + '</div>'
+    + '<div class="foot">낭독은 홈페이지 「유란시아서 본문」 앱의 듣기 기능과 같은 음성으로 읽습니다(인터넷 연결 필요). 한국어 본문은 교정본입니다.</div>';
+  renderTOC(); window.scrollTo(0, 0);
+}
+function bring(no, ok) {
+  if (CACHE[no]) { ok(CACHE[no]); return }
+  PEND[no] = ok;
+  var s = document.createElement('script'); s.src = 'p/' + no + '.js?v=d373d4c8';
+  s.onerror = function () { flash('본문을 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.') };
+  document.head.appendChild(s);
+}
+function UB_PAPER(d) { CACHE[d.no] = d; var f = PEND[d.no]; delete PEND[d.no]; f && f(d) }
+function show(no, cb) {
+  bring(no, function (d) {
+    CUR = d; save('jz_read', String(no));
+    var i = idx(no), h = '<div class="player"><button class="big" id="pp">▶ 이 편 듣기</button><span class="st" id="st">제' + no + '편 · 문단 ' + d.n + '개</span>'
+      + '<label><input type="checkbox" id="cont"> 다음 편으로 이어 듣기</label>'
+      + '<a class="lk" href="/textapp/index.html#' + d.first + '" target="_blank" rel="noopener">본문 앱에서 보기</a>'
+      + '<a class="lk" href="#" id="tolist">편 목록</a></div>'
+      + '<h2 class="pt">' + esc(d.title) + '</h2><div class="pn">제 ' + no + ' 편</div>';
+    var k = 0;
+    d.sections.forEach(function (s) {
+      if (s.title) h += '<h3 class="sh">' + (s.sec ? s.sec + '. ' : '') + esc(s.title) + '</h3>';
+      s.paras.forEach(function (p) { h += '<div class="pa" id="a' + k + '" data-k="' + k + '"><span class="ci">' + p[0] + '</span><div class="t">' + esc(p[1]) + '</div><button class="s" title="여기서부터 듣기">🔊</button></div>'; k++ });
+    });
+    h += '<div class="nav"><button id="prev"' + (i <= 0 ? ' disabled' : '') + '>← 이전 편</button><button id="next"' + (i >= P.length - 1 ? ' disabled' : '') + '>다음 편 →</button></div>';
+    $('#wrap').innerHTML = h;
+    $('#cont').checked = load('jz_cont', '1') === '1';
+    $('#cont').onchange = function () { save('jz_cont', this.checked ? '1' : '0') };
+    $('#pp').onclick = function () { PLAYNO === no ? TTS.stop() : playFrom(0) };
+    $('#tolist').onclick = function (e) { e.preventDefault(); TTS.stop(); home() };
+    $('#prev').onclick = function () { if (i > 0) { TTS.stop(); show(P[i - 1].no) } };
+    $('#next').onclick = function () { if (i < P.length - 1) { TTS.stop(); show(P[i + 1].no) } };
+    renderTOC(); window.scrollTo(0, 0); closeSide();
+    cb && cb();
+  });
+}
+function flat(d) { var a = []; d.sections.forEach(function (s) { s.paras.forEach(function (p) { a.push(p[1]) }) }); return a }
+function setPlaying(no) {
+  PLAYNO = no; renderTOC();
+  var b = $('#pp'); if (b) { b.textContent = no ? '■ 멈춤' : '▶ 이 편 듣기'; b.classList.toggle('playing', !!no) }
+  $$('.grid .go').forEach(function (g) { var on = +g.dataset.play === no; g.textContent = on ? '■ 멈춤' : '▶ 듣기'; g.classList.toggle('playing', on) });
+}
+function playFrom(k) {
+  var d = CUR, texts = flat(d), items = [];
+  if (k === 0) items.push({ t: '제' + d.no + '편. ' + d.title, el: $('.pt') });
+  for (var j = k; j < texts.length; j++) items.push({ t: texts[j], el: document.getElementById('a' + j), k: j });
+  var no = d.no;
+  TTS.play(items, function (it) { var st = $('#st'); if (st && it.k != null) st.textContent = '제' + no + '편 · 문단 ' + (it.k + 1) + ' / ' + texts.length }, function (finished) {
+    setPlaying(null);
+    var i = idx(no);
+    if (finished === true && load('jz_cont', '1') === '1' && i < P.length - 1) {
+      show(P[i + 1].no, function () { setTimeout(function () { playFrom(0) }, 400) });
+    }
+  });
+  setPlaying(no);
+}
+document.addEventListener('click', function (e) {
+  var g = e.target.closest('[data-play]');
+  if (g) { var no = +g.dataset.play; if (PLAYNO === no) { TTS.stop(); return } show(no, function () { playFrom(0) }); return }
+  var n = e.target.closest('.pl .nm'); if (n) { TTS.stop(); show(+n.parentNode.dataset.no); return }
+  var s = e.target.closest('.pa .s'); if (s) { playFrom(+s.parentNode.dataset.k) }
+});
+$('#q').oninput = renderTOC;
+var m = /^#(\d{3})$/.exec(location.hash), last = +load('jz_read', '0');
+if (m && idx(+m[1]) >= 0) show(+m[1]); else if (last && idx(last) >= 0) show(last); else home();
+</script>
+</body></html>

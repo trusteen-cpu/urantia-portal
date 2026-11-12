@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>예수의 직접 담화</title>
+<meta name="description" content="유란시아서 제4부에서 예수가 직접 한 말씀 가운데 세 줄 이상의 담화를 골라 제목을 붙이고 절 번호와 함께 모았습니다.">
+<link rel="stylesheet" href="../common.css?v=d373d4c8">
+<style>
+.dc{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 10px;overflow:hidden}
+.dc>summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;gap:10px;align-items:baseline}
+.dc>summary::-webkit-details-marker{display:none}
+.dc>summary::before{content:"▸";color:var(--gold);font-size:13px;flex:0 0 auto;transition:transform .15s}
+.dc[open]>summary::before{transform:rotate(90deg)}
+.dc>summary:hover{background:var(--soft)}
+.dc .tt{font-weight:700;font-size:16px;line-height:1.5;flex:1}
+.dc .rf{font-size:12px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dc .sc{display:block;font-size:12px;color:var(--dim);font-weight:400;margin-top:2px}
+.dc .in{padding:4px 18px 16px 38px;border-top:1px solid var(--line)}
+.dc .bar{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 6px}
+.v{display:flex;gap:10px;margin:10px 0;align-items:flex-start}
+.v a.no{flex:0 0 auto;font-size:11.5px;color:var(--navy);background:var(--soft);border-radius:6px;padding:2px 6px;margin-top:5px;text-decoration:none;font-variant-numeric:tabular-nums;font-weight:700}
+html[data-dark="1"] .v a.no{color:var(--gold)}
+.v .t{flex:1;font-size:var(--fs);line-height:1.9;word-break:keep-all;font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif}
+mark{background:#ffe58a;color:inherit;border-radius:3px}
+html[data-dark="1"] mark{background:#6b5a14}
+@media(max-width:600px){.dc .in{padding:4px 14px 14px 16px}.dc>summary{padding:12px 12px}.dc .rf{display:none}}
+</style>
+<script src="/home-button.js" data-into="header" defer></script>
+<script src="../common.js?v=d373d4c8"></script>
+</head><body>
+<header>
+ <button class="btn" id="burger">☰ 목차</button>
+ <h1>예수의 직접 담화</h1><span class="by">유란시아서 제4부 · 제120~196편</span>
+ <span class="sp"></span>
+ <button class="btn" id="stopb" style="display:none">■ 읽기 중지</button>
+ <select id="voice" title="목소리"></select>
+ <button class="btn" id="spd" title="읽는 속도">1.0×</button>
+ <button class="btn" id="fs" title="글씨 크기">가</button>
+ <button class="btn" id="dark" title="밝기">◐</button>
+</header>
+<main>
+ <aside id="side"><input id="q" placeholder="제목·말씀 찾기 (예: 용서, 기도)"><div id="toc"></div></aside>
+ <section id="body"><div class="wrap" id="wrap"><p class="empty">불러오는 중…</p></div></section>
+</main>
+<div class="warn" id="warn"></div>
+<script src="data.js?v=d373d4c8"></script>
+<script>
+var D = window.DISCOURSES || [], PAPERS = [], BY = {};
+D.forEach(function (d) { if (!BY[d.pno]) { BY[d.pno] = []; PAPERS.push({ no: d.pno, title: d.paper }) } BY[d.pno].push(d) });
+function ptitle(p) { return p.title.replace(/^제\d+편\s*/, '') }
+var Q = '';
+function hit(d) {
+  if (!Q) return true;
+  if (d.title.indexOf(Q) >= 0 || (d.sec || '').indexOf(Q) >= 0) return true;
+  for (var i = 0; i < d.verses.length; i++) if (d.verses[i][1].indexOf(Q) >= 0) return true;
+  return false;
+}
+function hl(t) { var s = esc(t); if (!Q) return s; return s.split(esc(Q)).join('<mark>' + esc(Q) + '</mark>') }
+function render() {
+  var h = '<div class="lead"><h2>예수의 직접 담화</h2><p>유란시아서 제4부(제120~196편)에서 예수가 직접 한 말씀 가운데 <b>세 줄 이상 이어지는 담화 ' + D.length + '편</b>을 골라 제목을 붙였습니다. 제목을 누르면 말씀이 펼쳐지고, 왼쪽 숫자는 절 번호입니다(누르면 본문에서 그 절이 열립니다).</p>'
+    + '<div class="tools"><button id="openall">모두 펼치기</button><button id="closeall">모두 접기</button></div></div>';
+  var shown = 0, toc = '';
+  PAPERS.forEach(function (p) {
+    var list = BY[p.no].filter(hit); if (!list.length) return;
+    shown += list.length;
+    toc += '<div class="c" data-p="' + p.no + '"><b>' + p.no + '</b><span>' + esc(ptitle(p)) + '</span><span class="n">' + list.length + '</span></div>';
+    h += '<h3 class="ph" id="p' + p.no + '">제' + p.no + '편 ' + esc(ptitle(p)) + ' <small>' + list.length + '편</small></h3>';
+    list.forEach(function (d) {
+      h += '<details class="dc" id="d-' + d.id + '"' + (Q ? ' open' : '') + '><summary><span class="tt">' + hl(d.title)
+        + '<span class="sc">' + esc(d.sec || '') + '</span></span><span class="rf">' + esc(d.ref) + '</span></summary><div class="in">'
+        + '<div class="bar"><button class="chip" data-say="' + d.id + '">🔊 이 담화 듣기</button><button class="chip" data-link="' + d.id + '">🔗 주소 복사</button></div>';
+      d.verses.forEach(function (v) {
+        h += '<div class="v"><a class="no" href="/textapp/index.html#' + v[0] + '" target="_blank" rel="noopener" title="본문에서 보기">' + v[0] + '</a><div class="t">' + hl(v[1]) + '</div></div>';
+      });
+      h += '</div></details>';
+    });
+  });
+  if (!shown) h += '<p class="empty">찾은 담화가 없습니다.</p>';
+  h += '<div class="foot">자료: 「유란시아서 제4부 예수의 직접 말씀 — 절번호별 발췌」에서 세 줄 이상의 담화만 추렸습니다. 이 발췌는 인용 표지와 문맥으로 고른 것이어서, 대화 상대의 말이 함께 들어 있거나 빠진 말씀이 있을 수 있습니다. 정확한 문맥은 절 번호를 눌러 본문에서 확인해 주세요.</div>';
+  $('#wrap').innerHTML = h;
+  $('#toc').innerHTML = toc || '<div class="empty" style="font-size:12.5px">찾은 것이 없습니다.</div>';
+}
+render();
+var qt;
+$('#q').oninput = function () { var v = this.value.trim(); clearTimeout(qt); qt = setTimeout(function () { Q = v; TTS.stop(); render() }, 250) };
+$('#toc').addEventListener('click', function (e) {
+  var c = e.target.closest('.c[data-p]'); if (!c) return;
+  $$('.c.on').forEach(function (x) { x.classList.remove('on') }); c.classList.add('on');
+  var t = document.getElementById('p' + c.dataset.p); if (t) t.scrollIntoView({ block: 'start' });
+  closeSide();
+});
+function find(id) { for (var i = 0; i < D.length; i++) if (D[i].id === id) return D[i] }
+$('#wrap').addEventListener('click', function (e) {
+  var b = e.target.closest('[data-say]');
+  if (b) {
+    var d = find(b.dataset.say), box = document.getElementById('d-' + d.id);
+    var items = [{ t: d.title, el: box.querySelector('summary') }];
+    $$('.v', box).forEach(function (el, i) { items.push({ t: d.verses[i][1], el: el }) });
+    $('#stopb').style.display = '';
+    TTS.play(items, null, function () { $('#stopb').style.display = 'none' });
+    return;
+  }
+  var l = e.target.closest('[data-link]');
+  if (l) {
+    var u = location.href.split('#')[0] + '#d-' + l.dataset.link;
+    if (navigator.clipboard) navigator.clipboard.writeText(u).then(function () { flash('주소를 복사했습니다') }, function () { prompt('주소', u) }); else prompt('주소', u);
+    return;
+  }
+  if (e.target.id === 'openall') $$('.dc').forEach(function (x) { x.open = true });
+  if (e.target.id === 'closeall') $$('.dc').forEach(function (x) { x.open = false });
+});
+$('#stopb').onclick = function () { TTS.stop() };
+function openHash() {
+  var m = /^#d-([\d-]+)$/.exec(location.hash); if (!m) return;
+  var el = document.getElementById('d-' + m[1]); if (el) { el.open = true; setTimeout(function () { el.scrollIntoView({ block: 'start' }) }, 50) }
+}
+addEventListener('hashchange', openHash); openHash();
+</script>
+</body></html>

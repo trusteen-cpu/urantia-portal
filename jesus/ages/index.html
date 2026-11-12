@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>예수의 생애 연대기 (나이별)</title>
+<meta name="description" content="0세부터 35세까지 예수의 나이에 따라 따라가는 완전 연대기.">
+<link rel="stylesheet" href="../common.css?v=d373d4c8">
+<style>
+.tl{position:relative;margin-left:8px;padding-left:26px;border-left:3px solid var(--line)}
+.era{margin:28px 0 12px -26px;padding-left:26px;position:relative}
+.era h3{margin:0;font-size:18px;color:var(--navy);display:flex;gap:10px;align-items:center}
+html[data-dark="1"] .era h3{color:#cfe0ff}
+.era h3 .dot{width:14px;height:14px;border-radius:50%;background:var(--ec);position:absolute;left:-8.5px;top:4px;border:3px solid var(--bg)}
+.era h3 small{font-size:12px;color:var(--dim);font-weight:400}
+.ev{position:relative;background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 14px;padding:14px 16px 12px;border-top:3px solid var(--ec)}
+.ev::before{content:"";position:absolute;left:-33px;top:20px;width:11px;height:11px;border-radius:50%;background:var(--card);border:3px solid var(--ec)}
+.ev .hd{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.ev .when{flex:0 0 auto;background:var(--ec);color:#fff;border-radius:10px;padding:6px 10px;text-align:center;line-height:1.25;min-width:84px}
+.ev .when b{display:block;font-size:15px}
+.ev .when span{display:block;font-size:11px;opacity:.9}
+.ev .age{flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:var(--ec);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
+.ev .age b{font-size:20px}.ev .age span{font-size:11px;margin-top:3px;opacity:.9}
+.ev .tt{flex:1;min-width:200px}
+.ev .tt h4{margin:2px 0 4px;font-size:17px;line-height:1.45}
+.ev .tt .meta{font-size:12.5px;color:var(--dim)}
+.ev .blk{margin-top:10px;font-size:var(--fs);line-height:1.85;word-break:keep-all}
+.ev .blk .lb{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px;margin-bottom:3px}
+.ev .blk.e .lb{background:rgba(15,34,68,.08);color:var(--navy)}
+.ev .blk.i .lb{background:var(--soft);color:#8a6d12}
+html[data-dark="1"] .ev .blk.e .lb{background:rgba(255,255,255,.08);color:#cfe0ff}
+html[data-dark="1"] .ev .blk.i .lb{color:var(--gold)}
+.ev .blk p{margin:2px 0 0}
+.quote{margin:30px 0 0;text-align:center;font-family:"Noto Serif KR",Georgia,serif;font-size:17px;line-height:1.8;color:var(--navy)}
+html[data-dark="1"] .quote{color:#e9d99a}
+.legend{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.legend a{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--ink);text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.legend a i{width:9px;height:9px;border-radius:50%;background:var(--ec)}
+.c i{width:9px;height:9px;border-radius:50%;background:var(--ec);flex:0 0 auto;align-self:center}
+@media(max-width:600px){.tl{margin-left:2px;padding-left:18px}.era{margin-left:-18px;padding-left:18px}.ev::before{left:-25px}.ev .tt{min-width:0}}
+</style>
+<script src="/home-button.js" data-into="header" defer></script>
+<script src="../common.js?v=d373d4c8"></script>
+</head><body>
+<header>
+ <button class="btn" id="burger">☰ 목차</button>
+ <h1>예수의 생애 연대기 (나이별)</h1><span class="by">유란시아서 제4부 · 제120~196편</span>
+ <span class="sp"></span>
+ <a class="btn" href="/jesus/chronology/">연대별로 보기 →</a>
+ <button class="btn" id="fs" title="글씨 크기">가</button>
+ <button class="btn" id="dark" title="밝기">◐</button>
+</header>
+<main>
+ <aside id="side"><input id="q" placeholder="사건 찾기 (예: 세례, 가나)"><div id="toc"></div></aside>
+ <section id="body"><div class="wrap" id="wrap"><p class="empty">불러오는 중…</p></div></section>
+</main>
+<div class="warn" id="warn"></div>
+<script src="data.js?v=d373d4c8"></script>
+<script>
+var C = window.CHRONO, COL = ['#b5651d', '#c9a227', '#3f8f5a', '#2f7e9c', '#3d5fb0', '#6a4fb3', '#9c3f8f', '#b23a48', '#7a2a2a', '#4a4a4a'];
+function ec(era) { var i = C.eras.indexOf(era); return COL[(i < 0 ? 0 : i) % COL.length] }
+var Q = '';
+function hit(x) { return !Q || (x.title + ' ' + x.event + ' ' + x.impact + ' ' + (x.ko || x.year || '')).indexOf(Q) >= 0 }
+function render() {
+  var h = '<div class="lead"><h2>' + esc(C.title) + '</h2><p>' + esc(C.sub) + '</p><div class="legend">'
+    + C.eras.map(function (e, i) { return '<a href="#era' + i + '" style="--ec:' + ec(e) + '"><i></i>' + esc(e) + '</a>' }).join('') + '</div></div><div class="tl">';
+  var toc = '', n = 0;
+  C.eras.forEach(function (era, ei) {
+    var list = C.items.filter(function (x) { return x.era === era && hit(x) }); if (!list.length) return;
+    toc += '<div class="part">' + esc(era) + '</div>';
+    h += '<div class="era" id="era' + ei + '" style="--ec:' + ec(era) + '"><h3><span class="dot"></span>' + esc(era) + ' <small>' + list.length + '개 사건</small></h3></div>';
+    list.forEach(function (x) {
+      var id = 'e' + C.items.indexOf(x); n++;
+      var badge = C.kind === 'age'
+        ? '<div class="age"><b>' + esc(x.age) + '</b><span>세</span></div>'
+        : '<div class="when"><b>' + esc(x.ko) + '</b>' + (x.en ? '<span>' + esc(x.en) + '</span>' : '') + '</div>';
+      var meta = C.kind === 'age' ? esc(x.year) + ' · ' + esc(era) : esc(era);
+      toc += '<div class="c" data-id="' + id + '" style="--ec:' + ec(era) + '"><i></i><span>' + (C.kind === 'age' ? '<b>' + esc(x.age) + '세</b> ' : '<b>' + esc(x.ko.replace('기원전 ', '전 ').replace('기원후 ', '후 ')) + '</b> ') + esc(x.title) + '</span></div>';
+      h += '<article class="ev" id="' + id + '" style="--ec:' + ec(era) + '"><div class="hd">' + badge + '<div class="tt"><h4>' + esc(x.title) + '</h4><div class="meta">' + meta + '</div></div></div>'
+        + '<div class="blk e"><span class="lb">◉ 사건 내용</span><p>' + esc(x.event) + '</p></div>'
+        + (x.impact ? '<div class="blk i"><span class="lb">★ ' + esc(C.impactLabel) + '</span><p>' + esc(x.impact) + '</p></div>' : '') + '</article>';
+    });
+  });
+  h += '</div>';
+  if (!n) h += '<p class="empty">찾은 사건이 없습니다.</p>';
+  if (C.quote && !Q) h += '<p class="quote">' + esc(C.quote) + '<br><small style="font-size:13px;color:var(--dim)">— 유란시아서 제4부</small></p>';
+  h += '<div class="foot">' + esc(C.source) + '</div>';
+  $('#wrap').innerHTML = h; $('#toc').innerHTML = toc;
+}
+render();
+var qt;
+$('#q').oninput = function () { var v = this.value.trim(); clearTimeout(qt); qt = setTimeout(function () { Q = v; render() }, 250) };
+$('#toc').addEventListener('click', function (e) {
+  var c = e.target.closest('.c[data-id]'); if (!c) return;
+  $$('.c.on').forEach(function (x) { x.classList.remove('on') }); c.classList.add('on');
+  var t = document.getElementById(c.dataset.id); if (t) t.scrollIntoView({ block: 'start' });
+  closeSide();
+});
+</script>
+</body></html>

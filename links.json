@@ -194,20 +194,6 @@
         {
           "name": "유란시아서 일년 읽기",
           "url": "/reading/"
-        }
-      ]
-    },
-    {
-      "id": "topic",
-      "title": "주제별 연구",
-      "color": "crimson",
-      "icon": "🔎",
-      "preview": 40,
-      "items": [
-        {
-          "member": false,
-          "name": "주제별 연구",
-          "url": "/topics/"
         },
         {
           "name": "유란시아서 머리말",
@@ -216,7 +202,16 @@
         {
           "name": "천문 천답",
           "url": "/qna/"
-        },
+        }
+      ]
+    },
+    {
+      "id": "topic",
+      "title": "예수 연구",
+      "color": "crimson",
+      "icon": "🔎",
+      "preview": 40,
+      "items": [
         {
           "name": "예수의 삶과 가르침",
           "children": [
@@ -449,6 +444,26 @@
               "url": "https://cafe.naver.com/f-e/cafes/31283614/menus/69"
             }
           ]
+        },
+        {
+          "name": "예수의 직접 담화",
+          "url": "/jesus/discourses/"
+        },
+        {
+          "name": "예수의 연대기 (연대별)",
+          "url": "/jesus/chronology/"
+        },
+        {
+          "name": "예수의 연대기 (나이별)",
+          "url": "/jesus/ages/"
+        },
+        {
+          "name": "유란시아서 낭독 (제4부)",
+          "url": "/jesus/reading/"
+        },
+        {
+          "name": "예수의 행적 지도",
+          "url": "/maps/"
         }
       ]
     },
