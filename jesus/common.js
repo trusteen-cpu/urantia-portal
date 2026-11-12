@@ -69,24 +69,32 @@ var TTS = (function () {
     var sp = $('#spd'); if (sp) { sp.textContent = rate().toFixed(1) + '×'; sp.onclick = function () { si = (si + 1) % SPEEDS.length; save('jz_spd', si); sp.textContent = rate().toFixed(1) + '×'; try { AUD.playbackRate = rate() } catch (e) {} } }
   });
   AUD.addEventListener('loadedmetadata', function () { AUD.playbackRate = rate() });
-  function speak(txt, cb) {
-    var g = GEN, t = clean(txt), sel = $('#voice');
+  /* cb(끝남 신호)는 한 문단에 꼭 한 번만 — 두 번 불리면 노란 표시가 읽는 곳보다 앞서 나간다 */
+  function speak(txt, cb0) {
+    var g = GEN, t = clean(txt), sel = $('#voice'), fired = false;
+    var cb = function () { if (fired || g !== GEN) return; fired = true; cb0 && cb0() };
     if ((!sel || sel.value === 'g') && !GFAIL) {
-      var ps = chunks(t), i = 0;
+      var ps = chunks(t), i = 0, fell = false;
+      var fallback = function () {            /* 구글 음성이 막히면 이 문단을 브라우저 음성으로 한 번만 다시 */
+        if (fell || g !== GEN) return; fell = true; GFAIL = true;
+        AUD.onended = null; AUD.onerror = null; try { AUD.pause() } catch (e) {}
+        if (VOICES.length && sel) sel.value = '0';
+        speak(t, cb);
+      };
       var nx = function () {
-        if (g !== GEN) return;
-        if (i >= ps.length) { cb && cb(); return }
-        AUD.onended = function () { if (g !== GEN) return; i++; nx() };
-        AUD.onerror = function () { if (g !== GEN) return; GFAIL = true; if (VOICES.length && sel) { sel.value = '0' } speak(t, cb) };
+        if (g !== GEN || fell) return;
+        if (i >= ps.length) { cb(); return }
+        AUD.onended = function () { if (g !== GEN || fell) return; i++; nx() };
+        AUD.onerror = fallback;
         AUD.src = gurl(ps[i]); AUD.playbackRate = rate();
-        var p = AUD.play(); if (p && p.catch) p.catch(function () { if (g === GEN) { GFAIL = true; speak(t, cb) } });
+        var p = AUD.play(); if (p && p.catch) p.catch(fallback);
       };
       nx(); return;
     }
-    if (!SPK) { cb && cb(); return }
+    if (!SPK) { cb(); return }
     var u = new SpeechSynthesisUtterance(t); var v = sel ? VOICES[+sel.value] : null; if (v) u.voice = v;
     u.lang = 'ko-KR'; u.rate = rate();
-    u.onend = function () { if (g === GEN) cb && cb() }; u.onerror = function () { if (g === GEN) cb && cb() };
+    u.onend = cb; u.onerror = cb;
     SPK.speak(u);
   }
   var Q = [], QI = -1, ON = null, DONE = null, playing = false;
