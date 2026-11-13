@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="/auth.js"></script>
+<title>로그인 — 한국 유란시아서 독자회</title>
+<meta name="robots" content="noindex">
+<script src="/home-button.js" defer></script>
+<style>
+:root{--navy:#17365D;--teal:#1F6D73;--gold:#B7791F;--crimson:#9E3D35;--ink:#20242e;--dim:#6b6f7d;--line:#e2ddd0;--cream:#faf8f3;--paper:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans KR","Malgun Gothic","맑은 고딕",system-ui,sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.6}
+header{background:linear-gradient(160deg,#0d1730 0%,#17365D 46%,#2b4a78 100%);color:#f4f1e8;text-align:center;padding:40px 16px 28px}
+header .rib{display:inline-block;border:1px solid rgba(232,196,121,.55);color:#e8c479;font-size:11px;letter-spacing:.24em;padding:4px 14px;border-radius:3px}
+header h1{margin:12px 0 4px;font-size:26px}
+header p{margin:0;color:#c9d3e8;font-size:14px}
+main{max-width:420px;margin:-14px auto 40px;padding:0 16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 22px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.06)}
+.card+.card{margin-top:14px}
+h2{margin:0 0 6px;font-size:18px;color:var(--navy)}
+label{display:block;font-weight:700;margin:14px 0 6px;font-size:14px}
+label small{font-weight:400;color:var(--dim)}
+input{width:100%;border:1px solid var(--line);border-radius:8px;padding:11px 12px;font:inherit;background:var(--paper);color:var(--ink)}
+input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(183,121,31,.14)}
+button,.btn{display:block;width:100%;margin-top:18px;padding:13px;border:0;border-radius:9px;background:var(--teal);color:#fff;font:700 16px/1 inherit;font-family:inherit;cursor:pointer;text-align:center;text-decoration:none}
+button:hover{background:#185a5f}button:disabled{opacity:.6;cursor:wait}
+.btn.line{background:#fff;color:var(--teal);border:1px solid var(--teal);font-size:15px}
+.msg{margin-top:12px;font-size:14px;color:var(--crimson);min-height:1em}
+.ok{color:var(--teal)}
+.note{margin:14px 0 0;font-size:13px;color:var(--dim);text-align:center}
+.note a{color:var(--teal);font-weight:700}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header data-into>
+  <div class="rib">URANTIA BOOK KOREA</div>
+  <h1>정회원 로그인</h1>
+  <p>한국 유란시아서 독자회</p>
+</header>
+<main>
+  <form class="card" id="lf" novalidate>
+    <label for="email">이메일</label>
+    <input type="email" id="email" autocomplete="email" inputmode="email">
+    <label for="pw">비밀번호</label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <button id="go">로그인</button>
+    <div class="msg" id="msg" role="alert"></div>
+    <p class="note">아직 회원이 아니신가요? <a href="/join/" id="toJoin">정회원 가입하기</a></p>
+    <p class="note">비밀번호를 잊으셨으면 이름과 이메일을 적어 <a href="mailto:trusteen@gmail.com?subject=%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%20%EC%B0%BE%EA%B8%B0">trusteen@gmail.com</a> 으로 알려 주세요. 임시 비밀번호를 보내 드립니다.</p>
+  </form>
+
+  <form class="card" id="of" novalidate>
+    <h2>11월 13일 이전에 가입 원서를 내신 분</h2>
+    <p class="note" style="text-align:left;margin:0">처음 한 번만, 원서에 적으신 <b>이름과 전화번호</b>를 넣고 앞으로 쓸 이메일과 비밀번호를 정해 주세요. 다시 가입하지 않으셔도 됩니다.</p>
+    <label for="oname">이름</label><input type="text" id="oname" autocomplete="name">
+    <label for="ophone">전화번호</label><input type="tel" id="ophone" autocomplete="tel" inputmode="tel">
+    <label for="oemail">이메일 <small>(앞으로 로그인 아이디)</small></label><input type="email" id="oemail" autocomplete="email" inputmode="email">
+    <label for="opw">비밀번호 <small>(8자 이상, 영문과 숫자를 섞어서)</small></label><input type="password" id="opw" autocomplete="new-password">
+    <label for="opw2">비밀번호 확인</label><input type="password" id="opw2" autocomplete="new-password">
+    <button id="ogo">예전 원서로 들어가기</button>
+    <div class="msg" id="omsg" role="alert"></div>
+  </form>
+
+  <div id="inBox" hidden>
+    <div class="card">
+      <h2><span id="who"></span> 님, 로그인되어 있습니다</h2>
+      <a class="btn" href="/" id="goNext">홈페이지로 가기</a>
+      <button type="button" class="btn line" id="out">로그아웃</button>
+    </div>
+    <form class="card" id="cf" novalidate>
+      <h2>비밀번호 바꾸기</h2>
+      <p class="msg" id="must" hidden>관리자가 보낸 임시 비밀번호로 로그인하셨습니다. 새 비밀번호로 바꿔 주세요.</p>
+      <label for="old">지금 비밀번호</label><input type="password" id="old" autocomplete="current-password">
+      <label for="npw">새 비밀번호 <small>(8자 이상, 영문과 숫자를 섞어서)</small></label><input type="password" id="npw" autocomplete="new-password">
+      <label for="npw2">새 비밀번호 확인</label><input type="password" id="npw2" autocomplete="new-password">
+      <button id="cgo">비밀번호 바꾸기</button>
+      <div class="msg" id="cmsg" role="alert"></div>
+    </form>
+  </div>
+</main>
+<script>
+var A = window.URAuth, $ = function (id) { return document.getElementById(id); };
+var NEXT = (function () { var n = new URLSearchParams(location.search).get('next') || '/'; return /^\/(?!\/)/.test(n) ? n : '/'; })();
+$('toJoin').href = '/join/?next=' + encodeURIComponent(NEXT);
+$('goNext').href = NEXT; if (NEXT !== '/') $('goNext').textContent = '보려던 화면으로 가기';
+function post(path, body, auth) {
+  return fetch(A.api + path, { method: 'POST', headers: auth ? A.headers({ 'content-type': 'application/json' }) : { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+    .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) throw new Error(j.error || '실패했습니다.'); return j; }); })
+    .catch(function (e) { throw new Error(e.message === 'Failed to fetch' ? '연결이 되지 않습니다. 잠시 뒤 다시 해 주세요.' : e.message); });
+}
+function showIn(must) { $('lf').hidden = true; $('of').hidden = true; $('inBox').hidden = false; $('who').textContent = A.name(); $('must').hidden = !must; if (must) $('old').focus(); }
+if (A.isMember()) {
+  fetch(A.api + '/api/me', { headers: A.headers() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    if (j) { showIn(j.mustChange); } else { A.clear(); }
+  }).catch(function () { showIn(false); });
+}
+$('lf').addEventListener('submit', function (e) {
+  e.preventDefault(); $('msg').textContent = '';
+  var em = $('email').value.trim(), pw = $('pw').value;
+  if (!em || !pw) { $('msg').textContent = '이메일과 비밀번호를 적어 주세요.'; return; }
+  $('go').disabled = true;
+  post('/api/login', { email: em, pw: pw }).then(function (j) {
+    A.save(j.token, j.name);
+    if (j.mustChange) { showIn(true); $('old').value = pw; $('npw').focus(); }
+    else location.href = NEXT;
+  }).catch(function (x) { $('msg').textContent = x.message; }).then(function () { $('go').disabled = false; });
+});
+$('out').addEventListener('click', function () { A.logout(); });
+$('of').addEventListener('submit', function (e) {
+  e.preventDefault(); var m = $('omsg'); m.textContent = '';
+  var d = { name: $('oname').value.trim(), phone: $('ophone').value.trim(), email: $('oemail').value.trim(), pw: $('opw').value };
+  if (!d.name || d.phone.replace(/\D/g, '').length < 9) { m.textContent = '이름과 전화번호를 원서에 적으신 대로 넣어 주세요.'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { m.textContent = '로그인에 쓸 이메일 주소를 적어 주세요.'; return; }
+  if (d.pw.length < 8 || !/[A-Za-z]/.test(d.pw) || !/[0-9]/.test(d.pw)) { m.textContent = '비밀번호는 8자 이상, 영문과 숫자를 섞어 주세요.'; return; }
+  if (d.pw !== $('opw2').value) { m.textContent = '비밀번호 확인이 같지 않습니다.'; return; }
+  $('ogo').disabled = true;
+  post('/api/claim', d).then(function (j) { A.save(j.token, j.name); location.href = NEXT; })
+    .catch(function (x) { m.textContent = x.message; }).then(function () { $('ogo').disabled = false; });
+});
+$('cf').addEventListener('submit', function (e) {
+  e.preventDefault(); var m = $('cmsg'); m.className = 'msg'; m.textContent = '';
+  var o = $('old').value, n = $('npw').value;
+  if (n.length < 8 || !/[A-Za-z]/.test(n) || !/[0-9]/.test(n)) { m.textContent = '새 비밀번호는 8자 이상, 영문과 숫자를 섞어 주세요.'; return; }
+  if (n !== $('npw2').value) { m.textContent = '새 비밀번호 확인이 같지 않습니다.'; return; }
+  $('cgo').disabled = true;
+  post('/api/me', { old: o, pw: n }, true).then(function () {
+    m.className = 'msg ok'; m.textContent = '비밀번호를 바꾸었습니다.'; $('must').hidden = true; $('old').value = $('npw').value = $('npw2').value = '';
+  }).catch(function (x) { m.textContent = x.message; }).then(function () { $('cgo').disabled = false; });
+});
+</script>
+</body>
+</html>

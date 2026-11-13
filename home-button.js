@@ -2,6 +2,11 @@
    페이지 <head>에:  <script src="/home-button.js" defer></script>
    위치 바꾸기:      data-pos="left"(기본 right)   data-top="60"(위에서 px, 기본 10)
    머리 띠 안에 넣기: data-into="header"(그 요소의 맨 앞에 떠 있지 않은 단추로 넣는다) */
+/* 회원 확인(/auth.js)이 페이지 머리에 없으면 여기서 불러온다 (다시 만든 페이지가 빠뜨려도 막히도록) */
+(function () {
+  if (window.URAuth || document.querySelector('script[src*="/auth.js"]')) return;
+  var a = document.createElement('script'); a.src = '/auth.js'; (document.head || document.documentElement).appendChild(a);
+})();
 (function () {
   if (window.__urHomeBtn) return; window.__urHomeBtn = 1;
   /* 목차·내용 두 칸 화면(list.html)의 오른쪽 틀 안에서는 바깥 화면에 단추가 있으니 그리지 않는다 */
