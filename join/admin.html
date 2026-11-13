@@ -141,7 +141,7 @@ function drawOld() {
 }
 function picked() { return users.filter(function (r) { return sel[r.id] && r.status === '회원'; }); }
 function pickCount() { var p = picked(); $('selCount').textContent = '선택 ' + p.length + '명' + (p.length ? '' : ' (표 왼쪽 네모를 눌러 고르세요)'); }
-function needPick() { var p = picked(); if (!p.length) { alert('메일 받을 회원을 먼저 고르세요. 맨 위 네모를 누르면 보이는 회원이 모두 골라집니다.'); return null; } return p.map(function (r) { return r.email; }); }
+function needPick() { var p = picked(); if (!p.length) { alert('메일 받을 회원을 먼저 고르세요. 맨 위 네모를 누르면 보이는 회원이 모두 골라집니다.'); return null; } var m = p.map(function (r) { return r.email; }).filter(Boolean); if (m.length < p.length) alert((p.length - m.length) + '명은 이메일이 없어 빠집니다. 그분들께는 전화로 연락해 주세요.'); return m.length ? m : null; }
 
 $('lf').addEventListener('submit', function (e) {
   e.preventDefault(); KEY = $('key').value.trim(); if (!KEY) return;
