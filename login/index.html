@@ -53,10 +53,10 @@ button:hover{background:#185a5f}button:disabled{opacity:.6;cursor:wait}
 
   <form class="card" id="of" novalidate>
     <h2>예전에 가입 원서를 내신 분 (처음 한 번만)</h2>
-    <p class="note" style="text-align:left;margin:0">원서에 적으신 <b>이름과 전화번호</b>를 넣고 <b>비밀번호</b>만 정하시면 바로 들어오실 수 있습니다. 다음부터는 위의 로그인 칸에 <b>전화번호와 비밀번호</b>로 들어오시면 됩니다.</p>
+    <p class="note" style="text-align:left;margin:0">원서에 적으신 <b>이름과 전화번호</b>를 넣고 <b>이메일과 비밀번호</b>를 정하시면 바로 들어오실 수 있습니다. 다음부터는 위의 로그인 칸에 <b>전화번호와 비밀번호</b>로 들어오시면 됩니다.</p>
     <label for="oname">이름</label><input type="text" id="oname" autocomplete="name">
     <label for="ophone">전화번호</label><input type="tel" id="ophone" autocomplete="tel" inputmode="tel">
-    <label for="oemail">이메일 <small>(있으면 적어 주세요 · 없으면 비워 두세요)</small></label><input type="email" id="oemail" autocomplete="email" inputmode="email">
+    <label for="oemail">이메일 <small>(회원 소식과 연락에 씁니다)</small></label><input type="email" id="oemail" autocomplete="email" inputmode="email">
     <label for="opw">비밀번호 <small>(8자 이상, 영문과 숫자를 섞어서)</small></label><input type="password" id="opw" autocomplete="new-password">
     <label for="opw2">비밀번호 확인</label><input type="password" id="opw2" autocomplete="new-password">
     <button id="ogo">예전 원서로 들어가기</button>
@@ -112,7 +112,7 @@ $('of').addEventListener('submit', function (e) {
   e.preventDefault(); var m = $('omsg'); m.textContent = '';
   var d = { name: $('oname').value.trim(), phone: $('ophone').value.trim(), email: $('oemail').value.trim(), pw: $('opw').value };
   if (!d.name || d.phone.replace(/\D/g, '').length < 9) { m.textContent = '이름과 전화번호를 원서에 적으신 대로 넣어 주세요.'; return; }
-  if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { m.textContent = '이메일 주소를 확인해 주세요(없으면 비워 두셔도 됩니다).'; return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) { m.textContent = '이메일 주소를 적어 주세요. 회원 소식과 연락에 꼭 필요합니다.'; return; }
   if (d.pw.length < 8 || !/[A-Za-z]/.test(d.pw) || !/[0-9]/.test(d.pw)) { m.textContent = '비밀번호는 8자 이상, 영문과 숫자를 섞어 주세요.'; return; }
   if (d.pw !== $('opw2').value) { m.textContent = '비밀번호 확인이 같지 않습니다.'; return; }
   $('ogo').disabled = true;
