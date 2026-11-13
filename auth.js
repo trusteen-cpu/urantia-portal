@@ -44,7 +44,12 @@
     '.ur-gate a.h{color:#6b6f7d;font-weight:400;font-size:13px;padding:6px}.ur-gate .x{float:right;border:0;background:none;font-size:20px;cursor:pointer;color:#6b6f7d;margin:-14px -8px 0 0}' +
     '.ur-who{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:10px;z-index:2147483000;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.92);' +
     'border:1px solid #d9d3c4;font:600 12px/1.2 "Malgun Gothic",system-ui,sans-serif;color:#17365D;box-shadow:0 2px 6px rgba(0,0,0,.15)}' +
-    '.ur-who a{color:#1F6D73;text-decoration:none;margin-left:6px}@media print{.ur-who,.ur-gate{display:none}}';
+    '.ur-who a{color:#1F6D73;text-decoration:none;margin-left:6px}@media print{.ur-who,.ur-gate{display:none}}' +
+    '.ur-act{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:999px;font:700 14px/1 "Noto Sans KR","Malgun Gothic",system-ui,sans-serif;text-decoration:none!important;transition:background .16s}' +
+    '.ur-act.join{background:#2fb08f;color:#fff!important;border:1px solid #2fb08f;box-shadow:0 2px 8px rgba(0,0,0,.25)}.ur-act.join:hover{background:#28997c}' +
+    '.ur-act.login{background:#fff;color:#17365D!important;border:1px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.25)}.ur-act.login:hover{background:#eef3fa}' +
+    '.ur-act.who{background:rgba(255,255,255,.95);color:#17365D!important;border:1px solid #fff}' +
+    '.ur-act.out{color:#fff!important;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);font-weight:600}.ur-act.out:hover{background:rgba(255,255,255,.2)}';
   var st = document.createElement('style'); st.textContent = css; (document.head || root).appendChild(st);
 
   function gate(closable) {
@@ -65,17 +70,26 @@
     root.appendChild(g);
   }
 
+  function logoutClick(e) { e.preventDefault(); if (confirm('로그아웃할까요?')) A.logout(); }
   function badge() {
-    if (window.self !== window.top || document.querySelector('.ur-who')) return;
-    if (!isHome && path !== '/board/') return;            // 첫 화면과 게시판에만 표시 (다른 화면은 홈 단추와 겹치지 않게)
+    if (window.self !== window.top || document.querySelector('.ur-who,.ur-act')) return;
+    // 첫 화면: 머리의 「공유하기 · 바탕화면 저장」 단추 줄에 로그인·가입 단추를 크게 넣는다 (2026-11-13 사용자 요청)
+    var acts = isHome && document.querySelector('header .actions');
+    if (acts) {
+      if (A.isMember()) {
+        var w = document.createElement('a'); w.className = 'ur-act who'; w.href = '/login/'; w.title = '내 정보 · 비밀번호 바꾸기'; w.textContent = '👤 ' + A.name() + ' 님';
+        var o = document.createElement('a'); o.className = 'ur-act out'; o.href = '#'; o.textContent = '로그아웃'; o.addEventListener('click', logoutClick);
+        acts.appendChild(w); acts.appendChild(o);
+      } else {
+        acts.insertAdjacentHTML('beforeend', '<a class="ur-act join" href="/join/">✍️ 정회원 가입</a><a class="ur-act login" href="/login/">🔑 로그인</a>');
+      }
+      return;
+    }
+    if (path !== '/board/' || !A.isMember()) return;      // 게시판에는 작은 이름표 (다른 화면은 홈 단추와 겹치지 않게)
     var b = document.createElement('div'); b.className = 'ur-who';
-    if (A.isMember()) {
-      b.innerHTML = '<span></span><a href="#">로그아웃</a>';
-      b.firstChild.textContent = A.name() + ' 님';
-      b.lastChild.addEventListener('click', function (e) { e.preventDefault(); if (confirm('로그아웃할까요?')) A.logout(); });
-    } else if (isHome) {
-      b.innerHTML = '<a href="/login/" style="margin:0">로그인</a><a href="/join/">정회원 가입</a>';
-    } else return;
+    b.innerHTML = '<span></span><a href="#">로그아웃</a>';
+    b.firstChild.textContent = A.name() + ' 님';
+    b.lastChild.addEventListener('click', logoutClick);
     document.body.appendChild(b);
   }
   function whenBody(f) { if (document.body) f(); else document.addEventListener('DOMContentLoaded', f); }
