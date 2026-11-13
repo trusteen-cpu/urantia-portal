@@ -31,6 +31,10 @@ button:hover{background:#185a5f}button:disabled{opacity:.6;cursor:wait}
 .note{margin:14px 0 0;font-size:13px;color:var(--dim);text-align:center}
 .note a{color:var(--teal);font-weight:700}
 [hidden]{display:none!important}
+.first{margin:0 0 14px;padding:16px 18px;background:#fff6dc;border:2px solid #e3b33c;border-radius:12px;font-size:14.5px;line-height:1.7;text-align:center}
+.first b{font-size:16px;color:#7a4b00}
+.first a{display:block;margin-top:10px;padding:11px;border-radius:9px;background:#e3a21a;color:#fff;font-weight:700;text-decoration:none}
+.flash{animation:fl 1.6s ease 2}@keyframes fl{0%,100%{box-shadow:0 0 0 0 rgba(227,162,26,0)}50%{box-shadow:0 0 0 6px rgba(227,162,26,.45)}}
 </style>
 </head>
 <body>
@@ -40,6 +44,10 @@ button:hover{background:#185a5f}button:disabled{opacity:.6;cursor:wait}
   <p>한국 유란시아서 독자회</p>
 </header>
 <main>
+  <div class="first" id="firstBox">
+    <b>예전에 가입 원서를 내셨나요?</b><br>아직 비밀번호를 정하지 않으셨으면, 처음 한 번만 아래 단추를 눌러 비밀번호를 정해 주세요.
+    <a href="#of" id="toOld">예전 원서로 비밀번호 정하기 ↓</a>
+  </div>
   <form class="card" id="lf" novalidate>
     <label for="email">아이디 <small>(이메일 또는 전화번호)</small></label>
     <input type="text" id="email" autocomplete="username">
@@ -90,7 +98,9 @@ function post(path, body, auth) {
     .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok) throw new Error(j.error || '실패했습니다.'); return j; }); })
     .catch(function (e) { throw new Error(e.message === 'Failed to fetch' ? '연결이 되지 않습니다. 잠시 뒤 다시 해 주세요.' : e.message); });
 }
-function showIn(must) { $('lf').hidden = true; $('of').hidden = true; $('inBox').hidden = false; $('who').textContent = A.name(); $('must').hidden = !must; if (must) $('old').focus(); }
+function goOld(e) { if (e) e.preventDefault(); var f = $('of'); f.scrollIntoView({ behavior: 'smooth', block: 'start' }); f.classList.remove('flash'); void f.offsetWidth; f.classList.add('flash'); setTimeout(function () { $('oname').focus({ preventScroll: true }); }, 500); }
+$('toOld').addEventListener('click', goOld);
+function showIn(must) { $('lf').hidden = true; $('of').hidden = true; $('firstBox').hidden = true; $('inBox').hidden = false; $('who').textContent = A.name(); $('must').hidden = !must; if (must) $('old').focus(); }
 if (A.isMember()) {
   fetch(A.api + '/api/me', { headers: A.headers() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
     if (j) { showIn(j.mustChange); } else { A.clear(); }
@@ -105,7 +115,11 @@ $('lf').addEventListener('submit', function (e) {
     A.save(j.token, j.name);
     if (j.mustChange) { showIn(true); $('old').value = pw; $('npw').focus(); }
     else location.href = NEXT;
-  }).catch(function (x) { $('msg').textContent = x.message; }).then(function () { $('go').disabled = false; });
+  }).catch(function (x) {
+    $('msg').innerHTML = '';
+    $('msg').append(x.message, document.createElement('br'), '예전에 원서를 내시고 아직 비밀번호를 정하지 않으셨다면 ');
+    var a = document.createElement('a'); a.href = '#of'; a.textContent = '여기를 눌러 먼저 비밀번호를 정해 주세요.'; a.addEventListener('click', goOld); $('msg').append(a);
+  }).then(function () { $('go').disabled = false; });
 });
 $('out').addEventListener('click', function () { A.logout(); });
 $('of').addEventListener('submit', function (e) {
