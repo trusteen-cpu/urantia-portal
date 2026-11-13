@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>자유게시판 — 한국 유란시아서 독자회</title>
-<meta name="description" content="한국 유란시아서 독자회 자유게시판 — 정회원이 글을 나누는 곳">
+<title>독자게시판 — 한국 유란시아서 독자회</title>
+<meta name="description" content="한국 유란시아서 독자회 독자게시판 — 정회원이 글을 나누는 곳">
 <script src="/auth.js"></script>
 <script src="/home-button.js" defer></script>
 <style>
@@ -41,6 +41,20 @@ ul.list .m{color:var(--dim);font-size:12.5px;white-space:nowrap}
 .post .m{color:var(--dim);font-size:13px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .text{white-space:pre-wrap;word-break:break-word;margin:16px 0 4px;line-height:1.85}
 .text a{color:var(--teal)}
+.att{margin:14px 0 0;padding:12px;background:var(--cream);border-radius:10px}
+.att .imgs{display:flex;flex-wrap:wrap;gap:10px}
+.att .imgs a{display:block;max-width:100%}
+.att .imgs img{display:block;max-width:100%;max-height:420px;border-radius:8px;border:1px solid var(--line)}
+.att .fl{margin:8px 0 0;padding:0;list-style:none}
+.att .fl li{margin:4px 0}.att .fl a{color:var(--teal);font-weight:600}
+.att small{color:var(--dim)}
+.up{margin-top:14px;padding:12px;border:1px dashed var(--line);border-radius:10px;background:var(--paper)}
+.up label.pick{display:inline-block;margin:0;padding:8px 14px;border-radius:8px;background:#fff;border:1px solid var(--teal);color:var(--teal);font-weight:700;cursor:pointer}
+.up input[type=file]{display:none}
+.up ul{list-style:none;margin:8px 0 0;padding:0}.up li{display:flex;gap:8px;align-items:center;margin:4px 0;font-size:13.5px}
+.up li img{width:48px;height:48px;object-fit:cover;border-radius:6px}
+.up li .x{margin-left:auto}
+ul.list .a{color:var(--dim);font-size:13px}
 .acts{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
 .cmts{margin-top:18px}
 .cmts h3{margin:0 0 8px;font-size:15.5px;color:var(--navy)}
@@ -69,7 +83,7 @@ dialog h3{margin:0 0 10px;font-size:16px;color:var(--navy)}
 <body>
 <header data-into>
   <span class="rib">KOREAN URANTIA READERS</span>
-  <h1>자유게시판</h1>
+  <h1>독자게시판</h1>
   <p>정회원이 서로 생각과 소식을 나누는 곳입니다</p>
 </header>
 <main><div class="card" id="view"><div class="empty">불러오는 중…</div></div>
@@ -120,6 +134,7 @@ function showList(){
       j.rows.forEach(function(r){
         ul.appendChild(el('li', {}, [nav(el('a', {}, [
           el('span', { class: 't' }, [r.t || '(제목 없음)', isNew(r.at) ? el('span', { class: 'new', text: 'N' }) : null]),
+          r.a ? el('span', { class: 'a', text: '📎' }) : null,
           r.c ? el('span', { class: 'c', text: '[' + r.c + ']' }) : null,
           el('span', { class: 'm', text: (r.n || '') + ' · ' + fmt(r.at).slice(2, 10) })]), { id: r.id })]));
       });
@@ -134,9 +149,9 @@ function showPost(id){
   call('GET', '/' + encodeURIComponent(id)).then(function(p){
     V.innerHTML = '';
     if (p.error) { V.append(el('div', { class: 'empty', text: p.error }), el('div', { class: 'more' }, [nav(el('a', { class: 'btn line', text: '목록으로' }), {})])); return; }
-    document.title = p.title + ' — 자유게시판';
+    document.title = p.title + ' — 독자게시판';
     var post = el('div', { class: 'post' }, [el('h2', { text: p.title }),
-      el('div', { class: 'm', text: p.name + ' · ' + fmt(p.at) + (p.edited ? ' (고침 ' + fmt(p.edited) + ')' : '') }), textNode(p.body)]);
+      el('div', { class: 'm', text: p.name + ' · ' + fmt(p.at) + (p.edited ? ' (고침 ' + fmt(p.edited) + ')' : '') }), textNode(p.body), attBox(p.files)]);
     var acts = el('div', { class: 'acts' }, [
       nav(el('a', { class: 'btn line sm', text: '목록' }), {}),
       p.mine ? el('button', { class: 'btn line sm', text: '수정', onclick: function(){ showForm(p); } }) : null,
@@ -161,12 +176,54 @@ function showPost(id){
   });
 }
 
+function fileUrl(f){ return API + '/api/file/' + f.key.split('/').map(encodeURIComponent).join('/'); }
+function kb(n){ return n >= 1048576 ? (n / 1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(n / 1024)) + 'KB'; }
+function attBox(files){
+  if (!files || !files.length) return null;
+  var imgs = files.filter(function(f){ return /^image\//.test(f.type); }), docs = files.filter(function(f){ return !/^image\//.test(f.type); });
+  var box = el('div', { class: 'att' });
+  if (imgs.length) box.appendChild(el('div', { class: 'imgs' }, imgs.map(function(f){
+    return el('a', { href: fileUrl(f), target: '_blank', rel: 'noopener' }, [el('img', { src: fileUrl(f), alt: f.name, loading: 'lazy' })]); })));
+  if (docs.length) box.appendChild(el('ul', { class: 'fl' }, docs.map(function(f){
+    return el('li', {}, ['📎 ', el('a', { href: fileUrl(f), target: '_blank', rel: 'noopener', text: f.name }), ' ', el('small', { text: '(' + kb(f.size) + ')' })]); })));
+  return box;
+}
+function upload(file){
+  return fetch(API + '/api/board/upload', { method: 'POST', headers: AU.headers({ 'content-type': file.type || 'application/octet-stream', 'X-File-Name': encodeURIComponent(file.name) }), body: file })
+    .then(function(r){ return r.json().catch(function(){ return { error: '올리지 못했습니다.' }; }); })
+    .catch(function(){ return { error: '서버에 연결하지 못했습니다.' }; });
+}
+
 function showForm(p){      // p 가 있으면 고치기
-  document.title = (p ? '글 수정' : '글쓰기') + ' — 자유게시판';
+  document.title = (p ? '글 수정' : '글쓰기') + ' — 독자게시판';
   V.innerHTML = '';
   var f = el('form'), msg = el('div', { class: 'msg' });
   f.innerHTML = '<label>제목</label><input type="text" name="title" maxlength="100">'
-    + '<label>내용</label><textarea name="body" maxlength="10000"></textarea>';
+    + '<label>내용</label><textarea name="body" maxlength="10000"></textarea>'
+    + '<div class="up"><label class="pick">📷 사진·파일 첨부<input type="file" multiple accept="image/*,.pdf,.hwp,.hwpx,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip"></label>'
+    + ' <small>사진(jpg·png·gif·webp)과 문서(pdf·hwp·doc·xls·ppt·txt·zip), 파일당 10MB, 10개까지</small><ul></ul></div>';
+  var files = p && p.files ? p.files.slice() : [], busy = 0, ul = f.querySelector('.up ul'), inp = f.querySelector('input[type=file]');
+  function drawFiles(){
+    ul.innerHTML = '';
+    files.forEach(function(x, i){
+      ul.appendChild(el('li', {}, [/^image\//.test(x.type) ? el('img', { src: fileUrl(x), alt: '' }) : el('span', { text: '📎' }), x.name, el('small', { text: '(' + kb(x.size) + ')' }),
+        el('button', { type: 'button', class: 'btn red sm x', text: '빼기', onclick: function(){ files.splice(i, 1); drawFiles(); } })]));
+    });
+  }
+  drawFiles();
+  inp.addEventListener('change', function(){
+    var list = Array.prototype.slice.call(inp.files); inp.value = '';
+    list.forEach(function(file){
+      if (files.length + busy >= 10) { msg.textContent = '첨부는 10개까지입니다.'; return; }
+      if (file.size > 10 * 1024 * 1024) { msg.textContent = file.name + ': 파일 하나는 10MB까지입니다.'; return; }
+      busy++; sb.disabled = true; var li = el('li', { text: '⏳ ' + file.name + ' 올리는 중…' }); ul.appendChild(li);
+      upload(file).then(function(j){
+        busy--; li.remove(); if (!busy) sb.disabled = false;
+        if (j.error) { msg.textContent = file.name + ': ' + j.error; return; }
+        files.push(j.file); drawFiles();
+      });
+    });
+  });
   var sb = el('button', { class: 'btn', text: p ? '고친 글 올리기' : '글 올리기' });
   var cancel = el('button', { type: 'button', class: 'btn line', text: '취소', onclick: function(){ p ? go({ id: p.id }) : go({}); } });
   f.append(el('div', { class: 'acts' }, [cancel, sb]), msg,
@@ -174,7 +231,8 @@ function showForm(p){      // p 가 있으면 고치기
   V.append(el('div', { class: 'bar' }, [el('h2', { text: p ? '글 수정' : '글쓰기' })]), f);
   if (p) { f.elements.title.value = p.title; f.elements.body.value = p.body; }
   f.onsubmit = function(ev){ ev.preventDefault(); msg.textContent = ''; sb.disabled = true;
-    call('POST', p ? '/' + p.id : '', { title: f.elements.title.value, body: f.elements.body.value }).then(function(j){
+    if (busy) { msg.textContent = '파일을 올리는 중입니다. 잠시만 기다려 주세요.'; sb.disabled = false; return; }
+    call('POST', p ? '/' + p.id : '', { title: f.elements.title.value, body: f.elements.body.value, files: files }).then(function(j){
       sb.disabled = false; if (j.error) { msg.textContent = j.error; return; }
       go({ id: p ? p.id : j.id }); });
   };
@@ -182,7 +240,7 @@ function showForm(p){      // p 가 있으면 고치기
 
 function route(){
   var q = new URLSearchParams(location.search);
-  document.title = '자유게시판 — 한국 유란시아서 독자회';
+  document.title = '독자게시판 — 한국 유란시아서 독자회';
   if (q.get('id')) showPost(q.get('id')); else if (q.get('write')) showForm(null); else showList();
 }
 window.addEventListener('popstate', route);
