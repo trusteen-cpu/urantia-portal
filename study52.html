@@ -114,10 +114,44 @@ function build(){
 function fetchTitle(id, idx){
   fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=' + id)
     .then(function(r){ return r.json(); })
-    .then(function(j){ titles[idx] = (j.title || '').replace(/#\S+/g, '').trim() || ('영상 ' + (idx + 1));
+    .then(function(j){ var t = (j.title || '').replace(/\s*#.*$/, '').trim();
+                       var m = t.match(/제\s*(\d+)\s*[강편]/);
+                       nums[idx] = m ? +m[1] : null;
+                       titles[idx] = t || ('영상 ' + (idx + 1));
                        var el = document.getElementById('cap-' + idx); if (el) el.textContent = titles[idx];
                        if (idx === curIdx) showNow(idx); })
-    .catch(function(){ var el = document.getElementById('cap-' + idx); if (el) el.textContent = '영상 ' + (idx + 1); });
+    .catch(function(){ nums[idx] = null; var el = document.getElementById('cap-' + idx); if (el) el.textContent = '영상 ' + (idx + 1); })
+    .then(function(){ if (++done === ids.length) sortByLecture(); });
+}
+
+/* 제목의 강 번호(제N강)로 큰 번호(최신)부터 다시 늘어놓는다.
+   번호가 없는 영상은 재생목록에서 앞뒤 영상의 번호로 자리를 정한다. */
+var nums = {}, done = 0;
+function sortByLecture(){
+  var key = {};
+  ids.forEach(function(_, i){
+    if (nums[i] != null) { key[i] = nums[i]; return; }
+    var p = i - 1, n = i + 1;
+    while (p >= 0 && nums[p] == null) p--;
+    while (n < ids.length && nums[n] == null) n++;
+    var a = p >= 0 ? nums[p] : null, b = n < ids.length ? nums[n] : null;
+    if (a != null && b != null && Math.abs(a - b) === 2) {   // 사이에 빠진 번호 하나 → 그 강
+      var k = (a + b) / 2;
+      key[i] = k;
+      if (/^영상 \d+$/.test(titles[i] || '영상 0')) {
+        titles[i] = '제' + k + '강';
+        var el = document.getElementById('cap-' + i); if (el) el.textContent = titles[i];
+      }
+    } else if (a != null && b != null) key[i] = (a + b) / 2 + 0.01;
+    else key[i] = (a != null ? a : (b != null ? b : 0)) + 0.5;
+  });
+  var cards = [].slice.call(grid.children);
+  cards.sort(function(x, y){ return key[+y.dataset.idx] - key[+x.dataset.idx]; });
+  cards.forEach(function(c){
+    var k = key[+c.dataset.idx], no = c.querySelector('.no');
+    if (no && k === Math.floor(k) && k > 0) no.textContent = k;   // 배지도 강 번호로
+    grid.appendChild(c);
+  });
 }
 
 function showNow(idx){
