@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<script src="/auth.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>제25강 유란시아의 5 섭리 시대 · 유란시아서 핵심 52주 스터디</title>
+<style>
+:root{
+  --ink:#1B1B1F; --muted:#5F6270; --line:#DCDCE4; --bg:#FBFAF7; --card:#FFFFFF;
+  --indigo:#2B3A8C; --teal:#138A8A; --coral:#C0392B; --gold:#B98314; --plum:#6A3D9A; --green:#3E8E5A; --sky:#2F7FC1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.serif{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+/* ── 머리 ── */
+header.hero{background:var(--indigo);color:#fff;padding:52px 0 44px;position:relative;overflow:hidden}
+header.hero::after{content:"";position:absolute;right:-90px;top:-70px;width:340px;height:340px;border-radius:50%;
+  border:3px solid rgba(212,160,23,.55)}
+header.hero::before{content:"";position:absolute;right:20px;top:120px;width:96px;height:96px;border-radius:50%;background:rgba(212,160,23,.35)}
+.eyebrow{letter-spacing:.22em;font-size:12.5px;color:#C9D3F5;font-weight:700;margin:0 0 10px}
+h1{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:clamp(30px,5vw,46px);line-height:1.25;margin:0 0 6px;font-weight:800}
+.papers{color:#A9BBF0;font-size:15px;margin:0 0 26px}
+.lead{background:rgba(255,255,255,.10);border-left:4px solid var(--gold);padding:18px 20px;border-radius:0 10px 10px 0;
+  font-size:15.5px;line-height:1.9;max-width:760px}
+
+/* ── 목차 ── */
+nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+nav.toc ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:10px 0}
+nav.toc a{display:inline-block;padding:5px 11px;border:1px solid var(--line);border-radius:999px;
+  font-size:13px;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus{border-color:var(--indigo);color:var(--indigo)}
+
+/* ── 절 ── */
+main{padding:34px 0 60px}
+section.part{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;margin:0 0 22px;
+  border-top:5px solid var(--c)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#fff;font-weight:800;font-size:15px;margin-right:12px;flex:none}
+.head{display:flex;align-items:flex-start}
+h2{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:26px;margin:0;line-height:1.35;color:var(--c);font-weight:800}
+.sub{color:var(--muted);font-size:14.5px;margin:4px 0 0}
+.summary{margin:16px 0 18px;font-size:15.8px;line-height:1.95}
+
+/* ── 단추 ── */
+.btns{display:flex;flex-wrap:wrap;gap:9px}
+button.tab{font:inherit;font-size:14px;font-weight:700;color:var(--c);background:#fff;border:1.5px solid var(--c);
+  border-radius:9px;padding:9px 15px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:.15s}
+button.tab:hover{background:var(--c);color:#fff}
+button.tab[aria-expanded="true"]{background:var(--c);color:#fff}
+button.tab .chev{font-size:11px;opacity:.8}
+.panel{display:none;margin-top:14px;border-top:1px dashed var(--line);padding-top:16px}
+.panel.open{display:block}
+
+.more p{margin:0 0 12px;font-size:15.5px;line-height:1.95}
+
+/* 질문 */
+.qa{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden;background:#FCFCFE}
+.qa > .qa-toggle{width:100%;text-align:left;font:inherit;font-weight:700;font-size:15px;color:var(--ink);
+  background:none;border:0;padding:14px 16px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.qa > .qa-toggle .qmark{color:var(--c);font-weight:800;flex:none}
+.qa .answer{display:none;padding:0 16px 15px 42px;font-size:15px;color:#33343C;line-height:1.9;border-top:1px solid #EFEFF4}
+.qa .answer.open{display:block;padding-top:13px}
+.qa .answer::before{content:"모범답안 ";font-weight:700;color:var(--c);font-size:13px;letter-spacing:.03em}
+
+/* 인용 */
+.quotes{counter-reset:q}
+.quote{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid #EEEEF3;align-items:flex-start}
+.quote:last-child{border-bottom:0}
+.ref{flex:0 0 74px;width:74px;font-size:13px;font-weight:800;color:var(--c);font-variant-numeric:tabular-nums;padding-top:2px}
+.qtext{flex:1 1 auto}
+.qtext{font-family:"Noto Serif KR","Nanum Myeongjo","Batang",serif;font-size:15.3px;line-height:1.9}
+.qcount{font-size:13px;color:var(--muted);margin:0 0 10px}
+
+/* 인쇄 단추 */
+.printbar{position:fixed;right:20px;bottom:20px;z-index:30}
+.printbar button{font:inherit;font-size:15px;font-weight:700;color:#fff;background:var(--indigo);border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 18px rgba(43,58,140,.32)}
+.printbar button:hover{background:#222E70}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:0 0 40px}
+
+@media (max-width:560px){
+  .quote{display:block}
+  .ref{width:auto}
+  section.part{padding:20px 16px}
+  h2{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ── 인쇄 ── */
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;font-size:10.5pt}
+  nav.toc,.printbar,.btns{display:none!important}
+  header.hero{background:#fff;color:#000;padding:0 0 14px;border-bottom:3px solid var(--indigo)}
+  header.hero::after,header.hero::before{display:none}
+  .eyebrow{color:var(--indigo)}
+  .papers{color:#555}
+  .lead{background:#F4F5FA;color:#000;border-left:4px solid var(--gold)}
+  .panel{display:block!important;border-top:1px solid #ddd}
+  .qa .answer{display:block!important}
+  section.part{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;margin-bottom:12px}
+  .quote{break-inside:avoid}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">유란시아서 핵심 52주 스터디 · 제25강</p>
+    <h1>유란시아의 5 섭리 시대</h1>
+    <p class="papers">유란시아서 92편 4장 계시의 선물 · 66편 · 74편 · 76편 · 93편 · 52편 · 189편 · 101편 관련 절</p>
+    <div class="lead">유란시아서 92편 4장은 유란시아에 종교적 계시가 여러 번 있었지만 시대적 중요성을 지닌 계시는 다섯 번뿐이었다고 말한다. 달라마시아 가르침, 에덴 가르침, 살렘의 멜기세덱, 나사렛 예수, 그리고 유란시아 문서들이다. 이 학습 페이지는 그 다섯 계시를 차례로 살펴본다. 계시는 언제나 받는 사람들의 수용 능력 안에서 주어지며, 진화 종교를 버리지 않고 그 위에 놓인다. 첫째 계시는 삼십만 년 이상 이어지다가 행성 영주의 반란으로 무너졌고, 둘째 계시는 첫째 에덴의 붕괴로 완전히 시작되기도 전에 끊겼다. 셋째 계시는 신앙으로 구원을 얻는다는 복음을 널리 퍼뜨렸으나 오래된 종교들 속에 섞여 들었다. 넷째 계시에서 창조자 아들은 삶으로 우주 아버지를 드러냈고, 진리의 영을 남겨 그 메시지가 세대마다 새로 진술되게 했다. 다섯째 계시는 여러 존재가 함께 쓴 문서로서 자신의 한계를 스스로 밝힌다. 다섯 계시를 꿰는 주제는 하나, 하나님이 모든 이의 아버지라는 것이다. 이 강의 제목의 '섭리 시대'는 다섯 계시가 각각 연 시기를 넓게 가리키는 말이다.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="차례"><div class="wrap"><ol><li><a href="#s1">1. 계시는 어떤 원리로 주어지는가</a></li><li><a href="#s2">2. 첫째 계시: 달라마시아 가르침</a></li><li><a href="#s3">3. 둘째 계시: 에덴 가르침</a></li><li><a href="#s4">4. 셋째 계시: 살렘의 멜기세덱</a></li><li><a href="#s5">5. 넷째 계시: 나사렛 예수</a></li><li><a href="#s6">6. 증여가 남긴 것: 섭리 시대의 종결과 진리의 영</a></li><li><a href="#s7">7. 다섯째 계시: 유란시아 문서들과 계시의 한계</a></li></ol></div></nav>
+
+<main><div class="wrap"><section class="part" id="s1" style="--c:var(--indigo)">
+  <div class="head"><span class="num">1</span>
+    <div><h2>계시는 어떤 원리로 주어지는가</h2><p class="sub">진화 종교와 계시 종교, 수용 능력, 시대적 계시</p></div></div>
+  <p class="summary">유란시아서는 종교를 두 계통으로 나눈다. 진화 종교는 미지의 것에 대한 두려움에서 출발해 인간 안에서 자라난 것이고, 계시 종교는 실제 영적 세계가 필사자의 갈망에 응답해 제시한 것이다. 그러나 둘은 대립하지 않는다. 계시의 사명은 진화 종교들을 분류하고 검열하며 고양하는 것이고, 그러기 위해 계시는 그 시대의 사상에서 너무 멀리 벗어나지 않아야 한다. 계시는 언제나 받는 사람들의 수용 능력 안에서 주어진다. 이렇게 주어진 계시 가운데 시대적 중요성을 지닌 것은 다섯 번뿐이었다고 본문은 말한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s1-quo">유란시아서 인용 13개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s1-more"><p>92편 4장은 다섯 계시를 열거하기 전에 세 문단으로 원리를 먼저 세운다. 첫 문단의 요점은 계시가 진화와 접촉을 유지해야 한다는 것이다. 아무리 높은 진리라도 듣는 사람이 받아들일 수 없으면 종교를 끌어올리지 못하기 때문이다. 이 원칙은 뒤에 나오는 다섯 계시가 왜 저마다 내용과 범위가 달랐는지를 설명해 준다. 둘째 문단은 계시 종교를 알아보는 두 가지 표지를 든다. 최종 가치의 신에 대한 믿음, 그리고 죽은 뒤에도 인격적 정체성이 생존한다는 개념이다. 셋째 문단은 진화 종교를 우회적 탐색으로, 계시 종교를 그 진리 자체로 대비시킨다. 여기에 다른 편의 설명 두 가지를 더하면 그림이 완성된다. 하나는 계시의 두 종류이다. 내주하는 조절자를 통해 오는 진리는 자체 계시이고, 다른 천상의 기관이나 인격체가 제시하는 진리는 시대적 계시이다. 다른 하나는 용어이다. 본문에서 섭리 시대는 엄밀하게는 부활의 점호로 구획되는 행성 시대를 가리키며, 유란시아에서 그런 점호는 세 번이었다. 그러므로 이 강의의 제목에 쓰인 섭리 시대는 다섯 번의 시대적 계시가 각각 연 시기를 넓게 가리키는 말로 이해하면 된다.</p></div>
+  <div class="panel" id="s1-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>진화 종교와 계시 종교는 어떻게 다르며, 본문은 둘의 관계를 어떻게 봅니까?</span></button><div class="answer">진화 종교는 미지의 것에 대한 두려움에서 비롯된 인간의 신념 반사이고, 계시 종교는 실제 영적 세계가 제시한 것입니다. 그러나 본문은 둘을 적대 관계로 그리지 않습니다. 계시의 사명은 진화 종교를 분류하고 검열하며 고양하는 것이라고 말합니다. 진화 종교 역시 예배 보조 영과 지혜 보조 영, 성령의 사역으로 자라난 것이므로, 계시가 올라설 토대로 다루어집니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>계시가 '인간의 수용 능력에 의해 제한된다'는 말은 무슨 뜻입니까?</span></button><div class="answer">계시는 그것이 주어지는 시대의 사상과 반응에서 너무 멀리 벗어날 수 없다는 뜻입니다. 듣는 사람이 이해하고 받아들일 수 있는 만큼만 효과가 있기 때문에, 계시자는 가르침의 수준과 범위를 받는 쪽에 맞춥니다. 달라마시아의 교사들이 급격한 변화를 삼간 것, 멜기세덱이 두 가지 과업에만 전념한 것이 이 원칙의 실례입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>다섯 계시와 '섭리 시대'는 정확히 같은 말입니까?</span></button><div class="answer">정확히 같지는 않습니다. 본문에서 섭리 시대는 엄밀하게는 부활의 점호로 구획되는 행성 시대이며, 유란시아의 섭리 시대적 부활은 행성 영주의 도착, 아담 시대, 예수의 부활 때 세 번 있었습니다. 멜기세덱의 증여는 섭리 시대의 종결을 동반하지 않은 비상 증여였습니다. 이 강의는 다섯 번의 시대적 계시를 기준으로 삼고, 섭리 시대라는 말은 넓은 뜻으로 씁니다.</div></div></div>
+  <div class="panel" id="s1-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.1</div><div class="qtext">계시는 진화적이지만 언제나 진보적이다. 어떤 세계의 역사 속에서 종교적 계시는 계속해서 확장되고 잇달아 더 큰 빛을 준다. 계시의 사명은 연속적인 진화 종교들을 분류하고 검열하는 것이다.</div></div><div class="quote"><div class="ref">92:4.1</div><div class="qtext">그러나 계시가 진화 종교를 고양하고 향상시키기 위해서는, 그러한 신성한 방문들은 그것이 제시되는 시대의 사상과 반응에서 너무 멀리 벗어나지 않은 가르침을 그려내야 한다. 따라서 계시는 언제나 진화와의 접촉을 유지해야 하며 실제로 그렇게 한다. 계시에 의한 종교는 항상 인간의 수용 능력에 의해 제한될 수밖에 없다.</div></div><div class="quote"><div class="ref">92:4.2</div><div class="qtext">하지만 겉보기에 연결되거나 유래된 것처럼 보일지라도, 계시된 종교는 언제나 최종 가치의 신에 대한 믿음과, 죽음 이후 인격적 정체성의 생존에 대한 개념을 특징으로 한다.</div></div><div class="quote"><div class="ref">92:4.3</div><div class="qtext">진화 종교는 감정적이며 논리적이지 않다. 그것은 가상의 귀신-영 세계에 대한 믿음에 반응하는 인간의 신념 반사로, 미지의 것에 대한 깨달음과 두려움에서 비롯된다.</div></div><div class="quote"><div class="ref">92:4.3</div><div class="qtext">계시된 종교는 실제 영적 세계에 의해 제시된 것이며, 그것은 우주적 신들을 믿고 의지하려는 필사자의 갈망에 초지성적 코스모스가 응답한 것이다. 진화 종교는 진리를 찾기 위한 인류의 우회적 탐색을 묘사하지만, 계시된 종교는 그 진리 자체이다.</div></div><div class="quote"><div class="ref">92:4.4</div><div class="qtext">종교적 계시는 여러 번 있었지만, 시대적 중요성을 지닌 계시는 오직 다섯 번뿐이었다. 그것들은 다음과 같다.</div></div><div class="quote"><div class="ref">52:2.3</div><div class="qtext">행성 영주가 오기 전까지 종교는 전적으로 진화 과정이다. 그 후 종교는 진화적 성장뿐만 아니라 점진적 계시에 의해서도 진보한다. 각 섭리 시대, 각 필사자 시대마다 영적 진리와 종교적 윤리가 확장되어 제시된다.</div></div><div class="quote"><div class="ref">52:2.3</div><div class="qtext">해당 세계 주민들의 종교적 수용 능력 진화는 그들의 영적 발달 속도와 종교적 계시의 범위를 크게 좌우한다.</div></div><div class="quote"><div class="ref">101:4.3</div><div class="qtext">진리는 언제나 계시이다. 내주하는 조절자의 작업의 결과로 나타날 때는 자체 계시이며, 다른 어떤 천상의 기관, 집단 또는 인격체의 기능에 의해 제시될 때는 시대적 계시이다.</div></div><div class="quote"><div class="ref">101:2.12</div><div class="qtext">계시는 시대적 현상으로서 주기적으로 나타나며, 개인적 인간의 체험으로서는 지속적으로 이루어진다.</div></div><div class="quote"><div class="ref">92:0.5</div><div class="qtext">이 세 가지 신성한 사역의 조율된 기능만으로도 진화 종교의 성장을 시작하고 추진하기에 충분하다. 이후 생각 조절자, 세라핌, 진리의 영이 더해져 종교 발달의 속도를 가속한다.</div></div><div class="quote"><div class="ref">92:7.1</div><div class="qtext">종교는 결코 과학적 사실이 될 수 없다. 철학은 과학적 기초 위에 세워질 수 있지만, 종교는 언제나 진화적이거나 계시적일 것이며, 혹은 오늘날 세상에서처럼 그 둘의 결합일 수 있다.</div></div><div class="quote"><div class="ref">92:7.2</div><div class="qtext">새로운 종교는 발명될 수 없다. 그것들은 진화되거나, 혹은 갑작스럽게 계시될 뿐이다. 모든 새로운 진화 종교는 단지 옛 신념의 진보된 표현일 뿐이며, 새로운 적응과 조정이다.</div></div></div></div>
+</section>
+<section class="part" id="s2" style="--c:var(--teal)">
+  <div class="head"><span class="num">2</span>
+    <div><h2>첫째 계시: 달라마시아 가르침</h2><p class="sub">행성 영주의 유형 참모진 100인과 삼십만 년의 교육</p></div></div>
+  <p class="summary">첫째 계시는 약 오십만 년 전 칼리가스티아 행성 영주와 함께 온 유형 참모진 백 명이 전했다. 이들은 예루셈의 상승 시민 가운데 선발되어 물질적 몸을 받은 존재들이었고, 페르시아만 지역의 달라마시아에 본부를 세웠다. 도시 한가운데에는 보이지 않는 아버지의 사원이 있었다. 그들은 주변 부족의 뛰어난 사람을 훈련해 자기 민족에게 돌려보내는 느린 방법을 택했고, '아버지의 길'이라는 일곱 명령을 가르쳤다. 이 계시는 삼십만 년 이상 이어졌으나 영주가 루시퍼 반란에 가담하면서 갑작스럽게 중단되었다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s2-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s2-more"><p>달라마시아 가르침에서 눈여겨볼 것은 내용보다 방법이다. 백 인은 예루셈의 예술과 문화를 잘 알았지만 그것을 원시 인종에게 그대로 옮기려 하지 않았다. 본문은 그들의 동기가 진화에 의한 진보였지 계시에 의한 혁명이 아니었다고 요약한다. 요청이 없는 한 다른 인종에게 사절을 보내지 않았고, 우월한 인종의 관습을 다른 부족에게 강요하지도 않았다. 종교는 생활 전반과 묶여 있었다. 식량, 가축, 교육, 산업과 무역, 건강, 예술과 과학을 맡은 평의회들이 계시 종교의 대학과 나란히 일했고, 정착 가정 제도와 칠 일 주간도 이때 도입되었다. 붕괴의 경위는 이 방법의 가치를 거꾸로 증명한다. 반란 뒤 칼리가스티아는 혁명으로 진화를 대체하려 했고, 너무 이르게 가르쳐진 자유는 빠르게 방종으로 바뀌었다. 사회는 옛 생물학적 수준으로 퇴보했고, 백육십이 년 뒤에는 해일이 본부를 바다 밑으로 가라앉혔다. 본문은 반의 활동을 제외하면 이 계시의 영향이 사실상 전 세계에서 사라졌다고 평가한다. 다만 반과 아마돈족이 고지대에서 전통을 이어 갔고, 가르침을 받은 인종 가운데 홍인이 그것을 가장 오래 간직했다. 계시의 지속은 내용의 진실성만이 아니라 맡은 이들의 충성에도 달려 있음을 이 첫 사례가 보여 준다.</p></div>
+  <div class="panel" id="s2-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>첫째 계시를 전한 이들은 누구였으며, 무엇을 가르쳤습니까?</span></button><div class="answer">행성 영주 칼리가스티아의 유형 참모진 백 명입니다. 이들은 예루셈의 상승 시민 가운데 선발되어 안돈족의 생명 원형질로 만든 물질적 몸을 받았습니다. 그들은 첫째 근원이며 중심, 곧 모든 것의 아버지에 대한 개념을 처음으로 선포했고, 일곱 명령으로 된 도덕률과 함께 농경, 가정, 교육, 건강 같은 생활 전반을 가르쳤습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>달라마시아 교사들이 급격한 변화를 삼간 까닭은 무엇입니까?</span></button><div class="answer">그들은 인간 종의 느린 진화 과정을 깊이 이해했기 때문입니다. 지나치게 가르치고 지나치게 계몽하면 오히려 혼란과 실망을 낳아, 인류가 오랜 세월에 걸쳐 얻은 작은 진보마저 잃게 된다는 것을 알았습니다. 그래서 각 인종의 오래 검증된 도덕률을 인내심 있게 고양하는 길을 택했습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>삼십만 년 이어진 계시가 그토록 빨리 사라진 이유는 무엇입니까?</span></button><div class="answer">계시를 맡은 영주 자신이 반란에 가담했기 때문입니다. 참모진 예순 명이 그를 따랐고, 점진의 방법이 혁명으로 대체되면서 사회가 무너졌습니다. 본부 도시는 해일로 바다에 잠겼습니다. 기록 수단이 부족했던 시대에 가르치는 체계가 무너지자 진리도 함께 잊혔고, 놋족조차 아담이 도착할 무렵에는 이 진리를 잊었습니다.</div></div></div>
+  <div class="panel" id="s2-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.5</div><div class="qtext">첫째 근원이며 중심에 대한 참된 개념은 칼리가스티아 행성 영주의 유형 참모진 100명에 의해 처음으로 유란시아에 선포되었다. 신에 대한 이 확장하는 계시는 삼십만 년 이상 계속되었으나, 행성의 분리 이탈과 가르침 체계의 붕괴로 갑작스럽게 중단되었다.</div></div><div class="quote"><div class="ref">92:4.5</div><div class="qtext">반의 활동을 제외하면 달라마시아 계시의 영향은 사실상 전 세계에서 사라졌다. 놋족조차 아담이 도착할 때쯤 이 진리를 잊었다. 100인의 가르침을 받은 사람들 중 홍인은 그것을 가장 오랫동안 간직했지만, 위대한 영의 개념은 아메린드 종교에서 흐릿한 개념에 지나지 않았는데, 그리스도교와의 접촉이 그것을 크게 명확하게 하고 강화했다.</div></div><div class="quote"><div class="ref">66:2.4</div><div class="qtext">이 재물질화된 백 명의 참모는 유란시아 임무에 자원한 785,000명이 넘는 예루셈 상승 시민들 가운데 칼리가스티아가 선발한 이들이었다. 이들은 각기 다른 행성 출신이었으며, 한 사람도 유란시아 출신은 없었다.</div></div><div class="quote"><div class="ref">66:3.4</div><div class="qtext">도시는 열 개 구역으로 나뉘어 있었으며, 각 구역의 중심에는 유형 참모진 열 개 평의회의 본부 저택이 자리하고 있었다. 도시 한가운데에는 보이지 않는 아버지의 사원이 있었고, 영주와 그의 동료들의 행정 본부는 이 사원을 바로 둘러싼 열두 개의 방으로 구성되어 있었다.</div></div><div class="quote"><div class="ref">66:6.3</div><div class="qtext">이 지혜로운 존재들은 그 시대의 원시 인종들을 갑작스럽게 변화시키거나 대규모로 끌어올리려 꾀할 만큼 분별없지는 않았다. 그들은 인간 종의 느린 진화 과정을 깊이 이해했고, 지혜롭게도 인간의 지상 생활양식을 급격히 바꾸려는 시도를 삼갔다.</div></div><div class="quote"><div class="ref">66:6.5</div><div class="qtext">100인은 심지어 우월한 인종의 습관과 도덕률을 다른 부족에게 강요하려 하지 않았다. 그들은 언제나 각 인종의 오랜 세월 검증된 도덕률을 인내심 있게 고양하고 발전시키기 위해 노력했다.</div></div><div class="quote"><div class="ref">66:6.6</div><div class="qtext">달라마시아 교사들은 생물학적 진화의 순수한 자연 선택에 의식적인 사회적 선택을 더하고자 했다. 그들은 인간 사회를 혼란스럽게 하지 않았으나, 인간 사회의 정상적이고 자연스러운 진화를 크게 가속화시켰다. 그들의 동기는 진화에 의한 진보이지 계시에 의한 혁명이 아니었다.</div></div><div class="quote"><div class="ref">66:7.4</div><div class="qtext">사회 단위로서의 가정은 달라마시아의 초인 남녀가 인류로 하여금 자신들의 손자녀와 손자녀의 자녀들을 위해 사랑하고 계획하도록 이끌기 전까지는 결코 성공을 거두지 못했다. 야만인은 자신의 자녀를 사랑하지만, 문명인은 자기 손주까지 사랑한다.</div></div><div class="quote"><div class="ref">66:7.9</div><div class="qtext">1. 너는 모든 것의 아버지이신 하나님 외에 어떤 다른 신도 두려워하거나 섬기지 말라.</div></div><div class="quote"><div class="ref">66:7.16</div><div class="qtext">이것은 거의 삼십만 년 동안 달라마시아의 법이었다.</div></div><div class="quote"><div class="ref">66:7.20</div><div class="qtext">그러나 너희는 그 먼 옛날의 놀라운 발전을 거의 상상할 수 없다. 그 시대의 훌륭한 인간적 성취들은 칼리가스티아의 기만과 선동이라는 재앙에 뒤따른 끔찍한 혼란과 비참한 영적 암흑 속에서 거의 완전히 사라지고 말았다.</div></div><div class="quote"><div class="ref">66:8.3</div><div class="qtext">칼리가스티아 영주가 도착한 이후, 행성 문명은 거의 삼십만 년 동안 비교적 정상적인 방식으로 발전했다.</div></div><div class="quote"><div class="ref">67:5.1</div><div class="qtext">전 세계적으로 완전하고 급진적인 재편성이 시도되었으며, 문화 진보와 인종 개선의 정책으로 혁명이 진화를 대체했다.</div></div><div class="quote"><div class="ref">67:5.4</div><div class="qtext">반란이 일어난 지 백육십이 년 후, 거대한 해일이 달라마시아를 덮쳤고, 행성 본부는 바다 밑으로 가라앉았다. 그리고 그 땅은, 그 찬란한 시대의 고귀한 문화의 거의 모든 흔적이 사라질 때까지 다시 모습을 드러내지 않았다.</div></div></div></div>
+</section>
+<section class="part" id="s3" style="--c:var(--plum)">
+  <div class="head"><span class="num">3</span>
+    <div><h2>둘째 계시: 에덴 가르침</h2><p class="sub">모든 이의 아버지를 다시 전한 아담과 이브, 그리고 셋족 사제직</p></div></div>
+  <p class="summary">둘째 계시의 전달자는 물질 아들과 딸인 아담과 이브이다. 그들의 으뜸 임무는 인종의 생물학적 고양이었지만, 92편은 그들이 진화 민족들에게 모든 이의 아버지라는 개념을 다시 전했다고 기록한다. 도착 직후 동산 사람들이 그들을 신으로 예배하려 하자 아담은 오직 아버지만이 예배받을 수 있다고 가르쳤다. 에덴의 법은 달라마시아의 일곱 계명을 잇되 더 깊은 이유를 덧붙였다. 그러나 첫째 에덴의 붕괴로 이 계시는 완전히 시작되기도 전에 중단되었고, 셋족 사제들이 그 가르침의 일부를 이어 갔다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s3-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s3-more"><p>에덴 가르침을 이해하려면 아담과 이브가 놓인 상황을 먼저 보아야 한다. 정상적인 세계라면 잘 자리 잡은 행성 영주와 체험 많은 참모진이 그들을 맞이했을 것이다. 그러나 유란시아에서는 행성 밖 통신 회로가 끊겨 있었고 배반한 영주가 여전히 남아 있었다. 그런 가운데서도 그들이 남긴 가르침은 분명하다. 첫째는 예배의 교정이다. 아담은 어떤 존경은 받을 수 있지만 예배는 결코 받지 않겠다고 밝히고, 사람들을 아버지의 사원으로 보냈다. 일곱째 날 정오의 집회가 여기서 시작되었다. 둘째는 규범의 계승과 심화이다. 동산의 법은 달라마시아의 오래된 법전을 바탕으로 했고, 살인 금지에 대해서는 생각 조절자가 사람 안에 내주한다는 사실이 새 근거로 제시되었다. 셋째는 기도와 의식의 개혁이다. 아담은 정해진 기도문 대신 개인적인 기도를 권했고, 피의 희생을 땅의 열매로 바꾸려 했으며, 여성이 남성과 동등하게 생명에 기여한다고 가르쳤다. 다만 본문은 이런 개혁이 동산 붕괴 전에 거의 진전을 이루지 못했다고 솔직히 적는다. 계시는 둘째 동산에서 셋과 그 후손이 이끈 사제직으로 이어졌다. 그들은 사제이자 의사이며 교사였고, 아담이 계시한 삼위일체 개념을 끝내 완전히 잃지 않았다.</p></div>
+  <div class="panel" id="s3-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>92편이 요약한 에덴 가르침의 핵심은 무엇입니까?</span></button><div class="answer">아담과 이브가 진화 민족들에게 모든 이의 아버지라는 개념을 다시 전했다는 것입니다. '다시'라는 말은 달라마시아에서 선포된 개념이 그동안 사라졌음을 뜻합니다. 아담은 자신들을 신으로 예배하려는 사람들에게 오직 아버지와 그가 지명한 이들만이 예배받을 수 있다고 분명히 했습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>에덴의 도덕 법칙은 달라마시아의 일곱 계명과 무엇이 같고 무엇이 달랐습니까?</span></button><div class="answer">내용은 크게 다르지 않았습니다. 달라진 것은 그 명령을 지켜야 하는 이유였습니다. 아담족은 여러 추가 이유를 가르쳤는데, 예를 들어 살인하지 말아야 하는 이유로 생각 조절자가 사람 안에 내주한다는 사실을 들었습니다. 같은 규범에 더 깊은 근거가 주어진 것으로, 계시가 확장되는 방식을 보여 줍니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>중단된 아담의 가르침은 어떤 경로로 이어졌습니까?</span></button><div class="answer">둘째 동산에서 태어난 셋이 새로운 사제직의 우두머리가 되었고, 그의 아들 에노스가 예배 질서를 세웠으며, 손자 케난이 주변 부족을 향한 선교를 시작했습니다. 셋족 사제들은 종교와 건강과 교육을 함께 맡았습니다. 그 영향으로 레반트 지역 종교의 흐름이 바뀌었지만, 기원전 이천오백 년 무렵에는 인류가 에덴의 계시를 거의 잊었습니다.</div></div></div>
+  <div class="panel" id="s3-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.6</div><div class="qtext">아담과 이브는 진화 민족들에게 모든 이의 아버지라는 개념을 다시 전했다. 첫째 에덴의 붕괴로 인해 아담 계시의 과정이 완전히 시작되기도 전에 중단되었다. 그러나 중단된 아담의 가르침은 셋족 사제들에 의해 이어졌고, 그 진리 중 일부는 결코 완전히 사라지지 않았다.</div></div><div class="quote"><div class="ref">92:4.6</div><div class="qtext">레반트 지역의 종교 진화의 전반적인 흐름은 셋족의 가르침에 의해 수정되었다. 그러나 기원전 2500년경까지 인류는 에덴 시대에 주어진 계시를 거의 잊어버렸다.</div></div><div class="quote"><div class="ref">52:3.1</div><div class="qtext">진화 생명의 본래 추진력이 그 생물학적 경로를 다 달렸을 때, 인간이 동물적 발달의 절정에 이르렀을 때, 아들됨의 둘째 계층이 도착하고 은혜와 사역의 둘째 섭리 시대가 시작된다.</div></div><div class="quote"><div class="ref">74:3.1</div><div class="qtext">익숙했던 방송은 침묵했고, 모든 행성 밖 통신 회로는 끊겼다. 그들의 예루셈 동료들은 잘 확립된 행성 영주와 그들을 맞이할 준비가 된 체험 많은 참모진이 있는, 순조롭게 운영되는 세계들로 갔다. 그러나 유란시아에서는 반란이 모든 것을 바꾸어 놓았다.</div></div><div class="quote"><div class="ref">74:4.4</div><div class="qtext">이날은 일곱째 날의 이른 아침이었고, 아담은 최근에 있었던 환영식이 열린 언덕에서 신성한 아들됨의 여러 계층을 설명하며, 오직 아버지와 그가 지명한 이들만이 예배받을 수 있음을 지상 사람들에게 분명히 했다. 아담은 자신이 어떤 명예도 받아들이고 모든 존경을 받을 수 있지만, 결코 예배를 받지 않겠다고 분명히 밝혔다!</div></div><div class="quote"><div class="ref">74:4.5</div><div class="qtext">너희는 이제 아버지의 보이지 않는 현존의 물질적 상징 앞에 가서 우리 모두를 창조하시고 우리를 살아가게 하시는 그분께 예배하라.</div></div><div class="quote"><div class="ref">74:7.20</div><div class="qtext">에덴의 도덕 법칙은 달라마시아의 일곱 계명과 크게 다르지 않았다. 그러나 아담족은 이러한 명령에 대한 많은 추가적인 이유를 가르쳤다. 예를 들어, 살인 금지 명령에 대해서는 생각 조절자가 내주한다는 사실이 인간 생명을 파괴하지 말아야 할 추가적인 이유로 제시되었다.</div></div><div class="quote"><div class="ref">74:7.21</div><div class="qtext">에덴의 공적 예배 시간은 정오였고, 가족 예배 시간은 해질녘이었다. 아담은 정해진 기도의 사용을 막으려 애썼고, 효과적인 기도는 완전히 개인적이어야 하며, “혼의 소망”이어야 한다고 가르쳤다.</div></div><div class="quote"><div class="ref">74:7.21</div><div class="qtext">아담은 또한 종교 의식에서 피의 희생 대신 땅의 열매를 바치는 것으로 대체하려 했지만, 동산 붕괴 전에 이 부분에서 진전을 거의 이루지 못했다.</div></div><div class="quote"><div class="ref">74:7.22</div><div class="qtext">아담은 인종들에게 성 평등을 가르치려 노력했다. 이브가 남편과 함께 일하는 방식은 동산 거주자들에게 깊은 인상을 남겼다. 아담은 여성이 남성과 동등하게 새로운 존재를 형성하는 생명 요소에 기여한다고 분명히 가르쳤다.</div></div><div class="quote"><div class="ref">74:7.23</div><div class="qtext">아담은 그들이 이해할 수 있는 모든 것을 동시대인들에게 가르쳤지만, 상대적으로 말하면 그리 많지는 않았다.</div></div><div class="quote"><div class="ref">76:3.4</div><div class="qtext">종교적 지도자, 즉 사제직은 아담과 이브가 둘째 동산에서 낳은 살아남은 맏아들인 셋에게서 비롯되었다.</div></div><div class="quote"><div class="ref">76:3.5</div><div class="qtext">셋족 사제직은 종교, 건강, 교육을 포괄하는 삼중 사업을 수행했다. 이 계층의 사제들은 종교 의식을 집행하고, 의사 및 위생 검사관으로 봉사하며, 동산의 학교에서 교사로 활동하도록 훈련되었다.</div></div><div class="quote"><div class="ref">76:3.10</div><div class="qtext">그들의 신과 우주에 대한 종교적 개념은 진보적이고 어느 정도 정확했으며, 그들의 건강 규정은 당시로서는 훌륭했고, 그들의 교육 방법은 그 이후로도 뛰어넘을 수 없었다.</div></div><div class="quote"><div class="ref">92:5.9</div><div class="qtext">셋족과 그들의 추종자들은 아담이 계시한 삼위일체 개념을 결코 완전히 잃지 않았다.</div></div></div></div>
+</section>
+<section class="part" id="s4" style="--c:var(--gold)">
+  <div class="head"><span class="num">4</span>
+    <div><h2>셋째 계시: 살렘의 멜기세덱</h2><p class="sub">비상 증여, 신앙의 언약, 전파와 흡수</p></div></div>
+  <p class="summary">아담 사명이 실패한 뒤 수천 년 동안 계시된 진리는 사라질 위기에 놓였다. 기원전 삼천 년 무렵에는 하나님에 대한 개념이 매우 흐릿해졌다. 그러자 유란시아를 맡고 있던 열두 멜기세덱 가운데 마키벤타가 자원하여, 예수 탄생 천구백칠십삼 년 전 살렘 근처에 사람의 모습으로 나타났다. 그는 구십사 년 동안 신뢰와 신앙을 가르쳤다. 구원은 희생과 제물이 아니라 신앙으로 얻는다는 것이었다. 그의 선교사들은 동반구 곳곳으로 나아갔지만, 그 가르침은 대부분 오래된 진화 종교 속에 섞여 들었다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s4-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s4-more"><p>셋째 계시는 앞의 둘과 성격이 다르다. 행성 영주와 물질 아들은 정상적인 세계에도 예정대로 오지만, 멜기세덱의 육신화는 통상의 순서에 없는 비상 조치였다. 본문은 이런 증여가 이 지역 우주의 역사에서 여섯 번뿐이었다고 밝힌다. 가르침의 범위도 의도적으로 좁았다. 멜기세덱은 도덕률을 개혁하거나 과학적 진리를 보급하려 하지 않았고, 한 분 하나님의 진리를 살아 있게 하는 일과 파라다이스 아들의 증여를 예비하는 일에만 전념했다. 살렘의 신조는 세 조항뿐이었다. 만물의 유일한 우주 아버지를 믿는다는 것, 하나님이 신앙에 은총을 베푸신다는 언약을 받아들인다는 것, 일곱 계명을 지키고 이 소식을 전한다는 것이다. 일곱 계명은 달라마시아의 법을 본떴고 에덴의 계명과 매우 유사했다. 세 계시의 도덕률이 한 계보로 이어지는 셈이다. 그러나 이 단순한 신조조차 당시 사람들에게는 지나치게 앞선 것이었다. 사람은 신들에게 빚진 채 태어난다는 믿음이 깊어서 은총을 거저 받는다는 생각을 붙잡지 못했고, 아브라함조차 희생의 관습을 끝내 버리지 못했다. 선교사들은 유럽 전역과 동쪽 섬들에까지 나아갔으나, 팔레스타인 밖에서는 한 분 하나님 개념이 한 부족 전체의 지속적인 충성을 얻지 못했다. 그래도 이 가르침은 여러 종교 속에 섞인 채 살아남아 예수 시대의 토양이 되었다.</p></div>
+  <div class="panel" id="s4-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>마키벤타 멜기세덱이 사람의 모습으로 온 배경은 무엇입니까?</span></button><div class="answer">아담 사명이 실패한 뒤 인류가 지적으로는 진보하면서도 영적으로는 퇴보하여, 계시된 진리가 사라질 위기에 놓였기 때문입니다. 유란시아를 맡은 열두 멜기세덱이 상급자들에게 대책을 청원했지만 스스로 택한 방식으로 진리를 유지하라는 답을 받았고, 그 가운데 한 명인 마키벤타가 자원했습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>살렘 복음의 핵심은 무엇이며, 당시 사람들은 왜 그것을 받아들이기 어려워했습니까?</span></button><div class="answer">구원, 곧 하나님의 은총은 희생과 제물이 아니라 신앙으로 얻는다는 것입니다. 그러나 당시 사람들은 인간이 신들에게 빚진 채 태어난다고 믿었고, 너무 오래 사제들에게 제물을 바쳐 왔기 때문에 은총이 거저 주어지는 선물이라는 소식을 이해하기 어려웠습니다. 멜기세덱은 희생 대신 떡과 포도주의 성례를 제시했지만 완전한 성공을 거두지는 못했습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>살렘의 가르침은 그 뒤 어떻게 되었습니까?</span></button><div class="answer">선교사들을 통해 널리 퍼졌지만 대부분 오래된 미신과 제의 속에 흡수되었습니다. 본문은 새로운 계시는 언제나 오래된 진화적 신앙에 의해 오염된다고 말합니다. 그러나 흡수가 곧 소멸은 아니었습니다. 이 가르침은 여러 진화 종교에 섞여 들어 뒷날의 신학 체계로 발전했고, 아브라함의 계통을 통해 한 분 하나님 신앙이 보존되어 예수의 증여를 준비했습니다.</div></div></div>
+  <div class="panel" id="s4-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.7</div><div class="qtext">이 네바돈의 비상 아들은 유란시아에서 셋째 진리 계시를 시작했다. 그의 가르침의 기본이 되는 계율은 신뢰와 신앙이었다. 그는 하나님의 전능한 자애에 대한 신뢰를 가르쳤으며, 신앙이 하나님의 은총을 얻는 행위라고 선포했다.</div></div><div class="quote"><div class="ref">92:4.7</div><div class="qtext">그의 가르침은 다양한 진화 종교의 신념과 관습에 점차 섞여 들었고, 마침내 그리스도 이후 첫 천 년기가 열릴 무렵 유란시아에 존재하던 신학 체계로 발전했다.</div></div><div class="quote"><div class="ref">93:1.1</div><div class="qtext">아담 사명(使命)이 유란시아에서 실패한 이후 수천 년 동안, 계시된 진리는 소멸될 위기에 처해 있었다. 인류는 지적으로는 진보했으나 영적으로는 점차 퇴보하고 있었다. 기원전 약 3000년경에는 인간들의 마음속에서 하나님에 대한 개념이 매우 흐릿해졌다.</div></div><div class="quote"><div class="ref">93:1.3</div><div class="qtext">이렇게 그들이 완전히 스스로의 자원에 의존하게 된 결과, 열두 행성 접수자 중 한 명인 마키벤타 멜기세덱이 자원하여 네바돈의 모든 역사에서 단 여섯 번만 있었던 일을 행하고자 했다. 즉, 세상에 이 세계의 임시 인간으로 인격화하여 자신을 세계 사역의 비상 아들로 증여하는 것이었다.</div></div><div class="quote"><div class="ref">93:2.1</div><div class="qtext">나는 멜기세덱이다. 지고자 엘 엘리온, 곧 유일하신 하나님의 사제이다.</div></div><div class="quote"><div class="ref">93:3.6</div><div class="qtext">그러나 이 위대한 스승은 모든 가르침을 한 분 하나님, 곧 우주의 신, 하늘의 창조주, 신성한 아버지라는 교리 아래 두었다. 그는 인간의 흠모를 일깨우고, 훗날 미가엘이 동일한 우주 아버지의 아들로서 나타날 길을 준비하기 위해 이 가르침을 강조했다.</div></div><div class="quote"><div class="ref">93:4.2</div><div class="qtext">1. 나는 엘 엘리온, 지고자 하나님, 만물의 유일한 우주 아버지요 창조주를 믿는다.</div></div><div class="quote"><div class="ref">93:4.3</div><div class="qtext">2. 나는 멜기세덱이 지고자와 맺은 언약을 받아들인다. 이 언약은 제물이나 번제가 아니라 나의 신앙에 하나님의 은총을 베푸신다는 것이다.</div></div><div class="quote"><div class="ref">93:4.8</div><div class="qtext">2. 신앙이 영원한 구원의 유일한 조건임을 의심하지 말라.</div></div><div class="quote"><div class="ref">93:4.15</div><div class="qtext">그는 도덕률을 개혁하려 하지 않았고, 세상의 습관을 바꾸려 하지도 않았으며, 진보된 위생 관행이나 과학적 진리를 널리 알리려 하지도 않았다. 그는 두 가지 과업을 이루기 위해 왔다. 지상에서 한 분 하나님의 진리를 살아 있게 하는 것과, 그 우주 아버지의 파라다이스 아들이 훗날 필사자로 증여될 길을 예비하는 것이었다.</div></div><div class="quote"><div class="ref">93:6.4</div><div class="qtext">이 언약에서 하나님은 모든 일을 행하기로 약속하고, 사람은 오직 하나님의 약속을 믿고 그의 지시를 따르기로 동의한다. 그때까지는 오직 행위, 즉 희생과 제물로만 구원을 얻을 수 있다고 믿었다. 그러나 이제 멜기세덱은 구원, 곧 하나님의 은총이 신앙으로 얻어진다는 복된 소식을 다시 유란시아에 전하였다.</div></div><div class="quote"><div class="ref">93:7.3</div><div class="qtext">한 세대에서 다음 세대로 살렘의 복음은 여기저기 자리를 잡았지만, 팔레스타인을 제외하고는 한 분 하나님이라는 개념이 한 부족이나 인종 전체의 지속적인 충성을 주장할 수 있었던 적은 결코 없었다. 예수가 오기 훨씬 전에 초기 살렘 선교사들의 가르침은 더 오래되고 더 보편적인 미신과 믿음들 속에 대체로 묻혀 버렸다.</div></div><div class="quote"><div class="ref">93:7.4</div><div class="qtext">새로운 교리는 언제나 오래된 종교적 가르침과 마법적 풍습 속으로 흡수되는 경향이 있었다. 새로운 계시는 언제나 오래된 진화적 신앙들에 의해 오염된다.</div></div><div class="quote"><div class="ref">93:3.8</div><div class="qtext">이처럼 멜기세덱은 한 분 하나님의 실제 파라다이스 아들의 증여를 위한 길을 닦고, 세상의 경향을 유일신 신앙의 무대로 만들었다.</div></div><div class="quote"><div class="ref">98:0.4</div><div class="qtext">그리스 철학, 유대 신학, 그리고 그리스도교 윤리의 기본 교리들은 근본적으로 초기 멜기세덱 가르침의 반향이었다.</div></div></div></div>
+</section>
+<section class="part" id="s5" style="--c:var(--coral)">
+  <div class="head"><span class="num">5</span>
+    <div><h2>넷째 계시: 나사렛 예수</h2><p class="sub">창조자 아들이 삶으로 드러낸 우주 아버지</p></div></div>
+  <p class="summary">넷째 계시의 전달자는 이 지역 우주의 창조자 아들 그리스도 미가엘이다. 그는 하나님을 우주 아버지로 제시하는 개념을 네 번째로 드러냈고, 그 가르침의 본질은 사랑과 봉사였다. 정상적인 세계에서 증여 아들은 인종이 가장 높은 수준에 오른 뒤에 오지만, 유란시아에는 통상의 순서보다 이른 때에 창조자 아들 자신이 왔다. 예수는 책이나 법률, 조직을 남기지 않았다. 사람들은 그의 말보다 그의 삶을 통해 하나님을 배운다. 본문은 이 가르침이 그 후로 대체로 존속해 왔다고 평가한다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s5-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s5-more"><p>넷째 계시는 형식에서 앞의 셋과 뚜렷이 구별된다. 달라마시아에는 법전이, 에덴에는 학교와 법이, 살렘에는 신조와 계명이 있었다. 그러나 예수의 종교는 전적으로 그가 지상에서 산 증여 생애에 기초했다고 본문은 말한다. 예수는 하늘 아버지의 인격과 속성에 대해 체계적인 수업을 한 적이 없고, 아버지의 실체를 증명하려고 논증을 펴지도 않았다. 대신 아들을 본 사람은 아버지를 본 것이라고 가르쳤다. 계시의 매체가 문장에서 인격으로 옮겨 간 것이다. 내용 면에서는 셋째 계시와의 연속성이 분명하다. 신앙으로 구원을 얻는다는 살렘의 복음이 그대로 이어지고, 여기에 하나님을 아버지로 아는 아들 의식과 진리를 통한 자유가 더해졌다. 본문은 미가엘이 멜기세덱이 가르친 모든 것을 확증했다고 적는다. 한편 유란시아 증여의 특수성도 숨기지 않는다. 창조자 아들이 진화 세계에 몸소 오는 일은 한 지역 우주에서 단 한 번이며, 그 선물을 받는 세계는 천만 가까운 세계 가운데 하나뿐이다. 그러나 정상적인 세계에서 증여 아들이 가져오는 전 세계적 평화는 유란시아에 동반되지 않았다. 반란과 불이행으로 뒤처진 세계에 계시가 먼저 주어진 셈이며, 그래서 그 열매가 사회 전체에 맺히기까지는 더 오랜 시간과 노력이 든다고 본문은 설명한다.</p></div>
+  <div class="panel" id="s5-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>92편은 예수의 계시를 어떻게 요약합니까?</span></button><div class="answer">그리스도 미가엘이 하나님을 우주 아버지로 제시하는 개념을 네 번째로 드러냈고, 그 가르침의 본질은 사랑과 봉사였다고 요약합니다. 사랑은 창조체 아들이 아버지께 자발적으로 드리는 예배이고, 봉사는 형제들에게 베푸는 자유의지의 봉사입니다. 본문은 이 가르침이 그 후로 대체로 존속해 왔다고 덧붙입니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>예수가 책이나 조직을 남기지 않았다는 사실은 무엇을 뜻합니까?</span></button><div class="answer">예수의 계시가 글이나 제도가 아니라 삶 자체였다는 뜻입니다. 본문은 사람이 예수의 가르침에 의존해서가 아니라 그의 삶의 신성을 관찰함으로써 하나님을 배운다고 말합니다. 예수가 한 말을 이해하는 것만으로는 하나님을 알 수 없지만, 예수가 어떤 존재였는지를 알면 하나님을 알 수 있습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>유란시아의 증여는 정상적인 세계의 증여와 어떻게 달랐습니까?</span></button><div class="answer">정상적인 세계에서는 인종이 지적, 윤리적으로 가장 높은 수준에 오른 뒤에 증여 아들이 오고, 대개 아보날 계층의 아들입니다. 유란시아에는 창조자 아들 자신이 통상의 순서보다 이른 때에 왔습니다. 또 정상 세계에서는 증여 뒤에 전 세계적 평화의 시대가 오지만 유란시아에는 그런 영향이 동반되지 않았습니다.</div></div></div>
+  <div class="panel" id="s5-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.8</div><div class="qtext">그리스도 미가엘은 유란시아에 하나님을 우주 아버지로 제시하는 개념을 네 번째로 드러냈으며, 이 가르침은 그 후로 대체로 존속해 왔다. 그의 가르침의 본질은 사랑과 봉사였다.</div></div><div class="quote"><div class="ref">92:4.8</div><div class="qtext">그것은 하나님 아버지의 사랑의 사역에 대한 인식과 응답으로 창조체 아들이 자발적으로 드리는 사랑의 예배였으며, 그러한 창조체 아들들이 이 봉사에서 자신들이 또한 아버지 하나님을 섬기고 있음을 기쁘게 깨달으며 형제들에게 베푸는 자유의지의 봉사였다.</div></div><div class="quote"><div class="ref">52:5.1</div><div class="qtext">정상적인 세계에서는 인종들이 지적 발달과 윤리적 성취의 가장 높은 수준으로 상승하기 전까지는 그가 육신으로 나타나지 않는다. 그러나 유란시아에서는 증여 아들, 바로 너희 자신의 창조자 아들이 아담 섭리 시대가 끝날 무렵에 나타났지만, 이는 공간 세계들에서 통상적인 사건 순서가 아니다.</div></div><div class="quote"><div class="ref">52:5.2</div><div class="qtext">단, 각 지역 우주에서 한 번, 창조자 아들이 어떤 진화 세계에서 자신의 마지막 증여를 준비하는 경우는 예외이며, 이는 네바돈의 미가엘이 유란시아에 나타나 너희 필사자 인종들에게 자신을 증여했을 때와 같다. 천만 가까이 되는 세계들 중 단 하나의 세계만이 그러한 선물을 향유할 수 있다.</div></div><div class="quote"><div class="ref">52:6.1</div><div class="qtext">증여 아들은 평화의 영주이다. 그는 “땅에는 평화, 사람 사이에는 선의”라는 메시지를 가지고 온다.</div></div><div class="quote"><div class="ref">120:4.4</div><div class="qtext">미가엘 증여의 최상의 영적 목적이 하나님의 계시를 높이는 것이었다는 사실을 결코 잊지 말라.</div></div><div class="quote"><div class="ref">141:7.4</div><div class="qtext">주님은 왕국 복음의 모든 교사들에게 그들의 유일한 임무가 개별 인간에게 하나님을 아버지로서 드러내는 것임을 강조하려 했다. 그리고 이 개인이 아들 의식을 가지도록 이끌어야 하며, 그런 다음 이 사람을 그의 신앙의 아들로서 하나님께 드려야 한다고 가르쳤다.</div></div><div class="quote"><div class="ref">141:7.4</div><div class="qtext">예수의 종교는 전적으로 그가 지상에서 살았던 증여 생애에 기초했다. 예수는 이 세상을 떠나면서 개인의 종교 생활에 영향을 미치는 책이나 법률, 혹은 다른 형태의 인간 조직을 남기지 않았다.</div></div><div class="quote"><div class="ref">141:7.6</div><div class="qtext">예수는 왕국의 가르침에서 가장 중요한 두 가지 진리를 강조했는데, 그것은 신앙, 오직 신앙으로 구원을 얻는 것과, 진리를 진실하게 인식함으로써 인간의 자유를 획득하는 혁명적인 가르침이었다.</div></div><div class="quote"><div class="ref">169:4.2</div><div class="qtext">예수는 하늘 아버지의 인격과 속성에 대해 체계적인 수업을 사도들에게 준 적이 없었다. 그는 사람들에게 아버지를 믿으라고 요청한 적도 없었다.</div></div><div class="quote"><div class="ref">169:4.3</div><div class="qtext">너희는 예수에게서 하나님을 배우되, 그의 가르침에 의존해서가 아니라 그의 삶의 신성을 관찰함으로써 배운다.</div></div><div class="quote"><div class="ref">169:4.4</div><div class="qtext">예수는 사도들에게 하나님을 완전히 이해할 수는 없지만, 사람의 아들을 알았던 것처럼 하나님을 가장 확실하게 알 수 있다고 가르쳤다. 예수가 한 말을 이해하는 것만으로는 하나님을 알 수 없지만, 예수가 어떤 존재였는지를 알면 하나님을 알 수 있다. 예수는 하나님에 대한 계시였다.</div></div><div class="quote"><div class="ref">93:3.8</div><div class="qtext">그리고 미가엘은 지상에 나타났을 때, 멜기세덱이 파라다이스 아버지에 관하여 가르친 모든 것을 확증하였다.</div></div><div class="quote"><div class="ref">196:1.3</div><div class="qtext">모든 인간 지식 중 가장 가치 있는 것은 예수의 종교적 삶과 그가 그것을 어떻게 살았는지를 아는 것이다.</div></div></div></div>
+</section>
+<section class="part" id="s6" style="--c:var(--green)">
+  <div class="head"><span class="num">6</span>
+    <div><h2>증여가 남긴 것: 섭리 시대의 종결과 진리의 영</h2><p class="sub">셋째 행성 점호, 새롭고 살아 있는 길, 사람 안에 거하는 새 교사</p></div></div>
+  <p class="summary">예수의 증여는 가르침에 그치지 않고 행성의 지위를 바꾸었다. 부활의 아침에 아담의 섭리 시대를 마감하는 일반 부활이 집행되었고, 이것이 유란시아의 셋째 행성 점호였다. 반란으로 막혀 있던 길도 다시 열려, 오순절 이후 유란시아 필사자들은 죽은 뒤 모론시아 세계로 곧바로 나아갈 수 있게 되었다. 그리고 진리의 영이 모든 사람에게 부어졌다. 이 영은 사람 안에 살면서 새 세대마다 예수의 메시지를 다시 진술한다. 앞선 계시들이 기억과 제도에 맡겨졌던 것과 다른 점이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s6-quo">유란시아서 인용 14개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s6-more"><p>본문은 유란시아의 섭리 시대적 부활이 세 번 있었다고 정리한다. 첫째는 행성 영주가 도착했을 때, 둘째는 아담 시대에, 셋째는 예수의 모론시아 부활 때이다. 아담이 취임하던 날 가브리엘의 음성이 둘째 심판 점호를 포고했고 영주의 섭리 시대는 지나갔다고 기록되어 있다. 반면 멜기세덱이 떠날 때에는 부활의 점호도 섭리 시대의 종결도 없었다. 그러므로 엄밀한 뜻의 섭리 시대는 다섯 계시와 꼭 겹치지 않는다. 예수의 증여가 가져온 둘째 변화는 생존 경로의 회복이다. 반란으로 고립된 유란시아에서는 죽은 뒤 맨션 세계로 직접 옮겨 가는 절차가 중단되어, 특별 부활이나 섭리 시대적 부활 때까지 잠들어 있어야 했다. 본문은 예수가 세운 새롭고 살아 있는 길이 유란시아에서는 진리일 뿐 아니라 사실의 문제였다고 말한다. 셋째 변화가 진리의 영이다. 이 영의 임무는 진리를 기르고 인격화하는 것, 그리고 신자가 고아가 되었다고 느끼지 않게 하는 것이다. 또한 이 영의 증여는 아버지의 영인 조절자가 온 인류에게 보편적으로 증여되는 일을 준비시켰다. 계시의 보존이라는 관점에서 보면 이것은 새로운 해법이다. 달라마시아와 에덴과 살렘의 가르침은 전달자가 떠난 뒤 빠르게 흐려졌지만, 넷째 계시는 사람 안에 거하는 교사를 남겼다.</p></div>
+  <div class="panel" id="s6-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>유란시아에서 섭리 시대적 부활은 몇 번 있었으며, 언제였습니까?</span></button><div class="answer">세 번입니다. 첫째는 행성 영주가 도착했을 때, 둘째는 아담 시대, 셋째는 나사렛 예수의 모론시아 부활 때였습니다. 셋째 점호에서는 아담 시대 이후 잠들어 있던 생존자들이 맨션 세계의 부활 전당에 나타났습니다. 멜기세덱의 증여는 비상 증여였으므로 이런 점호를 동반하지 않았습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>'새롭고 살아 있는 길'이 유란시아에서 사실의 문제였다는 것은 무슨 뜻입니까?</span></button><div class="answer">루시퍼 반란으로 유란시아가 고립되면서, 죽은 사람이 맨션 세계로 직접 옮겨 가는 절차가 실제로 중단되어 있었다는 뜻입니다. 예수의 시대 이전에는 모든 혼이 특별 부활이나 섭리 시대적 부활 때까지 잠들어 있었습니다. 오순절 이후에는 유란시아 필사자들이 다시 모론시아 구체로 직접 나아갈 수 있게 되었습니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>진리의 영은 계시의 보존에 어떤 구실을 합니까?</span></button><div class="answer">진리의 영은 사람 안에 살면서 새 세대마다 예수의 메시지를 다시 진술합니다. 그래서 각 세대가 자기 시대의 영적 어려움에 맞는 깨우침과 인도를 받습니다. 앞선 세 계시는 전달자가 떠난 뒤 사람의 기억과 제도에 맡겨져 흐려졌지만, 넷째 계시는 그 보존을 사람 안에 거하는 영에게 맡겼다고 볼 수 있습니다.</div></div></div>
+  <div class="panel" id="s6-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">189:3.1</div><div class="qtext">이 일요일 아침 네 시 반이 조금 지난 무렵, 가브리엘은 천사장들을 소집하여 유란시아에서 아담의 섭리 시대가 종료되는 일반 부활을 시작할 준비를 했다.</div></div><div class="quote"><div class="ref">189:3.2</div><div class="qtext">그 후 천사장 회로가 유란시아에서 처음으로 작동했다.</div></div><div class="quote"><div class="ref">189:3.2</div><div class="qtext">미가엘의 명령으로, 유란시아 섭리 시대의 죽은 자들이 일어나라!</div></div><div class="quote"><div class="ref">189:3.3</div><div class="qtext">이것은 셋째 행성 점호, 즉 완전한 섭리 시대적 부활이었다. 첫째는 행성 영주의 도착 때에 일어났고, 둘째는 아담 시대에 있었으며, 셋째는 바로 나사렛 예수의 모론시아 부활, 곧 필사 이주를 나타내는 것이었다.</div></div><div class="quote"><div class="ref">74:2.8</div><div class="qtext">영주의 섭리 시대는 지나갔다. 아담의 시대, 즉 셋째 행성 시대가 소박한 장엄함 속에서 열린다.</div></div><div class="quote"><div class="ref">93:10.2</div><div class="qtext">부활의 점호도, 행성 섭리 시대의 종결도 유란시아에서의 그의 출현을 표시하지 않았다. 그의 증여는 비상 증여였다.</div></div><div class="quote"><div class="ref">52:5.4</div><div class="qtext">증여 아들은 세상의 필사자 인종들의 영적 고양을 위해 살고 죽는다. 그는 “새롭고 살아 있는 길”을 정립한다.</div></div><div class="quote"><div class="ref">52:5.5</div><div class="qtext">유란시아에서 이 “새롭고 살아 있는 길”의 정립은 진리뿐만 아니라 사실의 문제였다. 루시퍼 반란으로 유란시아가 고립됨에 따라 필사자들이 죽은 뒤 맨션 세계 기슭으로 직접 옮겨가는 절차가 중단되었다. 유란시아의 그리스도 미가엘 시대 이전에는 모든 혼이 섭리 시대적 혹은 특별 천년 부활이 있을 때까지 잠들었다.</div></div><div class="quote"><div class="ref">52:5.5</div><div class="qtext">그러나 오순절 이후, 유란시아 필사자들은 다시 모론시아 구체로 직접 나아갈 수 있다.</div></div><div class="quote"><div class="ref">52:5.6</div><div class="qtext">그 후 증여 아보날과 창조자 미가엘은 그들의 공동 영인 진리의 영을 해당 증여 세계로 파송한다. 이때가 “승리하신 아들의 영이 모든 육체 위에 부어지는” 시기이다.</div></div><div class="quote"><div class="ref">194:2.2</div><div class="qtext">이 영의 첫째 임무는 물론 진리를 기르고 인격화하는 것인데, 진리를 이해하는 것이야말로 인간 자유의 가장 높은 형태를 이루기 때문이다. 다음으로, 이 영의 목적은 신자가 고아가 되었다고 느끼는 감정을 없애는 것이다.</div></div><div class="quote"><div class="ref">194:2.3</div><div class="qtext">아들의 영의 이 증여는 모든 정상적인 사람의 마음을, 뒤이어 아버지의 영(조절자)이 온 인류에게 보편적으로 증여될 일에 효과적으로 대비시켰다.</div></div><div class="quote"><div class="ref">194:3.1</div><div class="qtext">부어진 이 아버지와 아들의 영의 주된 임무는 아버지의 사랑과 아들의 자비라는 진리를 사람들에게 가르치는 것이다.</div></div><div class="quote"><div class="ref">194:3.1</div><div class="qtext">창조자 아들은 육신으로 사람들에게 하나님을 계시했고, 진리의 영은 심정에서 사람들에게 창조자 아들을 계시한다.</div></div></div></div>
+</section>
+<section class="part" id="s7" style="--c:var(--sky)">
+  <div class="head"><span class="num">7</span>
+    <div><h2>다섯째 계시: 유란시아 문서들과 계시의 한계</h2><p class="sub">합성된 제시, 인간 개념의 우선, 완전하지 않음의 인정</p></div></div>
+  <p class="summary">다섯째 계시는 유란시아 문서들이다. 본문은 이 문서들이 이전의 모든 계시와 다르다고 말한다. 한 인격의 작품이 아니라 많은 존재들이 함께 만든 합성된 제시이기 때문이다. 작성자들은 현존하는 가장 높은 인간 개념에 우선권을 주고, 그것으로 부족할 때에만 순수한 계시에 의지했다고 밝힌다. 동시에 이 계시는 자신의 한계를 스스로 인정한다. 우주 아버지에 이르기 전까지 어떤 계시도 완전할 수 없으며, 이 문서들의 우주론은 영감받은 것이 아니어서 머지않아 수정이 필요하게 되리라는 것이다.</p>
+  <div class="btns">
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-more">더 알아보기 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-q">소그룹 질문과 모범답안 <span class="chev">&#9662;</span></button>
+    <button class="tab" type="button" aria-expanded="false" aria-controls="s7-quo">유란시아서 인용 15개 <span class="chev">&#9662;</span></button>
+  </div>
+  <div class="panel more" id="s7-more"><p>다섯 계시를 나란히 놓으면 세 가지가 보인다. 첫째는 주제의 일관성이다. 첫째 근원이며 중심, 모든 이의 아버지, 만물의 우주 아버지, 우주 아버지로 표현은 달라지지만 중심 개념은 하나이다. 둘째는 누적이다. 달라마시아의 일곱 명령에 에덴은 이유를 더했고, 살렘은 신앙이라는 조건을 더했으며, 예수는 아버지와 아들의 관계를 삶으로 보였다. 뒤의 계시는 앞의 것을 버리지 않고 그 위에 놓였다. 셋째는 전달자의 변화이다. 상승 필사자 출신의 참모진, 물질 아들과 딸, 멜기세덱 아들, 창조자 아들을 거쳐 다섯째에서는 여러 계층의 존재들이 함께 쓴 문서가 되었다. 다섯째 계시의 두드러진 특징은 스스로에 대한 솔직함이다. 본문은 이 인정이 계시의 권위를 약화시킬 위험이 있음을 알면서도, 이제 유란시아가 그런 솔직한 진술을 할 시점에 이르렀다고 말한다. 다른 편에서는 계시의 법칙이 아직 얻지 않은 지식을 미리 주는 것을 금한다고 설명하고, 역사적 사실과 종교적 진리는 남겠지만 물리 과학에 관한 많은 진술은 고쳐져야 할 것이라고 예고한다. 이것은 계시를 읽는 태도에 대한 안내이기도 하다. 계시는 시대적으로는 주기적으로 주어지지만 개인의 체험 안에서는 조절자와 진리의 영과 성령을 통해 지속적으로 이루어진다. 다섯째 계시는 그 개인적 체험을 대신하는 것이 아니라 돕기 위한 것으로 제시된다.</p></div>
+  <div class="panel" id="s7-q"><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q1</span><span>유란시아 문서들은 이전의 네 계시와 어떤 점에서 다릅니까?</span></button><div class="answer">이전의 계시들은 참모진이든 아담과 이브든 멜기세덱이든 예수든 눈에 보이는 인격이 직접 가르쳤습니다. 다섯째 계시는 문서의 형태로 주어졌고, 한 인격의 작품이 아니라 많은 존재들이 함께 만든 합성된 제시입니다. 또한 작성자들은 현존하는 가장 높은 인간 개념을 우선해서 썼다고 밝힙니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q2</span><span>이 계시가 스스로 인정하는 한계는 무엇입니까?</span></button><div class="answer">우주 아버지에 이르기 전까지 어떤 계시도 완전할 수 없다는 것입니다. 모든 천상의 사역은 부분적이며 일시적이고, 시간과 공간의 국지적 조건에 맞추어 조정된 것입니다. 특히 이 계시들의 우주론은 영감받은 것이 아니며, 과학이 발달하면 물리 과학에 관한 많은 진술이 수정될 필요가 생길 것이라고 예고합니다.</div></div><div class="qa"><button type="button" class="qa-toggle" aria-expanded="false"><span class="qmark">Q3</span><span>다섯 계시를 꿰는 하나의 주제가 있다면 무엇입니까?</span></button><div class="answer">하나님을 모든 이의 아버지로 알게 하는 것입니다. 달라마시아는 첫째 근원이며 중심을, 에덴은 모든 이의 아버지를, 살렘은 신앙으로 받아 주시는 만물의 아버지를, 예수는 삶으로 우주 아버지를 드러냈습니다. 유란시아 문서들은 그 계시들을 넓은 우주의 틀 안에서 다시 정리하며, 종교들이 신조가 아니라 아버지께 드리는 참된 예배 안에서 하나가 될 수 있다고 내다봅니다.</div></div></div>
+  <div class="panel" id="s7-quo"><p class="qcount">본문 그대로 옮긴 문장입니다. 번호는 편:장.절.</p>
+    <div class="quotes"><div class="quote"><div class="ref">92:4.9</div><div class="qtext">이 글도 그중 하나인 이 문서들은 유란시아 필사자들에게 가장 최근에 진리를 제시한 것이다. 이 문서들은 이전의 모든 계시와 다르며, 단일한 우주 인격의 작품이 아니라 많은 존재들에 의한 합성된 제시이다.</div></div><div class="quote"><div class="ref">92:4.9</div><div class="qtext">그러나 우주 아버지에 이르기 전까지 어떤 계시도 완전할 수 없다. 다른 모든 천상의 사역은 부분적이며 일시적이고, 시간과 공간의 국지적 조건에 맞추어 조정된 것에 불과하다.</div></div><div class="quote"><div class="ref">92:4.9</div><div class="qtext">이러한 인정이 모든 계시의 즉각적인 힘과 권위를 다소 약화시킬 수도 있지만, 이제 유란시아는 이러한 솔직한 진술을 할 시점에 이르렀다.</div></div><div class="quote"><div class="ref">0:12.11</div><div class="qtext">이 지시는 우리가 진리를 드러내고 필수 지식을 조율하는 데 있어서, 제시될 주제에 관하여 현존하는 가장 높은 인간 개념들에 우선권을 주어야 한다는 것이다. 우리는 제시할 개념이 인간 마음에 의해 이전에 적절하게 표현된 적이 없을 때에만 순수한 계시에 의존할 것이다.</div></div><div class="quote"><div class="ref">0:12.12</div><div class="qtext">신성한 진리의 연속적인 행성 계시들은 변함없이 현존하는 가장 높은 영적 가치 개념들을 행성 지식의 새롭고 고양된 조율의 일부로 포용한다. 따라서 하나님과 그의 우주 동료들에 대한 이 글을 작성하면서, 우리는 우주 의미와 영적 가치에 대한 가장 고상하고 진보된 행성 지식을 대표하는 천 개가 넘는 인간 개념을 기초로 삼기 위해 선정했다.</div></div><div class="quote"><div class="ref">101:4.1</div><div class="qtext">계시의 법칙은 우리가 아직 얻지 않은 지식이나 시기상조의 지식을 제공하는 것을 금함으로써 큰 제약을 준다. 계시된 종교의 일부로 제시된 어떤 우주론도 곧 시대에 뒤떨어지게 될 운명에 처한다.</div></div><div class="quote"><div class="ref">101:4.2</div><div class="qtext">우리는 천 년 후의 과학적 발견을 예견할 자유가 없다.</div></div><div class="quote"><div class="ref">101:4.2</div><div class="qtext">우리는 이 계시 발표 시리즈의 역사적 사실과 종교적 진리가 다가올 시대의 기록에 남을 것이지만, 몇 해 지나지 않아 물리 과학에 관한 우리의 많은 진술이 추가적인 과학 발달과 새로운 발견의 결과로 수정이 필요하게 되리라는 것을 아주 잘 알고 있다.</div></div><div class="quote"><div class="ref">101:4.2</div><div class="qtext">계시들이 반드시 영감받은 것은 아님을 분명히 밝혀 두어야 한다. 이 계시들의 우주론은 영감받지 않았다. 그것은 현재의 지식을 조율하고 분류하는 우리의 허가 범위 내로 한정된다.</div></div><div class="quote"><div class="ref">119:8.9</div><div class="qtext">[그리스도 미가엘의 일곱 증여를 묘사하는 이 편은, 미가엘이 필사 육신의 모습으로 지상에 나타날 때까지의 유란시아 역사를 서술하는, 수많은 인격들이 후원한 일련의 발표 가운데 예순셋째이다. 이 편들은 만투시아 멜기세덱의 지도 아래 활동하는 열두 명으로 된 네바돈 위원회의 승인을 받았다. 우리는 상관들이 승인한 기법으로 유란시아 시간으로 서기 1935년에 이 이야기들을 쓰고 영어로 옮겼다.]</div></div><div class="quote"><div class="ref">121:8.13</div><div class="qtext">계시 허가는 인간의 기록과 인간의 개념이 적절한 사고 유형을 제공하지 못할 때에만 사용되었다.</div></div><div class="quote"><div class="ref">92:7.3</div><div class="qtext">유란시아의 모든 종교는 인간을 하나님께로 인도하고, 아버지를 인간에게 깨닫게 하는 한 선하다. 어떤 종교 단체도 자신들의 신조를 그 진리라고 여기는 것은 오류이며, 그러한 태도는 신앙의 확신보다는 신학적 오만을 드러낸다.</div></div><div class="quote"><div class="ref">92:7.4</div><div class="qtext">그들은 신조와 교리와 의식의 통일성에는 결코 이를 수 없을 것이다. 그것들은 지적인 것이기 때문이다.</div></div><div class="quote"><div class="ref">92:5.16</div><div class="qtext">유란시아의 미래는 의심할 여지 없이 하나님의 아버지되심과 모든 창조체의 형제 됨이라는 종교적 진리를 가르치는 교사들의 출현으로 특징지어질 것이다.</div></div><div class="quote"><div class="ref">94:12.7</div><div class="qtext">온 유란시아는, 진화적 기원의 종교들과의 열아홉 세기 동안의 접촉으로 축적된 교리와 교의에 짐 지워지지 않은 미가엘의 고귀한 메시지의 선포를 기다리고 있다.</div></div></div></div>
+</section></div></main>
+
+<footer>한국 유란시아서 독자 모임 · 인용문은 유란시아서 본문(4차 교정판) 그대로이며 절 번호를 함께 표기했습니다.</footer>
+
+<div class="printbar"><button type="button" id="printBtn">PDF로 출력하기</button></div>
+
+<script>
+(function(){
+  function closestEl(el, sel){
+    while(el && el.nodeType === 1){
+      if(el.matches ? el.matches(sel) : el.msMatchesSelector(sel)) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  document.addEventListener("click", function(e){
+    var tab = closestEl(e.target, "button.tab");
+    if(tab){
+      var panel = document.getElementById(tab.getAttribute("aria-controls"));
+      var open = panel.className.indexOf("open") === -1;
+      panel.className = open ? panel.className + " open" : panel.className.replace(/\s*open/, "");
+      tab.setAttribute("aria-expanded", open ? "true" : "false");
+      var chev = tab.getElementsByClassName("chev")[0];
+      if(chev) chev.innerHTML = open ? "\u25B4" : "\u25BE";
+      return;
+    }
+    var qbtn = closestEl(e.target, ".qa-toggle");
+    if(qbtn){
+      var ans = qbtn.nextElementSibling;
+      var o = ans.className.indexOf("open") === -1;
+      ans.className = o ? ans.className + " open" : ans.className.replace(/\s*open/, "");
+      qbtn.setAttribute("aria-expanded", o ? "true" : "false");
+    }
+  });
+  var pb = document.getElementById("printBtn");
+  if(pb) pb.addEventListener("click", function(){ window.print(); });
+})();
+</script>
+</body>
+</html>
